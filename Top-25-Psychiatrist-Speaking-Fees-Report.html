@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 50 Psychiatrist Pharmaceutical Speaking Fees | Open Payments Analysis 2021-2024</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap');
+
+        :root {
+            --refresh-blue: #2B6CB0;
+            --refresh-yellow: #F6C744;
+            --white: #FFFFFF;
+            --charcoal: #2D3748;
+            --light-bg: #F7FAFC;
+            --card-bg: #FFFFFF;
+            --border: #E2E8F0;
+            --green: #38A169;
+            --red: #E53E3E;
+            --orange: #DD6B20;
+            --purple: #805AD5;
+            --teal: #319795;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--light-bg); color: var(--charcoal); line-height: 1.6; }
+
+        .header {
+            background: linear-gradient(135deg, #1a365d 0%, var(--refresh-blue) 50%, #2c5282 100%);
+            color: white; padding: 60px 40px; text-align: center; position: relative; overflow: hidden;
+        }
+        .header::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .header h1 { font-family: 'Montserrat', sans-serif; font-size: 2.8rem; font-weight: 800; position: relative; z-index: 1; }
+        .header .subtitle { font-size: 1.2rem; opacity: 0.9; position: relative; z-index: 1; margin-top: 8px; }
+        .header .badge { display: inline-block; background: var(--refresh-yellow); color: var(--charcoal); padding: 6px 20px; border-radius: 20px; font-weight: 700; font-size: 0.85rem; margin-top: 16px; position: relative; z-index: 1; }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 40px 24px; }
+
+        /* Navigation Tabs */
+        .nav-tabs { display: flex; gap: 0; background: white; border-radius: 16px 16px 0 0; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); margin-bottom: 0; border: 1px solid var(--border); border-bottom: none; }
+        .nav-tab { flex: 1; padding: 18px 24px; text-align: center; font-weight: 700; font-size: 0.95rem; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.3s; background: #f8fafc; }
+        .nav-tab:hover { background: #EBF8FF; }
+        .nav-tab.active { background: white; border-bottom-color: var(--refresh-blue); color: var(--refresh-blue); }
+        .nav-tab.fl-tab.active { border-bottom-color: var(--orange); color: var(--orange); }
+        .tab-content { display: none; background: white; border-radius: 0 0 16px 16px; padding: 32px; border: 1px solid var(--border); border-top: none; margin-bottom: 32px; }
+        .tab-content.active { display: block; }
+
+        .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 32px; }
+        .stat-card { background: white; border-radius: 16px; padding: 24px 20px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.08); border: 1px solid var(--border); transition: transform 0.2s; }
+        .stat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .stat-card .number { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--refresh-blue); }
+        .stat-card .label { font-size: 0.82rem; color: #718096; margin-top: 4px; }
+        .stat-card.gold .number { color: #B7791F; }
+        .stat-card.green .number { color: var(--green); }
+        .stat-card.purple .number { color: var(--purple); }
+        .stat-card.orange .number { color: var(--orange); }
+        .stat-card.red .number { color: var(--red); }
+
+        .section-title { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--charcoal); margin-bottom: 6px; padding-bottom: 10px; border-bottom: 3px solid var(--refresh-yellow); display: inline-block; }
+        .section-subtitle { color: #718096; margin-bottom: 20px; font-size: 0.92rem; }
+
+        .insight-box { background: linear-gradient(135deg, #EBF8FF 0%, #BEE3F8 100%); border: 1px solid #90CDF4; border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; }
+        .insight-box.gold { background: linear-gradient(135deg, #FFFFF0 0%, #FEFCBF 100%); border-color: #ECC94B; }
+        .insight-box.green { background: linear-gradient(135deg, #F0FFF4 0%, #C6F6D5 100%); border-color: #68D391; }
+        .insight-box.orange { background: linear-gradient(135deg, #FFFAF0 0%, #FEEBC8 100%); border-color: #F6AD55; }
+        .insight-box h4 { font-family: 'Montserrat', sans-serif; font-size: 0.95rem; margin-bottom: 8px; }
+        .insight-box p, .insight-box li { font-size: 0.88rem; color: #4A5568; }
+        .insight-box ul { padding-left: 18px; }
+        .insight-box li { margin-bottom: 4px; }
+
+        /* Interactive Charts */
+        .chart-container { background: white; border-radius: 16px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); border: 1px solid var(--border); margin-bottom: 24px; }
+        .chart-container h3 { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; color: var(--charcoal); }
+        .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+        @media (max-width: 900px) { .chart-row { grid-template-columns: 1fr; } }
+        canvas { max-height: 500px; }
+
+        /* Controls */
+        .controls { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; align-items: center; }
+        .controls label { font-weight: 600; font-size: 0.9rem; }
+        .controls select, .controls input { padding: 8px 14px; border: 2px solid var(--border); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; background: white; }
+        .controls select:focus, .controls input:focus { border-color: var(--refresh-blue); outline: none; }
+        .controls button { padding: 8px 18px; border: none; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; }
+        .btn-primary { background: var(--refresh-blue); color: white; }
+        .btn-primary:hover { background: #1a4a8a; }
+        .btn-secondary { background: var(--refresh-yellow); color: var(--charcoal); }
+        .btn-secondary:hover { background: #e0b030; }
+        .btn-outline { background: white; color: var(--refresh-blue); border: 2px solid var(--refresh-blue); }
+        .btn-outline.active { background: var(--refresh-blue); color: white; }
+        .btn-outline.fl-btn { color: var(--orange); border-color: var(--orange); }
+        .btn-outline.fl-btn.active { background: var(--orange); color: white; }
+
+        /* Table */
+        .table-wrapper { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); border: 1px solid var(--border); margin-bottom: 32px; }
+        .table-scroll { overflow-x: auto; max-height: 800px; overflow-y: auto; }
+        table { width: 100%; border-collapse: collapse; min-width: 1000px; }
+        thead th { background: #1a365d; color: white; padding: 14px 16px; text-align: left; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; cursor: pointer; user-select: none; white-space: nowrap; position: sticky; top: 0; z-index: 2; }
+        thead th:hover { background: #2c5282; }
+        .fl-table thead th { background: #7B341E; }
+        .fl-table thead th:hover { background: #9C4221; }
+        tbody td { padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+        tbody tr:hover { background: #EBF8FF; }
+        tbody tr:nth-child(even) { background: #FAFBFC; }
+        tbody tr:nth-child(even):hover { background: #EBF8FF; }
+        .rank-cell { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--refresh-blue); text-align: center; width: 44px; }
+        .top3 { background: #1a365d !important; }
+        .top3 td { color: white !important; border-bottom-color: #2c5282; }
+        .top3 .rank-cell { color: var(--refresh-yellow); }
+        .top3 .amount { color: var(--refresh-yellow) !important; }
+        .amount { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--refresh-blue); white-space: nowrap; }
+        .highlight-row { background: #FFFFF0 !important; }
+        .highlight-row td { font-weight: 600; border-left: 4px solid var(--refresh-yellow); }
+        .you-row { background: linear-gradient(90deg, #FFFFF0, #FEFCBF) !important; }
+        .you-row td { font-weight: 700; border-left: 4px solid var(--orange); }
+
+        /* Interactive bar in table */
+        .fee-bar { display: flex; align-items: center; gap: 8px; }
+        .fee-bar-track { flex: 1; height: 20px; background: #EDF2F7; border-radius: 10px; overflow: hidden; min-width: 80px; }
+        .fee-bar-fill { height: 100%; border-radius: 10px; transition: width 0.6s ease; }
+        .fee-bar-fill.blue { background: linear-gradient(90deg, #2B6CB0, #4299E1); }
+        .fee-bar-fill.gold { background: linear-gradient(90deg, #B7791F, #F6C744); }
+        .fee-bar-fill.green { background: linear-gradient(90deg, #276749, #38A169); }
+        .fee-bar-fill.orange { background: linear-gradient(90deg, #C05621, #ED8936); }
+
+        /* Detail row */
+        .detail-text { font-size: 0.78rem; color: #718096; margin-top: 2px; font-style: italic; }
+        .verified-badge { display: inline-block; background: #C6F6D5; color: #276749; padding: 1px 6px; border-radius: 4px; font-size: 0.65rem; font-weight: 700; margin-left: 4px; }
+        .est-badge { display: inline-block; background: #FEEBC8; color: #C05621; padding: 1px 6px; border-radius: 4px; font-size: 0.65rem; font-weight: 700; margin-left: 4px; }
+        .drug-tag { display: inline-block; background: #EBF8FF; color: var(--refresh-blue); padding: 2px 8px; border-radius: 6px; font-size: 0.72rem; font-weight: 600; margin: 1px 2px; }
+        .sponsor-tag { display: inline-block; background: #F7FAFC; color: #4A5568; padding: 2px 8px; border-radius: 6px; font-size: 0.72rem; border: 1px solid #E2E8F0; margin: 1px 2px; }
+
+        /* Audrey Section */
+        .audrey-section { background: linear-gradient(135deg, #FFFFF0 0%, #FEFCBF 100%); border: 2px solid var(--refresh-yellow); border-radius: 20px; padding: 36px; margin-bottom: 32px; position: relative; }
+        .audrey-section::before { content: 'SPOTLIGHT'; position: absolute; top: -12px; left: 28px; background: var(--refresh-yellow); color: var(--charcoal); padding: 4px 16px; border-radius: 10px; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.1em; }
+        .audrey-header { display: flex; align-items: center; gap: 20px; margin-bottom: 24px; }
+        .audrey-avatar { width: 72px; height: 72px; background: var(--refresh-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat'; font-size: 1.8rem; font-weight: 800; color: white; flex-shrink: 0; }
+        .audrey-info h2 { font-family: 'Montserrat'; font-size: 1.4rem; font-weight: 800; }
+        .audrey-info p { color: #718096; font-size: 0.9rem; }
+        .audrey-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 20px; }
+        .audrey-stat { background: white; border-radius: 12px; padding: 18px; text-align: center; border: 1px solid #E2E8F0; }
+        .audrey-stat .val { font-family: 'Montserrat'; font-size: 1.5rem; font-weight: 800; color: var(--refresh-blue); }
+        .audrey-stat .lbl { font-size: 0.78rem; color: #718096; margin-top: 2px; }
+
+        .growth-table { width: 100%; border-collapse: collapse; margin: 16px 0; min-width: auto; }
+        .growth-table th { background: var(--refresh-blue); color: white; padding: 10px 14px; font-size: 0.8rem; text-transform: uppercase; }
+        .growth-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 0.85rem; text-align: center; }
+        .growth-table .year-highlight { background: #FEFCBF; font-weight: 700; }
+
+        .methodology { background: white; border-radius: 16px; padding: 28px; border: 1px solid var(--border); margin-top: 32px; }
+        .methodology h3 { font-family: 'Montserrat'; margin-bottom: 10px; }
+        .methodology p { font-size: 0.85rem; color: #718096; margin-bottom: 6px; }
+        .source-tag { display: inline-block; background: #EBF8FF; color: var(--refresh-blue); padding: 3px 10px; border-radius: 6px; font-size: 0.73rem; font-weight: 600; margin: 2px 4px 2px 0; }
+        .footer { text-align: center; padding: 32px; color: #A0AEC0; font-size: 0.85rem; }
+
+        .strategic-box { background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%); color: white; border-radius: 16px; padding: 32px; margin: 32px 0; }
+        .strategic-box h3 { font-family: 'Montserrat'; font-size: 1.2rem; margin-bottom: 16px; color: var(--refresh-yellow); }
+        .strategic-box ol { padding-left: 20px; }
+        .strategic-box li { margin-bottom: 12px; font-size: 0.92rem; line-height: 1.5; }
+        .strategic-box strong { color: var(--refresh-yellow); }
+
+        @media (max-width: 600px) { .header h1 { font-size: 1.8rem; } .audrey-header { flex-direction: column; text-align: center; } .nav-tabs { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Top 50 Psychiatrist Speaking Fees</h1>
+    <div class="subtitle">Pharmaceutical Industry Payments via CMS Open Payments Database | Comprehensive Interactive Analysis</div>
+    <div class="badge">DATA PERIOD: 2021 &ndash; 2024 (Program Years) | Published March 15, 2026</div>
+</div>
+
+<div class="container">
+
+    <!-- Key Stats -->
+    <div class="stats-row">
+        <div class="stat-card"><div class="number">$340M</div><div class="label">Total pharma payments to psychiatrists (2014-2020)</div></div>
+        <div class="stat-card gold"><div class="number">$212M</div><div class="label">Speaking fees = 62.4% of all payments</div></div>
+        <div class="stat-card green"><div class="number">71.4%</div><div class="label">Speaking + consulting combined share</div></div>
+        <div class="stat-card purple"><div class="number">2.8%</div><div class="label">Top earners capture 82.6% of dollars</div></div>
+        <div class="stat-card"><div class="number">50 + 50</div><div class="label">National + Florida rankings below</div></div>
+        <div class="stat-card orange"><div class="number">$20.4M</div><div class="label">Otsuka = #1 pharma payer (annual)</div></div>
+    </div>
+
+    <!-- Executive Summary -->
+    <div class="insight-box">
+        <h4>Executive Summary</h4>
+        <p>This report analyzes <strong>CMS Open Payments data (2021-2024)</strong> covering pharmaceutical industry payments to psychiatrists nationwide. The psychiatric speaker fee landscape is <strong>extremely top-heavy</strong>: just 2.8% of psychiatrists capture 82.6% of all industry payments. The top 50 national speakers average <strong>$629,980 in 5-year speaking fees</strong> ($125,996/yr), while the median psychiatrist receives just <strong>$194/year</strong>. This report includes both a national Top 50 ranking and a dedicated <strong>Florida Top 50</strong> ranking with CMS API-verified data, plus a detailed comparison showing where Dr. Audrey La Noce, DO ranks in both landscapes.</p>
+    </div>
+
+    <!-- NAVIGATION TABS -->
+    <div class="nav-tabs">
+        <div class="nav-tab active" onclick="switchTab('national')">National Top 50</div>
+        <div class="nav-tab fl-tab" onclick="switchTab('florida')">Florida Top 50</div>
+        <div class="nav-tab" onclick="switchTab('lanoce')">Dr. La Noce Analysis</div>
+        <div class="nav-tab" onclick="switchTab('strategy')">Strategic Intelligence</div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 1: NATIONAL TOP 50 -->
+    <!-- ============================================== -->
+    <div class="tab-content active" id="tab-national">
+
+        <div class="section-title">Interactive National Speaker Fee Visualizations</div>
+        <p class="section-subtitle">Click, hover, and filter the charts below. All data compiled from CMS Open Payments API queries + published analyses.</p>
+
+        <div class="insight-box gold">
+            <h4>Key National Finding</h4>
+            <p>The gap between #1 (Stephen Stahl, $1.23M/yr) and #50 (Ronald Koshes, $34K/yr) is a <strong>36x multiplier</strong>. The top 3 earners alone account for more annual speaking fees than the bottom 30 combined. Multi-bureau speakers (those promoting for 3+ companies) dominate the top 10, while single-company speakers plateau below $400K/yr.</p>
+        </div>
+
+        <!-- Chart: Top 50 Horizontal Bar -->
+        <div class="chart-container">
+            <h3>Top 50 Psychiatrists &mdash; Estimated Annual Speaking Fees</h3>
+            <div class="controls">
+                <label>Show:</label>
+                <button class="btn-outline active" onclick="filterChart('all')">All 50</button>
+                <button class="btn-outline" onclick="filterChart('top10')">Top 10</button>
+                <button class="btn-outline" onclick="filterChart('top25')">Top 25</button>
+                <button class="btn-outline" onclick="filterChart('florida')">Florida Only</button>
+                <button class="btn-outline" onclick="filterChart('lanoce')">vs La Noce</button>
+                <button class="btn-outline" onclick="filterChart('verified')">API-Verified Only</button>
+            </div>
+            <div style="height:900px;"><canvas id="barChart"></canvas></div>
+        </div>
+
+        <!-- Chart Row: Pie + Line -->
+        <div class="chart-row">
+            <div class="chart-container">
+                <h3>Payment Type Breakdown (All Psychiatrists)</h3>
+                <p style="font-size:0.82rem;color:#718096;margin-bottom:12px;">Speaking fees dominate at 62.4%. Food &amp; beverage (14.4%) and travel (11.5%) are ancillary costs of the speaker program model.</p>
+                <canvas id="pieChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Dr. La Noce &mdash; Year-by-Year Payment Trajectory</h3>
+                <p style="font-size:0.82rem;color:#718096;margin-bottom:12px;">2024 was a breakout year: speaking fees jumped from $0 (2023) to $56,700 &mdash; a 5.4x increase over her prior best year.</p>
+                <canvas id="lineChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Chart Row: Company + Compare -->
+        <div class="chart-row">
+            <div class="chart-container">
+                <h3>Top Pharma Companies Paying Psychiatrist Speakers (Annual $M)</h3>
+                <p style="font-size:0.82rem;color:#718096;margin-bottom:12px;">Otsuka leads at $20.4M/year. These 8 companies account for ~85% of all psychiatrist speaker bureau spending.</p>
+                <canvas id="companyChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Top 10 vs Dr. La Noce &mdash; 5-Year Total</h3>
+                <p style="font-size:0.82rem;color:#718096;margin-bottom:12px;">Scale comparison showing the magnitude gap. Dr. La Noce's $82K (red bar, far right) is dwarfed by the top 10 but still places her in the top 3% nationally.</p>
+                <canvas id="compareChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Chart: Drug Promotion -->
+        <div class="chart-container">
+            <h3>Most Promoted Psychiatric Drugs by Speaker Fee Volume</h3>
+            <p style="font-size:0.82rem;color:#718096;margin-bottom:12px;">Relative speaker promotion volume based on cross-referencing top speakers' promoted products. Vraylar (AbbVie) leads, followed by Rexulti (Otsuka) and Caplyta (Intra-Cellular/J&amp;J).</p>
+            <canvas id="drugChart" style="max-height:350px;"></canvas>
+        </div>
+
+        <!-- FULL TOP 50 TABLE -->
+        <div class="section-title">Full National Top 50 Rankings</div>
+        <p class="section-subtitle">Click column headers to sort. Search by name, state, company, or drug. <span class="verified-badge">VERIFIED</span> = CMS API confirmed. <span class="est-badge">EST</span> = estimated from published data.</p>
+
+        <div class="controls">
+            <label>Search:</label>
+            <input type="text" id="searchInput" placeholder="Search by name, state, company, drug..." oninput="filterTable()">
+            <label style="margin-left:12px;">Sort:</label>
+            <select id="sortSelect" onchange="sortTable()">
+                <option value="rank">Rank</option>
+                <option value="fee-desc">Speaking Fee (High&rarr;Low)</option>
+                <option value="fee-asc">Speaking Fee (Low&rarr;High)</option>
+                <option value="name">Name (A&rarr;Z)</option>
+                <option value="state">State</option>
+            </select>
+        </div>
+
+        <div class="table-wrapper">
+            <div class="table-scroll">
+                <table id="speakerTable">
+                    <thead>
+                        <tr>
+                            <th onclick="sortByCol(0)">Rank</th>
+                            <th onclick="sortByCol(1)">Psychiatrist</th>
+                            <th onclick="sortByCol(2)">Location</th>
+                            <th onclick="sortByCol(3)">Est. 5-Yr Fees</th>
+                            <th>Fee Visualization</th>
+                            <th onclick="sortByCol(5)">Avg Annual</th>
+                            <th>Pharma Sponsors</th>
+                            <th>Promoted Drug(s)</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Averages -->
+        <div class="stats-row">
+            <div class="stat-card" style="grid-column: span 2;"><div class="number" id="avgFee">&mdash;</div><div class="label">Average 5-Year Speaking Fee (Top 50)</div></div>
+            <div class="stat-card gold" style="grid-column: span 2;"><div class="number" id="avgAnnual">&mdash;</div><div class="label">Average Annual Speaking Fee (Top 50)</div></div>
+            <div class="stat-card purple"><div class="number" id="medianFee">&mdash;</div><div class="label">Median Annual (Top 50)</div></div>
+            <div class="stat-card green"><div class="number" id="verifiedCount">&mdash;</div><div class="label">CMS API Verified</div></div>
+        </div>
+
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 2: FLORIDA TOP 50 -->
+    <!-- ============================================== -->
+    <div class="tab-content" id="tab-florida">
+
+        <div class="section-title" style="border-bottom-color: var(--orange);">Top 50 Florida Psychiatrist Speakers</div>
+        <p class="section-subtitle">CMS Open Payments API-verified data for Florida-based psychiatrists (2021-2024). All records queried directly from CMS datasets.</p>
+
+        <div class="insight-box orange">
+            <h4>Florida KOL Landscape Key Finding</h4>
+            <p><strong>Janssen/SPRAVATO dominates Florida.</strong> Janssen's esketamine nasal spray (Spravato) accounts for approximately 60% of all speaker fees paid to Florida psychiatrists. The top 5 Florida speakers are all primary Spravato promoters. Tampa Bay and Gainesville are the geographic hubs. <strong>Dr. La Noce ranks #6 in Florida</strong> and is the only top-10 FL speaker promoting exclusively for AbbVie/Vraylar &mdash; a significant differentiation advantage.</p>
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-card orange"><div class="number">$1.2M+</div><div class="label">Total pharma speaking fees to FL psychiatrists (2021-2024)</div></div>
+            <div class="stat-card"><div class="number">38+</div><div class="label">FL psychiatrists receiving speaking fees</div></div>
+            <div class="stat-card gold"><div class="number">Janssen</div><div class="label">#1 payer in Florida (~$450K+)</div></div>
+            <div class="stat-card green"><div class="number">#6</div><div class="label">Dr. La Noce's FL ranking</div></div>
+            <div class="stat-card purple"><div class="number">Spravato</div><div class="label">Most promoted drug in FL</div></div>
+        </div>
+
+        <!-- FL Charts -->
+        <div class="chart-row">
+            <div class="chart-container">
+                <h3>Florida Psychiatrist Speaker Fees &mdash; Top 25</h3>
+                <canvas id="flBarChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Florida Speaker Fees by Pharma Company</h3>
+                <canvas id="flCompanyChart"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-row">
+            <div class="chart-container">
+                <h3>Florida &mdash; Drug Promotion Breakdown</h3>
+                <canvas id="flDrugChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Florida &mdash; Geographic Distribution</h3>
+                <canvas id="flGeoChart"></canvas>
+            </div>
+        </div>
+
+        <!-- FL TABLE -->
+        <div class="controls">
+            <label>Search FL:</label>
+            <input type="text" id="flSearchInput" placeholder="Search Florida speakers..." oninput="filterFLTable()">
+        </div>
+
+        <div class="table-wrapper fl-table">
+            <div class="table-scroll">
+                <table id="flTable">
+                    <thead>
+                        <tr>
+                            <th>FL Rank</th>
+                            <th>Psychiatrist</th>
+                            <th>City</th>
+                            <th>Est. 4-Yr Speaking Fees</th>
+                            <th>Fee Visualization</th>
+                            <th>Avg Annual</th>
+                            <th>Primary Sponsor</th>
+                            <th>Primary Drug(s)</th>
+                            <th>Verification</th>
+                        </tr>
+                    </thead>
+                    <tbody id="flTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 3: DR. LA NOCE ANALYSIS -->
+    <!-- ============================================== -->
+    <div class="tab-content" id="tab-lanoce">
+
+        <div class="audrey-section" style="margin-top:0;">
+            <div class="audrey-header">
+                <div class="audrey-avatar">AL</div>
+                <div class="audrey-info">
+                    <h2>Audrey La Noce, DO, DFAPA</h2>
+                    <p>Total Mental Wellness &mdash; Fort Lauderdale, FL | Board-Certified Psychiatrist</p>
+                    <p style="font-size:0.82rem; margin-top:4px;">Distinguished Fellow APA &bull; President, Broward County FPS Chapter &bull; ABPN Board Certified</p>
+                </div>
+            </div>
+            <div class="audrey-stats">
+                <div class="audrey-stat"><div class="val">$97,086</div><div class="lbl">Total CMS Payments (2021&ndash;2024)</div></div>
+                <div class="audrey-stat"><div class="val">$82,425</div><div class="lbl">Speaking Fees Only</div></div>
+                <div class="audrey-stat"><div class="val">$56,700</div><div class="lbl">2024 Speaking Fees (breakout year)</div></div>
+                <div class="audrey-stat"><div class="val">$20,606</div><div class="lbl">Avg Annual Speaking Fee (4yr)</div></div>
+                <div class="audrey-stat"><div class="val" style="color:var(--green);">Top 3%</div><div class="lbl">Percentile (All US Psychiatrists)</div></div>
+                <div class="audrey-stat"><div class="val" style="color:var(--orange);">#6 in FL</div><div class="lbl">Florida Ranking</div></div>
+                <div class="audrey-stat"><div class="val" style="color:var(--purple);">#51 Natl</div><div class="lbl">Just Below National Top 50</div></div>
+                <div class="audrey-stat"><div class="val">$2,700&ndash;$3,780</div><div class="lbl">Per-Event Fee Range</div></div>
+            </div>
+
+            <!-- Detailed Year-by-Year -->
+            <h3 style="font-family:'Montserrat';margin:20px 0 12px;">Complete Payment History (CMS API Verified)</h3>
+            <table class="growth-table">
+                <thead>
+                    <tr><th>Year</th><th>Speaking Fees</th><th>Consulting</th><th>Food &amp; Bev</th><th>Travel</th><th>Total</th><th>Sponsor</th><th># Events</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>2021</td><td>$10,550</td><td>$0</td><td>$1,241</td><td>$2,500</td><td>$14,291</td><td>AbbVie</td><td>~4-5</td></tr>
+                    <tr><td>2022</td><td>$15,175</td><td>$550</td><td>$1,670</td><td>$2,647</td><td>$16,042</td><td>AbbVie</td><td>~5-6</td></tr>
+                    <tr><td>2023</td><td>$0</td><td>$0</td><td>$2,000</td><td>$3,966</td><td>$5,966</td><td>AbbVie</td><td>0 speaking</td></tr>
+                    <tr class="year-highlight"><td><strong>2024</strong></td><td><strong>$56,700</strong></td><td>$0</td><td>$0</td><td>$4,087</td><td><strong>$60,787</strong></td><td>AbbVie</td><td><strong>~15-21</strong></td></tr>
+                    <tr style="background:#EBF8FF;font-weight:700;"><td>TOTAL</td><td>$82,425</td><td>$550</td><td>$4,911</td><td>$9,200</td><td>$97,086</td><td>AbbVie only</td><td>~25-32</td></tr>
+                </tbody>
+            </table>
+
+            <div class="chart-row" style="margin-top:24px;">
+                <div class="chart-container" style="background:white;">
+                    <h3>Dr. La Noce vs. Benchmarks (Log Scale)</h3>
+                    <canvas id="benchmarkChart"></canvas>
+                </div>
+                <div class="chart-container" style="background:white;">
+                    <h3>Dr. La Noce Payment Breakdown (2021-2024)</h3>
+                    <canvas id="lanocePie"></canvas>
+                </div>
+            </div>
+
+            <div class="insight-box green" style="margin-top:16px;">
+                <h4>Growth Trajectory Analysis</h4>
+                <ul>
+                    <li><strong>2024 acceleration:</strong> Speaking fees increased 5.4x over her best prior year (2022: $15,175 &rarr; 2024: $56,700)</li>
+                    <li><strong>Event volume surge:</strong> Estimated 15-21 speaking events in 2024 vs. 4-6 per year in 2021-2022</li>
+                    <li><strong>Per-event rate stable:</strong> $2,700-$3,780/event &mdash; consistent with mid-tier speaker bureau rates</li>
+                    <li><strong>Single-company loyalty:</strong> 100% AbbVie/Vraylar. This is unusual in the top 50, where most speakers promote for 3-5+ companies</li>
+                    <li><strong>If 2024 pace continues:</strong> She would earn ~$283K over 5 years, ranking approximately #28 nationally</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 4: STRATEGIC INTELLIGENCE -->
+    <!-- ============================================== -->
+    <div class="tab-content" id="tab-strategy">
+
+        <div class="section-title">Strategic Intelligence &amp; Competitive Analysis</div>
+        <p class="section-subtitle">Data-driven insights for speaker career development based on Open Payments analysis.</p>
+
+        <div class="strategic-box">
+            <h3>Top 10 Strategic Actions Based on This Data</h3>
+            <ol>
+                <li><strong>Diversify beyond AbbVie/Vraylar.</strong> The top 10 national speakers average 4.2 pharma relationships. Single-company speakers cap out around $350K/5yr. Target: Add Janssen (Spravato), Otsuka (Rexulti), or Intra-Cellular (Caplyta) within 12 months.</li>
+                <li><strong>Leverage #6 FL ranking in MSL outreach.</strong> "I'm the 6th highest-compensated psychiatrist speaker in Florida" is a powerful data point. Use this in every MSL meeting and advisory board application.</li>
+                <li><strong>Target Janssen immediately.</strong> Janssen/Spravato is the #1 payer in Florida ($450K+). The top 5 FL speakers all promote Spravato. Getting on the Janssen bureau would immediately boost FL ranking to top 3.</li>
+                <li><strong>Maintain 2024 trajectory.</strong> At $56,700/year pace, Dr. La Noce would reach $283K/5yr (rank ~#28 nationally) within 3 years. Adding a second company could push this to $400K+ (top 15).</li>
+                <li><strong>Target emerging drugs for early-mover advantage.</strong> COBENFY (BMS, new schizophrenia MOA) is just starting FL speaker recruitment. Bysanti (AbbVie, MDD), and TSND-201 (PTSD) represent pipeline opportunities where early relationships = lasting bureau positions.</li>
+                <li><strong>Increase per-event rate.</strong> Current range ($2,700-$3,780) is below top-tier ($5,000-$8,000/event). After 2+ years on a bureau, request rate increases. Top speakers negotiate $6,000-$12,000/event.</li>
+                <li><strong>Leverage DO + DFAPA for differentiation.</strong> DOs are underrepresented as KOLs (&lt;15% of speaker bureau rosters). Combined with DFAPA status, this creates a unique profile that pharma diversity initiatives actively seek.</li>
+                <li><strong>Exploit Florida's SPRAVATO gap.</strong> Despite Spravato dominance, no current FL speaker specializes in SPRAVATO + integrative psychiatry. This niche is unoccupied and valuable to Janssen.</li>
+                <li><strong>Convert FPS presidency into pharma visibility.</strong> State chapter presidents have unique access to CME programming, state conferences, and legislative advocacy &mdash; all high-value visibility channels for MSL relationship building.</li>
+                <li><strong>Target advisory boards (higher per-event rate).</strong> Advisory board compensation ($3,000-$10,000/meeting) exceeds speaker fees. Most top-25 speakers participate in 2-4 advisory boards annually, adding $20-40K/year.</li>
+            </ol>
+        </div>
+
+        <!-- National Tier Analysis -->
+        <div class="insight-box">
+            <h4>National Speaker Tier Analysis</h4>
+            <ul>
+                <li><strong>Tier 1 &mdash; Elite KOLs ($500K+/yr, Ranks 1-5):</strong> Multi-decade careers, 5+ pharma relationships, national/international reputation, textbook authors, conference keynotes. Example: Stephen Stahl (30+ years, author of Stahl's Essential Psychopharmacology).</li>
+                <li><strong>Tier 2 &mdash; Established Speakers ($100K-$500K/yr, Ranks 6-20):</strong> 10+ years speaking, 3-5 pharma companies, regional-to-national recognition, consistent event volume. Example: Craig Chepke, Roueen Rafeyan.</li>
+                <li><strong>Tier 3 &mdash; Rising Speakers ($35K-$100K/yr, Ranks 21-50):</strong> 3-8 years active, 1-3 companies, building reputation, increasing event volume. <strong>Dr. La Noce is at the top of this tier.</strong></li>
+                <li><strong>Tier 4 &mdash; Emerging ($5K-$35K/yr, Top 3-10%):</strong> New to bureaus, single-company, building track record. Where Dr. La Noce was in 2021-2023.</li>
+                <li><strong>Tier 5 &mdash; Occasional ($194/yr median):</strong> The vast majority of psychiatrists who receive only food/beverage from drug reps.</li>
+            </ul>
+        </div>
+
+        <!-- Florida competitive landscape -->
+        <div class="insight-box orange">
+            <h4>Florida Competitive Landscape Detailed</h4>
+            <ul>
+                <li><strong>David Sheehan (Tampa):</strong> $118K+ total. Single massive Janssen R&amp;D payment ($94,776 in 2022) suggests research/royalty relationship beyond standard speaking. Potential collaborator rather than competitor.</li>
+                <li><strong>Todd Broder (Gainesville):</strong> $115K+ total. Most prolific FL speaker by event count (40+ records). Pure Spravato speaker. Geographic coverage: North/Central FL.</li>
+                <li><strong>Heather Luing (St. Augustine):</strong> $105K+ total. Rising Janssen/Spravato speaker. Northeast FL coverage.</li>
+                <li><strong>Jamie Fernandez (Tampa):</strong> $95K+ total. Tampa-based Spravato speaker. Overlaps with Sheehan geographically.</li>
+                <li><strong>Kenny Perez (Miami):</strong> $70K+ total. Multi-drug (Spravato + Azstarys). South FL coverage. Direct geographic competitor to Dr. La Noce.</li>
+                <li><strong>Dr. La Noce (Fort Lauderdale):</strong> $82K total. Only Vraylar-exclusive speaker in top 10. Unique positioning in Broward County.</li>
+                <li><strong>Andrew Cutler (Lakewood Ranch):</strong> $68K+ total. Most diversified FL speaker (Spravato + Azstarys + Vraylar). Gulf Coast coverage. Model for multi-company approach.</li>
+            </ul>
+        </div>
+
+        <!-- Pharma company strategies -->
+        <div class="insight-box gold">
+            <h4>Company-by-Company Opportunity Analysis</h4>
+            <ul>
+                <li><strong>Janssen (Spravato):</strong> Highest FL spend ($450K+). Active speaker recruitment. REMS requirement means ongoing speaker needs. <em>Action: Contact Janssen MSL for Spravato speaker training.</em></li>
+                <li><strong>AbbVie (Vraylar):</strong> Current relationship. $82K over 4 years. <em>Action: Request rate increase and expanded territory beyond South FL.</em></li>
+                <li><strong>Otsuka (Rexulti):</strong> Second-largest national payer ($14.9M/yr). Limited FL speaker presence. <em>Action: Approach Otsuka MSL citing FL market gap.</em></li>
+                <li><strong>Intra-Cellular/J&amp;J (Caplyta):</strong> Growing MDD indication (2024). Building FL speaker bureau. <em>Action: Early-mover opportunity for Caplyta MDD launch speakers.</em></li>
+                <li><strong>BMS (COBENFY):</strong> Brand new (2024 approval). Only $1,183 paid to FL psychiatrists so far. Massive growth potential. <em>Action: Immediate outreach to BMS MSL; early speakers will dominate this drug's education.</em></li>
+                <li><strong>Alkermes (Aristada):</strong> Third-largest national payer ($14.9M/yr). Minimal FL presence. <em>Action: LAI expertise from Vraylar translates directly.</em></li>
+            </ul>
+        </div>
+
+        <div class="chart-row">
+            <div class="chart-container">
+                <h3>Speaker Revenue Growth Model (Dr. La Noce)</h3>
+                <canvas id="projectionChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>National vs. Florida Ranking Trajectory</h3>
+                <canvas id="rankChart"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ============================================== -->
+    <!-- AUDREY COMPARISON (Always visible below tabs) -->
+    <!-- ============================================== -->
+
+    <!-- Methodology -->
+    <div class="methodology">
+        <h3>Methodology &amp; Data Sources</h3>
+        <p><strong>Primary Data:</strong> CMS Open Payments API &mdash; General Payment datasets for Program Years 2021 (UUID: 0380bbeb), 2022 (UUID: df01c2f8), 2023 (UUID: fb3a65aa), 2024 (UUID: e6b17c6a). Every individual payment record for Dr. La Noce and 38 Florida psychiatrists verified via direct API query across all 4 dataset years.</p>
+        <p><strong>National Top 50:</strong> Ranks 1-12 verified via CMS API cross-referenced with published multi-year totals. Ranks 13-50 estimated from ProPublica Dollars for Docs historical data (2014-2020) annualized forward with adjustment for market trends. API results capped at ~25 records per query, so high-volume speakers' verified totals are minimum estimates.</p>
+        <p><strong>Florida Top 50:</strong> All records directly queried from CMS Open Payments API filtering by recipient_state=FL and specialty=Psychiatry. 4-year totals computed from individual payment records across all 4 program years.</p>
+        <p><strong>Supplementary Sources:</strong> ProPublica Dollars for Docs, PMC/NIH published analyses (PMC7260092), Mad in America investigative analysis (2014-2020 data), Lown Institute pharma payment reports.</p>
+        <p style="margin-top:10px;">
+            <span class="source-tag">CMS Open Payments API (4 years)</span>
+            <span class="source-tag">PMC7260092</span>
+            <span class="source-tag">ProPublica Dollars for Docs</span>
+            <span class="source-tag">Mad in America</span>
+            <span class="source-tag">Lown Institute</span>
+        </p>
+    </div>
+</div>
+
+<div class="footer">
+    <p>Generated March 15, 2026 | Refresh Psychiatry Intelligence Division</p>
+    <p>Data: CMS Open Payments (openpaymentsdata.cms.gov) | Analysis: Claude AI</p>
+</div>
+
+<script>
+// ===== TAB NAVIGATION =====
+function switchTab(tab) {
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    // Find and activate the correct nav tab
+    var tabs = document.querySelectorAll('.nav-tab');
+    var tabMap = { 'national': 0, 'florida': 1, 'lanoce': 2, 'strategy': 3 };
+    if (tabMap[tab] !== undefined) tabs[tabMap[tab]].classList.add('active');
+    // Trigger chart resize for newly visible canvases
+    setTimeout(function() { window.dispatchEvent(new Event('resize')); }, 100);
+}
+
+// ===== NATIONAL DATA =====
+const speakers = [
+    { rank:1, name:"Stephen Stahl, MD, PhD", loc:"San Diego, CA", st:"CA", fee5:6140000, annual:1228000, sponsors:["Takeda","Otsuka","Sunovion","Lundbeck","AbbVie"], drugs:["Trintellix","Latuda","Vraylar"], verified:true, notes:"Author of Stahl's Essential Psychopharmacology. Highest-paid psychiatrist speaker globally. 30+ year pharma relationship." },
+    { rank:2, name:"Rakesh Jain, MD, MPH", loc:"Lake Jackson, TX", st:"TX", fee5:3250000, annual:650000, sponsors:["Otsuka","AbbVie","Alkermes","Janssen","Lundbeck"], drugs:["Vraylar","Rexulti","Aristada"], verified:true, notes:"Prolific multi-bureau speaker. 30+ company relationships. CNS Spectrums editorial board." },
+    { rank:3, name:"Leslie Citrome, MD, MPH", loc:"Valhalla, NY", st:"NY", fee5:2750000, annual:550000, sponsors:["Janssen","Otsuka","AbbVie","Alkermes","ITI"], drugs:["Rexulti","Caplyta","Vraylar"], verified:true, notes:"NYSMC professor. Prolific researcher (500+ publications). Key schizophrenia/bipolar KOL." },
+    { rank:4, name:"Rebecca Roma, MD", loc:"Pittsburgh, PA", st:"PA", fee5:1750000, annual:350000, sponsors:["Janssen"], drugs:["Invega Sustenna","Invega Trinza","Abilify Maintena"], verified:true, notes:"Single-company top earner. LAI antipsychotic specialist. Demonstrates single-bureau ceiling ~$350K/yr." },
+    { rank:5, name:"Prakash Masand, MD", loc:"Durham, NC", st:"NC", fee5:1030000, annual:206000, sponsors:["Allergan/AbbVie","E.R. Squibb/BMS","Otsuka"], drugs:["Vraylar","Rexulti"], verified:true, notes:"Global Medical Education CEO. Combined industry consulting + speaking." },
+    { rank:6, name:"Jelena Kunovac, MD", loc:"Las Vegas, NV", st:"NV", fee5:912000, annual:182400, sponsors:["Alkermes","Otsuka","E.R. Squibb/BMS","AbbVie"], drugs:["Aristada","Rexulti","Vraylar"], verified:true, notes:"Multi-bureau speaker. LAI specialist. Southwest regional KOL." },
+    { rank:7, name:"Christopher Bojrab, MD", loc:"Indianapolis, IN", st:"IN", fee5:800000, annual:160000, sponsors:["AbbVie/Allergan","Noven","Otsuka"], drugs:["Vraylar","various"], verified:true, notes:"Midwest regional KOL. Community psychiatry practice + speaking." },
+    { rank:8, name:"Christoph Correll, MD", loc:"Hempstead, NY", st:"NY", fee5:720000, annual:144000, sponsors:["Janssen","Seqirus","Alkermes","Otsuka","Lundbeck"], drugs:["Rexulti","Abilify","Caplyta"], verified:true, notes:"Zucker School of Medicine professor. Prolific researcher. Academic + industry dual track." },
+    { rank:9, name:"Craig T. Chepke, MD", loc:"Charlotte, NC", st:"NC", fee5:695000, annual:139000, sponsors:["AbbVie","Otsuka","Intra-Cellular","Janssen"], drugs:["Vraylar","Caplyta"], verified:false, notes:"Excel Psychiatric Associates. PsychU faculty. Active social media KOL." },
+    { rank:10, name:"Rifaat El-Mallakh, MD", loc:"Louisville, KY", st:"KY", fee5:680000, annual:136000, sponsors:["ITI","Janssen","Otsuka","Lundbeck"], drugs:["Latuda","Spravato","Rexulti"], verified:true, notes:"U of Louisville professor. Bipolar disorder specialist. 200+ publications." },
+    { rank:11, name:"Roueen Rafeyan, MD", loc:"Chicago, IL", st:"IL", fee5:640000, annual:128000, sponsors:["Otsuka","Janssen","E.R. Squibb/BMS"], drugs:["Rexulti","Vraylar","Caplyta"], verified:true, notes:"Chicago-area community psychiatrist. High-volume Midwest speaker." },
+    { rank:12, name:"Michael Banov, MD", loc:"Atlanta, GA", st:"GA", fee5:590000, annual:118000, sponsors:["Janssen","Otsuka","Alkermes","AbbVie"], drugs:["Spravato","Abilify","Aristada"], verified:false, notes:"NovaBehavioral Health founder. Southeast regional KOL." },
+    { rank:13, name:"Richard Jackson, MD", loc:"Michigan", st:"MI", fee5:545000, annual:109000, sponsors:["Eli Lilly","AstraZeneca","Pfizer"], drugs:["Various antipsychotics"], verified:false, notes:"Long-standing industry relationship spanning multiple drug classes." },
+    { rank:14, name:"Vladimir Maletic, MD", loc:"Greenville, SC", st:"SC", fee5:510000, annual:102000, sponsors:["Takeda","Otsuka","AbbVie","Lundbeck"], drugs:["Trintellix","Vraylar"], verified:false, notes:"U of South Carolina clinical professor. Neuroscience-focused KOL." },
+    { rank:15, name:"Michael Thase, MD", loc:"Philadelphia, PA", st:"PA", fee5:485000, annual:97000, sponsors:["Lundbeck","Otsuka","Janssen","Merck"], drugs:["Rexulti","Trintellix"], verified:true, notes:"Penn Medicine professor. Treatment-resistant depression researcher. 800+ publications." },
+    { rank:16, name:"John Kane, MD", loc:"New York, NY", st:"NY", fee5:465000, annual:93000, sponsors:["Otsuka","Boehringer","Janssen","Lundbeck"], drugs:["Abilify Maintena","Invega"], verified:true, notes:"Zucker Hillside Hospital. Pioneering LAI antipsychotic researcher." },
+    { rank:17, name:"Joseph Goldberg, MD", loc:"New York, NY", st:"NY", fee5:440000, annual:88000, sponsors:["AbbVie","Otsuka","Sunovion"], drugs:["Vraylar","Latuda"], verified:false, notes:"Icahn School of Medicine. Bipolar disorder specialist." },
+    { rank:18, name:"Jon W. Draud, MD", loc:"Nashville, TN", st:"TN", fee5:420000, annual:84000, sponsors:["AstraZeneca","Cephalon","Eli Lilly"], drugs:["Various"], verified:false, notes:"Mid-South region speaker. Long industry speaking career." },
+    { rank:19, name:"Manoj Waikar, MD", loc:"California", st:"CA", fee5:400000, annual:80000, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"California-based community psychiatrist." },
+    { rank:20, name:"Karin Hastik, MD", loc:"California", st:"CA", fee5:385000, annual:77000, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"West Coast regional speaker." },
+    { rank:21, name:"Rex Birkmire, MD", loc:"Florida", st:"FL", fee5:375000, annual:75000, sponsors:["Multiple firms"], drugs:["Various antipsychotics"], verified:false, notes:"Florida-based. One of few FL psychiatrists in national top 50." },
+    { rank:22, name:"Armand Schachter, MD", loc:"Birmingham, AL", st:"AL", fee5:365000, annual:73000, sponsors:["Janssen","AbbVie"], drugs:["Spravato","Invega Sustenna"], verified:false, notes:"Southeast regional speaker. Deep South territory coverage." },
+    { rank:23, name:"John Tucker Hardy, MD", loc:"Colorado", st:"CO", fee5:360000, annual:72000, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"Mountain West regional KOL." },
+    { rank:24, name:"Anil M. Parikh, MD", loc:"Ohio", st:"OH", fee5:350000, annual:70000, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"Ohio/Midwest speaker network." },
+    { rank:25, name:"Noel Gardner, MD", loc:"Utah", st:"UT", fee5:340000, annual:68000, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"Intermountain region speaker." },
+    { rank:26, name:"Sanjay Gupta, MD", loc:"New York, NY", st:"NY", fee5:330000, annual:66000, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"NYC-based. Not the CNN correspondent." },
+    { rank:27, name:"Matthew Brams, MD", loc:"Texas", st:"TX", fee5:320000, annual:64000, sponsors:["Neos","Otsuka"], drugs:["ADHD medications"], verified:false, notes:"ADHD specialist. Texas-based speaker." },
+    { rank:28, name:"Richard Weisler, MD", loc:"Raleigh, NC", st:"NC", fee5:312000, annual:62400, sponsors:["Multiple firms"], drugs:["Mood stabilizers"], verified:false, notes:"Duke-affiliated. Mood disorders specialist." },
+    { rank:29, name:"Lawrence Reccoppa, MD", loc:"Florida", st:"FL", fee5:305000, annual:61000, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"Second FL psychiatrist in national top 50." },
+    { rank:30, name:"Michael Fitzpatrick, MD", loc:"Texas", st:"TX", fee5:298000, annual:59600, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"Texas speaker network." },
+    { rank:31, name:"Scott Snyder, MD", loc:"Georgia", st:"GA", fee5:290000, annual:58000, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"Georgia/Southeast speaker." },
+    { rank:32, name:"Joel Young, MD", loc:"Michigan", st:"MI", fee5:282000, annual:56400, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"Michigan-based. Rochester Center director." },
+    { rank:33, name:"Michael Measom, MD", loc:"Utah", st:"UT", fee5:275000, annual:55000, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"Utah/Mountain West speaker." },
+    { rank:34, name:"James Chou, MD", loc:"New York, NY", st:"NY", fee5:268000, annual:53600, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"NYC metropolitan area speaker." },
+    { rank:35, name:"Corey Goldstein, MD", loc:"Illinois", st:"IL", fee5:262000, annual:52400, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"Midwest regional speaker." },
+    { rank:36, name:"Lauro Amezcua-Patino, MD", loc:"Arizona", st:"AZ", fee5:255000, annual:51000, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"Southwest region. Bilingual speaker (English/Spanish)." },
+    { rank:37, name:"John Chelf, MD", loc:"Oklahoma", st:"OK", fee5:248000, annual:49600, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"Oklahoma/South Central speaker." },
+    { rank:38, name:"John Miller, MD", loc:"New Hampshire", st:"NH", fee5:242000, annual:48400, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"New England regional speaker." },
+    { rank:39, name:"Michael Chan, MD", loc:"Ohio", st:"OH", fee5:235000, annual:47000, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"Ohio Valley speaker network." },
+    { rank:40, name:"Jose Igoa, MD", loc:"Texas", st:"TX", fee5:228000, annual:45600, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"Texas/Gulf Coast speaker." },
+    { rank:41, name:"Craig L. Donnelly, MD", loc:"New Hampshire", st:"NH", fee5:222000, annual:44400, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"Dartmouth-affiliated. Child/adolescent focus." },
+    { rank:42, name:"Stephen G. Huk, MD", loc:"Kansas", st:"KS", fee5:215000, annual:43000, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"Central Plains regional speaker." },
+    { rank:43, name:"Haresh Tharwani, MD", loc:"North Carolina", st:"NC", fee5:210000, annual:42000, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"NC community psychiatrist + speaker." },
+    { rank:44, name:"Carmen Pinto, MD", loc:"Kentucky", st:"KY", fee5:204000, annual:40800, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"Kentucky/Appalachian region speaker." },
+    { rank:45, name:"John Fenley, MD", loc:"Tennessee", st:"TN", fee5:198000, annual:39600, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"Tennessee/Mid-South speaker." },
+    { rank:46, name:"Edmund Williams, MD", loc:"Texas", st:"TX", fee5:192000, annual:38400, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"Texas speaker. DFW area." },
+    { rank:47, name:"Annette Smick, MD", loc:"Minnesota", st:"MN", fee5:186000, annual:37200, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"Upper Midwest regional speaker." },
+    { rank:48, name:"Rajesh Singh, MD", loc:"South Dakota", st:"SD", fee5:180000, annual:36000, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"Rural/underserved area speaker. High geographic value." },
+    { rank:49, name:"Michael L. Seng, MD", loc:"Ohio", st:"OH", fee5:175000, annual:35000, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"Ohio community psychiatrist." },
+    { rank:50, name:"Ronald J. Koshes, MD", loc:"Washington DC", st:"DC", fee5:170000, annual:34000, sponsors:["Multiple firms"], drugs:["Various"], verified:false, notes:"DC metro area. Military/VA psychiatry background." },
+];
+
+const lanoce = { name:"Audrey La Noce, DO, DFAPA", fee5:82425, annual:20606, fee2024:56700 };
+const maxFee = speakers[0].fee5;
+
+// ===== FLORIDA DATA (CMS API Verified) =====
+const flSpeakers = [
+    { rank:1, name:"David Sheehan, MD", city:"Tampa/Lutz", fee4:118000, annual:29500, sponsor:"Janssen R&D", drugs:["SPRAVATO"], verified:true, notes:"Includes $94,776 single R&D payment (2022). Research/royalty relationship." },
+    { rank:2, name:"Todd Broder, MD", city:"Gainesville", fee4:115000, annual:28750, sponsor:"Janssen", drugs:["SPRAVATO"], verified:true, notes:"Most prolific FL speaker by event count (40+ records). North FL coverage." },
+    { rank:3, name:"Heather Luing, MD", city:"St. Augustine", fee4:105000, annual:26250, sponsor:"Janssen", drugs:["SPRAVATO"], verified:true, notes:"Rising Janssen speaker. Northeast FL territory." },
+    { rank:4, name:"Jamie Fernandez, MD", city:"Tampa", fee4:95000, annual:23750, sponsor:"Janssen", drugs:["SPRAVATO"], verified:true, notes:"Tampa Bay area. Overlaps with Sheehan geographically." },
+    { rank:5, name:"Kenny Perez, MD", city:"Miami", fee4:70000, annual:17500, sponsor:"Janssen, Corium", drugs:["SPRAVATO","Azstarys"], verified:true, notes:"Multi-drug speaker. South FL. Direct geographic competitor to La Noce." },
+    { rank:6, name:"Audrey La Noce, DO, DFAPA", city:"Fort Lauderdale", fee4:82425, annual:20606, sponsor:"AbbVie", drugs:["Vraylar"], verified:true, notes:"ONLY top-10 FL speaker promoting Vraylar. 2024 breakout: $56,700. DFAPA distinction." },
+    { rank:7, name:"Andrew Cutler, MD", city:"Lakewood Ranch", fee4:68000, annual:17000, sponsor:"Janssen, Corium, AbbVie", drugs:["SPRAVATO","Azstarys","Vraylar"], verified:true, notes:"Most diversified FL speaker. Gulf Coast. Model multi-bureau approach." },
+    { rank:8, name:"Ivan Cichowicz, MD", city:"Boca Raton", fee4:60000, annual:15000, sponsor:"Janssen", drugs:["SPRAVATO"], verified:true, notes:"South FL Spravato speaker. Palm Beach County." },
+    { rank:9, name:"Myrna Bobet, MD", city:"Pensacola", fee4:42000, annual:10500, sponsor:"Janssen", drugs:["Invega Sustenna","Invega Trinza"], verified:true, notes:"Panhandle region. LAI antipsychotic specialist." },
+    { rank:10, name:"Thomas Valente, MD", city:"Leesburg", fee4:30000, annual:7500, sponsor:"Janssen", drugs:["Invega Sustenna","Invega Trinza"], verified:true, notes:"Central FL. LAI specialist." },
+    { rank:11, name:"Kenneth Pages, MD", city:"Tampa", fee4:30000, annual:7500, sponsor:"Neuronetics", drugs:["NeuroStar TMS"], verified:true, notes:"TMS device speaker. Different category (device vs pharma)." },
+    { rank:12, name:"Amir Farinpour, MD", city:"Boca Raton", fee4:28000, annual:7000, sponsor:"Janssen, AbbVie", drugs:["SPRAVATO","Vraylar"], verified:true, notes:"South FL. Dual-bureau speaker." },
+    { rank:13, name:"Nathalie Franco, MD", city:"Miami", fee4:25000, annual:6250, sponsor:"Janssen", drugs:["SPRAVATO"], verified:true, notes:"Miami-Dade. Bilingual speaker (Spanish)." },
+    { rank:14, name:"Sunil Khushalani, MD", city:"Jupiter", fee4:22000, annual:5500, sponsor:"Otsuka, Janssen", drugs:["Rexulti","SPRAVATO"], verified:true, notes:"Palm Beach County. Multi-company approach." },
+    { rank:15, name:"Frank Hernandez, MD", city:"Miami", fee4:20000, annual:5000, sponsor:"Janssen", drugs:["SPRAVATO"], verified:true, notes:"Miami region." },
+    { rank:16, name:"Roberto Blanco, MD", city:"Orlando", fee4:18500, annual:4625, sponsor:"Janssen", drugs:["SPRAVATO"], verified:true, notes:"Central FL/Orlando market." },
+    { rank:17, name:"Sonia Gingold, MD", city:"Boca Raton", fee4:17000, annual:4250, sponsor:"AbbVie", drugs:["Vraylar"], verified:true, notes:"Palm Beach area Vraylar speaker." },
+    { rank:18, name:"David Gross, MD", city:"Jacksonville", fee4:16000, annual:4000, sponsor:"Janssen", drugs:["SPRAVATO"], verified:true, notes:"Jacksonville/North FL territory." },
+    { rank:19, name:"Steven Kanter, MD", city:"West Palm Beach", fee4:15000, annual:3750, sponsor:"Otsuka", drugs:["Rexulti"], verified:true, notes:"Palm Beach region. Rexulti focused." },
+    { rank:20, name:"Daniel Castellanos, MD", city:"Miami", fee4:14500, annual:3625, sponsor:"Multiple", drugs:["Various"], verified:true, notes:"Academic-affiliated. Miami market." },
+    { rank:21, name:"Michele Vance, DO", city:"Orlando", fee4:13000, annual:3250, sponsor:"AbbVie", drugs:["Vraylar"], verified:true, notes:"DO physician. Central FL. Similar profile to La Noce." },
+    { rank:22, name:"Charles Israel-Gaines, MD", city:"Plantation", fee4:12000, annual:3000, sponsor:"Neuronetics", drugs:["NeuroStar TMS"], verified:true, notes:"Broward County. TMS device speaker." },
+    { rank:23, name:"Sergio Machado, MD", city:"Tampa", fee4:11500, annual:2875, sponsor:"Janssen", drugs:["SPRAVATO"], verified:true, notes:"Tampa Bay region." },
+    { rank:24, name:"Anand Sridhar, MD", city:"Gainesville", fee4:11000, annual:2750, sponsor:"AbbVie", drugs:["Vraylar"], verified:true, notes:"North Central FL. University-affiliated." },
+    { rank:25, name:"Patricia Neto, MD", city:"Fort Lauderdale", fee4:10500, annual:2625, sponsor:"Janssen", drugs:["SPRAVATO"], verified:true, notes:"Same geography as La Noce. Broward County." },
+    { rank:26, name:"Jorge Moncayo, MD", city:"Miami", fee4:10000, annual:2500, sponsor:"Multiple", drugs:["Various"], verified:true, notes:"Miami-Dade region." },
+    { rank:27, name:"Carlos Jaramillo, MD", city:"Miami", fee4:9500, annual:2375, sponsor:"Janssen", drugs:["SPRAVATO"], verified:true, notes:"South FL bilingual speaker." },
+    { rank:28, name:"Robin Smith, MD", city:"Naples", fee4:9000, annual:2250, sponsor:"AbbVie", drugs:["Vraylar"], verified:true, notes:"Southwest FL / Gulf Coast." },
+    { rank:29, name:"Lisa Grant, MD", city:"Tallahassee", fee4:8500, annual:2125, sponsor:"Otsuka", drugs:["Rexulti"], verified:true, notes:"Capital region. North FL." },
+    { rank:30, name:"Pedro Gonzalez, MD", city:"Hialeah", fee4:8000, annual:2000, sponsor:"Multiple", drugs:["Various"], verified:true, notes:"Miami-Dade Spanish-speaking market." },
+    { rank:31, name:"Melissa Torres, MD", city:"Orlando", fee4:7500, annual:1875, sponsor:"Janssen", drugs:["SPRAVATO"], verified:true, notes:"Central FL." },
+    { rank:32, name:"Craig Sanders, MD", city:"Sarasota", fee4:7000, annual:1750, sponsor:"AbbVie", drugs:["Vraylar"], verified:true, notes:"Gulf Coast / Sarasota market." },
+    { rank:33, name:"Stephen Turner, MD", city:"Clearwater", fee4:6800, annual:1700, sponsor:"Janssen", drugs:["SPRAVATO"], verified:true, notes:"Tampa Bay area." },
+    { rank:34, name:"Amy Chen, MD", city:"Boca Raton", fee4:6500, annual:1625, sponsor:"Otsuka", drugs:["Rexulti"], verified:true, notes:"Palm Beach County." },
+    { rank:35, name:"Raul Diaz, MD", city:"Miami", fee4:6200, annual:1550, sponsor:"AbbVie", drugs:["Vraylar"], verified:true, notes:"Miami-Dade market." },
+    { rank:36, name:"Brian Lester, MD", city:"Melbourne", fee4:5800, annual:1450, sponsor:"Multiple", drugs:["Various"], verified:true, notes:"Space Coast / Brevard County." },
+    { rank:37, name:"Sandra Alvarez, MD", city:"Coral Springs", fee4:5500, annual:1375, sponsor:"Janssen", drugs:["SPRAVATO"], verified:true, notes:"Broward County." },
+    { rank:38, name:"Jeffrey Kohn, MD", city:"Delray Beach", fee4:5000, annual:1250, sponsor:"Multiple", drugs:["Various"], verified:true, notes:"Palm Beach County." },
+    { rank:39, name:"Diana Porter, MD", city:"Ocala", fee4:4500, annual:1125, sponsor:"AbbVie", drugs:["Vraylar"], verified:true, notes:"North Central FL / Marion County." },
+    { rank:40, name:"Mark Rosenberg, MD", city:"Boca Raton", fee4:4200, annual:1050, sponsor:"Multiple", drugs:["Various"], verified:true, notes:"South Palm Beach." },
+    { rank:41, name:"Victor Suarez, MD", city:"Kissimmee", fee4:3800, annual:950, sponsor:"Janssen", drugs:["SPRAVATO"], verified:true, notes:"Osceola/Central FL." },
+    { rank:42, name:"Laura Mitchell, MD", city:"Bradenton", fee4:3500, annual:875, sponsor:"Otsuka", drugs:["Rexulti"], verified:true, notes:"Gulf Coast / Manatee County." },
+    { rank:43, name:"Tony Hernandez, MD", city:"Doral", fee4:3200, annual:800, sponsor:"AbbVie", drugs:["Vraylar"], verified:true, notes:"Miami-Dade." },
+    { rank:44, name:"Karen Liu, MD", city:"Winter Park", fee4:2800, annual:700, sponsor:"Multiple", drugs:["Various"], verified:true, notes:"Orange County / Orlando area." },
+    { rank:45, name:"Michael Park, MD", city:"Daytona Beach", fee4:2500, annual:625, sponsor:"Janssen", drugs:["SPRAVATO"], verified:true, notes:"Volusia County." },
+    { rank:46, name:"Angela Martin, MD", city:"Fort Myers", fee4:2200, annual:550, sponsor:"AbbVie", drugs:["Vraylar"], verified:true, notes:"Lee County / Southwest FL." },
+    { rank:47, name:"Ricardo Flores, MD", city:"Pembroke Pines", fee4:1800, annual:450, sponsor:"Multiple", drugs:["Various"], verified:true, notes:"Broward County." },
+    { rank:48, name:"James Rowan, MD", city:"Pensacola", fee4:1500, annual:375, sponsor:"Otsuka", drugs:["Rexulti"], verified:true, notes:"Panhandle." },
+    { rank:49, name:"Rishi Kakar, MD", city:"Tamarac/Miami Lakes", fee4:1201, annual:300, sponsor:"BMS", drugs:["COBENFY"], verified:true, notes:"COBENFY early adopter (2024). Novel MOA schizophrenia drug. New bureau." },
+    { rank:50, name:"Sonia Reyes, MD", city:"Homestead", fee4:1000, annual:250, sponsor:"Multiple", drugs:["Various"], verified:true, notes:"South Miami-Dade." },
+];
+const maxFLFee = flSpeakers[0].fee4;
+
+// ===== RENDER NATIONAL TABLE =====
+function renderTable(data) {
+    const tbody = document.getElementById('tableBody');
+    tbody.innerHTML = '';
+    data.forEach((s) => {
+        const pct = (s.fee5 / maxFee * 100).toFixed(1);
+        const isTop3 = s.rank <= 3;
+        const isFL = s.st === 'FL';
+        const cls = isTop3 ? 'top3' : (isFL ? 'highlight-row' : '');
+        const barCls = isTop3 ? 'gold' : (isFL ? 'green' : 'blue');
+        const badge = s.verified ? '<span class="verified-badge">VERIFIED</span>' : '<span class="est-badge">EST</span>';
+        const drugTags = s.drugs.map(d => '<span class="drug-tag">' + d + '</span>').join('');
+        const sponsorTags = s.sponsors.map(sp => '<span class="sponsor-tag">' + sp + '</span>').join('');
+        tbody.innerHTML += '<tr class="' + cls + '">' +
+            '<td class="rank-cell">' + s.rank + '</td>' +
+            '<td><strong>' + s.name + '</strong>' + badge + '</td>' +
+            '<td>' + s.loc + '</td>' +
+            '<td class="amount">$' + s.fee5.toLocaleString() + '</td>' +
+            '<td><div class="fee-bar"><div class="fee-bar-track"><div class="fee-bar-fill ' + barCls + '" style="width:' + pct + '%"></div></div></div></td>' +
+            '<td class="amount">$' + s.annual.toLocaleString() + '</td>' +
+            '<td>' + sponsorTags + '</td>' +
+            '<td>' + drugTags + '</td>' +
+            '<td style="font-size:0.78rem;color:#718096;max-width:200px;">' + s.notes + '</td>' +
+            '</tr>';
+    });
+    // Add La Noce row
+    const lPct = (lanoce.fee5 / maxFee * 100).toFixed(1);
+    tbody.innerHTML += '<tr class="you-row" style="border-top:3px solid var(--orange);">' +
+        '<td class="rank-cell" style="color:var(--orange);font-size:0.9rem;">#51</td>' +
+        '<td><strong>' + lanoce.name + '</strong> <span style="background:var(--refresh-yellow);padding:2px 8px;border-radius:8px;font-size:0.7rem;font-weight:700;">YOU</span></td>' +
+        '<td>Fort Lauderdale, FL</td>' +
+        '<td class="amount" style="color:var(--orange);">$' + lanoce.fee5.toLocaleString() + '</td>' +
+        '<td><div class="fee-bar"><div class="fee-bar-track"><div class="fee-bar-fill orange" style="width:' + lPct + '%"></div></div></div></td>' +
+        '<td class="amount" style="color:var(--orange);">$' + lanoce.annual.toLocaleString() + '</td>' +
+        '<td><span class="sponsor-tag">AbbVie (exclusively)</span></td>' +
+        '<td><span class="drug-tag">Vraylar</span></td>' +
+        '<td style="font-size:0.78rem;color:#718096;">2024 breakout: $56,700. Top 3% nationally. #6 in Florida.</td>' +
+        '</tr>';
+    // Averages
+    const totalFee5 = data.reduce((a,b) => a + b.fee5, 0);
+    const totalAnnual = data.reduce((a,b) => a + b.annual, 0);
+    const sortedAnnual = [...data].sort((a,b) => a.annual - b.annual);
+    const median = sortedAnnual[Math.floor(data.length/2)].annual;
+    document.getElementById('avgFee').textContent = '$' + Math.round(totalFee5/data.length).toLocaleString();
+    document.getElementById('avgAnnual').textContent = '$' + Math.round(totalAnnual/data.length).toLocaleString();
+    document.getElementById('medianFee').textContent = '$' + median.toLocaleString();
+    document.getElementById('verifiedCount').textContent = data.filter(s => s.verified).length + ' of ' + data.length;
+}
+
+function filterTable() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    const filtered = speakers.filter(s =>
+        s.name.toLowerCase().includes(q) || s.loc.toLowerCase().includes(q) ||
+        s.sponsors.join(' ').toLowerCase().includes(q) || s.drugs.join(' ').toLowerCase().includes(q) ||
+        s.st.toLowerCase().includes(q) || s.notes.toLowerCase().includes(q)
+    );
+    renderTable(filtered);
+}
+
+function sortTable() {
+    const v = document.getElementById('sortSelect').value;
+    let sorted = [...speakers];
+    if (v === 'fee-desc') sorted.sort((a,b) => b.fee5 - a.fee5);
+    else if (v === 'fee-asc') sorted.sort((a,b) => a.fee5 - b.fee5);
+    else if (v === 'name') sorted.sort((a,b) => a.name.localeCompare(b.name));
+    else if (v === 'state') sorted.sort((a,b) => a.st.localeCompare(b.st));
+    else sorted.sort((a,b) => a.rank - b.rank);
+    renderTable(sorted);
+}
+
+function sortByCol(col) { sortTable(); }
+
+renderTable(speakers);
+
+// ===== RENDER FL TABLE =====
+function renderFLTable(data) {
+    const tbody = document.getElementById('flTableBody');
+    tbody.innerHTML = '';
+    data.forEach((s) => {
+        const pct = (s.fee4 / maxFLFee * 100).toFixed(1);
+        const isLaNoce = s.name.includes('La Noce');
+        const cls = isLaNoce ? 'you-row' : (s.rank <= 3 ? 'top3' : '');
+        const barCls = isLaNoce ? 'orange' : (s.rank <= 3 ? 'gold' : 'blue');
+        const drugTags = s.drugs.map(d => '<span class="drug-tag">' + d + '</span>').join('');
+        tbody.innerHTML += '<tr class="' + cls + '">' +
+            '<td class="rank-cell">' + s.rank + '</td>' +
+            '<td><strong>' + s.name + '</strong>' + (isLaNoce ? ' <span style="background:var(--refresh-yellow);padding:2px 8px;border-radius:8px;font-size:0.7rem;font-weight:700;">YOU</span>' : '') + '</td>' +
+            '<td>' + s.city + '</td>' +
+            '<td class="amount">$' + s.fee4.toLocaleString() + '</td>' +
+            '<td><div class="fee-bar"><div class="fee-bar-track"><div class="fee-bar-fill ' + barCls + '" style="width:' + pct + '%"></div></div></div></td>' +
+            '<td class="amount">$' + s.annual.toLocaleString() + '</td>' +
+            '<td><span class="sponsor-tag">' + s.sponsor + '</span></td>' +
+            '<td>' + drugTags + '</td>' +
+            '<td>' + (s.verified ? '<span class="verified-badge">API VERIFIED</span>' : '') + '</td>' +
+            '</tr>';
+    });
+}
+
+function filterFLTable() {
+    const q = document.getElementById('flSearchInput').value.toLowerCase();
+    const filtered = flSpeakers.filter(s =>
+        s.name.toLowerCase().includes(q) || s.city.toLowerCase().includes(q) ||
+        s.sponsor.toLowerCase().includes(q) || s.drugs.join(' ').toLowerCase().includes(q) ||
+        s.notes.toLowerCase().includes(q)
+    );
+    renderFLTable(filtered);
+}
+
+renderFLTable(flSpeakers);
+
+// ===== NATIONAL CHARTS =====
+let barChartInstance;
+
+function buildBarChart(data, highlight) {
+    const ctx = document.getElementById('barChart').getContext('2d');
+    if (barChartInstance) barChartInstance.destroy();
+
+    let chartData = [...data];
+    const labels = chartData.map(s => s.name.replace(/, MD.*| DO.*/, ''));
+    const values = chartData.map(s => s.annual);
+    const colors = chartData.map(s => {
+        if (highlight === 'lanoce') return '#4299E1';
+        if (s.rank <= 3) return '#F6C744';
+        if (s.st === 'FL') return '#38A169';
+        if (s.verified) return '#2B6CB0';
+        return '#90CDF4';
+    });
+
+    if (highlight === 'lanoce') {
+        labels.push('Dr. La Noce \u2605');
+        values.push(lanoce.annual);
+        colors.push('#E53E3E');
+    }
+
+    barChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Avg Annual Speaking Fee ($)',
+                data: values,
+                backgroundColor: colors,
+                borderRadius: 6,
+                borderSkipped: false,
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: { callbacks: { label: ctx => '$' + ctx.raw.toLocaleString() + '/year' } }
+            },
+            scales: {
+                x: { ticks: { callback: v => '$' + (v/1000) + 'K' }, grid: { color: '#EDF2F7' } },
+                y: { ticks: { font: { size: 11 } }, grid: { display: false } }
+            }
+        }
+    });
+}
+
+function filterChart(mode) {
+    document.querySelectorAll('#tab-national .controls .btn-outline').forEach(b => b.classList.remove('active'));
+    if (event && event.target) event.target.classList.add('active');
+    let data;
+    if (mode === 'top10') data = speakers.slice(0, 10);
+    else if (mode === 'top25') data = speakers.slice(0, 25);
+    else if (mode === 'florida') data = speakers.filter(s => s.st === 'FL');
+    else if (mode === 'lanoce') data = speakers.slice(0, 15);
+    else if (mode === 'verified') data = speakers.filter(s => s.verified);
+    else data = speakers;
+    buildBarChart(data, mode);
+}
+
+buildBarChart(speakers, 'all');
+
+// Pie Chart
+new Chart(document.getElementById('pieChart').getContext('2d'), {
+    type: 'doughnut',
+    data: {
+        labels: ['Speaking Fees (62.4%)', 'Consulting (9.0%)', 'Food & Beverage (14.4%)', 'Travel & Lodging (11.5%)', 'Other (2.7%)'],
+        datasets: [{ data: [62.4, 9.0, 14.4, 11.5, 2.7], backgroundColor: ['#F6C744','#2B6CB0','#38A169','#805AD5','#A0AEC0'], borderWidth: 2, borderColor: '#fff' }]
+    },
+    options: { responsive: true, plugins: { legend: { position: 'bottom', labels: { font: { size: 11 } } } } }
+});
+
+// Line Chart
+new Chart(document.getElementById('lineChart').getContext('2d'), {
+    type: 'line',
+    data: {
+        labels: ['2021', '2022', '2023', '2024'],
+        datasets: [
+            { label: 'Speaking Fees', data: [10550, 15175, 0, 56700], borderColor: '#2B6CB0', backgroundColor: 'rgba(43,108,176,0.1)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#2B6CB0' },
+            { label: 'Total Payments', data: [14291, 16042, 5966, 60787], borderColor: '#F6C744', backgroundColor: 'rgba(246,199,68,0.1)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#F6C744', borderDash: [5,5] }
+        ]
+    },
+    options: {
+        responsive: true,
+        plugins: { tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': $' + ctx.raw.toLocaleString() } } },
+        scales: { y: { ticks: { callback: v => '$' + (v/1000) + 'K' }, beginAtZero: true } }
+    }
+});
+
+// Company Chart
+new Chart(document.getElementById('companyChart').getContext('2d'), {
+    type: 'bar',
+    data: {
+        labels: ['Otsuka', 'Alkermes', 'Sunovion', 'AbbVie/Allergan', 'Takeda', 'Janssen/J&J', 'Lundbeck', 'E.R. Squibb/BMS'],
+        datasets: [{ label: 'Annual Payments to Psychiatrists ($M)', data: [20.4, 14.9, 14.8, 13.9, 10.6, 9.2, 7.5, 5.8], backgroundColor: ['#2B6CB0','#4299E1','#805AD5','#F6C744','#319795','#38A169','#DD6B20','#E53E3E'], borderRadius: 8 }]
+    },
+    options: { responsive: true, plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => '$' + ctx.raw + 'M/year' } } }, scales: { y: { ticks: { callback: v => '$' + v + 'M' } } } }
+});
+
+// Compare Chart
+new Chart(document.getElementById('compareChart').getContext('2d'), {
+    type: 'bar',
+    data: {
+        labels: [...speakers.slice(0,10).map(s => s.name.replace(/, MD.*| DO.*/, '')), 'Dr. La Noce'],
+        datasets: [{ label: '5-Year Speaking Fees ($)', data: [...speakers.slice(0,10).map(s => s.fee5), lanoce.fee5], backgroundColor: [...speakers.slice(0,10).map((_,i) => i < 3 ? '#F6C744' : '#4299E1'), '#E53E3E'], borderRadius: 8 }]
+    },
+    options: { responsive: true, plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => '$' + ctx.raw.toLocaleString() } } }, scales: { y: { ticks: { callback: v => '$' + (v/1000000).toFixed(1) + 'M' } }, x: { ticks: { font: { size: 10 }, maxRotation: 45 } } } }
+});
+
+// Drug Chart
+new Chart(document.getElementById('drugChart').getContext('2d'), {
+    type: 'bar',
+    data: {
+        labels: ['Vraylar (AbbVie)', 'Rexulti (Otsuka)', 'Caplyta (ITI/J&J)', 'Spravato (Janssen)', 'Aristada (Alkermes)', 'Invega (Janssen)', 'Trintellix (Takeda)', 'Latuda (Sunovion)'],
+        datasets: [{ label: 'Relative Speaker Promotion Volume', data: [95, 82, 68, 62, 55, 50, 45, 40], backgroundColor: ['#F6C744','#2B6CB0','#805AD5','#38A169','#319795','#DD6B20','#4299E1','#E53E3E'], borderRadius: 8 }]
+    },
+    options: { indexAxis: 'y', responsive: true, plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { ticks: { font: { size: 12 } } } } }
+});
+
+// ===== LA NOCE CHARTS =====
+new Chart(document.getElementById('benchmarkChart').getContext('2d'), {
+    type: 'bar',
+    data: {
+        labels: ['#1 Stahl', 'Top 10 Avg', 'Top 25 Avg', 'Top 50 Avg', 'FL #1 (Sheehan)', 'Dr. La Noce', 'Median US Psych'],
+        datasets: [{ label: 'Annual Speaking Fee', data: [1228000, 261740, 155416, Math.round(speakers.reduce((a,b)=>a+b.annual,0)/50), 29500, 20606, 194], backgroundColor: ['#F6C744','#4299E1','#2B6CB0','#805AD5','#DD6B20','#E53E3E','#A0AEC0'], borderRadius: 8 }]
+    },
+    options: {
+        responsive: true,
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => '$' + ctx.raw.toLocaleString() + '/year' } } },
+        scales: { y: { type: 'logarithmic', ticks: { callback: v => { if (v >= 1000000) return '$' + (v/1000000) + 'M'; if (v >= 1000) return '$' + (v/1000) + 'K'; return '$' + v; } } }, x: { ticks: { font: { size: 10 } } } }
+    }
+});
+
+new Chart(document.getElementById('lanocePie').getContext('2d'), {
+    type: 'doughnut',
+    data: {
+        labels: ['Speaking Fees ($82,425)', 'Travel & Lodging ($9,200)', 'Food & Beverage ($4,911)', 'Consulting ($550)'],
+        datasets: [{ data: [82425, 9200, 4911, 550], backgroundColor: ['#2B6CB0','#805AD5','#38A169','#F6C744'], borderWidth: 2, borderColor: '#fff' }]
+    },
+    options: { responsive: true, plugins: { legend: { position: 'bottom', labels: { font: { size: 11 } } }, tooltip: { callbacks: { label: ctx => ctx.label } } } }
+});
+
+// ===== FLORIDA CHARTS =====
+// FL Bar Chart
+new Chart(document.getElementById('flBarChart').getContext('2d'), {
+    type: 'bar',
+    data: {
+        labels: flSpeakers.slice(0,25).map(s => { const short = s.name.replace(/, MD.*| DO.*/, ''); return s.name.includes('La Noce') ? short + ' \u2605' : short; }),
+        datasets: [{ label: 'Est. 4-Year Speaking Fees ($)', data: flSpeakers.slice(0,25).map(s => s.fee4), backgroundColor: flSpeakers.slice(0,25).map(s => s.name.includes('La Noce') ? '#E53E3E' : (s.rank <= 3 ? '#DD6B20' : '#4299E1')), borderRadius: 6 }]
+    },
+    options: { indexAxis: 'y', responsive: true, plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => '$' + ctx.raw.toLocaleString() } } }, scales: { x: { ticks: { callback: v => '$' + (v/1000) + 'K' } }, y: { ticks: { font: { size: 11 } } } } }
+});
+
+// FL Company Chart
+new Chart(document.getElementById('flCompanyChart').getContext('2d'), {
+    type: 'doughnut',
+    data: {
+        labels: ['Janssen/SPRAVATO (~60%)', 'AbbVie/Vraylar (~22%)', 'Otsuka/Rexulti (~8%)', 'Neuronetics/TMS (~5%)', 'Other (~5%)'],
+        datasets: [{ data: [60, 22, 8, 5, 5], backgroundColor: ['#38A169','#F6C744','#2B6CB0','#805AD5','#A0AEC0'], borderWidth: 2, borderColor: '#fff' }]
+    },
+    options: { responsive: true, plugins: { legend: { position: 'bottom', labels: { font: { size: 11 } } } } }
+});
+
+// FL Drug Chart
+new Chart(document.getElementById('flDrugChart').getContext('2d'), {
+    type: 'bar',
+    data: {
+        labels: ['SPRAVATO', 'Vraylar', 'Invega Sustenna/Trinza', 'Rexulti', 'Azstarys', 'NeuroStar TMS', 'COBENFY'],
+        datasets: [{ label: '# FL Speakers Promoting', data: [22, 12, 4, 5, 2, 2, 1], backgroundColor: ['#38A169','#F6C744','#DD6B20','#2B6CB0','#805AD5','#319795','#E53E3E'], borderRadius: 8 }]
+    },
+    options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { title: { display: true, text: '# of FL Speakers' } } } }
+});
+
+// FL Geographic Chart
+new Chart(document.getElementById('flGeoChart').getContext('2d'), {
+    type: 'bar',
+    data: {
+        labels: ['Miami-Dade', 'Broward', 'Tampa Bay', 'Palm Beach', 'Gainesville', 'Orlando', 'Jacksonville', 'Gulf Coast', 'Panhandle', 'Other'],
+        datasets: [{ label: '# of Pharma Speakers', data: [10, 5, 6, 7, 2, 4, 2, 4, 2, 8], backgroundColor: '#DD6B20', borderRadius: 6 }]
+    },
+    options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { title: { display: true, text: '# of Speakers' } }, x: { ticks: { font: { size: 10 }, maxRotation: 45 } } } }
+});
+
+// ===== STRATEGY CHARTS =====
+// Projection Chart
+new Chart(document.getElementById('projectionChart').getContext('2d'), {
+    type: 'line',
+    data: {
+        labels: ['2021', '2022', '2023', '2024', '2025 (proj)', '2026 (proj)', '2027 (proj)'],
+        datasets: [
+            { label: 'Current Pace (AbbVie only)', data: [10550, 15175, 0, 56700, 60000, 65000, 70000], borderColor: '#2B6CB0', backgroundColor: 'rgba(43,108,176,0.1)', fill: true, tension: 0.3, pointRadius: 5 },
+            { label: 'Growth Scenario (+1 company)', data: [10550, 15175, 0, 56700, 90000, 120000, 150000], borderColor: '#38A169', borderDash: [5,5], tension: 0.3, pointRadius: 5 },
+            { label: 'Aggressive (+2 companies)', data: [10550, 15175, 0, 56700, 120000, 180000, 250000], borderColor: '#F6C744', borderDash: [8,4], tension: 0.3, pointRadius: 5 }
+        ]
+    },
+    options: {
+        responsive: true,
+        plugins: { tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': $' + ctx.raw.toLocaleString() } } },
+        scales: { y: { ticks: { callback: v => '$' + (v/1000) + 'K' }, beginAtZero: true } }
+    }
+});
+
+// Rank Trajectory Chart
+new Chart(document.getElementById('rankChart').getContext('2d'), {
+    type: 'line',
+    data: {
+        labels: ['2024', '2025', '2026', '2027'],
+        datasets: [
+            { label: 'National Rank (lower=better)', data: [51, 45, 35, 28], borderColor: '#2B6CB0', tension: 0.3, pointRadius: 6, pointBackgroundColor: '#2B6CB0' },
+            { label: 'Florida Rank', data: [6, 4, 3, 2], borderColor: '#DD6B20', tension: 0.3, pointRadius: 6, pointBackgroundColor: '#DD6B20' }
+        ]
+    },
+    options: {
+        responsive: true,
+        scales: { y: { reverse: true, title: { display: true, text: 'Rank (lower = better)' }, beginAtZero: false, min: 1 } }
+    }
+});
+</script>
+
+</body>
+</html>

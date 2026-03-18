@@ -1,0 +1,248 @@
+{
+  "generatedAt": "2026-03-16T22:58:47.647Z",
+  "databaseStats": {
+    "totalRecords": 32031,
+    "totalAmount": 515590225.32,
+    "totalPhysicians": 30241,
+    "totalCompanies": 0,
+    "yearRange": [
+      2024,
+      2024
+    ]
+  },
+  "issues": {
+    "missingNPI": {
+      "count": 1337,
+      "severity": "high",
+      "description": "Records without NPI — cannot be reliably deduplicated or linked to physician profiles"
+    },
+    "missingSpecialty": {
+      "count": 1337,
+      "severity": "low",
+      "description": "Records without specialty designation"
+    },
+    "extremeOutliers": {
+      "count": 20,
+      "severity": "info",
+      "description": "Single payments exceeding $1,000,000 — legitimate but worth reviewing",
+      "samples": [
+        {
+          "name": "VLADIMIR CORIC",
+          "npi": "1811010119",
+          "state": "CT",
+          "amount": 133688759.82,
+          "year": 2024,
+          "company": null,
+          "type": "general"
+        },
+        {
+          "name": "RAKESH JAIN",
+          "npi": "1124221304",
+          "state": "TX",
+          "amount": 6621060.21,
+          "year": 2024,
+          "company": null,
+          "type": "general"
+        },
+        {
+          "name": "LESLIE CITROME",
+          "npi": "1780796045",
+          "state": "NY",
+          "amount": 5376646,
+          "year": 2024,
+          "company": null,
+          "type": "general"
+        },
+        {
+          "name": "GUSTAVO ALVA",
+          "npi": "1417030222",
+          "state": "CA",
+          "amount": 5358039.75,
+          "year": 2024,
+          "company": null,
+          "type": "general"
+        },
+        {
+          "name": "ANDREW CUTLER",
+          "npi": "1063476125",
+          "state": "FL",
+          "amount": 5071966.61,
+          "year": 2024,
+          "company": null,
+          "type": "general"
+        },
+        {
+          "name": "GREGORY MATTINGLEY",
+          "npi": "1215933379",
+          "state": "MO",
+          "amount": 4217826.66,
+          "year": 2024,
+          "company": null,
+          "type": "general"
+        },
+        {
+          "name": "DONALD GARCIA",
+          "npi": "1881925568",
+          "state": "TX",
+          "amount": 4015080.12,
+          "year": 2024,
+          "company": null,
+          "type": "research"
+        },
+        {
+          "name": "HENRY NASRALLAH",
+          "npi": "1346386307",
+          "state": "OH",
+          "amount": 3544444.9,
+          "year": 2024,
+          "company": null,
+          "type": "general"
+        },
+        {
+          "name": "CRAIG CHEPKE",
+          "npi": "1831363712",
+          "state": "NC",
+          "amount": 3543422.16,
+          "year": 2024,
+          "company": null,
+          "type": "general"
+        },
+        {
+          "name": "RICHARD JACKSON",
+          "npi": "1508081993",
+          "state": "FL",
+          "amount": 3172114.76,
+          "year": 2024,
+          "company": null,
+          "type": "general"
+        },
+        {
+          "name": "REBECCA ROMA",
+          "npi": "1366439747",
+          "state": "PA",
+          "amount": 3069827.04,
+          "year": 2024,
+          "company": null,
+          "type": "general"
+        },
+        {
+          "name": "STEVEN PAUL",
+          "npi": "1124387865",
+          "state": "IN",
+          "amount": 2892601.87,
+          "year": 2024,
+          "company": null,
+          "type": "general"
+        },
+        {
+          "name": "JASON KELLOGG",
+          "npi": "1952331530",
+          "state": "CA",
+          "amount": 2831458.17,
+          "year": 2024,
+          "company": null,
+          "type": "general"
+        },
+        {
+          "name": "MARK REYNOLDS",
+          "npi": "1023052503",
+          "state": "NC",
+          "amount": 2695065.37,
+          "year": 2024,
+          "company": null,
+          "type": "general"
+        },
+        {
+          "name": "JEFFREY HANSEN",
+          "npi": "1356410419",
+          "state": "WA",
+          "amount": 2606111.57,
+          "year": 2024,
+          "company": null,
+          "type": "general"
+        },
+        {
+          "name": "RICHARD PETTY",
+          "npi": "1730334079",
+          "state": "GA",
+          "amount": 2579997.81,
+          "year": 2024,
+          "company": null,
+          "type": "general"
+        },
+        {
+          "name": "ARVINDER PAL WALIA",
+          "npi": "1427163617",
+          "state": "TX",
+          "amount": 2455147.81,
+          "year": 2024,
+          "company": null,
+          "type": "general"
+        },
+        {
+          "name": "ANDREAS SIDIROPOULAS",
+          "npi": "1871525832",
+          "state": "MI",
+          "amount": 2428739.07,
+          "year": 2024,
+          "company": null,
+          "type": "general"
+        },
+        {
+          "name": "ILAN MELNICK",
+          "npi": "1427048115",
+          "state": "FL",
+          "amount": 2368461.26,
+          "year": 2024,
+          "company": null,
+          "type": "general"
+        },
+        {
+          "name": "JOHN MILLER",
+          "npi": "1841307527",
+          "state": "NH",
+          "amount": 2350537.46,
+          "year": 2024,
+          "company": null,
+          "type": "general"
+        }
+      ]
+    },
+    "negativePayments": {
+      "count": 0,
+      "totalAmount": 0,
+      "severity": "info",
+      "description": "Payment reversals recorded as negative amounts"
+    },
+    "zeroPayments": {
+      "count": 1337,
+      "severity": "low",
+      "description": "Records with $0 payment amount — often food/beverage or travel"
+    },
+    "missingLocation": {
+      "count": 1337,
+      "severity": "medium",
+      "description": "Records with no state or city information"
+    },
+    "missingCompany": {
+      "count": 32031,
+      "severity": "medium",
+      "description": "Records without company/manufacturer name"
+    },
+    "duplicateRecords": {
+      "count": 0,
+      "severity": "low",
+      "description": "Records sharing the same CMS record ID — possible re-published corrections"
+    },
+    "inconsistentNames": {
+      "count": 0,
+      "severity": "low",
+      "description": "Same NPI mapped to different last names across records"
+    },
+    "inconsistentSpecialties": {
+      "count": 0,
+      "severity": "info",
+      "description": "Same NPI mapped to different specialties — may indicate multi-specialty providers"
+    }
+  }
+}

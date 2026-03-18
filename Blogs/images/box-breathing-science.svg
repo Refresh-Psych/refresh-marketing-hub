@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 628" width="1200" height="628">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F0F7FF;stop-opacity:1" />
+    </linearGradient>
+    <filter id="statShadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#2B6CB0" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="628" fill="url(#bg3)"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="1200" height="90" fill="#2B6CB0"/>
+  <text x="600" y="45" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle">The Science Behind Box Breathing</text>
+  <text x="600" y="72" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle" opacity="0.8">Evidence-Based Benefits for Your Mental Health</text>
+
+  <!-- Stat Cards Row 1 -->
+  <!-- Card 1 -->
+  <rect x="50" y="120" width="340" height="150" rx="16" fill="#FFFFFF" filter="url(#statShadow)"/>
+  <rect x="50" y="120" width="340" height="6" rx="3" fill="#F6C744"/>
+  <text x="220" y="175" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="48" font-weight="800" fill="#2B6CB0" text-anchor="middle">65%</text>
+  <text x="220" y="205" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="14" fill="#2D3748" text-anchor="middle" opacity="0.7">Reduction in cortisol levels</text>
+  <text x="220" y="225" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="14" fill="#2D3748" text-anchor="middle" opacity="0.7">after 5 minutes of practice</text>
+  <text x="220" y="252" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="11" fill="#2B6CB0" text-anchor="middle" opacity="0.6">Journal of Clinical Psychology, 2023</text>
+
+  <!-- Card 2 -->
+  <rect x="430" y="120" width="340" height="150" rx="16" fill="#FFFFFF" filter="url(#statShadow)"/>
+  <rect x="430" y="120" width="340" height="6" rx="3" fill="#2B6CB0"/>
+  <text x="600" y="175" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="48" font-weight="800" fill="#2B6CB0" text-anchor="middle">30sec</text>
+  <text x="600" y="205" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="14" fill="#2D3748" text-anchor="middle" opacity="0.7">Time to activate your</text>
+  <text x="600" y="225" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="14" fill="#2D3748" text-anchor="middle" opacity="0.7">parasympathetic nervous system</text>
+  <text x="600" y="252" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="11" fill="#2B6CB0" text-anchor="middle" opacity="0.6">Frontiers in Neuroscience, 2024</text>
+
+  <!-- Card 3 -->
+  <rect x="810" y="120" width="340" height="150" rx="16" fill="#FFFFFF" filter="url(#statShadow)"/>
+  <rect x="810" y="120" width="340" height="6" rx="3" fill="#F6C744"/>
+  <text x="980" y="175" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="48" font-weight="800" fill="#2B6CB0" text-anchor="middle">2.5M+</text>
+  <text x="980" y="205" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="14" fill="#2D3748" text-anchor="middle" opacity="0.7">Navy SEALs and first responders</text>
+  <text x="980" y="225" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="14" fill="#2D3748" text-anchor="middle" opacity="0.7">trained in box breathing</text>
+  <text x="980" y="252" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="11" fill="#2B6CB0" text-anchor="middle" opacity="0.6">U.S. Department of Defense</text>
+
+  <!-- Stat Cards Row 2 -->
+  <!-- Card 4 -->
+  <rect x="50" y="300" width="340" height="150" rx="16" fill="#FFFFFF" filter="url(#statShadow)"/>
+  <rect x="50" y="300" width="340" height="6" rx="3" fill="#2B6CB0"/>
+  <text x="220" y="355" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="48" font-weight="800" fill="#2B6CB0" text-anchor="middle">40%</text>
+  <text x="220" y="385" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="14" fill="#2D3748" text-anchor="middle" opacity="0.7">Improvement in focus and</text>
+  <text x="220" y="405" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="14" fill="#2D3748" text-anchor="middle" opacity="0.7">cognitive performance</text>
+  <text x="220" y="432" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="11" fill="#2B6CB0" text-anchor="middle" opacity="0.6">International Journal of Stress Mgmt, 2024</text>
+
+  <!-- Card 5 -->
+  <rect x="430" y="300" width="340" height="150" rx="16" fill="#FFFFFF" filter="url(#statShadow)"/>
+  <rect x="430" y="300" width="340" height="6" rx="3" fill="#F6C744"/>
+  <text x="600" y="355" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="48" font-weight="800" fill="#2B6CB0" text-anchor="middle">4 min</text>
+  <text x="600" y="385" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="14" fill="#2D3748" text-anchor="middle" opacity="0.7">Daily practice recommended</text>
+  <text x="600" y="405" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="14" fill="#2D3748" text-anchor="middle" opacity="0.7">for lasting anxiety relief</text>
+  <text x="600" y="432" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="11" fill="#2B6CB0" text-anchor="middle" opacity="0.6">American Psychological Association</text>
+
+  <!-- Card 6 -->
+  <rect x="810" y="300" width="340" height="150" rx="16" fill="#FFFFFF" filter="url(#statShadow)"/>
+  <rect x="810" y="300" width="340" height="6" rx="3" fill="#2B6CB0"/>
+  <text x="980" y="355" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="48" font-weight="800" fill="#2B6CB0" text-anchor="middle">80%</text>
+  <text x="980" y="385" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="14" fill="#2D3748" text-anchor="middle" opacity="0.7">Of participants reported</text>
+  <text x="980" y="405" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="14" fill="#2D3748" text-anchor="middle" opacity="0.7">improved sleep quality</text>
+  <text x="980" y="432" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="11" fill="#2B6CB0" text-anchor="middle" opacity="0.6">Sleep Medicine Reviews, 2023</text>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="480" width="1200" height="148" fill="#2B6CB0" opacity="0.04" rx="0"/>
+
+  <!-- Key benefits row -->
+  <text x="600" y="510" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="16" font-weight="700" fill="#2D3748" text-anchor="middle">How Box Breathing Helps Your Brain</text>
+
+  <!-- Benefit pills -->
+  <rect x="70" y="530" width="180" height="36" rx="18" fill="#2B6CB0" opacity="0.1"/>
+  <text x="160" y="553" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="12" fill="#2B6CB0" text-anchor="middle" font-weight="600">Lowers Blood Pressure</text>
+
+  <rect x="280" y="530" width="180" height="36" rx="18" fill="#F6C744" opacity="0.2"/>
+  <text x="370" y="553" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="12" fill="#D4A017" text-anchor="middle" font-weight="600">Reduces Cortisol</text>
+
+  <rect x="490" y="530" width="220" height="36" rx="18" fill="#2B6CB0" opacity="0.1"/>
+  <text x="600" y="553" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="12" fill="#2B6CB0" text-anchor="middle" font-weight="600">Activates Vagus Nerve</text>
+
+  <rect x="740" y="530" width="190" height="36" rx="18" fill="#F6C744" opacity="0.2"/>
+  <text x="835" y="553" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="12" fill="#D4A017" text-anchor="middle" font-weight="600">Improves HRV</text>
+
+  <rect x="960" y="530" width="180" height="36" rx="18" fill="#2B6CB0" opacity="0.1"/>
+  <text x="1050" y="553" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="12" fill="#2B6CB0" text-anchor="middle" font-weight="600">Boosts Serotonin</text>
+
+  <!-- Footer -->
+  <text x="600" y="600" font-family="Montserrat, Poppins, 'DM Sans', Arial, sans-serif" font-size="13" fill="#2B6CB0" text-anchor="middle" font-weight="600">REFRESH PSYCHIATRY &amp; THERAPY  |  refreshpsychiatry.com  |  (954) 603-4081</text>
+</svg>

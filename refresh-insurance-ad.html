@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refresh Psychiatry - Insurance Ad</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f0f0f0;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .ad-container {
+    width: 1080px;
+    height: 1920px;
+    background: linear-gradient(165deg, #F6C744 0%, #F0B820 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ad-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, rgba(255,255,255,0.15) 2.5px, transparent 2.5px);
+    background-size: 40px 40px;
+    z-index: 0;
+  }
+
+  .top-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: #2B6CB0;
+    z-index: 2;
+  }
+
+  .card {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    border-radius: 40px;
+    width: 940px;
+    padding: 80px 72px 72px;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.10), 0 4px 20px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .brand-pill {
+    background: linear-gradient(135deg, #2B6CB0, #2563A0);
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 12px 32px;
+    border-radius: 40px;
+    margin-bottom: 48px;
+  }
+
+  .headline {
+    font-size: 82px;
+    font-weight: 800;
+    color: #2D3748;
+    text-align: center;
+    line-height: 1.08;
+    margin-bottom: 28px;
+    letter-spacing: -2px;
+  }
+
+  .headline em {
+    font-style: normal;
+    color: #2B6CB0;
+  }
+
+  .subheadline {
+    font-size: 32px;
+    font-weight: 500;
+    color: #718096;
+    text-align: center;
+    margin-bottom: 56px;
+    line-height: 1.4;
+  }
+
+  .cta-button {
+    background: linear-gradient(135deg, #2B6CB0, #2558A0);
+    color: #FFFFFF;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    border: none;
+    border-radius: 60px;
+    padding: 30px 72px;
+    cursor: pointer;
+    margin-bottom: 64px;
+    letter-spacing: 0.3px;
+    box-shadow: 0 8px 32px rgba(43,108,176,0.30);
+  }
+
+  .divider {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #E2E8F0, transparent);
+    margin-bottom: 44px;
+  }
+
+  .insurance-label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #A0AEC0;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 36px;
+  }
+
+  .insurance-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 100%;
+  }
+
+  .insurance-item {
+    background: #FAFBFC;
+    border: 1.5px solid #E8EDF2;
+    border-radius: 20px;
+    padding: 18px 10px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 140px;
+    gap: 8px;
+  }
+
+  .insurance-item .logo-wrap {
+    width: 80px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .insurance-item .ins-name {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.2;
+    color: #4A5568;
+  }
+
+  .more-item {
+    border: 2px dashed #CBD5E0;
+    background: transparent;
+  }
+  .more-item .ins-name {
+    font-size: 18px;
+    color: #A0AEC0;
+    font-weight: 600;
+  }
+
+  .brand-footer {
+    position: absolute;
+    bottom: 64px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 2;
+  }
+
+  .brand-name {
+    font-size: 38px;
+    font-weight: 800;
+    color: #2B6CB0;
+    letter-spacing: 3px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .brand-sub {
+    font-size: 20px;
+    font-weight: 500;
+    color: rgba(43,108,176,0.75);
+    letter-spacing: 1px;
+    margin-top: 6px;
+  }
+
+  .phone-number {
+    font-size: 22px;
+    font-weight: 700;
+    color: #2B6CB0;
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+
+<div class="ad-container">
+  <div class="top-accent"></div>
+
+  <div class="card">
+    <div class="brand-pill">Refresh Psychiatry</div>
+
+    <h1 class="headline">Quality psychiatry,<br><em>right from home</em></h1>
+    <p class="subheadline">In-network virtual care across Florida</p>
+
+    <button class="cta-button">Book your first visit</button>
+
+    <div class="divider"></div>
+
+    <p class="insurance-label">We accept your insurance</p>
+
+    <div class="insurance-grid">
+
+      <!-- Aetna - Purple heart wordmark -->
+      <div class="insurance-item">
+        <div class="logo-wrap">
+          <svg viewBox="0 0 120 50" width="100" height="42">
+            <path d="M18 8 C18 8 24 2 30 8 C36 14 24 26 24 26 C24 26 12 14 18 8Z" fill="#7B2D8E"/>
+            <text x="42" y="22" font-family="Arial, sans-serif" font-weight="700" font-size="20" fill="#7B2D8E">aetna</text>
+          </svg>
+        </div>
+        <span class="ins-name">Aetna</span>
+      </div>
+
+      <!-- United Healthcare - Blue circle U -->
+      <div class="insurance-item">
+        <div class="logo-wrap">
+          <svg viewBox="0 0 60 50" width="56" height="46">
+            <circle cx="30" cy="24" r="22" fill="none" stroke="#002677" stroke-width="4"/>
+            <path d="M20 14 L20 28 C20 34 24 38 30 38 C36 38 40 34 40 28 L40 14" fill="none" stroke="#002677" stroke-width="3.5" stroke-linecap="round"/>
+            <rect x="36" y="12" width="6" height="6" rx="3" fill="#D4A017"/>
+          </svg>
+        </div>
+        <span class="ins-name">United<br>Healthcare</span>
+      </div>
+
+      <!-- Cigna - Tree of life -->
+      <div class="insurance-item">
+        <div class="logo-wrap">
+          <svg viewBox="0 0 120 50" width="100" height="42">
+            <circle cx="18" cy="18" r="16" fill="none" stroke="#0470C5" stroke-width="2.5"/>
+            <path d="M18 6 L18 30 M12 12 L18 18 L24 12 M10 20 L18 26 L26 20" fill="none" stroke="#EE6723" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="40" y="24" font-family="Arial, sans-serif" font-weight="700" font-size="18" fill="#0470C5">Cigna</text>
+          </svg>
+        </div>
+        <span class="ins-name">Cigna</span>
+      </div>
+
+      <!-- Humana - Green with figure -->
+      <div class="insurance-item">
+        <div class="logo-wrap">
+          <svg viewBox="0 0 120 50" width="100" height="42">
+            <circle cx="16" cy="10" r="5" fill="#69BE28"/>
+            <path d="M16 16 L16 30 M8 22 L16 20 L24 22 M10 36 L16 28 L22 36" fill="none" stroke="#69BE28" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="34" y="28" font-family="Arial, sans-serif" font-weight="700" font-size="16" fill="#007A33">Humana</text>
+          </svg>
+        </div>
+        <span class="ins-name">Humana</span>
+      </div>
+
+      <!-- AvMed - Blue shield/circle -->
+      <div class="insurance-item">
+        <div class="logo-wrap">
+          <svg viewBox="0 0 110 50" width="96" height="44">
+            <path d="M20 6 L32 6 L36 12 L26 40 L16 12 Z" fill="#0072CE" opacity="0.9"/>
+            <text x="20" y="30" font-family="Arial, sans-serif" font-weight="800" font-size="8" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">AV</text>
+            <text x="44" y="28" font-family="Arial, sans-serif" font-weight="700" font-size="18" fill="#0072CE">AvMed</text>
+          </svg>
+        </div>
+        <span class="ins-name">AvMed</span>
+      </div>
+
+      <!-- UMR - Blue corporate text -->
+      <div class="insurance-item">
+        <div class="logo-wrap">
+          <svg viewBox="0 0 90 50" width="80" height="44">
+            <rect x="5" y="8" width="80" height="34" rx="6" fill="#00447C"/>
+            <text x="45" y="32" font-family="Arial, sans-serif" font-weight="800" font-size="24" fill="#FFFFFF" text-anchor="middle" letter-spacing="4">UMR</text>
+          </svg>
+        </div>
+        <span class="ins-name">UMR</span>
+      </div>
+
+      <!-- Oscar - Orange O -->
+      <div class="insurance-item">
+        <div class="logo-wrap">
+          <svg viewBox="0 0 110 50" width="96" height="44">
+            <circle cx="20" cy="25" r="16" fill="#FF5A00"/>
+            <circle cx="20" cy="25" r="9" fill="#FFFFFF"/>
+            <text x="46" y="32" font-family="Arial, sans-serif" font-weight="700" font-size="18" fill="#FF5A00">Oscar</text>
+          </svg>
+        </div>
+        <span class="ins-name">Oscar</span>
+      </div>
+
+      <!-- + more -->
+      <div class="insurance-item more-item">
+        <div class="logo-wrap">
+          <svg viewBox="0 0 48 48" width="36" height="36">
+            <circle cx="10" cy="24" r="4" fill="#CBD5E0"/>
+            <circle cx="24" cy="24" r="4" fill="#CBD5E0"/>
+            <circle cx="38" cy="24" r="4" fill="#CBD5E0"/>
+          </svg>
+        </div>
+        <span class="ins-name">+ more</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="brand-footer">
+    <div class="brand-name">REFRESH PSYCHIATRY</div>
+    <div class="brand-sub">refreshpsychiatry.com</div>
+    <div class="phone-number">(954) 603-4081</div>
+  </div>
+</div>
+
+</body>
+</html>

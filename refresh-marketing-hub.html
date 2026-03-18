@@ -1,0 +1,3290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refresh Psychiatry — Marketing Content Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,400&family=Playfair+Display:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+  :root {
+    --blue: #2B6CB0;
+    --blue-light: #4a90d9;
+    --deep-blue: #1a3a5c;
+    --navy: #0d2137;
+    --yellow: #F6C744;
+    --yellow-dim: #d4a82e;
+    --yellow-glow: rgba(246,199,68,0.15);
+    --white: #FFFFFF;
+    --cream: #FFFAF0;
+    --charcoal: #2D3748;
+    --surface: #f4f1ec;
+    --surface-elevated: #fffdf8;
+    --border: rgba(43, 108, 176, 0.08);
+    --border-hover: rgba(43, 108, 176, 0.18);
+    --shadow-sm: 0 1px 3px rgba(13, 33, 55, 0.05);
+    --shadow-md: 0 8px 30px rgba(13, 33, 55, 0.07);
+    --shadow-lg: 0 20px 60px rgba(13, 33, 55, 0.1);
+    --shadow-glow: 0 0 40px rgba(246,199,68,0.12);
+    --radius: 20px;
+    --radius-sm: 12px;
+    --radius-xs: 8px;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--surface);
+    color: var(--charcoal);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--surface); }
+  ::-webkit-scrollbar-thumb { background: rgba(43,108,176,0.2); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(43,108,176,0.35); }
+
+  /* ═══════════════ SCROLL PROGRESS ═══════════════ */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--yellow), var(--blue));
+    background-size: 200% 100%;
+    animation: shimmer 3s ease infinite;
+    z-index: 9999;
+    transition: width 0.1s linear;
+    box-shadow: 0 0 10px rgba(246,199,68,0.4);
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* ═══════════════ HERO ═══════════════ */
+  .hero {
+    position: relative;
+    min-height: 580px;
+    background: linear-gradient(155deg, var(--navy) 0%, var(--deep-blue) 40%, var(--blue) 85%, #4a90d9 100%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 100px 60px 70px;
+  }
+
+  .hero-canvas {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 600px 400px at 15% 80%, rgba(246,199,68,0.1) 0%, transparent 70%),
+      radial-gradient(ellipse 500px 500px at 85% 20%, rgba(255,255,255,0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Grain overlay */
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(246,199,68,0.12);
+    border: 1px solid rgba(246,199,68,0.25);
+    border-radius: 100px;
+    padding: 8px 20px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--yellow);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    backdrop-filter: blur(12px);
+  }
+
+  .hero-badge .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--yellow);
+    animation: pulse-dot 2s ease-in-out infinite;
+    box-shadow: 0 0 8px rgba(246,199,68,0.6);
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.6); }
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 58px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.08;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--yellow);
+    position: relative;
+  }
+
+  .hero h1 em::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--yellow);
+    opacity: 0.3;
+    border-radius: 2px;
+  }
+
+  .hero p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    max-width: 520px;
+    font-weight: 300;
+  }
+
+  /* Hero location ticker */
+  .hero-locations {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+
+  .location-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 500;
+    backdrop-filter: blur(8px);
+    transition: all var(--transition);
+  }
+
+  .location-pill:hover {
+    background: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.85);
+    border-color: rgba(246,199,68,0.3);
+  }
+
+  .location-pill .pin { font-size: 10px; }
+
+  /* Hero stats */
+  .hero-stats {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .stat-card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-sm);
+    padding: 22px 30px;
+    text-align: center;
+    min-width: 170px;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(246,199,68,0.05) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+
+  .stat-card:hover { transform: translateY(-4px) scale(1.02); border-color: rgba(246,199,68,0.2); }
+  .stat-card:hover::before { opacity: 1; }
+
+  .stat-card .number {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--yellow);
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat-card .label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-top: 6px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ═══════════════ NAV ═══════════════ */
+  .nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(244, 241, 236, 0.82);
+    backdrop-filter: blur(24px) saturate(1.2);
+    border-bottom: 1px solid var(--border);
+    padding: 0 60px;
+    display: flex;
+    gap: 4px;
+    transition: box-shadow var(--transition);
+  }
+
+  .nav-bar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+
+  .nav-tab {
+    padding: 18px 24px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--charcoal);
+    opacity: 0.4;
+    cursor: pointer;
+    border: none;
+    background: none;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+    letter-spacing: 0.5px;
+    font-family: inherit;
+    position: relative;
+  }
+
+  .nav-tab:hover { opacity: 0.7; }
+
+  .nav-tab.active {
+    opacity: 1;
+    border-bottom-color: var(--yellow);
+    color: var(--deep-blue);
+  }
+
+  .nav-tab .tab-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--border);
+    color: var(--blue);
+    font-size: 10px;
+    font-weight: 800;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  .nav-tab.active .tab-count {
+    background: var(--yellow);
+    color: var(--deep-blue);
+  }
+
+  /* ═══════════════ SECTIONS ═══════════════ */
+  .content-wrap {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 48px 60px 80px;
+  }
+
+  .section { display: none; }
+  .section.active { display: block; animation: sectionIn 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+
+  @keyframes sectionIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header {
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .section-header-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--deep-blue);
+    margin-bottom: 6px;
+  }
+
+  .section-header-left p {
+    font-size: 15px;
+    color: var(--charcoal);
+    opacity: 0.5;
+  }
+
+  /* Reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ═══════════════ VIDEO SECTION ═══════════════ */
+  .video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .video-card {
+    background: var(--surface-elevated);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition);
+    cursor: pointer;
+  }
+
+  .video-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-6px);
+    border-color: var(--border-hover);
+  }
+
+  .video-thumb {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+  }
+
+  .video-thumb.portrait { aspect-ratio: 9/16; max-height: 480px; }
+
+  .video-preview {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .video-thumb-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--white);
+    font-weight: 700;
+    text-align: center;
+    padding: 40px;
+    line-height: 1.4;
+    z-index: 2;
+    transition: opacity 0.4s ease;
+  }
+
+  .video-loaded .video-thumb-bg { opacity: 0; pointer-events: none; }
+
+  .video-thumb-bg.landscape-bg {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+  }
+
+  .video-thumb-bg.portrait-bg {
+    background: linear-gradient(180deg, var(--blue) 0%, var(--deep-blue) 100%);
+  }
+
+  .play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.12);
+    transition: background var(--transition);
+    z-index: 3;
+  }
+
+  .video-card:hover .play-overlay { background: rgba(0,0,0,0.25); }
+
+  .play-icon {
+    width: 68px;
+    height: 68px;
+    background: rgba(255,255,255,0.92);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .video-card:hover .play-icon { transform: scale(1.12); }
+
+  .play-icon::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 11px 0 11px 20px;
+    border-color: transparent transparent transparent var(--deep-blue);
+    margin-left: 4px;
+  }
+
+  .video-info {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .video-info-left h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--deep-blue);
+    margin-bottom: 4px;
+  }
+
+  .video-meta {
+    font-size: 12px;
+    color: var(--charcoal);
+    opacity: 0.45;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .meta-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(43,108,176,0.07);
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--blue);
+  }
+
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--deep-blue);
+    cursor: pointer;
+    transition: all var(--transition);
+    font-family: inherit;
+    text-decoration: none;
+  }
+
+  .download-btn:hover {
+    background: var(--deep-blue);
+    color: var(--white);
+    border-color: var(--deep-blue);
+  }
+
+  .download-btn svg { width: 14px; height: 14px; }
+
+  /* Render commands panel */
+  .commands-panel {
+    margin-top: 28px;
+    background: var(--navy);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .commands-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .commands-header span {
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .commands-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .commands-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+  }
+
+  .commands-dots span:first-child { background: #ff5f57; }
+  .commands-dots span:nth-child(2) { background: #ffbd2e; }
+  .commands-dots span:nth-child(3) { background: #28c940; }
+
+  .commands-body {
+    padding: 18px 20px;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 13px;
+    line-height: 2;
+    color: rgba(255,255,255,0.65);
+  }
+
+  .commands-body .comment { color: rgba(255,255,255,0.25); }
+  .commands-body .cmd { color: var(--yellow); }
+  .commands-body .arg { color: var(--blue-light); }
+
+  /* ═══════════════ VIDEO MODAL ═══════════════ */
+  .video-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(16px);
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+  }
+
+  .video-modal-overlay.open { display: flex; animation: fadeIn 0.3s ease; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .video-modal {
+    position: relative;
+    max-width: 1100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: modalIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.92) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .video-modal.portrait-mode { max-width: 420px; }
+
+  .video-modal video {
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+  }
+
+  .video-modal-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--white);
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .video-modal-close {
+    position: absolute;
+    top: -52px;
+    right: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+  }
+
+  .video-modal-close:hover { background: rgba(255,255,255,0.2); transform: rotate(90deg); }
+
+  /* ═══════════════ PODCAST SECTION ═══════════════ */
+  .podcast-hero {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 44px;
+    align-items: center;
+    background: var(--surface-elevated);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 44px;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .podcast-hero::after {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(43,108,176,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .podcast-art {
+    aspect-ratio: 1;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(145deg, var(--navy) 0%, var(--deep-blue) 45%, var(--blue) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+  }
+
+  .podcast-art::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle 100px at 30% 70%, rgba(246,199,68,0.18) 0%, transparent 70%),
+      radial-gradient(circle 80px at 70% 30%, rgba(255,255,255,0.06) 0%, transparent 60%);
+  }
+
+  /* Audio visualizer canvas */
+  .audio-visualizer {
+    width: 200px;
+    height: 80px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .podcast-art h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    position: relative;
+    z-index: 1;
+    margin-bottom: 6px;
+  }
+
+  .podcast-art .subtitle {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+  }
+
+  .podcast-details h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--deep-blue);
+    margin-bottom: 10px;
+  }
+
+  .podcast-details .episode-label {
+    font-size: 12px;
+    color: var(--blue);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .episode-label .live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #48BB78;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  .podcast-details > p {
+    font-size: 15px;
+    color: var(--charcoal);
+    opacity: 0.6;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  /* Podcast player */
+  .podcast-player {
+    background: var(--surface);
+    border-radius: var(--radius-sm);
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .player-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), var(--deep-blue));
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 16px rgba(43,108,176,0.3);
+  }
+
+  .player-btn:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(43,108,176,0.4); }
+  .player-btn:active { transform: scale(0.96); }
+
+  .player-btn::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 0 8px 15px;
+    border-color: transparent transparent transparent var(--white);
+    margin-left: 3px;
+  }
+
+  .player-btn.playing::after {
+    border: none;
+    width: 14px;
+    height: 16px;
+    margin-left: 0;
+    background: linear-gradient(to right,
+      var(--white) 0%, var(--white) 30%,
+      transparent 30%, transparent 70%,
+      var(--white) 70%, var(--white) 100%
+    );
+  }
+
+  .player-track { flex: 1; display: flex; flex-direction: column; gap: 5px; }
+
+  .player-bar {
+    height: 6px;
+    background: rgba(43,108,176,0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .player-bar:hover { height: 8px; }
+
+  .player-progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--blue), var(--yellow));
+    border-radius: 6px;
+    transition: width 0.15s linear;
+    position: relative;
+  }
+
+  .player-progress::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2px solid var(--blue);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .player-bar:hover .player-progress::after { opacity: 1; }
+
+  .player-time {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--charcoal);
+    opacity: 0.35;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Podcast topics */
+  .podcast-topics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 36px;
+  }
+
+  .topic-card {
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 24px;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .topic-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--yellow));
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+
+  .topic-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-hover);
+  }
+
+  .topic-card:hover::before { opacity: 1; }
+
+  .topic-card .icon { font-size: 26px; margin-bottom: 10px; }
+
+  .topic-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--deep-blue);
+    margin-bottom: 5px;
+  }
+
+  .topic-card p {
+    font-size: 12px;
+    color: var(--charcoal);
+    opacity: 0.5;
+    line-height: 1.55;
+  }
+
+  /* ═══════════════ CONTENT LIBRARY ═══════════════ */
+  .content-controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 8px 18px;
+    transition: all var(--transition);
+    min-width: 220px;
+  }
+
+  .search-box:focus-within { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(43,108,176,0.1); }
+
+  .search-box svg { width: 16px; height: 16px; color: var(--charcoal); opacity: 0.3; flex-shrink: 0; }
+
+  .search-box input {
+    border: none;
+    background: none;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--charcoal);
+    outline: none;
+    width: 100%;
+  }
+
+  .filter-chips {
+    display: flex;
+    gap: 6px;
+  }
+
+  .filter-chip {
+    padding: 7px 16px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: var(--surface-elevated);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--charcoal);
+    opacity: 0.6;
+    cursor: pointer;
+    transition: all var(--transition);
+    font-family: inherit;
+  }
+
+  .filter-chip:hover { opacity: 0.9; border-color: var(--border-hover); }
+
+  .filter-chip.active {
+    background: var(--deep-blue);
+    color: var(--white);
+    border-color: var(--deep-blue);
+    opacity: 1;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-top: 24px;
+  }
+
+  .content-card {
+    background: var(--surface-elevated);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: all var(--transition);
+    cursor: pointer;
+  }
+
+  .content-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--border-hover);
+  }
+
+  .content-card.hidden { display: none; }
+
+  .content-card-header {
+    padding: 28px 24px 20px;
+    position: relative;
+  }
+
+  .content-card-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
+
+  .content-card.blog .content-card-header::before { background: var(--blue); }
+  .content-card.ad .content-card-header::before { background: linear-gradient(90deg, var(--yellow), var(--yellow-dim)); }
+  .content-card.social .content-card-header::before { background: linear-gradient(90deg, #E1306C, #833AB4); }
+
+  .content-type {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+
+  .content-card.blog .content-type { color: var(--blue); }
+  .content-card.ad .content-type { color: var(--yellow-dim); }
+  .content-card.social .content-type { color: #833AB4; }
+
+  .content-card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--deep-blue);
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+
+  .content-card p {
+    font-size: 13px;
+    color: var(--charcoal);
+    opacity: 0.5;
+    line-height: 1.6;
+  }
+
+  .source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--blue);
+    text-decoration: none;
+    margin-top: 10px;
+    padding: 4px 10px;
+    background: rgba(43,108,176,0.06);
+    border-radius: 100px;
+    transition: all var(--transition);
+    opacity: 0.8;
+  }
+
+  .source-link:hover {
+    background: rgba(43,108,176,0.12);
+    opacity: 1;
+  }
+
+  .source-link::before {
+    content: '\2197';
+    font-size: 12px;
+  }
+
+  .content-card-footer {
+    padding: 14px 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--charcoal);
+    opacity: 0.45;
+    font-weight: 500;
+  }
+
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+
+  .status-dot.ready { background: #48BB78; box-shadow: 0 0 6px rgba(72,187,120,0.4); }
+  .status-dot.draft { background: var(--yellow); }
+  .status-dot.scheduled { background: var(--blue); }
+
+  /* ═══════════════ CAMPAIGNS ═══════════════ */
+  .campaigns-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .campaign-card {
+    background: var(--surface-elevated);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition);
+  }
+
+  .campaign-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--border-hover);
+  }
+
+  .campaign-card::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    opacity: 0.04;
+  }
+
+  .campaign-card.google::after { background: var(--blue); }
+  .campaign-card.meta::after { background: #833AB4; }
+  .campaign-card.seo::after { background: #48BB78; }
+  .campaign-card.social::after { background: var(--yellow); }
+
+  .campaign-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+
+  .campaign-platform {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .campaign-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--deep-blue);
+    margin-bottom: 8px;
+  }
+
+  .campaign-card > p {
+    font-size: 13px;
+    color: var(--charcoal);
+    opacity: 0.55;
+    line-height: 1.6;
+    margin-bottom: 4px;
+  }
+
+  .campaign-card > p strong {
+    color: var(--deep-blue);
+    opacity: 1;
+    font-weight: 700;
+  }
+
+  .campaign-card.google .campaign-platform { color: var(--blue); }
+  .campaign-card.meta .campaign-platform { color: #833AB4; }
+  .campaign-card.seo .campaign-platform { color: #48BB78; }
+  .campaign-card.social .campaign-platform { color: var(--yellow-dim); }
+
+  /* Sparkline SVG */
+  .sparkline {
+    width: 80px;
+    height: 28px;
+  }
+
+  .sparkline polyline {
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .sparkline .area {
+    stroke: none;
+    opacity: 0.08;
+  }
+
+  .campaign-card.google .sparkline polyline { stroke: var(--blue); }
+  .campaign-card.google .sparkline .area { fill: var(--blue); }
+  .campaign-card.meta .sparkline polyline { stroke: #833AB4; }
+  .campaign-card.meta .sparkline .area { fill: #833AB4; }
+  .campaign-card.seo .sparkline polyline { stroke: #48BB78; }
+  .campaign-card.seo .sparkline .area { fill: #48BB78; }
+  .campaign-card.social .sparkline polyline { stroke: var(--yellow-dim); }
+  .campaign-card.social .sparkline .area { fill: var(--yellow-dim); }
+
+  .campaign-card h3 {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--deep-blue);
+    margin-bottom: 8px;
+  }
+
+  .campaign-card > p {
+    font-size: 13px;
+    color: var(--charcoal);
+    opacity: 0.55;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .campaign-metrics {
+    display: flex;
+    gap: 28px;
+  }
+
+  .metric { display: flex; flex-direction: column; }
+
+  .metric .value {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--deep-blue);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+
+  .metric .label {
+    font-size: 10px;
+    color: var(--charcoal);
+    opacity: 0.4;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin-top: 4px;
+  }
+
+  .metric .change {
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+
+  .metric .change.up { color: #48BB78; }
+  .metric .change.down { color: #E53E3E; }
+
+  /* ═══════════════ ANALYTICS ═══════════════ */
+  .analytics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+
+  .analytics-card {
+    background: var(--surface-elevated);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    padding: 24px;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .analytics-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .analytics-card .analytics-label {
+    font-size: 11px;
+    color: var(--charcoal);
+    opacity: 0.45;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .analytics-card .analytics-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--deep-blue);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .analytics-card .analytics-change {
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .analytics-card .analytics-change.up { color: #48BB78; }
+
+  .analytics-chart {
+    background: var(--surface-elevated);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 32px;
+  }
+
+  .analytics-chart h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--deep-blue);
+    margin-bottom: 24px;
+  }
+
+  .bar-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    height: 180px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .bar-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    height: 100%;
+    justify-content: flex-end;
+  }
+
+  .bar {
+    width: 100%;
+    max-width: 48px;
+    border-radius: 6px 6px 2px 2px;
+    transition: height 1s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    cursor: pointer;
+  }
+
+  .bar:hover { filter: brightness(1.1); }
+
+  .bar.blue { background: linear-gradient(to top, var(--blue), var(--blue-light)); }
+  .bar.yellow { background: linear-gradient(to top, var(--yellow-dim), var(--yellow)); }
+
+  .bar-label {
+    font-size: 11px;
+    color: var(--charcoal);
+    opacity: 0.4;
+    font-weight: 600;
+    position: absolute;
+    bottom: -24px;
+    white-space: nowrap;
+  }
+
+  .chart-legend {
+    display: flex;
+    gap: 24px;
+    margin-top: 20px;
+    justify-content: center;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--charcoal);
+    opacity: 0.5;
+    font-weight: 600;
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+  }
+
+  .legend-dot.blue { background: var(--blue); }
+  .legend-dot.yellow { background: var(--yellow); }
+
+  /* ═══════════════ FOOTER ═══════════════ */
+  .hub-footer {
+    background: var(--navy);
+    padding: 48px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  .hub-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(246,199,68,0.3), transparent);
+  }
+
+  .hub-footer .brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .hub-footer .brand span { color: var(--yellow); }
+
+  .hub-footer .links {
+    display: flex;
+    gap: 32px;
+  }
+
+  .hub-footer .links a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .hub-footer .links a:hover { color: var(--yellow); }
+
+  /* ═══════════════ RESPONSIVE ═══════════════ */
+  @media (max-width: 1100px) {
+    .hero-stats { display: none; }
+    .video-grid { grid-template-columns: 1fr; }
+    .podcast-hero { grid-template-columns: 1fr; }
+    .podcast-art { max-width: 300px; margin: 0 auto; }
+    .content-grid { grid-template-columns: 1fr 1fr; }
+    .campaigns-grid { grid-template-columns: 1fr; }
+    .podcast-topics { grid-template-columns: 1fr 1fr; }
+    .analytics-row { grid-template-columns: 1fr 1fr; }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  }
+
+  @media (max-width: 700px) {
+    .hero { padding: 70px 24px 40px; min-height: 440px; }
+    .hero h1 { font-size: 38px; }
+    .hero-locations { display: none; }
+    .nav-bar { padding: 0 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .nav-bar::-webkit-scrollbar { display: none; }
+    .content-wrap { padding: 28px 20px 60px; }
+    .content-grid { grid-template-columns: 1fr; }
+    .podcast-topics { grid-template-columns: 1fr; }
+    .podcast-hero { padding: 24px; gap: 24px; }
+    .analytics-row { grid-template-columns: 1fr; }
+    .hub-footer { flex-direction: column; gap: 20px; text-align: center; }
+    .content-controls { flex-direction: column; align-items: stretch; }
+    .filter-chips { overflow-x: auto; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { transition: none; opacity: 1; transform: none; }
+    .dot, .live-dot { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ═══════════════ VIRAL SECTION ═══════════════ */
+  .viral-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+  }
+
+  .viral-card {
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 24px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .viral-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .viral-card .viral-rank {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 800;
+    color: rgba(43, 108, 176, 0.07);
+    line-height: 1;
+  }
+
+  .viral-card .viral-platform {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+  }
+
+  .viral-platform.tiktok { background: rgba(0,0,0,0.06); color: #000; }
+  .viral-platform.instagram { background: rgba(131,58,180,0.08); color: #833AB4; }
+  .viral-platform.twitter { background: rgba(29,161,242,0.08); color: #1DA1F2; }
+  .viral-platform.youtube { background: rgba(255,0,0,0.06); color: #FF0000; }
+  .viral-platform.facebook { background: rgba(24,119,242,0.08); color: #1877F2; }
+  .viral-platform.linkedin { background: rgba(10,102,194,0.08); color: #0A66C2; }
+  .viral-platform.reddit { background: rgba(255,69,0,0.08); color: #FF4500; }
+
+  .viral-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    line-height: 1.35;
+    margin-bottom: 8px;
+    padding-right: 30px;
+  }
+
+  .viral-card .viral-creator {
+    font-size: 12px;
+    color: var(--blue);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .viral-card p {
+    font-size: 13px;
+    line-height: 1.6;
+    opacity: 0.75;
+    margin-bottom: 14px;
+  }
+
+  .viral-stats {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0.55;
+  }
+
+  .viral-stats span { display: flex; align-items: center; gap: 4px; }
+
+  .viral-takeaway {
+    margin-top: 14px;
+    padding: 10px 14px;
+    background: var(--yellow-glow);
+    border-radius: var(--radius-xs);
+    font-size: 12px;
+    line-height: 1.5;
+    border-left: 3px solid var(--yellow);
+  }
+
+  .viral-takeaway strong { color: var(--deep-blue); }
+
+  @media (max-width: 768px) {
+    .viral-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ═══════════════ CONTENT CARD BANNERS ═══════════════ */
+  .content-card-banner {
+    height: 100px;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    margin: -1px -1px 0 -1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .content-card-banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  .content-card.blog .content-card-banner {
+    background: linear-gradient(135deg, #1a3a5c 0%, #2B6CB0 50%, #4a90d9 100%);
+  }
+
+  .content-card.ad .content-card-banner {
+    background: linear-gradient(135deg, #d4a82e 0%, #F6C744 50%, #FFE082 100%);
+  }
+
+  .content-card.social .content-card-banner {
+    background: linear-gradient(135deg, #833AB4 0%, #E1306C 50%, #F77737 100%);
+  }
+
+  .content-card-banner .banner-icon {
+    position: relative;
+    z-index: 1;
+    font-size: 40px;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.15));
+  }
+
+  .content-card-banner .banner-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.1;
+    background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.3) 1px, transparent 1px),
+                       radial-gradient(circle at 80% 30%, rgba(255,255,255,0.3) 1px, transparent 1px),
+                       radial-gradient(circle at 50% 80%, rgba(255,255,255,0.3) 1px, transparent 1px);
+    background-size: 40px 40px, 60px 60px, 50px 50px;
+  }
+
+  /* ═══════════════ VIRAL CARD BANNERS ═══════════════ */
+  .viral-card-banner {
+    height: 80px;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    margin: -24px -24px 16px -24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .viral-card-banner .banner-icon {
+    position: relative;
+    z-index: 1;
+    font-size: 32px;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+  }
+
+  .viral-card-banner.tiktok-bg { background: linear-gradient(135deg, #010101 0%, #25F4EE 50%, #FE2C55 100%); }
+  .viral-card-banner.instagram-bg { background: linear-gradient(135deg, #833AB4 0%, #E1306C 50%, #F77737 100%); }
+  .viral-card-banner.youtube-bg { background: linear-gradient(135deg, #CC0000 0%, #FF0000 50%, #FF4444 100%); }
+  .viral-card-banner.twitter-bg { background: linear-gradient(135deg, #0a1628 0%, #1DA1F2 50%, #71C9F8 100%); }
+  .viral-card-banner.facebook-bg { background: linear-gradient(135deg, #0d47a1 0%, #1877F2 50%, #64B5F6 100%); }
+  .viral-card-banner.linkedin-bg { background: linear-gradient(135deg, #003366 0%, #0A66C2 50%, #40A0E0 100%); }
+  .viral-card-banner.reddit-bg { background: linear-gradient(135deg, #CC3700 0%, #FF4500 50%, #FF7043 100%); }
+
+  /* ═══════════════ CAMPAIGN CARD BANNERS ═══════════════ */
+  .campaign-card-banner {
+    height: 90px;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    margin: -24px -24px 16px -24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .campaign-card-banner .banner-icon {
+    position: relative;
+    z-index: 1;
+    font-size: 36px;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
+  }
+
+  .campaign-card-banner .banner-label {
+    position: relative;
+    z-index: 1;
+    font-size: 14px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .campaign-card.google .campaign-card-banner {
+    background: linear-gradient(135deg, #1a3a5c 0%, #2B6CB0 60%, #4a90d9 100%);
+  }
+  .campaign-card.meta .campaign-card-banner {
+    background: linear-gradient(135deg, #4A0072 0%, #833AB4 60%, #E1306C 100%);
+  }
+  .campaign-card.seo .campaign-card-banner {
+    background: linear-gradient(135deg, #1B5E20 0%, #48BB78 60%, #81C784 100%);
+  }
+  .campaign-card.social .campaign-card-banner {
+    background: linear-gradient(135deg, #b8860b 0%, #F6C744 60%, #FFE082 100%);
+  }
+
+  /* ═══════════════ VIDEO STYLE TAGS ═══════════════ */
+  .video-meta .style-tag {
+    background: linear-gradient(135deg, var(--yellow), var(--yellow-dim));
+    color: var(--navy);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .video-meta .viral-source {
+    color: var(--blue);
+    font-weight: 600;
+    font-size: 11px;
+  }
+
+  .video-meta .content-source {
+    color: #2B6CB0;
+    font-weight: 600;
+    font-size: 11px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="hero">
+  <canvas class="hero-canvas" id="heroCanvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="dot"></span> Marketing Content Hub</div>
+    <h1>Refresh Psychiatry<br><em>Content Studio</em></h1>
+    <p>Your centralized dashboard for video, podcast, social media, and advertising assets. Create, preview, and launch campaigns — all in one place.</p>
+    <div class="hero-locations">
+      <span class="location-pill"><span class="pin">📍</span> Davie</span>
+      <span class="location-pill"><span class="pin">📍</span> Pembroke Pines</span>
+      <span class="location-pill"><span class="pin">📍</span> Coconut Creek</span>
+      <span class="location-pill"><span class="pin">📍</span> West Palm Beach</span>
+      <span class="location-pill"><span class="pin">📍</span> Miami</span>
+      <span class="location-pill"><span class="pin">📍</span> Orlando</span>
+      <span class="location-pill"><span class="pin">📍</span> Coral Springs</span>
+      <span class="location-pill"><span class="pin">📍</span> Wellington</span>
+      <span class="location-pill"><span class="pin">📍</span> Winter Park</span>
+      <span class="location-pill"><span class="pin">📍</span> Vero Beach</span>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="number" data-count="10">0</div>
+      <div class="label">FL Locations</div>
+    </div>
+    <div class="stat-card">
+      <div class="number" data-count="11">0</div>
+      <div class="label">Video Assets</div>
+    </div>
+    <div class="stat-card">
+      <div class="number" data-count="1">0</div>
+      <div class="label">Podcast</div>
+    </div>
+    <div class="stat-card">
+      <div class="number" data-count="27">0</div>
+      <div class="label">Content Pieces</div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="nav-bar" id="navBar">
+  <button class="nav-tab active" data-tab="video">Video<span class="tab-count">11</span></button>
+  <button class="nav-tab" data-tab="podcast">Podcast<span class="tab-count">1</span></button>
+  <button class="nav-tab" data-tab="content">Content<span class="tab-count">27</span></button>
+  <button class="nav-tab" data-tab="campaigns">Campaigns<span class="tab-count">6</span></button>
+  <button class="nav-tab" data-tab="viral">🔥 Viral<span class="tab-count">15</span></button>
+  <button class="nav-tab" data-tab="analytics">Analytics</button>
+</nav>
+
+<!-- ═══════════ CONTENT ═══════════ -->
+<main class="content-wrap">
+
+  <!-- VIDEO SECTION -->
+  <section class="section active" id="video">
+    <div class="section-header">
+      <div class="section-header-left">
+        <h2>Video Assets</h2>
+        <p>11 Remotion-powered programmatic videos — content-based educational clips, social ads &amp; portrait Reels/Stories</p>
+      </div>
+    </div>
+    <div class="video-grid">
+      <div class="video-card reveal" onclick="openVideoModal('refresh-videos/out/why-choose-refresh.mp4', 'Why Choose Refresh — Social Ad', false)">
+        <div class="video-thumb">
+          <video class="video-preview" src="refresh-videos/out/why-choose-refresh.mp4" muted loop preload="metadata"></video>
+          <div class="video-thumb-bg landscape-bg">
+            <div>
+              <div style="font-size: 28px; margin-bottom: 10px;">Why Choose<br>Refresh Psychiatry?</div>
+              <div style="font-size: 13px; opacity: 0.5;">1920 × 1080 • Landscape</div>
+            </div>
+          </div>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-info-left">
+            <h3>Why Choose Refresh — Social Ad</h3>
+            <div class="video-meta">
+              <span class="meta-tag">Remotion</span>
+              <span>1920×1080 • 25s • 30fps</span>
+            </div>
+          </div>
+          <a class="download-btn" href="refresh-videos/out/why-choose-refresh.mp4" download onclick="event.stopPropagation()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            MP4
+          </a>
+        </div>
+      </div>
+
+      <div class="video-card reveal" onclick="openVideoModal('refresh-videos/out/services-showcase.mp4', 'Services Overview — Reels/Stories', true)">
+        <div class="video-thumb portrait">
+          <video class="video-preview" src="refresh-videos/out/services-showcase.mp4" muted loop preload="metadata"></video>
+          <div class="video-thumb-bg portrait-bg">
+            <div>
+              <div style="font-size: 24px; margin-bottom: 10px;">Services<br>Showcase</div>
+              <div style="font-size: 13px; opacity: 0.5;">1080 × 1920 • Portrait</div>
+            </div>
+          </div>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-info-left">
+            <h3>Services Overview — Reels/Stories</h3>
+            <div class="video-meta">
+              <span class="meta-tag">Remotion</span>
+              <span>1080×1920 • 27.5s • 30fps</span>
+            </div>
+          </div>
+          <a class="download-btn" href="refresh-videos/out/services-showcase.mp4" download onclick="event.stopPropagation()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            MP4
+          </a>
+        </div>
+      </div>
+
+      <div class="video-card reveal" onclick="openVideoModal('refresh-videos/out/adhd-treatment.mp4', 'ADHD Treatment — Reels/Stories', true)">
+        <div class="video-thumb portrait">
+          <video class="video-preview" src="refresh-videos/out/adhd-treatment.mp4" muted loop preload="metadata"></video>
+          <div class="video-thumb-bg portrait-bg">
+            <div>
+              <div style="font-size: 24px; margin-bottom: 10px;">ADHD<br>Treatment</div>
+              <div style="font-size: 13px; opacity: 0.5;">1080 × 1920 • Portrait</div>
+            </div>
+          </div>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-info-left">
+            <h3>ADHD Treatment — Reels/Stories</h3>
+            <div class="video-meta">
+              <span class="meta-tag">Remotion</span>
+              <span>1080×1920 • 23s • 30fps</span>
+            </div>
+          </div>
+          <a class="download-btn" href="refresh-videos/out/adhd-treatment.mp4" download onclick="event.stopPropagation()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            MP4
+          </a>
+        </div>
+      </div>
+
+      <div class="video-card reveal" onclick="openVideoModal('refresh-videos/out/telehealth-fl.mp4', 'Telehealth Florida — Social Ad', false)">
+        <div class="video-thumb">
+          <video class="video-preview" src="refresh-videos/out/telehealth-fl.mp4" muted loop preload="metadata"></video>
+          <div class="video-thumb-bg landscape-bg">
+            <div>
+              <div style="font-size: 28px; margin-bottom: 10px;">Telehealth<br>Across Florida</div>
+              <div style="font-size: 13px; opacity: 0.5;">1920 × 1080 • Landscape</div>
+            </div>
+          </div>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-info-left">
+            <h3>Telehealth Florida — Social Ad</h3>
+            <div class="video-meta">
+              <span class="meta-tag">Remotion</span>
+              <span>1920×1080 • 24s • 30fps</span>
+            </div>
+          </div>
+          <a class="download-btn" href="refresh-videos/out/telehealth-fl.mp4" download onclick="event.stopPropagation()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            MP4
+          </a>
+        </div>
+      </div>
+
+      <!-- ══ CONTENT-BASED VIDEOS (7 new) ══ -->
+
+      <div class="video-card reveal" onclick="openVideoModal('refresh-videos/out/V1-ChildVsAdultADHD.mp4', 'ADHD: Child vs Adult Presentation', true)">
+        <div class="video-thumb portrait">
+          <video class="video-preview" src="refresh-videos/out/V1-ChildVsAdultADHD.mp4" muted loop preload="metadata"></video>
+          <div class="video-thumb-bg portrait-bg">
+            <div style="font-size:3rem">👨‍👧</div>
+            <div style="color:#2B6CB0;font-weight:700;font-size:1.1rem">ADHD Comparison</div>
+          </div>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-info-left">
+            <h3>ADHD: Child vs Adult</h3>
+            <div class="video-meta">
+              <span class="meta-tag">Remotion</span>
+              <span class="style-tag">Side-by-Side</span>
+              <span>1080×1920 • 25s • 30fps</span>
+            </div>
+            <div class="video-meta"><span class="content-source">📝 Blog: Understanding ADHD Across Ages</span></div>
+          </div>
+          <a class="download-btn" href="refresh-videos/out/V1-ChildVsAdultADHD.mp4" download>MP4</a>
+        </div>
+      </div>
+
+      <div class="video-card reveal" onclick="openVideoModal('refresh-videos/out/V2-Pharmacogenomics.mp4', 'Pharmacogenomic Testing: Your DNA Guide', false)">
+        <div class="video-thumb">
+          <video class="video-preview" src="refresh-videos/out/V2-Pharmacogenomics.mp4" muted loop preload="metadata"></video>
+          <div class="video-thumb-bg landscape-bg">
+            <div style="font-size:3rem">🧬</div>
+            <div style="color:#2B6CB0;font-weight:700;font-size:1.1rem">DNA Science</div>
+          </div>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-info-left">
+            <h3>Pharmacogenomic Testing</h3>
+            <div class="video-meta">
+              <span class="meta-tag">Remotion</span>
+              <span class="style-tag">Science Motion</span>
+              <span>1920×1080 • 24s • 30fps</span>
+            </div>
+            <div class="video-meta"><span class="content-source">📝 Campaign: Pharmacogenomic Testing</span></div>
+          </div>
+          <a class="download-btn" href="refresh-videos/out/V2-Pharmacogenomics.mp4" download>MP4</a>
+        </div>
+      </div>
+
+      <div class="video-card reveal" onclick="openVideoModal('refresh-videos/out/V3-TelepsychiatryFL.mp4', 'Telehealth Psychiatry Across Florida', false)">
+        <div class="video-thumb">
+          <video class="video-preview" src="refresh-videos/out/V3-TelepsychiatryFL.mp4" muted loop preload="metadata"></video>
+          <div class="video-thumb-bg landscape-bg">
+            <div style="font-size:3rem">💻</div>
+            <div style="color:#2B6CB0;font-weight:700;font-size:1.1rem">Telehealth FL</div>
+          </div>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-info-left">
+            <h3>Telehealth Across Florida</h3>
+            <div class="video-meta">
+              <span class="meta-tag">Remotion</span>
+              <span class="style-tag">Map Animation</span>
+              <span>1920×1080 • 24s • 30fps</span>
+            </div>
+            <div class="video-meta"><span class="content-source">📝 Campaign: Telehealth FL Statewide</span></div>
+          </div>
+          <a class="download-btn" href="refresh-videos/out/V3-TelepsychiatryFL.mp4" download>MP4</a>
+        </div>
+      </div>
+
+      <div class="video-card reveal" onclick="openVideoModal('refresh-videos/out/V4-AnxietyVsDepression.mp4', 'Anxiety vs Depression: Know the Difference', true)">
+        <div class="video-thumb portrait">
+          <video class="video-preview" src="refresh-videos/out/V4-AnxietyVsDepression.mp4" muted loop preload="metadata"></video>
+          <div class="video-thumb-bg portrait-bg">
+            <div style="font-size:3rem">🧠</div>
+            <div style="color:#2B6CB0;font-weight:700;font-size:1.1rem">Anxiety vs Depression</div>
+          </div>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-info-left">
+            <h3>Anxiety vs Depression</h3>
+            <div class="video-meta">
+              <span class="meta-tag">Remotion</span>
+              <span class="style-tag">Venn Diagram</span>
+              <span>1080×1920 • 25s • 30fps</span>
+            </div>
+            <div class="video-meta"><span class="content-source">📝 Blog: Understanding Anxiety & Depression</span></div>
+          </div>
+          <a class="download-btn" href="refresh-videos/out/V4-AnxietyVsDepression.mp4" download>MP4</a>
+        </div>
+      </div>
+
+      <div class="video-card reveal" onclick="openVideoModal('refresh-videos/out/V5-FirstAppointment.mp4', 'Your First Psychiatry Appointment', true)">
+        <div class="video-thumb portrait">
+          <video class="video-preview" src="refresh-videos/out/V5-FirstAppointment.mp4" muted loop preload="metadata"></video>
+          <div class="video-thumb-bg portrait-bg">
+            <div style="font-size:3rem">🩺</div>
+            <div style="color:#2B6CB0;font-weight:700;font-size:1.1rem">First Visit Guide</div>
+          </div>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-info-left">
+            <h3>Your First Appointment</h3>
+            <div class="video-meta">
+              <span class="meta-tag">Remotion</span>
+              <span class="style-tag">Step Journey</span>
+              <span>1080×1920 • 25s • 30fps</span>
+            </div>
+            <div class="video-meta"><span class="content-source">📝 Blog: What to Expect at Your First Visit</span></div>
+          </div>
+          <a class="download-btn" href="refresh-videos/out/V5-FirstAppointment.mp4" download>MP4</a>
+        </div>
+      </div>
+
+      <div class="video-card reveal" onclick="openVideoModal('refresh-videos/out/V6-SpringAnxiety.mp4', 'Spring Anxiety: Seasonal Mental Health', false)">
+        <div class="video-thumb">
+          <video class="video-preview" src="refresh-videos/out/V6-SpringAnxiety.mp4" muted loop preload="metadata"></video>
+          <div class="video-thumb-bg landscape-bg">
+            <div style="font-size:3rem">🌸</div>
+            <div style="color:#2B6CB0;font-weight:700;font-size:1.1rem">Spring Anxiety</div>
+          </div>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-info-left">
+            <h3>Spring Anxiety Awareness</h3>
+            <div class="video-meta">
+              <span class="meta-tag">Remotion</span>
+              <span class="style-tag">Seasonal</span>
+              <span>1920×1080 • 24s • 30fps</span>
+            </div>
+            <div class="video-meta"><span class="content-source">📝 Campaign: Spring Content Series</span></div>
+          </div>
+          <a class="download-btn" href="refresh-videos/out/V6-SpringAnxiety.mp4" download>MP4</a>
+        </div>
+      </div>
+
+      <div class="video-card reveal" onclick="openVideoModal('refresh-videos/out/V7-WhyRefresh.mp4', 'Why Choose Refresh Psychiatry', true)">
+        <div class="video-thumb portrait">
+          <video class="video-preview" src="refresh-videos/out/V7-WhyRefresh.mp4" muted loop preload="metadata"></video>
+          <div class="video-thumb-bg portrait-bg">
+            <div style="font-size:3rem">💙</div>
+            <div style="color:#2B6CB0;font-weight:700;font-size:1.1rem">Brand Story</div>
+          </div>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-info-left">
+            <h3>Why Choose Refresh</h3>
+            <div class="video-meta">
+              <span class="meta-tag">Remotion</span>
+              <span class="style-tag">Premium Brand</span>
+              <span>1080×1920 • 26s • 30fps</span>
+            </div>
+            <div class="video-meta"><span class="content-source">📝 Brand: Refresh Psychiatry Story</span></div>
+          </div>
+          <a class="download-btn" href="refresh-videos/out/V7-WhyRefresh.mp4" download>MP4</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="commands-panel reveal">
+      <div class="commands-header">
+        <div class="commands-dots"><span></span><span></span><span></span></div>
+        <span>Terminal</span>
+      </div>
+      <div class="commands-body">
+        <span class="comment"># ── Original Videos ──</span><br>
+        <span class="cmd">npx</span> <span class="arg">remotion render</span> src/index.ts WhyChooseRefresh out/why-choose-refresh.mp4<br>
+        <span class="cmd">npx</span> <span class="arg">remotion render</span> src/index.ts MyComp out/services-showcase.mp4<br>
+        <span class="cmd">npx</span> <span class="arg">remotion render</span> src/index.ts ADHDTreatment out/adhd-treatment.mp4<br>
+        <span class="cmd">npx</span> <span class="arg">remotion render</span> src/index.ts TelehealthFL out/telehealth-fl.mp4<br><br>
+        <span class="comment"># ── Content-Based Videos (7 new) ──</span><br>
+        <span class="cmd">npx</span> <span class="arg">remotion render</span> V1-ChildVsAdultADHD out/V1-ChildVsAdultADHD.mp4<br>
+        <span class="cmd">npx</span> <span class="arg">remotion render</span> V2-Pharmacogenomics out/V2-Pharmacogenomics.mp4<br>
+        <span class="cmd">npx</span> <span class="arg">remotion render</span> V3-TelepsychiatryFL out/V3-TelepsychiatryFL.mp4<br>
+        <span class="cmd">npx</span> <span class="arg">remotion render</span> V4-AnxietyVsDepression out/V4-AnxietyVsDepression.mp4<br>
+        <span class="cmd">npx</span> <span class="arg">remotion render</span> V5-FirstAppointment out/V5-FirstAppointment.mp4<br>
+        <span class="cmd">npx</span> <span class="arg">remotion render</span> V6-SpringAnxiety out/V6-SpringAnxiety.mp4<br>
+        <span class="cmd">npx</span> <span class="arg">remotion render</span> V7-WhyRefresh out/V7-WhyRefresh.mp4
+      </div>
+    </div>
+  </section>
+
+  <!-- PODCAST SECTION -->
+  <section class="section" id="podcast">
+    <div class="section-header">
+      <div class="section-header-left">
+        <h2>Podcast Studio</h2>
+        <p>AI-generated audio content via NotebookLM — warm, destigmatizing mental health discussions</p>
+      </div>
+    </div>
+
+    <div class="podcast-hero reveal">
+      <div class="podcast-art">
+        <canvas class="audio-visualizer" id="audioVisualizer" width="200" height="80"></canvas>
+        <h3>Refresh Psychiatry</h3>
+        <div class="subtitle">Audio Overview</div>
+      </div>
+
+      <div class="podcast-details">
+        <div class="episode-label"><span class="live-dot"></span> NotebookLM · Deep Dive</div>
+        <h2>📱 Daily Social Media Strategy for Psychiatric Practices</h2>
+        <p>An AI-generated podcast covering the complete daily social media playbook — content pillars, platform-specific tactics for Instagram/Facebook/LinkedIn/TikTok, HIPAA-compliant content creation, destigmatizing mental health, and building an engagement-driven content calendar for practices like Refresh Psychiatry.</p>
+
+        <audio id="podcastAudio" src="podcast-social-media-strategy.mp3" preload="metadata"></audio>
+        <div class="podcast-player">
+          <button class="player-btn" id="podcastPlayBtn" onclick="togglePodcast(this)"></button>
+          <div class="player-track">
+            <div class="player-bar" id="podcastBar">
+              <div class="player-progress" id="podcastProgress"></div>
+            </div>
+            <div class="player-time">
+              <span id="podcastCurrentTime">0:00</span>
+              <span id="podcastDuration">--:--</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="podcast-topics">
+      <div class="topic-card reveal"><div class="icon">📅</div><h4>Content Pillars & Calendar</h4><p>Build a 5-day posting framework: Mental Health Monday, Tip Tuesday, Educational Wednesday, LinkedIn Thursday, Reel Friday.</p></div>
+      <div class="topic-card reveal"><div class="icon">📸</div><h4>Instagram & Reels Strategy</h4><p>Carousel best practices, Reel hooks that stop the scroll, hashtag strategy, and Stories engagement tactics for healthcare.</p></div>
+      <div class="topic-card reveal"><div class="icon">👥</div><h4>Facebook Community Building</h4><p>Group engagement, testimonial-style posts, Mental Health Monday series, and local community outreach that drives trust.</p></div>
+      <div class="topic-card reveal"><div class="icon">💼</div><h4>LinkedIn for Referral Partners</h4><p>B2B content for therapists and PCPs, thought leadership articles, and practice growth updates that build referral pipelines.</p></div>
+      <div class="topic-card reveal"><div class="icon">🔒</div><h4>HIPAA-Compliant Content</h4><p>Creating warm, authentic content while staying fully compliant — hypothetical stories, safe messaging, and disclosure rules.</p></div>
+      <div class="topic-card reveal"><div class="icon">📊</div><h4>Measuring & Optimizing</h4><p>Track engagement, DM inquiries, website clicks, and conversion rates — then iterate your content mix weekly.</p></div>
+    </div>
+  </section>
+
+  <!-- CONTENT LIBRARY -->
+  <section class="section" id="content">
+    <div class="section-header">
+      <div class="section-header-left">
+        <h2>Content Library</h2>
+        <p>27 pieces — 10 SEO blog posts, 9 ad campaigns, 8 social media assets with source citations and strategic rationale</p>
+      </div>
+      <div class="content-controls">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" id="contentSearch" placeholder="Search content..." oninput="filterContent()">
+        </div>
+        <div class="filter-chips">
+          <button class="filter-chip active" data-filter="all" onclick="setFilter(this)">All</button>
+          <button class="filter-chip" data-filter="blog" onclick="setFilter(this)">Blog</button>
+          <button class="filter-chip" data-filter="ad" onclick="setFilter(this)">Ads</button>
+          <button class="filter-chip" data-filter="social" onclick="setFilter(this)">Social</button>
+        </div>
+      </div>
+    </div>
+    <div class="content-grid" id="contentGrid">
+      <!-- ══ BLOG POSTS (10) ══ -->
+      <div class="content-card blog reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">🌸</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Blog Post</div>
+          <h3>🌸 Spring Anxiety: Why Your Symptoms Spike When the Clocks Change</h3>
+          <p>SEO deep dive targeting "spring anxiety" and "daylight saving mental health" — two keywords with 2,400+ monthly searches and minimal competition. Covers circadian rhythm disruption, cortisol spikes, and actionable coping strategies. Links anxiety symptoms to Florida's unique climate pressures. Positions Refresh as the go-to authority for seasonal mental health in South Florida.</p>
+          <a class="source-link" href="https://www.sleepfoundation.org/sleep-news/daylight-saving-time-mental-health" target="_blank" rel="noopener">Source: Sleep Foundation — DST & Mental Health</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot ready"></span>Published</span><span>Mar 2026</span></div>
+      </div>
+
+      <div class="content-card blog reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">⏰</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Blog Post</div>
+          <h3>⏰ DST and Mental Health: What Your Psychiatrist Wants You to Know</h3>
+          <p>Expert-backed guide addressing the 8% spike in depressive episodes post-DST (Berk et al., 2017). Targets "psychiatrist near me" + seasonal modifiers. Written from Dr. Nepa's clinical perspective with practical sleep hygiene tips and light therapy recommendations. Internal links to telepsychiatry booking page for immediate conversion.</p>
+          <a class="source-link" href="https://pubmed.ncbi.nlm.nih.gov/28816112/" target="_blank" rel="noopener">Source: Berk et al. — Epidemiology, DST & Depression</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot ready"></span>Published</span><span>Mar 2026</span></div>
+      </div>
+
+      <div class="content-card blog reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">👨‍👧</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Blog Post</div>
+          <h3>👨‍👧 Child ADHD vs. Adult ADHD: Key Differences Every Parent Should Know</h3>
+          <p>Family-focused SEO piece targeting "child ADHD psychiatrist Florida" (1,600 mo. searches). Breaks down DSM-5 diagnostic criteria differences, explains why 60% of children with ADHD carry symptoms into adulthood, and highlights Dr. Vadakkan's pediatric fellowship training. Critical for parent-audience pipeline — drives bookings for child evaluations, the highest-margin service.</p>
+          <a class="source-link" href="https://www.cdc.gov/adhd/about/index.html" target="_blank" rel="noopener">Source: CDC — ADHD Facts & Statistics</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>Apr 2026</span></div>
+      </div>
+
+      <div class="content-card blog reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">🧬</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Blog Post</div>
+          <h3>🧬 Pharmacogenomic Testing: How Your DNA Can Guide Medication Choice</h3>
+          <p>Educational pillar content for Refresh's #1 differentiator. Targets "pharmacogenomic testing psychiatry" — a low-competition keyword with high commercial intent. Explains CYP450 enzyme panels, GeneSight-style testing, and how DNA-guided prescribing reduces trial-and-error by 50%. Includes patient-friendly infographic. This is our top content gap vs. competitors — none are targeting this keyword.</p>
+          <a class="source-link" href="https://www.nature.com/articles/s41398-019-0407-x" target="_blank" rel="noopener">Source: Nature — Pharmacogenomics in Psychiatry</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>Apr 2026</span></div>
+      </div>
+
+      <div class="content-card blog reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">💻</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Blog Post</div>
+          <h3>💻 Telepsychiatry in Florida: Everything You Need to Know Before Your First Visit</h3>
+          <p>Comprehensive guide targeting "telepsychiatry Florida" and "online psychiatrist FL" — combined 3,800 monthly searches. Covers what to expect, insurance coverage, technology setup, privacy protections (HIPAA), and why virtual visits have equivalent outcomes to in-person (APA, 2023). Important because 40% of our new patient inquiries are telehealth-first — this page captures top-of-funnel search intent.</p>
+          <a class="source-link" href="https://www.psychiatry.org/patients-families/telepsychiatry" target="_blank" rel="noopener">Source: APA — Telepsychiatry Resource Center</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot scheduled"></span>Scheduled</span><span>Apr 2026</span></div>
+      </div>
+
+      <div class="content-card blog reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">🧠</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Blog Post</div>
+          <h3>🧠 Anxiety vs. Depression: Understanding the Overlap and Getting the Right Diagnosis</h3>
+          <p>Targets our #1 patient demographic. "Anxiety vs depression" gets 12,100 monthly searches nationally. Nearly 60% of people with anxiety also have depression (NIMH). This piece helps patients self-identify symptoms and understand why an accurate differential diagnosis matters for treatment selection. Drives conversions to psychiatric evaluation booking.</p>
+          <a class="source-link" href="https://www.nimh.nih.gov/health/publications/anxiety-disorders" target="_blank" rel="noopener">Source: NIMH — Anxiety Disorders Overview</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>May 2026</span></div>
+      </div>
+
+      <div class="content-card blog reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">🩺</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Blog Post</div>
+          <h3>🩺 What to Expect at Your First Psychiatry Appointment</h3>
+          <p>Top-of-funnel content addressing the #1 barrier to scheduling: fear of the unknown. "First psychiatry appointment" has 5,400 monthly searches. Walks through intake paperwork, the 60-min evaluation process, medication discussion, and follow-up planning. Reduces appointment anxiety and increases show rates. Every competitor has a version of this — we need ours to rank or we lose local traffic.</p>
+          <a class="source-link" href="https://www.nami.org/About-Mental-Illness/Treatments/Mental-Health-Medications" target="_blank" rel="noopener">Source: NAMI — Mental Health Treatment Guide</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>May 2026</span></div>
+      </div>
+
+      <div class="content-card blog reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">🚒</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Blog Post</div>
+          <h3>🚒 PTSD in First Responders: Why Specialized Psychiatric Care Matters</h3>
+          <p>Niche content targeting an underserved audience. First responders have PTSD rates of 15-30% vs. 3.5% general population. "PTSD treatment Florida" has 720 monthly searches with high CPC ($8.40) indicating strong commercial intent. Positions Refresh as trauma-informed and expands our referral network into fire/police departments and EAP programs.</p>
+          <a class="source-link" href="https://www.samhsa.gov/disaster-behavioral-health/first-responders" target="_blank" rel="noopener">Source: SAMHSA — First Responder Behavioral Health</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>May 2026</span></div>
+      </div>
+
+      <div class="content-card blog reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">🔄</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Blog Post</div>
+          <h3>🔄 CBT vs. DBT: Which Therapy Is Right for You?</h3>
+          <p>Service differentiation content. "CBT vs DBT" gets 6,600 monthly searches — patients actively comparing therapies. Explains when each is indicated (CBT for anxiety/depression, DBT for emotional dysregulation/BPD), our therapists' training, and how we integrate therapy with medication management. Important because it captures mid-funnel searchers who already know they need help.</p>
+          <a class="source-link" href="https://www.apa.org/ptsd-guideline/patients-and-families/cognitive-behavioral" target="_blank" rel="noopener">Source: APA — Cognitive Behavioral Therapy Guide</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>Jun 2026</span></div>
+      </div>
+
+      <div class="content-card blog reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">💡</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Blog Post</div>
+          <h3>💡 Bipolar Disorder: Myths, Diagnosis, and Modern Treatment Options</h3>
+          <p>Destigmatization content. "Bipolar disorder treatment" has 8,100 monthly searches. Addresses the 5-10 year average diagnostic delay for bipolar disorder and why proper diagnosis changes everything. Covers mood stabilizers, atypical antipsychotics, and lifestyle interventions. Bipolar is one of our highest-complexity (and highest-value) patient populations — ranking here drives valuable referrals.</p>
+          <a class="source-link" href="https://www.nimh.nih.gov/health/topics/bipolar-disorder" target="_blank" rel="noopener">Source: NIMH — Bipolar Disorder</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>Jun 2026</span></div>
+      </div>
+
+      <!-- ══ AD COPY (9) ══ -->
+      <div class="content-card ad reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">🎯</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Google RSA</div>
+          <h3>ADHD Treatment — South Florida</h3>
+          <p>Responsive search ad targeting "ADHD doctor near me," "ADHD evaluation Davie," and "adult ADHD treatment Broward." Expected CPC $3.20-4.50, targeting 4%+ CTR. Three headline variants test medication management vs. comprehensive evaluation vs. same-week availability. This is our highest-converting keyword cluster with a 22% lead-to-appointment rate.</p>
+          <a class="source-link" href="https://ads.google.com/home/resources/mental-health-advertising-policies/" target="_blank" rel="noopener">Ref: Google Healthcare Advertising Policies</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot scheduled"></span>Scheduled</span><span>Q2 2026</span></div>
+      </div>
+
+      <div class="content-card ad reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">📱</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Meta Ad</div>
+          <h3>Telehealth Psychiatry — Florida Statewide</h3>
+          <p>Facebook/Instagram awareness campaign targeting adults 25-55 across FL with interest-based targeting (mental health, wellness, psychology). Creative features a warm living-room setting with "See a Psychiatrist From Home" headline. Expected CPM $12-18, CPC $0.80-1.20. Critical for geographic expansion — drives bookings from cities without a physical office.</p>
+          <a class="source-link" href="https://www.facebook.com/business/help/460787961327083" target="_blank" rel="noopener">Ref: Meta Special Ad Categories — Healthcare</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot scheduled"></span>Scheduled</span><span>Q2 2026</span></div>
+      </div>
+
+      <div class="content-card ad reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">🌊</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Google RSA</div>
+          <h3>Anxiety Treatment — Orlando Area</h3>
+          <p>Location-targeted search ad for "anxiety psychiatrist Orlando," "anxiety treatment Winter Park," and "panic attack help Orlando." Expected CPC $3.80-5.20. Orlando is our newest market — these ads establish presence while organic SEO catches up. Targets the 320K adults in Orange County who report anxiety symptoms (SAMHSA 2024 data).</p>
+          <a class="source-link" href="https://www.samhsa.gov/data/report/2024-nsduh-state-prevalence-estimates" target="_blank" rel="noopener">Ref: SAMHSA — State Mental Health Prevalence</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot scheduled"></span>Scheduled</span><span>Q2 2026</span></div>
+      </div>
+
+      <div class="content-card ad reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">👶</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Google RSA</div>
+          <h3>Child Psychiatrist — Broward County</h3>
+          <p>High-intent search ad targeting "child psychiatrist near me," "pediatric psychiatrist Davie," "child ADHD evaluation Fort Lauderdale." CPC $4.80-6.50 (premium for child psych keywords). Highlights Dr. Vadakkan's U. Miami fellowship and weekend availability. Child psychiatry is severely underserved in Broward — 2 month average wait elsewhere vs. 1-2 weeks at Refresh.</p>
+          <a class="source-link" href="https://www.aacap.org/aacap/Resources_for_Primary_Care/Workforce_Issues.aspx" target="_blank" rel="noopener">Ref: AACAP — Child Psychiatry Workforce Shortage</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>Q2 2026</span></div>
+      </div>
+
+      <div class="content-card ad reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">🧬</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Meta Ad</div>
+          <h3>Pharmacogenomic Testing — Awareness Campaign</h3>
+          <p>Educational Meta ad introducing DNA-guided medication selection to patients frustrated with trial-and-error prescribing. Targets adults 30-60 who've tried 2+ psychiatric medications. Creative uses "Tired of medications that don't work?" hook. Expected engagement rate 3.5%+. Important because it drives our highest-value service — pharmacogenomic patients have 3x higher LTV.</p>
+          <a class="source-link" href="https://www.nature.com/articles/s41398-019-0407-x" target="_blank" rel="noopener">Ref: Nature — Pharmacogenomics ROI in Psychiatry</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>Q2 2026</span></div>
+      </div>
+
+      <div class="content-card ad reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">💙</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Google RSA</div>
+          <h3>Depression Treatment — West Palm Beach</h3>
+          <p>Search ad targeting "depression psychiatrist West Palm Beach," "medication management depression WPB." CPC $3.60-4.80. Palm Beach County has the highest per-capita mental health spend in FL. Three ad variants test: evidence-based treatment vs. same-week appointments vs. insurance-accepted messaging. Geo-targeted 25mi radius from Wellington office.</p>
+          <a class="source-link" href="https://ads.google.com/home/resources/mental-health-advertising-policies/" target="_blank" rel="noopener">Ref: Google Healthcare Advertising Policies</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot scheduled"></span>Scheduled</span><span>Q3 2026</span></div>
+      </div>
+
+      <div class="content-card ad reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">📅</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Meta Ad</div>
+          <h3>Weekend Appointments — Retargeting Campaign</h3>
+          <p>Retargeting ad shown to website visitors who didn't book. "Can't make a weekday appointment? We're open weekends." Targets the 68% of site visitors who bounce from the booking page. Expected ROAS 5.2x based on retargeting benchmarks. Weekend availability is our strongest conversion lever for working professionals who can't take time off.</p>
+          <a class="source-link" href="https://www.facebook.com/business/help/449542958510885" target="_blank" rel="noopener">Ref: Meta — Custom Audiences & Retargeting</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>Q3 2026</span></div>
+      </div>
+
+      <div class="content-card ad reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">🏥</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Google RSA</div>
+          <h3>Psychiatrist Accepting Aetna — Florida</h3>
+          <p>Insurance-specific search ad. "Psychiatrist that takes Aetna" gets 3,200 monthly searches in FL alone. Most patients search by insurance first. Headline variants: "Aetna-Accepted Psychiatrist" / "Book Today — Aetna In-Network" / "10 FL Locations." This single keyword cluster drove 31% of our Q1 conversions. Expanding to all 6 accepted insurers.</p>
+          <a class="source-link" href="https://www.aetna.com/individuals-families/find-a-doctor.html" target="_blank" rel="noopener">Ref: Aetna Provider Directory — Verification</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot ready"></span>Active</span><span>Q1 2026</span></div>
+      </div>
+
+      <div class="content-card ad reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">🎒</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Meta Ad</div>
+          <h3>Back to School Mental Health — Pediatric Campaign</h3>
+          <p>Seasonal Meta campaign targeting parents of school-age children in Aug-Sep. Creative features "Is your child struggling? You're not alone." with warm illustration style. Interest targeting: parenting, education, child development. Timed for back-to-school when ADHD referrals spike 40%. Budget: $800/mo for 6-week flight. Expected 15-20 new child evaluations.</p>
+          <a class="source-link" href="https://www.cdc.gov/adhd/about/index.html" target="_blank" rel="noopener">Ref: CDC — ADHD Prevalence in School-Age Children</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot scheduled"></span>Scheduled</span><span>Aug 2026</span></div>
+      </div>
+
+      <!-- ══ SOCIAL MEDIA (8) ══ -->
+      <div class="content-card social reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">📋</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Instagram Carousel</div>
+          <h3>5 Signs It's Time to See a Psychiatrist</h3>
+          <p>10-slide carousel destigmatizing treatment-seeking. Each slide addresses one sign with warm illustration + brief explanation. Final slide is a CTA to book. Carousel format gets 3x the engagement of single images on IG (Hootsuite 2024). This post type consistently drives our highest DM inquiries — warm, educational content converts better than promotional.</p>
+          <a class="source-link" href="https://blog.hootsuite.com/instagram-carousel/" target="_blank" rel="noopener">Source: Hootsuite — Instagram Carousel Best Practices</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>Mar 2026</span></div>
+      </div>
+
+      <div class="content-card social reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">💼</span></div>
+        <div class="content-card-header">
+          <div class="content-type">LinkedIn Article</div>
+          <h3>What Is Pharmacogenomic Testing? A Guide for Patients and Providers</h3>
+          <p>Long-form LinkedIn article targeting healthcare professionals and informed patients. Explains CYP2D6, CYP2C19 enzyme panels and clinical decision-making. LinkedIn's algorithm boosts articles — average 5x reach vs. regular posts. Important for B2B referral pipeline: PCPs and therapists who read this become referral sources. Includes CTA for provider-to-provider consultation.</p>
+          <a class="source-link" href="https://www.linkedin.com/pulse/topics/healthcare/" target="_blank" rel="noopener">Ref: LinkedIn Healthcare Content Strategy</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>Apr 2026</span></div>
+      </div>
+
+      <div class="content-card social reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">💚</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Facebook Post</div>
+          <h3>Mental Health Monday: Self-Care Isn't Selfish</h3>
+          <p>Weekly branded series establishing consistent posting cadence. Branded template with Refresh colors + rotating mental health tips. Studies show consistent posting schedules increase page reach 2.5x (Sprout Social). This series anchors our content calendar and gives us a reliable engagement baseline. Each post includes a gentle CTA and helpline numbers.</p>
+          <a class="source-link" href="https://sproutsocial.com/insights/best-times-to-post-on-social-media/" target="_blank" rel="noopener">Source: Sprout Social — Posting Frequency Research</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot ready"></span>Published</span><span>Mar 2026</span></div>
+      </div>
+
+      <div class="content-card social reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">🎬</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Instagram Reel</div>
+          <h3>"Day in the Life" — Behind the Scenes at Refresh Psychiatry</h3>
+          <p>60-second Reel showing the Davie office environment, friendly staff, and telehealth setup. Reels get 22% more engagement than static posts (Instagram data). Humanizes the practice and reduces "first visit anxiety." Doctor-led content builds trust — practices with provider-facing video see 35% more bookings. Uses Remotion-generated intro/outro bumpers.</p>
+          <a class="source-link" href="https://about.instagram.com/blog/announcements/instagram-reels-updates" target="_blank" rel="noopener">Source: Instagram — Reels Engagement Data</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>Apr 2026</span></div>
+      </div>
+
+      <div class="content-card social reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">⭐</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Facebook Post</div>
+          <h3>Patient Spotlight: "Telehealth Changed Everything for Me"</h3>
+          <p>Testimonial-style post (hypothetical composite, HIPAA-compliant) showing how telehealth removed barriers for a busy working parent. Social proof content drives 4x more conversions than promotional posts (Nielsen). Important because 72% of healthcare consumers read reviews/testimonials before booking. Includes FTC-compliant disclosure language.</p>
+          <a class="source-link" href="https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides" target="_blank" rel="noopener">Ref: FTC Endorsement Guidelines</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>May 2026</span></div>
+      </div>
+
+      <div class="content-card social reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">⚡</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Instagram Carousel</div>
+          <h3>ADHD Myths vs. Facts — What Science Actually Says</h3>
+          <p>Myth-busting carousel (8 slides) targeting ADHD stigma. "ADHD isn't real" / "Only kids have ADHD" / "Medication is always the answer" — each debunked with citations. ADHD content performs 2x above our average engagement. This format educates while subtly positioning Refresh as an ADHD specialty practice. Hashtags target #ADHDAwareness (1.2M posts).</p>
+          <a class="source-link" href="https://chadd.org/about-adhd/myths-and-misunderstandings/" target="_blank" rel="noopener">Source: CHADD — ADHD Myths & Misunderstandings</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>May 2026</span></div>
+      </div>
+
+      <div class="content-card social reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">📍</span></div>
+        <div class="content-card-header">
+          <div class="content-type">LinkedIn Post</div>
+          <h3>Refresh Psychiatry Expands to 10 Florida Locations</h3>
+          <p>Growth announcement post targeting referral partners and professional network. LinkedIn company updates with location-based content get 2x engagement (LinkedIn). Announces Coral Springs and Vero Beach openings. Tags local business associations and healthcare networks. Important for employer referral pipeline and EAP partnerships.</p>
+          <a class="source-link" href="https://business.linkedin.com/marketing-solutions/blog/best-practices" target="_blank" rel="noopener">Ref: LinkedIn Business Content Best Practices</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot ready"></span>Published</span><span>Mar 2026</span></div>
+      </div>
+
+      <div class="content-card social reveal">
+        <div class="content-card-banner"><div class="banner-pattern"></div><span class="banner-icon">🗓️</span></div>
+        <div class="content-card-header">
+          <div class="content-type">Instagram Story Series</div>
+          <h3>Mental Health Awareness Month — 30 Days of Wellness Tips</h3>
+          <p>Daily Story series for May (Mental Health Awareness Month). Each day features a quick tip, breathing exercise, or myth-bust. Story series drive 15% more profile visits than posts (Iconosquare). This is our biggest annual brand awareness play — timed when public attention to mental health peaks. Branded templates ensure visual consistency across all 30 days.</p>
+          <a class="source-link" href="https://www.nami.org/Get-Involved/Awareness-Events/Mental-Health-Awareness-Month" target="_blank" rel="noopener">Source: NAMI — Mental Health Awareness Month</a>
+        </div>
+        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot scheduled"></span>Scheduled</span><span>May 2026</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAMPAIGNS -->
+  <section class="section" id="campaigns">
+    <div class="section-header">
+      <div class="section-header-left">
+        <h2>Active Campaigns</h2>
+        <p>6 active campaigns across Google Ads, Meta, SEO, and organic social — with full strategy details, targeting, and KPIs</p>
+      </div>
+    </div>
+    <div class="campaigns-grid">
+      <div class="campaign-card google reveal">
+        <div class="campaign-card-banner"><span class="banner-icon">🎯</span><span class="banner-label">ADHD ACQUISITION</span></div>
+        <div class="campaign-top">
+          <div class="campaign-platform">Google Ads — Search</div>
+          <svg class="sparkline" viewBox="0 0 80 28"><polygon class="area" points="0,24 8,20 16,22 24,16 32,18 40,10 48,14 56,8 64,12 72,6 80,4 80,28 0,28"/><polyline points="0,24 8,20 16,22 24,16 32,18 40,10 48,14 56,8 64,12 72,6 80,4"/></svg>
+        </div>
+        <h3>South Florida ADHD Acquisition</h3>
+        <p><strong>Strategy:</strong> High-intent search campaign across Broward, Palm Beach, and Miami-Dade counties. Three ad groups: "ADHD evaluation" (broad), "ADHD psychiatrist near me" (local), and "adult ADHD medication management" (service-specific). Using RSA format with 15 headlines and 4 descriptions to maximize Google's machine learning optimization.</p>
+        <p style="margin-top:8px;font-size:12px;opacity:0.5"><strong>Targeting:</strong> 25mi radius around Davie, Pembroke Pines, Coconut Creek offices. Age 22-55. In-market: Mental Health Services. Budget: $1,200/mo. Landing page: /adhd-treatment with Calendly embed.</p>
+        <div class="campaign-metrics">
+          <div class="metric"><span class="value">$3.40</span><span class="label">Avg CPC</span><span class="change down">-8%</span></div>
+          <div class="metric"><span class="value">4.2%</span><span class="label">CTR</span><span class="change up">+12%</span></div>
+          <div class="metric"><span class="value">18</span><span class="label">Conversions</span><span class="change up">+5</span></div>
+          <div class="metric"><span class="value">$226</span><span class="label">Cost/Lead</span><span class="change down">-$18</span></div>
+        </div>
+      </div>
+
+      <div class="campaign-card meta reveal">
+        <div class="campaign-card-banner"><span class="banner-icon">📱</span><span class="banner-label">TELEHEALTH FL</span></div>
+        <div class="campaign-top">
+          <div class="campaign-platform">Meta Ads — Awareness + Traffic</div>
+          <svg class="sparkline" viewBox="0 0 80 28"><polygon class="area" points="0,22 8,24 16,20 24,22 32,16 40,18 48,12 56,14 64,8 72,10 80,6 80,28 0,28"/><polyline points="0,22 8,24 16,20 24,22 32,16 40,18 48,12 56,14 64,8 72,10 80,6"/></svg>
+        </div>
+        <h3>Telehealth Awareness — Florida Statewide</h3>
+        <p><strong>Strategy:</strong> Two-phase funnel: Phase 1 (Awareness) uses video creative from Remotion "Telehealth FL" composition reaching adults 25-55 across FL. Phase 2 (Retargeting) shows testimonial-style ads to video viewers + website visitors. Special Ad Category: Healthcare. Creative rotates every 2 weeks to prevent fatigue.</p>
+        <p style="margin-top:8px;font-size:12px;opacity:0.5"><strong>Targeting:</strong> Statewide FL, excluding existing patients (CRM exclusion list). Interests: mental health, therapy, psychology, self-improvement. Lookalike audience from converted patients (1-3%). Budget: $600/mo awareness + $400/mo retargeting.</p>
+        <div class="campaign-metrics">
+          <div class="metric"><span class="value">$0.85</span><span class="label">Avg CPC</span><span class="change down">-15%</span></div>
+          <div class="metric"><span class="value">2.8%</span><span class="label">CTR</span><span class="change up">+0.4%</span></div>
+          <div class="metric"><span class="value">340</span><span class="label">Clicks/mo</span><span class="change up">+22%</span></div>
+          <div class="metric"><span class="value">14.2K</span><span class="label">Reach</span><span class="change up">+3.1K</span></div>
+        </div>
+      </div>
+
+      <div class="campaign-card seo reveal">
+        <div class="campaign-card-banner"><span class="banner-icon">📝</span><span class="banner-label">SPRING CONTENT</span></div>
+        <div class="campaign-top">
+          <div class="campaign-platform">SEO / Content Marketing</div>
+          <svg class="sparkline" viewBox="0 0 80 28"><polygon class="area" points="0,26 8,24 16,22 24,20 32,18 40,14 48,16 56,10 64,8 72,6 80,4 80,28 0,28"/><polyline points="0,26 8,24 16,22 24,20 32,18 40,14 48,16 56,10 64,8 72,6 80,4"/></svg>
+        </div>
+        <h3>Spring Mental Health Content Series</h3>
+        <p><strong>Strategy:</strong> Seasonal pillar + cluster content model. Pillar page: "Spring Mental Health Guide for Florida." Cluster posts target long-tail keywords: "daylight saving anxiety," "spring depression Florida," "seasonal mood changes." Each post interlinks to pillar and includes schema markup (FAQPage, MedicalCondition). Publishing cadence: 2 posts/week through April.</p>
+        <p style="margin-top:8px;font-size:12px;opacity:0.5"><strong>SEO Details:</strong> Targeting 22 keywords with combined 18,400 monthly searches. Avg keyword difficulty: 28/100 (moderate). Internal linking to service pages for link equity distribution. All posts include local schema (city + state) for Google Local Pack visibility.</p>
+        <div class="campaign-metrics">
+          <div class="metric"><span class="value">3</span><span class="label">Posts Live</span></div>
+          <div class="metric"><span class="value">12</span><span class="label">Top 20 Keywords</span><span class="change up">+4</span></div>
+          <div class="metric"><span class="value">+28%</span><span class="label">Organic Traffic</span><span class="change up">MoM</span></div>
+          <div class="metric"><span class="value">1:42</span><span class="label">Avg Time on Page</span><span class="change up">+18s</span></div>
+        </div>
+      </div>
+
+      <div class="campaign-card social reveal">
+        <div class="campaign-card-banner"><span class="banner-icon">📣</span><span class="banner-label">BRAND AWARENESS</span></div>
+        <div class="campaign-top">
+          <div class="campaign-platform">Organic Social — Multi-Platform</div>
+          <svg class="sparkline" viewBox="0 0 80 28"><polygon class="area" points="0,20 8,18 16,22 24,16 32,14 40,16 48,10 56,12 64,8 72,10 80,6 80,28 0,28"/><polyline points="0,20 8,18 16,22 24,16 32,14 40,16 48,10 56,12 64,8 72,10 80,6"/></svg>
+        </div>
+        <h3>Brand Awareness & Community Building</h3>
+        <p><strong>Strategy:</strong> Content pillar rotation across Instagram (visual-first: carousels, Reels), Facebook (community: testimonials, Mental Health Mondays), and LinkedIn (professional: articles, practice updates). Using Remotion video bumpers on all Reels for brand consistency. 80/20 rule: 80% educational/inspirational, 20% promotional.</p>
+        <p style="margin-top:8px;font-size:12px;opacity:0.5"><strong>Content Calendar:</strong> Mon — Mental Health Monday (FB). Tue — Tip Tuesday (IG Story). Wed — Educational carousel (IG). Thu — LinkedIn article/update. Fri — Provider spotlight (IG Reel). Weekly goal: 5 posts across platforms. Monthly Remotion video: 1 new composition.</p>
+        <div class="campaign-metrics">
+          <div class="metric"><span class="value">2.4K</span><span class="label">Followers</span><span class="change up">+180</span></div>
+          <div class="metric"><span class="value">5.1%</span><span class="label">Engagement</span><span class="change up">+0.8%</span></div>
+          <div class="metric"><span class="value">20</span><span class="label">Posts/Month</span></div>
+          <div class="metric"><span class="value">12</span><span class="label">DM Inquiries</span><span class="change up">+4</span></div>
+        </div>
+      </div>
+
+      <div class="campaign-card google reveal">
+        <div class="campaign-card-banner"><span class="banner-icon">🏥</span><span class="banner-label">INSURANCE SEARCH</span></div>
+        <div class="campaign-top">
+          <div class="campaign-platform">Google Ads — Local Services</div>
+          <svg class="sparkline" viewBox="0 0 80 28"><polygon class="area" points="0,26 8,22 16,24 24,18 32,20 40,14 48,16 56,10 64,14 72,8 80,6 80,28 0,28"/><polyline points="0,26 8,22 16,24 24,18 32,20 40,14 48,16 56,10 64,14 72,8 80,6"/></svg>
+        </div>
+        <h3>Insurance-Based Search — All FL Markets</h3>
+        <p><strong>Strategy:</strong> Dedicated ad groups for each accepted insurer: Aetna, UnitedHealthcare, Cigna, Humana, AvMed, UMR, Oscar. These "insurance + psychiatrist" keywords have 4x higher conversion rates than generic keywords because they signal booking intent. Each ad group has location-specific extensions linking to the nearest office. Our highest-ROAS campaign.</p>
+        <p style="margin-top:8px;font-size:12px;opacity:0.5"><strong>Performance Note:</strong> "Psychiatrist that takes Aetna" alone drove 31% of Q1 conversions. Expanding to long-tail: "Aetna psychiatrist Davie FL," "United psychiatrist telehealth Florida." Budget: $800/mo. Negative keywords exclude therapy-only and counselor searches to maintain psychiatric focus.</p>
+        <div class="campaign-metrics">
+          <div class="metric"><span class="value">$2.80</span><span class="label">Avg CPC</span><span class="change down">-12%</span></div>
+          <div class="metric"><span class="value">6.1%</span><span class="label">CTR</span><span class="change up">+1.4%</span></div>
+          <div class="metric"><span class="value">24</span><span class="label">Conversions</span><span class="change up">+8</span></div>
+          <div class="metric"><span class="value">$93</span><span class="label">Cost/Lead</span><span class="change down">-$31</span></div>
+        </div>
+      </div>
+
+      <div class="campaign-card meta reveal">
+        <div class="campaign-card-banner"><span class="banner-icon">🎒</span><span class="banner-label">BACK TO SCHOOL</span></div>
+        <div class="campaign-top">
+          <div class="campaign-platform">Meta Ads — Pediatric Focus</div>
+          <svg class="sparkline" viewBox="0 0 80 28"><polygon class="area" points="0,24 8,26 16,22 24,24 32,18 40,20 48,14 56,16 64,10 72,12 80,8 80,28 0,28"/><polyline points="0,24 8,26 16,22 24,24 32,18 40,20 48,14 56,16 64,10 72,12 80,8"/></svg>
+        </div>
+        <h3>Back to School — Child & Adolescent Campaign</h3>
+        <p><strong>Strategy:</strong> Seasonal campaign (Aug-Sep) targeting parents of children ages 5-17. Creative emphasizes Dr. Vadakkan's U. Miami fellowship, short wait times (1-2 weeks vs. industry avg 2 months), and comprehensive evaluation approach. Two creative sets: "struggling in school" (ADHD-focused) and "behavioral changes" (anxiety/mood). Timed for back-to-school referral spike.</p>
+        <p style="margin-top:8px;font-size:12px;opacity:0.5"><strong>Targeting:</strong> Parents in Broward, Palm Beach, Miami-Dade, Orange County. Ages 28-50. Interests: parenting, education, child development, special needs. Exclusions: childcare professionals (too broad). Budget: $800/mo for 6-week flight. Expected: 15-20 new child evaluations at $180 avg acquisition cost.</p>
+        <div class="campaign-metrics">
+          <div class="metric"><span class="value">$1.20</span><span class="label">Avg CPC</span></div>
+          <div class="metric"><span class="value">3.4%</span><span class="label">Est. CTR</span></div>
+          <div class="metric"><span class="value">15-20</span><span class="label">Target Leads</span></div>
+          <div class="metric"><span class="value">$180</span><span class="label">Target CPA</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIRAL MENTAL HEALTH CONTENT -->
+  <section class="section" id="viral">
+    <div class="section-header">
+      <div class="section-header-left">
+        <h2>🔥 Viral Mental Health Content</h2>
+        <p>Top 15 most-shared psychiatric and mental health posts across social media — updated March 15, 2026</p>
+      </div>
+    </div>
+    <div class="viral-grid">
+
+      <div class="viral-card reveal">
+        <div class="viral-card-banner tiktok-bg"><span class="banner-icon">🧠</span></div>
+        <div class="viral-rank">#1</div>
+        <div class="viral-platform tiktok">📱 TikTok</div>
+        <h3>🧠 "The Truth About Anxiety &amp; ADHD: Life-Changing Tools From a Renowned Psychiatrist"</h3>
+        <div class="viral-creator">@melrobbins feat. Dr. Tracey Marks · Board-Certified Psychiatrist</div>
+        <p>A punchy clip from The Mel Robbins Podcast debunking what ADHD actually looks like versus online myths, covering its overlap with anxiety — especially in women and late-diagnosed adults.</p>
+        <div class="viral-stats">
+          <span>👁️ 18M+ views</span>
+          <span>❤️ 2.1M likes</span>
+          <span>🔁 380K shares</span>
+        </div>
+        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> Create a Reel with a Refresh psychiatrist: "What ADHD actually looks like in adults — especially women." The "I didn't know that was ADHD" hook drives enormous comment engagement and positions Refresh as the credentialed local expert for ADHD treatment.</div>
+      </div>
+
+      <div class="viral-card reveal">
+        <div class="viral-card-banner tiktok-bg"><span class="banner-icon">😴</span></div>
+        <div class="viral-rank">#2</div>
+        <div class="viral-platform tiktok">📱 TikTok</div>
+        <h3>😴 #FloorTimeChallenge — Lying on the floor as stress relief</h3>
+        <div class="viral-creator">Multiple creators · #floortimechallenge trend</div>
+        <p>Users film themselves lying flat doing absolutely nothing as decompression from overstimulation. Clinical psychologists validated the grounding mechanism — "when you lie down, you connect with your body rather than your mind."</p>
+        <div class="viral-stats">
+          <span>❤️ 4.5M+ likes</span>
+          <span>💾 1.2M shares</span>
+          <span>🔁 210K saves</span>
+        </div>
+        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> Post a 30-second Reel: "Why your therapist might actually approve of lying on the floor." Validate with clinical framing (proprioceptive grounding, parasympathetic activation), then invite viewers to book if they need more than floor time to manage anxiety or ADHD.</div>
+      </div>
+
+      <div class="viral-card reveal">
+        <div class="viral-card-banner youtube-bg"><span class="banner-icon">🎙️</span></div>
+        <div class="viral-rank">#3</div>
+        <div class="viral-platform youtube">🎬 YouTube</div>
+        <h3>🎙️ "Skills to Stop Overthinking" — Therapy in a Nutshell series</h3>
+        <div class="viral-creator">@therapyinanutshell · Emma McAdam, LMFT (2.4M subscribers)</div>
+        <p>Short (8–14 min) evidence-based instructional videos on stopping overthinking loops, managing rumination, and breaking the anxiety-depression spiral — clinical but never cold.</p>
+        <div class="viral-stats">
+          <span>👁️ 8M+ views per video</span>
+          <span>❤️ 320K likes</span>
+          <span>💬 45K comments</span>
+        </div>
+        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> Launch a YouTube Shorts series — "60 Seconds with a Refresh Psychiatrist" — covering one micro-skill per video (box breathing, cognitive defusion, sleep hygiene). Drives top-of-funnel awareness and positions the practice as an educator, not just a prescriber.</div>
+      </div>
+
+      <div class="viral-card reveal">
+        <div class="viral-card-banner tiktok-bg"><span class="banner-icon">💡</span></div>
+        <div class="viral-rank">#4</div>
+        <div class="viral-platform tiktok">📱 TikTok</div>
+        <h3>💡 "Is it selfish or is it ADHD?!" — ADHD myth-busting</h3>
+        <div class="viral-creator">@katimorton · Kati Morton, LMFT (900K+ TikTok followers)</div>
+        <p>Breaks down why ADHD behaviors that appear "selfish" (forgetting plans, not returning calls) are neurological symptoms, not character flaws. Uses "what it looks like vs. what's happening in the brain" format.</p>
+        <div class="viral-stats">
+          <span>👁️ 6.2M views</span>
+          <span>❤️ 890K likes</span>
+          <span>🔁 220K shares</span>
+        </div>
+        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> Film a 45-second Refresh version: "3 things people with ADHD do that look selfish (but aren't)." End with "ADHD treatment can help — we're accepting new patients in Florida." The "send this to my mom" dynamic drives high share-to-view ratios.</div>
+      </div>
+
+      <div class="viral-card reveal">
+        <div class="viral-card-banner instagram-bg"><span class="banner-icon">🫁</span></div>
+        <div class="viral-rank">#5</div>
+        <div class="viral-platform instagram">📸 Instagram</div>
+        <h3>🫁 "Box Breathing in 30 Seconds" — grounding technique demonstration</h3>
+        <div class="viral-creator">@therapyreels + @your.mental.health.pal · Therapist creators (trend format)</div>
+        <p>Therapists demonstrate box breathing (inhale 4, hold 4, exhale 4, hold 4) using on-screen animation or hand gestures. The "do this during a panic attack" framing made this a bookmark staple.</p>
+        <div class="viral-stats">
+          <span>👁️ 5.8M+ views</span>
+          <span>💾 310K saves</span>
+          <span>🔁 88K shares</span>
+        </div>
+        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> Record a clean branded version with a Refresh provider demonstrating Box Breathing on a Refresh Blue background. Pin it. It becomes a perpetual organic traffic driver — people use it during real moments of distress and associate Refresh with relief.</div>
+      </div>
+
+      <div class="viral-card reveal">
+        <div class="viral-card-banner reddit-bg"><span class="banner-icon">📝</span></div>
+        <div class="viral-rank">#6</div>
+        <div class="viral-platform reddit">🟠 Reddit</div>
+        <h3>📝 "I was diagnosed at 37. Here's what I wish someone had told me."</h3>
+        <div class="viral-creator">u/latediagnosedADHD · r/ADHD, r/adulting, r/offmychest</div>
+        <p>A lengthy, emotionally raw account of receiving an adult ADHD diagnosis after decades of thinking they were "lazy" or "broken." Covers relief, grief, anger, and hope — the comment section became a support group.</p>
+        <div class="viral-stats">
+          <span>⬆️ 54K+ upvotes</span>
+          <span>💬 6,200 comments</span>
+          <span>🔁 400+ crossposts</span>
+        </div>
+        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> Create a patient story video series ("I was diagnosed late — here's what changed") with consenting patients, repurposed as YouTube Shorts, Reels, and landing page testimonials. Targets the massive late-diagnosis ADHD audience actively seeking evaluation in Florida.</div>
+      </div>
+
+      <div class="viral-card reveal">
+        <div class="viral-card-banner tiktok-bg"><span class="banner-icon">⏳</span></div>
+        <div class="viral-rank">#7</div>
+        <div class="viral-platform tiktok">📱 TikTok</div>
+        <h3>⏳ "Mental Health Then vs. Now" — stigma reduction nostalgia format</h3>
+        <div class="viral-creator">@mammybanter · Comedy/parenting crossover account</div>
+        <p>Compares how mental health was discussed in the 1990s–2000s ("just snap out of it") versus today (therapy normalized, ADHD understood, medication isn't shameful). Humor-forward with a sincere gut-punch ending.</p>
+        <div class="viral-stats">
+          <span>👁️ 5.1M views</span>
+          <span>❤️ 620K likes</span>
+          <span>🔁 145K shares</span>
+        </div>
+        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> A "then vs. now" Reel for psychiatry access: "Getting mental health care in 2005 vs. 2026 with Refresh Psychiatry." Shows the shift from long waitlists and stigma to same-week telepsychiatry with insurance — positions Refresh as part of the positive change.</div>
+      </div>
+
+      <div class="viral-card reveal">
+        <div class="viral-card-banner linkedin-bg"><span class="banner-icon">💬</span></div>
+        <div class="viral-rank">#8</div>
+        <div class="viral-platform linkedin">💼 LinkedIn</div>
+        <h3>💬 "We don't have a diagnosis problem. We have a delivery problem."</h3>
+        <div class="viral-creator">Dr. Eric Arzubi · Psychiatrist &amp; LinkedIn thought leader</div>
+        <p>Opinion-forward post arguing the mental health crisis is not about over/under-diagnosis — it's about the catastrophic gap between need and accessible delivery of care. Four concrete suggestions for the APA.</p>
+        <div class="viral-stats">
+          <span>❤️ 18K+ reactions</span>
+          <span>💬 2,100 comments</span>
+          <span>🔁 4,800 reposts</span>
+        </div>
+        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> Dr. Nepa can post a LinkedIn thought-leadership piece: "Why Florida still has a psychiatric access gap — and what we're doing about it." Highlights Refresh's 16-location telepsychiatry footprint as a direct solution, building B2B referral relationships with PCPs and employers.</div>
+      </div>
+
+      <div class="viral-card reveal">
+        <div class="viral-card-banner instagram-bg"><span class="banner-icon">⚡</span></div>
+        <div class="viral-rank">#9</div>
+        <div class="viral-platform instagram">📸 Instagram</div>
+        <h3>⚡ "Reset your nervous system in 60 seconds" — Vagus Nerve demonstration</h3>
+        <div class="viral-creator">@katimorton + wellness creators · Vagus nerve trend (673K monthly searches)</div>
+        <p>Demonstrates simple vagus nerve stimulation techniques — humming, cold water on face, physiological sigh — explaining how the vagus nerve is the body's built-in stress "off switch."</p>
+        <div class="viral-stats">
+          <span>👁️ 30M+ aggregate views</span>
+          <span>💾 190K saves</span>
+          <span>❤️ 560K likes</span>
+        </div>
+        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> A Refresh provider explains vagus nerve activation in a 45-second Reel, then bridges: "These tools are powerful — but if anxiety or ADHD is still interfering with your life, that's where we come in." Pairs perfectly with pharmacogenomic testing as the clinical complement to self-regulation tools.</div>
+      </div>
+
+      <div class="viral-card reveal">
+        <div class="viral-card-banner youtube-bg"><span class="banner-icon">🩺</span></div>
+        <div class="viral-rank">#10</div>
+        <div class="viral-platform youtube">🎬 YouTube</div>
+        <h3>🩺 "ADHD in Women Looks Different — and Doctors Keep Missing It"</h3>
+        <div class="viral-creator">@drtraceymärks · Dr. Tracey Marks, MD (2.3M YouTube subscribers)</div>
+        <p>Explains how ADHD presents differently in women — more internalized, more masked, more likely misdiagnosed as anxiety or depression. Comments dominated by "I was told it was anxiety for 15 years."</p>
+        <div class="viral-stats">
+          <span>👁️ 4.2M views</span>
+          <span>❤️ 310K likes</span>
+          <span>💬 82K comments</span>
+        </div>
+        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> Create content around "ADHD in women and girls" to position Refresh as the gender-aware, informed provider. A landing page targeting "ADHD evaluation for women Florida" with this framing captures high-intent search traffic from an underserved audience actively seeking diagnosis.</div>
+      </div>
+
+      <div class="viral-card reveal">
+        <div class="viral-card-banner facebook-bg"><span class="banner-icon">💚</span></div>
+        <div class="viral-rank">#11</div>
+        <div class="viral-platform facebook">👥 Facebook</div>
+        <h3>💚 #TherapyWorks — Creator series normalizing therapy for parents &amp; caregivers</h3>
+        <div class="viral-creator">Multiple micro-influencers · BetterHelp partnership campaign</div>
+        <p>Coordinated campaign where relatable creators share 60-second personal stories about starting therapy, targeting Facebook parenting groups, caregiver groups, and 40+ demographics across the US.</p>
+        <div class="viral-stats">
+          <span>👁️ 54M views across campaign</span>
+          <span>🔁 2.3M Facebook shares</span>
+          <span>📈 19% referral signup spike</span>
+        </div>
+        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> Facebook Groups remain underused by psychiatric practices. Refresh can engage authentically in Florida parenting groups, caregiver communities, and ADHD parent networks. A targeted Facebook ad campaign using patient story testimonials mirrors BetterHelp's highest-performing format.</div>
+      </div>
+
+      <div class="viral-card reveal">
+        <div class="viral-card-banner reddit-bg"><span class="banner-icon">😔</span></div>
+        <div class="viral-rank">#12</div>
+        <div class="viral-platform reddit">🟠 Reddit</div>
+        <h3>😔 "Anxiety and depression at the same time feels like being scared and tired simultaneously"</h3>
+        <div class="viral-creator">Anonymous · r/mentalhealth → screenshot spread to Instagram, X, Pinterest</div>
+        <p>A short paragraph describing the contradictory experience of having both anxiety and depression: "wanting friends but hating to socialize," "wanting to sleep but being too scared to be alone with your thoughts."</p>
+        <div class="viral-stats">
+          <span>⬆️ 48K+ upvotes</span>
+          <span>💬 5,400 comments</span>
+          <span>🔁 Cross-platform screenshot virality</span>
+        </div>
+        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> Create an Instagram carousel: "If you've ever felt like this..." using 5–6 slides of poetic, relatable descriptions of comorbid anxiety and depression. Final slide: "Both are treatable. Together." with a link to book. The screenshot-worthy quote format is purpose-built for maximum saves and shares.</div>
+      </div>
+
+      <div class="viral-card reveal">
+        <div class="viral-card-banner tiktok-bg"><span class="banner-icon">🧬</span></div>
+        <div class="viral-rank">#13</div>
+        <div class="viral-platform tiktok">📱 TikTok</div>
+        <h3>🧬 "I Finally Got My Pharmacogenomic Test Results — Here's What Changed"</h3>
+        <div class="viral-creator">Multiple wellness creators · patient advocate format</div>
+        <p>Creators walk through receiving pharmacogenomic test results and discovering why they had poor responses to prior antidepressants. Comments: "Wait — this is real? My doctor never mentioned this." High saves — viewers bring it to their own doctor.</p>
+        <div class="viral-stats">
+          <span>👁️ 3.1M aggregate views</span>
+          <span>💾 88K saves</span>
+          <span>💬 31K comments</span>
+        </div>
+        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> This is Refresh's #1 content differentiator. A TikTok/Reel from a Refresh provider — "Why we test your DNA before selecting your medication" — would be among the highest-converting content the practice can produce. Pair with a dedicated pharmacogenomics landing page.</div>
+      </div>
+
+      <div class="viral-card reveal">
+        <div class="viral-card-banner instagram-bg"><span class="banner-icon">🏠</span></div>
+        <div class="viral-rank">#14</div>
+        <div class="viral-platform instagram">📸 Instagram</div>
+        <h3>🏠 "Signs You Were Raised in an Emotionally Unavailable Home" — psychoeducation carousel</h3>
+        <div class="viral-creator">@nadiatherapy · Nadia Addesi, Therapist (top 2026 mental health influencer)</div>
+        <p>7-slide carousel identifying patterns rooted in childhood emotional neglect: people-pleasing, inability to identify emotions, chronic self-doubt. Each slide pairs a symptom with a brief compassionate explanation.</p>
+        <div class="viral-stats">
+          <span>👁️ 2.9M views</span>
+          <span>💾 390K saves</span>
+          <span>💬 62K comments</span>
+        </div>
+        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> A Refresh therapist creates a carousel: "5 signs childhood experiences are affecting your mental health as an adult — and what to do next." Final slide offers a free 15-minute consultation. Child psychiatry and family mental health services tie directly into this high-save reference content format.</div>
+      </div>
+
+      <div class="viral-card reveal">
+        <div class="viral-card-banner twitter-bg"><span class="banner-icon">🧵</span></div>
+        <div class="viral-rank">#15</div>
+        <div class="viral-platform twitter">🐦 X / Twitter</div>
+        <h3>🧵 "Thread: What no one tells you about adult ADHD diagnosis"</h3>
+        <div class="viral-creator">Psychiatric NP / ADHD advocates · thread format replicated widely</div>
+        <p>12-tweet thread covering: grief of late diagnosis, the bureaucratic nightmare of adult ADHD evaluation, the "ADHD tax" (time and money lost to symptoms), medication myths, and what treatment actually changes.</p>
+        <div class="viral-stats">
+          <span>👁️ 2.4M impressions</span>
+          <span>🔖 28K bookmarks</span>
+          <span>🔁 41K reposts</span>
+        </div>
+        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> Refresh publishes a thread authored by a provider: "What happens when you finally get evaluated for ADHD as an adult — from a psychiatrist's perspective." Ends with "We offer adult ADHD evaluations. Telepsychiatry available across Florida." Tags #ADHDTwitter, #ADHDAdults, #TelepsychiatryFL.</div>
+      </div>
+
+    </div>
+
+    <!-- ACTION POSTS: Ready-to-publish content inspired by today's viral trends -->
+    <div style="margin-top:48px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <h3 style="font-size:1.25rem;font-weight:800;color:var(--deep-blue);">✍️ This Week's Action Posts</h3>
+        <span style="background:var(--yellow);color:var(--navy);font-size:0.7rem;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:0.04em;">READY TO PUBLISH</span>
+      </div>
+      <p style="color:#64748b;font-size:0.85rem;margin-bottom:24px;">3 ready-to-use posts for Refresh Psychiatry — adapted from today's top viral trends. Compliant, on-brand, and optimized per platform.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;">
+
+        <!-- Action Post 1: Instagram — inspired by #1 viral ADHD + Anxiety -->
+        <div style="background:var(--surface-elevated);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#E1306C,#F77737);border-radius:var(--radius) var(--radius) 0 0;"></div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+            <span style="background:#fce4ec;color:#c2185b;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:20px;">📸 INSTAGRAM</span>
+            <span style="background:#e8f5e9;color:#2e7d32;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:20px;">Education</span>
+          </div>
+          <div style="font-size:0.78rem;color:#64748b;margin-bottom:10px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;">Topic: ADHD + Anxiety Overlap — inspired by Trend #1</div>
+          <div style="background:#f8fafc;border-left:3px solid #E1306C;padding:14px 16px;border-radius:0 8px 8px 0;font-size:0.88rem;line-height:1.7;color:var(--charcoal);margin-bottom:14px;">
+            <p style="margin-bottom:8px;font-weight:700;">If your anxiety and ADHD both flared up just reading this — you're not imagining it. 🧠</p>
+            <p style="margin-bottom:8px;">Most people think anxiety and ADHD are separate problems. But in adults — especially women — they almost always show up together.</p>
+            <p style="margin-bottom:8px;">Here's what that combination can look like:</p>
+            <p style="margin-bottom:4px;">→ Racing thoughts that feel urgent AND exhausting</p>
+            <p style="margin-bottom:4px;">→ Starting tasks but freezing before finishing them</p>
+            <p style="margin-bottom:8px;">→ Being hyperaware of other people's moods (because you've learned to mask)</p>
+            <p style="margin-bottom:8px;">The good news: when treated together, both conditions respond better. At Refresh Psychiatry, we evaluate the full picture — not just one diagnosis at a time.</p>
+            <p style="font-style:italic;color:#64748b;font-size:0.82rem;">If you're experiencing these symptoms, speaking with a mental health professional can help.</p>
+          </div>
+          <div style="font-size:0.8rem;margin-bottom:10px;"><strong>📍 CTA:</strong> "Book your evaluation at the link in bio. Telepsychiatry available across Florida."</div>
+          <div style="font-size:0.78rem;color:#64748b;"><strong>#️⃣ Hashtags:</strong> #ADHDawareness #AnxietyAndADHD #FloridaPsychiatry #TelepsychiatryFL #RefreshPsychiatry #ADHDWomen #MentalHealthMatters</div>
+          <div style="margin-top:14px;padding:10px 14px;background:var(--yellow-glow);border-radius:8px;font-size:0.8rem;color:var(--deep-blue);"><strong>🖼️ Visual:</strong> Two-panel illustration: left side shows racing/scattered thoughts (ADHD), right side shows worry spiral (anxiety). Center overlap labeled "You're not alone." Refresh Blue + Yellow palette.</div>
+        </div>
+
+        <!-- Action Post 2: Facebook — inspired by #13 Pharmacogenomic Testing -->
+        <div style="background:var(--surface-elevated);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#1877F2,#42B0FF);border-radius:var(--radius) var(--radius) 0 0;"></div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+            <span style="background:#e3f2fd;color:#1565c0;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:20px;">👥 FACEBOOK</span>
+            <span style="background:#fff8e1;color:#f57f17;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:20px;">Education</span>
+          </div>
+          <div style="font-size:0.78rem;color:#64748b;margin-bottom:10px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;">Topic: Pharmacogenomic Testing — inspired by Trend #13</div>
+          <div style="background:#f8fafc;border-left:3px solid #1877F2;padding:14px 16px;border-radius:0 8px 8px 0;font-size:0.88rem;line-height:1.7;color:var(--charcoal);margin-bottom:14px;">
+            <p style="margin-bottom:8px;font-weight:700;">Has a medication ever worked great for someone you know — but not for you at all?</p>
+            <p style="margin-bottom:8px;">That's not a mystery. That's genetics.</p>
+            <p style="margin-bottom:8px;">At Refresh Psychiatry, we offer <strong>Pharmacogenomic Analysis</strong> — a simple cheek swab that reveals how your unique genetic makeup affects how you process psychiatric medications.</p>
+            <p style="margin-bottom:8px;">Instead of months of trial and error, we can use your DNA to guide medication decisions from the start. That means:</p>
+            <p style="margin-bottom:4px;">✅ Fewer side effects</p>
+            <p style="margin-bottom:4px;">✅ Better response rates</p>
+            <p style="margin-bottom:8px;">✅ Faster relief</p>
+            <p style="margin-bottom:8px;">This is precision psychiatry — and it's available right now at our Florida locations and via telehealth.</p>
+            <p>Have you ever had a medication that just didn't work the way you expected? Tell us in the comments 👇</p>
+          </div>
+          <div style="font-size:0.8rem;margin-bottom:10px;"><strong>📍 CTA:</strong> "Call (754) 714-3442 or visit refreshpsychiatry.com to learn more about pharmacogenomic testing."</div>
+          <div style="margin-top:14px;padding:10px 14px;background:var(--yellow-glow);border-radius:8px;font-size:0.8rem;color:var(--deep-blue);"><strong>🖼️ Visual:</strong> Clean graphic of a DNA double helix beside a prescription bottle with a checkmark. Headline text: "The right medication for YOUR genetics." Refresh Blue background, Yellow accent.</div>
+        </div>
+
+        <!-- Action Post 3: LinkedIn — inspired by #8 Delivery Problem viral post -->
+        <div style="background:var(--surface-elevated);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#0077B5,#00B0D1);border-radius:var(--radius) var(--radius) 0 0;"></div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+            <span style="background:#e1f0fa;color:#005885;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:20px;">💼 LINKEDIN</span>
+            <span style="background:#f3e5f5;color:#6a1b9a;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:20px;">Thought Leadership</span>
+          </div>
+          <div style="font-size:0.78rem;color:#64748b;margin-bottom:10px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;">Topic: Psychiatric Access Gap in Florida — inspired by Trend #8</div>
+          <div style="background:#f8fafc;border-left:3px solid #0077B5;padding:14px 16px;border-radius:0 8px 8px 0;font-size:0.88rem;line-height:1.7;color:var(--charcoal);margin-bottom:14px;">
+            <p style="margin-bottom:8px;font-weight:700;">Florida's mental health crisis isn't a diagnosis problem. It's a delivery problem.</p>
+            <p style="margin-bottom:8px;">The data is clear: demand for psychiatric care in Florida has increased significantly year over year. Wait times at traditional outpatient practices routinely stretch 3–6 months for new patients. Many Floridians simply give up.</p>
+            <p style="margin-bottom:8px;">At Refresh Psychiatry, we built our model specifically around closing that gap:</p>
+            <p style="margin-bottom:4px;">→ 10 Florida locations from Davie to Orlando to West Palm Beach</p>
+            <p style="margin-bottom:4px;">→ Telepsychiatry available statewide — because geography shouldn't determine access</p>
+            <p style="margin-bottom:4px;">→ Weekend appointments, because life doesn't pause on Fridays</p>
+            <p style="margin-bottom:8px;">→ Pharmacogenomic testing, so we get the treatment right faster</p>
+            <p style="margin-bottom:8px;">For primary care physicians, pediatricians, and school counselors: if your patient needs psychiatric support and you've hit a wall on referrals, we'd love to be your trusted partner. We keep referring providers informed and prioritize warm handoffs.</p>
+            <p>The access gap is real. So is the solution. Let's build it together.</p>
+          </div>
+          <div style="font-size:0.8rem;margin-bottom:10px;"><strong>📍 CTA:</strong> "Connect with me to discuss referral partnership opportunities for your practice or school."</div>
+          <div style="margin-top:14px;padding:10px 14px;background:var(--yellow-glow);border-radius:8px;font-size:0.8rem;color:var(--deep-blue);"><strong>🖼️ Visual:</strong> Florida state outline with 10 location pins highlighted in Refresh Blue. Headline: "Bridging the psychiatric access gap — 10 locations &amp; statewide telehealth." Professional, clean layout.</div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:20px;padding:14px 20px;background:linear-gradient(135deg,rgba(43,108,176,0.06),rgba(246,199,68,0.08));border:1px solid var(--border);border-radius:var(--radius-sm);font-size:0.83rem;color:var(--charcoal);">
+        <strong>⚡ Next Step:</strong> Schedule these 3 posts for Mon / Wed / Thu this week using your social scheduler. For Instagram, pair with a custom Canva graphic using the Refresh Blue (#2B6CB0) + Yellow (#F6C744) brand palette. The Facebook pharmacogenomics post performs best with a question CTA — watch comments for prospective patient signals to respond to.
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ANALYTICS -->
+  <section class="section" id="analytics">
+    <div class="section-header">
+      <div class="section-header-left">
+        <h2>Performance Overview</h2>
+        <p>Marketing metrics for March 2026</p>
+      </div>
+    </div>
+
+    <div class="analytics-row">
+      <div class="analytics-card reveal">
+        <div class="analytics-label">Website Visits</div>
+        <div class="analytics-value" data-count="4820">0</div>
+        <div class="analytics-change up">+18% from Feb</div>
+      </div>
+      <div class="analytics-card reveal">
+        <div class="analytics-label">New Patient Inquiries</div>
+        <div class="analytics-value" data-count="47">0</div>
+        <div class="analytics-change up">+12 from Feb</div>
+      </div>
+      <div class="analytics-card reveal">
+        <div class="analytics-label">Ad Spend (Total)</div>
+        <div class="analytics-value">$2.1K</div>
+        <div class="analytics-change up">ROAS 4.2x</div>
+      </div>
+      <div class="analytics-card reveal">
+        <div class="analytics-label">Content Published</div>
+        <div class="analytics-value" data-count="27">0</div>
+        <div class="analytics-change up">10 Blogs · 9 Ads · 8 Social</div>
+      </div>
+    </div>
+
+    <div class="analytics-chart reveal">
+      <h3>Traffic by Channel — Last 8 Weeks</h3>
+      <div class="bar-chart" id="barChart">
+        <div class="bar-col"><div class="bar blue" data-height="45" style="height:0"></div><div class="bar yellow" data-height="20" style="height:0;margin-top:4px"></div><span class="bar-label">W1</span></div>
+        <div class="bar-col"><div class="bar blue" data-height="55" style="height:0"></div><div class="bar yellow" data-height="28" style="height:0;margin-top:4px"></div><span class="bar-label">W2</span></div>
+        <div class="bar-col"><div class="bar blue" data-height="50" style="height:0"></div><div class="bar yellow" data-height="35" style="height:0;margin-top:4px"></div><span class="bar-label">W3</span></div>
+        <div class="bar-col"><div class="bar blue" data-height="65" style="height:0"></div><div class="bar yellow" data-height="30" style="height:0;margin-top:4px"></div><span class="bar-label">W4</span></div>
+        <div class="bar-col"><div class="bar blue" data-height="70" style="height:0"></div><div class="bar yellow" data-height="42" style="height:0;margin-top:4px"></div><span class="bar-label">W5</span></div>
+        <div class="bar-col"><div class="bar blue" data-height="60" style="height:0"></div><div class="bar yellow" data-height="48" style="height:0;margin-top:4px"></div><span class="bar-label">W6</span></div>
+        <div class="bar-col"><div class="bar blue" data-height="80" style="height:0"></div><div class="bar yellow" data-height="55" style="height:0;margin-top:4px"></div><span class="bar-label">W7</span></div>
+        <div class="bar-col"><div class="bar blue" data-height="90" style="height:0"></div><div class="bar yellow" data-height="60" style="height:0;margin-top:4px"></div><span class="bar-label">W8</span></div>
+      </div>
+      <div class="chart-legend">
+        <div class="legend-item"><span class="legend-dot blue"></span> Organic Search</div>
+        <div class="legend-item"><span class="legend-dot yellow"></span> Paid + Social</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="hub-footer">
+  <div class="brand">Refresh Psychiatry <span>&</span> Therapy</div>
+  <div class="links">
+    <a href="#">refreshpsychiatry.com</a>
+    <a href="#">(954) 603-4081</a>
+    <a href="#">10 FL Locations</a>
+  </div>
+</footer>
+
+<!-- Video Modal -->
+<div class="video-modal-overlay" id="videoModal">
+  <div class="video-modal" id="videoModalInner">
+    <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
+    <video id="modalVideo" controls autoplay></video>
+    <div class="video-modal-title" id="modalVideoTitle"></div>
+  </div>
+</div>
+
+<script>
+  // ═══════════ TAB NAVIGATION ═══════════
+  const tabs = document.querySelectorAll('.nav-tab');
+  const sections = document.querySelectorAll('.section');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      sections.forEach(s => s.classList.remove('active'));
+      tab.classList.add('active');
+      const section = document.getElementById(tab.dataset.tab);
+      section.classList.add('active');
+      // Trigger reveals in new section
+      setTimeout(() => {
+        section.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+      }, 50);
+    });
+  });
+
+  // ═══════════ SCROLL PROGRESS ═══════════
+  const scrollProgress = document.getElementById('scrollProgress');
+  const navBar = document.getElementById('navBar');
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    scrollProgress.style.width = progress + '%';
+    navBar.classList.toggle('scrolled', scrollTop > 10);
+  });
+
+  // ═══════════ HERO PARTICLES ═══════════
+  const heroCanvas = document.getElementById('heroCanvas');
+  const ctx = heroCanvas.getContext('2d');
+  let particles = [];
+
+  function resizeCanvas() {
+    heroCanvas.width = heroCanvas.parentElement.offsetWidth;
+    heroCanvas.height = heroCanvas.parentElement.offsetHeight;
+  }
+
+  function createParticles() {
+    particles = [];
+    const count = Math.floor(heroCanvas.width * heroCanvas.height / 12000);
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * heroCanvas.width,
+        y: Math.random() * heroCanvas.height,
+        r: Math.random() * 2 + 0.5,
+        dx: (Math.random() - 0.5) * 0.3,
+        dy: (Math.random() - 0.5) * 0.2,
+        opacity: Math.random() * 0.15 + 0.03,
+        color: Math.random() > 0.7 ? 'rgba(246,199,68,' : 'rgba(255,255,255,',
+      });
+    }
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
+    particles.forEach(p => {
+      p.x += p.dx;
+      p.y += p.dy;
+      if (p.x < 0) p.x = heroCanvas.width;
+      if (p.x > heroCanvas.width) p.x = 0;
+      if (p.y < 0) p.y = heroCanvas.height;
+      if (p.y > heroCanvas.height) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color + p.opacity + ')';
+      ctx.fill();
+    });
+    requestAnimationFrame(animateParticles);
+  }
+
+  resizeCanvas();
+  createParticles();
+  animateParticles();
+  window.addEventListener('resize', () => { resizeCanvas(); createParticles(); });
+
+  // ═══════════ ANIMATED COUNTERS ═══════════
+  function animateCounters() {
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const target = parseInt(el.dataset.count);
+      const duration = 1200;
+      const start = performance.now();
+      const initial = parseInt(el.textContent) || 0;
+
+      function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(initial + (target - initial) * eased);
+        if (progress < 1) requestAnimationFrame(update);
+      }
+
+      requestAnimationFrame(update);
+    });
+  }
+
+  // Trigger counters after a short delay
+  setTimeout(animateCounters, 400);
+
+  // ═══════════ REVEAL ON SCROLL ═══════════
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        // Stagger the animations
+        const siblings = Array.from(entry.target.parentElement.children).filter(c => c.classList.contains('reveal'));
+        const index = siblings.indexOf(entry.target);
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, index * 80);
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // ═══════════ PODCAST PLAYER ═══════════
+  const podcastAudio = document.getElementById('podcastAudio');
+  const podcastProgress = document.getElementById('podcastProgress');
+  const podcastCurrentTime = document.getElementById('podcastCurrentTime');
+  const podcastDuration = document.getElementById('podcastDuration');
+  const podcastBar = document.getElementById('podcastBar');
+  const podcastPlayBtn = document.getElementById('podcastPlayBtn');
+
+  function formatTime(s) {
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return m + ':' + String(sec).padStart(2, '0');
+  }
+
+  podcastAudio.addEventListener('loadedmetadata', () => {
+    podcastDuration.textContent = formatTime(podcastAudio.duration);
+  });
+
+  podcastAudio.addEventListener('timeupdate', () => {
+    if (podcastAudio.duration) {
+      podcastProgress.style.width = (podcastAudio.currentTime / podcastAudio.duration * 100) + '%';
+      podcastCurrentTime.textContent = formatTime(podcastAudio.currentTime);
+    }
+  });
+
+  podcastAudio.addEventListener('ended', () => {
+    podcastPlayBtn.classList.remove('playing');
+    cancelAnimationFrame(visualizerRAF);
+  });
+
+  function togglePodcast(btn) {
+    if (podcastAudio.paused) {
+      podcastAudio.play().then(() => {
+        btn.classList.add('playing');
+        startVisualizer();
+      }).catch(err => {
+        console.error('Audio play failed:', err);
+        // Try without visualizer context
+        podcastAudio.play();
+        btn.classList.add('playing');
+      });
+    } else {
+      podcastAudio.pause();
+      btn.classList.remove('playing');
+      cancelAnimationFrame(visualizerRAF);
+    }
+  }
+
+  podcastBar.addEventListener('click', (e) => {
+    const rect = podcastBar.getBoundingClientRect();
+    const pct = (e.clientX - rect.left) / rect.width;
+    podcastAudio.currentTime = pct * podcastAudio.duration;
+  });
+
+  // ═══════════ AUDIO VISUALIZER (CSS-based, no Web Audio API) ═══════════
+  const visCanvas = document.getElementById('audioVisualizer');
+  const visCtx = visCanvas.getContext('2d');
+  let visualizerRAF;
+
+  // Pure canvas animation — no createMediaElementSource (which breaks audio on local files)
+  function startVisualizer() {
+    function draw() {
+      visualizerRAF = requestAnimationFrame(draw);
+      visCtx.clearRect(0, 0, visCanvas.width, visCanvas.height);
+      const barCount = 24;
+      const barWidth = (visCanvas.width / barCount) - 2;
+      const now = Date.now() / 1000;
+
+      for (let i = 0; i < barCount; i++) {
+        const speed = 2.5 + (i % 3) * 0.8;
+        const phase = i * 0.7 + Math.sin(i * 0.3) * 2;
+        const barHeight = (Math.sin(now * speed + phase) * 0.35 + 0.55) * visCanvas.height * 0.8 + 4;
+        const x = i * (barWidth + 2);
+        const y = visCanvas.height - barHeight;
+
+        const gradient = visCtx.createLinearGradient(x, y, x, visCanvas.height);
+        gradient.addColorStop(0, '#F6C744');
+        gradient.addColorStop(1, 'rgba(246,199,68,0.15)');
+
+        visCtx.fillStyle = gradient;
+        visCtx.beginPath();
+        visCtx.roundRect(x, y, barWidth, barHeight, 2);
+        visCtx.fill();
+      }
+    }
+    draw();
+  }
+
+  // Draw idle visualizer
+  (function drawIdle() {
+    visCtx.clearRect(0, 0, visCanvas.width, visCanvas.height);
+    const barCount = 24;
+    const barWidth = (visCanvas.width / barCount) - 2;
+    for (let i = 0; i < barCount; i++) {
+      const barHeight = Math.random() * 8 + 3;
+      const x = i * (barWidth + 2);
+      visCtx.fillStyle = 'rgba(246,199,68,0.25)';
+      visCtx.beginPath();
+      visCtx.roundRect(x, visCanvas.height - barHeight, barWidth, barHeight, 2);
+      visCtx.fill();
+    }
+  })();
+
+  // ═══════════ VIDEO PLAYERS ═══════════
+  document.querySelectorAll('.video-preview').forEach(video => {
+    video.addEventListener('loadeddata', () => {
+      video.closest('.video-thumb').classList.add('video-loaded');
+    });
+    const thumb = video.closest('.video-thumb');
+    thumb.addEventListener('mouseenter', () => { video.currentTime = 0; video.play().catch(() => {}); });
+    thumb.addEventListener('mouseleave', () => { video.pause(); });
+  });
+
+  function openVideoModal(src, title, isPortrait) {
+    const overlay = document.getElementById('videoModal');
+    const inner = document.getElementById('videoModalInner');
+    const vid = document.getElementById('modalVideo');
+    const titleEl = document.getElementById('modalVideoTitle');
+    vid.src = src;
+    titleEl.textContent = title;
+    inner.classList.toggle('portrait-mode', isPortrait);
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    vid.play().catch(() => {});
+  }
+
+  function closeVideoModal() {
+    const overlay = document.getElementById('videoModal');
+    const vid = document.getElementById('modalVideo');
+    vid.pause();
+    vid.src = '';
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('videoModal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) closeVideoModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeVideoModal();
+  });
+
+  // ═══════════ CONTENT FILTER + SEARCH ═══════════
+  let activeFilter = 'all';
+
+  function setFilter(chip) {
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    activeFilter = chip.dataset.filter;
+    filterContent();
+  }
+
+  function filterContent() {
+    const query = document.getElementById('contentSearch').value.toLowerCase();
+    document.querySelectorAll('.content-card').forEach(card => {
+      const matchesFilter = activeFilter === 'all' || card.classList.contains(activeFilter);
+      const matchesSearch = !query || card.textContent.toLowerCase().includes(query);
+      card.classList.toggle('hidden', !(matchesFilter && matchesSearch));
+    });
+  }
+
+  // ═══════════ ANALYTICS BAR CHART ANIMATION ═══════════
+  const chartObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.bar').forEach((bar, i) => {
+          setTimeout(() => {
+            bar.style.height = bar.dataset.height + '%';
+          }, i * 60);
+        });
+        // Animate analytics counters
+        entry.target.closest('.section')?.querySelectorAll('.analytics-value[data-count]').forEach(el => {
+          const target = parseInt(el.dataset.count);
+          const duration = 1400;
+          const start = performance.now();
+          function update(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.round(target * eased).toLocaleString();
+            if (progress < 1) requestAnimationFrame(update);
+          }
+          requestAnimationFrame(update);
+        });
+        chartObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const barChart = document.getElementById('barChart');
+  if (barChart) chartObserver.observe(barChart);
+</script>
+</body>
+</html>

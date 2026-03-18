@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Mental Wellness — KOL Strategy Briefing | March 15, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --tmw-green: #3B8C6E;
+            --tmw-green-light: #5BAE8C;
+            --tmw-green-dark: #2A6B52;
+            --tmw-leaf: #7BC4A0;
+            --tmw-bg: #F5FAF7;
+            --tmw-card: #FFFFFF;
+            --tmw-text: #1A2B23;
+            --tmw-text-secondary: #4A5D52;
+            --tmw-border: #D4E8DC;
+            --tmw-accent: #E8F5ED;
+            --tmw-gold: #D4A43A;
+            --tmw-gold-light: #FFF8E7;
+            --tmw-blue: #2B6CB0;
+            --tmw-red: #C53030;
+            --tmw-orange: #C05621;
+            --tmw-purple: #6B46C1;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            background: var(--tmw-bg);
+            color: var(--tmw-text);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--tmw-green-dark) 0%, var(--tmw-green) 40%, var(--tmw-green-light) 100%);
+            color: white;
+            padding: 48px 40px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: -50px; right: -50px;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-circle {
+            width: 72px; height: 72px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .logo-circle svg { width: 48px; height: 48px; }
+
+        .header-text h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .header-text .tagline { opacity: 0.9; font-size: 1rem; margin-top: 2px; }
+        .header-text .date-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 14px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 32px 24px; }
+
+        /* Open Payments Data Banner */
+        .data-banner {
+            background: linear-gradient(135deg, #1A2B23 0%, #2A3F33 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .data-banner::before {
+            content: 'OPEN PAYMENTS INTELLIGENCE';
+            position: absolute;
+            top: 12px; right: 16px;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            opacity: 0.5;
+            font-weight: 700;
+        }
+
+        .data-banner h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+            color: var(--tmw-leaf);
+        }
+
+        .data-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .data-stat {
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .data-stat .num {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--tmw-leaf);
+        }
+
+        .data-stat .lbl { font-size: 0.8rem; opacity: 0.7; margin-top: 2px; }
+
+        /* Section Styling */
+        .section {
+            background: var(--tmw-card);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid var(--tmw-border);
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px 24px;
+            cursor: pointer;
+            user-select: none;
+            border-left: 4px solid var(--tmw-green);
+            transition: background 0.2s;
+        }
+
+        .section-header:hover { background: var(--tmw-accent); }
+
+        .section-header .icon {
+            width: 36px; height: 36px;
+            background: var(--tmw-accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .section-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--tmw-green-dark);
+            flex: 1;
+        }
+
+        .section-header .toggle {
+            font-size: 1.2rem;
+            color: var(--tmw-green);
+            transition: transform 0.3s;
+        }
+
+        .section.collapsed .section-header .toggle { transform: rotate(-90deg); }
+        .section.collapsed .section-body { display: none; }
+
+        .section-body { padding: 0 24px 24px; }
+
+        /* Subsection */
+        .subsection { margin-bottom: 24px; }
+        .subsection h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--tmw-green-dark);
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid var(--tmw-accent);
+        }
+
+        .subsection h4 {
+            font-weight: 700;
+            color: var(--tmw-text);
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+
+        /* Action Items */
+        .action {
+            background: var(--tmw-gold-light);
+            border-left: 3px solid var(--tmw-gold);
+            padding: 10px 14px;
+            border-radius: 0 8px 8px 0;
+            margin: 8px 0;
+            font-size: 0.92rem;
+        }
+
+        .action strong { color: var(--tmw-text); }
+
+        /* Pipeline Cards */
+        .pipeline-card {
+            background: var(--tmw-accent);
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 12px;
+            border: 1px solid var(--tmw-border);
+        }
+
+        .pipeline-card .drug-name {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--tmw-green-dark);
+        }
+
+        .pipeline-card .company { font-size: 0.85rem; color: var(--tmw-text-secondary); }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-right: 6px;
+            margin-top: 6px;
+        }
+
+        .tag-approved { background: #C6F6D5; color: #22543D; }
+        .tag-phase3 { background: #BEE3F8; color: #2A4365; }
+        .tag-breakthrough { background: #FEFCBF; color: #744210; }
+        .tag-opportunity { background: #FED7E2; color: #702459; }
+
+        /* Speaker Comparison Table */
+        .speaker-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            margin: 12px 0;
+        }
+
+        .speaker-table th {
+            background: var(--tmw-green-dark);
+            color: white;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .speaker-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--tmw-border);
+        }
+
+        .speaker-table tr:hover { background: var(--tmw-accent); }
+        .speaker-table .highlight { background: var(--tmw-gold-light) !important; font-weight: 700; }
+
+        /* Bar visualization */
+        .bar-vis {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 6px 0;
+        }
+
+        .bar-vis .label { min-width: 130px; font-size: 0.85rem; font-weight: 600; text-align: right; }
+
+        .bar-vis .track {
+            flex: 1;
+            height: 24px;
+            background: #E2E8F0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .bar-vis .fill {
+            height: 100%;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            color: white;
+            font-size: 0.72rem;
+            font-weight: 700;
+            min-width: 40px;
+        }
+
+        .fill-green { background: linear-gradient(90deg, var(--tmw-green-dark), var(--tmw-green-light)); }
+        .fill-gold { background: linear-gradient(90deg, #B7791F, var(--tmw-gold)); color: #1A2B23; }
+        .fill-blue { background: linear-gradient(90deg, #2A4365, var(--tmw-blue)); }
+        .fill-purple { background: linear-gradient(90deg, #44337A, var(--tmw-purple)); }
+
+        /* Spotlight Box */
+        .spotlight {
+            background: linear-gradient(135deg, var(--tmw-gold-light), #FFF);
+            border: 2px solid var(--tmw-gold);
+            border-radius: 14px;
+            padding: 28px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .spotlight::before {
+            content: 'YOUR POSITION';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: var(--tmw-gold);
+            color: #1A2B23;
+            padding: 2px 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+        }
+
+        .spotlight h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--tmw-green-dark);
+            margin-bottom: 12px;
+        }
+
+        /* Top 3 Actions Box */
+        .top-actions {
+            background: linear-gradient(135deg, var(--tmw-green-dark) 0%, var(--tmw-green) 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-top: 32px;
+        }
+
+        .top-actions h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--tmw-leaf);
+        }
+
+        .top-action-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .top-action-num {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--tmw-leaf);
+            min-width: 36px;
+        }
+
+        .top-action-text { flex: 1; }
+        .top-action-text strong { color: var(--tmw-leaf); }
+
+        /* Utility */
+        ul { padding-left: 20px; margin: 8px 0; }
+        li { margin-bottom: 6px; }
+        a { color: var(--tmw-blue); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+
+        .footer {
+            text-align: center;
+            padding: 40px 24px;
+            color: var(--tmw-text-secondary);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="header-inner">
+        <div class="logo-circle">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24 4C16 4 10 10 10 18C10 22 12 26 15 28C13 30 12 33 12 36C12 41 16 44 24 44C32 44 36 41 36 36C36 33 35 30 33 28C36 26 38 22 38 18C38 10 32 4 24 4Z" fill="rgba(255,255,255,0.3)"/>
+                <path d="M20 8C16 6 12 8 10 12" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round"/>
+                <path d="M28 8C32 6 36 8 38 12" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round"/>
+                <path d="M16 6C14 2 10 1 8 3" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M32 6C34 2 38 1 40 3" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M22 10C20 4 16 2 14 4" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M26 10C28 4 32 2 34 4" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="24" cy="22" r="10" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+            </svg>
+        </div>
+        <div class="header-text">
+            <h1>Total Mental Wellness &mdash; KOL Strategy Briefing</h1>
+            <div class="tagline">Dr. Audrey La Noce, DO, DFAPA &bull; Pharma Speaker Career Intelligence</div>
+            <div class="date-badge">Saturday, March 15, 2026 &bull; Open Payments + Pipeline Analysis</div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- OPEN PAYMENTS DATA BANNER -->
+    <div class="data-banner">
+        <h2>Your Open Payments Speaker Fee Intelligence (2021&ndash;2024)</h2>
+        <div class="data-stats">
+            <div class="data-stat">
+                <div class="num">$82,425</div>
+                <div class="lbl">Your 4-Year Speaking Fees</div>
+            </div>
+            <div class="data-stat">
+                <div class="num">$56,700</div>
+                <div class="lbl">2024 Speaking Fees (Breakout Year)</div>
+            </div>
+            <div class="data-stat">
+                <div class="num">Top 3%</div>
+                <div class="lbl">Your Percentile (All Psychiatrists)</div>
+            </div>
+            <div class="data-stat">
+                <div class="num">$303K</div>
+                <div class="lbl">Top 25 Average (5-Year)</div>
+            </div>
+            <div class="data-stat">
+                <div class="num">$3,780</div>
+                <div class="lbl">Your Peak Per-Event Rate</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 1: PIPELINE INTELLIGENCE -->
+    <div class="section" id="section1">
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="icon">&#x1F4CA;</div>
+            <h2>Section 1: Pharma &amp; Biotech Pipeline Intelligence</h2>
+            <div class="toggle">&#x25BC;</div>
+        </div>
+        <div class="section-body">
+
+            <div class="pipeline-card">
+                <div class="drug-name">BYSANTI (milsaperidone) &mdash; NEW FDA APPROVAL</div>
+                <div class="company">Vanda Pharmaceuticals | Approved February 20, 2026</div>
+                <span class="tag tag-approved">FDA APPROVED</span>
+                <span class="tag tag-opportunity">SPEAKER OPPORTUNITY</span>
+                <p style="margin-top:10px;">First-line therapy for acute manic/mixed episodes in Bipolar I + schizophrenia. New chemical entity (NCE) with marketing exclusivity through 2044. Commercial launch expected Q3 2026. Also in Phase III for TRD (adjunctive), results expected end of 2026.</p>
+                <div class="action"><strong>ACTION:</strong> Vanda will need to build a speaker bureau from scratch for Bysanti launch. <strong>Reach out to Vanda Medical Affairs NOW</strong> &mdash; as a DFAPA with Bipolar I and integrative psychiatry expertise, you are an ideal early-wave speaker. Being on a launch speaker bureau carries the highest per-event fees and visibility. Contact: Vanda Medical Affairs via <a href="https://www.vandapharma.com">vandapharma.com</a>.</div>
+            </div>
+
+            <div class="pipeline-card">
+                <div class="drug-name">CAPLYTA (lumateperone) &mdash; NEW MDD INDICATION</div>
+                <div class="company">Johnson &amp; Johnson (acquired from Intra-Cellular) | MDD adjunct approved Nov 2025</div>
+                <span class="tag tag-approved">4TH INDICATION</span>
+                <span class="tag tag-opportunity">EXPANDING BUREAU</span>
+                <p style="margin-top:10px;">Now approved for: schizophrenia, bipolar I depression, bipolar II depression, and adjunctive MDD. J&amp;J is expanding the speaker bureau for this new indication. Effect sizes of 0.56&ndash;0.61 in Phase 3 MDD trials are compelling talking points.</p>
+                <div class="action"><strong>ACTION:</strong> <strong>Contact J&amp;J/Janssen Neuroscience Medical Affairs</strong> about Caplyta MDD speaker training. You already have Janssen meal/promotional relationships (Spravato). Leverage that existing connection. The MDD adjunct indication aligns perfectly with your depression + treatment-resistant focus.</div>
+            </div>
+
+            <div class="pipeline-card">
+                <div class="drug-name">SPRAVATO (esketamine) &mdash; MONOTHERAPY APPROVAL</div>
+                <div class="company">Johnson &amp; Johnson/Janssen | TRD monotherapy approved 2025</div>
+                <span class="tag tag-approved">LABEL EXPANSION</span>
+                <p style="margin-top:10px;">Spravato now approved as monotherapy for TRD adults, no longer requiring combination with an oral antidepressant. This major label change requires re-education of prescribers nationally. Your existing Janssen relationship (Open Payments shows promotional meals for Spravato) is a foot in the door.</p>
+                <div class="action"><strong>ACTION:</strong> <strong>Request speaker training for Spravato monotherapy indication</strong> through your existing Janssen contacts. Emphasize your integrative psychiatry angle &mdash; Spravato monotherapy is a paradigm shift that aligns with your whole-person approach to treatment-resistant conditions.</div>
+            </div>
+
+            <div class="pipeline-card">
+                <div class="drug-name">TSND-201 (methylone) &mdash; BREAKTHROUGH THERAPY for PTSD</div>
+                <div class="company">Transcend Therapeutics | FDA Breakthrough Therapy Designation July 2025</div>
+                <span class="tag tag-breakthrough">BREAKTHROUGH</span>
+                <span class="tag tag-phase3">PHASE 3 LAUNCHING 2026</span>
+                <p style="margin-top:10px;">First-in-class PTSD treatment showing rapid, robust, durable symptom improvements by Day 10 sustained through Day 64 in Phase 2. Phase 3 program launching 2026. This is a novel MDMA-like compound (methylone) &mdash; your first responder and athlete PTSD patient populations make this directly relevant.</p>
+                <div class="action"><strong>ACTION:</strong> <strong>Position yourself as a clinical trial site or advisory board candidate</strong> for Transcend's Phase 3 PTSD program. Your first-responder and athlete PTSD focus is a differentiator. Reach out via <a href="https://transcendtherapeutics.com">transcendtherapeutics.com</a>.</div>
+            </div>
+
+            <div class="pipeline-card">
+                <div class="drug-name">CTx-1301 (dexmethylphenidate) &mdash; ADHD</div>
+                <div class="company">Cingulate Inc. | PDUFA: May 31, 2026</div>
+                <span class="tag tag-phase3">PDUFA MAY 2026</span>
+                <p style="margin-top:10px;">Novel trimodal release ADHD stimulant with once-daily dosing designed for rapid onset + sustained duration. If approved, new speaker bureau needed. Your existing Azstarys (Corium) relationship suggests ADHD is already in your prescribing wheelhouse.</p>
+                <div class="action"><strong>ACTION:</strong> <strong>Monitor PDUFA outcome May 31.</strong> If approved, immediately express interest in speaker training to Cingulate medical affairs. Early movers on new ADHD brands get the most engagement opportunities.</div>
+            </div>
+
+            <div class="pipeline-card">
+                <div class="drug-name">COMP360 (psilocybin) &mdash; Treatment-Resistant Depression &amp; PTSD</div>
+                <div class="company">Compass Pathways | Phase 3 results expected Q1 &amp; Q3 2026</div>
+                <span class="tag tag-phase3">PHASE 3</span>
+                <span class="tag tag-breakthrough">BREAKTHROUGH</span>
+                <p style="margin-top:10px;">Psilocybin-assisted therapy for TRD (COMP006 results Q1 2026, COMP005 Q3 2026). Also FDA IND accepted for PTSD Phase 2b/3 trial. This is the future of integrative psychiatry &mdash; aligns with your whole-person, integrative approach.</p>
+                <div class="action"><strong>ACTION:</strong> <strong>Build psychedelic-assisted therapy expertise NOW.</strong> Attend a Compass Pathways or MAPS training. Position yourself early as an integrative psychiatrist with psychedelic therapy knowledge &mdash; this will be a massive speaker opportunity if Phase 3 succeeds.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: SPEAKING OPPORTUNITY LEADS -->
+    <div class="section" id="section2">
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="icon">&#x1F3A4;</div>
+            <h2>Section 2: Speaking Opportunity Leads</h2>
+            <div class="toggle">&#x25BC;</div>
+        </div>
+        <div class="section-body">
+
+            <div class="subsection">
+                <h3>Upcoming Conferences (Next 90 Days)</h3>
+
+                <div class="pipeline-card">
+                    <div class="drug-name">World Congress of Psychiatry (WCP) 2026</div>
+                    <span class="tag tag-opportunity">ABSTRACT DEADLINE: MARCH 23, 2026</span>
+                    <p><strong>8 DAYS LEFT.</strong> Submit an abstract on integrative approaches to treatment-resistant depression or PTSD in special populations (first responders/athletes).</p>
+                    <div class="action"><strong>ACTION:</strong> <strong>Submit abstract by March 23.</strong> Suggested topic: "Integrative Psychiatry Approaches for PTSD in First Responders: A Whole-Person Treatment Model." Your DFAPA status and FPS leadership strengthen the submission.</div>
+                </div>
+
+                <div class="pipeline-card">
+                    <div class="drug-name">Florida Psychiatric Society Spring CME Meeting</div>
+                    <p>April 24&ndash;26, 2026 | As Broward Chapter President, you have insider access.</p>
+                    <div class="action"><strong>ACTION:</strong> <strong>Propose a presentation or moderate a panel</strong> on new psychiatric medications (Bysanti, Caplyta MDD, Spravato monotherapy). As FPS chapter president, you can curate the program. This gives you a recorded speaking credit pharma companies can review.</div>
+                </div>
+
+                <div class="pipeline-card">
+                    <div class="drug-name">APA Annual Meeting 2026</div>
+                    <p>May 16&ndash;20, 2026 | San Francisco, CA | Abstract deadline has passed, but satellite symposia still recruiting.</p>
+                    <div class="action"><strong>ACTION:</strong> <strong>Register and attend.</strong> Focus networking on pharma-sponsored satellite symposia. As a DFAPA, you have access to APA leadership events. Schedule meetings with AbbVie, J&amp;J, Otsuka, and Vanda medical affairs teams during the meeting.</div>
+                </div>
+
+                <div class="pipeline-card">
+                    <div class="drug-name">ASCP Annual Meeting 2026</div>
+                    <p>May 26&ndash;29, 2026 | <strong>Miami Beach, FL</strong> &mdash; Your backyard!</p>
+                    <span class="tag tag-opportunity">LOCAL EVENT</span>
+                    <div class="action"><strong>ACTION:</strong> <strong>Register immediately.</strong> ASCP is THE psychopharmacology meeting. The top pharma speakers (Citrome, Jain, Correll) are all ASCP members. This is your best networking opportunity of the year &mdash; being local gives you a hosting advantage. Consider organizing a dinner or reception for MSLs and speakers attending from your area.</div>
+                </div>
+
+                <div class="pipeline-card">
+                    <div class="drug-name">Psych Congress 2026</div>
+                    <p>September 15&ndash;19, 2026 | New Orleans, LA</p>
+                    <div class="action"><strong>ACTION:</strong> <strong>Submit a workshop proposal</strong> on integrative psychiatry for special populations. Psych Congress actively recruits practicing clinicians (vs. academic KOLs), which aligns well with your practice-based profile. Check <a href="https://www.hmpglobalevents.com/psych-congress">hmpglobalevents.com/psych-congress</a> for call-for-proposals.</div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>CME/Digital Speaking Platforms</h3>
+                <ul>
+                    <li><strong>PsychU (Otsuka)</strong> &mdash; Field medical team actively recruits guest speakers. <strong>Contact your local Otsuka MSL</strong> about presenting on their digital platform. Visit <a href="https://psychu.org">psychu.org</a>.</li>
+                    <li><strong>Medscape CME</strong> &mdash; Always seeking psychiatry faculty for webinar programs. Your multi-population focus (athletes, first responders, LGBTQ+) offers unique angles.</li>
+                    <li><strong>NEI (Neuroscience Education Institute)</strong> &mdash; Founded by Stephen Stahl. Accepts guest faculty for regional programs. Apply via their website.</li>
+                    <li><strong>Psychiatry &amp; Behavioral Health Learning Network (HMP)</strong> &mdash; Regularly features practicing psychiatrists in webinars and podcast formats.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 3: KOL VISIBILITY -->
+    <div class="section" id="section3">
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="icon">&#x1F4F1;</div>
+            <h2>Section 3: KOL Visibility &amp; Personal Brand Actions</h2>
+            <div class="toggle">&#x25BC;</div>
+        </div>
+        <div class="section-body">
+
+            <div class="subsection">
+                <h3>5 Actions for Today</h3>
+
+                <div class="pipeline-card">
+                    <h4>1. LinkedIn Post (Draft)</h4>
+                    <p style="background:#F0FFF4; padding:14px; border-radius:8px; font-style:italic; margin:8px 0;">
+                        "The APA just published a landmark update on bipolar disorder treatment in this month's American Journal of Psychiatry. As a psychiatrist who sees bipolar patients every day, here's what excites me about the new data and what it means for the way we approach care in 2026...<br><br>Three things stood out: [1] The neurobiology updates are reshaping how we think about early intervention. [2] New treatment options like Bysanti (milsaperidone) &mdash; just FDA-approved last month &mdash; are expanding our toolkit. [3] The integrative, whole-person approach I practice at Total Mental Wellness is increasingly validated by the evidence.<br><br>What's your experience with the evolving bipolar treatment landscape? #Psychiatry #BipolarDisorder #MentalHealth #IntegrativePsychiatry"
+                    </p>
+                    <div class="action"><strong>ACTION:</strong> <strong>Post this (personalized) on LinkedIn today.</strong> Tag @American Psychiatric Association. This positions you as a clinician who stays current and bridges research to practice.</div>
+                </div>
+
+                <div class="pipeline-card">
+                    <h4>2. Connection Target</h4>
+                    <p><strong>Malaak Brubaker</strong> &mdash; Senior Director, Global Medical Affairs Strategy &amp; Rexulti Franchise Lead at Otsuka Pharmaceutical US. Rexulti is one of the most-promoted psychiatric drugs, and Otsuka is the #1 payer to psychiatrists nationally ($20.4M/year).</p>
+                    <p style="background:#F0FFF4; padding:14px; border-radius:8px; font-style:italic; margin:8px 0;">
+                        Suggested LinkedIn message: "Dr. Brubaker, I'm Dr. Audrey La Noce, a board-certified psychiatrist and DFAPA serving as President of the Broward County Chapter of the Florida Psychiatric Society. I'm a practicing speaker for AbbVie's Vraylar program and am interested in expanding my work with Otsuka, particularly around Rexulti for MDD and schizophrenia. I'd welcome the opportunity to connect. &mdash; Audrey La Noce, DO, DFAPA"
+                    </p>
+                    <div class="action"><strong>ACTION:</strong> <strong>Send this connection request today.</strong> Search LinkedIn for "Malaak Brubaker Otsuka."</div>
+                </div>
+
+                <div class="pipeline-card">
+                    <h4>3. Publication Opportunity</h4>
+                    <p><strong>Suggested topic:</strong> "Integrative Psychiatry for First Responders: A Whole-Person Approach to PTSD and Burnout" &mdash; a clinical review article.</p>
+                    <p><strong>Target journal:</strong> <em>Psychiatric Annals</em> (practical, clinician-focused, high pharma readership) or <em>Current Psychiatry</em> (accepts case reports and clinical reviews from practicing psychiatrists).</p>
+                    <div class="action"><strong>ACTION:</strong> <strong>Draft a 500-word outline this weekend.</strong> Include your clinical experience with first responders at TMW, integrate evidence on Spravato/TSND-201 for PTSD, and position the integrative model. Submission to <em>Current Psychiatry</em> has a faster turnaround.</div>
+                </div>
+
+                <div class="pipeline-card">
+                    <h4>4. Strategic Engagement</h4>
+                    <p>Find and comment on a recent LinkedIn post by <strong>Leslie Citrome, MD, MPH</strong> (the #3 top-paid psychiatric speaker at $550K/year). Citrome frequently posts clinical content about atypical antipsychotics. A thoughtful comment from a DFAPA with clinical practice insight will get noticed.</p>
+                    <div class="action"><strong>ACTION:</strong> <strong>Search "Leslie Citrome" on LinkedIn and leave a substantive comment</strong> on his most recent clinical post. Add a practice-based perspective. This builds your visibility in his network, which includes every major pharma medical affairs team.</div>
+                </div>
+
+                <div class="pipeline-card">
+                    <h4>5. Media/PR Angle</h4>
+                    <p><strong>News hook:</strong> March 2026 APA journal issue features new bipolar disorder treatment research + Bysanti just received FDA approval. <strong>Pitch yourself as an expert source</strong> for local South Florida media (Sun Sentinel, Miami Herald, WPLG) on "What new bipolar medications mean for patients."</p>
+                    <div class="action"><strong>ACTION:</strong> <strong>Send a pitch email to health reporters</strong> at Sun Sentinel and Miami Herald. Subject line: "Board-Certified Psychiatrist Available: New FDA-Approved Bipolar Drug &amp; What Patients Should Know." Include your DFAPA credential and FPS leadership.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 4: PHARMA RELATIONSHIP BUILDING -->
+    <div class="section" id="section4">
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="icon">&#x1F91D;</div>
+            <h2>Section 4: Pharma Relationship Building</h2>
+            <div class="toggle">&#x25BC;</div>
+        </div>
+        <div class="section-body">
+
+            <div class="subsection">
+                <h3>Target Companies &amp; MSL Contact Strategy</h3>
+
+                <div class="pipeline-card">
+                    <h4>1. AbbVie (Current Relationship &mdash; EXPAND)</h4>
+                    <p><strong>Product:</strong> Vraylar (cariprazine) &mdash; You're already on their speaker bureau ($56,700 in 2024).</p>
+                    <p><strong>Strategy:</strong> You're a proven AbbVie speaker. <strong>Request higher-tier engagements</strong> (national programs, advisory boards, congress symposia). Ask your AbbVie MSL about Vraylar data updates and new slide decks for 2026.</p>
+                    <p><strong>MSL Contact Tool:</strong> <a href="https://www.contactmymsl.abbvieusmedicalaffairs.com/">contactmymsl.abbvieusmedicalaffairs.com</a></p>
+                    <div class="action"><strong>ACTION:</strong> <strong>Schedule a meeting with your AbbVie Psychiatry MSL (South Florida territory)</strong> via the Contact My MSL tool. Discuss: (a) 2026 speaker program targets, (b) advisory board openings, (c) your growing national profile.</div>
+                </div>
+
+                <div class="pipeline-card">
+                    <h4>2. Johnson &amp; Johnson/Janssen Neuroscience (EXPAND)</h4>
+                    <p><strong>Products:</strong> Spravato (esketamine monotherapy), Caplyta (lumateperone, MDD adjunct), Invega Sustenna/Trinza</p>
+                    <p><strong>Strategy:</strong> J&amp;J acquired Intra-Cellular and now needs to rapidly expand Caplyta's speaker bureau for the MDD indication. Your existing Janssen meal relationships (Open Payments shows Spravato, Invega Sustenna promotional interactions) make you a warm lead.</p>
+                    <div class="action"><strong>ACTION:</strong> <strong>Contact Janssen Neuroscience Medical Affairs</strong> about Caplyta MDD and Spravato monotherapy speaker training programs. Reference your existing promotional relationship and AbbVie speaker experience as proof of capability.</div>
+                </div>
+
+                <div class="pipeline-card">
+                    <h4>3. Otsuka/Lundbeck (NEW RELATIONSHIP)</h4>
+                    <p><strong>Products:</strong> Rexulti (brexpiprazole) &mdash; MDD adjunct + schizophrenia + Alzheimer's agitation. Also: Abilify Maintena (LAI).</p>
+                    <p><strong>Strategy:</strong> Otsuka is the #1 pharma payer to psychiatrists ($20.4M/year). Their PsychU platform offers digital speaking opportunities. Rexulti is currently under FDA review for a PTSD indication &mdash; if approved, massive speaker expansion needed.</p>
+                    <div class="action"><strong>ACTION:</strong> <strong>Register with PsychU at <a href="https://psychu.org">psychu.org</a></strong> and <strong>connect with Malaak Brubaker</strong> (see Section 3). Also search LinkedIn for "Otsuka MSL Psychiatry Florida" to find your territory MSL.</div>
+                </div>
+
+                <div class="pipeline-card">
+                    <h4>4. Vanda Pharmaceuticals (NEW &mdash; LAUNCH OPPORTUNITY)</h4>
+                    <p><strong>Product:</strong> Bysanti (milsaperidone) &mdash; Bipolar I + schizophrenia, FDA approved Feb 2026. Phase III for TRD adjunctive.</p>
+                    <p><strong>Strategy:</strong> Brand-new product launching Q3 2026. Vanda needs to build an entire speaker bureau from zero. Early engagement = highest chance of selection.</p>
+                    <div class="action"><strong>ACTION:</strong> <strong>Reach out to Vanda Medical Affairs via their website.</strong> Emphasize: (a) active pharma speaker (AbbVie Vraylar), (b) bipolar I clinical focus, (c) DFAPA credential, (d) multi-location practice reaching many patients. Offer to participate in advisory boards during pre-launch.</div>
+                </div>
+
+                <div class="pipeline-card">
+                    <h4>5. Transcend Therapeutics (EMERGING)</h4>
+                    <p><strong>Product:</strong> TSND-201 (methylone) &mdash; PTSD Breakthrough Therapy, Phase 3 launching 2026.</p>
+                    <p><strong>Strategy:</strong> Your PTSD expertise with first responders and athletes positions you uniquely. Transcend is a small biotech that will need clinical advisors and eventual speakers.</p>
+                    <div class="action"><strong>ACTION:</strong> <strong>Connect with Transcend leadership on LinkedIn.</strong> Express interest in clinical trial advisory role or early KOL engagement for PTSD.</div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Open Payments Compliance Note</h3>
+                <p>Your 2024 Open Payments data shows $60,787 in total pharmaceutical payments (published January 2026). This is fully compliant and within normal range for an active speaker. For reference:</p>
+                <ul>
+                    <li>Median psychiatrist receiving payments: $194/year</li>
+                    <li>Your position: Top ~3% of all psychiatrists nationally</li>
+                    <li>Top 25 speaker average: ~$155,416/year</li>
+                    <li>Your growth trajectory (0 in 2023 to $56,700 in 2024) suggests 2025&ndash;2026 could be your breakout into six figures</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 5: COMPETITIVE INTELLIGENCE -->
+    <div class="section" id="section5">
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="icon">&#x1F50D;</div>
+            <h2>Section 5: Competitive Intelligence &mdash; Speaking Fee Landscape</h2>
+            <div class="toggle">&#x25BC;</div>
+        </div>
+        <div class="section-body">
+
+            <div class="spotlight">
+                <h3>Where You Stand: Dr. La Noce vs. Top 25 National Speakers</h3>
+                <div class="grid-2">
+                    <div>
+                        <table class="speaker-table">
+                            <thead>
+                                <tr><th>Metric</th><th>Top 25 Avg</th><th>You</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>5-Year Speaking Fees</td><td>$303,080</td><td class="highlight">$82,425</td></tr>
+                                <tr><td>Avg Annual Speaking Fee</td><td>$155,416</td><td class="highlight">$20,606</td></tr>
+                                <tr><td>Per-Event Rate</td><td>$5,000&ndash;$15,000</td><td class="highlight">$2,700&ndash;$3,780</td></tr>
+                                <tr><td>Pharma Sponsors</td><td>3&ndash;8 companies</td><td class="highlight">1 (AbbVie)</td></tr>
+                                <tr><td>Products Promoted</td><td>4&ndash;12 drugs</td><td class="highlight">1 (Vraylar)</td></tr>
+                                <tr><td>Percentile</td><td>Top 0.1%</td><td class="highlight">Top 3%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom:12px;">Your Growth Trajectory</h4>
+                        <div class="bar-vis">
+                            <div class="label">2021</div>
+                            <div class="track"><div class="fill fill-green" style="width:19%">$10,550</div></div>
+                        </div>
+                        <div class="bar-vis">
+                            <div class="label">2022</div>
+                            <div class="track"><div class="fill fill-green" style="width:27%">$15,175</div></div>
+                        </div>
+                        <div class="bar-vis">
+                            <div class="label">2023</div>
+                            <div class="track"><div class="fill fill-gold" style="width:1%">$0</div></div>
+                        </div>
+                        <div class="bar-vis">
+                            <div class="label">2024</div>
+                            <div class="track"><div class="fill fill-green" style="width:100%">$56,700</div></div>
+                        </div>
+                        <p style="font-size:0.85rem; color:var(--tmw-text-secondary); margin-top:12px;"><strong>Key insight:</strong> Your 2024 breakout ($56,700) puts you on track for $100K+ annual speaking if you add 1&ndash;2 more pharma sponsors.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Top 10 National Psychiatric Speakers (Annual Speaking Fees)</h3>
+                <div class="bar-vis"><div class="label">Stahl</div><div class="track"><div class="fill fill-green" style="width:100%">$1.23M/yr</div></div></div>
+                <div class="bar-vis"><div class="label">Jain</div><div class="track"><div class="fill fill-green" style="width:53%">$650K/yr</div></div></div>
+                <div class="bar-vis"><div class="label">Citrome</div><div class="track"><div class="fill fill-green" style="width:45%">$550K/yr</div></div></div>
+                <div class="bar-vis"><div class="label">Roma</div><div class="track"><div class="fill fill-blue" style="width:28%">$350K/yr</div></div></div>
+                <div class="bar-vis"><div class="label">Masand</div><div class="track"><div class="fill fill-blue" style="width:17%">$206K/yr</div></div></div>
+                <div class="bar-vis"><div class="label">Kunovac</div><div class="track"><div class="fill fill-blue" style="width:15%">$182K/yr</div></div></div>
+                <div class="bar-vis"><div class="label">Bojrab</div><div class="track"><div class="fill fill-purple" style="width:13%">$160K/yr</div></div></div>
+                <div class="bar-vis"><div class="label">Correll</div><div class="track"><div class="fill fill-purple" style="width:12%">$144K/yr</div></div></div>
+                <div class="bar-vis"><div class="label">Chepke</div><div class="track"><div class="fill fill-purple" style="width:11%">$139K/yr</div></div></div>
+                <div class="bar-vis"><div class="label">El-Mallakh</div><div class="track"><div class="fill fill-purple" style="width:11%">$136K/yr</div></div></div>
+                <div style="height:8px;"></div>
+                <div class="bar-vis"><div class="label" style="color:var(--tmw-green-dark); font-weight:800;">Dr. La Noce</div><div class="track"><div class="fill fill-gold" style="width:5%">$21K</div></div></div>
+            </div>
+
+            <div class="subsection">
+                <h3>Strategic Gap Analysis &amp; Growth Roadmap</h3>
+                <div class="grid-2">
+                    <div class="pipeline-card">
+                        <h4 style="color:var(--tmw-red);">Gap #1: Single-Sponsor Dependency</h4>
+                        <p>100% of your speaking fees come from one company (AbbVie) for one drug (Vraylar). Top speakers work with 3&ndash;8 companies across 4&ndash;12 products.</p>
+                        <div class="action"><strong>FIX:</strong> <strong>Add 2&ndash;3 new pharma sponsors in 2026.</strong> Priority targets: Janssen (Caplyta MDD, Spravato), Otsuka (Rexulti), Vanda (Bysanti).</div>
+                    </div>
+                    <div class="pipeline-card">
+                        <h4 style="color:var(--tmw-red);">Gap #2: Per-Event Rate</h4>
+                        <p>Your $2,700&ndash;$3,780 per event is typical for a mid-tier speaker. Top speakers command $5,000&ndash;$15,000 per event.</p>
+                        <div class="action"><strong>FIX:</strong> <strong>Negotiate rate increases with AbbVie</strong> as you accumulate more engagements and add publications. National programs and advisory boards pay higher rates than regional dinner programs.</div>
+                    </div>
+                    <div class="pipeline-card">
+                        <h4 style="color:var(--tmw-red);">Gap #3: Publication Record</h4>
+                        <p>Top speakers all have substantial publication records. Publications are the currency that gets you on advisory boards and national programs.</p>
+                        <div class="action"><strong>FIX:</strong> <strong>Publish 2&ndash;3 articles in 2026.</strong> Start with case reports in <em>Current Psychiatry</em> or clinical reviews in <em>Psychiatric Annals</em>. Your integrative psychiatry + special populations angle is highly publishable.</div>
+                    </div>
+                    <div class="pipeline-card">
+                        <h4 style="color:var(--tmw-green);">Strength: Unique Differentiators</h4>
+                        <p>You have advantages most top speakers don't:</p>
+                        <ul>
+                            <li><strong>DO + DFAPA:</strong> Under-represented in pharma KOL space</li>
+                            <li><strong>FPS Chapter President:</strong> Convening power + state advocacy access</li>
+                            <li><strong>Multi-provider practice:</strong> Real-world prescribing data access</li>
+                            <li><strong>Special populations:</strong> Athletes, first responders, LGBTQ+</li>
+                            <li><strong>Integrative approach:</strong> Whole-person psychiatry is trending</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Underserved Niche Topics (Establish Yourself as Go-To Expert)</h3>
+                <ul>
+                    <li><strong>First-Responder Mental Health:</strong> Very few psychiatric KOLs specialize here. High demand from both pharma (PTSD drugs) and media.</li>
+                    <li><strong>Athlete Mental Health:</strong> Growing awareness post-Simone Biles/Naomi Osaka era. Unique pharma angle with performance anxiety + depression.</li>
+                    <li><strong>Integrative/Whole-Person Psychiatry:</strong> Trending nationally, few speakers bridge pharmacology + integrative approaches.</li>
+                    <li><strong>Psychedelic-Assisted Therapy:</strong> COMP360 and TSND-201 Phase 3 trials in 2026. Get trained now before this explodes.</li>
+                    <li><strong>DO Physicians in Psychiatry:</strong> Write about and advocate for DOs in psychiatric leadership &mdash; this is a compelling underserved angle.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 6: CLINICAL INSIGHT -->
+    <div class="section" id="section6">
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="icon">&#x1F9EC;</div>
+            <h2>Section 6: Clinical Insight of the Day</h2>
+            <div class="toggle">&#x25BC;</div>
+        </div>
+        <div class="section-body">
+
+            <div class="pipeline-card" style="border-left:4px solid var(--tmw-green);">
+                <h4>Bysanti (Milsaperidone): What Clinicians Need to Know About the Newest Atypical Antipsychotic</h4>
+                <p><strong>Source:</strong> FDA approval press release, February 20, 2026 + Psychiatric Times coverage</p>
+                <p style="margin:12px 0;">Bysanti (milsaperidone) was FDA-approved on February 20, 2026, as a first-line therapy for acute manic/mixed episodes in bipolar I disorder and for schizophrenia in adults. Key clinical points:</p>
+                <ul>
+                    <li><strong>Mechanism:</strong> New chemical entity demonstrating bioequivalence to iloperidone across the therapeutic dosing spectrum, but with a distinct molecular profile.</li>
+                    <li><strong>Dosing advantage:</strong> Tablets with a simplified titration schedule compared to iloperidone.</li>
+                    <li><strong>First-line designation:</strong> Unlike many atypicals that are adjunctive, Bysanti is approved as a first-line acute treatment for bipolar I manic/mixed episodes.</li>
+                    <li><strong>Pipeline:</strong> Phase III trial for adjunctive treatment-resistant MDD &mdash; results expected end of 2026.</li>
+                    <li><strong>Commercial launch:</strong> Expected Q3 2026.</li>
+                </ul>
+            </div>
+
+            <h4>Use This Insight Three Ways:</h4>
+            <div class="grid-2" style="margin-top:12px;">
+                <div class="pipeline-card">
+                    <p><strong>As a talking point:</strong> "The FDA just approved a new first-line bipolar I treatment for the first time in years. Bysanti represents a new option for patients who haven't responded well to existing atypicals, and it's also being studied for treatment-resistant depression."</p>
+                </div>
+                <div class="pipeline-card">
+                    <p><strong>As a LinkedIn post:</strong> "A new tool in our bipolar treatment toolkit: Bysanti (milsaperidone) just received FDA approval as the first new chemical entity for bipolar I in years. Here's why I'm paying attention as a practicing psychiatrist..." [Thread with 3 clinical takeaways]</p>
+                </div>
+            </div>
+            <div class="pipeline-card">
+                <p><strong>As a lecture foundation:</strong> "New Horizons in Bipolar I Pharmacotherapy: From Bysanti to Psychedelic-Assisted Therapy" &mdash; a 45-minute CME lecture incorporating Bysanti mechanism, Vraylar comparison data, and the emerging COMP360 pipeline.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 7: WEEKLY DEEP DIVE -->
+    <div class="section" id="section7">
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="icon">&#x1F4DD;</div>
+            <h2>Section 7: Saturday Deep Dive &mdash; Content Creation Sprint</h2>
+            <div class="toggle">&#x25BC;</div>
+        </div>
+        <div class="section-body">
+
+            <div class="subsection">
+                <h3>LinkedIn Post Drafts (3)</h3>
+
+                <div class="pipeline-card">
+                    <h4>Post 1: Bysanti FDA Approval</h4>
+                    <p style="background:#F0FFF4; padding:14px; border-radius:8px; font-style:italic;">
+                        "A new chapter in bipolar I treatment just opened.<br><br>Last month, the FDA approved Bysanti (milsaperidone) as a first-line therapy for acute manic and mixed episodes in bipolar I disorder. It's also approved for schizophrenia.<br><br>As a psychiatrist who treats bipolar disorder daily at Total Mental Wellness, here's why this matters:<br><br>1. It's the first new chemical entity approved for bipolar I in years<br>2. It's being studied as an adjunct for treatment-resistant depression<br>3. It gives us another first-line option &mdash; something we genuinely needed<br><br>We're living in the most innovative era of psychiatric pharmacology. And for patients who've struggled with existing options, having more tools in our toolkit is everything.<br><br>#Psychiatry #BipolarDisorder #MentalHealth #Innovation #DFAPA"
+                    </p>
+                </div>
+
+                <div class="pipeline-card">
+                    <h4>Post 2: First Responder Mental Health</h4>
+                    <p style="background:#F0FFF4; padding:14px; border-radius:8px; font-style:italic;">
+                        "First responders protect our communities every day. But who protects their mental health?<br><br>At Total Mental Wellness, we see firefighters, police officers, and EMTs who've carried trauma for years before seeking help. The stigma in these professions is real &mdash; and it's costing lives.<br><br>What I've learned treating first responders:<br>- They don't want to be treated like they're 'broken'<br>- They respond to a whole-person approach that respects their strength<br>- New treatments for PTSD (including FDA Breakthrough-designated therapies in trials right now) offer real hope<br><br>If you know a first responder struggling, encourage them to reach out. Treatment works. #FirstResponders #PTSD #MentalHealth #IntegrativePsychiatry"
+                    </p>
+                </div>
+
+                <div class="pipeline-card">
+                    <h4>Post 3: DO Physician Representation</h4>
+                    <p style="background:#F0FFF4; padding:14px; border-radius:8px; font-style:italic;">
+                        "I'm a DO &mdash; a Doctor of Osteopathic Medicine &mdash; and I'm proud of it.<br><br>DOs are fully licensed physicians with the same prescribing authority, residency training, and board certifications as MDs. Yet we remain under-represented in psychiatric thought leadership, speaker bureaus, and academic platforms.<br><br>As a DFAPA (Distinguished Fellow of the APA) and President of my Florida Psychiatric Society chapter, I'm working to change that.<br><br>Our osteopathic training gives us a unique whole-person perspective &mdash; we learn to see the patient, not just the symptom. That's exactly what psychiatry needs more of.<br><br>To my fellow DO psychiatrists: your voice matters. Show up. Speak up. Lead.<br><br>#OsteopathicMedicine #DO #Psychiatry #DFAPA #Leadership"
+                    </p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Short Video Scripts (2)</h3>
+
+                <div class="pipeline-card">
+                    <h4>Video 1: "3 Things to Know About the Newest Bipolar Medication" (60-90 seconds)</h4>
+                    <p>[Camera: Professional setting, TMW branding visible]<br>
+                    "Hi, I'm Dr. La Noce, a board-certified psychiatrist at Total Mental Wellness. Today I want to share three things about a brand-new FDA-approved medication for bipolar disorder called Bysanti. Number one: it's approved as a first-line treatment, which is significant. Number two: it's a completely new chemical entity, not a reformulation. And number three: it's also being studied for treatment-resistant depression, which could expand its impact even further. If you or someone you know lives with bipolar disorder, know that our treatment options keep improving. Reach out &mdash; we're here to help."</p>
+                </div>
+
+                <div class="pipeline-card">
+                    <h4>Video 2: "Why I Take an Integrative Approach to Mental Health" (60-90 seconds)</h4>
+                    <p>[Camera: Warm, natural lighting, conversational tone]<br>
+                    "One of the questions I get most often is: What does integrative psychiatry mean? At Total Mental Wellness, we treat the whole person &mdash; not just the diagnosis. That means medication management, yes, but also nutrition, sleep, exercise, stress management, and therapy. I believe in evidence-based medicine AND acknowledging that mental health is connected to physical health, relationships, and purpose. That's the Total Mental Wellness approach &mdash; and it's why I became a psychiatrist."</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Blog Post Outline (1)</h3>
+                <div class="pipeline-card">
+                    <h4>"New Psychiatric Medications in 2026: What Patients Should Know"</h4>
+                    <p>For <a href="https://totalmentalwellnessfl.com">totalmentalwellnessfl.com</a> blog:</p>
+                    <ol>
+                        <li><strong>Introduction:</strong> 2026 is a breakthrough year for psychiatric medications</li>
+                        <li><strong>Bysanti (milsaperidone):</strong> New bipolar I + schizophrenia treatment</li>
+                        <li><strong>Caplyta for depression:</strong> Now approved as add-on therapy for MDD</li>
+                        <li><strong>Spravato monotherapy:</strong> No longer requires combination therapy for TRD</li>
+                        <li><strong>What's in the pipeline:</strong> PTSD breakthroughs (TSND-201), psychedelic therapy (COMP360)</li>
+                        <li><strong>Our approach at TMW:</strong> How we integrate new medications with whole-person care</li>
+                        <li><strong>CTA:</strong> Book an appointment to discuss your treatment options</li>
+                    </ol>
+                    <div class="action"><strong>ACTION:</strong> <strong>Draft this blog post this weekend.</strong> It serves triple duty: SEO for the practice, positions you as current on pharmacology, and gives you content to share with pharma contacts.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOP 3 ACTIONS -->
+    <div class="top-actions">
+        <h2>Today's Top 3 Actions (Ranked by Impact)</h2>
+
+        <div class="top-action-item">
+            <div class="top-action-num">1</div>
+            <div class="top-action-text">
+                <strong>Contact Vanda Pharmaceuticals Medical Affairs about Bysanti speaker bureau.</strong> This is a once-in-a-career timing opportunity &mdash; a brand-new FDA-approved drug launching Q3 2026 with no existing speaker bureau. Being an early-wave speaker carries the highest visibility and per-event fees. Your bipolar expertise + DFAPA + active AbbVie speaker status make you an ideal candidate. Do this TODAY.
+            </div>
+        </div>
+
+        <div class="top-action-item">
+            <div class="top-action-num">2</div>
+            <div class="top-action-text">
+                <strong>Submit your abstract to the World Congress of Psychiatry by March 23 (8 days left).</strong> Topic: "Integrative Psychiatry Approaches for PTSD in First Responders." This is a high-visibility international conference that pharma companies attend. A presentation here goes directly on your CV and makes you more attractive to speaker bureaus.
+            </div>
+        </div>
+
+        <div class="top-action-item">
+            <div class="top-action-num">3</div>
+            <div class="top-action-text">
+                <strong>Contact Janssen Neuroscience about Caplyta MDD and Spravato monotherapy speaker training.</strong> J&amp;J is actively expanding speaker bureaus for both new indications. Your existing Janssen promotional relationship (Open Payments data) is your foot in the door. Adding Janssen as a second sponsor would diversify your pharma portfolio and could double your annual speaking fees.
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>Generated March 15, 2026 | Total Mental Wellness &mdash; KOL Strategy Intelligence Division</p>
+    <p>Data sources: CMS Open Payments Database, FDA.gov, ClinicalTrials.gov, APA Journals, Psychiatric Times</p>
+    <p style="margin-top:8px; font-style:italic;">Prepared by AI Strategy Assistant for Dr. Audrey La Noce, DO, DFAPA</p>
+</div>
+
+<script>
+    function toggleSection(header) {
+        header.closest('.section').classList.toggle('collapsed');
+    }
+</script>
+
+</body>
+</html>

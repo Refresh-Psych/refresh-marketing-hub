@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Payments: Psychiatry KOL & Pharma Speaker Program Intelligence Report</title>
+<style>
+  :root {
+    --primary: #1a365d;
+    --accent: #2b6cb0;
+    --gold: #f6c744;
+    --bg: #f7fafc;
+    --card: #ffffff;
+    --text: #2d3748;
+    --muted: #718096;
+    --border: #e2e8f0;
+    --red: #e53e3e;
+    --green: #38a169;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  .header { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; padding: 2.5rem 2rem; }
+  .header h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .header .subtitle { font-size: 1rem; opacity: 0.85; }
+  .header .meta { font-size: 0.85rem; opacity: 0.7; margin-top: 0.75rem; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+  .toc { background: var(--card); border-radius: 10px; padding: 1.5rem; margin-bottom: 2rem; border: 1px solid var(--border); }
+  .toc h2 { font-size: 1.1rem; color: var(--primary); margin-bottom: 0.75rem; }
+  .toc ul { list-style: none; columns: 2; gap: 1rem; }
+  .toc li { padding: 0.25rem 0; }
+  .toc a { color: var(--accent); text-decoration: none; font-size: 0.9rem; }
+  .toc a:hover { text-decoration: underline; }
+  section { margin-bottom: 2.5rem; }
+  h2.section-title { font-size: 1.35rem; color: var(--primary); border-bottom: 3px solid var(--gold); padding-bottom: 0.5rem; margin-bottom: 1.25rem; }
+  .card { background: var(--card); border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .card h3 { font-size: 1.05rem; color: var(--accent); margin-bottom: 0.5rem; }
+  .card .rank { display: inline-block; background: var(--primary); color: white; font-weight: 700; font-size: 0.8rem; padding: 0.15rem 0.6rem; border-radius: 20px; margin-right: 0.5rem; }
+  .card .amount { font-size: 1.2rem; font-weight: 700; color: var(--red); }
+  .tag { display: inline-block; background: #ebf8ff; color: var(--accent); font-size: 0.75rem; padding: 0.15rem 0.5rem; border-radius: 4px; margin: 0.15rem 0.1rem; }
+  .tag.drug { background: #fefcbf; color: #744210; }
+  .tag.company { background: #f0fff4; color: #276749; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+  th { background: var(--primary); color: white; text-align: left; padding: 0.6rem 0.75rem; font-weight: 600; }
+  td { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border); }
+  tr:nth-child(even) { background: #f7fafc; }
+  tr:hover { background: #edf2f7; }
+  .highlight-box { background: linear-gradient(135deg, #ebf8ff, #e6fffa); border-left: 4px solid var(--accent); padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1rem 0; }
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .stat-card { background: var(--card); border-radius: 8px; padding: 1rem; text-align: center; border: 1px solid var(--border); }
+  .stat-card .number { font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+  .stat-card .label { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+  .trend-item { display: flex; gap: 0.75rem; align-items: flex-start; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+  .trend-item:last-child { border-bottom: none; }
+  .trend-num { background: var(--gold); color: var(--primary); font-weight: 700; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0; }
+  .source-list { font-size: 0.8rem; color: var(--muted); }
+  .source-list a { color: var(--accent); }
+  .disclaimer { background: #fff5f5; border: 1px solid #feb2b2; border-radius: 8px; padding: 1rem; font-size: 0.85rem; color: #742a2a; margin-bottom: 2rem; }
+  .chart-container { background: var(--card); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); overflow-x: auto; }
+  .chart-container h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 1rem; text-align: center; }
+  .chart-container .chart-subtitle { font-size: 0.8rem; color: var(--muted); text-align: center; margin-top: 0.5rem; }
+  .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+  @media (max-width: 900px) { .chart-grid { grid-template-columns: 1fr; } }
+  .tooltip { position: absolute; background: var(--primary); color: white; padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.8rem; pointer-events: none; z-index: 100; white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+  .linkedin-btn { display: inline-block; background: #0077B5; color: white; padding: 3px 10px; border-radius: 4px; text-decoration: none; font-size: 0.75rem; font-weight: 600; margin-top: 6px; }
+  .linkedin-btn:hover { background: #005885; }
+  .fee-badge { display: inline-block; background: #fefcbf; color: #92400e; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+  .card .detail-row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-top: 0.5rem; }
+  .new-badge { display: inline-block; background: #38a169; color: white; font-size: 0.65rem; padding: 1px 6px; border-radius: 3px; margin-left: 0.4rem; vertical-align: middle; }
+  @media (max-width: 768px) {
+    .toc ul { columns: 1; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+    <h1>Open Payments: Psychiatry KOL & Pharma Speaker Program Intelligence Report</h1>
+    <div class="subtitle">Pharmaceutical Industry Payments to Psychiatrists &mdash; Speaker Programs, Consulting, and Key Opinion Leader Analysis</div>
+    <div class="meta">Data Sources: CMS Open Payments (2014&ndash;2023), ProPublica Dollars for Docs, Mad in America Analysis, Company Financial Reports | Generated: March 15, 2026</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="disclaimer">
+    <strong>Data Methodology Note:</strong> This report synthesizes publicly available data from the CMS Open Payments database, ProPublica's Dollars for Docs, peer-reviewed analyses published in <em>Psychiatric Services</em> and <em>JAMA</em>, and investigative journalism. The most comprehensive individual-level psychiatrist payment data available covers 2014&ndash;2021. Company-level 2023 data is sourced from CMS aggregate reports and SEC filings. Some figures represent cumulative multi-year totals as noted. All amounts are in USD.
+  </div>
+
+  <div class="toc">
+    <h2>Table of Contents</h2>
+    <ul>
+      <li><a href="#executive-summary">1. Executive Summary &mdash; Key Statistics</a></li>
+      <li><a href="#charts">2. Data Visualizations</a></li>
+      <li><a href="#top-kols">3. Top 20 Highest-Compensated Psychiatrist KOLs</a></li>
+      <li><a href="#pharma-companies">4. Major Pharma Companies in Psychiatric Speaker Programs</a></li>
+      <li><a href="#drug-spending">5. Drug Speaker/Promotional Spending</a></li>
+      <li><a href="#drug-revenue">6. 2023 Psychiatric Drug Revenue Rankings</a></li>
+      <li><a href="#trends">7. Notable Trends in Psychiatric Drug Marketing</a></li>
+      <li><a href="#sources">8. Sources &amp; Methodology</a></li>
+    </ul>
+  </div>
+
+  <!-- SECTION 1: EXECUTIVE SUMMARY -->
+  <section id="executive-summary">
+    <h2 class="section-title">1. Executive Summary &mdash; Key Statistics</h2>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="number">$358M</div>
+        <div class="label">Total Industry Payments to Psychiatrists (2015&ndash;2021)</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">75%</div>
+        <div class="label">Psychiatrists Receiving At Least One Payment (2015&ndash;2021)</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">1%</div>
+        <div class="label">of Psychiatrists Received 74.7% of All Payments</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">62</div>
+        <div class="label">Psychiatrists in the "Million Dollar Club" (2014&ndash;2020)</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">$1.32B</div>
+        <div class="label">Total Psychiatry/Neuro Industry Payments (2013&ndash;2022)</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">$12.75B</div>
+        <div class="label">Total Open Payments All Specialties (2023)</div>
+      </div>
+    </div>
+    <div class="highlight-box">
+      <strong>Key Finding:</strong> Among 56,955 psychiatrists reviewed (2015&ndash;2021), payments totaling $357,971,774 were highly concentrated. The top 1% (N=570) received a median of $362,631 each, accounting for 74.7% of all payments. The top 10% (N=4,271) received 93.6%. Consulting fees comprised 75.9% of total payment value despite representing only 6.1% of transactions.
+      <br><br>
+      <em>Source: "National Trends in and Concentration of Industry Payments to U.S. Psychiatrists, 2015&ndash;2021," Psychiatric Services, October 2024.</em>
+    </div>
+  </section>
+
+  <!-- SECTION 2: DATA VISUALIZATIONS -->
+  <section id="charts">
+    <h2 class="section-title">2. Data Visualizations</h2>
+
+    <!-- CHART 1: Top 20 KOL Compensation Bar Chart -->
+    <div class="chart-container">
+      <h3>Top 20 Highest-Compensated Psychiatrist KOLs</h3>
+      <svg id="kol-chart" width="100%" viewBox="0 0 920 940" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bar-grad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#2b6cb0"/><stop offset="100%" stop-color="#4299e1"/></linearGradient>
+          <linearGradient id="bar-grad-gold" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#d69e2e"/><stop offset="100%" stop-color="#f6c744"/></linearGradient>
+          <linearGradient id="bar-grad-green" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#276749"/><stop offset="100%" stop-color="#38a169"/></linearGradient>
+        </defs>
+        <g transform="translate(0,20)">
+          <!-- Grid -->
+          <line x1="200" y1="0" x2="200" y2="880" stroke="#e2e8f0" stroke-width="1"/>
+          <line x1="340" y1="0" x2="340" y2="880" stroke="#e2e8f0" stroke-width="0.5" stroke-dasharray="4"/>
+          <line x1="480" y1="0" x2="480" y2="880" stroke="#e2e8f0" stroke-width="0.5" stroke-dasharray="4"/>
+          <line x1="620" y1="0" x2="620" y2="880" stroke="#e2e8f0" stroke-width="0.5" stroke-dasharray="4"/>
+          <line x1="760" y1="0" x2="760" y2="880" stroke="#e2e8f0" stroke-width="0.5" stroke-dasharray="4"/>
+          <text x="200" y="910" text-anchor="middle" fill="#718096" font-size="11">$0</text>
+          <text x="340" y="910" text-anchor="middle" fill="#718096" font-size="11">$2M</text>
+          <text x="480" y="910" text-anchor="middle" fill="#718096" font-size="11">$4M</text>
+          <text x="620" y="910" text-anchor="middle" fill="#718096" font-size="11">$6M</text>
+          <text x="760" y="910" text-anchor="middle" fill="#718096" font-size="11">$8M</text>
+
+          <!-- #1 Stahl $8.6M -->
+          <text x="195" y="30" text-anchor="end" fill="#2d3748" font-size="11" font-weight="700">1. Stephen Stahl</text>
+          <rect x="200" y="16" width="602" height="24" rx="4" fill="url(#bar-grad-gold)" opacity="0.95"/>
+          <text x="808" y="33" fill="#744210" font-size="11" font-weight="700">$8.6M</text>
+
+          <!-- #2 Rakesh Jain $4.87M -->
+          <text x="195" y="72" text-anchor="end" fill="#2d3748" font-size="11" font-weight="600">2. Rakesh Jain</text>
+          <rect x="200" y="58" width="341" height="24" rx="4" fill="url(#bar-grad-gold)" opacity="0.85"/>
+          <text x="547" y="75" fill="#744210" font-size="11" font-weight="700">$4.87M</text>
+
+          <!-- #3 Leslie Citrome $4.28M -->
+          <text x="195" y="114" text-anchor="end" fill="#2d3748" font-size="11" font-weight="600">3. Leslie Citrome</text>
+          <rect x="200" y="100" width="300" height="24" rx="4" fill="url(#bar-grad)" opacity="0.9"/>
+          <text x="506" y="117" fill="#2b6cb0" font-size="11" font-weight="700">$4.28M</text>
+
+          <!-- #4 Rebecca Roma $2.45M -->
+          <text x="195" y="156" text-anchor="end" fill="#2d3748" font-size="11">4. Rebecca Roma</text>
+          <rect x="200" y="142" width="171" height="24" rx="4" fill="url(#bar-grad)" opacity="0.85"/>
+          <text x="377" y="159" fill="#2b6cb0" font-size="11" font-weight="700">$2.45M</text>
+
+          <!-- #5 Prakash Masand $1.45M -->
+          <text x="195" y="198" text-anchor="end" fill="#2d3748" font-size="11">5. Prakash Masand</text>
+          <rect x="200" y="184" width="101" height="24" rx="4" fill="url(#bar-grad)" opacity="0.8"/>
+          <text x="307" y="201" fill="#2b6cb0" font-size="11" font-weight="700">$1.45M</text>
+
+          <!-- #6 Correll $1.35M -->
+          <text x="195" y="240" text-anchor="end" fill="#2d3748" font-size="11">6. Christoph Correll</text>
+          <rect x="200" y="226" width="95" height="24" rx="4" fill="url(#bar-grad)" opacity="0.75"/>
+          <text x="301" y="243" fill="#2b6cb0" font-size="11" font-weight="700">~$1.35M</text>
+
+          <!-- #7 Jelena Kunovac $1.28M -->
+          <text x="195" y="282" text-anchor="end" fill="#2d3748" font-size="11">7. Jelena Kunovac</text>
+          <rect x="200" y="268" width="90" height="24" rx="4" fill="url(#bar-grad-green)" opacity="0.8"/>
+          <text x="296" y="285" fill="#276749" font-size="11" font-weight="700">$1.28M</text>
+
+          <!-- #8 Cutler $1.2M -->
+          <text x="195" y="324" text-anchor="end" fill="#2d3748" font-size="11">8. Andrew Cutler</text>
+          <rect x="200" y="310" width="84" height="24" rx="4" fill="url(#bar-grad)" opacity="0.7"/>
+          <text x="290" y="327" fill="#2b6cb0" font-size="11" font-weight="700">~$1.2M</text>
+
+          <!-- #9 Nemeroff $1.1M -->
+          <text x="195" y="366" text-anchor="end" fill="#2d3748" font-size="11">9. Charles Nemeroff</text>
+          <rect x="200" y="352" width="77" height="24" rx="4" fill="url(#bar-grad)" opacity="0.65"/>
+          <text x="283" y="369" fill="#2b6cb0" font-size="11" font-weight="700">~$1.1M</text>
+
+          <!-- #10 Nasrallah $1.1M -->
+          <text x="195" y="408" text-anchor="end" fill="#2d3748" font-size="11">10. Henry Nasrallah</text>
+          <rect x="200" y="394" width="77" height="24" rx="4" fill="url(#bar-grad)" opacity="0.6"/>
+          <text x="283" y="411" fill="#2b6cb0" font-size="11" font-weight="700">~$1.1M</text>
+
+          <!-- Divider line -->
+          <line x1="0" y1="430" x2="880" y2="430" stroke="#38a169" stroke-width="1.5" stroke-dasharray="6"/>
+          <text x="440" y="446" text-anchor="middle" fill="#38a169" font-size="10" font-weight="700">&#9660; EXPANDED #11&ndash;20 &#9660;</text>
+
+          <!-- #11 Calabrese $1.1M -->
+          <text x="195" y="472" text-anchor="end" fill="#2d3748" font-size="11">11. Joseph Calabrese</text>
+          <rect x="200" y="458" width="77" height="24" rx="4" fill="url(#bar-grad-green)" opacity="0.7"/>
+          <text x="283" y="475" fill="#276749" font-size="11" font-weight="700">~$1.1M</text>
+
+          <!-- #12 Draud $1.05M -->
+          <text x="195" y="510" text-anchor="end" fill="#2d3748" font-size="11">12. Jon Draud</text>
+          <rect x="200" y="496" width="74" height="24" rx="4" fill="url(#bar-grad-green)" opacity="0.65"/>
+          <text x="280" y="513" fill="#276749" font-size="11" font-weight="700">~$1.05M</text>
+
+          <!-- #13 Bojrab $1.0M -->
+          <text x="195" y="548" text-anchor="end" fill="#2d3748" font-size="11">13. Chris Bojrab</text>
+          <rect x="200" y="534" width="70" height="24" rx="4" fill="url(#bar-grad-green)" opacity="0.6"/>
+          <text x="276" y="551" fill="#276749" font-size="11" font-weight="700">~$1.0M</text>
+
+          <!-- #14 El-Mallakh $1.0M -->
+          <text x="195" y="586" text-anchor="end" fill="#2d3748" font-size="11">14. Rifaat El-Mallakh</text>
+          <rect x="200" y="572" width="70" height="24" rx="4" fill="url(#bar-grad-green)" opacity="0.55"/>
+          <text x="276" y="589" fill="#276749" font-size="11" font-weight="700">~$1.0M</text>
+
+          <!-- #15 Kane $1.0M -->
+          <text x="195" y="624" text-anchor="end" fill="#2d3748" font-size="11">15. John M. Kane</text>
+          <rect x="200" y="610" width="70" height="24" rx="4" fill="url(#bar-grad-green)" opacity="0.5"/>
+          <text x="276" y="627" fill="#276749" font-size="11" font-weight="700">~$1.0M</text>
+
+          <!-- #16 Alva $950K -->
+          <text x="195" y="662" text-anchor="end" fill="#2d3748" font-size="11">16. Gustavo Alva</text>
+          <rect x="200" y="648" width="67" height="24" rx="4" fill="url(#bar-grad-green)" opacity="0.45"/>
+          <text x="273" y="665" fill="#276749" font-size="11" font-weight="700">~$950K</text>
+
+          <!-- #17 Miller $900K -->
+          <text x="195" y="700" text-anchor="end" fill="#2d3748" font-size="11">17. John J. Miller</text>
+          <rect x="200" y="686" width="63" height="24" rx="4" fill="url(#bar-grad-green)" opacity="0.4"/>
+          <text x="269" y="703" fill="#276749" font-size="11" font-weight="700">~$900K</text>
+
+          <!-- #18 Maletic $850K -->
+          <text x="195" y="738" text-anchor="end" fill="#2d3748" font-size="11">18. Vladimir Maletic&#x2020;</text>
+          <rect x="200" y="724" width="60" height="24" rx="4" fill="url(#bar-grad-green)" opacity="0.35"/>
+          <text x="266" y="741" fill="#276749" font-size="11" font-weight="700">~$850K</text>
+
+          <!-- #19 Kinrys $800K -->
+          <text x="195" y="776" text-anchor="end" fill="#2d3748" font-size="11">19. Gustavo Kinrys</text>
+          <rect x="200" y="762" width="56" height="24" rx="4" fill="url(#bar-grad-green)" opacity="0.3"/>
+          <text x="262" y="779" fill="#276749" font-size="11" font-weight="700">~$800K</text>
+
+          <!-- #20 Kakar $750K -->
+          <text x="195" y="814" text-anchor="end" fill="#2d3748" font-size="11">20. Rishi Kakar</text>
+          <rect x="200" y="800" width="53" height="24" rx="4" fill="url(#bar-grad-green)" opacity="0.25"/>
+          <text x="259" y="817" fill="#276749" font-size="11" font-weight="700">~$750K</text>
+
+          <!-- Legend -->
+          <g transform="translate(200,850)">
+            <rect x="0" y="0" width="12" height="12" rx="2" fill="url(#bar-grad-gold)"/>
+            <text x="16" y="11" fill="#2d3748" font-size="10">Top 3 (confirmed exact totals)</text>
+            <rect x="200" y="0" width="12" height="12" rx="2" fill="url(#bar-grad)"/>
+            <text x="216" y="11" fill="#2d3748" font-size="10">Original Top 10</text>
+            <rect x="380" y="0" width="12" height="12" rx="2" fill="url(#bar-grad-green)"/>
+            <text x="396" y="11" fill="#2d3748" font-size="10">Expanded #11-20</text>
+            <text x="540" y="11" fill="#718096" font-size="10">&#x2020; = deceased</text>
+          </g>
+        </g>
+      </svg>
+      <p class="chart-subtitle">Cumulative CMS Open Payments data (2014&ndash;2020). Revised rankings based on Mad in America "Anatomy of an Industry" investigation. Rakesh Jain ($4.87M) and Leslie Citrome ($4.28M) were #2 and #3 all-time.</p>
+    </div>
+
+    <div class="chart-grid">
+      <!-- CHART 2: Payment Concentration Donut -->
+      <div class="chart-container">
+        <h3>Payment Concentration</h3>
+        <svg viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="shadow1" x="-10%" y="-10%" width="120%" height="120%">
+              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+            </filter>
+          </defs>
+          <!-- Donut chart -->
+          <g transform="translate(200,160)">
+            <!-- Bottom 90% slice -->
+            <circle cx="0" cy="0" r="110" fill="none" stroke="#e2e8f0" stroke-width="45"/>
+            <!-- Top 10% slice (93.6%) -->
+            <circle cx="0" cy="0" r="110" fill="none" stroke="#4299e1" stroke-width="45"
+              stroke-dasharray="647 44" stroke-dashoffset="173" opacity="0.4"/>
+            <!-- Top 1% slice (74.7%) - darker portion -->
+            <circle cx="0" cy="0" r="110" fill="none" stroke="#1a365d" stroke-width="45"
+              stroke-dasharray="516 175" stroke-dashoffset="173"/>
+            <!-- Center text -->
+            <text x="0" y="-12" text-anchor="middle" fill="#1a365d" font-size="28" font-weight="800">74.7%</text>
+            <text x="0" y="10" text-anchor="middle" fill="#718096" font-size="12">of all payments go to</text>
+            <text x="0" y="28" text-anchor="middle" fill="#1a365d" font-size="14" font-weight="700">Top 1% of Psychiatrists</text>
+          </g>
+          <!-- Legend -->
+          <g transform="translate(60,295)">
+            <rect x="0" y="0" width="14" height="14" rx="3" fill="#1a365d"/>
+            <text x="20" y="12" fill="#2d3748" font-size="11">Top 1% (570 MDs) = 74.7%</text>
+            <rect x="180" y="0" width="14" height="14" rx="3" fill="#4299e1" opacity="0.4"/>
+            <text x="200" y="12" fill="#2d3748" font-size="11">Next 9% = 18.9%</text>
+          </g>
+          <g transform="translate(120,318)">
+            <rect x="0" y="0" width="14" height="14" rx="3" fill="#e2e8f0"/>
+            <text x="20" y="12" fill="#2d3748" font-size="11">Bottom 90% = 6.4%</text>
+          </g>
+        </svg>
+        <p class="chart-subtitle">Of 56,955 psychiatrists, $358M total (2015-2021)</p>
+      </div>
+
+      <!-- CHART 3: Payment Type Breakdown -->
+      <div class="chart-container">
+        <h3>Payment Types by Value</h3>
+        <svg viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(200,160)">
+            <!-- Consulting 75.9% -->
+            <circle cx="0" cy="0" r="110" fill="none" stroke="#2b6cb0" stroke-width="45"
+              stroke-dasharray="524 167" stroke-dashoffset="173"/>
+            <!-- Speaking 15% -->
+            <circle cx="0" cy="0" r="110" fill="none" stroke="#f6c744" stroke-width="45"
+              stroke-dasharray="104 587" stroke-dashoffset="519" opacity="0.9"/>
+            <!-- Other 9.1% -->
+            <circle cx="0" cy="0" r="110" fill="none" stroke="#38a169" stroke-width="45"
+              stroke-dasharray="63 628" stroke-dashoffset="451" opacity="0.7"/>
+            <!-- Center -->
+            <text x="0" y="-12" text-anchor="middle" fill="#1a365d" font-size="24" font-weight="800">75.9%</text>
+            <text x="0" y="10" text-anchor="middle" fill="#718096" font-size="12">of payment value is</text>
+            <text x="0" y="28" text-anchor="middle" fill="#2b6cb0" font-size="14" font-weight="700">Consulting Fees</text>
+          </g>
+          <!-- Legend -->
+          <g transform="translate(40,295)">
+            <rect x="0" y="0" width="14" height="14" rx="3" fill="#2b6cb0"/>
+            <text x="20" y="12" fill="#2d3748" font-size="11">Consulting (75.9% value, 6.1% of transactions)</text>
+          </g>
+          <g transform="translate(40,318)">
+            <rect x="0" y="0" width="14" height="14" rx="3" fill="#f6c744"/>
+            <text x="20" y="12" fill="#2d3748" font-size="11">Speaking (~15%)</text>
+            <rect x="160" y="0" width="14" height="14" rx="3" fill="#38a169" opacity="0.7"/>
+            <text x="180" y="12" fill="#2d3748" font-size="11">Food, Travel, Other (~9.1%)</text>
+          </g>
+        </svg>
+        <p class="chart-subtitle">High-value consulting dwarfs volume of small food/bev payments</p>
+      </div>
+    </div>
+
+    <!-- CHART 4: 2023 Drug Revenue -->
+    <div class="chart-container">
+      <h3>2023 Psychiatric Drug Revenue &mdash; Top 10 Branded Drugs</h3>
+      <svg viewBox="0 0 900 440" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="rev1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#1a365d"/><stop offset="100%" stop-color="#2b6cb0"/></linearGradient>
+          <linearGradient id="rev2" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#2b6cb0"/><stop offset="100%" stop-color="#4299e1"/></linearGradient>
+          <linearGradient id="rev3" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#d69e2e"/><stop offset="100%" stop-color="#f6c744"/></linearGradient>
+          <linearGradient id="rev4" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#276749"/><stop offset="100%" stop-color="#38a169"/></linearGradient>
+        </defs>
+        <g transform="translate(60,20)">
+          <!-- Y axis -->
+          <line x1="0" y1="0" x2="0" y2="340" stroke="#e2e8f0" stroke-width="1"/>
+          <!-- Grid lines -->
+          <line x1="0" y1="0" x2="800" y2="0" stroke="#e2e8f0" stroke-width="0.5" stroke-dasharray="4"/>
+          <line x1="0" y1="113" x2="800" y2="113" stroke="#e2e8f0" stroke-width="0.5" stroke-dasharray="4"/>
+          <line x1="0" y1="227" x2="800" y2="227" stroke="#e2e8f0" stroke-width="0.5" stroke-dasharray="4"/>
+          <line x1="0" y1="340" x2="800" y2="340" stroke="#e2e8f0" stroke-width="1"/>
+
+          <!-- Y labels -->
+          <text x="-8" y="5" text-anchor="end" fill="#718096" font-size="11">$3.0B</text>
+          <text x="-8" y="118" text-anchor="end" fill="#718096" font-size="11">$2.0B</text>
+          <text x="-8" y="232" text-anchor="end" fill="#718096" font-size="11">$1.0B</text>
+          <text x="-8" y="345" text-anchor="end" fill="#718096" font-size="11">$0</text>
+
+          <!-- Bars - each 70px wide, 10px gap -->
+          <!-- Invega $2.9B = 329px height -->
+          <rect x="10" y="11" width="60" height="329" rx="4" fill="url(#rev1)" opacity="0.95"/>
+          <text x="40" y="375" text-anchor="middle" fill="#2d3748" font-size="10" font-weight="600">Invega</text>
+          <text x="40" y="389" text-anchor="middle" fill="#718096" font-size="9">Janssen</text>
+          <text x="40" y="6" text-anchor="middle" fill="#1a365d" font-size="10" font-weight="700">$2.9B</text>
+
+          <!-- Vraylar $2.76B = 313px -->
+          <rect x="90" y="27" width="60" height="313" rx="4" fill="url(#rev1)" opacity="0.9"/>
+          <text x="120" y="375" text-anchor="middle" fill="#2d3748" font-size="10" font-weight="600">Vraylar</text>
+          <text x="120" y="389" text-anchor="middle" fill="#718096" font-size="9">AbbVie</text>
+          <text x="120" y="22" text-anchor="middle" fill="#1a365d" font-size="10" font-weight="700">$2.76B</text>
+
+          <!-- Ingrezza $1.84B = 209px -->
+          <rect x="170" y="131" width="60" height="209" rx="4" fill="url(#rev3)" opacity="0.9"/>
+          <text x="200" y="375" text-anchor="middle" fill="#2d3748" font-size="10" font-weight="600">Ingrezza</text>
+          <text x="200" y="389" text-anchor="middle" fill="#718096" font-size="9">Neurocrine</text>
+          <text x="200" y="126" text-anchor="middle" fill="#744210" font-size="10" font-weight="700">$1.84B</text>
+
+          <!-- Rexulti $1.4B = 159px -->
+          <rect x="250" y="181" width="60" height="159" rx="4" fill="url(#rev2)" opacity="0.85"/>
+          <text x="280" y="375" text-anchor="middle" fill="#2d3748" font-size="10" font-weight="600">Rexulti</text>
+          <text x="280" y="389" text-anchor="middle" fill="#718096" font-size="9">Otsuka</text>
+          <text x="280" y="176" text-anchor="middle" fill="#2b6cb0" font-size="10" font-weight="700">$1.4B</text>
+
+          <!-- Austedo $1.2B = 136px -->
+          <rect x="330" y="204" width="60" height="136" rx="4" fill="url(#rev3)" opacity="0.85"/>
+          <text x="360" y="375" text-anchor="middle" fill="#2d3748" font-size="10" font-weight="600">Austedo</text>
+          <text x="360" y="389" text-anchor="middle" fill="#718096" font-size="9">Teva</text>
+          <text x="360" y="199" text-anchor="middle" fill="#744210" font-size="10" font-weight="700">$1.2B</text>
+
+          <!-- Abilify $1.0B = 113px -->
+          <rect x="410" y="227" width="60" height="113" rx="4" fill="url(#rev2)" opacity="0.8"/>
+          <text x="440" y="375" text-anchor="middle" fill="#2d3748" font-size="10" font-weight="600">Abilify LAI</text>
+          <text x="440" y="389" text-anchor="middle" fill="#718096" font-size="9">Otsuka</text>
+          <text x="440" y="222" text-anchor="middle" fill="#2b6cb0" font-size="10" font-weight="700">$1.0B</text>
+
+          <!-- Spravato $689M = 78px -->
+          <rect x="490" y="262" width="60" height="78" rx="4" fill="url(#rev4)" opacity="0.9"/>
+          <text x="520" y="375" text-anchor="middle" fill="#2d3748" font-size="10" font-weight="600">Spravato</text>
+          <text x="520" y="389" text-anchor="middle" fill="#718096" font-size="9">Janssen</text>
+          <text x="520" y="257" text-anchor="middle" fill="#276749" font-size="10" font-weight="700">$689M</text>
+          <!-- Growth badge -->
+          <rect x="495" y="268" width="50" height="16" rx="8" fill="#38a169"/>
+          <text x="520" y="280" text-anchor="middle" fill="white" font-size="8" font-weight="700">+89% YoY</text>
+
+          <!-- Trintellix $624M = 71px -->
+          <rect x="570" y="269" width="60" height="71" rx="4" fill="url(#rev2)" opacity="0.7"/>
+          <text x="600" y="375" text-anchor="middle" fill="#2d3748" font-size="10" font-weight="600">Trintellix</text>
+          <text x="600" y="389" text-anchor="middle" fill="#718096" font-size="9">Lundbeck</text>
+          <text x="600" y="264" text-anchor="middle" fill="#2b6cb0" font-size="10" font-weight="700">$624M</text>
+
+          <!-- Caplyta $462M = 52px -->
+          <rect x="650" y="288" width="60" height="52" rx="4" fill="url(#rev4)" opacity="0.85"/>
+          <text x="680" y="375" text-anchor="middle" fill="#2d3748" font-size="10" font-weight="600">Caplyta</text>
+          <text x="680" y="389" text-anchor="middle" fill="#718096" font-size="9">Intra-Cell</text>
+          <text x="680" y="283" text-anchor="middle" fill="#276749" font-size="10" font-weight="700">$462M</text>
+          <rect x="655" y="294" width="50" height="16" rx="8" fill="#38a169"/>
+          <text x="680" y="306" text-anchor="middle" fill="white" font-size="8" font-weight="700">+86% YoY</text>
+
+          <!-- Aristada $350M = 40px -->
+          <rect x="730" y="300" width="60" height="40" rx="4" fill="url(#rev2)" opacity="0.65"/>
+          <text x="760" y="375" text-anchor="middle" fill="#2d3748" font-size="10" font-weight="600">Aristada</text>
+          <text x="760" y="389" text-anchor="middle" fill="#718096" font-size="9">Alkermes</text>
+          <text x="760" y="295" text-anchor="middle" fill="#2b6cb0" font-size="10" font-weight="700">$350M</text>
+        </g>
+      </svg>
+      <p class="chart-subtitle">Revenue from SEC filings and earnings reports. Green badges indicate fastest-growing drugs. Total branded psych drug market exceeds $15B annually in U.S.</p>
+    </div>
+
+    <!-- CHART 5: Pharma Company Payments to Psychiatrists -->
+    <div class="chart-container">
+      <h3>Pharma Company Payments to Psychiatrists &mdash; Estimated Annual Speaker/Promo Spend</h3>
+      <svg viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(0,20)">
+          <!-- Grid -->
+          <line x1="180" y1="0" x2="180" y2="320" stroke="#e2e8f0" stroke-width="1"/>
+          <line x1="360" y1="0" x2="360" y2="320" stroke="#e2e8f0" stroke-width="0.5" stroke-dasharray="4"/>
+          <line x1="540" y1="0" x2="540" y2="320" stroke="#e2e8f0" stroke-width="0.5" stroke-dasharray="4"/>
+          <line x1="720" y1="0" x2="720" y2="320" stroke="#e2e8f0" stroke-width="0.5" stroke-dasharray="4"/>
+
+          <text x="180" y="345" text-anchor="middle" fill="#718096" font-size="11">$0</text>
+          <text x="360" y="345" text-anchor="middle" fill="#718096" font-size="11">$10M</text>
+          <text x="540" y="345" text-anchor="middle" fill="#718096" font-size="11">$20M</text>
+          <text x="720" y="345" text-anchor="middle" fill="#718096" font-size="11">$30M</text>
+
+          <!-- Otsuka $20.4M in 2016-17 alone, est $25-30M/yr -->
+          <text x="175" y="26" text-anchor="end" fill="#2d3748" font-size="11" font-weight="600">Otsuka</text>
+          <rect x="180" y="12" width="486" height="24" rx="4" fill="#1a365d" opacity="0.9"/>
+          <text x="672" y="29" fill="#1a365d" font-size="11" font-weight="700">~$27M/yr</text>
+
+          <!-- Janssen -->
+          <text x="175" y="62" text-anchor="end" fill="#2d3748" font-size="11">Janssen (J&J)</text>
+          <rect x="180" y="48" width="432" height="24" rx="4" fill="#2b6cb0" opacity="0.85"/>
+          <text x="618" y="65" fill="#2b6cb0" font-size="11" font-weight="700">~$24M/yr</text>
+
+          <!-- AbbVie/Allergan -->
+          <text x="175" y="98" text-anchor="end" fill="#2d3748" font-size="11">AbbVie</text>
+          <rect x="180" y="84" width="360" height="24" rx="4" fill="#4299e1" opacity="0.8"/>
+          <text x="546" y="101" fill="#4299e1" font-size="11" font-weight="700">~$20M/yr</text>
+
+          <!-- Lundbeck/Takeda -->
+          <text x="175" y="134" text-anchor="end" fill="#2d3748" font-size="11">Lundbeck/Takeda</text>
+          <rect x="180" y="120" width="270" height="24" rx="4" fill="#d69e2e" opacity="0.85"/>
+          <text x="456" y="137" fill="#744210" font-size="11" font-weight="700">~$15M/yr</text>
+
+          <!-- Neurocrine -->
+          <text x="175" y="170" text-anchor="end" fill="#2d3748" font-size="11">Neurocrine</text>
+          <rect x="180" y="156" width="180" height="24" rx="4" fill="#38a169" opacity="0.8"/>
+          <text x="366" y="173" fill="#276749" font-size="11" font-weight="700">~$10M/yr</text>
+
+          <!-- Teva -->
+          <text x="175" y="206" text-anchor="end" fill="#2d3748" font-size="11">Teva</text>
+          <rect x="180" y="192" width="162" height="24" rx="4" fill="#38a169" opacity="0.7"/>
+          <text x="348" y="209" fill="#276749" font-size="11" font-weight="700">~$9M/yr</text>
+
+          <!-- Alkermes -->
+          <text x="175" y="242" text-anchor="end" fill="#2d3748" font-size="11">Alkermes</text>
+          <rect x="180" y="228" width="144" height="24" rx="4" fill="#4299e1" opacity="0.65"/>
+          <text x="330" y="245" fill="#2b6cb0" font-size="11" font-weight="700">~$8M/yr</text>
+
+          <!-- Intra-Cellular -->
+          <text x="175" y="278" text-anchor="end" fill="#2d3748" font-size="11">Intra-Cellular</text>
+          <rect x="180" y="264" width="108" height="24" rx="4" fill="#4299e1" opacity="0.55"/>
+          <text x="294" y="281" fill="#2b6cb0" font-size="11" font-weight="700">~$6M/yr</text>
+
+          <!-- Sage/Biogen -->
+          <text x="175" y="314" text-anchor="end" fill="#2d3748" font-size="11">Sage/Biogen</text>
+          <rect x="180" y="300" width="72" height="24" rx="4" fill="#d69e2e" opacity="0.6"/>
+          <text x="258" y="317" fill="#744210" font-size="11" font-weight="700">~$4M/yr</text>
+        </g>
+      </svg>
+      <p class="chart-subtitle">Estimated from Open Payments data, company reports, and CMS aggregate datasets. Otsuka paid $20.4M to 13,470 psychiatrists in 2016-17 alone.</p>
+    </div>
+
+    <!-- CHART 6: KOL Payment Sources Breakdown -->
+    <div class="chart-container">
+      <h3>Stephen Stahl &mdash; $8.6M Payment Breakdown by Company</h3>
+      <svg viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(50,30)">
+          <!-- Stacked bar -->
+          <rect x="0" y="20" width="614" height="50" rx="4" fill="#1a365d" opacity="0.95"/>
+          <text x="307" y="52" text-anchor="middle" fill="white" font-size="13" font-weight="700">Takeda &mdash; $6.6M (76.7%)</text>
+
+          <rect x="614" y="20" width="48" height="50" rx="0" fill="#2b6cb0" opacity="0.9"/>
+          <rect x="662" y="20" width="40" height="50" rx="0" fill="#4299e1" opacity="0.85"/>
+          <rect x="702" y="20" width="32" height="50" rx="0" fill="#d69e2e" opacity="0.8"/>
+          <rect x="734" y="20" width="28" height="50" rx="0" fill="#38a169" opacity="0.75"/>
+          <rect x="762" y="20" width="38" height="50" rx="4" fill="#718096" opacity="0.6"/>
+
+          <!-- Legend -->
+          <g transform="translate(0,95)">
+            <rect x="0" y="0" width="12" height="12" rx="2" fill="#1a365d"/>
+            <text x="16" y="11" fill="#2d3748" font-size="10">Takeda $6.6M</text>
+
+            <rect x="120" y="0" width="12" height="12" rx="2" fill="#2b6cb0"/>
+            <text x="136" y="11" fill="#2d3748" font-size="10">Otsuka</text>
+
+            <rect x="210" y="0" width="12" height="12" rx="2" fill="#4299e1"/>
+            <text x="226" y="11" fill="#2d3748" font-size="10">Sunovion</text>
+
+            <rect x="310" y="0" width="12" height="12" rx="2" fill="#d69e2e"/>
+            <text x="326" y="11" fill="#2d3748" font-size="10">Allergan</text>
+
+            <rect x="400" y="0" width="12" height="12" rx="2" fill="#38a169"/>
+            <text x="416" y="11" fill="#2d3748" font-size="10">Acadia</text>
+
+            <rect x="480" y="0" width="12" height="12" rx="2" fill="#718096"/>
+            <text x="496" y="11" fill="#2d3748" font-size="10">15+ Others</text>
+          </g>
+
+          <text x="400" y="140" text-anchor="middle" fill="#718096" font-size="11">80% of Stahl's payments were for speaking engagements. He received payments from 20+ manufacturers.</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- CHART 7: Geographic Heatmap (simplified) -->
+    <div class="chart-container">
+      <h3>Top States for Psychiatrist Industry Payments</h3>
+      <svg viewBox="0 0 900 180" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(50,20)">
+          <!-- State bubbles -->
+          <circle cx="100" cy="70" r="60" fill="#1a365d" opacity="0.85"/>
+          <text x="100" y="62" text-anchor="middle" fill="white" font-size="18" font-weight="800">FL</text>
+          <text x="100" y="82" text-anchor="middle" fill="#f6c744" font-size="11" font-weight="600">#1 State</text>
+
+          <circle cx="250" cy="70" r="52" fill="#2b6cb0" opacity="0.8"/>
+          <text x="250" y="62" text-anchor="middle" fill="white" font-size="18" font-weight="800">TX</text>
+          <text x="250" y="82" text-anchor="middle" fill="#ebf8ff" font-size="11" font-weight="600">#2 State</text>
+
+          <circle cx="385" cy="70" r="45" fill="#4299e1" opacity="0.75"/>
+          <text x="385" y="62" text-anchor="middle" fill="white" font-size="18" font-weight="800">OH</text>
+          <text x="385" y="82" text-anchor="middle" fill="#ebf8ff" font-size="11" font-weight="600">#3 State</text>
+
+          <circle cx="505" cy="70" r="40" fill="#4299e1" opacity="0.65"/>
+          <text x="505" y="62" text-anchor="middle" fill="white" font-size="16" font-weight="800">OK</text>
+          <text x="505" y="80" text-anchor="middle" fill="#ebf8ff" font-size="10" font-weight="600">#4 State</text>
+
+          <circle cx="610" cy="70" r="36" fill="#4299e1" opacity="0.55"/>
+          <text x="610" y="62" text-anchor="middle" fill="white" font-size="16" font-weight="800">NY</text>
+          <text x="610" y="80" text-anchor="middle" fill="#ebf8ff" font-size="10" font-weight="600">#5 State</text>
+
+          <circle cx="700" cy="70" r="32" fill="#4299e1" opacity="0.45"/>
+          <text x="700" y="62" text-anchor="middle" fill="white" font-size="16" font-weight="800">CA</text>
+          <text x="700" y="80" text-anchor="middle" fill="#ebf8ff" font-size="10" font-weight="600">#6 State</text>
+
+          <circle cx="780" cy="70" r="28" fill="#4299e1" opacity="0.35"/>
+          <text x="780" y="67" text-anchor="middle" fill="white" font-size="14" font-weight="800">PA</text>
+        </g>
+        <text x="450" y="165" text-anchor="middle" fill="#718096" font-size="11">Top 1% of paid psychiatrists disproportionately located in FL, TX, OH, OK. Bubble size = relative payment volume.</text>
+      </svg>
+    </div>
+
+    <!-- CHART 8: Prescribing Impact -->
+    <div class="chart-grid">
+      <div class="chart-container">
+        <h3>Industry Payments & Prescribing Correlation</h3>
+        <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(60,20)">
+            <!-- Bars -->
+            <text x="45" y="15" text-anchor="middle" fill="#718096" font-size="10">Without</text>
+            <text x="45" y="27" text-anchor="middle" fill="#718096" font-size="10">Payments</text>
+            <text x="135" y="15" text-anchor="middle" fill="#718096" font-size="10">With</text>
+            <text x="135" y="27" text-anchor="middle" fill="#718096" font-size="10">Payments</text>
+
+            <text x="-10" y="70" text-anchor="end" fill="#2d3748" font-size="10">Stimulants</text>
+            <rect x="0" y="55" width="70" height="22" rx="3" fill="#e2e8f0"/>
+            <rect x="90" y="55" width="78" height="22" rx="3" fill="#2b6cb0" opacity="0.8"/>
+            <text x="175" y="70" fill="#38a169" font-size="10" font-weight="700">+11%</text>
+
+            <text x="-10" y="110" text-anchor="end" fill="#2d3748" font-size="10">Anti-</text>
+            <text x="-10" y="122" text-anchor="end" fill="#2d3748" font-size="10">depressants</text>
+            <rect x="0" y="100" width="70" height="22" rx="3" fill="#e2e8f0"/>
+            <rect x="90" y="100" width="79" height="22" rx="3" fill="#d69e2e" opacity="0.8"/>
+            <text x="175" y="115" fill="#38a169" font-size="10" font-weight="700">+13%</text>
+
+            <text x="-10" y="155" text-anchor="end" fill="#2d3748" font-size="10">Anti-</text>
+            <text x="-10" y="167" text-anchor="end" fill="#2d3748" font-size="10">psychotics</text>
+            <rect x="0" y="145" width="70" height="22" rx="3" fill="#e2e8f0"/>
+            <rect x="90" y="145" width="77" height="22" rx="3" fill="#e53e3e" opacity="0.7"/>
+            <text x="175" y="160" fill="#38a169" font-size="10" font-weight="700">+10%</text>
+
+            <text x="-10" y="205" text-anchor="end" fill="#2d3748" font-size="10">VMAT2</text>
+            <text x="-10" y="217" text-anchor="end" fill="#2d3748" font-size="10">Inhibitors</text>
+            <rect x="0" y="195" width="70" height="22" rx="3" fill="#e2e8f0"/>
+            <rect x="90" y="195" width="105" height="22" rx="3" fill="#1a365d" opacity="0.85"/>
+            <text x="200" y="210" fill="#e53e3e" font-size="10" font-weight="700">+50%*</text>
+
+            <text x="140" y="250" text-anchor="middle" fill="#718096" font-size="9">*p &lt; 0.001 for VMAT2 inhibitor prescribing</text>
+          </g>
+        </svg>
+        <p class="chart-subtitle">Physicians receiving payments prescribe more branded drugs</p>
+      </div>
+
+      <div class="chart-container">
+        <h3>TD Drug Prescriber Payment Rates</h3>
+        <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(50,30)">
+            <!-- Ingrezza circle -->
+            <circle cx="100" cy="100" r="80" fill="#d69e2e" opacity="0.2" stroke="#d69e2e" stroke-width="2"/>
+            <circle cx="100" cy="100" r="40" fill="#d69e2e" opacity="0.7"/>
+            <text x="100" y="92" text-anchor="middle" fill="white" font-size="20" font-weight="800">49.7%</text>
+            <text x="100" y="112" text-anchor="middle" fill="white" font-size="10">paid prescribers</text>
+            <text x="100" y="200" text-anchor="middle" fill="#744210" font-size="13" font-weight="700">Ingrezza</text>
+            <text x="100" y="216" text-anchor="middle" fill="#718096" font-size="10">Median: $25,920</text>
+
+            <!-- Austedo circle -->
+            <circle cx="250" cy="100" r="80" fill="#2b6cb0" opacity="0.15" stroke="#2b6cb0" stroke-width="2"/>
+            <circle cx="250" cy="100" r="38" fill="#2b6cb0" opacity="0.7"/>
+            <text x="250" y="92" text-anchor="middle" fill="white" font-size="20" font-weight="800">47.5%</text>
+            <text x="250" y="112" text-anchor="middle" fill="white" font-size="10">paid prescribers</text>
+            <text x="250" y="200" text-anchor="middle" fill="#1a365d" font-size="13" font-weight="700">Austedo</text>
+            <text x="250" y="216" text-anchor="middle" fill="#718096" font-size="10">Median: $18,101</text>
+          </g>
+        </svg>
+        <p class="chart-subtitle">Nearly half of TD drug prescribers received industry payments</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: TOP 20 KOLs -->
+  <section id="top-kols">
+    <h2 class="section-title">3. Top 20 Highest-Compensated Psychiatrist Speakers/KOLs</h2>
+    <p style="font-size:0.9rem; color:var(--muted); margin-bottom:0.5rem;">Based on CMS Open Payments (2014&ndash;2020), ProPublica Dollars for Docs, and Mad in America "Million Dollar Club" investigation. Amounts = cumulative payments.</p>
+
+    <!-- Fee Context Box -->
+    <div class="highlight-box" style="margin-bottom:1.25rem;">
+      <strong>Pharma Speaker Fee Ranges:</strong> Standard local dinner talk: $1,000&ndash;$2,000 | Regional/national: $2,000&ndash;$3,500 | Top-tier KOL: $3,500&ndash;$7,500 | Elite KOL/advisory: $7,500&ndash;$15,000+
+    </div>
+
+    <!-- KOL #1 -->
+    <div class="card">
+      <h3><span class="rank">#1</span> Stephen M. Stahl, MD, PhD</h3>
+      <div class="amount">$8,600,000 (2014&ndash;2020)</div>
+      <p style="margin:0.5rem 0;"><span class="tag company">Takeda ($6.6M)</span><span class="tag company">Otsuka</span><span class="tag company">Sunovion</span><span class="tag company">Allergan</span><span class="tag company">Acadia</span><span class="tag company">Intra-Cellular</span></p>
+      <p style="margin:0.5rem 0;"><span class="tag drug">Trintellix (vortioxetine)</span><span class="tag drug">Latuda</span><span class="tag drug">Vraylar</span><span class="tag drug">Nuplazid</span></p>
+      <p><strong>Affiliation:</strong> Clinical Professor, UC San Diego; Founder, Neuroscience Education Institute (NEI)</p>
+      <p><strong>Why KOL:</strong> Author of "Stahl's Essential Psychopharmacology" &mdash; the world's standard textbook. 500+ publications. NEI reaches tens of thousands annually. 80% of payments for speaking. 20+ manufacturers.</p>
+      <div class="detail-row"><span class="fee-badge">~$8,500&ndash;$11,500/event (est. 600&ndash;800 talks)</span> <a class="linkedin-btn" href="https://www.linkedin.com/in/ststahl" target="_blank">LinkedIn</a></div>
+    </div>
+
+    <!-- KOL #2 -->
+    <div class="card">
+      <h3><span class="rank">#2</span> Rakesh Jain, MD, MPH <span class="new-badge">NEW</span></h3>
+      <div class="amount">$4,867,000 (2014&ndash;2020)</div>
+      <p style="margin:0.5rem 0;"><span class="tag company">Allergan</span><span class="tag company">Teva</span><span class="tag company">Neurocrine</span><span class="tag company">Alkermes</span><span class="tag company">Otsuka</span><span class="tag company">Sunovion</span><span class="tag company">Takeda</span></p>
+      <p style="margin:0.5rem 0;"><span class="tag drug">Vraylar</span><span class="tag drug">Austedo</span><span class="tag drug">Ingrezza</span><span class="tag drug">Aristada</span><span class="tag drug">Rexulti</span><span class="tag drug">Trintellix</span></p>
+      <p><strong>Affiliation:</strong> Clinical Professor of Psychiatry, Texas Tech; Private Practice, Lake Jackson, TX</p>
+      <p><strong>Why KOL:</strong> Highest-volume speaker in psychiatry. In 2018 alone: $878K across 1,140 payments (239 speaking events). 67% speaking, 19% honoraria/travel, 14% consulting. 30+ company relationships. Prolific researcher.</p>
+      <div class="detail-row"><span class="fee-badge">~$2,500&ndash;$3,500/event (239 talks/yr in 2018)</span> <a class="linkedin-btn" href="https://www.linkedin.com/in/rakesh-jain-md" target="_blank">LinkedIn</a></div>
+    </div>
+
+    <!-- KOL #3 -->
+    <div class="card">
+      <h3><span class="rank">#3</span> Leslie Citrome, MD, MPH <span class="new-badge">REVISED: was #6</span></h3>
+      <div class="amount">$4,275,000 (2014&ndash;2020)</div>
+      <p style="margin:0.5rem 0;"><span class="tag company">Allergan</span><span class="tag company">Alkermes</span><span class="tag company">Otsuka</span><span class="tag company">Sunovion</span><span class="tag company">Takeda</span><span class="tag company">Neurocrine</span><span class="tag company">Teva</span></p>
+      <p style="margin:0.5rem 0;"><span class="tag drug">Vraylar</span><span class="tag drug">Aristada</span><span class="tag drug">Rexulti</span><span class="tag drug">Ingrezza</span><span class="tag drug">Austedo</span><span class="tag drug">Caplyta</span></p>
+      <p><strong>Affiliation:</strong> Clinical Professor, NY Medical College; Past President, ASCP</p>
+      <p><strong>Why KOL:</strong> 600+ publications. Global NNT/NNH methodology expert. Distinguished Life Fellow APA. 55% lectures, 25% consulting. His quantitative approach is cited by pharma in promotional materials.</p>
+      <div class="detail-row"><span class="fee-badge">~$3,600&ndash;$6,700/event (est. 350&ndash;650 talks)</span> <a class="linkedin-btn" href="https://www.linkedin.com/in/lesliecitrome" target="_blank">LinkedIn</a></div>
+    </div>
+
+    <!-- KOL #4 -->
+    <div class="card">
+      <h3><span class="rank">#4</span> Rebecca S. Roma, MD</h3>
+      <div class="amount">$2,446,000 (2014&ndash;2020)</div>
+      <p style="margin:0.5rem 0;"><span class="tag company">Otsuka</span><span class="tag company">Janssen</span><span class="tag company">Alkermes</span><span class="tag company">Sunovion</span></p>
+      <p style="margin:0.5rem 0;"><span class="tag drug">Abilify Maintena</span><span class="tag drug">Rexulti</span><span class="tag drug">Invega Sustenna</span><span class="tag drug">Aristada</span></p>
+      <p><strong>Affiliation:</strong> Medical Director, Mercy Behavioral Health; UPMC Mercy Hospital, Pittsburgh, PA</p>
+      <p><strong>Why KOL:</strong> 90% speaking/travel. LAI antipsychotic specialist for schizophrenia/bipolar. Published on LAI outcomes. Community psychiatrist on the national speaker circuit.</p>
+      <div class="detail-row"><span class="fee-badge">~$2,100&ndash;$3,100/event (est. 100&ndash;150 talks/yr)</span> <span style="font-size:0.75rem;color:var(--muted);">LinkedIn: No public profile found</span></div>
+    </div>
+
+    <!-- KOL #5 -->
+    <div class="card">
+      <h3><span class="rank">#5</span> Prakash S. Masand, MD</h3>
+      <div class="amount">$1,448,000 (2014&ndash;2020)</div>
+      <p style="margin:0.5rem 0;"><span class="tag company">Allergan/AbbVie</span><span class="tag company">Otsuka</span><span class="tag company">Janssen</span><span class="tag company">Sunovion</span></p>
+      <p style="margin:0.5rem 0;"><span class="tag drug">Vraylar</span><span class="tag drug">Latuda</span><span class="tag drug">Rexulti</span><span class="tag drug">Auvelity</span></p>
+      <p><strong>Affiliation:</strong> CEO, Centers of Psychiatric Excellence (COPE); Adjunct Professor, Duke-NUS</p>
+      <p><strong>Why KOL:</strong> 84% speaking/travel. Serial entrepreneur (3x founder, 4 exits). Founded Global Medical Education. 400+ publications. MGH/Harvard fellowship. Distinguished Fellow APA.</p>
+      <div class="detail-row"><span class="fee-badge">~$3,000&ndash;$4,900/event (est. 250&ndash;400 talks)</span> <a class="linkedin-btn" href="https://www.linkedin.com/in/prakash-masand-7690164/" target="_blank">LinkedIn</a></div>
+    </div>
+
+    <!-- KOL #6 -->
+    <div class="card">
+      <h3><span class="rank">#6</span> Christoph U. Correll, MD</h3>
+      <div class="amount">~$1,350,000 (2014&ndash;2020)</div>
+      <p style="margin:0.5rem 0;"><span class="tag company">Otsuka</span><span class="tag company">Janssen</span><span class="tag company">Alkermes</span><span class="tag company">Lundbeck</span><span class="tag company">Neurocrine</span><span class="tag company">Teva</span></p>
+      <p style="margin:0.5rem 0;"><span class="tag drug">Abilify Maintena</span><span class="tag drug">Rexulti</span><span class="tag drug">Invega Sustenna</span><span class="tag drug">Ingrezza</span></p>
+      <p><strong>Affiliation:</strong> Professor of Psychiatry, Zucker/Hofstra/Northwell; Charite Berlin</p>
+      <p><strong>Why KOL:</strong> Most prominent academic in million-dollar club. Top 1% cited globally (H-index >150). Co-author on hundreds of clinical trials. 15+ company relationships. Dual US/Germany appointments.</p>
+      <div class="detail-row"><span class="fee-badge">~$3,500&ndash;$7,500/event (est. 200&ndash;350 talks)</span> <a class="linkedin-btn" href="https://www.linkedin.com/in/christoph-correll-md-39b955200/" target="_blank">LinkedIn</a></div>
+    </div>
+
+    <!-- KOL #7 -->
+    <div class="card">
+      <h3><span class="rank">#7</span> Jelena Kunovac, MD <span class="new-badge">NEW</span></h3>
+      <div class="amount">$1,276,000 (2014&ndash;2020)</div>
+      <p style="margin:0.5rem 0;"><span class="tag company">Sunovion</span><span class="tag company">Alkermes</span><span class="tag company">Otsuka</span></p>
+      <p style="margin:0.5rem 0;"><span class="tag drug">Latuda</span><span class="tag drug">Aristada</span><span class="tag drug">Abilify Maintena</span><span class="tag drug">Rexulti</span></p>
+      <p><strong>Affiliation:</strong> CEO & Co-Founder, Redbird Research (formerly Altea Research); Adjunct Professor, UNLV</p>
+      <p><strong>Why KOL:</strong> PI on 525+ CNS clinical trials. Founded research centers in CA, NV, AZ. Bridges clinical research and promotional speaking. 20+ years practice experience.</p>
+      <div class="detail-row"><span class="fee-badge">~$2,000&ndash;$3,500/event (est. 370&ndash;600 talks)</span> <a class="linkedin-btn" href="https://www.linkedin.com/in/jelena-kunovac-3311345/" target="_blank">LinkedIn</a></div>
+    </div>
+
+    <!-- KOL #8 -->
+    <div class="card">
+      <h3><span class="rank">#8</span> Andrew J. Cutler, MD</h3>
+      <div class="amount">~$1,200,000 (2014&ndash;2020)</div>
+      <p style="margin:0.5rem 0;"><span class="tag company">Teva</span><span class="tag company">Neurocrine</span><span class="tag company">Otsuka</span><span class="tag company">AbbVie/Allergan</span><span class="tag company">Sunovion</span></p>
+      <p style="margin:0.5rem 0;"><span class="tag drug">Austedo</span><span class="tag drug">Ingrezza</span><span class="tag drug">Vraylar</span></p>
+      <p><strong>Affiliation:</strong> Clinical Associate Professor, SUNY Upstate; CMO, Neuroscience Education Institute</p>
+      <p><strong>Why KOL:</strong> PI on 400+ clinical trials. 150+ publications, 300+ presentations. Named on Teva's speakers list. Key VMAT2 inhibitor promoter. Works closely with Stahl's NEI.</p>
+      <div class="detail-row"><span class="fee-badge">~$2,500&ndash;$5,000/event (est. 250&ndash;450 talks)</span> <a class="linkedin-btn" href="https://www.linkedin.com/in/andrew-cutler-91263510/" target="_blank">LinkedIn</a></div>
+    </div>
+
+    <!-- KOL #9 -->
+    <div class="card">
+      <h3><span class="rank">#9</span> Charles B. Nemeroff, MD, PhD</h3>
+      <div class="amount">~$1,100,000 (2014&ndash;2020; historical total significantly higher)</div>
+      <p style="margin:0.5rem 0;"><span class="tag company">GSK (historical)</span><span class="tag company">Intra-Cellular</span><span class="tag company">Sage</span><span class="tag company">Janssen</span></p>
+      <p style="margin:0.5rem 0;"><span class="tag drug">Caplyta</span><span class="tag drug">Zurzuvae</span><span class="tag drug">Spravato</span></p>
+      <p><strong>Affiliation:</strong> Professor & Chair, Psychiatry, Dell Medical School, UT Austin (formerly Emory)</p>
+      <p><strong>Why KOL:</strong> 1,100+ publications. NYT exposed $1.2M undisclosed payments at Emory (2008). Despite controversy, remains active KOL with 10+ company relationships. Leading TRD/psychedelic research authority.</p>
+      <div class="detail-row"><span class="fee-badge">~$5,000&ndash;$10,000/event (est. 120&ndash;200 talks)</span> <a class="linkedin-btn" href="https://www.linkedin.com/in/charles-nemeroff-3444495/" target="_blank">LinkedIn</a></div>
+    </div>
+
+    <!-- KOL #10 -->
+    <div class="card">
+      <h3><span class="rank">#10</span> Henry A. Nasrallah, MD</h3>
+      <div class="amount">~$1,100,000 (2014&ndash;2020)</div>
+      <p style="margin:0.5rem 0;"><span class="tag company">Allergan/AbbVie</span><span class="tag company">Alkermes</span><span class="tag company">Otsuka</span><span class="tag company">Janssen</span><span class="tag company">Neurocrine</span></p>
+      <p style="margin:0.5rem 0;"><span class="tag drug">Vraylar</span><span class="tag drug">Aristada</span><span class="tag drug">Ingrezza</span></p>
+      <p><strong>Affiliation:</strong> Professor, UC College of Medicine; Editor-in-Chief, <em>Current Psychiatry</em></p>
+      <p><strong>Why KOL:</strong> 450 articles, 610 abstracts, 13 books. Editor-in-Chief of 3 journals. Former chair at Ohio State (12 yrs) and SLU (6 yrs). Co-founded Schizophrenia International Research Society. ASCP award named after him.</p>
+      <div class="detail-row"><span class="fee-badge">~$3,000&ndash;$5,000/event (est. 250&ndash;350 talks)</span> <a class="linkedin-btn" href="https://www.linkedin.com/in/henry-nasrallah-70a19616/" target="_blank">LinkedIn</a></div>
+    </div>
+
+    <!-- Divider -->
+    <div style="background:#38a169;color:white;padding:0.75rem 1.25rem;border-radius:8px;margin:1.5rem 0 1rem;font-weight:700;font-size:1rem;">Expanded: Ranks #11&ndash;20</div>
+
+    <!-- KOL #11 -->
+    <div class="card" style="border-left:4px solid #38a169;">
+      <h3><span class="rank" style="background:#38a169;">#11</span> Joseph R. Calabrese, MD</h3>
+      <div class="amount">~$1,100,000 (2014&ndash;2020)</div>
+      <p style="margin:0.5rem 0;"><span class="tag company">Otsuka</span><span class="tag company">Lundbeck</span><span class="tag company">Sunovion</span><span class="tag company">Allergan/AbbVie</span><span class="tag company">Janssen</span></p>
+      <p style="margin:0.5rem 0;"><span class="tag drug">Abilify Maintena</span><span class="tag drug">Latuda</span><span class="tag drug">Vraylar</span><span class="tag drug">Rexulti</span></p>
+      <p><strong>Affiliation:</strong> Professor of Psychiatry, Case Western Reserve; Director, Mood Disorders Program, UH Cleveland</p>
+      <p><strong>Why KOL:</strong> World-renowned bipolar researcher. Lead author on pivotal Abilify Maintena bipolar studies. PI on 70+ bipolar treatment studies. 300+ papers. ASCP board member.</p>
+      <div class="detail-row"><span class="fee-badge">~$3,500&ndash;$6,000/event (est. 200&ndash;300 talks)</span> <a class="linkedin-btn" href="https://www.linkedin.com/in/joseph-calabrese-36b62220/" target="_blank">LinkedIn</a></div>
+    </div>
+
+    <!-- KOL #12 -->
+    <div class="card" style="border-left:4px solid #38a169;">
+      <h3><span class="rank" style="background:#38a169;">#12</span> Jon W. Draud, MD</h3>
+      <div class="amount">~$1,050,000 (cumulative)</div>
+      <p style="margin:0.5rem 0;"><span class="tag company">AstraZeneca</span><span class="tag company">Cephalon</span><span class="tag company">Eli Lilly</span><span class="tag company">Forest</span><span class="tag company">Merck</span><span class="tag company">Pfizer</span><span class="tag company">Jazz</span></p>
+      <p style="margin:0.5rem 0;"><span class="tag drug">Seroquel</span><span class="tag drug">Cymbalta</span><span class="tag drug">Lexapro</span><span class="tag drug">Pristiq</span><span class="tag drug">Xyrem</span></p>
+      <p><strong>Affiliation:</strong> Heritage Medical Associates; Co-Founder, Nashville TMS Alliance; Clinical Professor, UT College of Medicine</p>
+      <p><strong>Why KOL:</strong> ProPublica's #1 highest-paid speaker (2009&ndash;2012: $1,009,213). "Community psychiatrist speaker" archetype &mdash; private practice backbone of pharma bureaus. Vanderbilt-trained.</p>
+      <div class="detail-row"><span class="fee-badge">~$1,800&ndash;$2,500/event (very high volume)</span> <a class="linkedin-btn" href="https://www.linkedin.com/in/jon-draud-md-a6a17b12/" target="_blank">LinkedIn</a></div>
+    </div>
+
+    <!-- KOL #13 -->
+    <div class="card" style="border-left:4px solid #38a169;">
+      <h3><span class="rank" style="background:#38a169;">#13</span> Christopher D. Bojrab, MD</h3>
+      <div class="amount">~$1,000,000 (cumulative)</div>
+      <p style="margin:0.5rem 0;"><span class="tag company">Forest</span><span class="tag company">Pfizer</span><span class="tag company">Merck</span><span class="tag company">Cephalon</span><span class="tag company">Takeda</span></p>
+      <p style="margin:0.5rem 0;"><span class="tag drug">Antidepressants</span><span class="tag drug">Mood stabilizers</span><span class="tag drug">ADHD meds</span><span class="tag drug">Anxiolytics</span></p>
+      <p><strong>Affiliation:</strong> President, Indiana Health Group; Team Psychiatrist, Indiana Pacers; Consultant, Colts & Indians</p>
+      <p><strong>Why KOL:</strong> 100+ lectures/year nationally. Pacers team psych role = high media visibility. Chairman, KOL Group for Avant Healthcare. Sports psychiatry, mood/anxiety, ADHD, sleep, gambling addiction expert.</p>
+      <div class="detail-row"><span class="fee-badge">~$1,500&ndash;$2,500/event (700+ talks over 7 yrs)</span> <a class="linkedin-btn" href="https://www.linkedin.com/in/chris-bojrab-md-2929975/" target="_blank">LinkedIn</a></div>
+    </div>
+
+    <!-- KOL #14 -->
+    <div class="card" style="border-left:4px solid #38a169;">
+      <h3><span class="rank" style="background:#38a169;">#14</span> Rifaat S. El-Mallakh, MD</h3>
+      <div class="amount">~$1,000,000 (est.)</div>
+      <p style="margin:0.5rem 0;"><span class="tag company">Idorsia</span><span class="tag company">Indivior</span><span class="tag company">Intra-Cellular</span><span class="tag company">Janssen</span><span class="tag company">Lundbeck</span><span class="tag company">Otsuka</span><span class="tag company">Sunovion</span><span class="tag company">Teva</span></p>
+      <p style="margin:0.5rem 0;"><span class="tag drug">Caplyta</span><span class="tag drug">Latuda</span><span class="tag drug">Antipsychotics/mood stabilizers</span></p>
+      <p><strong>Affiliation:</strong> Professor of Psychiatry, University of Louisville School of Medicine</p>
+      <p><strong>Why KOL:</strong> Named in MIA million-dollar club. 25+ years bipolar pathophysiology research. Speaker for 9+ companies simultaneously. Mood disorder neurobiology expert.</p>
+      <div class="detail-row"><span class="fee-badge">~$2,000&ndash;$4,000/event (est. 300&ndash;450 talks)</span> <span style="font-size:0.75rem;color:var(--muted);">No LinkedIn found</span></div>
+    </div>
+
+    <!-- KOL #15 -->
+    <div class="card" style="border-left:4px solid #38a169;">
+      <h3><span class="rank" style="background:#38a169;">#15</span> John M. Kane, MD</h3>
+      <div class="amount">~$1,000,000 (est.)</div>
+      <p style="margin:0.5rem 0;"><span class="tag company">Alkermes</span><span class="tag company">Allergan</span><span class="tag company">Janssen</span><span class="tag company">Lundbeck</span><span class="tag company">Otsuka</span><span class="tag company">Teva</span></p>
+      <p style="margin:0.5rem 0;"><span class="tag drug">Abilify Maintena (lead author)</span><span class="tag drug">Aristada</span><span class="tag drug">Invega Sustenna</span></p>
+      <p><strong>Affiliation:</strong> Professor of Psychiatry, Zucker/Hofstra/Northwell; Former Chair (34 years), Zucker Hillside Hospital</p>
+      <p><strong>Why KOL:</strong> 925+ publications. Top 1% cited globally. Lead author on Abilify Maintena schizophrenia studies. 34-year department chair. Definitive authority on antipsychotic treatment and LAIs.</p>
+      <div class="detail-row"><span class="fee-badge">~$5,000&ndash;$10,000/event (selective, high-value)</span> <a class="linkedin-btn" href="https://www.linkedin.com/in/johnkanemd/" target="_blank">LinkedIn</a></div>
+    </div>
+
+    <!-- KOL #16 -->
+    <div class="card" style="border-left:4px solid #38a169;">
+      <h3><span class="rank" style="background:#38a169;">#16</span> Gustavo Alva, MD, DFAPA</h3>
+      <div class="amount">~$950,000 (est. cumulative)</div>
+      <p style="margin:0.5rem 0;"><span class="tag company">Allergan ($165K)</span><span class="tag company">Alkermes ($129K)</span><span class="tag company">Takeda ($113K)</span><span class="tag company">Otsuka ($82K)</span><span class="tag company">Lundbeck ($81K)</span><span class="tag company">Neurocrine ($59K)</span><span class="tag company">Teva ($51K)</span></p>
+      <p style="margin:0.5rem 0;"><span class="tag drug">Vraylar</span><span class="tag drug">Aristada</span><span class="tag drug">Trintellix</span><span class="tag drug">Rexulti</span><span class="tag drug">Ingrezza</span><span class="tag drug">Austedo</span><span class="tag drug">Latuda</span></p>
+      <p><strong>Affiliation:</strong> Associate Professor, UC Irvine; Pacific Neuropsychiatric Specialists, Orange, CA</p>
+      <p><strong>Why KOL:</strong> 2018: $724,600 across 866 payments from 11+ companies (189 speaking events). ProPublica era: $663,751 (#4). Broadest drug range of any KOL. Distinguished Fellow APA.</p>
+      <div class="detail-row"><span class="fee-badge">~$2,593/event (verified: 2018 data)</span> <a class="linkedin-btn" href="https://www.linkedin.com/in/gusalvamd" target="_blank">LinkedIn</a></div>
+    </div>
+
+    <!-- KOL #17 -->
+    <div class="card" style="border-left:4px solid #38a169;">
+      <h3><span class="rank" style="background:#38a169;">#17</span> John J. Miller, MD</h3>
+      <div class="amount">~$900,000 (est. cumulative)</div>
+      <p style="margin:0.5rem 0;"><span class="tag company">AstraZeneca</span><span class="tag company">Forest</span><span class="tag company">Pfizer</span><span class="tag company">Otsuka</span><span class="tag company">Sunovion</span><span class="tag company">Allergan</span><span class="tag company">Takeda</span></p>
+      <p style="margin:0.5rem 0;"><span class="tag drug">Lexapro</span><span class="tag drug">Trintellix</span><span class="tag drug">Rexulti</span><span class="tag drug">Latuda</span><span class="tag drug">Vraylar</span></p>
+      <p><strong>Affiliation:</strong> Medical Director, Brain Health, Exeter, NH; Editor-in-Chief, <em>Psychiatric Times</em></p>
+      <p><strong>Why KOL:</strong> ProPublica 2009&ndash;2012: $669,935 (#3 psychiatrist). Editor-in-Chief of Psychiatric Times = massive platform. Community psychiatrist bridging academia/practice. UMass-trained.</p>
+      <div class="detail-row"><span class="fee-badge">~$2,000&ndash;$3,500/event (est. 300&ndash;400 talks)</span> <a class="linkedin-btn" href="https://www.linkedin.com/in/jjmillermd/" target="_blank">LinkedIn</a></div>
+    </div>
+
+    <!-- KOL #18 -->
+    <div class="card" style="border-left:4px solid #38a169;">
+      <h3><span class="rank" style="background:#38a169;">#18</span> Vladimir Maletic, MD, MS &#x2020;</h3>
+      <div class="amount">~$850,000 (est. cumulative)</div>
+      <p style="margin:0.5rem 0;"><span class="tag company">Allergan ($164K)</span><span class="tag company">Otsuka ($111K)</span><span class="tag company">Sunovion ($88K)</span><span class="tag company">Takeda ($44K)</span><span class="tag company">Alkermes</span><span class="tag company">Janssen</span></p>
+      <p style="margin:0.5rem 0;"><span class="tag drug">Vraylar</span><span class="tag drug">Rexulti</span><span class="tag drug">Latuda</span><span class="tag drug">Trintellix</span></p>
+      <p><strong>Affiliation:</strong> Clinical Professor, Univ. of South Carolina; Consulting Associate, Duke (deceased &mdash; in memoriam at Psych Congress)</p>
+      <p><strong>Why KOL:</strong> 2018: $445,146 across 630 payments. Dual board-certified. Neurobiology expertise bridging basic science and clinical practice. Teaching partner with Rakesh Jain on CME courses.</p>
+      <div class="detail-row"><span class="fee-badge">~$2,418/event (verified: 141 talks in 2018)</span> <a class="linkedin-btn" href="https://www.linkedin.com/in/vladimir-maletic-050a97a/" target="_blank">LinkedIn</a></div>
+    </div>
+
+    <!-- KOL #19 -->
+    <div class="card" style="border-left:4px solid #38a169;">
+      <h3><span class="rank" style="background:#38a169;">#19</span> Gustavo Kinrys, MD</h3>
+      <div class="amount">~$800,000 (est.)</div>
+      <p style="margin:0.5rem 0;"><span class="tag company">Allergan</span><span class="tag company">Otsuka</span><span class="tag company">Sunovion</span><span class="tag company">Takeda</span><span class="tag company">Alkermes</span></p>
+      <p style="margin:0.5rem 0;"><span class="tag drug">Atypical antipsychotics</span><span class="tag drug">Newer antidepressants</span></p>
+      <p><strong>Affiliation:</strong> Multiple pharma speaker bureau memberships; Clinical researcher in mood/anxiety disorders</p>
+      <p><strong>Why KOL:</strong> Part of the ~150 psychiatrists earning $100K+/year from pharma (2018). Active on multiple speaker bureaus simultaneously. Mood/anxiety clinical research focus.</p>
+      <div class="detail-row"><span class="fee-badge">~$2,000&ndash;$3,000/event (est. 300&ndash;400 talks)</span> <span style="font-size:0.75rem;color:var(--muted);">No LinkedIn found</span></div>
+    </div>
+
+    <!-- KOL #20 -->
+    <div class="card" style="border-left:4px solid #38a169;">
+      <h3><span class="rank" style="background:#38a169;">#20</span> Rishi Kakar, MD</h3>
+      <div class="amount">~$750,000 (est.)</div>
+      <p style="margin:0.5rem 0;"><span class="tag company">Multiple CNS pharma companies</span></p>
+      <p style="margin:0.5rem 0;"><span class="tag drug">Newer antipsychotics</span><span class="tag drug">Antidepressants</span></p>
+      <p><strong>Affiliation:</strong> Chief Scientific Officer, Segal Trials; Board Certified Psychiatrist; Tamarac, FL</p>
+      <p><strong>Why KOL:</strong> South Florida-based clinical research psychiatrist and PI. CSO of Segal Trials, one of the largest CNS trial sites. Active on pharmaceutical speaker bureaus. Part of the broader top-150 cohort.</p>
+      <div class="detail-row"><span class="fee-badge">~$1,500&ndash;$3,000/event (est. 250&ndash;400 talks)</span> <span style="font-size:0.75rem;color:var(--muted);">No LinkedIn found</span></div>
+    </div>
+
+    <!-- Quick Reference Table -->
+    <div class="highlight-box" style="margin-top:1.5rem;">
+      <strong>Average Speaking Rate Summary:</strong> Standard speakers: $1,500&ndash;$3,000/talk | Top KOLs: $3,500&ndash;$7,500/talk | Elite academics: $5,000&ndash;$15,000+/talk. Volume varies dramatically: Rakesh Jain did 239 talks in 2018 alone at ~$2,674 each, while senior academics like Nemeroff and Kane do ~20&ndash;30 high-value talks/year at $5,000&ndash;$10,000 each.
+    </div>
+  </section>
+
+  <!-- SECTION 4: PHARMA COMPANIES -->
+  <section id="pharma-companies">
+    <h2 class="section-title">4. Major Pharma Companies in Psychiatric Speaker Programs</h2>
+    <table>
+      <thead>
+        <tr><th>Company</th><th>Key Psychiatric Drugs</th><th>Payment Activity</th><th>Speaker Program Scale</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Otsuka</strong></td>
+          <td>Abilify Maintena, Asimtufii, Rexulti (w/ Lundbeck)</td>
+          <td>$20.4M to 13,470 psychiatrists (2016&ndash;17 alone)</td>
+          <td>#1 or #2 payer to psychiatrists. Massive LAI + Rexulti (Alzheimer's agitation added 2023) programs.</td>
+        </tr>
+        <tr>
+          <td><strong>Janssen (J&J)</strong></td>
+          <td>Invega Sustenna/Trinza/Hafyera, Spravato</td>
+          <td>Top 3 payer across all years</td>
+          <td>Invega = #1 psych drug by revenue ($2.9B). Spravato expanding rapidly (+89% YoY to $689M).</td>
+        </tr>
+        <tr>
+          <td><strong>AbbVie</strong></td>
+          <td>Vraylar (cariprazine)</td>
+          <td>Major payer through Allergan legacy</td>
+          <td>Vraylar $2.76B revenue. Targeting psychiatrists AND primary care. Selected for Medicare price negotiation.</td>
+        </tr>
+        <tr>
+          <td><strong>Neurocrine</strong></td>
+          <td>Ingrezza (valbenazine)</td>
+          <td>$6.2M to ~7,000 doctors (2018 alone)</td>
+          <td>TD awareness programs. Market leader ($1.84B, +29% YoY). Median payment: $25,920.</td>
+        </tr>
+        <tr>
+          <td><strong>Teva</strong></td>
+          <td>Austedo (deutetrabenazine), Uzedy</td>
+          <td>$6.05M to ~8,000 doctors (2018 alone)</td>
+          <td>Austedo $1.2B+ (+28% YoY). TD + Huntington's. Uzedy adds LAI speaker programs.</td>
+        </tr>
+        <tr>
+          <td><strong>Lundbeck/Takeda</strong></td>
+          <td>Trintellix (vortioxetine), Rexulti</td>
+          <td>Takeda paid Stahl alone $6.6M</td>
+          <td>Trintellix ~$624M. Lundbeck record DKK 20B revenue in 2023. Rexulti co-promotion with Otsuka.</td>
+        </tr>
+        <tr>
+          <td><strong>Alkermes</strong></td>
+          <td>Aristada, Vivitrol, Lybalvi</td>
+          <td>Top 5 payer</td>
+          <td>LAI antipsychotics + substance use disorders. Competes directly with Otsuka's Abilify Maintena.</td>
+        </tr>
+        <tr>
+          <td><strong>Sunovion/Sumitomo</strong></td>
+          <td>Latuda (now generic)</td>
+          <td>Historically top 3 payer</td>
+          <td>Latuda was $4.5B+ cumulative. Speaker spending declined post-generic. Pivoting to ulotaront.</td>
+        </tr>
+        <tr>
+          <td><strong>Intra-Cellular</strong></td>
+          <td>Caplyta (lumateperone)</td>
+          <td>Growing rapidly</td>
+          <td>$462M (+86% YoY). Expanding bipolar depression and schizophrenia speaker programs.</td>
+        </tr>
+        <tr>
+          <td><strong>Sage/Biogen</strong></td>
+          <td>Zurzuvae (zuranolone), Zulresso</td>
+          <td>Emerging</td>
+          <td>First oral PPD treatment ($15,900/course). Building reproductive psychiatry KOL networks.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SECTION 5: DRUG SPENDING -->
+  <section id="drug-spending">
+    <h2 class="section-title">5. Psychiatric Drugs &mdash; Estimated Speaker/Promotional Spending</h2>
+    <table>
+      <thead>
+        <tr><th>Rank</th><th>Drug (Generic)</th><th>Company</th><th>Indication(s)</th><th>Est. Annual Spend</th><th>2023 Revenue</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td><strong>Invega franchise</strong> (paliperidone)</td><td>Janssen</td><td>Schizophrenia, Schizoaffective</td><td>$15&ndash;25M+/yr</td><td>$2.9B</td></tr>
+        <tr><td>2</td><td><strong>Vraylar</strong> (cariprazine)</td><td>AbbVie</td><td>Schizophrenia, Bipolar I, MDD adjunct</td><td>$12&ndash;20M+/yr</td><td>$2.76B</td></tr>
+        <tr><td>3</td><td><strong>Rexulti</strong> (brexpiprazole)</td><td>Otsuka/Lundbeck</td><td>MDD adjunct, Schizophrenia, Alz. Agitation</td><td>$10&ndash;18M+/yr</td><td>~$1.4B</td></tr>
+        <tr><td>4</td><td><strong>Abilify Maintena/Asimtufii</strong></td><td>Otsuka/Lundbeck</td><td>Schizophrenia, Bipolar I</td><td>$10&ndash;15M+/yr</td><td>~$1.0B</td></tr>
+        <tr><td>5</td><td><strong>Ingrezza</strong> (valbenazine)</td><td>Neurocrine</td><td>Tardive Dyskinesia</td><td>$6&ndash;10M+/yr</td><td>$1.84B</td></tr>
+        <tr><td>6</td><td><strong>Austedo</strong> (deutetrabenazine)</td><td>Teva</td><td>TD, Huntington's Chorea</td><td>$6&ndash;10M+/yr</td><td>$1.2B+</td></tr>
+        <tr><td>7</td><td><strong>Spravato</strong> (esketamine)</td><td>Janssen</td><td>TRD, MDD w/ suicidal ideation</td><td>$8&ndash;15M+/yr</td><td>$689M</td></tr>
+        <tr><td>8</td><td><strong>Trintellix</strong> (vortioxetine)</td><td>Takeda/Lundbeck</td><td>MDD</td><td>$5&ndash;10M+/yr</td><td>~$624M</td></tr>
+        <tr><td>9</td><td><strong>Caplyta</strong> (lumateperone)</td><td>Intra-Cellular</td><td>Schizophrenia, Bipolar Depression</td><td>$5&ndash;8M+/yr</td><td>$462M</td></tr>
+        <tr><td>10</td><td><strong>Aristada</strong> (aripiprazole lauroxil)</td><td>Alkermes</td><td>Schizophrenia</td><td>$4&ndash;8M+/yr</td><td>~$350M</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box">
+      <strong>TD Drug Payment Data:</strong> In 2018, Neurocrine spent $6.2M on ~7,000 physicians for Ingrezza, and Teva spent $6.05M on ~8,000 for Austedo. 47.5% of Austedo prescribers and 49.7% of Ingrezza prescribers received payments. Receipt of payments was significantly associated with higher prescription volume (p < 0.001).
+    </div>
+  </section>
+
+  <!-- SECTION 6: REVENUE -->
+  <section id="drug-revenue">
+    <h2 class="section-title">6. 2023 Psychiatric Drug Revenue Rankings</h2>
+    <table>
+      <thead><tr><th>Drug</th><th>Company</th><th>2023 Revenue</th><th>YoY Growth</th><th>Category</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Invega franchise</strong></td><td>Janssen (J&J)</td><td>$2.9B</td><td>Stable</td><td>LAI Antipsychotic</td></tr>
+        <tr><td><strong>Vraylar</strong></td><td>AbbVie</td><td>$2.76B</td><td>+20%</td><td>Atypical Antipsychotic</td></tr>
+        <tr><td><strong>Ingrezza</strong></td><td>Neurocrine</td><td>$1.84B</td><td>+29%</td><td>VMAT2 Inhibitor (TD)</td></tr>
+        <tr><td><strong>Rexulti</strong></td><td>Otsuka/Lundbeck</td><td>~$1.4B</td><td>+21%</td><td>Atypical Antipsychotic</td></tr>
+        <tr><td><strong>Austedo</strong></td><td>Teva</td><td>$1.2B+</td><td>+28%</td><td>VMAT2 Inhibitor</td></tr>
+        <tr><td><strong>Abilify franchise</strong></td><td>Otsuka/Lundbeck</td><td>~$1.0B</td><td>+14%</td><td>LAI Antipsychotic</td></tr>
+        <tr><td><strong>Spravato</strong></td><td>Janssen (J&J)</td><td>$689M</td><td style="color:#38a169;font-weight:700;">+89%</td><td>Nasal Spray (TRD)</td></tr>
+        <tr><td><strong>Trintellix</strong></td><td>Takeda/Lundbeck</td><td>~$624M</td><td>Stable</td><td>Antidepressant</td></tr>
+        <tr><td><strong>Caplyta</strong></td><td>Intra-Cellular</td><td>$462M</td><td style="color:#38a169;font-weight:700;">+86%</td><td>Atypical Antipsychotic</td></tr>
+        <tr><td><strong>Aristada</strong></td><td>Alkermes</td><td>~$350M</td><td>Modest</td><td>LAI Antipsychotic</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.85rem; color:var(--muted); margin-top:0.5rem;">Latuda (lurasidone) faced generic entry in 2023, down from peak ~$2B+ annual sales. Total branded psych drug market exceeds $15B annually in the U.S.</p>
+  </section>
+
+  <!-- SECTION 7: TRENDS -->
+  <section id="trends">
+    <h2 class="section-title">7. Notable Trends in Psychiatric Drug Marketing</h2>
+    <div class="card">
+      <div class="trend-item">
+        <div class="trend-num">1</div>
+        <div>
+          <strong>Extreme Payment Concentration</strong><br>
+          The top 1% of psychiatrists (570 of 56,955) receive 74.7% of all industry payments. These KOLs function as force multipliers, influencing prescribing through lectures, publications, and guideline authorship.
+        </div>
+      </div>
+      <div class="trend-item">
+        <div class="trend-num">2</div>
+        <div>
+          <strong>Shift to Antipsychotics & Specialty Drugs</strong><br>
+          Highest spending has moved from traditional antidepressants (now generic) to branded atypical antipsychotics (Vraylar, Rexulti, Caplyta), LAIs (Invega, Abilify Maintena), and novel mechanisms (Spravato, VMAT2 inhibitors). SGAs captured 61% of antipsychotic market revenue in 2023.
+        </div>
+      </div>
+      <div class="trend-item">
+        <div class="trend-num">3</div>
+        <div>
+          <strong>Spravato: Fastest-Growing Speaker Program</strong><br>
+          89% revenue growth in 2023. J&J investing heavily in KOL programs to normalize REMS-certified, in-office esketamine for TRD. Peak sales forecast: $1.5B+.
+        </div>
+      </div>
+      <div class="trend-item">
+        <div class="trend-num">4</div>
+        <div>
+          <strong>Tardive Dyskinesia: A Marketing-Created $3B Market</strong><br>
+          Ingrezza + Austedo = $3B+ revenue for a historically under-treated condition. Both companies invested in "disease awareness" speaker programs. Nearly 50% of prescribers received payments. Textbook pharma market expansion.
+        </div>
+      </div>
+      <div class="trend-item">
+        <div class="trend-num">5</div>
+        <div>
+          <strong>Geographic Concentration: FL, TX, OH, OK</strong><br>
+          Top 1% of paid psychiatrists are disproportionately in Florida, Texas, Ohio, and Oklahoma. May reflect higher speaker activity, permissive environments, or targeted strategy in large Medicaid/Medicare states.
+        </div>
+      </div>
+      <div class="trend-item">
+        <div class="trend-num">6</div>
+        <div>
+          <strong>CME as Shadow Speaker Program</strong><br>
+          Pharma funds CME companies that "independently" select speakers. These payments don't appear in Open Payments, creating significant undercounting. KOLs like Stahl (NEI) and Masand (Global Medical Education) operate at this intersection.
+        </div>
+      </div>
+      <div class="trend-item">
+        <div class="trend-num">7</div>
+        <div>
+          <strong>Medicare Price Negotiation Impact</strong><br>
+          Vraylar selected for Medicare negotiation under IRA. May compress margins and redirect marketing budgets. Companies may increase KOL activity to protect share before negotiated prices take effect.
+        </div>
+      </div>
+      <div class="trend-item">
+        <div class="trend-num">8</div>
+        <div>
+          <strong>LAI Antipsychotic Push</strong><br>
+          Invega, Abilify Maintena/Asimtufii, Aristada, Uzedy represent the fastest-growing schizophrenia segment. Speaker programs emphasize adherence benefits. J&J's Invega franchise alone = $2.9B.
+        </div>
+      </div>
+      <div class="trend-item">
+        <div class="trend-num">9</div>
+        <div>
+          <strong>Payments Correlate with Prescribing</strong><br>
+          Peer-reviewed evidence: physicians receiving payments prescribe more branded drugs. For VMAT2 inhibitors, the correlation is statistically significant (p < 0.001). States with top-quartile ad spend see +11% stimulants, +13% antidepressants, +10% antipsychotics.
+        </div>
+      </div>
+      <div class="trend-item">
+        <div class="trend-num">10</div>
+        <div>
+          <strong>New Entrants: PPD & Psychedelic-Adjacent</strong><br>
+          Zurzuvae ($15,900/course) launched Dec 2023 as first oral PPD treatment. Sage/Biogen building reproductive psychiatry KOL networks. Spravato's success validates "psychedelic-adjacent" commercial models.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: SOURCES -->
+  <section id="sources">
+    <h2 class="section-title">8. Sources & Methodology</h2>
+    <div class="source-list">
+      <h3 style="font-size:0.95rem; margin-bottom:0.5rem;">Primary Data Sources</h3>
+      <ul style="padding-left:1.25rem; margin-bottom:1rem;">
+        <li><strong>CMS Open Payments Database</strong> (openpaymentsdata.cms.gov) &mdash; Official federal database (2013&ndash;2023)</li>
+        <li><strong>ProPublica Dollars for Docs</strong> (projects.propublica.org/docdollars) &mdash; Searchable database (2013&ndash;2018)</li>
+        <li><strong>Mad in America</strong> &mdash; "Anatomy of an Industry" analysis &amp; "Million Dollar Club" list (62 psychiatrists, 2014&ndash;2020)</li>
+      </ul>
+
+      <h3 style="font-size:0.95rem; margin-bottom:0.5rem;">Peer-Reviewed Research</h3>
+      <ul style="padding-left:1.25rem; margin-bottom:1rem;">
+        <li>"National Trends in and Concentration of Industry Payments to U.S. Psychiatrists, 2015&ndash;2021" &mdash; <em>Psychiatric Services</em>, Oct 2024</li>
+        <li>"Exploring the Psychiatrist-Industry Financial Relationship" &mdash; <em>PMC</em>, 2020</li>
+        <li>"Industry Payments to US Physicians by Specialty and Product Type" &mdash; <em>JAMA</em>, 2024</li>
+        <li>"Comparison of industry payments to psychiatrists and psychiatric APCs, 2021" &mdash; <em>PMC</em>, 2024</li>
+      </ul>
+
+      <h3 style="font-size:0.95rem; margin-bottom:0.5rem;">Company Financial Reports (2023)</h3>
+      <ul style="padding-left:1.25rem; margin-bottom:1rem;">
+        <li>Neurocrine Q4/FY2023: Ingrezza $1.84B</li>
+        <li>Teva FY2023: Austedo $1.2B+</li>
+        <li>AbbVie FY2023: Vraylar $2.76B</li>
+        <li>Intra-Cellular FY2023: Caplyta $462M</li>
+        <li>Lundbeck FY2023: Record DKK 20B revenue</li>
+        <li>J&J FY2023: Invega $2.9B, Spravato $689M</li>
+      </ul>
+
+      <h3 style="font-size:0.95rem; margin-bottom:0.5rem;">Journalism & Analysis</h3>
+      <ul style="padding-left:1.25rem;">
+        <li>ProPublica: "Dollars for Docs: The Top Earners"</li>
+        <li>ProPublica: "700+ Doctors Paid More Than a Million"</li>
+        <li>Psych News Alert: "Small Minority of Psychiatrists Account for Bulk of Payments" (Oct 2024)</li>
+        <li>Medscape: "Psychiatrists Dominate Doctor-Dollars Database"</li>
+      </ul>
+    </div>
+  </section>
+
+  <div style="text-align:center; padding:1.5rem 0; color:var(--muted); font-size:0.8rem; border-top:1px solid var(--border);">
+    Open Payments Psychiatry KOL Intelligence Report | Generated March 15, 2026<br>
+    Data from public records per the Physician Payments Sunshine Act (42 U.S.C. &sect; 1320a&ndash;7h)
+  </div>
+
+</div>
+</body>
+</html>

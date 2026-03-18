@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physician Transparency Index | Open Payments Data 2013-2024</title>
+    <meta name="description" content="Search pharmaceutical and medical device payments to physicians. Powered by CMS Open Payments data covering 2013-2024. The modern successor to Dollars for Docs.">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="img/logo.svg">
+</head>
+<body>
+    <!-- Sticky Header with Nav -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="header-logo">
+                <img src="img/logo.svg" alt="PTI Logo" class="header-logo-img">
+                <div>
+                    <h1 class="header-title">Physician Transparency Index</h1>
+                    <span class="header-subtitle">INVESTIGATIVE DATABASE</span>
+                </div>
+            </div>
+            <nav class="header-nav">
+                <button class="nav-link active" data-tab="dashboard">Dashboard</button>
+                <button class="nav-link" data-tab="search">Search</button>
+                <button class="nav-link" data-tab="leaderboard">Leaderboard</button>
+                <button class="nav-link" data-tab="specialty">By Specialty</button>
+                <button class="nav-link" data-tab="geography">By State</button>
+                <button class="nav-link" data-tab="company">By Company</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- DASHBOARD -->
+        <section id="tab-dashboard" class="tab-panel active">
+            <!-- Hero Section -->
+            <div class="hero">
+                <div class="hero-bg-circle hero-bg-circle--yellow"></div>
+                <div class="hero-bg-circle hero-bg-circle--blue"></div>
+                <div class="hero-dot-pattern"></div>
+                <div class="hero-content">
+                    <img src="img/logo.svg" alt="PTI Logo" class="hero-logo">
+                    <h2 class="hero-heading">Physician Transparency <span class="hero-heading-accent">Index</span></h2>
+                    <p class="hero-subtitle">The most comprehensive database of pharmaceutical and medical device payments to physicians. Powered by CMS Open Payments data covering 2013-2024.</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-yellow-gradient" data-hero-nav="search">Search the Database</button>
+                        <button class="btn btn-outline-blue" data-hero-nav="leaderboard">View Leaderboard</button>
+                    </div>
+                    <div class="hero-stats" id="hero-stats"></div>
+                </div>
+            </div>
+
+            <!-- Blue Callout Bar -->
+            <div class="container">
+                <div class="callout-bar">
+                    <strong>CMS Open Payments Data 2013-2024</strong> — Covering over a decade of pharmaceutical and medical device payments to physicians across all 50 states.
+                </div>
+
+                <!-- Risk Levels Card -->
+                <div class="risk-levels-card">
+                    <h3 class="risk-levels-title">Risk Level Classification</h3>
+                    <div class="risk-levels-row">
+                        <div class="risk-level-item"><span class="risk-level-emoji">&#9989;</span> <span class="risk-level-label risk-level-low">Low</span> <span class="risk-level-range">&lt; $10K</span></div>
+                        <div class="risk-level-item"><span class="risk-level-emoji">&#9888;&#65039;</span> <span class="risk-level-label risk-level-moderate">Moderate</span> <span class="risk-level-range">$10K-$50K</span></div>
+                        <div class="risk-level-item"><span class="risk-level-emoji">&#128308;</span> <span class="risk-level-label risk-level-elevated">Elevated</span> <span class="risk-level-range">$50K-$100K</span></div>
+                        <div class="risk-level-item"><span class="risk-level-emoji">&#128680;</span> <span class="risk-level-label risk-level-high">High</span> <span class="risk-level-range">$100K-$500K</span></div>
+                        <div class="risk-level-item"><span class="risk-level-emoji">&#9762;&#65039;</span> <span class="risk-level-label risk-level-critical">Critical</span> <span class="risk-level-range">&gt; $500K</span></div>
+                    </div>
+                </div>
+
+                <!-- How It Works -->
+                <div class="how-it-works">
+                    <h2 class="section-heading">How It Works</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">&#128269;</div>
+                            <h3 class="feature-title">Search</h3>
+                            <p class="feature-desc">Search by physician name, specialty, state, or minimum payment amount across the entire CMS Open Payments database.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">&#128200;</div>
+                            <h3 class="feature-title">Analyze</h3>
+                            <p class="feature-desc">View detailed payment breakdowns, industry relationships, and year-over-year trends for any physician.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">&#128202;</div>
+                            <h3 class="feature-title">Compare</h3>
+                            <p class="feature-desc">Leaderboards and rankings by specialty, state, and company let you see the full landscape of industry payments.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">&#9888;&#65039;</div>
+                            <h3 class="feature-title">Risk Scoring</h3>
+                            <p class="feature-desc">Algorithmic conflict-of-interest scoring based on payment volume, concentration, consistency, and outlier status.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dark CTA Banner -->
+                <div class="dark-cta-banner">
+                    <img src="img/logo.svg" alt="PTI Logo" class="dark-cta-logo">
+                    <h3 class="dark-cta-heading">Uncover Financial Relationships</h3>
+                    <p class="dark-cta-text">Explore payments from <span class="dark-cta-accent" id="cta-companies">1,600+</span> companies to <span class="dark-cta-accent" id="cta-physicians">700K+</span> physicians across <span class="dark-cta-accent" id="cta-years">12 years</span> of data.</p>
+                    <button class="btn btn-yellow-gradient dark-cta-btn" data-hero-nav="search">Start Searching</button>
+                </div>
+
+                <!-- Dashboard Charts -->
+                <div class="chart-grid">
+                    <div class="chart-box">
+                        <h3>Payment Trends by Year</h3>
+                        <canvas id="chart-trends" height="250"></canvas>
+                    </div>
+                    <div class="chart-box">
+                        <h3>Top 10 States by Total Payments</h3>
+                        <canvas id="chart-top-states" height="250"></canvas>
+                    </div>
+                </div>
+
+                <!-- Key Findings -->
+                <div class="key-findings">
+                    <h2 class="section-heading">Key Findings</h2>
+                    <div class="findings-grid">
+                        <div class="finding-card finding-card--red">
+                            <h4 class="finding-title">Top 1% Concentration</h4>
+                            <p class="finding-text">The top 1% of physicians receive a disproportionate share of industry payments, often exceeding $1M+ over the data period.</p>
+                        </div>
+                        <div class="finding-card finding-card--amber">
+                            <h4 class="finding-title">Specialty Disparities</h4>
+                            <p class="finding-text">Orthopedic surgeons and cardiologists consistently rank highest in total payments received from medical device companies.</p>
+                        </div>
+                        <div class="finding-card finding-card--blue">
+                            <h4 class="finding-title">Geographic Patterns</h4>
+                            <p class="finding-text">States with major medical centers — California, New York, Texas, Florida — lead in total payment volume.</p>
+                        </div>
+                        <div class="finding-card finding-card--purple">
+                            <h4 class="finding-title">Year-over-Year Growth</h4>
+                            <p class="finding-text">Total industry payments have grown steadily, with only brief dips during the pandemic years of 2020-2021.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top 15 Table -->
+                <h2 class="section-heading">Top 15 Highest-Paid Physicians</h2>
+                <p class="section-sub">National leaderboard — all specialties, all years</p>
+                <div class="dash-specialty-bar" id="dash-specialty-bar">
+                    <button class="dash-spec-btn active" data-spec="">All Specialties</button>
+                </div>
+                <div class="table-wrapper">
+                    <div class="table-scroll" style="max-height:none; overflow-y:visible">
+                        <table id="dashboard-top-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Physician</th>
+                                    <th>Specialty</th>
+                                    <th>State</th>
+                                    <th>Total Payments</th>
+                                    <th>Records</th>
+                                    <th>Companies</th>
+                                    <th>Years</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- About This Data FAQ -->
+                <div class="faq-card">
+                    <h2 class="faq-title">About This Data</h2>
+                    <div class="faq-item">
+                        <h4 class="faq-question">Where does this data come from?</h4>
+                        <p class="faq-answer">All data comes from the CMS Open Payments database, a federal program that collects and publishes information about payments pharmaceutical and medical device companies make to physicians.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4 class="faq-question">Does a high payment total mean a doctor is corrupt?</h4>
+                        <p class="faq-answer">No. Many legitimate activities generate significant industry payments, including clinical research, medical education, advisory boards, and consulting. This tool promotes transparency, not accusations.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4 class="faq-question">How is the risk score calculated?</h4>
+                        <p class="faq-answer">The risk score is an algorithmic estimate based on payment volume, company concentration, payment consistency across years, outlier status within specialty, and payment type mix. It ranges from 0-100.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4 class="faq-question">How is this different from Dollars for Docs?</h4>
+                        <p class="faq-answer">Dollars for Docs by ProPublica covered 2013-2018. The Physician Transparency Index extends through 2024, adds risk scoring, industry promiscuity analysis, and interactive visualizations.</p>
+                    </div>
+                </div>
+
+                <div id="dashboard-stats" style="display:none"></div>
+            </div>
+        </section>
+
+        <!-- SEARCH -->
+        <section id="tab-search" class="tab-panel page-bg">
+            <div class="container">
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <label>Search</label>
+                        <input type="text" id="search-q" placeholder="Physician name..." />
+                    </div>
+                    <div class="filter-group">
+                        <label>State</label>
+                        <select id="search-state"><option value="">All States</option></select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Specialty</label>
+                        <select id="search-specialty"><option value="">All Specialties</option></select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Year</label>
+                        <select id="search-year"><option value="">All Years</option></select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Min Amount</label>
+                        <input type="number" id="search-min" placeholder="$0" style="min-width:120px" />
+                    </div>
+                    <div class="filter-actions">
+                        <button class="btn btn-blue" id="search-btn">Search</button>
+                        <button class="btn btn-outline" id="search-clear">Clear</button>
+                    </div>
+                </div>
+
+                <div class="dash-specialty-bar" id="search-specialty-bar">
+                    <button class="dash-spec-btn active" data-spec="">All Specialties</button>
+                </div>
+
+                <div class="search-info-bar">
+                    <span id="search-count"></span>
+                    <div>
+                        <button class="btn btn-sm btn-outline" id="search-prev" disabled>&larr; Prev</button>
+                        <span id="search-page-info" style="margin:0 8px"></span>
+                        <button class="btn btn-sm btn-outline" id="search-next">Next &rarr;</button>
+                    </div>
+                </div>
+
+                <div id="search-results-grid" class="doctor-card-grid">
+                    <!-- DoctorCards will be rendered here by JS -->
+                </div>
+                <div id="search-empty-state" class="empty-state" style="display:none">
+                    <div class="empty-state-icon">&#128270;</div>
+                    <p>No physicians found. Try adjusting your search criteria.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LEADERBOARD -->
+        <section id="tab-leaderboard" class="tab-panel page-bg">
+            <div class="container">
+                <div class="leaderboard-header">
+                    <span class="leaderboard-icon">&#127942;</span>
+                    <h2 class="leaderboard-title">Top Paid Physicians</h2>
+                </div>
+
+                <div id="lb-podium" class="podium"></div>
+
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <label>Year</label>
+                        <select id="lb-year">
+                            <option value="all">All Years</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                            <option value="2018">2018</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Specialty</label>
+                        <select id="lb-specialty"><option value="all">All Specialties</option></select>
+                    </div>
+                    <div class="filter-group">
+                        <label>State</label>
+                        <select id="lb-state"><option value="all">All States</option></select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Show Top</label>
+                        <select id="lb-limit">
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100" selected>100</option>
+                            <option value="250">250</option>
+                            <option value="500">500</option>
+                        </select>
+                    </div>
+                    <div class="filter-actions">
+                        <button class="btn btn-blue" id="lb-btn">Update</button>
+                    </div>
+                </div>
+
+                <div class="dash-specialty-bar" id="lb-specialty-bar">
+                    <button class="dash-spec-btn active" data-spec="">All Specialties</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <div class="table-info">
+                        <span id="lb-count"></span>
+                        <button class="btn btn-sm btn-yellow" id="lb-export-csv">Export CSV</button>
+                    </div>
+                    <div class="table-scroll" style="max-height:none; overflow-y:visible">
+                        <table id="lb-table">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Physician</th>
+                                    <th>Specialty</th>
+                                    <th>Location</th>
+                                    <th>Total Payments</th>
+                                    <th>Visual</th>
+                                    <th># Payments</th>
+                                    <th>Companies</th>
+                                    <th>Years</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BY SPECIALTY -->
+        <section id="tab-specialty" class="tab-panel page-bg">
+            <div class="container">
+                <h2 class="section-heading">Payment Volume by Specialty</h2>
+                <p class="section-sub">Aggregated across all years and payment types</p>
+                <div class="chart-box" style="margin-bottom:24px">
+                    <canvas id="chart-specialty"></canvas>
+                </div>
+                <div class="table-wrapper">
+                    <div class="table-scroll">
+                        <table id="specialty-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Specialty</th>
+                                    <th>Physicians</th>
+                                    <th>Total Payments</th>
+                                    <th>Avg Payment</th>
+                                    <th>Records</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BY STATE -->
+        <section id="tab-geography" class="tab-panel page-bg">
+            <div class="container">
+                <h2 class="section-heading">Payments by State</h2>
+                <p class="section-sub">Click a state row to see city-level breakdown</p>
+                <div class="chart-box" style="margin-bottom:24px">
+                    <canvas id="chart-geography"></canvas>
+                </div>
+                <div class="table-wrapper">
+                    <div class="table-scroll">
+                        <table id="geography-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>State</th>
+                                    <th>Physicians</th>
+                                    <th>Total Payments</th>
+                                    <th>Records</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- City detail panel -->
+                <div id="city-detail" style="display:none">
+                    <h3 class="section-heading" id="city-detail-title" style="margin-top:24px"></h3>
+                    <div class="table-wrapper">
+                        <div class="table-scroll">
+                            <table id="city-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>City</th>
+                                        <th>Physicians</th>
+                                        <th>Total Payments</th>
+                                        <th>Records</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BY COMPANY -->
+        <section id="tab-company" class="tab-panel page-bg">
+            <div class="container">
+                <h2 class="section-heading">Top Paying Companies</h2>
+                <p class="section-sub">Pharmaceutical and medical device manufacturers making payments to physicians</p>
+                <div class="chart-box" style="margin-bottom:24px">
+                    <canvas id="chart-company"></canvas>
+                </div>
+                <div class="table-wrapper">
+                    <div class="table-scroll" style="max-height:700px">
+                        <table id="company-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Company</th>
+                                    <th>Physicians Paid</th>
+                                    <th>Total Payments</th>
+                                    <th>Records</th>
+                                    <th>States</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        </section>
+
+        <!-- PHYSICIAN DETAIL MODAL -->
+        <div id="physician-modal" class="modal" style="display:none">
+            <div class="modal-content">
+                <button class="modal-close" id="modal-close">&times;</button>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="img/logo.svg" alt="PTI Logo" class="footer-logo">
+                <span class="footer-brand-name">Physician Transparency Index</span>
+            </div>
+            <p>Data source: <a href="https://openpaymentsdata.cms.gov" target="_blank" rel="noopener">CMS Open Payments</a> | Updated through 2024</p>
+            <p>Physician Transparency Index is an independent public-interest tool. Not affiliated with CMS or ProPublica.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

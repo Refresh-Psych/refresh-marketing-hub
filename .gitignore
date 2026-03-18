@@ -7,3 +7,27 @@ Thumbs.db
 .claude/
 notebooklm-py/
 .agents/
+
+# Large binaries
+*.mp4
+*.mp3
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.db
+*.csv
+
+# Raw data
+physician-transparency-index/data/raw/
+physician-transparency-index/data/db/
+
+# Build artifacts
+refresh-videos/out/
+refresh-videos/public/*.jpg
+
+# Obsidian vault internals
+Refresh Vault/.obsidian/
+
+# Lock files
+skills-lock.json
+package-lock.json

@@ -1,0 +1,26 @@
+
+Processing FL...
+  FL 2021: 272 records
+  FL 2022: 276 records
+  FL 2023: 337 records
+  FL 2024: 296 records
+
+Processing CA...
+  CA 2021: 364 records
+  CA 2022: 419 records
+  CA 2023: 506 records
+  CA 2024: 409 records
+
+Processing NY...
+  NY 2021: 271 records
+  NY 2022: 370 records
+  NY 2023: 488 records
+  NY 2024: 497 records
+
+Processing TX...
+  TX 2021: 331 records
+  TX 2022: 418 records
+  TX 2023: 491 records
+  TX 2024: 512 records
+
+Done!
