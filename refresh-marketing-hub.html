@@ -1453,6 +1453,290 @@
 
   .hub-footer .links a:hover { color: var(--yellow); }
 
+  /* ═══════════════ COMPETITORS ═══════════════ */
+  .competitor-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .competitor-card {
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+  }
+
+  .competitor-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .competitor-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+  }
+
+  .competitor-card.cerebral::before { background: linear-gradient(90deg, #FF6B6B, #EE5A24); }
+  .competitor-card.talkiatry::before { background: linear-gradient(90deg, #6C5CE7, #a29bfe); }
+  .competitor-card.grow::before { background: linear-gradient(90deg, #00B894, #55efc4); }
+  .competitor-card.betterhelp::before { background: linear-gradient(90deg, #0984e3, #74b9ff); }
+
+  .competitor-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .competitor-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--charcoal);
+  }
+
+  .competitor-threat {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+  }
+
+  .threat-high { background: rgba(255,107,107,0.12); color: #EE5A24; }
+  .threat-critical { background: rgba(255,56,56,0.15); color: #d63031; }
+  .threat-medium { background: rgba(246,199,68,0.15); color: #d4a82e; }
+  .threat-low { background: rgba(0,184,148,0.12); color: #00B894; }
+
+  .competitor-tagline {
+    font-size: 14px;
+    color: rgba(45,55,72,0.6);
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .competitor-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .comp-stat {
+    background: var(--surface);
+    border-radius: var(--radius-xs);
+    padding: 12px;
+    text-align: center;
+  }
+
+  .comp-stat-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--deep-blue);
+  }
+
+  .comp-stat-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: rgba(45,55,72,0.5);
+    margin-top: 2px;
+  }
+
+  .competitor-details h4 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--blue);
+    margin: 16px 0 8px;
+    font-weight: 700;
+  }
+
+  .competitor-details ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .competitor-details li {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--charcoal);
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .competitor-details li::before {
+    content: '•';
+    position: absolute;
+    left: 4px;
+    color: var(--blue);
+    font-weight: 700;
+  }
+
+  .competitor-details li.red::before { color: #EE5A24; }
+  .competitor-details li.green::before { color: #00B894; }
+
+  .competitor-verdict {
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: var(--radius-sm);
+    font-size: 13.5px;
+    line-height: 1.6;
+    font-weight: 500;
+  }
+
+  .competitor-card.cerebral .competitor-verdict { background: rgba(255,107,107,0.06); border-left: 3px solid #EE5A24; }
+  .competitor-card.talkiatry .competitor-verdict { background: rgba(108,92,231,0.06); border-left: 3px solid #6C5CE7; }
+  .competitor-card.grow .competitor-verdict { background: rgba(0,184,148,0.06); border-left: 3px solid #00B894; }
+  .competitor-card.betterhelp .competitor-verdict { background: rgba(9,132,227,0.06); border-left: 3px solid #0984e3; }
+
+  /* Comparison Table */
+  .comparison-table-wrap {
+    overflow-x: auto;
+    margin-bottom: 40px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface-elevated);
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+
+  .comparison-table thead {
+    background: var(--navy);
+    color: white;
+  }
+
+  .comparison-table th {
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  .comparison-table th.refresh-col {
+    background: var(--blue);
+    color: white;
+  }
+
+  .comparison-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .comparison-table tbody tr:hover {
+    background: rgba(43,108,176,0.03);
+  }
+
+  .comparison-table td:first-child {
+    font-weight: 700;
+    color: var(--deep-blue);
+    white-space: nowrap;
+    min-width: 140px;
+  }
+
+  .comparison-table td.refresh-col {
+    background: rgba(43,108,176,0.04);
+    font-weight: 600;
+  }
+
+  .comparison-table .check { color: #00B894; }
+  .comparison-table .cross { color: #EE5A24; }
+  .comparison-table .warn { color: #d4a82e; }
+
+  /* Gap Analysis */
+  .gap-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .gap-card {
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+    align-items: start;
+    transition: var(--transition);
+  }
+
+  .gap-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .gap-number {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), var(--deep-blue));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .gap-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .gap-content p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(45,55,72,0.75);
+    margin-bottom: 12px;
+  }
+
+  .gap-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .gap-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+  }
+
+  .gap-tag.impact { background: rgba(246,199,68,0.15); color: #b8860b; }
+  .gap-tag.effort { background: rgba(43,108,176,0.1); color: var(--blue); }
+  .gap-tag.timeline { background: rgba(0,184,148,0.1); color: #00856f; }
+
   /* ═══════════════ RESPONSIVE ═══════════════ */
   @media (max-width: 1100px) {
     .hero-stats { display: none; }
@@ -1461,6 +1745,7 @@
     .podcast-art { max-width: 300px; margin: 0 auto; }
     .content-grid { grid-template-columns: 1fr 1fr; }
     .campaigns-grid { grid-template-columns: 1fr; }
+    .competitor-grid { grid-template-columns: 1fr; }
     .podcast-topics { grid-template-columns: 1fr 1fr; }
     .analytics-row { grid-template-columns: 1fr 1fr; }
     .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
@@ -1789,6 +2074,7 @@
   <button class="nav-tab" data-tab="content">Content<span class="tab-count">27</span></button>
   <button class="nav-tab" data-tab="campaigns">Campaigns<span class="tab-count">6</span></button>
   <button class="nav-tab" data-tab="viral">🔥 Viral<span class="tab-count">15</span></button>
+  <button class="nav-tab" data-tab="competitors">Competitors<span class="tab-count">4</span></button>
   <button class="nav-tab" data-tab="analytics">Analytics</button>
 </nav>
 
@@ -2899,6 +3185,413 @@
       <div style="margin-top:20px;padding:14px 20px;background:linear-gradient(135deg,rgba(43,108,176,0.06),rgba(246,199,68,0.08));border:1px solid var(--border);border-radius:var(--radius-sm);font-size:0.83rem;color:var(--charcoal);">
         <strong>⚡ Next Step:</strong> Schedule these 3 posts for Mon / Wed / Thu this week using your social scheduler. For Instagram, pair with a custom Canva graphic using the Refresh Blue (#2B6CB0) + Yellow (#F6C744) brand palette. The Facebook pharmacogenomics post performs best with a question CTA — watch comments for prospective patient signals to respond to.
       </div>
+    </div>
+
+  </section>
+
+  <!-- COMPETITORS -->
+  <section class="section" id="competitors">
+    <div class="section-header">
+      <div class="section-header-left">
+        <h2>Competitive Intelligence</h2>
+        <p>Deep analysis of 4 major competitors — market positioning, weaknesses, and opportunities for Refresh to win</p>
+      </div>
+    </div>
+
+    <!-- ═══ COMPETITOR CARDS ═══ -->
+    <div class="competitor-grid">
+
+      <!-- CEREBRAL -->
+      <div class="competitor-card cerebral reveal">
+        <div class="competitor-header">
+          <div class="competitor-name">Cerebral</div>
+          <span class="competitor-threat threat-low">Low Threat</span>
+        </div>
+        <div class="competitor-tagline">"Online mental health care" — severely damaged brand post-DOJ/FTC settlements</div>
+        <div class="competitor-stats">
+          <div class="comp-stat">
+            <div class="comp-stat-value">$3.65M</div>
+            <div class="comp-stat-label">DOJ Settlement</div>
+          </div>
+          <div class="comp-stat">
+            <div class="comp-stat-value">$7M</div>
+            <div class="comp-stat-label">FTC Fine</div>
+          </div>
+          <div class="comp-stat">
+            <div class="comp-stat-value">0</div>
+            <div class="comp-stat-label">Controlled Rx</div>
+          </div>
+        </div>
+        <div class="competitor-details">
+          <h4>What Happened</h4>
+          <ul>
+            <li class="red">DOJ $3.65M settlement for pushing clinicians to prescribe stimulants</li>
+            <li class="red">FTC $7M fine for sharing patient health data with advertisers</li>
+            <li class="red">No longer prescribes any controlled substances (stimulants, benzos)</li>
+            <li class="red">CEO and co-founder forced out; massive leadership turnover</li>
+          </ul>
+          <h4>Current Strategy</h4>
+          <ul>
+            <li>Heavy reliance on paid search/display ads to drive traffic</li>
+            <li>Pivoted to non-controlled medication management + therapy only</li>
+            <li>No visible physician leadership in content marketing</li>
+            <li>Subscription model: $85-$325/month — no insurance billing</li>
+          </ul>
+          <h4 style="color:#00B894">Their Weakness = Your Opportunity</h4>
+          <ul>
+            <li class="green">Destroyed patient trust — Refresh wins with physician-led transparency</li>
+            <li class="green">Can't prescribe stimulants — Refresh handles full ADHD medication management</li>
+            <li class="green">"Refresh vs Cerebral" comparison page would rank fast for high-intent traffic</li>
+          </ul>
+        </div>
+        <div class="competitor-verdict">
+          <strong>Verdict:</strong> Cerebral is a cautionary tale, not a serious competitor. Their brand is permanently damaged by regulatory action. Refresh should capitalize with trust-first messaging that explicitly contrasts with Cerebral's failures — "Board-certified. Transparent. No shortcuts."
+        </div>
+      </div>
+
+      <!-- TALKIATRY -->
+      <div class="competitor-card talkiatry reveal">
+        <div class="competitor-header">
+          <div class="competitor-name">Talkiatry</div>
+          <span class="competitor-threat threat-critical">Critical Threat</span>
+        </div>
+        <div class="competitor-tagline">"In-network psychiatry, online" — the most aggressive, well-funded competitor in 2026</div>
+        <div class="competitor-stats">
+          <div class="comp-stat">
+            <div class="comp-stat-value">$210M</div>
+            <div class="comp-stat-label">Series D (Feb 2026)</div>
+          </div>
+          <div class="comp-stat">
+            <div class="comp-stat-value">800+</div>
+            <div class="comp-stat-label">Psychiatrists</div>
+          </div>
+          <div class="comp-stat">
+            <div class="comp-stat-value">$0</div>
+            <div class="comp-stat-label">FTC/DOJ Fines</div>
+          </div>
+        </div>
+        <div class="competitor-details">
+          <h4>Current Strategy</h4>
+          <ul>
+            <li>Hiring Sr. Social Media Manager + Paid Social Growth Marketing Manager right now</li>
+            <li>Investing heavily in paid Meta and TikTok ad campaigns</li>
+            <li>Clean compliance record — zero regulatory issues</li>
+            <li>In-network with most major insurers across 44 states</li>
+            <li>Average wait time marketing: "See a psychiatrist within days"</li>
+          </ul>
+          <h4>Their Strengths</h4>
+          <ul>
+            <li class="red">Massive war chest ($210M just raised) for paid acquisition</li>
+            <li class="red">800+ psychiatrists = nearly unlimited capacity</li>
+            <li class="red">Strong SEO — ranking for "online psychiatrist" nationally</li>
+            <li class="red">Clean brand — no scandals, no regulatory problems</li>
+          </ul>
+          <h4 style="color:#00B894">Their Weakness = Your Opportunity</h4>
+          <ul>
+            <li class="green">No self-pay option — Refresh captures cash-pay patients</li>
+            <li class="green">Weak organic social — still building, mostly paid</li>
+            <li class="green">No named physician personality — Refresh has Dr. Nepa</li>
+            <li class="green">Generic nationwide marketing — Refresh wins hyperlocal</li>
+            <li class="green">No integrative psychiatry angle — completely uncontested</li>
+          </ul>
+        </div>
+        <div class="competitor-verdict">
+          <strong>Verdict:</strong> Talkiatry is the #1 threat — well-funded, well-run, and scaling fast. But they're a VC-backed platform play. Refresh wins by being the <em>human</em> alternative: a named physician, local roots, integrative approach, and community presence that Talkiatry can never replicate. Don't compete on scale — compete on trust and depth.
+        </div>
+      </div>
+
+      <!-- GROW THERAPY -->
+      <div class="competitor-card grow reveal">
+        <div class="competitor-header">
+          <div class="competitor-name">Grow Therapy</div>
+          <span class="competitor-threat threat-medium">Medium Threat</span>
+        </div>
+        <div class="competitor-tagline">"Find a therapist covered by your insurance" — winning SEO with content marketing</div>
+        <div class="competitor-stats">
+          <div class="comp-stat">
+            <div class="comp-stat-value">#1</div>
+            <div class="comp-stat-label">SEO / Blog Game</div>
+          </div>
+          <div class="comp-stat">
+            <div class="comp-stat-value">Low</div>
+            <div class="comp-stat-label">Video Content</div>
+          </div>
+          <div class="comp-stat">
+            <div class="comp-stat-value">Therapy</div>
+            <div class="comp-stat-label">Only (No Psych)</div>
+          </div>
+        </div>
+        <div class="competitor-details">
+          <h4>Current Strategy</h4>
+          <ul>
+            <li>Winning SEO with high-volume "best of" and comparison blog articles</li>
+            <li>Ranking for "best therapist for anxiety" / "therapist vs psychiatrist" nationally</li>
+            <li>Strong directory partnerships — listed on culturally diverse therapy platforms</li>
+            <li>Marketplace model: connects patients with independent therapists</li>
+          </ul>
+          <h4>Their Strengths</h4>
+          <ul>
+            <li class="red">Best-in-class content marketing — blog posts rank on page 1 for dozens of terms</li>
+            <li class="red">SEO comparison articles steal top-of-funnel traffic</li>
+            <li class="red">Growing trust through Psychiatric Times and industry partnerships</li>
+          </ul>
+          <h4 style="color:#00B894">Their Weakness = Your Opportunity</h4>
+          <ul>
+            <li class="green">Therapy only — no medication management, no psychiatry</li>
+            <li class="green">Minimal video content — no TikTok/Reels presence</li>
+            <li class="green">Marketplace model feels transactional — Refresh is relationship-based</li>
+            <li class="green">Copy their SEO playbook: publish "Best telehealth psychiatrist in FL" articles</li>
+          </ul>
+        </div>
+        <div class="competitor-verdict">
+          <strong>Verdict:</strong> Grow Therapy is a content marketing machine worth studying. Copy their SEO playbook — comparison articles, "best of" lists, FAQ pages — but apply it to psychiatry, where they have zero presence. Their blog model is directly replicable and their topics can be adapted for Refresh's keyword clusters.
+        </div>
+      </div>
+
+      <!-- BETTERHELP -->
+      <div class="competitor-card betterhelp reveal">
+        <div class="competitor-header">
+          <div class="competitor-name">BetterHelp</div>
+          <span class="competitor-threat threat-medium">Medium Threat</span>
+        </div>
+        <div class="competitor-tagline">"Professional therapy, done online" — outspends everyone but carries privacy baggage</div>
+        <div class="competitor-stats">
+          <div class="comp-stat">
+            <div class="comp-stat-value">$29M</div>
+            <div class="comp-stat-label">Podcast Ads / Qtr</div>
+          </div>
+          <div class="comp-stat">
+            <div class="comp-stat-value">$7.8M</div>
+            <div class="comp-stat-label">FTC Privacy Fine</div>
+          </div>
+          <div class="comp-stat">
+            <div class="comp-stat-value">5.6M</div>
+            <div class="comp-stat-label">Users Data Leaked</div>
+          </div>
+        </div>
+        <div class="competitor-details">
+          <h4>Current Strategy</h4>
+          <ul>
+            <li>$29M/quarter on podcast sponsorships alone — top mental health advertiser</li>
+            <li>$10M+/year on YouTube creator sponsorships</li>
+            <li>Current "Feel Lighter" global TV/streaming campaign</li>
+            <li>Facebook "personal story" format — micro-influencer campaigns</li>
+            <li>Subscription: $65-$100/week — no insurance accepted</li>
+          </ul>
+          <h4>Their Strengths</h4>
+          <ul>
+            <li class="red">Massive ad spend creates unavoidable brand awareness</li>
+            <li class="red">4M+ users served — enormous scale and social proof</li>
+            <li class="red">Top 3 in organic search for almost every therapy keyword</li>
+          </ul>
+          <h4 style="color:#00B894">Their Weakness = Your Opportunity</h4>
+          <ul>
+            <li class="green">Therapy only — no psychiatry, no medication management at all</li>
+            <li class="green">FTC fined $7.8M for sharing 5.6M users' health data with Facebook/Snapchat</li>
+            <li class="green">No insurance — Refresh's in-network model is a massive differentiator</li>
+            <li class="green">Subscription fatigue — patients increasingly frustrated by ongoing costs</li>
+            <li class="green">Trust-first messaging: "Your data stays with your doctor, not advertisers"</li>
+          </ul>
+        </div>
+        <div class="competitor-verdict">
+          <strong>Verdict:</strong> BetterHelp is a marketing juggernaut but a different product — therapy only, no psychiatry, no insurance. Their privacy scandal creates a direct opening for Refresh to message on trust and data security. Their audience is therapy-seekers, not psychiatry patients. Low direct overlap, but their brand awareness drives people to search for alternatives.
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ HEAD-TO-HEAD COMPARISON TABLE ═══ -->
+    <div class="section-header" style="margin-bottom: 24px;">
+      <div class="section-header-left">
+        <h2>Head-to-Head Comparison</h2>
+        <p>How Refresh stacks up across every dimension that matters</p>
+      </div>
+    </div>
+
+    <div class="comparison-table-wrap reveal">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="refresh-col">Refresh Psychiatry</th>
+            <th>Talkiatry</th>
+            <th>Cerebral</th>
+            <th>Grow Therapy</th>
+            <th>BetterHelp</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Psychiatry (Medication Mgmt)</td>
+            <td class="refresh-col"><span class="check">&#10003;</span> Full-service</td>
+            <td><span class="check">&#10003;</span> Full-service</td>
+            <td><span class="warn">&#9888;</span> Non-controlled only</td>
+            <td><span class="cross">&#10007;</span> Therapy only</td>
+            <td><span class="cross">&#10007;</span> Therapy only</td>
+          </tr>
+          <tr>
+            <td>Controlled Substances (ADHD)</td>
+            <td class="refresh-col"><span class="check">&#10003;</span> Stimulants Rx'd</td>
+            <td><span class="check">&#10003;</span> Stimulants Rx'd</td>
+            <td><span class="cross">&#10007;</span> Stopped entirely</td>
+            <td><span class="cross">&#10007;</span> N/A</td>
+            <td><span class="cross">&#10007;</span> N/A</td>
+          </tr>
+          <tr>
+            <td>Insurance Accepted</td>
+            <td class="refresh-col"><span class="check">&#10003;</span> Aetna, United, Cigna, Humana, Oscar, UMR, AvMed</td>
+            <td><span class="check">&#10003;</span> Most major insurers</td>
+            <td><span class="cross">&#10007;</span> Subscription only</td>
+            <td><span class="check">&#10003;</span> Major insurers</td>
+            <td><span class="cross">&#10007;</span> $65-100/week self-pay</td>
+          </tr>
+          <tr>
+            <td>Named Physician Leadership</td>
+            <td class="refresh-col"><span class="check">&#10003;</span> Dr. Justin Nepa, DO</td>
+            <td><span class="cross">&#10007;</span> No public physician face</td>
+            <td><span class="cross">&#10007;</span> Leadership turnover</td>
+            <td><span class="cross">&#10007;</span> Marketplace model</td>
+            <td><span class="cross">&#10007;</span> Anonymous platform</td>
+          </tr>
+          <tr>
+            <td>Integrative Psychiatry</td>
+            <td class="refresh-col"><span class="check">&#10003;</span> Total Mental Wellness</td>
+            <td><span class="cross">&#10007;</span> Traditional only</td>
+            <td><span class="cross">&#10007;</span> Traditional only</td>
+            <td><span class="cross">&#10007;</span> N/A</td>
+            <td><span class="cross">&#10007;</span> N/A</td>
+          </tr>
+          <tr>
+            <td>Hyperlocal SEO (FL/MA/TX)</td>
+            <td class="refresh-col"><span class="check">&#10003;</span> 16 locations optimized</td>
+            <td><span class="warn">&#9888;</span> National only</td>
+            <td><span class="warn">&#9888;</span> National only</td>
+            <td><span class="warn">&#9888;</span> Directory-based</td>
+            <td><span class="cross">&#10007;</span> National only</td>
+          </tr>
+          <tr>
+            <td>Self-Pay Option</td>
+            <td class="refresh-col"><span class="check">&#10003;</span> Available</td>
+            <td><span class="cross">&#10007;</span> Insurance only</td>
+            <td><span class="check">&#10003;</span> Subscription</td>
+            <td><span class="check">&#10003;</span> Varies by provider</td>
+            <td><span class="check">&#10003;</span> Subscription only</td>
+          </tr>
+          <tr>
+            <td>Regulatory Record</td>
+            <td class="refresh-col"><span class="check">&#10003;</span> Clean</td>
+            <td><span class="check">&#10003;</span> Clean</td>
+            <td><span class="cross">&#10007;</span> DOJ + FTC actions</td>
+            <td><span class="check">&#10003;</span> Clean</td>
+            <td><span class="warn">&#9888;</span> FTC $7.8M fine</td>
+          </tr>
+          <tr>
+            <td>Video Content / Reels</td>
+            <td class="refresh-col"><span class="check">&#10003;</span> 11 Remotion videos</td>
+            <td><span class="warn">&#9888;</span> Investing (hiring)</td>
+            <td><span class="cross">&#10007;</span> None visible</td>
+            <td><span class="cross">&#10007;</span> Minimal</td>
+            <td><span class="check">&#10003;</span> Paid influencer only</td>
+          </tr>
+          <tr>
+            <td>Multi-State Telehealth</td>
+            <td class="refresh-col"><span class="check">&#10003;</span> FL, MA, TX</td>
+            <td><span class="check">&#10003;</span> 44 states</td>
+            <td><span class="check">&#10003;</span> Multiple states</td>
+            <td><span class="check">&#10003;</span> Multiple states</td>
+            <td><span class="check">&#10003;</span> All 50 states</td>
+          </tr>
+          <tr>
+            <td>Organic Social Presence</td>
+            <td class="refresh-col"><span class="warn">&#9888;</span> Building</td>
+            <td><span class="warn">&#9888;</span> Building (paid-heavy)</td>
+            <td><span class="cross">&#10007;</span> Minimal</td>
+            <td><span class="cross">&#10007;</span> Blog-focused</td>
+            <td><span class="check">&#10003;</span> Paid influencer</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ═══ GAP ANALYSIS — 5 ACTIONABLE OPPORTUNITIES ═══ -->
+    <div class="section-header" style="margin-bottom: 24px;">
+      <div class="section-header-left">
+        <h2>Gap Analysis — 5 Actionable Opportunities</h2>
+        <p>Concrete market gaps where Refresh can win because no competitor is playing</p>
+      </div>
+    </div>
+
+    <div class="gap-grid">
+
+      <div class="gap-card reveal">
+        <div class="gap-number">1</div>
+        <div class="gap-content">
+          <h3>Dr. Nepa as Named Physician Content Creator</h3>
+          <p><strong>The gap:</strong> Not a single major competitor features a named, practicing physician as the face of their brand. Talkiatry has 800+ doctors but none are public figures. Cerebral's leadership is in shambles. BetterHelp uses anonymous therapists. This is the single largest differentiator available to Refresh.</p>
+          <p><strong>The play:</strong> Launch a "Dr. Nepa Explains" TikTok/Reels series. Use proven hooks: "As a psychiatrist, I wish more people knew...", "POV: Your psychiatrist just told you..." — 65% of viewers who watch the first 3 seconds will watch 10+ more. Post 3-5x/week. Build an audience around a real person, not a faceless platform.</p>
+          <div class="gap-tags">
+            <span class="gap-tag impact">&#127919; Highest Impact</span>
+            <span class="gap-tag effort">Low Cost</span>
+            <span class="gap-tag timeline">Start This Week</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gap-card reveal">
+        <div class="gap-number">2</div>
+        <div class="gap-content">
+          <h3>Hyperlocal "Refresh vs. [Competitor]" SEO Pages</h3>
+          <p><strong>The gap:</strong> Grow Therapy dominates with comparison content ("BetterHelp vs Talkiatry", "Best online therapy platforms") but nobody is creating comparison pages for <em>psychiatry</em> specifically. "Cerebral alternatives" and "Talkiatry vs" are high-intent search terms from patients actively looking to switch.</p>
+          <p><strong>The play:</strong> Create 4 landing pages: "Refresh vs Cerebral", "Refresh vs Talkiatry", "Refresh vs BetterHelp", "Best Telehealth Psychiatrist in Florida 2026". Each page targets comparison keywords + geo-modified terms. Include the comparison table above as a visual asset. These pages convert at 3-5x the rate of generic content.</p>
+          <div class="gap-tags">
+            <span class="gap-tag impact">&#128200; High Conversion</span>
+            <span class="gap-tag effort">Medium Effort</span>
+            <span class="gap-tag timeline">2 Weeks to Launch</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gap-card reveal">
+        <div class="gap-number">3</div>
+        <div class="gap-content">
+          <h3>Integrative Psychiatry — Completely Uncontested</h3>
+          <p><strong>The gap:</strong> Total Mental Wellness (Refresh's sister brand) positions as "integrative psychiatry" — combining evidence-based medication management with holistic approaches. Zero major competitors are marketing in this space. Cerebral, Talkiatry, Grow, and BetterHelp are all traditional-model only.</p>
+          <p><strong>The play:</strong> Create a content pillar around integrative psychiatry: pharmacogenomic testing, supplement-medication interactions (ashwagandha has 673K monthly searches), mind-body approaches, and the "whole patient" philosophy. Target keywords like "integrative psychiatrist near me" (low competition, high intent) and "holistic psychiatry telehealth." This is blue ocean content.</p>
+          <div class="gap-tags">
+            <span class="gap-tag impact">&#127754; Blue Ocean</span>
+            <span class="gap-tag effort">Medium Effort</span>
+            <span class="gap-tag timeline">Ongoing Content Series</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gap-card reveal">
+        <div class="gap-number">4</div>
+        <div class="gap-content">
+          <h3>Insurance-Specific Landing Pages</h3>
+          <p><strong>The gap:</strong> Queries like "telehealth psychiatrist that takes Aetna in Florida" have low competition and extremely high commercial intent — these searchers are ready to book. BetterHelp and Cerebral don't accept insurance. Talkiatry has insurance pages but they're nationally generic, not geo-targeted.</p>
+          <p><strong>The play:</strong> Create 7 dedicated landing pages — one for each accepted insurer (Aetna, United, Cigna, Humana, AvMed, UMR, Oscar) — with location-specific content for FL, MA, and TX. Each page targets "[insurer] + psychiatrist + [city/state]" keywords. These convert at 4x the rate of generic keywords because they signal immediate booking intent. Your Google Ads "Insurance Search" campaign already proves this works.</p>
+          <div class="gap-tags">
+            <span class="gap-tag impact">&#128176; Highest ROAS</span>
+            <span class="gap-tag effort">Low-Medium Effort</span>
+            <span class="gap-tag timeline">1 Week Per Page</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gap-card reveal">
+        <div class="gap-number">5</div>
+        <div class="gap-content">
+          <h3>Trust-First Messaging Exploiting Privacy Scandals</h3>
+          <p><strong>The gap:</strong> Cerebral (DOJ $3.65M + FTC $7M) and BetterHelp (FTC $7.8M for sharing 5.6M users' data) have created a massive trust vacuum in online psychiatry. Patients are actively searching for "is [platform] safe" and "Cerebral alternatives". No competitor is explicitly positioning on data privacy and physician transparency.</p>
+          <p><strong>The play:</strong> Add a prominent "Your Privacy Promise" section to refreshpsychiatry.com. Create content: "How Refresh Psychiatry Protects Your Data" (blog), "Why We'll Never Sell Your Data" (social post), and "Board-Certified, Transparent, HIPAA-Compliant" messaging across all platforms. This isn't just marketing — it's a structural advantage that VC-backed platforms can't credibly match after their scandals.</p>
+          <div class="gap-tags">
+            <span class="gap-tag impact">&#128272; Trust Advantage</span>
+            <span class="gap-tag effort">Low Effort</span>
+            <span class="gap-tag timeline">Start Immediately</span>
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </section>
