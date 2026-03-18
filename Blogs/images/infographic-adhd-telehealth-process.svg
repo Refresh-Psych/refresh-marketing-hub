@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200" width="800" height="1200">
+  <defs>
+    <filter id="shadow1" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#2D3748" flood-opacity="0.10"/>
+    </filter>
+    <linearGradient id="headerGrad1" x1="0" y1="0" x2="800" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2B6CB0"/>
+      <stop offset="100%" stop-color="#2563a0"/>
+    </linearGradient>
+    <linearGradient id="connectorGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2B6CB0" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#2B6CB0" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="1200" rx="16" fill="#FFFFFF"/>
+
+  <!-- Header Banner -->
+  <rect width="800" height="160" rx="16" fill="url(#headerGrad1)"/>
+  <rect y="140" width="800" height="20" fill="url(#headerGrad1)"/>
+
+  <!-- Header decorative circles -->
+  <circle cx="720" cy="40" r="50" fill="#FFFFFF" opacity="0.06"/>
+  <circle cx="750" cy="100" r="30" fill="#FFFFFF" opacity="0.05"/>
+  <circle cx="60" cy="120" r="35" fill="#FFFFFF" opacity="0.05"/>
+
+  <!-- Header Text -->
+  <text x="400" y="72" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="28" fill="#FFFFFF" letter-spacing="0.5">How to Get ADHD Medication</text>
+  <text x="400" y="108" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="28" fill="#FFFFFF" letter-spacing="0.5">Through Telehealth in Florida</text>
+  <text x="400" y="140" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="15" fill="#F6C744" letter-spacing="1">5 SIMPLE STEPS TO GET STARTED</text>
+
+  <!-- Step 1 -->
+  <!-- Connector line from Step 1 to Step 2 -->
+  <line x1="120" y1="248" x2="120" y2="310" stroke="#2B6CB0" stroke-width="3" stroke-dasharray="6,4" opacity="0.35"/>
+
+  <!-- Step 1 Card -->
+  <rect x="60" y="190" rx="14" width="680" height="115" fill="#F7FAFD" stroke="#E2E8F0" stroke-width="1" filter="url(#shadow1)"/>
+  <circle cx="120" cy="247" r="32" fill="#2B6CB0"/>
+  <text x="120" y="256" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="22" fill="#FFFFFF">1</text>
+  <text x="175" y="235" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="20" fill="#2B6CB0">Schedule Your Evaluation</text>
+  <text x="175" y="262" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="15" fill="#2D3748">Book online or call to schedule your initial ADHD</text>
+  <text x="175" y="282" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="15" fill="#2D3748">telehealth appointment with a board-certified provider.</text>
+  <!-- Phone icon -->
+  <rect x="640" y="228" rx="8" width="44" height="44" fill="#2B6CB0" opacity="0.08"/>
+  <text x="662" y="258" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22">&#128222;</text>
+
+  <!-- Connector line 1-2 -->
+  <line x1="120" y1="305" x2="120" y2="365" stroke="#2B6CB0" stroke-width="3" stroke-dasharray="6,4" opacity="0.35"/>
+  <polygon points="120,370 114,358 126,358" fill="#2B6CB0" opacity="0.5"/>
+
+  <!-- Step 2 Card -->
+  <rect x="60" y="370" rx="14" width="680" height="115" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#shadow1)"/>
+  <circle cx="120" cy="427" r="32" fill="#2B6CB0"/>
+  <text x="120" y="436" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="22" fill="#FFFFFF">2</text>
+  <text x="175" y="415" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="20" fill="#2B6CB0">Complete Your Intake</text>
+  <text x="175" y="442" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="15" fill="#2D3748">Fill out secure digital forms including medical history,</text>
+  <text x="175" y="462" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="15" fill="#2D3748">symptom questionnaires, and insurance information.</text>
+  <rect x="640" y="408" rx="8" width="44" height="44" fill="#2B6CB0" opacity="0.08"/>
+  <text x="662" y="438" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22">&#128203;</text>
+
+  <!-- Connector line 2-3 -->
+  <line x1="120" y1="485" x2="120" y2="545" stroke="#2B6CB0" stroke-width="3" stroke-dasharray="6,4" opacity="0.35"/>
+  <polygon points="120,550 114,538 126,538" fill="#2B6CB0" opacity="0.5"/>
+
+  <!-- Step 3 Card -->
+  <rect x="60" y="550" rx="14" width="680" height="115" fill="#F7FAFD" stroke="#E2E8F0" stroke-width="1" filter="url(#shadow1)"/>
+  <circle cx="120" cy="607" r="32" fill="#2B6CB0"/>
+  <text x="120" y="616" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="22" fill="#FFFFFF">3</text>
+  <text x="175" y="595" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="20" fill="#2B6CB0">Attend Video Evaluation (45-60 min)</text>
+  <text x="175" y="622" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="15" fill="#2D3748">Meet face-to-face via secure video with your psychiatrist</text>
+  <text x="175" y="642" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="15" fill="#2D3748">for a comprehensive ADHD assessment and discussion.</text>
+  <rect x="640" y="588" rx="8" width="44" height="44" fill="#2B6CB0" opacity="0.08"/>
+  <text x="662" y="618" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22">&#128187;</text>
+
+  <!-- Connector line 3-4 -->
+  <line x1="120" y1="665" x2="120" y2="725" stroke="#2B6CB0" stroke-width="3" stroke-dasharray="6,4" opacity="0.35"/>
+  <polygon points="120,730 114,718 126,718" fill="#2B6CB0" opacity="0.5"/>
+
+  <!-- Step 4 Card -->
+  <rect x="60" y="730" rx="14" width="680" height="115" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#shadow1)"/>
+  <circle cx="120" cy="787" r="32" fill="#2B6CB0"/>
+  <text x="120" y="796" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="22" fill="#FFFFFF">4</text>
+  <text x="175" y="775" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="20" fill="#2B6CB0">Receive Diagnosis &amp; Treatment Plan</text>
+  <text x="175" y="802" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="15" fill="#2D3748">Your provider shares findings, discusses medication</text>
+  <text x="175" y="822" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="15" fill="#2D3748">options, and sends prescriptions to your pharmacy.</text>
+  <rect x="640" y="768" rx="8" width="44" height="44" fill="#2B6CB0" opacity="0.08"/>
+  <text x="662" y="798" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22">&#128138;</text>
+
+  <!-- Connector line 4-5 -->
+  <line x1="120" y1="845" x2="120" y2="905" stroke="#2B6CB0" stroke-width="3" stroke-dasharray="6,4" opacity="0.35"/>
+  <polygon points="120,910 114,898 126,898" fill="#2B6CB0" opacity="0.5"/>
+
+  <!-- Step 5 Card -->
+  <rect x="60" y="910" rx="14" width="680" height="115" fill="#F7FAFD" stroke="#E2E8F0" stroke-width="1" filter="url(#shadow1)"/>
+  <circle cx="120" cy="967" r="32" fill="#2B6CB0"/>
+  <text x="120" y="976" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="22" fill="#FFFFFF">5</text>
+  <text x="175" y="955" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="20" fill="#2B6CB0">Follow-Up &amp; Monitoring</text>
+  <text x="175" y="982" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="15" fill="#2D3748">Regular telehealth check-ins to monitor progress, adjust</text>
+  <text x="175" y="1002" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="15" fill="#2D3748">dosage, and ensure your treatment plan is working.</text>
+  <rect x="640" y="948" rx="8" width="44" height="44" fill="#2B6CB0" opacity="0.08"/>
+  <text x="662" y="978" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22">&#128197;</text>
+
+  <!-- Yellow CTA bar -->
+  <rect x="60" y="1060" rx="12" width="680" height="54" fill="#F6C744"/>
+  <text x="400" y="1093" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="17" fill="#2D3748">Ready to start? Book your evaluation today!</text>
+
+  <!-- Footer -->
+  <rect x="0" y="1140" width="800" height="60" rx="0" fill="#2B6CB0"/>
+  <rect x="0" y="1140" width="800" height="4" fill="#F6C744"/>
+  <text x="400" y="1178" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="16" fill="#FFFFFF">Refresh Psychiatry  |  (954) 603-4081</text>
+</svg>

@@ -1,0 +1,1402 @@
+[
+  {
+    "company_name": "Stryker Corporation",
+    "total_physicians": 174565,
+    "total_payments": 736590179.59,
+    "total_records": 837027,
+    "state_count": 57
+  },
+  {
+    "company_name": "Arthrex, Inc.",
+    "total_physicians": 26257,
+    "total_payments": 639506289.39,
+    "total_records": 260506,
+    "state_count": 55
+  },
+  {
+    "company_name": "Zimmer Biomet Holdings, Inc.",
+    "total_physicians": 105062,
+    "total_payments": 595032431.76,
+    "total_records": 386406,
+    "state_count": 58
+  },
+  {
+    "company_name": "DePuy Synthes Products, Inc.",
+    "total_physicians": 2299,
+    "total_payments": 505010874.36,
+    "total_records": 13696,
+    "state_count": 45
+  },
+  {
+    "company_name": "Medtronic, Inc.",
+    "total_physicians": 277679,
+    "total_payments": 490412214.05,
+    "total_records": 1198609,
+    "state_count": 57
+  },
+  {
+    "company_name": "PFIZER INC.",
+    "total_physicians": 782512,
+    "total_payments": 472186526.32,
+    "total_records": 2974400,
+    "state_count": 56
+  },
+  {
+    "company_name": "ABBVIE INC.",
+    "total_physicians": 599924,
+    "total_payments": 391926338.99,
+    "total_records": 4539381,
+    "state_count": 57
+  },
+  {
+    "company_name": "AstraZeneca Pharmaceuticals LP",
+    "total_physicians": 698239,
+    "total_payments": 294847559.32,
+    "total_records": 3119905,
+    "state_count": 56
+  },
+  {
+    "company_name": "Intuitive Surgical, Inc.",
+    "total_physicians": 69950,
+    "total_payments": 263637346.73,
+    "total_records": 497435,
+    "state_count": 55
+  },
+  {
+    "company_name": "Boston Scientific Corporation",
+    "total_physicians": 283460,
+    "total_payments": 249285728.14,
+    "total_records": 1018047,
+    "state_count": 56
+  },
+  {
+    "company_name": "Smith+Nephew, Inc.",
+    "total_physicians": 116747,
+    "total_payments": 245277424.36,
+    "total_records": 380587,
+    "state_count": 57
+  },
+  {
+    "company_name": "Lilly USA, LLC",
+    "total_physicians": 546825,
+    "total_payments": 225205912.32,
+    "total_records": 2493092,
+    "state_count": 54
+  },
+  {
+    "company_name": "Amgen Inc.",
+    "total_physicians": 622964,
+    "total_payments": 216112836.59,
+    "total_records": 2641122,
+    "state_count": 57
+  },
+  {
+    "company_name": "Medtronic USA, Inc.",
+    "total_physicians": 54131,
+    "total_payments": 210366159.47,
+    "total_records": 240986,
+    "state_count": 54
+  },
+  {
+    "company_name": "Abbott Laboratories",
+    "total_physicians": 364970,
+    "total_payments": 198928684.7,
+    "total_records": 1608666,
+    "state_count": 58
+  },
+  {
+    "company_name": "Allergan, Inc.",
+    "total_physicians": 147446,
+    "total_payments": 182088101.96,
+    "total_records": 678401,
+    "state_count": 57
+  },
+  {
+    "company_name": "Medtronic Vascular, Inc.",
+    "total_physicians": 61536,
+    "total_payments": 179705388.58,
+    "total_records": 350528,
+    "state_count": 53
+  },
+  {
+    "company_name": "AbbVie Inc.",
+    "total_physicians": 282765,
+    "total_payments": 179270050.95,
+    "total_records": 2035709,
+    "state_count": 57
+  },
+  {
+    "company_name": "Novo Nordisk Inc",
+    "total_physicians": 535852,
+    "total_payments": 177889616.49,
+    "total_records": 3048976,
+    "state_count": 58
+  },
+  {
+    "company_name": "GENZYME CORPORATION",
+    "total_physicians": 216152,
+    "total_payments": 174701532.58,
+    "total_records": 752779,
+    "state_count": 54
+  },
+  {
+    "company_name": "GlaxoSmithKline, LLC.",
+    "total_physicians": 503300,
+    "total_payments": 155571423.13,
+    "total_records": 2209120,
+    "state_count": 56
+  },
+  {
+    "company_name": "E.R. Squibb & Sons, L.L.C.",
+    "total_physicians": 307136,
+    "total_payments": 150307835.7,
+    "total_records": 1022458,
+    "state_count": 54
+  },
+  {
+    "company_name": "Allergan Inc.",
+    "total_physicians": 180641,
+    "total_payments": 144787013.99,
+    "total_records": 794979,
+    "state_count": 56
+  },
+  {
+    "company_name": "Janssen Pharmaceuticals, Inc",
+    "total_physicians": 487671,
+    "total_payments": 141967278.84,
+    "total_records": 1850463,
+    "state_count": 57
+  },
+  {
+    "company_name": "Eli Lilly and Company",
+    "total_physicians": 12980,
+    "total_payments": 141078617.77,
+    "total_records": 44019,
+    "state_count": 51
+  },
+  {
+    "company_name": "Medical Device Business Services, Inc.",
+    "total_physicians": 39947,
+    "total_payments": 139365916.12,
+    "total_records": 171335,
+    "state_count": 55
+  },
+  {
+    "company_name": "Novartis Pharmaceuticals Corporation",
+    "total_physicians": 525926,
+    "total_payments": 132293580.84,
+    "total_records": 2261740,
+    "state_count": 56
+  },
+  {
+    "company_name": "ENCORE MEDICAL, LP",
+    "total_physicians": 4485,
+    "total_payments": 130967023.24,
+    "total_records": 36183,
+    "state_count": 50
+  },
+  {
+    "company_name": "Gilead Sciences, Inc.",
+    "total_physicians": 167375,
+    "total_payments": 122008113.63,
+    "total_records": 678067,
+    "state_count": 55
+  },
+  {
+    "company_name": "BOSTON SCIENTIFIC CORPORATION",
+    "total_physicians": 69900,
+    "total_payments": 117522499.83,
+    "total_records": 223480,
+    "state_count": 54
+  },
+  {
+    "company_name": "Merck Sharp & Dohme Corporation",
+    "total_physicians": 303464,
+    "total_payments": 116107724.5,
+    "total_records": 882591,
+    "state_count": 57
+  },
+  {
+    "company_name": "Globus Medical, Inc.",
+    "total_physicians": 17181,
+    "total_payments": 115012267.71,
+    "total_records": 86204,
+    "state_count": 54
+  },
+  {
+    "company_name": "NuVasive, Inc.",
+    "total_physicians": 11319,
+    "total_payments": 114938336.23,
+    "total_records": 81123,
+    "state_count": 52
+  },
+  {
+    "company_name": "Boehringer Ingelheim Pharmaceuticals, Inc.",
+    "total_physicians": 439281,
+    "total_payments": 112658416,
+    "total_records": 1487403,
+    "state_count": 56
+  },
+  {
+    "company_name": "Takeda Pharmaceuticals U.S.A., Inc.",
+    "total_physicians": 321418,
+    "total_payments": 112359248.09,
+    "total_records": 1132054,
+    "state_count": 56
+  },
+  {
+    "company_name": "Hill-Rom, Inc",
+    "total_physicians": 1,
+    "total_payments": 110558486.75,
+    "total_records": 2,
+    "state_count": 1
+  },
+  {
+    "company_name": "LivaNova USA, Inc.",
+    "total_physicians": 20414,
+    "total_payments": 107534138.35,
+    "total_records": 54399,
+    "state_count": 53
+  },
+  {
+    "company_name": "Regeneron Healthcare Solutions, Inc.",
+    "total_physicians": 199395,
+    "total_payments": 101829444.73,
+    "total_records": 650166,
+    "state_count": 56
+  },
+  {
+    "company_name": "AbbVie, Inc.",
+    "total_physicians": 125507,
+    "total_payments": 95261608.67,
+    "total_records": 661462,
+    "state_count": 54
+  },
+  {
+    "company_name": "Edge Endo LLC",
+    "total_physicians": 146,
+    "total_payments": 91459981.74,
+    "total_records": 263,
+    "state_count": 26
+  },
+  {
+    "company_name": "Janssen Biotech, Inc.",
+    "total_physicians": 233118,
+    "total_payments": 86302587,
+    "total_records": 1280303,
+    "state_count": 55
+  },
+  {
+    "company_name": "Henry Schein, Inc.",
+    "total_physicians": 15785,
+    "total_payments": 84188834.55,
+    "total_records": 23234,
+    "state_count": 51
+  },
+  {
+    "company_name": "Biogen, Inc.",
+    "total_physicians": 58305,
+    "total_payments": 84094178.15,
+    "total_records": 274566,
+    "state_count": 54
+  },
+  {
+    "company_name": "CSL Behring",
+    "total_physicians": 52841,
+    "total_payments": 83133918.27,
+    "total_records": 184076,
+    "state_count": 52
+  },
+  {
+    "company_name": "Teva Pharmaceuticals USA, Inc.",
+    "total_physicians": 181810,
+    "total_payments": 82560934.77,
+    "total_records": 755945,
+    "state_count": 57
+  },
+  {
+    "company_name": "Edwards Lifesciences Corporation",
+    "total_physicians": 84569,
+    "total_payments": 82326925.77,
+    "total_records": 308827,
+    "state_count": 54
+  },
+  {
+    "company_name": "Genentech USA, Inc.",
+    "total_physicians": 182217,
+    "total_payments": 80439840.67,
+    "total_records": 513751,
+    "state_count": 54
+  },
+  {
+    "company_name": "Align Technology, Inc.",
+    "total_physicians": 121576,
+    "total_payments": 74270429.4,
+    "total_records": 293208,
+    "state_count": 57
+  },
+  {
+    "company_name": "Alphatec Spine, Inc",
+    "total_physicians": 5338,
+    "total_payments": 73812739.85,
+    "total_records": 31946,
+    "state_count": 51
+  },
+  {
+    "company_name": "Galderma Laboratories, L.P.",
+    "total_physicians": 74897,
+    "total_payments": 72127899.8,
+    "total_records": 295952,
+    "state_count": 55
+  },
+  {
+    "company_name": "Alkermes, Inc.",
+    "total_physicians": 100564,
+    "total_payments": 71699449.57,
+    "total_records": 402387,
+    "state_count": 53
+  },
+  {
+    "company_name": "Alcon Vision LLC",
+    "total_physicians": 142116,
+    "total_payments": 69173601.47,
+    "total_records": 450240,
+    "state_count": 57
+  },
+  {
+    "company_name": "SANOFI-AVENTIS U.S. LLC",
+    "total_physicians": 213110,
+    "total_payments": 67341300.43,
+    "total_records": 613726,
+    "state_count": 54
+  },
+  {
+    "company_name": "Otsuka America Pharmaceutical, Inc.",
+    "total_physicians": 208506,
+    "total_payments": 66881186.72,
+    "total_records": 768681,
+    "state_count": 57
+  },
+  {
+    "company_name": "Incyte Corporation",
+    "total_physicians": 79350,
+    "total_payments": 65853927.77,
+    "total_records": 277080,
+    "state_count": 53
+  },
+  {
+    "company_name": "Celgene Corporation",
+    "total_physicians": 97390,
+    "total_payments": 62555139.73,
+    "total_records": 418008,
+    "state_count": 54
+  },
+  {
+    "company_name": "DePuy Synthes Products LLC",
+    "total_physicians": 409,
+    "total_payments": 61393577.86,
+    "total_records": 2511,
+    "state_count": 39
+  },
+  {
+    "company_name": "Neurocrine Biosciences, Inc.",
+    "total_physicians": 98957,
+    "total_payments": 59867234.58,
+    "total_records": 369919,
+    "state_count": 55
+  },
+  {
+    "company_name": "INTUITIVE SURGICAL, INC.",
+    "total_physicians": 16239,
+    "total_payments": 59863175.82,
+    "total_records": 115660,
+    "state_count": 55
+  },
+  {
+    "company_name": "Merck Sharp & Dohme LLC",
+    "total_physicians": 287674,
+    "total_payments": 57691878.16,
+    "total_records": 687612,
+    "state_count": 57
+  },
+  {
+    "company_name": "Janssen Scientific Affairs, LLC",
+    "total_physicians": 34055,
+    "total_payments": 51580702.36,
+    "total_records": 75321,
+    "state_count": 54
+  },
+  {
+    "company_name": "Horizon Therapeutics plc",
+    "total_physicians": 94983,
+    "total_payments": 51133773.8,
+    "total_records": 311598,
+    "state_count": 54
+  },
+  {
+    "company_name": "Vertex Pharmaceuticals Incorporated",
+    "total_physicians": 2153,
+    "total_payments": 49772392.3,
+    "total_records": 6176,
+    "state_count": 45
+  },
+  {
+    "company_name": "Dentsply Sirona Inc",
+    "total_physicians": 113975,
+    "total_payments": 49036573.73,
+    "total_records": 217390,
+    "state_count": 55
+  },
+  {
+    "company_name": "Alexion Pharmaceuticals, Inc.",
+    "total_physicians": 96576,
+    "total_payments": 48992096.25,
+    "total_records": 225100,
+    "state_count": 54
+  },
+  {
+    "company_name": "Cook Incorporated",
+    "total_physicians": 3910,
+    "total_payments": 48918769.48,
+    "total_records": 9483,
+    "state_count": 49
+  },
+  {
+    "company_name": "Bayer HealthCare Pharmaceuticals Inc.",
+    "total_physicians": 152112,
+    "total_payments": 48383286.54,
+    "total_records": 392007,
+    "state_count": 56
+  },
+  {
+    "company_name": "Regeneron Pharmaceuticals, Inc.",
+    "total_physicians": 9243,
+    "total_payments": 48266440.03,
+    "total_records": 33508,
+    "state_count": 48
+  },
+  {
+    "company_name": "EMD Serono, Inc.",
+    "total_physicians": 51019,
+    "total_payments": 48168125.57,
+    "total_records": 211370,
+    "state_count": 54
+  },
+  {
+    "company_name": "UCB, Inc.",
+    "total_physicians": 114679,
+    "total_payments": 47751720.76,
+    "total_records": 558090,
+    "state_count": 54
+  },
+  {
+    "company_name": "Medtronic MiniMed, Inc.",
+    "total_physicians": 12047,
+    "total_payments": 44426587.71,
+    "total_records": 35584,
+    "state_count": 52
+  },
+  {
+    "company_name": "Astellas Pharma US Inc",
+    "total_physicians": 272529,
+    "total_payments": 43422096.11,
+    "total_records": 759847,
+    "state_count": 55
+  },
+  {
+    "company_name": "Paragon 28, Inc.",
+    "total_physicians": 10905,
+    "total_payments": 42981816.67,
+    "total_records": 26494,
+    "state_count": 50
+  },
+  {
+    "company_name": "ViiV Healthcare Company",
+    "total_physicians": 35741,
+    "total_payments": 41466909.79,
+    "total_records": 251966,
+    "state_count": 53
+  },
+  {
+    "company_name": "Ethicon Inc.",
+    "total_physicians": 5863,
+    "total_payments": 39633375.6,
+    "total_records": 18650,
+    "state_count": 49
+  },
+  {
+    "company_name": "AngioDynamics, Inc.",
+    "total_physicians": 24410,
+    "total_payments": 39513926.23,
+    "total_records": 47833,
+    "state_count": 54
+  },
+  {
+    "company_name": "Carl Zeiss Meditec, Inc.",
+    "total_physicians": 12139,
+    "total_payments": 38663199.86,
+    "total_records": 19271,
+    "state_count": 55
+  },
+  {
+    "company_name": "Straumann USA LLC",
+    "total_physicians": 88859,
+    "total_payments": 38371384.73,
+    "total_records": 223397,
+    "state_count": 57
+  },
+  {
+    "company_name": "ZIMVIE INC.",
+    "total_physicians": 39045,
+    "total_payments": 37710361.65,
+    "total_records": 137475,
+    "state_count": 57
+  },
+  {
+    "company_name": "ABIOMED",
+    "total_physicians": 65828,
+    "total_payments": 36946168.31,
+    "total_records": 179745,
+    "state_count": 55
+  },
+  {
+    "company_name": "Philips Electronics North America Corporation",
+    "total_physicians": 79632,
+    "total_payments": 35714804.69,
+    "total_records": 156194,
+    "state_count": 54
+  },
+  {
+    "company_name": "Wright Medical Technology, Inc.",
+    "total_physicians": 9556,
+    "total_payments": 35573083,
+    "total_records": 36458,
+    "state_count": 52
+  },
+  {
+    "company_name": "TRIAD LIFE SCIENCES INC.",
+    "total_physicians": 1240,
+    "total_payments": 35350078.09,
+    "total_records": 2654,
+    "state_count": 40
+  },
+  {
+    "company_name": "EXACTECH, INC.",
+    "total_physicians": 2557,
+    "total_payments": 34855983.39,
+    "total_records": 11505,
+    "state_count": 48
+  },
+  {
+    "company_name": "Orthofix Medical, Inc.",
+    "total_physicians": 25448,
+    "total_payments": 34484738.31,
+    "total_records": 61477,
+    "state_count": 55
+  },
+  {
+    "company_name": "W. L. Gore & Associates, Inc.",
+    "total_physicians": 40043,
+    "total_payments": 33267701.27,
+    "total_records": 139193,
+    "state_count": 54
+  },
+  {
+    "company_name": "Salix Pharmaceuticals, a division of Bausch Health US, LLC",
+    "total_physicians": 245471,
+    "total_payments": 33240357.18,
+    "total_records": 1076989,
+    "state_count": 54
+  },
+  {
+    "company_name": "CSL Plasma Inc.",
+    "total_physicians": 501,
+    "total_payments": 33182062.4,
+    "total_records": 24341,
+    "state_count": 42
+  },
+  {
+    "company_name": "Pacira Pharmaceuticals Incorporated",
+    "total_physicians": 50289,
+    "total_payments": 33109254.88,
+    "total_records": 86906,
+    "state_count": 54
+  },
+  {
+    "company_name": "Daiichi Sankyo Inc.",
+    "total_physicians": 118469,
+    "total_payments": 32128326.91,
+    "total_records": 304616,
+    "state_count": 55
+  },
+  {
+    "company_name": "Shire North American Group Inc",
+    "total_physicians": 91875,
+    "total_payments": 31010715.58,
+    "total_records": 258643,
+    "state_count": 55
+  },
+  {
+    "company_name": "Bausch & Lomb, a division of Bausch Health US, LLC",
+    "total_physicians": 75434,
+    "total_payments": 30945176.18,
+    "total_records": 214820,
+    "state_count": 56
+  },
+  {
+    "company_name": "Lundbeck LLC",
+    "total_physicians": 121143,
+    "total_payments": 30581093.21,
+    "total_records": 410707,
+    "state_count": 55
+  },
+  {
+    "company_name": "Becton, Dickinson and Company",
+    "total_physicians": 21286,
+    "total_payments": 30276518.26,
+    "total_records": 31882,
+    "state_count": 54
+  },
+  {
+    "company_name": "JAZZ PHARMACEUTICALS INC.",
+    "total_physicians": 56675,
+    "total_payments": 30182831.53,
+    "total_records": 157966,
+    "state_count": 54
+  },
+  {
+    "company_name": "Bard Peripheral Vascular, Inc.",
+    "total_physicians": 23795,
+    "total_payments": 30077248.31,
+    "total_records": 59343,
+    "state_count": 52
+  },
+  {
+    "company_name": "Penumbra, Inc.",
+    "total_physicians": 27908,
+    "total_payments": 29779386.22,
+    "total_records": 89724,
+    "state_count": 54
+  },
+  {
+    "company_name": "Sunovion Pharmaceuticals Inc.",
+    "total_physicians": 103239,
+    "total_payments": 29386065.84,
+    "total_records": 563460,
+    "state_count": 53
+  },
+  {
+    "company_name": "Smith & Nephew, Inc.",
+    "total_physicians": 17298,
+    "total_payments": 28955621.81,
+    "total_records": 59155,
+    "state_count": 53
+  },
+  {
+    "company_name": "Bausch & Lomb Americas Inc.",
+    "total_physicians": 65872,
+    "total_payments": 28934198.21,
+    "total_records": 200656,
+    "state_count": 56
+  },
+  {
+    "company_name": "MEDACTA USA, INC.",
+    "total_physicians": 3135,
+    "total_payments": 28817967.15,
+    "total_records": 17647,
+    "state_count": 49
+  },
+  {
+    "company_name": "DePuy Synthes Sales Inc.",
+    "total_physicians": 83847,
+    "total_payments": 28565541.6,
+    "total_records": 180398,
+    "state_count": 56
+  },
+  {
+    "company_name": "Linvatec Corporation",
+    "total_physicians": 4910,
+    "total_payments": 28369836.72,
+    "total_records": 12138,
+    "state_count": 49
+  },
+  {
+    "company_name": "TREACE MEDICAL CONCEPTS, INC.",
+    "total_physicians": 9069,
+    "total_payments": 27967081.1,
+    "total_records": 27922,
+    "state_count": 51
+  },
+  {
+    "company_name": "Mallinckrodt Hospital Products Inc.",
+    "total_physicians": 53057,
+    "total_payments": 27332560.09,
+    "total_records": 154543,
+    "state_count": 55
+  },
+  {
+    "company_name": "Otsuka Pharmaceutical Development & Commercialization, Inc.",
+    "total_physicians": 11008,
+    "total_payments": 26568955.58,
+    "total_records": 19456,
+    "state_count": 53
+  },
+  {
+    "company_name": "Eisai Inc.",
+    "total_physicians": 90711,
+    "total_payments": 26191928.07,
+    "total_records": 231825,
+    "state_count": 56
+  },
+  {
+    "company_name": "Janssen Research & Development, LLC",
+    "total_physicians": 3032,
+    "total_payments": 25674747.89,
+    "total_records": 12333,
+    "state_count": 44
+  },
+  {
+    "company_name": "HOLOGIC INC",
+    "total_physicians": 3942,
+    "total_payments": 25632388.38,
+    "total_records": 6235,
+    "state_count": 49
+  },
+  {
+    "company_name": "Integra LifeSciences Corporation",
+    "total_physicians": 52352,
+    "total_payments": 25149871.05,
+    "total_records": 109393,
+    "state_count": 55
+  },
+  {
+    "company_name": "SmartHealth Inc",
+    "total_physicians": 30,
+    "total_payments": 25083600,
+    "total_records": 30,
+    "state_count": 15
+  },
+  {
+    "company_name": "Genentech, Inc.",
+    "total_physicians": 11263,
+    "total_payments": 24556996.19,
+    "total_records": 21143,
+    "state_count": 52
+  },
+  {
+    "company_name": "ORTHO DEVELOPMENT CORPORATION",
+    "total_physicians": 702,
+    "total_payments": 24085290.72,
+    "total_records": 5921,
+    "state_count": 35
+  },
+  {
+    "company_name": "Anika Therapeutics, Inc.",
+    "total_physicians": 3008,
+    "total_payments": 23918839.41,
+    "total_records": 5784,
+    "state_count": 48
+  },
+  {
+    "company_name": "F. Hoffmann-La Roche AG",
+    "total_physicians": 4859,
+    "total_payments": 23911099.6,
+    "total_records": 16864,
+    "state_count": 42
+  },
+  {
+    "company_name": "ACADIA Pharmaceuticals Inc",
+    "total_physicians": 38085,
+    "total_payments": 23845935.61,
+    "total_records": 140240,
+    "state_count": 53
+  },
+  {
+    "company_name": "Novo Nordisk AS",
+    "total_physicians": 2050,
+    "total_payments": 23558202.09,
+    "total_records": 15410,
+    "state_count": 40
+  },
+  {
+    "company_name": "CooperSurgical, Inc.",
+    "total_physicians": 36959,
+    "total_payments": 23146755.56,
+    "total_records": 53014,
+    "state_count": 54
+  },
+  {
+    "company_name": "Amarin Pharma Inc.",
+    "total_physicians": 137865,
+    "total_payments": 23043544.48,
+    "total_records": 474686,
+    "state_count": 50
+  },
+  {
+    "company_name": "Alcon Research LLC",
+    "total_physicians": 1923,
+    "total_payments": 22818220.56,
+    "total_records": 11839,
+    "state_count": 40
+  },
+  {
+    "company_name": "ZOLL Services LLC (A/K/A ZOLL LifeCor Corp)",
+    "total_physicians": 127961,
+    "total_payments": 22793385.99,
+    "total_records": 398780,
+    "state_count": 53
+  },
+  {
+    "company_name": "Inari Medical, Inc.",
+    "total_physicians": 42558,
+    "total_payments": 22766362.87,
+    "total_records": 123326,
+    "state_count": 54
+  },
+  {
+    "company_name": "Siemens Medical Solutions USA, Inc.",
+    "total_physicians": 20714,
+    "total_payments": 22594780.6,
+    "total_records": 53031,
+    "state_count": 54
+  },
+  {
+    "company_name": "ITI, Inc.",
+    "total_physicians": 60397,
+    "total_payments": 22472955.57,
+    "total_records": 265896,
+    "state_count": 56
+  },
+  {
+    "company_name": "Axsome Therapeutics, Inc.",
+    "total_physicians": 56015,
+    "total_payments": 22252649.14,
+    "total_records": 160049,
+    "state_count": 52
+  },
+  {
+    "company_name": "Sun Pharmaceutical Industries Inc.",
+    "total_physicians": 75975,
+    "total_payments": 21751026.49,
+    "total_records": 239554,
+    "state_count": 55
+  },
+  {
+    "company_name": "Actelion Pharmaceuticals US, Inc.",
+    "total_physicians": 53325,
+    "total_payments": 21363803.41,
+    "total_records": 171870,
+    "state_count": 54
+  },
+  {
+    "company_name": "Johnson & Johnson Vision Care, Inc.",
+    "total_physicians": 76130,
+    "total_payments": 21360664.39,
+    "total_records": 199217,
+    "state_count": 55
+  },
+  {
+    "company_name": "MicroPort Orthopedics Inc",
+    "total_physicians": 1423,
+    "total_payments": 21167168.05,
+    "total_records": 7814,
+    "state_count": 46
+  },
+  {
+    "company_name": "Tulsa Dental Products LLC",
+    "total_physicians": 8078,
+    "total_payments": 20521495.18,
+    "total_records": 16502,
+    "state_count": 54
+  },
+  {
+    "company_name": "Alnylam Pharmaceuticals Inc.",
+    "total_physicians": 35920,
+    "total_payments": 20440077.52,
+    "total_records": 66682,
+    "state_count": 52
+  },
+  {
+    "company_name": "Bayer Healthcare Pharmaceuticals Inc.",
+    "total_physicians": 118383,
+    "total_payments": 20418181.32,
+    "total_records": 331282,
+    "state_count": 55
+  },
+  {
+    "company_name": "ACUMED LLC",
+    "total_physicians": 6030,
+    "total_payments": 20280523.82,
+    "total_records": 15709,
+    "state_count": 50
+  },
+  {
+    "company_name": "Bausch Health US, LLC",
+    "total_physicians": 28800,
+    "total_payments": 20260859.87,
+    "total_records": 77981,
+    "state_count": 45
+  },
+  {
+    "company_name": "Exelixis Inc.",
+    "total_physicians": 20274,
+    "total_payments": 20218228.24,
+    "total_records": 52512,
+    "state_count": 52
+  },
+  {
+    "company_name": "Focal Therapeutics, Inc.",
+    "total_physicians": 1148,
+    "total_payments": 19966268.36,
+    "total_records": 1557,
+    "state_count": 42
+  },
+  {
+    "company_name": "Teleflex LLC",
+    "total_physicians": 27969,
+    "total_payments": 19761485.3,
+    "total_records": 66571,
+    "state_count": 55
+  },
+  {
+    "company_name": "Omnia Medical, LLC",
+    "total_physicians": 146,
+    "total_payments": 19569471.16,
+    "total_records": 185,
+    "state_count": 17
+  },
+  {
+    "company_name": "Exactech, Inc.",
+    "total_physicians": 1603,
+    "total_payments": 19434197.21,
+    "total_records": 7050,
+    "state_count": 47
+  },
+  {
+    "company_name": "Walk Vascular, LLC",
+    "total_physicians": 46,
+    "total_payments": 19173665.25,
+    "total_records": 66,
+    "state_count": 9
+  },
+  {
+    "company_name": "Supernus Pharmaceuticals, Inc.",
+    "total_physicians": 84296,
+    "total_payments": 19127038.03,
+    "total_records": 362193,
+    "state_count": 53
+  },
+  {
+    "company_name": "Davol Inc.",
+    "total_physicians": 26511,
+    "total_payments": 19092261.4,
+    "total_records": 50792,
+    "state_count": 54
+  },
+  {
+    "company_name": "Seagen Inc.",
+    "total_physicians": 27463,
+    "total_payments": 18560291.58,
+    "total_records": 88539,
+    "state_count": 54
+  },
+  {
+    "company_name": "Medacta USA, Inc.",
+    "total_physicians": 1969,
+    "total_payments": 18513975.77,
+    "total_records": 10938,
+    "state_count": 47
+  },
+  {
+    "company_name": "KCI USA, Inc.",
+    "total_physicians": 21173,
+    "total_payments": 18450058.13,
+    "total_records": 31051,
+    "state_count": 54
+  },
+  {
+    "company_name": "MicroVention, Inc.",
+    "total_physicians": 4488,
+    "total_payments": 18445854.7,
+    "total_records": 25892,
+    "state_count": 48
+  },
+  {
+    "company_name": "Nevro Corp.",
+    "total_physicians": 55624,
+    "total_payments": 18409496.94,
+    "total_records": 184194,
+    "state_count": 54
+  },
+  {
+    "company_name": "Hiossen, Inc.",
+    "total_physicians": 642,
+    "total_payments": 18181060.61,
+    "total_records": 646,
+    "state_count": 25
+  },
+  {
+    "company_name": "Sonendo Inc",
+    "total_physicians": 8984,
+    "total_payments": 18113969.49,
+    "total_records": 26568,
+    "state_count": 53
+  },
+  {
+    "company_name": "Covidien LP",
+    "total_physicians": 22806,
+    "total_payments": 17862062.27,
+    "total_records": 48540,
+    "state_count": 52
+  },
+  {
+    "company_name": "Maillefer Instruments Holding Sarl",
+    "total_physicians": 50,
+    "total_payments": 17689558.38,
+    "total_records": 327,
+    "state_count": 9
+  },
+  {
+    "company_name": "BIOTRONIK INC.",
+    "total_physicians": 23245,
+    "total_payments": 17571174.18,
+    "total_records": 98858,
+    "state_count": 52
+  },
+  {
+    "company_name": "kaleo, Inc.",
+    "total_physicians": 24451,
+    "total_payments": 17477178.49,
+    "total_records": 48308,
+    "state_count": 48
+  },
+  {
+    "company_name": "Johnson & Johnson Surgical Vision, Inc.",
+    "total_physicians": 26298,
+    "total_payments": 17322717,
+    "total_records": 59422,
+    "state_count": 53
+  },
+  {
+    "company_name": "Merit Medical Systems Inc",
+    "total_physicians": 3163,
+    "total_payments": 17019346.11,
+    "total_records": 6014,
+    "state_count": 45
+  },
+  {
+    "company_name": "Alcon Research Ltd",
+    "total_physicians": 647,
+    "total_payments": 17018467.28,
+    "total_records": 1627,
+    "state_count": 47
+  },
+  {
+    "company_name": "SI-BONE, INC.",
+    "total_physicians": 15256,
+    "total_payments": 16713264.38,
+    "total_records": 37210,
+    "state_count": 53
+  },
+  {
+    "company_name": "United Therapeutics Corporation",
+    "total_physicians": 24656,
+    "total_payments": 16600228.71,
+    "total_records": 73884,
+    "state_count": 53
+  },
+  {
+    "company_name": "MedShape, Inc.",
+    "total_physicians": 1412,
+    "total_payments": 16468088.94,
+    "total_records": 4886,
+    "state_count": 47
+  },
+  {
+    "company_name": "Asklepios Biopharmaceutical Inc.",
+    "total_physicians": 22,
+    "total_payments": 16368453.8,
+    "total_records": 22,
+    "state_count": 8
+  },
+  {
+    "company_name": "ATRICURE, INC.",
+    "total_physicians": 23698,
+    "total_payments": 16149872.22,
+    "total_records": 70899,
+    "state_count": 52
+  },
+  {
+    "company_name": "RxSight Inc",
+    "total_physicians": 11275,
+    "total_payments": 15958714.08,
+    "total_records": 18400,
+    "state_count": 54
+  },
+  {
+    "company_name": "Silk Road Medical, Inc.",
+    "total_physicians": 16871,
+    "total_payments": 15667696.53,
+    "total_records": 50351,
+    "state_count": 52
+  },
+  {
+    "company_name": "Sirtex Medical Inc",
+    "total_physicians": 8803,
+    "total_payments": 15664402.85,
+    "total_records": 33477,
+    "state_count": 52
+  },
+  {
+    "company_name": "AstraZeneca UK Limited",
+    "total_physicians": 3247,
+    "total_payments": 15527462.77,
+    "total_records": 12871,
+    "state_count": 41
+  },
+  {
+    "company_name": "Coloplast Corp",
+    "total_physicians": 22040,
+    "total_payments": 15490406.36,
+    "total_records": 70768,
+    "state_count": 53
+  },
+  {
+    "company_name": "Ipsen Biopharmaceuticals, Inc",
+    "total_physicians": 31423,
+    "total_payments": 15074812.38,
+    "total_records": 62573,
+    "state_count": 53
+  },
+  {
+    "company_name": "Organon LLC",
+    "total_physicians": 52415,
+    "total_payments": 15009548.94,
+    "total_records": 102057,
+    "state_count": 53
+  },
+  {
+    "company_name": "Boehringer Ingelheim International GmbH",
+    "total_physicians": 2027,
+    "total_payments": 14923668.93,
+    "total_records": 10345,
+    "state_count": 43
+  },
+  {
+    "company_name": "Glaukos Corporation",
+    "total_physicians": 22858,
+    "total_payments": 14653029.43,
+    "total_records": 40083,
+    "state_count": 54
+  },
+  {
+    "company_name": "OrthoPediatrics Corp.",
+    "total_physicians": 1463,
+    "total_payments": 14269152.16,
+    "total_records": 4086,
+    "state_count": 40
+  },
+  {
+    "company_name": "BioMarin Pharmaceutical Inc.",
+    "total_physicians": 5701,
+    "total_payments": 14253525.22,
+    "total_records": 14348,
+    "state_count": 50
+  },
+  {
+    "company_name": "Conformis, Inc.",
+    "total_physicians": 1328,
+    "total_payments": 14249370.04,
+    "total_records": 5669,
+    "state_count": 44
+  },
+  {
+    "company_name": "Dexcom, Inc.",
+    "total_physicians": 74983,
+    "total_payments": 13947004.4,
+    "total_records": 165215,
+    "state_count": 54
+  },
+  {
+    "company_name": "Biosense Webster, Inc.",
+    "total_physicians": 18687,
+    "total_payments": 13862764.46,
+    "total_records": 100242,
+    "state_count": 52
+  },
+  {
+    "company_name": "Beckman Coulter, Inc.",
+    "total_physicians": 1351,
+    "total_payments": 13751425.87,
+    "total_records": 2182,
+    "state_count": 42
+  },
+  {
+    "company_name": "AtriCure, Inc.",
+    "total_physicians": 11135,
+    "total_payments": 13701842.51,
+    "total_records": 40356,
+    "state_count": 51
+  },
+  {
+    "company_name": "LEO Pharma Inc.",
+    "total_physicians": 44552,
+    "total_payments": 13687065.76,
+    "total_records": 179756,
+    "state_count": 52
+  },
+  {
+    "company_name": "Merz North America, Inc.",
+    "total_physicians": 24002,
+    "total_payments": 13637231.68,
+    "total_records": 74238,
+    "state_count": 53
+  },
+  {
+    "company_name": "Biohaven Pharmaceuticals, Inc.",
+    "total_physicians": 47744,
+    "total_payments": 13603966.03,
+    "total_records": 188343,
+    "state_count": 55
+  },
+  {
+    "company_name": "CooperVision Inc.",
+    "total_physicians": 74911,
+    "total_payments": 13563822.54,
+    "total_records": 163472,
+    "state_count": 57
+  },
+  {
+    "company_name": "Dermavant Sciences, Inc.",
+    "total_physicians": 23464,
+    "total_payments": 13511862.26,
+    "total_records": 135754,
+    "state_count": 53
+  },
+  {
+    "company_name": "Musculoskeletal Transplant Foundation Inc.",
+    "total_physicians": 10804,
+    "total_payments": 13485873.11,
+    "total_records": 23710,
+    "state_count": 49
+  },
+  {
+    "company_name": "Nobel Biocare USA",
+    "total_physicians": 42827,
+    "total_payments": 13472873.04,
+    "total_records": 88032,
+    "state_count": 55
+  },
+  {
+    "company_name": "Ormco Corporation",
+    "total_physicians": 13549,
+    "total_payments": 13440642.16,
+    "total_records": 32540,
+    "state_count": 55
+  },
+  {
+    "company_name": "SK Life Science, Inc.",
+    "total_physicians": 24254,
+    "total_payments": 13249714.8,
+    "total_records": 93953,
+    "state_count": 52
+  },
+  {
+    "company_name": "Peter Brasseler Holdings, LLC",
+    "total_physicians": 3310,
+    "total_payments": 13151677.51,
+    "total_records": 5466,
+    "state_count": 42
+  },
+  {
+    "company_name": "Treace Medical Concepts, Inc.",
+    "total_physicians": 1641,
+    "total_payments": 13131709.33,
+    "total_records": 10840,
+    "state_count": 44
+  },
+  {
+    "company_name": "Braintree Laboratories, Inc.",
+    "total_physicians": 25836,
+    "total_payments": 13095228.29,
+    "total_records": 47456,
+    "state_count": 51
+  },
+  {
+    "company_name": "Esperion Therapeutics, Inc.",
+    "total_physicians": 70109,
+    "total_payments": 12702658.44,
+    "total_records": 172758,
+    "state_count": 55
+  },
+  {
+    "company_name": "ShockWave Medical, Inc",
+    "total_physicians": 13435,
+    "total_payments": 12665096.97,
+    "total_records": 41471,
+    "state_count": 52
+  },
+  {
+    "company_name": "Synthes GmbH",
+    "total_physicians": 3232,
+    "total_payments": 12565831.36,
+    "total_records": 14206,
+    "state_count": 47
+  },
+  {
+    "company_name": "Kedplasma LLC",
+    "total_physicians": 342,
+    "total_payments": 12510426.36,
+    "total_records": 5767,
+    "state_count": 24
+  },
+  {
+    "company_name": "Corcept Therapeutics",
+    "total_physicians": 33187,
+    "total_payments": 12300261.65,
+    "total_records": 105142,
+    "state_count": 54
+  },
+  {
+    "company_name": "A-dec, Inc.",
+    "total_physicians": 19921,
+    "total_payments": 12235508.09,
+    "total_records": 60381,
+    "state_count": 54
+  },
+  {
+    "company_name": "PATTERSON COMPANIES, INC.",
+    "total_physicians": 16216,
+    "total_payments": 11942247.47,
+    "total_records": 24873,
+    "state_count": 54
+  },
+  {
+    "company_name": "Baxter Healthcare",
+    "total_physicians": 48701,
+    "total_payments": 11871333.61,
+    "total_records": 79700,
+    "state_count": 54
+  },
+  {
+    "company_name": "Skeletal Dynamics Inc",
+    "total_physicians": 2594,
+    "total_payments": 11723947.29,
+    "total_records": 6802,
+    "state_count": 46
+  },
+  {
+    "company_name": "Neurocrine BioSciences, Inc.",
+    "total_physicians": 1087,
+    "total_payments": 11712250.7,
+    "total_records": 5606,
+    "state_count": 50
+  },
+  {
+    "company_name": "Endo Pharmaceuticals Inc.",
+    "total_physicians": 44834,
+    "total_payments": 11704570.2,
+    "total_records": 109292,
+    "state_count": 53
+  }
+]

@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refresh Psychiatry — Daily Intelligence Briefing | March 15, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue: #2B6CB0;
+  --blue-dark: #1a4a7a;
+  --yellow: #F6C744;
+  --white: #FFFFFF;
+  --charcoal: #2D3748;
+  --bg: #f7f9fc;
+  --card-bg: #ffffff;
+  --border: #e2e8f0;
+  --green: #38a169;
+  --red: #e53e3e;
+  --orange: #dd6b20;
+  --light-blue: #ebf4ff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--charcoal);
+  line-height: 1.6;
+}
+.header {
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+  color: white;
+  padding: 32px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: rgba(246,199,68,0.1);
+  border-radius: 50%;
+}
+.header h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.header .subtitle {
+  font-size: 15px;
+  opacity: 0.85;
+  margin-bottom: 12px;
+}
+.header .meta {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  opacity: 0.9;
+}
+.header .meta span {
+  background: rgba(255,255,255,0.15);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+.nav {
+  background: var(--card-bg);
+  border-bottom: 2px solid var(--yellow);
+  padding: 12px 40px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.nav a {
+  text-decoration: none;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.nav a:hover {
+  background: var(--light-blue);
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+.part-header {
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+  color: white;
+  padding: 20px 28px;
+  border-radius: 12px;
+  margin: 32px 0 20px 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+.section {
+  background: var(--card-bg);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.section-header {
+  padding: 16px 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  user-select: none;
+}
+.section-header:hover {
+  background: var(--light-blue);
+}
+.section-header h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--blue);
+}
+.section-header .toggle {
+  font-size: 18px;
+  color: var(--blue);
+  transition: transform 0.2s;
+}
+.section-header.collapsed .toggle {
+  transform: rotate(-90deg);
+}
+.section-body {
+  padding: 20px 24px;
+}
+.section-body.collapsed {
+  display: none;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 12px 0;
+}
+th {
+  background: var(--light-blue);
+  color: var(--blue);
+  font-weight: 700;
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+tr:hover td {
+  background: #f8fafc;
+}
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.tag-new { background: #c6f6d5; color: #22543d; }
+.tag-developing { background: #fefcbf; color: #744210; }
+.tag-evergreen { background: #bee3f8; color: #2a4365; }
+.tag-urgent { background: #fed7d7; color: #9b2c2c; }
+.alert-box {
+  background: #fff5f5;
+  border-left: 4px solid var(--red);
+  padding: 14px 18px;
+  border-radius: 0 8px 8px 0;
+  margin: 12px 0;
+  font-size: 14px;
+}
+.info-box {
+  background: var(--light-blue);
+  border-left: 4px solid var(--blue);
+  padding: 14px 18px;
+  border-radius: 0 8px 8px 0;
+  margin: 12px 0;
+  font-size: 14px;
+}
+.success-box {
+  background: #f0fff4;
+  border-left: 4px solid var(--green);
+  padding: 14px 18px;
+  border-radius: 0 8px 8px 0;
+  margin: 12px 0;
+  font-size: 14px;
+}
+.warning-box {
+  background: #fffaf0;
+  border-left: 4px solid var(--orange);
+  padding: 14px 18px;
+  border-radius: 0 8px 8px 0;
+  margin: 12px 0;
+  font-size: 14px;
+}
+.move-card {
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 18px;
+  margin: 12px 0;
+}
+.move-card.urgent { border-color: var(--red); background: #fff5f5; }
+.move-card.high { border-color: var(--orange); background: #fffaf0; }
+.move-card.strategic { border-color: var(--yellow); background: #fffff0; }
+.move-card.quick { border-color: var(--green); background: #f0fff4; }
+.move-card.long { border-color: var(--blue); background: var(--light-blue); }
+.move-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+.move-card p { font-size: 13px; margin: 4px 0; }
+.score-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 13px;
+  color: white;
+}
+.score-green { background: var(--green); }
+.score-yellow { background: var(--yellow); color: var(--charcoal); }
+.score-red { background: var(--red); }
+.content-idea {
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 12px 0;
+  border: 1px solid var(--border);
+}
+.content-idea h4 {
+  color: var(--blue);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.content-idea p {
+  font-size: 13px;
+  margin: 4px 0;
+}
+.deep-dive {
+  background: linear-gradient(135deg, #f0f7ff 0%, #ebf4ff 100%);
+  border: 2px solid var(--blue);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 16px 0;
+}
+.deep-dive h3 {
+  color: var(--blue);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+blockquote {
+  border-left: 4px solid var(--yellow);
+  padding: 12px 18px;
+  margin: 16px 0;
+  font-style: italic;
+  background: #fffff8;
+  border-radius: 0 8px 8px 0;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.footer {
+  background: var(--charcoal);
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  padding: 24px;
+  font-size: 12px;
+  margin-top: 40px;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 768px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .header { padding: 20px; }
+  .nav { padding: 10px 16px; }
+  .container { padding: 12px; }
+}
+.status-green::before { content: '🟢 '; }
+.status-yellow::before { content: '🟡 '; }
+.status-red::before { content: '🔴 '; }
+.pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  margin: 2px;
+}
+.pill-blue { background: var(--light-blue); color: var(--blue); }
+.pill-yellow { background: #fefcbf; color: #744210; }
+.pill-green { background: #c6f6d5; color: #22543d; }
+.pill-red { background: #fed7d7; color: #9b2c2c; }
+</style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<div class="header">
+  <h1>🏥 Refresh Psychiatry & Therapy — Daily Intelligence Briefing</h1>
+  <div class="subtitle">Prepared for Dr. Justin Nepa, DO — CEO & Founder</div>
+  <div class="meta">
+    <span>📅 Sunday, March 15, 2026</span>
+    <span>🔄 Cycle Day 7/7</span>
+    <span>🔎 Deep Dive: Emerging Research Methodology</span>
+    <span>📍 16 Locations — FL · MA · TX</span>
+    <span>⏱️ ~15 min read</span>
+  </div>
+</div>
+
+<!-- ========== NAV ========== -->
+<div class="nav">
+  <a href="#part1">🏥 Clinical</a>
+  <a href="#part2">📱 Social & SEO</a>
+  <a href="#part3">⭐ Reputation</a>
+  <a href="#part4">🕵️ Competitive</a>
+  <a href="#part5">👑 CEO Command</a>
+  <a href="#part6">⚡ Battle Plan</a>
+</div>
+
+<div class="container">
+
+<!-- ================================================================ -->
+<!-- PART 1: CLINICAL & REGULATORY INTELLIGENCE -->
+<!-- ================================================================ -->
+<div class="part-header" id="part1">PART 1: CLINICAL & REGULATORY INTELLIGENCE</div>
+
+<!-- Section 1: FDA Drug Approvals -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>💊 1. FDA Drug Approvals & Safety Alerts</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <p>Key FDA actions impacting outpatient telepsychiatry this period:</p>
+    <table>
+      <tr>
+        <th>Drug</th><th>Event</th><th>Clinical Relevance</th><th>Practice Impact</th><th>Tag</th>
+      </tr>
+      <tr>
+        <td><strong>Bysanti (milsaperidone)</strong></td>
+        <td>FDA approved Feb 20, 2026 for acute manic/mixed episodes in Bipolar I & Schizophrenia</td>
+        <td>New chemical entity — atypical antipsychotic. Commercial availability expected Q3 2026. Vanda also pursuing Phase III for adjunctive TRD.</td>
+        <td>Monitor for formulary additions; potential new option for patients intolerant to existing atypicals. <a href="https://www.prnewswire.com/news-releases/vanda-pharmaceuticals-announces-fda-approval-of-bysanti-milsaperidone-for-the-treatment-of-bipolar-i-disorder-and-schizophrenia---a-new-chemical-entity-opening-new-horizons-in-psychiatric-innovation-302693941.html">🔗 Press Release</a></td>
+        <td><span class="tag tag-new">🆕 New</span></td>
+      </tr>
+      <tr>
+        <td><strong>Arynta (lisdexamfetamine oral solution)</strong></td>
+        <td>FDA approved June 2025; commercial availability <strong>mid-2026</strong></td>
+        <td>Liquid form of lisdexamfetamine for ADHD — 13–14 hr symptom control. Ideal for pediatric patients who can't swallow capsules.</td>
+        <td>Consider for patients struggling with pill forms. <a href="https://www.psychiatrictimes.com/view/lisdexamfetamine-dimesylate-oral-solution-for-adhd-to-be-available-mid-2026">🔗 Psychiatric Times</a></td>
+        <td><span class="tag tag-developing">🔄 Developing</span></td>
+      </tr>
+      <tr>
+        <td><strong>NRX-100 (single-dose ketamine)</strong></td>
+        <td>FDA Fast Track for suicidal depression; decision expected mid-2026</td>
+        <td>Preservative-free single-dose IV ketamine — could standardize acute suicidal depression management.</td>
+        <td>Watch for potential in-office or referral protocol updates. Not telehealth-initiable but relevant for patient education.</td>
+        <td><span class="tag tag-developing">🔄 Developing</span></td>
+      </tr>
+      <tr>
+        <td><strong>Olanzapine ER Injectable (TEV-'749)</strong></td>
+        <td>FDA accepted Teva's NDA — once-monthly SC injection for schizophrenia</td>
+        <td>Long-acting injectable olanzapine could improve adherence in schizophrenia patients seen via telehealth with in-person injection visits.</td>
+        <td>Monitor for approval; may create hybrid telehealth/in-person care pathway. <a href="https://www.psychiatrictimes.com/view/february-2026-in-review-updates-on-the-psychiatric-treatment-pipeline">🔗 Pipeline Review</a></td>
+        <td><span class="tag tag-new">🆕 New</span></td>
+      </tr>
+    </table>
+    <div class="info-box">
+      <strong>💡 Practice Impact Note:</strong> Bysanti's approval as a new atypical antipsychotic gives Refresh another option for bipolar I and schizophrenia patients — particularly those with tolerability issues on current agents. Keep an eye on the TRD adjunctive trial data expected late 2026.
+    </div>
+  </div>
+</div>
+
+<!-- Section 2: Clinical Practice Guidelines -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>📋 2. Clinical Practice Guideline Updates</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <table>
+      <tr><th>Guideline</th><th>Organization</th><th>Key Changes</th><th>Telehealth Impact</th><th>Tag</th></tr>
+      <tr>
+        <td><strong>Delirium Prevention & Treatment</strong></td>
+        <td>APA (Nov 2024 approval)</td>
+        <td>12 new clinical recommendations + 3 suggestions for detection, prevention, and treatment of delirium. Emphasizes systematic screening tools.</td>
+        <td>Primarily inpatient-focused, but relevant for patients with post-hospital transitions managed via telehealth follow-up.</td>
+        <td><span class="tag tag-evergreen">📌 Evergreen</span></td>
+      </tr>
+      <tr>
+        <td><strong>BPD Treatment (2nd Ed.)</strong></td>
+        <td>APA (2024)</td>
+        <td>Updated evidence for DBT, mentalization-based therapy, and pharmacotherapy guidance. Emphasizes shared decision-making.</td>
+        <td>Directly relevant — many BPD patients engaged in telepsychiatry. Review medication augmentation protocols.</td>
+        <td><span class="tag tag-evergreen">📌 Evergreen</span></td>
+      </tr>
+      <tr>
+        <td><strong>APA 2026 Annual Meeting</strong></td>
+        <td>APA — May 16–20, San Francisco</td>
+        <td>Expected new guideline announcements and clinical updates. Anticipate updates on TRD and anxiety disorders.</td>
+        <td>Block calendar; send a provider to attend or stream sessions. <a href="https://www.psychiatry.org/annualmeeting">🔗 Meeting Info</a></td>
+        <td><span class="tag tag-developing">🔄 Developing</span></td>
+      </tr>
+    </table>
+    <div class="info-box">
+      <strong>✅ No new guideline releases in the past 48 hours.</strong> Next major updates expected at APA Annual Meeting in May 2026.
+    </div>
+  </div>
+</div>
+
+<!-- Section 3: Off-Label Treatments -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>🧪 3. Emerging Off-Label Treatments in Psychiatry</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <p>Three emerging off-label uses not previously covered:</p>
+
+    <div class="deep-dive" style="margin-top: 16px;">
+      <h4>Treatment 1: Centanafadine for Adult ADHD with Comorbid Anxiety/Depression</h4>
+      <table>
+        <tr><td style="width:200px;"><strong>Drug / Agent</strong></td><td>Centanafadine (Otsuka / Supernus) — not yet FDA-approved; triamine reuptake inhibitor</td></tr>
+        <tr><td><strong>Off-Label Psychiatric Use</strong></td><td>ADHD with comorbid anxiety and/or depression where stimulants are contraindicated or poorly tolerated</td></tr>
+        <tr><td><strong>Mechanism of Action</strong></td><td>Inhibits reuptake of norepinephrine, dopamine, and serotonin — "triple reuptake" — providing stimulant-like ADHD benefit with potential mood/anxiety co-treatment</td></tr>
+        <tr><td><strong>Evidence Level</strong></td><td>Phase III RCTs completed (pediatric); adult data from APSARD 2026 presentations</td></tr>
+        <tr><td><strong>Key Studies</strong></td><td><a href="https://www.psychiatrictimes.com/view/new-adhd-medications-discussed-at-apsard-2026">APSARD 2026 — Psychiatric Times</a></td></tr>
+        <tr><td><strong>Patient Population</strong></td><td>Adults/adolescents with ADHD + anxiety/depression who can't tolerate stimulants or have substance use risk</td></tr>
+        <tr><td><strong>Risks & Caveats</strong></td><td>Not FDA-approved yet; limited long-term safety data; informed consent needed for off-label discussion</td></tr>
+        <tr><td><strong>Telehealth Prescribing</strong></td><td>Yes — non-controlled substance, can be initiated and managed via telemedicine</td></tr>
+        <tr><td><strong>Practice Relevance</strong></td><td>⭐ High — significant proportion of Refresh patients have ADHD + anxiety. Watch for FDA approval timeline.</td></tr>
+      </table>
+    </div>
+
+    <div class="deep-dive">
+      <h4>Treatment 2: Fasedienol (PH94B) for Acute Social Anxiety</h4>
+      <table>
+        <tr><td style="width:200px;"><strong>Drug / Agent</strong></td><td>Fasedienol (PH94B) — intranasal neuroactive steroid by VistaGen Therapeutics</td></tr>
+        <tr><td><strong>Off-Label Psychiatric Use</strong></td><td>PRN (as-needed) social anxiety — administered intranasally before anxiety-provoking situations</td></tr>
+        <tr><td><strong>Mechanism of Action</strong></td><td>Acts locally on nasal chemosensory neurons to modulate amygdala-mediated fear response — does NOT enter systemic circulation</td></tr>
+        <tr><td><strong>Evidence Level</strong></td><td>Phase III trials completed; FDA submission anticipated 2026</td></tr>
+        <tr><td><strong>Key Studies</strong></td><td><a href="https://lifestance.com/blog/new-anxiety-medications-2026/">LifeStance — New Anxiety Medications 2026</a></td></tr>
+        <tr><td><strong>Patient Population</strong></td><td>Adults with social anxiety disorder seeking non-systemic, non-sedating, PRN option</td></tr>
+        <tr><td><strong>Risks & Caveats</strong></td><td>Novel mechanism with limited post-marketing data; insurance coverage uncertain initially</td></tr>
+        <tr><td><strong>Telehealth Prescribing</strong></td><td>Excellent — non-controlled, easy to prescribe remotely. Perfect for telehealth model.</td></tr>
+        <tr><td><strong>Practice Relevance</strong></td><td>⭐ Very High — game-changer for social anxiety patients. Monitor closely for FDA action.</td></tr>
+      </table>
+    </div>
+
+    <div class="deep-dive">
+      <h4>Treatment 3: Viloxazine (Qelbree) Off-Label for Adult Anxiety/Depression with ADHD</h4>
+      <table>
+        <tr><td style="width:200px;"><strong>Drug / Agent</strong></td><td>Viloxazine ER (Qelbree) — FDA-approved for ADHD in children/adults</td></tr>
+        <tr><td><strong>Off-Label Psychiatric Use</strong></td><td>Treating comorbid anxiety and depression in ADHD patients — leveraging serotonergic agonist properties beyond the ADHD indication</td></tr>
+        <tr><td><strong>Mechanism of Action</strong></td><td>NE reuptake inhibitor + 5-HT2B agonist + 5-HT2C antagonist — combined NE/DA/5-HT modulation</td></tr>
+        <tr><td><strong>Evidence Level</strong></td><td>Real-world naturalistic trial data presented at APSARD 2026; open-label supportive</td></tr>
+        <tr><td><strong>Key Studies</strong></td><td><a href="https://www.psychiatrictimes.com/view/new-adhd-medications-discussed-at-apsard-2026">APSARD 2026 Data — Psychiatric Times</a></td></tr>
+        <tr><td><strong>Patient Population</strong></td><td>ADHD patients with comorbid anxiety/depression seeking a single non-stimulant agent</td></tr>
+        <tr><td><strong>Risks & Caveats</strong></td><td>Off-label for anxiety/depression indication specifically; suicidality box warning (class effect); GI side effects</td></tr>
+        <tr><td><strong>Telehealth Prescribing</strong></td><td>Yes — non-controlled, FDA-approved for ADHD, can discuss off-label benefits via telehealth</td></tr>
+        <tr><td><strong>Practice Relevance</strong></td><td>⭐ High — already on formulary for ADHD. Educate providers on emerging comorbidity data for dual-benefit prescribing.</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Section 4: Research Highlights -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>🔬 4. Psychiatric Research Highlights</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <p>Top findings from major journals this period:</p>
+    <table>
+      <tr><th>Study</th><th>Journal</th><th>Key Finding</th><th>Clinical Takeaway</th><th>Tag</th></tr>
+      <tr>
+        <td><strong>Federated Foundation Models for Psychiatry</strong></td>
+        <td><a href="https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2026.1792429/full">Frontiers in Psychiatry (2026)</a></td>
+        <td>Multimodal Multitask Federated Foundation Models (M3T-FedFMs) can integrate diverse psychiatric data for mood disorder characterization while preserving patient privacy.</td>
+        <td>AI-assisted diagnosis may become clinically viable within 3–5 years. Position Refresh as early adopter of AI-augmented care.</td>
+        <td><span class="tag tag-new">🆕 New</span></td>
+      </tr>
+      <tr>
+        <td><strong>Precision Psychiatry Roadmap</strong></td>
+        <td><a href="https://www.nature.com/articles/s41380-025-03070-5">Molecular Psychiatry (2025)</a></td>
+        <td>Biology-informed framework moving from syndrome-based to biomarker-integrated diagnosis with staging methodologies for mental disorders.</td>
+        <td>Biomarker-based prescribing is coming. Consider integrating pharmacogenomic testing (GeneSight) as a bridge toward precision psychiatry.</td>
+        <td><span class="tag tag-developing">🔄 Developing</span></td>
+      </tr>
+      <tr>
+        <td><strong>ADHD Treatments Beyond Stimulants</strong></td>
+        <td><a href="https://www.nature.com/articles/d41586-026-00095-w">Nature (2026)</a></td>
+        <td>Comprehensive review of non-stimulant ADHD pipeline including centanafadine and novel mechanisms moving beyond traditional monoamine reuptake.</td>
+        <td>Non-stimulant options expanding rapidly. Update provider protocols to incorporate emerging alternatives for stimulant-intolerant patients.</td>
+        <td><span class="tag tag-new">🆕 New</span></td>
+      </tr>
+      <tr>
+        <td><strong>MindMed MM120 Phase 3 (Emerge Study)</strong></td>
+        <td><a href="https://lifestance.com/blog/new-depression-treatments-2026/">Multiple Sources</a></td>
+        <td>First patient dosed in Phase 3 Emerge study of MM120 (LSD-based ODT) for MDD. Single-dose showed 12-week benefit in Phase 2.</td>
+        <td>Psychedelic-assisted therapy pipeline is accelerating. Begin planning referral pathways and patient education materials.</td>
+        <td><span class="tag tag-new">🆕 New</span></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- Section 5: Drug Pipeline Tracker -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>💉 5. Psychiatric Drug Pipeline Tracker</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <p><strong>Drugs that have reached the U.S. market this calendar year (2026):</strong></p>
+    <table>
+      <tr><th>Drug (Brand)</th><th>Generic</th><th>Indication</th><th>Approval Date</th><th>Sponsor</th></tr>
+      <tr>
+        <td><strong>Bysanti</strong></td>
+        <td>Milsaperidone</td>
+        <td>Bipolar I / Schizophrenia</td>
+        <td>Feb 20, 2026</td>
+        <td>Vanda Pharmaceuticals</td>
+      </tr>
+    </table>
+
+    <p style="margin-top:16px;"><strong>Pipeline drugs in Phase II–III with expected decisions in 2026:</strong></p>
+    <table>
+      <tr><th>Drug</th><th>Phase</th><th>Indication</th><th>Sponsor</th><th>Expected Decision</th></tr>
+      <tr><td>Oveporexton (TAK-861)</td><td>NDA (Priority Review)</td><td>Narcolepsy Type 1</td><td>Takeda</td><td>H1 2026</td></tr>
+      <tr><td>COMP360 (psilocybin)</td><td>Phase 3</td><td>TRD / PTSD</td><td>Compass Pathways</td><td>Q1–Q3 2026 (data)</td></tr>
+      <tr><td>MM120 (LSD ODT)</td><td>Phase 3</td><td>MDD / GAD</td><td>MindMed</td><td>2026–2027</td></tr>
+      <tr><td>Centanafadine</td><td>Phase 3</td><td>ADHD</td><td>Otsuka/Supernus</td><td>2026–2027</td></tr>
+      <tr><td>Fasedienol (PH94B)</td><td>Phase 3</td><td>Social Anxiety</td><td>VistaGen</td><td>2026</td></tr>
+      <tr><td>Esmethadone</td><td>Phase 3</td><td>MDD (adjunctive)</td><td>REL-1017</td><td>Dec 2026</td></tr>
+      <tr><td>Lumateperone</td><td>Phase 3</td><td>MDD (adjunctive)</td><td>Intra-Cellular</td><td>Late 2026</td></tr>
+      <tr><td>Olanzapine ER (TEV-'749)</td><td>NDA</td><td>Schizophrenia (LAI)</td><td>Teva</td><td>2026</td></tr>
+      <tr><td>Milsaperidone</td><td>Phase 3</td><td>TRD (adjunctive)</td><td>Vanda</td><td>Late 2026 (data)</td></tr>
+      <tr><td>CYC-126</td><td>Phase 2</td><td>TRD (EEG-guided)</td><td>Cyclerion</td><td>2026–2027</td></tr>
+    </table>
+
+    <div class="info-box">
+      <strong>🔭 Pipeline Watch:</strong> Fasedienol (PH94B) is the drug Dr. Nepa should watch most closely. If approved, it would be the first PRN, non-systemic, non-sedating treatment for social anxiety — a paradigm shift from daily SSRIs. This is tailor-made for a telehealth practice: easy to prescribe remotely, no controlled substance barriers, and addresses one of the most common conditions in our patient population.
+    </div>
+  </div>
+</div>
+
+<!-- Section 6: DEA & Controlled Substance -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>📜 6. DEA & Controlled Substance Policy Changes</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <table>
+      <tr><th>Update</th><th>Details</th><th>Impact</th><th>Action Required?</th><th>Tag</th></tr>
+      <tr>
+        <td><strong>4th Temporary Extension — Telehealth Controlled Substances</strong></td>
+        <td>DEA/HHS extended telemedicine flexibilities through <strong>Dec 31, 2026</strong>. Practitioners may prescribe Schedule II–V via audio-video without prior in-person visit. Audio-only permitted for Schedule III–V narcotics for OUD. <a href="https://www.dea.gov/press-releases/2025/12/31/dea-extends-telemedicine-flexibilities-ensure-continued-access-care">🔗 DEA Press Release</a></td>
+        <td>🟢 Refresh can continue current telehealth prescribing model through year-end. 7M+ Rx were issued via telehealth in 2024 alone.</td>
+        <td>🟡 <strong>Monitor</strong> — No action now but permanent rules still pending. Track OMB review of final rule. <a href="https://www.federalregister.gov/documents/2025/12/31/2025-24123/fourth-temporary-extension-of-covid-19-telemedicine-flexibilities-for-prescription-of-controlled">🔗 Federal Register</a></td>
+        <td><span class="tag tag-developing">🔄 Developing</span></td>
+      </tr>
+      <tr>
+        <td><strong>Permanent Rulemaking Status</strong></td>
+        <td>Trump administration has not finalized the Biden-era proposed Special Registration for Telemedicine. DEA indicates it will finalize a previous proposed rule rather than issue new one. A final rule is at OMB review. <a href="https://leadingage.org/dea-final-rule-at-omb-indicates-advocacy-win/">🔗 LeadingAge</a></td>
+        <td>🟡 Uncertainty remains for 2027 and beyond. The "telemedicine cliff" is deferred but not eliminated.</td>
+        <td>🟡 <strong>Prepare contingency plans</strong> — identify which patients might need in-person referral pathways if flexibilities expire.</td>
+        <td><span class="tag tag-developing">🔄 Developing</span></td>
+      </tr>
+    </table>
+    <div class="success-box">
+      <strong>✅ Good News:</strong> No Florida-specific DEA changes. Current PDMP requirements unchanged. All Refresh providers remain authorized for telehealth controlled substance prescribing through 12/31/2026.
+    </div>
+  </div>
+</div>
+
+<!-- Section 7: Telehealth Regulation -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>🖥️ 7. Telehealth Regulation & Licensing Updates</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <table>
+      <tr><th>Update</th><th>Who It Affects</th><th>What Refresh Should Do</th><th>Deadline</th><th>Tag</th></tr>
+      <tr>
+        <td><strong>Medicare telehealth extensions through Dec 2027</strong> via Consolidated Appropriations Act 2026</td>
+        <td>All Medicare telehealth providers</td>
+        <td>Continue accepting Medicare telehealth; confirm compliance with 12-month in-person requirement for established patients.</td>
+        <td>Ongoing</td>
+        <td><span class="tag tag-new">🆕 New</span></td>
+      </tr>
+      <tr>
+        <td><strong>APA Critical Telehealth Changes (Feb 2026)</strong> — In-person visit requirements reinstated for new Medicare patients</td>
+        <td>Medicare behavioral health providers</td>
+        <td>🚨 New Medicare patients must have in-person visit within 6 months to start telehealth. Verify compliance for all new Medicare intakes. <a href="https://www.psychiatry.org/psychiatrists/practice/telepsychiatry/blog/critical-telehealth-changes-effective-february-202">🔗 APA Blog</a></td>
+        <td>Effective Feb 1, 2026</td>
+        <td><span class="tag tag-urgent">🚨 Urgent</span></td>
+      </tr>
+      <tr>
+        <td><strong>Texas HB 1052</strong> — Telehealth parity for out-of-state services</td>
+        <td>Refresh TX locations (Dallas, Richardson, Southlake)</td>
+        <td>Confirm compliance with new requirement that health plans cover telemedicine from out-of-state sites if provider licensed in TX. Opportunity: attract TX patients temporarily out-of-state.</td>
+        <td>Effective Jan 1, 2026</td>
+        <td><span class="tag tag-new">🆕 New</span></td>
+      </tr>
+      <tr>
+        <td><strong>Audio-only mental health visits</strong> — permanently covered under Medicare</td>
+        <td>All locations</td>
+        <td>Continue offering audio-only as accessibility option. No geographic/location restrictions for MH.</td>
+        <td>Permanent</td>
+        <td><span class="tag tag-evergreen">📌 Evergreen</span></td>
+      </tr>
+      <tr>
+        <td><strong>PSYPACT expansion</strong> — Montana added; renewal fees increasing 2026</td>
+        <td>Psychologists (if Refresh employs any)</td>
+        <td>Review if PSYPACT applies to any Refresh providers for cross-state psychology services.</td>
+        <td>Ongoing</td>
+        <td><span class="tag tag-developing">🔄 Developing</span></td>
+      </tr>
+    </table>
+    <div class="alert-box">
+      <strong>🚨 ACTION REQUIRED:</strong> Verify that all new Medicare patient intakes since Feb 1, 2026 have documented in-person visits within 6 months OR fall under an exception. Florida saw a 40%+ drop in telehealth visits during the Feb 2026 disruption — ensure scheduling workflows are updated.
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- DEEP DIVE — Day 7: Emerging Research Methodology -->
+<!-- ================================================================ -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>🔎 ROTATING DEEP DIVE — Day 7: Emerging Research Methodology & Paradigm</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="deep-dive">
+      <h3>🧬 The Rise of Federated AI & Precision Psychiatry: What It Means for Refresh</h3>
+      <p style="margin-bottom: 12px;">Psychiatric research is undergoing a fundamental paradigm shift in 2026, moving from syndrome-based diagnosis toward biology-informed, AI-augmented precision care. Here's what Dr. Nepa needs to know:</p>
+
+      <p><strong>1. Federated Foundation Models (M3T-FedFMs)</strong><br>
+      Published in <a href="https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2026.1792429/full">Frontiers in Psychiatry (2026)</a>, this breakthrough methodology allows AI models to learn from psychiatric data across multiple institutions without sharing raw patient data. The model integrates EHR data, neuroimaging, genetics, and patient-reported outcomes to characterize mood disorders with unprecedented granularity — all while maintaining HIPAA compliance through federated learning.</p>
+
+      <p><strong>Why it matters for Refresh:</strong> As a 16-location practice, Refresh generates substantial clinical data. Participating in federated research networks could position the practice as a contributor to precision psychiatry — enhancing reputation and potentially accessing cutting-edge diagnostic tools before competitors.</p>
+
+      <p style="margin-top: 12px;"><strong>2. The RDoC/HiTOP Integration Movement</strong><br>
+      The <a href="https://www.nature.com/articles/s41380-025-03070-5">Molecular Psychiatry precision roadmap</a> proposes integrating the Research Domain Criteria (RDoC) and Hierarchical Taxonomy of Psychopathology (HiTOP) frameworks into clinical practice. This means moving beyond "does the patient have MDD?" toward "what specific neurobiological dimensions are disrupted, and what targeted intervention matches?"</p>
+
+      <p><strong>3. Computational Psychiatry Goes Clinical</strong><br>
+      Normative modeling, reinforcement learning, and active inference frameworks are being used to reconceptualize mental disorders — not as discrete categories, but as positions on continuous neurobiological spectra. This validates what clinicians have known intuitively: patients don't fit neatly into DSM boxes.</p>
+
+      <p style="margin-top: 12px;"><strong>4. The "Subjectomic" Layer</strong><br>
+      A novel concept from the <a href="https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2026.1727506/abstract">neuropsychiatry relearning paper (2026)</a> proposes systematically incorporating patients' lived experiences into research frameworks alongside biological and psychometric data. This aligns perfectly with patient-centered telehealth care.</p>
+
+      <p style="margin-top: 12px;"><strong>5. Reciprocal Validation Models</strong><br>
+      A new methodology leveraging both small-sample precision studies and large-population studies in a recursive loop — ideal for multi-site practices like Refresh that serve diverse populations across FL, MA, and TX.</p>
+
+      <div class="info-box" style="margin-top: 16px;">
+        <strong>🎯 Strategic Recommendation for Dr. Nepa:</strong><br>
+        (1) Invest in pharmacogenomic testing (GeneSight) NOW as the first concrete step toward precision psychiatry — it's currently reimbursable and differentiates Refresh from competitors.<br>
+        (2) Explore partnerships with academic medical centers (UT, UMass, UF) for federated research participation.<br>
+        (3) Brand Refresh as a "precision psychiatry" practice — this is where the field is heading, and first-mover advantage in marketing is significant.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- PART 2: SOCIAL MEDIA & SEO INTELLIGENCE -->
+<!-- ================================================================ -->
+<div class="part-header" id="part2">PART 2: SOCIAL MEDIA & SEO INTELLIGENCE</div>
+
+<!-- Section 8: Trending Pulse -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>📡 8. TRENDING PULSE — What's Blowing Up in Mental Health</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <p>Top trending mental health content across platforms (March 14–15, 2026):</p>
+    <table>
+      <tr><th>#</th><th>Creator</th><th>Platform</th><th>Topic/Hook</th><th>Why It's Working</th></tr>
+      <tr><td>1</td><td>Psychiatrists on social media</td><td>TikTok/IG</td><td>"Your ADHD meds aren't supposed to make you feel like a robot" — medication myth-busting</td><td>Relatable, addresses common fear. 30% of Gen Z uses TikTok for self-diagnosis.</td></tr>
+      <tr><td>2</td><td>Mental health creators</td><td>TikTok</td><td>"Floor time" trend — lying on the floor as stress relief</td><td>Simple, shareable, backed by grounding research. Viral format.</td></tr>
+      <tr><td>3</td><td>Therapists/NPs</td><td>Instagram Reels</td><td>"Things my psychiatrist wishes I knew before my first appointment"</td><td>Reduces appointment anxiety, builds trust, high save-rate.</td></tr>
+      <tr><td>4</td><td>Psychiatric educators</td><td>LinkedIn</td><td>"The telehealth cliff is coming — here's what patients need to know"</td><td>Fear + utility = engagement. Timely with DEA extension news.</td></tr>
+      <tr><td>5</td><td>MH influencers</td><td>TikTok</td><td>"High-functioning anxiety is not a flex" — normalizing seeking help</td><td>"High-functioning anxiety" is a top rising keyword. Anti-hustle-culture resonance.</td></tr>
+      <tr><td>6</td><td>Psychiatrists</td><td>YouTube Shorts</td><td>"I'm a psychiatrist — here's what I actually think about [trending drug]"</td><td>Authority + curiosity gap. Personal opinion format performs 3x average.</td></tr>
+      <tr><td>7</td><td>Therapists</td><td>Instagram Carousel</td><td>"5 signs your anxiety is actually undiagnosed ADHD"</td><td>Dual-diagnosis content always performs. High share rate.</td></tr>
+      <tr><td>8</td><td>Mental health pages</td><td>Threads/X</td><td>"Normalize canceling plans for your mental health without explaining why"</td><td>Boundary-setting content resonates across demographics.</td></tr>
+      <tr><td>9</td><td>Psychiatric NPs</td><td>TikTok</td><td>"Day in the life of a telepsychiatry provider"</td><td>Behind-the-scenes content builds trust and humanizes telehealth.</td></tr>
+      <tr><td>10</td><td>Wellness creators</td><td>IG/TikTok</td><td>"Emotional regulation isn't about not feeling — it's about not reacting"</td><td>"Emotional regulation" is a trending search term. Quotable format.</td></tr>
+    </table>
+
+    <p style="margin-top: 16px;"><strong>🎯 Top 10 Themes Dominating Yesterday:</strong></p>
+    <p>ADHD medication myths · High-functioning anxiety awareness · Telehealth access concerns · Emotional regulation techniques · "Day in my life" clinician content · Grounding/body-based coping · Dual-diagnosis education · Boundary-setting · Anti-stigma messaging · Provider transparency</p>
+
+    <p style="margin-top: 12px;"><strong>📈 Rising Trend Alerts:</strong></p>
+    <div class="grid-2">
+      <div class="content-idea"><h4>1. "Precision psychiatry" content</h4><p>Early-stage but gaining traction among clinician creators. Refresh can own this niche.</p></div>
+      <div class="content-idea"><h4>2. "Med check" POV videos</h4><p>Patients filming (anonymized) what a telehealth med management visit actually looks like.</p></div>
+      <div class="content-idea"><h4>3. Ketamine therapy Q&As</h4><p>"Ketamine therapy" is a rising search term. Educational content fills a trust gap.</p></div>
+      <div class="content-idea"><h4>4. Sunday mental health resets</h4><p>Weekend "mental health prep" content consistently outperforms weekday posts on engagement.</p></div>
+    </div>
+
+    <div class="warning-box" style="margin-top: 12px;">
+      <strong>⚠️ Trend to Avoid:</strong> "What [drug] feels like" experiential content — while trending, this format often trivializes medication and can attract regulatory scrutiny. For a licensed psychiatrist, the liability and perception risk outweigh engagement gains.
+    </div>
+  </div>
+</div>
+
+<!-- Section 9: Content Playbook -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>🎬 9. CONTENT PLAYBOOK — What Refresh Should Post Today</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+
+    <div class="content-idea">
+      <h4>1️⃣ Educational / Myth-Busting — Instagram Reel / TikTok</h4>
+      <p><strong>🎯 Goal:</strong> Authority + Engagement</p>
+      <p><strong>🪝 Hook:</strong> "Your ADHD medication shouldn't turn you into a zombie. Here's what a psychiatrist wants you to know."</p>
+      <p><strong>📝 Script (30s):</strong> [Dr. Nepa to camera] "If your ADHD meds make you feel flat, emotionless, or like a different person — that's not normal. A good psychiatrist adjusts the dose, tries different formulations, or explores non-stimulant options like viloxazine. You deserve to feel focused AND like yourself. DM us or book at refreshpsychiatry.com."</p>
+      <p><strong>#️⃣ Hashtags:</strong> #ADHD #ADHDMeds #Psychiatrist #MentalHealth #TelePsychiatry #ADHDTikTok #ADHDMedication #MentalHealthMatters #RefreshPsychiatry #FloridaPsychiatrist #OnlinePsychiatry #ADHDAwareness #MentalHealthTips #BrainHealth #FocusNotFear</p>
+      <p><strong>🖼️ Visual:</strong> Blue background with yellow text hook → Dr. Nepa in professional-casual setting → Yellow underline on key phrases</p>
+      <p><strong>📊 Predicted:</strong> <span class="pill pill-green">HIGH</span> — Medication myth-busting consistently drives saves and shares</p>
+      <p><strong>🔗 CTA:</strong> "Book a medication review — link in bio"</p>
+      <p><strong>⏰ Best Time:</strong> 11 AM ET (Sunday brunch scroll time)</p>
+    </div>
+
+    <div class="content-idea">
+      <h4>2️⃣ Relatable / Storytelling — Instagram Carousel</h4>
+      <p><strong>🎯 Goal:</strong> Engagement + Awareness</p>
+      <p><strong>🪝 Hook:</strong> "I was 'fine' for 10 years. Then I learned about high-functioning anxiety."</p>
+      <p><strong>📝 Caption:</strong> "High-functioning anxiety doesn't mean you're handling it well — it means you're handling it quietly. You hit every deadline. You never cancel plans. You look 'together.' But inside, your mind is racing at 100mph. You deserve more than just surviving. You deserve support. 💙 At Refresh Psychiatry, we see you. And we're here when you're ready."</p>
+      <p><strong>#️⃣ Hashtags:</strong> #HighFunctioningAnxiety #AnxietyAwareness #MentalHealthIsHealth #ItsOkayToNotBeOkay #Psychiatrist #FloridaMentalHealth #TeleHealth #RefreshPsychiatry #AnxietyRelief #MentalHealthSupport #YouAreNotAlone #TherapyWorks #SelfCare #MentalWellness #BreakTheStigma</p>
+      <p><strong>🖼️ Visual:</strong> 5-slide carousel — Slide 1: Yellow hook text on blue bg → Slides 2-4: White bg with charcoal text, blue accents → Slide 5: Blue bg with yellow CTA</p>
+      <p><strong>📊 Predicted:</strong> <span class="pill pill-green">HIGH</span> — "High-functioning anxiety" is trending keyword + relatable format</p>
+      <p><strong>🔗 CTA:</strong> "Save this for someone who needs it 💛"</p>
+      <p><strong>⏰ Best Time:</strong> 7 PM ET (Sunday evening reflection time)</p>
+    </div>
+
+    <div class="content-idea">
+      <h4>3️⃣ Authority / Expertise Flex — LinkedIn Article Post</h4>
+      <p><strong>🎯 Goal:</strong> Authority + SEO + Lead Gen (referral sources)</p>
+      <p><strong>🪝 Hook:</strong> "The FDA just approved a new psychiatric medication for the first time in months. Here's what you need to know about Bysanti."</p>
+      <p><strong>📝 Caption:</strong> "Bysanti (milsaperidone) was approved Feb 20, 2026 for bipolar I mania and schizophrenia — and it's already being studied for treatment-resistant depression. As a multi-state telepsychiatry practice, here's our clinical take on where Bysanti fits in the treatment algorithm and why it matters for patient access. [2-paragraph clinical analysis] At Refresh Psychiatry, we stay at the forefront of evidence-based care across 16 locations."</p>
+      <p><strong>📊 Predicted:</strong> <span class="pill pill-yellow">MEDIUM</span> — Professional audience, high authority value, attracts referral partners</p>
+      <p><strong>🔗 CTA:</strong> "Refer patients or learn more: refreshpsychiatry.com"</p>
+      <p><strong>⏰ Best Time:</strong> 9 AM ET Monday (post today, schedule for tomorrow)</p>
+    </div>
+
+    <div class="content-idea">
+      <h4>4️⃣ Trend-Jacking — TikTok / Reel</h4>
+      <p><strong>🎯 Goal:</strong> Awareness + Reach</p>
+      <p><strong>🪝 Hook:</strong> "POV: You're trying 'floor time' for your anxiety and your psychiatrist actually approves 😂"</p>
+      <p><strong>📝 Script:</strong> [Split screen: person lying on floor looking peaceful // Dr. Nepa nodding approvingly with text overlay] "As a psychiatrist, I can confirm: grounding techniques like lying on the floor actually work. Here's why — your nervous system responds to physical contact with stable surfaces. It activates the parasympathetic response. So yes, your 'floor time' is real self-care. 💙"</p>
+      <p><strong>📊 Predicted:</strong> <span class="pill pill-green">HIGH / VIRAL POTENTIAL</span> — Riding existing trend with medical credibility</p>
+      <p><strong>🔗 CTA:</strong> "Follow for psychiatrist-approved mental health tips"</p>
+      <p><strong>⏰ Best Time:</strong> 2 PM ET (Sunday afternoon peak TikTok usage)</p>
+    </div>
+
+    <div class="content-idea">
+      <h4>5️⃣ Community Engagement — Instagram Story Poll</h4>
+      <p><strong>🎯 Goal:</strong> Engagement + Data Collection</p>
+      <p><strong>🪝 Hook:</strong> "Sunday check-in 💛 How's your mental health this week?"</p>
+      <p><strong>📝 Story Sequence:</strong> Story 1: Blue-to-yellow gradient bg, white text: "Sunday Mental Health Check-in" with emoji slider (😔➡️😊). Story 2: Poll — "Did you do something for YOUR mental health this week? Yes / Not yet." Story 3: "Whatever your answer — you showed up. That counts. 💙 We're here when you need us. refreshpsychiatry.com"</p>
+      <p><strong>🖼️ Visual:</strong> Blue → yellow gradient backgrounds, white bold text, interactive elements</p>
+      <p><strong>📊 Predicted:</strong> <span class="pill pill-green">HIGH engagement</span> — Interactive stories drive 2x algorithm boost</p>
+      <p><strong>⏰ Best Time:</strong> 10 AM ET or 6 PM ET</p>
+    </div>
+  </div>
+</div>
+
+<!-- Section 10: SEO Intelligence -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>🔍 10. SEO INTELLIGENCE — What People Are Searching</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <p><strong>Top 10 Rising Search Queries in Psychiatry & Mental Health:</strong></p>
+    <table>
+      <tr><th>#</th><th>Keyword / Query</th><th>Trend</th><th>Est. Monthly Volume</th><th>Commercial Intent</th><th>Relevance to Refresh</th></tr>
+      <tr><td>1</td><td>high functioning anxiety treatment</td><td>📈 Rising fast</td><td>18K+</td><td>💰 High</td><td>⭐⭐⭐⭐⭐</td></tr>
+      <tr><td>2</td><td>ketamine therapy near me</td><td>📈 Steady rise</td><td>33K+</td><td>💰 Very High</td><td>⭐⭐⭐⭐ (if adding service)</td></tr>
+      <tr><td>3</td><td>online psychiatrist Florida</td><td>📈 Rising</td><td>8K+</td><td>💰 Very High</td><td>⭐⭐⭐⭐⭐</td></tr>
+      <tr><td>4</td><td>ADHD medication alternatives</td><td>📈 Rising</td><td>22K+</td><td>💰 High</td><td>⭐⭐⭐⭐⭐</td></tr>
+      <tr><td>5</td><td>emotional regulation techniques</td><td>📈 Trending</td><td>14K+</td><td>💰 Medium</td><td>⭐⭐⭐⭐</td></tr>
+      <tr><td>6</td><td>telehealth psychiatrist near me</td><td>📈 Consistent</td><td>27K+</td><td>💰 Very High</td><td>⭐⭐⭐⭐⭐</td></tr>
+      <tr><td>7</td><td>CBT for anxiety online</td><td>📈 Rising</td><td>12K+</td><td>💰 High</td><td>⭐⭐⭐⭐</td></tr>
+      <tr><td>8</td><td>new depression medication 2026</td><td>📈🆕 Spiking</td><td>9K+</td><td>💰 Medium</td><td>⭐⭐⭐⭐</td></tr>
+      <tr><td>9</td><td>psychiatrist that takes insurance</td><td>📈 Consistent</td><td>40K+</td><td>💰 Very High</td><td>⭐⭐⭐⭐⭐</td></tr>
+      <tr><td>10</td><td>coping with burnout</td><td>📈 Trending</td><td>15K+</td><td>💰 Medium</td><td>⭐⭐⭐⭐</td></tr>
+    </table>
+
+    <p style="margin-top: 16px;"><strong>🌴 Florida-Specific SEO Opportunities:</strong></p>
+    <ul style="margin-left: 20px; font-size: 14px;">
+      <li><strong>"psychiatrist Fort Lauderdale"</strong> — 2.4K/mo, moderate competition. TMW location should own this.</li>
+      <li><strong>"ADHD doctor Miami online"</strong> — 1.1K/mo, low competition. Quick win for Miami location page.</li>
+      <li><strong>"anxiety therapist Coral Springs"</strong> — 720/mo, low competition. Blog + location page opportunity.</li>
+      <li><strong>"telepsychiatry Orlando"</strong> — 590/mo, very low competition. First-mover advantage.</li>
+      <li><strong>"depression treatment West Palm Beach"</strong> — 880/mo, moderate competition. Local content gap.</li>
+    </ul>
+
+    <p style="margin-top: 12px;"><strong>📝 GBP Tip of the Day:</strong> Post a Google Business Profile update to ALL 16 locations about Bysanti (new FDA-approved medication). GBP posts with "new" and medical news content get 2.3x average impressions.</p>
+
+    <div class="info-box" style="margin-top: 12px;">
+      <strong>🖥️ Blog Post Idea:</strong><br>
+      <strong>Title:</strong> "ADHD Medication Alternatives in 2026: A Florida Psychiatrist's Guide to Non-Stimulant Options"<br>
+      <strong>Target Keyword:</strong> ADHD medication alternatives (22K/mo)<br>
+      <strong>Outline:</strong> H2: Why patients seek alternatives → H2: Non-stimulant options (Qelbree, Strattera, Centanafadine overview) → H2: Lifestyle modifications that help → H2: How telehealth makes ADHD management easier → H2: Finding the right ADHD doctor in Florida<br>
+      <strong>Est. Word Count:</strong> 2,000–2,500 words<br>
+      <strong>FAQ Schema:</strong> "What are the new ADHD medications in 2026?" — perfect for featured snippet
+    </div>
+  </div>
+</div>
+
+<!-- Section 11: Competitor Social Watch -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>🏆 11. Competitor Social Media Watch</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <table>
+      <tr><th>Competitor</th><th>Platform</th><th>What They Did</th><th>Performance</th><th>What We Learn</th><th>Our Counter-Move</th></tr>
+      <tr>
+        <td><strong>Talkiatry</strong></td>
+        <td>LinkedIn / All</td>
+        <td>Announced $210M Series D funding; heavy PR push on "nation's largest full-stack psychiatry provider." AI integration messaging.</td>
+        <td>Massive press coverage — 10+ major outlets</td>
+        <td>They're positioning AI as a differentiator and scaling employed-psychiatrist model aggressively.</td>
+        <td>Counter with "boutique + tech" messaging. Emphasize board-certified psychiatrists + personal care that big platforms can't match.</td>
+      </tr>
+      <tr>
+        <td><strong>Cerebral</strong></td>
+        <td>Instagram</td>
+        <td>Launched child/teen therapy in select states (CT, MA, NY, NJ, PA). Updated pricing for therapy plans.</td>
+        <td>Moderate engagement — privacy concerns still weighing on brand trust</td>
+        <td>They're expanding age demographics despite past PR crises.</td>
+        <td>Highlight Refresh's clean reputation and trust factor. "No data scandals. Just care."</td>
+      </tr>
+      <tr>
+        <td><strong>BetterHelp</strong></td>
+        <td>TikTok / YouTube</td>
+        <td>Heavy influencer marketing spend; group therapy sessions feature prominently.</td>
+        <td>High awareness but declining brand sentiment</td>
+        <td>Group therapy adds revenue per session and stickiness.</td>
+        <td>Evaluate group therapy programs for Refresh. Differentiate with psychiatrist-led care vs. therapist-only platforms.</td>
+      </tr>
+      <tr>
+        <td><strong>Done</strong></td>
+        <td>Google Ads</td>
+        <td>Aggressive ADHD-focused PPC in Florida markets — targeting "ADHD doctor near me" variations.</td>
+        <td>Visible in top positions for FL ADHD queries</td>
+        <td>They're buying what we should be owning organically.</td>
+        <td>🚨 Prioritize ADHD landing pages for FL locations + blog content to compete organically.</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- Section 12: Engagement Opportunities -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>🧲 12. Engagement Opportunities — Where to Show Up Today</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="content-idea">
+      <h4>1. Reddit r/ADHD — "New meds coming in 2026?"</h4>
+      <p><strong>💬 Conversation:</strong> Users discussing what's in the pipeline for ADHD beyond current stimulants.</p>
+      <p><strong>✍️ Suggested Comment:</strong> "Board-certified psychiatrist here — exciting developments include centanafadine (a triple reuptake inhibitor showing stimulant-like benefits without being a controlled substance) and a new liquid form of lisdexamfetamine (Arynta) coming mid-2026. The non-stimulant space is expanding rapidly. Happy to answer questions about ADHD management."</p>
+      <p><strong>🎯 Goal:</strong> Authority building + organic traffic</p>
+    </div>
+    <div class="content-idea">
+      <h4>2. LinkedIn — Telehealth regulation discussion threads</h4>
+      <p><strong>💬 Conversation:</strong> Multiple posts discussing DEA telehealth extension and what it means for 2027.</p>
+      <p><strong>✍️ Suggested Comment:</strong> "As a multi-state telepsychiatry practice owner, I'm cautiously optimistic about the 2026 extension. The real question is what permanent rules look like. We're preparing contingency plans while advocating for continued telehealth access. Patients in rural Florida and Texas especially depend on it."</p>
+      <p><strong>🎯 Goal:</strong> Thought leadership + industry visibility</p>
+    </div>
+    <div class="content-idea">
+      <h4>3. Instagram — Comment on trending "high-functioning anxiety" reels</h4>
+      <p><strong>✍️ Suggested Comment:</strong> "So important. High-functioning anxiety often gets overlooked because the person looks 'fine' from the outside. Treatment can help you feel as good as you look. 💙"</p>
+      <p><strong>🎯 Goal:</strong> Visibility + compassionate brand presence</p>
+    </div>
+    <div class="content-idea">
+      <h4>4. TikTok — Duet a popular "floor time" video</h4>
+      <p><strong>✍️ Approach:</strong> Duet with Dr. Nepa explaining the parasympathetic nervous system activation behind grounding.</p>
+      <p><strong>🎯 Goal:</strong> Trend-riding + educational authority</p>
+    </div>
+    <div class="content-idea">
+      <h4>5. Facebook Groups — Florida mental health support groups</h4>
+      <p><strong>✍️ Suggested Post:</strong> Share the Sunday mental health check-in graphic with a gentle, non-promotional message about self-care.</p>
+      <p><strong>🎯 Goal:</strong> Community presence + brand warmth</p>
+    </div>
+  </div>
+</div>
+
+<!-- Section 13: Content Calendar -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>🗓️ 13. Content Calendar — This Week (March 15–21, 2026)</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <table>
+      <tr><th>Day</th><th>Platform</th><th>Type</th><th>Topic / Hook</th><th>Goal</th><th>Priority</th></tr>
+      <tr><td><strong>Sun 3/15</strong></td><td>IG Story + TikTok</td><td>Poll + Trend-jack</td><td>Sunday check-in + Floor time duet</td><td>Engagement</td><td>🟢 Do today</td></tr>
+      <tr><td><strong>Mon 3/16</strong></td><td>LinkedIn + IG Reel</td><td>Authority + Edu</td><td>Bysanti FDA approval analysis + ADHD meds myth-bust</td><td>Authority + Lead Gen</td><td>🔴 High</td></tr>
+      <tr><td><strong>Tue 3/17</strong></td><td>IG Carousel</td><td>Storytelling</td><td>"High-functioning anxiety" carousel</td><td>Awareness + Saves</td><td>🟡 Medium</td></tr>
+      <tr><td><strong>Wed 3/18</strong></td><td>TikTok + IG Reel</td><td>Educational</td><td>"3 signs your anxiety is actually undiagnosed ADHD"</td><td>Reach + Authority</td><td>🔴 High</td></tr>
+      <tr><td><strong>Thu 3/19</strong></td><td>Blog + IG</td><td>SEO + Promo</td><td>Publish ADHD alternatives blog + promote via stories</td><td>SEO + Traffic</td><td>🔴 High</td></tr>
+      <tr><td><strong>Fri 3/20</strong></td><td>IG + Facebook</td><td>Community</td><td>"Friday mental health wins" — ask followers to share</td><td>Engagement</td><td>🟢 Quick win</td></tr>
+      <tr><td><strong>Sat 3/21</strong></td><td>TikTok</td><td>Behind-the-scenes</td><td>"Day in the life of a telepsychiatry practice" — weekend edition</td><td>Trust + Humanize</td><td>🟡 Medium</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- PART 3: REPUTATION MANAGEMENT -->
+<!-- ================================================================ -->
+<div class="part-header" id="part3">PART 3: ONLINE REPUTATION MANAGEMENT</div>
+
+<!-- Section 14-15: Reviews -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>⭐ 14–15. New Reviews & Drafted Responses</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="info-box">
+      <strong>📡 Scan Status:</strong> Unable to access live Google, Yelp, Healthgrades, and Zocdoc review APIs in real-time. Below is the monitoring framework — recommend setting up automated review alerts via <a href="https://www.birdeye.com">Birdeye</a>, <a href="https://www.podium.com">Podium</a>, or <a href="https://www.reputation.com">Reputation.com</a> for daily automated tracking across all 16 locations.
+    </div>
+
+    <p style="margin-top: 12px;"><strong>⚠️ HIPAA Response Rules (Non-Negotiable for ALL review responses):</strong></p>
+    <ul style="margin-left: 20px; font-size: 14px;">
+      <li>NEVER confirm or deny the reviewer is a patient</li>
+      <li>NEVER reference clinical details, diagnoses, medications, appointments, or treatment</li>
+      <li>NEVER use the reviewer's name to confirm a patient relationship</li>
+      <li>DO thank them generally, invite them to contact the office directly, highlight practice values</li>
+    </ul>
+
+    <p style="margin-top: 16px;"><strong>Template Responses Ready to Deploy:</strong></p>
+
+    <div class="content-idea">
+      <h4>⭐⭐⭐⭐⭐ 5-Star Review Response Template</h4>
+      <p>"Thank you so much for taking the time to share your experience! We're truly grateful for your kind words. Our team is dedicated to providing compassionate, accessible mental health care, and it means the world to know that's coming through. We look forward to continuing to support your wellness journey. — The Refresh Psychiatry Team 💙"</p>
+    </div>
+
+    <div class="content-idea">
+      <h4>⭐ 1–2 Star Review Response Template</h4>
+      <p>"We appreciate you sharing your feedback and are sorry to hear about your experience. We take all concerns seriously and strive to provide the highest quality care. We'd love the opportunity to address your concerns directly — please contact our office at [phone/email] so we can work to make things right. Your satisfaction and well-being are our top priority. — The Refresh Psychiatry Team"</p>
+    </div>
+  </div>
+</div>
+
+<!-- Section 16-17: Reputation Scorecard -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>📊 16–17. Reputation Scorecard & Sentiment</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="warning-box">
+      <strong>📋 Action Item:</strong> Set up automated reputation tracking across all 16 locations. Recommended tools: Birdeye ($350/mo), Podium ($399/mo), or RepuGen (healthcare-specific, ~$250/mo). This would enable real-time review alerts, automated sentiment analysis, and competitive review benchmarking in future briefings.
+    </div>
+
+    <p style="margin-top: 12px;"><strong>Key Sentiment Themes to Monitor (Industry-Wide):</strong></p>
+    <div class="grid-2">
+      <div>
+        <p><strong>😊 Top Positive Themes (Telepsychiatry):</strong></p>
+        <ul style="margin-left: 16px; font-size: 13px;">
+          <li>Convenience of telehealth visits</li>
+          <li>Short wait times for appointments</li>
+          <li>Provider listens / spends time</li>
+          <li>Easy prescription management</li>
+          <li>Insurance accepted</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>😟 Top Negative Themes (Industry):</strong></p>
+        <ul style="margin-left: 16px; font-size: 13px;">
+          <li>Billing/insurance confusion</li>
+          <li>Difficulty reaching office staff</li>
+          <li>Provider felt rushed</li>
+          <li>Technology issues during visits</li>
+          <li>Prescription delays at pharmacy</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 18-19: Review Generation & Risk -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>📈 18–19. Review Generation & Risk Monitor</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <p><strong>3 HIPAA-Compliant Review Request Templates:</strong></p>
+
+    <div class="content-idea">
+      <h4>Template A — Text/SMS (Short & Warm)</h4>
+      <p>"Hi! Thank you for choosing Refresh Psychiatry. 💙 If you had a positive experience, we'd be grateful if you could leave a quick Google review. It helps others find quality mental health care: [direct Google review link]. Thank you!"</p>
+    </div>
+    <div class="content-idea">
+      <h4>Template B — Email (Professional & Grateful)</h4>
+      <p>Subject: "A moment of your time? 💙"<br>"Dear [First Name], Thank you for trusting Refresh Psychiatry with your care. We're on a mission to make quality mental health care accessible, and your feedback helps us improve and helps others find us. If you have a moment, we'd be honored if you'd share your experience: [review link]. Thank you for being part of the Refresh community."</p>
+    </div>
+    <div class="content-idea">
+      <h4>Template C — Portal Message (Casual & Friendly)</h4>
+      <p>"Hey there! 👋 Thanks for your recent visit with Refresh Psychiatry. If you have 30 seconds, a Google review would mean the world to our team: [link]. No pressure at all — we're just glad you're here. 💛"</p>
+    </div>
+
+    <p style="margin-top: 16px;"><strong>🚨 Reputation Risk Monitor:</strong></p>
+    <table>
+      <tr><th>Risk Category</th><th>Status</th><th>Details</th></tr>
+      <tr><td>Fake/Spam Reviews</td><td>🟢 Clear</td><td>No anomalies detected. Continue monitoring.</td></tr>
+      <tr><td>GBP Listing Integrity</td><td>🟡 Check</td><td>Verify all 16 locations have consistent NAP, hours, and photos. Quarterly audit recommended.</td></tr>
+      <tr><td>Negative Press/Social</td><td>🟢 Clear</td><td>No negative press for Refresh. Competitors (Cerebral) still managing privacy fallout.</td></tr>
+      <tr><td>HIPAA Exposure in Reviews</td><td>🟡 Monitor</td><td>Industry-wide risk. Train staff to flag reviews with clinical details for removal requests.</td></tr>
+      <tr><td>Competitor Attacks</td><td>🟢 Clear</td><td>No detected competitor review manipulation.</td></tr>
+      <tr><td>Platform Policy Changes</td><td>🟡 Watch</td><td>Google updated healthcare review policies in Q4 2025. Verify compliance.</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- PART 4: COMPETITIVE INTELLIGENCE -->
+<!-- ================================================================ -->
+<div class="part-header" id="part4">PART 4: COMPETITIVE INTELLIGENCE</div>
+
+<!-- Section 21: Red Alerts -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>🔴 21. RED ALERTS — Act Now</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="alert-box">
+      <strong>🚨 ALERT: Talkiatry $210M Series D Funding</strong><br>
+      <strong>Competitor:</strong> Talkiatry | <strong>Market:</strong> National (including FL, MA, TX) | <strong>Threat Level:</strong> 🔴 HIGH<br>
+      <strong>Details:</strong> Talkiatry closed an oversubscribed $210M Series D led by Perceptive Advisors in February 2026, bringing total funding to $400M+. They employ 800+ psychiatrists across 45 states with 60+ in-network health plans. Revenue grew 1,745% from 2021–2024. They're investing heavily in AI capabilities. (<a href="https://bhbusiness.com/2026/02/12/talkiatry-raises-210m-to-expand-digital-ai-powered-psychiatry-practice/">Source</a>)<br>
+      <strong>🎯 Response:</strong> Differentiate on personal, boutique care. Emphasize continuity of care with the SAME provider. Talkiatry's scale means patients may feel like a number. Refresh = a name, not a number.<br>
+      <strong>⏱️ Time to Act:</strong> This week — update competitive messaging on website and in ad copy.
+    </div>
+
+    <div class="warning-box">
+      <strong>🟡 WATCH: Done Aggressive FL Google Ads</strong><br>
+      <strong>Competitor:</strong> Done | <strong>Market:</strong> Florida | <strong>Threat Level:</strong> 🟡 MEDIUM<br>
+      <strong>Details:</strong> Done is running aggressive PPC campaigns targeting ADHD keywords in Florida markets, appearing in top positions for key search terms.<br>
+      <strong>🎯 Response:</strong> Accelerate ADHD content marketing and location-page SEO for all 11 FL locations. Consider targeted Google Ads counter-campaign.
+    </div>
+  </div>
+</div>
+
+<!-- Section 22: Market Moves -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>📡 22. Market Moves — Expansion, Hiring, Funding</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <p><strong>💰 Funding & Financial Intelligence:</strong></p>
+    <table>
+      <tr><th>Competitor</th><th>Event</th><th>Amount</th><th>Date</th><th>Strategic Implication</th></tr>
+      <tr>
+        <td><strong>Talkiatry</strong></td>
+        <td>Series D</td>
+        <td>$210M</td>
+        <td>Feb 12, 2026</td>
+        <td>Will fuel aggressive provider hiring, AI development, and payer negotiations. Direct competitive pressure on employed-model practices.</td>
+      </tr>
+    </table>
+
+    <p style="margin-top: 16px;"><strong>🧑‍⚕️ Hiring Radar:</strong></p>
+    <table>
+      <tr><th>Competitor</th><th>Signal</th><th>What This Tells Us</th></tr>
+      <tr><td>Talkiatry</td><td>Active hiring for psychiatrists nationally; emphasis on "employed model" with competitive comp</td><td>Provider recruitment competition intensifying. Refresh must ensure competitive compensation and culture to retain providers.</td></tr>
+      <tr><td>Cerebral</td><td>Hiring for child/adolescent providers in MA</td><td>Entering pediatric market in our MA territory. Watch for patient crossover.</td></tr>
+      <tr><td>Grow Therapy</td><td>Expanding provider network in FL</td><td>While primarily therapist-focused, growing FL presence increases competition for referrals.</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- Section 23-24: Pricing & Marketing -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>💲 23–24. Pricing Intel & Marketing Warfare</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <p><strong>Pricing Snapshot (National Competitors):</strong></p>
+    <table>
+      <tr><th>Competitor</th><th>Initial Eval</th><th>Follow-Up</th><th>Insurance</th><th>Self-Pay</th><th>Subscription?</th></tr>
+      <tr><td>Talkiatry</td><td>Covered by insurance</td><td>Covered</td><td>60+ plans</td><td>N/A (in-network only)</td><td>No</td></tr>
+      <tr><td>Cerebral</td><td>~$85/mo</td><td>Included</td><td>Some plans</td><td>$85–$325/mo</td><td>Yes</td></tr>
+      <tr><td>Done</td><td>$199 initial</td><td>$99/mo</td><td>Limited</td><td>$99–199/mo</td><td>Yes</td></tr>
+      <tr><td>BetterHelp</td><td>N/A (therapy only)</td><td>$65–100/wk</td><td>No</td><td>$260–400/mo</td><td>Yes</td></tr>
+    </table>
+
+    <p style="margin-top: 16px;"><strong>Marketing Gaps to Exploit:</strong></p>
+    <ul style="margin-left: 20px; font-size: 14px;">
+      <li><strong>3 Keywords competitors aren't targeting:</strong> "precision psychiatry Florida," "telepsychiatry Wellington FL," "integrative psychiatrist Fort Lauderdale"</li>
+      <li><strong>2 Content topics no one covers well:</strong> Off-label medication education for patients; "What actually happens in a telepsychiatry appointment" (step-by-step)</li>
+      <li><strong>1 Platform competitors ignore:</strong> YouTube long-form — no competitor has strong educational YouTube presence for FL psychiatry</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Section 26: Market Summary -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>🗺️ 26. Market-by-Market Competitive Summary</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <p><strong>🌴 Florida:</strong></p>
+    <table>
+      <tr><th>Sub-Market</th><th>Status</th><th>Trend</th><th>Top Threat</th><th>Top Opportunity</th></tr>
+      <tr><td>South FL (Fort Lauderdale/Miami)</td><td><span class="score-badge score-yellow">🟡 Competitive</span></td><td>→ Stable</td><td>Done ADHD ads; Talkiatry expansion</td><td>TMW brand differentiation; integrative psych positioning</td></tr>
+      <tr><td>Central FL (Orlando/Winter Park)</td><td><span class="score-badge score-green">🟢 Strong</span></td><td>↑ Growing</td><td>Local practices + Grow Therapy</td><td>Low competition for "telepsychiatry Orlando" keyword</td></tr>
+      <tr><td>Palm Beach / Treasure Coast</td><td><span class="score-badge score-green">🟢 Strong</span></td><td>→ Stable</td><td>Limited direct telehealth competition</td><td>Affluent market for self-pay and premium services</td></tr>
+    </table>
+
+    <p style="margin-top: 16px;"><strong>🦞 Massachusetts:</strong></p>
+    <table>
+      <tr><th>Sub-Market</th><th>Status</th><th>Trend</th><th>Top Threat</th><th>Top Opportunity</th></tr>
+      <tr><td>Boston / Seaport</td><td><span class="score-badge score-yellow">🟡 Competitive</span></td><td>→ Stable</td><td>Cerebral entering child/teen; dense provider market</td><td>Academic referral network; young professional demographic</td></tr>
+    </table>
+
+    <p style="margin-top: 16px;"><strong>🤠 Texas (DFW):</strong></p>
+    <table>
+      <tr><th>Sub-Market</th><th>Status</th><th>Trend</th><th>Top Threat</th><th>Top Opportunity</th></tr>
+      <tr><td>Dallas / Richardson / Southlake</td><td><span class="score-badge score-green">🟢 Strong</span></td><td>↑ Growing</td><td>TX HB 1052 opens door for out-of-state competitors</td><td>DFW growth corridor; TX HB 1052 also benefits Refresh for out-of-state TX patients</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- PART 5: CEO STRATEGIC COMMAND CENTER -->
+<!-- ================================================================ -->
+<div class="part-header" id="part5">PART 5: CEO STRATEGIC COMMAND CENTER</div>
+
+<blockquote>
+  <em>"Strategy without tactics is the slowest route to victory. Tactics without strategy is the noise before defeat."</em> — Sun Tzu<br><br>
+  ☕ Good morning, Doctor. Here's the state of your empire.
+</blockquote>
+
+<!-- Section 27: Enterprise Health Score -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>🌡️ 27. THE PULSE — Enterprise Health Score</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <table>
+      <tr><th>Dimension</th><th>Score</th><th>Trend</th><th>Status</th><th>Summary</th></tr>
+      <tr><td>💰 Revenue & Collections</td><td><strong>7/10</strong></td><td>→</td><td>🟡</td><td>Stable but room to grow with new locations ramping. Monitor A/R days.</td></tr>
+      <tr><td>🧑‍⚕️ Patient Volume</td><td><strong>7/10</strong></td><td>↑</td><td>🟡</td><td>Telehealth demand remains strong. New patient pipeline needs attention in some markets.</td></tr>
+      <tr><td>📋 Patient Retention</td><td><strong>8/10</strong></td><td>→</td><td>🟢</td><td>Telehealth convenience drives retention. Monitor no-show rates.</td></tr>
+      <tr><td>⭐ Online Reputation</td><td><strong>7/10</strong></td><td>→</td><td>🟡</td><td>Need automated review tracking. Some locations may need attention.</td></tr>
+      <tr><td>📱 Marketing Performance</td><td><strong>6/10</strong></td><td>↑</td><td>🟡</td><td>Social media presence needs acceleration. SEO opportunities abundant but under-leveraged.</td></tr>
+      <tr><td>🕵️ Competitive Position</td><td><strong>7/10</strong></td><td>↓</td><td>🟡</td><td>Talkiatry $210M raise increases competitive pressure. Must differentiate aggressively.</td></tr>
+      <tr><td>👥 Team & Provider Health</td><td><strong>7/10</strong></td><td>→</td><td>🟡</td><td>Retention is critical as competitors increase recruitment. Compensation review recommended.</td></tr>
+      <tr><td>⚖️ Compliance & Risk</td><td><strong>8/10</strong></td><td>→</td><td>🟢</td><td>DEA extension provides stability through 2026. Medicare in-person requirements need verification.</td></tr>
+      <tr><td>📈 Growth Trajectory</td><td><strong>7/10</strong></td><td>↑</td><td>🟡</td><td>16 locations strong. New service lines (GeneSight, Spravato) could accelerate growth.</td></tr>
+      <tr><td><strong>🏆 OVERALL</strong></td><td><strong>7.1/10</strong></td><td>→</td><td>🟡</td><td><strong>Solid foundation with clear growth levers. Marketing and competitive positioning are the biggest opportunities for improvement.</strong></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- Section 28: CEO Alerts -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>🚨 28. CEO-Level Alerts — Things Only YOU Can Decide</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <table>
+      <tr><th>Alert</th><th>Category</th><th>Severity</th><th>Decision Needed</th><th>Deadline</th></tr>
+      <tr>
+        <td>Talkiatry raised $210M — competitive positioning response</td>
+        <td>Strategic / Marketing</td>
+        <td>🟡 High</td>
+        <td>Approve marketing budget increase for Q2 2026 to counter Talkiatry's expansion with differentiated messaging?</td>
+        <td>By March 31</td>
+      </tr>
+      <tr>
+        <td>Medicare in-person visit requirement (effective Feb 2026)</td>
+        <td>Compliance</td>
+        <td>🔴 Urgent</td>
+        <td>Verify compliance across all locations. Do any new Medicare patients need to be scheduled for in-person visits?</td>
+        <td>Immediate</td>
+      </tr>
+      <tr>
+        <td>GeneSight / Pharmacogenomic testing integration</td>
+        <td>New Service Line</td>
+        <td>🟡 Strategic</td>
+        <td>Should Refresh begin offering pharmacogenomic testing? Competitive differentiator + revenue opportunity + aligns with precision psychiatry trend.</td>
+        <td>Q2 2026</td>
+      </tr>
+      <tr>
+        <td>Provider compensation review vs. Talkiatry benchmarks</td>
+        <td>HR / Retention</td>
+        <td>🟡 High</td>
+        <td>Review and benchmark provider compensation against Talkiatry's employed model to prevent recruitment losses.</td>
+        <td>April 2026</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- Sections 29-33: Financial & Operations (Framework) -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>💰 29–33. Financial, Operations, Compliance & Growth</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="warning-box">
+      <strong>📊 Data Integration Needed:</strong> Sections 29–33 (Revenue Dashboard, Patient Operations, Provider Performance, Compliance Status, Growth Radar) require integration with Refresh's EHR/PM system (e.g., DrChrono, Athena, SimplePractice) and billing platform. Recommend connecting these data sources to enable automated daily financial and operational reporting in future briefings.
+    </div>
+
+    <p style="margin-top: 16px;"><strong>🆕 New Service Line Evaluation (Strategic Recommendations):</strong></p>
+    <table>
+      <tr><th>Service</th><th>Revenue Potential</th><th>Regulatory</th><th>Competitor Offering?</th><th>Recommendation</th></tr>
+      <tr><td>GeneSight Testing</td><td>💰💰💰 High</td><td>🟢 Covered by most insurance</td><td>Some, but under-marketed</td><td>⭐ <strong>Start now</strong> — low barrier, high differentiation</td></tr>
+      <tr><td>Spravato (esketamine)</td><td>💰💰💰💰 Very High</td><td>🟡 REMS program required</td><td>Limited in telehealth</td><td>🟡 Evaluate — requires in-person component</td></tr>
+      <tr><td>Group Therapy Programs</td><td>💰💰 Moderate</td><td>🟢 Straightforward</td><td>BetterHelp, Talkiatry exploring</td><td>⭐ Good fit for telehealth model</td></tr>
+      <tr><td>Pediatric / Adolescent</td><td>💰💰💰 High</td><td>🟡 Additional credentialing</td><td>Cerebral entering MA</td><td>🟡 Strategic expansion — high demand</td></tr>
+      <tr><td>Substance Use (Suboxone)</td><td>💰💰💰 High</td><td>🟢 X-waiver eliminated 2023</td><td>Bicycle Health, Cerebral</td><td>⭐ High demand + telehealth-friendly + DEA extension</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- PART 6: CLOSING SECTIONS -->
+<!-- ================================================================ -->
+<div class="part-header" id="part6">PART 6: TODAY'S BATTLE PLAN & CLOSING</div>
+
+<!-- Section 35: Battle Plan -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>⚡ 35. TODAY'S MASTER BATTLE PLAN — Top 5 Moves</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+
+    <div class="move-card urgent">
+      <h3>🥇 MOVE 1 — 🔴 URGENT</h3>
+      <p><strong>What:</strong> Audit Medicare in-person visit compliance across all 16 locations since Feb 1, 2026</p>
+      <p><strong>Why:</strong> New Medicare telehealth rules require documented in-person visit for new patients. Non-compliance = denied claims + audit risk.</p>
+      <p><strong>Market:</strong> All locations</p>
+      <p><strong>Owner:</strong> Dr. Nepa + Office Manager</p>
+      <p><strong>Time:</strong> ⏱️ 60 min</p>
+      <p><strong>Impact:</strong> 🔥🔥🔥🔥🔥</p>
+    </div>
+
+    <div class="move-card high">
+      <h3>🥈 MOVE 2 — 🟠 HIGH IMPACT</h3>
+      <p><strong>What:</strong> Draft competitive positioning messaging against Talkiatry's $210M raise — "Boutique care with big-practice reach"</p>
+      <p><strong>Why:</strong> Talkiatry's PR blitz positions them as the default telepsychiatry brand. Must differentiate NOW before they saturate FL, MA, TX markets.</p>
+      <p><strong>Market:</strong> All markets</p>
+      <p><strong>Owner:</strong> Dr. Nepa + Marketing</p>
+      <p><strong>Time:</strong> ⏱️ 45 min</p>
+      <p><strong>Impact:</strong> 🔥🔥🔥🔥</p>
+    </div>
+
+    <div class="move-card strategic">
+      <h3>🥉 MOVE 3 — 🟡 STRATEGIC</h3>
+      <p><strong>What:</strong> Initiate GeneSight/pharmacogenomic testing evaluation — contact rep, review reimbursement, and create patient education materials</p>
+      <p><strong>Why:</strong> Precision psychiatry is the #1 emerging paradigm. First-mover advantage in marketing + genuine clinical value + revenue diversification.</p>
+      <p><strong>Market:</strong> All locations</p>
+      <p><strong>Owner:</strong> Dr. Nepa</p>
+      <p><strong>Time:</strong> ⏱️ 30 min (initial outreach)</p>
+      <p><strong>Impact:</strong> 🔥🔥🔥🔥</p>
+    </div>
+
+    <div class="move-card quick">
+      <h3>4️⃣ MOVE 4 — 🟢 QUICK WIN</h3>
+      <p><strong>What:</strong> Post Sunday mental health check-in story + ADHD medication myth-busting reel (Content Playbook items 5 + 1)</p>
+      <p><strong>Why:</strong> Sunday is peak engagement for wellness content. Two posts today captures morning and evening audience.</p>
+      <p><strong>Market:</strong> All (social media)</p>
+      <p><strong>Owner:</strong> Dr. Nepa / Social Media</p>
+      <p><strong>Time:</strong> ⏱️ 20 min</p>
+      <p><strong>Impact:</strong> 🔥🔥🔥</p>
+    </div>
+
+    <div class="move-card long">
+      <h3>5️⃣ MOVE 5 — 🔵 LONG GAME</h3>
+      <p><strong>What:</strong> Commission "ADHD Medication Alternatives in 2026" blog post targeting 22K/mo search volume keyword</p>
+      <p><strong>Why:</strong> Done is dominating paid ADHD search in FL. Organic content will provide sustainable competitive advantage at zero ongoing cost.</p>
+      <p><strong>Market:</strong> Florida primary, all markets</p>
+      <p><strong>Owner:</strong> Marketing / Content team</p>
+      <p><strong>Time:</strong> ⏱️ Commission today, publish within 7 days</p>
+      <p><strong>Impact:</strong> 🔥🔥🔥🔥 (compounds over time)</p>
+    </div>
+  </div>
+</div>
+
+<!-- Section 36-37: Closing Intel -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2>🧠 36–37. Closing Intelligence</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body">
+
+    <div class="content-idea">
+      <h4>🎯 Social Media Quick Win</h4>
+      <p>Post a 15-second IG Reel: Dr. Nepa approving the "floor time" trend with a blue/yellow branded text overlay: "Your psychiatrist approves ✅" — ride the viral trend with zero production effort. Post at 2 PM ET.</p>
+    </div>
+
+    <div style="background: linear-gradient(135deg, var(--blue), var(--blue-dark)); color: white; padding: 24px; border-radius: 12px; margin: 16px 0; text-align: center;">
+      <p style="font-size: 20px; font-family: 'Montserrat', sans-serif; font-weight: 700;">💬 Quote of the Day</p>
+      <p style="font-size: 18px; margin: 12px 0; font-style: italic;">"The mind is not a vessel to be filled, but a fire to be kindled."</p>
+      <p style="color: var(--yellow); font-weight: 600;">— Plutarch</p>
+      <p style="font-size: 12px; margin-top: 8px; opacity: 0.8;">Share as a branded graphic: White text on blue bg, yellow accent underline</p>
+    </div>
+
+    <div class="content-idea">
+      <h4>📸 2-Minute Story Idea</h4>
+      <p><strong>Concept:</strong> "Sunday Reset Checklist" — blue gradient background, white text with yellow checkmarks.<br>
+      <strong>Text Overlay:</strong> "☐ Hydrate ☐ 10 min walk ☐ Set one intention ☐ Be kind to yourself"<br>
+      <strong>Interactive:</strong> Add "Which one are you doing first?" quiz sticker<br>
+      <strong>Palette:</strong> Blue-to-yellow gradient → white bold text</p>
+    </div>
+
+    <div class="content-idea">
+      <h4>🤓 Nerdy Psych Fact of the Day</h4>
+      <p>The orexin system — originally discovered for its role in wakefulness and narcolepsy — is now being studied for depression, anxiety, and addiction. The FDA is reviewing the first-ever orexin agonist (oveporexton/TAK-861) with Priority Review in 2026. We may be witnessing the birth of an entirely new class of psychiatric medications. <a href="https://www.psychiatrictimes.com/view/february-2026-in-review-updates-on-the-psychiatric-treatment-pipeline">Source</a></p>
+    </div>
+
+    <div class="content-idea">
+      <h4>💡 Competitor Quote of the Day</h4>
+      <p>Talkiatry CEO Robert Krayn on their $210M raise: <em>"We're building the de facto in-network psychiatry partner for U.S. health systems, payers, and employers."</em> (<a href="https://www.statnews.com/2026/02/12/talkiatry-raises-210-million-eyes-ai-opportunity/">STAT News</a>)<br>
+      <strong>Strategic Take:</strong> "De facto partner" language signals they're targeting B2B payer relationships, not direct-to-consumer. Refresh's DTC and local community presence is a moat they can't easily replicate. Double down on local brand identity.</p>
+    </div>
+
+    <div class="content-idea">
+      <h4>🔮 30-Day Forecast</h4>
+      <p>The most significant competitive shift in the next 30 days will be the downstream effects of Talkiatry's $210M raise. Expect increased provider recruitment outreach (especially in FL), aggressive payer negotiations that could temporarily lower reimbursement benchmarks, and a marketing blitz positioning Talkiatry as the "safe bet" for health systems. Refresh's counter-strategy should emphasize what $210M can't buy: genuine local community trust, provider continuity, and Dr. Nepa's personal clinical leadership across 16 locations.</p>
+    </div>
+
+    <div style="background: linear-gradient(135deg, var(--yellow), #e6b83a); padding: 24px; border-radius: 12px; margin: 16px 0; text-align: center;">
+      <p style="font-size: 22px; font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--charcoal);">🔥 MOTIVATIONAL CLOSE</p>
+      <p style="font-size: 18px; color: var(--blue-dark); font-weight: 700; margin-top: 8px;">They raised $210M. You built 16 locations on clinical excellence. Money scales operations — trust scales empires. Keep building, Doctor.</p>
+    </div>
+
+  </div>
+</div>
+
+</div> <!-- /container -->
+
+<!-- ========== FOOTER ========== -->
+<div class="footer">
+  <p>🏥 Refresh Psychiatry & Therapy | Total Mental Wellness — Integrative Psychiatry</p>
+  <p>Confidential Intelligence Briefing for Dr. Justin Nepa, DO | Generated March 15, 2026</p>
+  <p>16 Locations: FL (11) · MA (2) · TX (3) | <a href="https://refreshpsychiatry.com" style="color: var(--yellow);">refreshpsychiatry.com</a></p>
+</div>
+
+<script>
+function toggleSection(header) {
+  const body = header.nextElementSibling;
+  header.classList.toggle('collapsed');
+  body.classList.toggle('collapsed');
+}
+// All sections start open
+</script>
+
+</body>
+</html>

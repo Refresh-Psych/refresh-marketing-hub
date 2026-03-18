@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Total Mental Wellness — KOL Strategy Briefing | March 17, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-dark: #2D6A4F;
+  --green-mid: #40916C;
+  --green-light: #52B788;
+  --green-pale: #B7E4C7;
+  --green-bg: #D8F3DC;
+  --green-soft: #F0FFF4;
+  --blue-dark: #1B4965;
+  --blue-mid: #5FA8D3;
+  --blue-light: #BEE9E8;
+  --black: #1A1A2E;
+  --gray-dark: #333;
+  --gray-mid: #555;
+  --gray-light: #888;
+  --white: #FFFFFF;
+  --bg: #FAFDF7;
+  --card-shadow: 0 2px 12px rgba(45,106,79,0.08);
+  --card-shadow-hover: 0 4px 20px rgba(45,106,79,0.14);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Nunito Sans', 'Open Sans', sans-serif;
+  background: var(--bg);
+  color: var(--gray-dark);
+  font-size: 16.5px;
+  line-height: 1.65;
+}
+
+/* ── Header / Banner ── */
+.header {
+  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 50%, var(--green-light) 100%);
+  color: var(--white);
+  padding: 32px 0 28px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute; top: -40px; right: -40px;
+  width: 220px; height: 220px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 50%;
+}
+.header::after {
+  content: '';
+  position: absolute; bottom: -60px; left: -30px;
+  width: 180px; height: 180px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 50%;
+}
+.header-inner { max-width: 960px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+.logo-area { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 8px; }
+
+/* Leaf-head logo SVG */
+.logo-svg { width: 56px; height: 56px; flex-shrink: 0; }
+
+.header h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+.header .subtitle {
+  font-size: 0.95rem;
+  opacity: 0.88;
+  margin-top: 4px;
+  font-weight: 400;
+}
+.header .date-badge {
+  display: inline-block;
+  margin-top: 12px;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 5px 18px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ── Container ── */
+.container { max-width: 960px; margin: 0 auto; padding: 28px 20px 60px; }
+
+/* ── Sections ── */
+.section {
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 22px;
+  overflow: hidden;
+  transition: box-shadow 0.25s;
+}
+.section:hover { box-shadow: var(--card-shadow-hover); }
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 24px;
+  cursor: pointer;
+  border-left: 5px solid var(--green-mid);
+  background: var(--green-soft);
+  user-select: none;
+  transition: background 0.2s;
+}
+.section-header:hover { background: var(--green-bg); }
+.section-header .icon { font-size: 1.3rem; flex-shrink: 0; }
+.section-header h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--green-dark);
+  flex: 1;
+}
+.chevron {
+  width: 22px; height: 22px;
+  transition: transform 0.3s ease;
+  fill: var(--green-mid);
+}
+.section.collapsed .chevron { transform: rotate(-90deg); }
+.section.collapsed .section-body { display: none; }
+
+.section-body { padding: 20px 28px 24px; }
+.section-body h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--green-dark);
+  margin: 20px 0 10px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--green-pale);
+}
+.section-body h3:first-child { margin-top: 0; }
+
+.section-body p { margin-bottom: 12px; }
+.section-body ul { margin: 8px 0 14px 20px; }
+.section-body li { margin-bottom: 8px; }
+
+/* Action items bold */
+.action { font-weight: 700; color: var(--black); }
+.action-tag {
+  display: inline-block;
+  background: var(--green-bg);
+  color: var(--green-dark);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+a { color: var(--green-dark); text-decoration: underline; text-decoration-color: var(--green-pale); }
+a:hover { color: var(--green-mid); text-decoration-color: var(--green-mid); }
+
+/* Pipeline cards */
+.pipeline-card {
+  background: var(--green-soft);
+  border: 1px solid var(--green-pale);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 14px;
+}
+.pipeline-card .drug-name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--green-dark);
+}
+.pipeline-card .company { font-size: 0.88rem; color: var(--gray-light); margin-bottom: 6px; }
+.pipeline-card .why { margin-top: 8px; }
+
+/* Opportunity cards */
+.opp-card {
+  background: #FAFAFA;
+  border-left: 4px solid var(--green-light);
+  border-radius: 0 8px 8px 0;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+}
+.opp-card .opp-title { font-weight: 700; color: var(--black); }
+.opp-card .opp-deadline { font-size: 0.85rem; color: var(--gray-light); }
+
+/* Top 3 Actions box */
+.top-actions {
+  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
+  color: var(--white);
+  border-radius: 12px;
+  padding: 28px 32px;
+  margin-top: 10px;
+}
+.top-actions h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.top-action-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+.top-action-item:last-child { margin-bottom: 0; }
+.action-num {
+  flex-shrink: 0;
+  width: 34px; height: 34px;
+  background: rgba(255,255,255,0.2);
+  border: 2px solid rgba(255,255,255,0.4);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.action-text { font-size: 0.98rem; line-height: 1.5; }
+.action-text strong { font-weight: 700; }
+
+/* Leaf decorations */
+.leaf-deco {
+  position: fixed;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+}
+.leaf-deco.top-right { top: 120px; right: -30px; width: 300px; height: 300px; }
+.leaf-deco.bottom-left { bottom: 100px; left: -40px; width: 250px; height: 250px; transform: rotate(180deg); }
+
+footer {
+  text-align: center;
+  padding: 24px;
+  color: var(--gray-light);
+  font-size: 0.82rem;
+}
+
+@media (max-width: 640px) {
+  .header h1 { font-size: 1.25rem; }
+  .section-body { padding: 16px 18px 20px; }
+  .top-actions { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Subtle leaf decorations -->
+<svg class="leaf-deco top-right" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <path d="M100 10 C60 40, 20 80, 30 140 C40 180, 80 190, 100 190 C120 190, 160 180, 170 140 C180 80, 140 40, 100 10Z" fill="#2D6A4F"/>
+  <path d="M100 30 L100 170 M70 70 L100 100 M130 70 L100 100 M65 110 L100 140 M135 110 L100 140" stroke="#40916C" stroke-width="2" fill="none"/>
+</svg>
+<svg class="leaf-deco bottom-left" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <path d="M100 10 C60 40, 20 80, 30 140 C40 180, 80 190, 100 190 C120 190, 160 180, 170 140 C180 80, 140 40, 100 10Z" fill="#2D6A4F"/>
+  <path d="M100 30 L100 170 M70 70 L100 100 M130 70 L100 100" stroke="#40916C" stroke-width="2" fill="none"/>
+</svg>
+
+<!-- ═══ HEADER ═══ -->
+<header class="header">
+  <div class="header-inner">
+    <div class="logo-area">
+      <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <!-- Head silhouette with leaves -->
+        <ellipse cx="50" cy="55" rx="24" ry="28" fill="rgba(255,255,255,0.92)"/>
+        <!-- Leaves growing from top -->
+        <path d="M50 28 C44 18, 32 12, 28 8 C34 14, 38 22, 42 28" fill="rgba(255,255,255,0.7)" stroke="rgba(255,255,255,0.9)" stroke-width="0.8"/>
+        <path d="M50 26 C50 16, 50 8, 50 2 C50 8, 50 16, 50 26" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.2"/>
+        <path d="M50 28 C56 18, 68 12, 72 8 C66 14, 62 22, 58 28" fill="rgba(255,255,255,0.7)" stroke="rgba(255,255,255,0.9)" stroke-width="0.8"/>
+        <path d="M46 30 C38 20, 26 18, 20 14 C28 20, 34 24, 46 30" fill="rgba(255,255,255,0.6)" stroke="rgba(255,255,255,0.8)" stroke-width="0.8"/>
+        <path d="M54 30 C62 20, 74 18, 80 14 C72 20, 66 24, 54 30" fill="rgba(255,255,255,0.6)" stroke="rgba(255,255,255,0.8)" stroke-width="0.8"/>
+        <path d="M42 32 C34 24, 22 24, 16 22 C24 26, 32 28, 42 32" fill="rgba(255,255,255,0.5)" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/>
+        <path d="M58 32 C66 24, 78 24, 84 22 C76 26, 68 28, 58 32" fill="rgba(255,255,255,0.5)" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/>
+      </svg>
+      <div>
+        <h1>Total Mental Wellness</h1>
+        <div class="subtitle">KOL Strategy Daily Intelligence Briefing</div>
+      </div>
+    </div>
+    <div class="date-badge">Tuesday, March 17, 2026</div>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 1: Pharma & Biotech Pipeline -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section" id="s1">
+  <div class="section-header" onclick="toggleSection('s1')">
+    <span class="icon">&#x1F52C;</span>
+    <h2>Section 1: Pharma &amp; Biotech Pipeline Intelligence</h2>
+    <svg class="chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+  </div>
+  <div class="section-body">
+
+    <div class="pipeline-card">
+      <div class="drug-name">COMP360 Psilocybin &mdash; 2nd Phase 3 Win for Treatment-Resistant Depression</div>
+      <div class="company">Compass Pathways | Announced Feb 17, 2026</div>
+      <p>COMP360 25 mg achieved its primary endpoint in the COMP006 Phase 3 trial with a highly statistically significant reduction in MADRS (p&lt;0.001, &Delta; = -3.8 points vs. 1 mg). This is the third positive efficacy signal across trials. 39% of participants on 25 mg achieved &ge;25% MADRS reduction at Week 6, with rapid onset from Day 1. Compass plans a rolling FDA submission between October&ndash;December 2026. <a href="https://ir.compasspathways.com/News--Events-/news/news-details/2026/Compass-Pathways-Successfully-Achieves-Primary-Endpoint-in-Second-Phase-3-Trial-Evaluating-COMP360-Psilocybin-for-Treatment-Resistant-Depression/default.aspx" target="_blank">Source</a></p>
+      <p class="why"><strong>Why it matters for your speaker career:</strong> If COMP360 receives FDA approval, Compass Pathways will need trained psychiatric KOLs for REMS education, speaker programs, and advisory boards. Your TRD clinical focus and integrative psychiatry lens make you a natural fit.</p>
+      <p><span class="action-tag">Action</span> <span class="action">Reach out to Compass Pathways Medical Affairs via LinkedIn. Draft a message referencing your TRD patient population and interest in psilocybin-assisted therapy education. Search for their MSL team contacts on LinkedIn (search "Compass Pathways Medical Science Liaison").</span></p>
+    </div>
+
+    <div class="pipeline-card">
+      <div class="drug-name">Caplyta (lumateperone) &mdash; Newly Approved for Adjunctive MDD Treatment</div>
+      <div class="company">Johnson &amp; Johnson (via Intra-Cellular Therapies acquisition) | Approved Nov 6, 2025</div>
+      <p>Caplyta received FDA approval as adjunctive therapy for adults with MDD who had inadequate response to antidepressants. Phase 3 trials showed robust efficacy: 4.9-point MADRS separation (Study 501, effect size 0.61) and 4.5-point separation (Study 502, effect size 0.56). In the open-label extension, 80% achieved response and 65% reached remission. This is the first approval under J&amp;J leadership post-acquisition. <a href="https://www.jnj.com/media-center/press-releases/fda-approval-of-caplyta-lumateperone-has-the-potential-to-reset-treatment-expectations-offering-hope-for-remission-in-adults-with-major-depressive-disorder" target="_blank">Source</a></p>
+      <p class="why"><strong>Why it matters:</strong> J&amp;J is almost certainly scaling up Caplyta speaker programs for the new MDD indication. This is one of the <em>highest-priority</em> speaker bureau opportunities right now &mdash; a major pharma company with a newly approved MDD product needing immediate KOL education.</p>
+      <p><span class="action-tag">Action</span> <span class="action">Contact J&amp;J Neuroscience MSLs in the Southeast region. Express interest in the Caplyta MDD speaker program. Highlight your MDD patient volume, DFAPA credential, and multi-provider practice reach. Search LinkedIn for "Johnson Johnson MSL neuroscience Florida."</span></p>
+    </div>
+
+    <div class="pipeline-card">
+      <div class="drug-name">Bysanti (milsaperidone) &mdash; Newly Approved for Schizophrenia &amp; Bipolar I</div>
+      <div class="company">Vanda Pharmaceuticals | Approved Feb 20, 2026</div>
+      <p>Bysanti, the active metabolite of iloperidone (Fanapt), was approved for schizophrenia and acute bipolar I disorder. Vanda has also initiated a Phase 3 trial for Bysanti as adjunctive treatment for MDD, with results expected in 2026. <a href="https://www.drugs.com/newdrugs.html" target="_blank">Source</a></p>
+      <p class="why"><strong>Why it matters:</strong> As a new entrant from a smaller company, Vanda will need to build speaker programs from scratch. Early engagement gives you a first-mover advantage on their bureau.</p>
+      <p><span class="action-tag">Action</span> <span class="action">Research Vanda Pharmaceuticals Medical Affairs team on LinkedIn. Send an introductory message expressing interest in their Bysanti education programs, noting your bipolar disorder clinical experience.</span></p>
+    </div>
+
+    <div class="pipeline-card">
+      <div class="drug-name">MM120 (LSD-derived) &mdash; Phase 3 Initiated for MDD; Phase 3 Ongoing for GAD</div>
+      <div class="company">MindMed | First patient dosed in Emerge MDD trial, March 2026</div>
+      <p>MindMed's MM120 ODT (a pharmaceutically optimized form of LSD) began its Phase 3 Emerge study for MDD. Prior GAD Phase 2 data showed remarkable efficacy: rapid anxiety reduction within one day, effects lasting up to 12 weeks from a single dose, and effect sizes of 0.7&ndash;0.8 (vs. 0.3 for SSRIs). Topline MDD data expected H2 2026. <a href="https://www.psychiatrictimes.com/view/mindmed-begins-phase-3-emerge-study-of-mm120-in-patients-with-major-depressive-disorder" target="_blank">Source</a></p>
+      <p class="why"><strong>Why it matters:</strong> If successful, MM120 could be the first psychedelic-derived FDA-approved treatment for GAD. Your anxiety focus and integrative psychiatry positioning make this a natural alignment. Getting on MindMed's radar now &mdash; before approval &mdash; is the optimal timing for advisory board inclusion.</p>
+      <p><span class="action-tag">Action</span> <span class="action">Follow MindMed on LinkedIn. Search for "MindMed Medical Science Liaison" and send a personalized connection request highlighting your GAD clinical focus and FPS leadership.</span></p>
+    </div>
+
+    <div class="pipeline-card">
+      <div class="drug-name">Proliv&trade;Rx &mdash; At-Home Neuromodulation for MDD</div>
+      <div class="company">Neurolief Inc. | Approved Jan 12, 2026</div>
+      <p>The FDA approved this novel at-home neuromodulation device as adjunctive treatment for adults with MDD who haven't achieved satisfactory improvement with antidepressant medication, based on the 2025 MOOD Study. <a href="https://www.hmpgloballearningnetwork.com/site/pcn/news/fda-approves-home-neuromodulation-therapy-device-major-depression" target="_blank">Source</a></p>
+      <p class="why"><strong>Why it matters:</strong> As a device rather than a drug, this aligns with your integrative/whole-person psychiatry brand. Device companies actively seek KOLs who can bridge pharmacology and non-pharmacological interventions.</p>
+      <p><span class="action-tag">Action</span> <span class="action">Contact Neurolief's medical affairs team about speaker/KOL opportunities. Your integrative psychiatry positioning is a strong differentiator for device education.</span></p>
+    </div>
+
+    <div class="pipeline-card">
+      <div class="drug-name">BNC-210 &mdash; Phase 3 for Social Anxiety Disorder</div>
+      <div class="company">Neuphoria Therapeutics | AFFIRM-1 trial fully enrolled (332 patients)</div>
+      <p>BNC-210, a first-in-class selective negative allosteric modulator of the &alpha;7 nicotinic acetylcholine receptor, completed enrollment in the AFFIRM-1 Phase 3 trial for social anxiety disorder. This is a novel mechanism offering acute, as-needed, fast-acting treatment &mdash; unlike SSRIs that require weeks to work.</p>
+      <p class="why"><strong>Why it matters:</strong> If approved, this would be a paradigm shift in anxiety treatment. Early engagement with Neuphoria positions you for advisory and speaker roles in a completely novel therapeutic area.</p>
+      <p><span class="action-tag">Action</span> <span class="action">Monitor Neuphoria Therapeutics for AFFIRM-1 Phase 3 readout. Connect with their medical affairs team on LinkedIn.</span></p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 2: Speaking Opportunity Leads  -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section" id="s2">
+  <div class="section-header" onclick="toggleSection('s2')">
+    <span class="icon">&#x1F3A4;</span>
+    <h2>Section 2: Speaking Opportunity Leads</h2>
+    <svg class="chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+  </div>
+  <div class="section-body">
+
+    <h3>Major Conferences &mdash; Upcoming Deadlines</h3>
+
+    <div class="opp-card">
+      <div class="opp-title">APA Annual Meeting 2026 &mdash; San Francisco, CA</div>
+      <div class="opp-deadline">May 16&ndash;20, 2026 | Abstract deadline CLOSED (Jan 8, 2026)</div>
+      <p>The premier global gathering of psychiatric professionals. Even though the abstract deadline has passed, <span class="action">register now and plan to attend for networking with MSLs, pharma exhibitors, and KOL peers. Pharma companies host satellite symposia and speaker recruitment events at APA.</span> Target the Mental Health Innovation Zone panels. <a href="https://www.psychiatry.org/psychiatrists/meetings/annual-meeting" target="_blank">APA 2026 Info</a></p>
+      <p><span class="action-tag">Action</span> <span class="action">Register for APA 2026 in San Francisco. Schedule meetings with MSLs from J&amp;J, Compass Pathways, and MindMed at the exhibit hall. As FPS Chapter President, request a brief meeting with APA leadership while on-site.</span></p>
+    </div>
+
+    <div class="opp-card">
+      <div class="opp-title">FPS Spring 2026 CME Meeting &amp; Expo &mdash; Omni Orlando at Champions Gate</div>
+      <div class="opp-deadline">April 24&ndash;26, 2026 | Up to 11.5 AMA PRA Category 1 Credits</div>
+      <p>As Broward County Chapter President, this is YOUR event. <span class="action">Proactively offer to moderate a panel or present at this meeting. Contact FPS leadership to volunteer for a speaking slot on integrative approaches to treatment-resistant conditions.</span> <a href="https://www.floridapsych.org/page/Spring-2026" target="_blank">FPS Spring 2026</a></p>
+      <p><span class="action-tag">Action</span> <span class="action">Email FPS leadership TODAY to volunteer as a speaker or panel moderator for the Spring meeting. Proposed topics: "Integrative Approaches to Treatment-Resistant Depression: What's New in 2026" or "Building Mental Wellness in Special Populations: Athletes, First Responders, and Executives."</span></p>
+    </div>
+
+    <div class="opp-card">
+      <div class="opp-title">Psych Congress 2026 &mdash; New Orleans, LA</div>
+      <div class="opp-deadline">Sept 15&ndash;19, 2026 | Poster Call for Abstracts NOW OPEN (opened Jan 20)</div>
+      <p>The 39th annual Psych Congress features 60+ expert faculty and 3,000+ attendees. The poster abstract portal is currently accepting submissions. <a href="https://www.hmpglobalevents.com/psych-congress" target="_blank">Psych Congress 2026</a></p>
+      <p><span class="action-tag">Action</span> <span class="action">Submit a poster abstract to Psych Congress 2026. Suggested topics: (1) Real-world outcomes of integrative psychiatric approaches in a multi-provider Florida practice, or (2) Mental health treatment considerations for first responders &mdash; a clinical review. Also pitch yourself as a panel speaker through the HMP Global faculty nomination process.</span></p>
+    </div>
+
+    <div class="opp-card">
+      <div class="opp-title">World Congress of Psychiatry (WCP 2026)</div>
+      <div class="opp-deadline">Abstract submission deadline: March 23, 2026 &mdash; URGENT!</div>
+      <p>Only 6 days remaining to submit. This is a global stage opportunity. <a href="https://wcp-congress.com/" target="_blank">WCP 2026</a></p>
+      <p><span class="action-tag">Action</span> <span class="action">URGENT: Submit an abstract to WCP 2026 before March 23. Suggested topic: "Whole-Person Psychiatry in Multi-Location Community Practice: Outcomes and Lessons from Florida." Your unique practice model and integrative approach would stand out on the international stage.</span></p>
+    </div>
+
+    <div class="opp-card">
+      <div class="opp-title">SoFlo Psych 2026 &mdash; Southern Florida Psychiatry Conference</div>
+      <div class="opp-deadline">2026 (Dates TBD) | Registration open</div>
+      <p>Regional conference showcasing South Florida psychiatric experts in presentations and panel discussions covering MDD, substance use disorders, schizophrenia, and more. <a href="https://registration.gotoper.com/southern-florida-psychiatry-conference-2026/home" target="_blank">SoFlo Psych 2026</a></p>
+      <p><span class="action-tag">Action</span> <span class="action">Contact PER (Physicians' Education Resource) to express interest in speaking at SoFlo Psych 2026. Your regional FPS leadership and multi-location practice give you strong credentials. Pitch a talk on the psychiatric pipeline and implications for community practice.</span></p>
+    </div>
+
+    <div class="opp-card">
+      <div class="opp-title">Association for Academic Psychiatry (AAP) Annual Meeting &mdash; Salt Lake City</div>
+      <div class="opp-deadline">Sept 16&ndash;19, 2026 | Poster abstracts deadline: CLOSED March 6</div>
+      <p>Theme: "Navigating the Peaks and Valleys: Education in Uncertain Times." Registration opens April 20. <a href="https://www.academicpsychiatry.org/annual-meeting/" target="_blank">AAP 2026</a></p>
+    </div>
+
+    <h3>CME &amp; Digital Speaking Platforms</h3>
+
+    <div class="opp-card">
+      <div class="opp-title">Frontiers in Psychiatry &mdash; "Reviews in Psychiatry 2026: Psychopharmacology"</div>
+      <div class="opp-deadline">Manuscript summary deadline: April 17, 2026 | Full manuscript: Sept 25, 2026</div>
+      <p>Frontiers has an open call for review articles on psychopharmacology topics. This is a publication + visibility opportunity. <a href="https://www.frontiersin.org/research-topics/75761/reviews-in-psychiatry-2026-psychopharmacology" target="_blank">Frontiers Research Topic</a></p>
+      <p><span class="action-tag">Action</span> <span class="action">Submit a manuscript summary to Frontiers by April 17 on "Integrative Augmentation Strategies for Treatment-Resistant Depression: Combining Pharmacological and Whole-Person Approaches." This positions your integrative brand in the academic literature.</span></p>
+    </div>
+
+    <div class="opp-card">
+      <div class="opp-title">Grand Rounds &amp; Visiting Lectures at Florida Residency Programs</div>
+      <div class="opp-deadline">Ongoing</div>
+      <p>Florida psychiatric residency programs at University of Florida, University of Miami, Nova Southeastern, and University Hospital &amp; Medical Center (your alma mater) regularly invite guest lecturers.</p>
+      <p><span class="action-tag">Action</span> <span class="action">Contact the residency program director at your alma mater (University Hospital &amp; Medical Center, Tamarac) to offer a grand rounds lecture. Topic: "From Residency to KOL: Building a Thought Leadership Career in Community Psychiatry." Also reach out to Nova Southeastern and UM residency programs.</span></p>
+    </div>
+
+    <h3>Podcast &amp; Media Opportunities</h3>
+
+    <div class="opp-card">
+      <div class="opp-title">Podcast Pitch Angles &mdash; Tied to Current News</div>
+      <p>With COMP360's Phase 3 success making headlines, there is massive media interest in psychedelic-assisted therapy. Your integrative psychiatry perspective is perfectly positioned for commentary.</p>
+      <p><span class="action-tag">Action</span> <span class="action">Pitch yourself to Psychiatric Times podcast, PsychU, and Medscape Psychiatry as an expert commentator on "What Community Psychiatrists Need to Know About the Psychedelic Pipeline." Also pitch local South Florida media (Sun Sentinel, Miami Herald health sections) on the story: "A South Florida Psychiatrist's Perspective on the Revolution in Depression Treatment."</span></p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 3: KOL Visibility & Brand     -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section" id="s3">
+  <div class="section-header" onclick="toggleSection('s3')">
+    <span class="icon">&#x1F31F;</span>
+    <h2>Section 3: KOL Visibility &amp; Personal Brand Actions</h2>
+    <svg class="chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+  </div>
+  <div class="section-body">
+
+    <h3>1. LinkedIn Post Idea</h3>
+    <p><strong>Hook/First Line (draft):</strong></p>
+    <p style="background: var(--green-soft); border-left: 3px solid var(--green-light); padding: 14px 18px; border-radius: 0 8px 8px 0; font-style: italic; margin: 10px 0;">
+      "A single dose. Rapid onset. Effects lasting weeks.<br><br>
+      Compass Pathways just hit their second Phase 3 endpoint for psilocybin in treatment-resistant depression. As a psychiatrist who treats TRD patients daily, here's why this matters more than the headlines suggest &mdash; and the critical questions we still need answered before this reaches our clinics..."
+    </p>
+    <p><span class="action-tag">Action</span> <span class="action">Post this on LinkedIn TODAY. Tag Compass Pathways, Psychiatric Times, and relevant hashtags (#Psychiatry #TreatmentResistantDepression #MentalHealth #Psilocybin #IntegrativePsychiatry). End with a question to drive engagement: "For my fellow psychiatrists &mdash; are you preparing your practices for psychedelic-assisted therapies?"</span></p>
+
+    <h3>2. Connection Target</h3>
+    <p><strong>Target:</strong> An MSL or Medical Affairs Director at Johnson &amp; Johnson Neuroscience (Caplyta team)</p>
+    <p><strong>Draft Connection Message:</strong></p>
+    <p style="background: #f8f8f8; padding: 14px 18px; border-radius: 8px; font-style: italic; margin: 10px 0;">
+      "Hi [Name], I'm Dr. Audrey La Noce, a board-certified psychiatrist (DO, DFAPA) and founder of Total Mental Wellness, a multi-location practice in Florida. As President of the Broward County Chapter of the Florida Psychiatric Society, I'm deeply engaged in advancing psychiatric education. I'm particularly interested in the Caplyta MDD data and would welcome the opportunity to connect about educational initiatives in the Southeast. Looking forward to connecting."
+    </p>
+    <p><span class="action-tag">Action</span> <span class="action">Search LinkedIn for "Johnson Johnson MSL neuroscience Florida" or "Intra-Cellular Therapies Medical Science Liaison Southeast." Send this personalized connection request to 2-3 relevant contacts today.</span></p>
+
+    <h3>3. Publication Opportunity</h3>
+    <p><strong>Suggested Topic:</strong> "Integrative Augmentation Strategies for Treatment-Resistant Depression: A Clinical Perspective on Combining Pharmacological Innovation with Whole-Person Care"</p>
+    <p><strong>Target Journals:</strong> Frontiers in Psychiatry (Reviews in Psychiatry 2026 topic &mdash; deadline April 17), or The Journal of Clinical Psychiatry (letters/perspectives section)</p>
+    <p><span class="action-tag">Action</span> <span class="action">Draft a 500-word manuscript summary for the Frontiers in Psychiatry Research Topic by this weekend. Structure: Introduction to TRD burden &rarr; Pharmacological pipeline (Caplyta, COMP360, MM120) &rarr; Integrative augmentation (exercise, nutrition, neuromodulation) &rarr; Clinical framework for whole-person approach &rarr; Practice implications.</span></p>
+
+    <h3>4. Strategic Engagement</h3>
+    <p><strong>Target Post:</strong> Search LinkedIn for recent posts by prominent psychiatric KOLs discussing the COMP360 Phase 3 results or Caplyta MDD approval. Leave a thoughtful, substantive comment that showcases your clinical expertise.</p>
+    <p><span class="action-tag">Action</span> <span class="action">Find and comment on 2-3 LinkedIn posts about COMP360 or Caplyta today. Add clinical context from your practice experience. Tag your comment with your credentials (e.g., "As a community psychiatrist treating TRD patients across three Florida locations...").</span></p>
+
+    <h3>5. Media/PR Angle</h3>
+    <p><strong>News Hook:</strong> The psychedelic therapy revolution is accelerating &mdash; COMP360's second Phase 3 success makes psilocybin-assisted therapy closer to FDA approval than ever. Local and national media want a psychiatrist's perspective.</p>
+    <p><span class="action-tag">Action</span> <span class="action">Send a media pitch to the Sun Sentinel, South Florida Business Journal, and local TV health reporters: "South Florida Psychiatrist Available for Expert Commentary on the Psychedelic Therapy Revolution." Position yourself as the go-to regional expert who can explain what this means for patients.</span></p>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 4: Pharma Relationship Building -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section" id="s4">
+  <div class="section-header" onclick="toggleSection('s4')">
+    <span class="icon">&#x1F91D;</span>
+    <h2>Section 4: Pharma Relationship Building</h2>
+    <svg class="chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+  </div>
+  <div class="section-body">
+
+    <h3>Priority Companies &amp; Contact Strategies</h3>
+
+    <div class="pipeline-card">
+      <div class="drug-name">1. Johnson &amp; Johnson (Neuroscience / Caplyta)</div>
+      <p><strong>Product:</strong> Caplyta (lumateperone) &mdash; newly approved for adjunctive MDD (Nov 2025), plus existing schizophrenia and bipolar depression indications</p>
+      <p><strong>MSL Contact Strategy:</strong> Search LinkedIn for <a href="https://www.linkedin.com/search/results/people/?keywords=johnson%20johnson%20MSL%20neuroscience%20florida" target="_blank">"Johnson Johnson MSL neuroscience Florida"</a>. Target Southeast regional MSLs.</p>
+      <p><strong>Reason to reach out NOW:</strong> J&amp;J is actively scaling Caplyta MDD speaker programs post-approval. They acquired Intra-Cellular Therapies for $14.6B specifically for this asset. This is likely the single largest speaker bureau opportunity in psychiatry right now.</p>
+      <p><span class="action-tag">Action</span> <span class="action">Connect with 2-3 J&amp;J Neuroscience MSLs this week. In your message, highlight: (1) your DFAPA credential, (2) multi-location MDD patient volume, (3) FPS Chapter President role, (4) interest in Caplyta education programs.</span></p>
+    </div>
+
+    <div class="pipeline-card">
+      <div class="drug-name">2. Compass Pathways (COMP360 Psilocybin)</div>
+      <p><strong>Product:</strong> COMP360 psilocybin for treatment-resistant depression (FDA submission planned Oct&ndash;Dec 2026)</p>
+      <p><strong>MSL Contact Strategy:</strong> Search LinkedIn for <a href="https://www.linkedin.com/search/results/people/?keywords=compass%20pathways%20medical%20affairs" target="_blank">"Compass Pathways Medical Affairs"</a> or "Compass Pathways Medical Science Liaison."</p>
+      <p><strong>Reason to reach out NOW:</strong> With two positive Phase 3 trials and FDA submission imminent, Compass will need to build a speaker network and REMS education infrastructure from scratch. Getting in early is critical.</p>
+      <p><span class="action-tag">Action</span> <span class="action">Send a LinkedIn connection request to Compass Pathways Medical Affairs leadership. Reference your TRD patient population and integrative psychiatry lens as differentiators.</span></p>
+    </div>
+
+    <div class="pipeline-card">
+      <div class="drug-name">3. Neurocrine Biosciences (Ingrezza)</div>
+      <p><strong>Product:</strong> Ingrezza (valbenazine) for tardive dyskinesia &mdash; commonly encountered in psychiatric practice</p>
+      <p><strong>MSL Contact Strategy:</strong> Search LinkedIn for <a href="https://www.linkedin.com/search/results/people/?keywords=neurocrine%20biosciences%20MSL%20psychiatry" target="_blank">"Neurocrine Biosciences MSL psychiatry"</a>.</p>
+      <p><strong>Reason to reach out NOW:</strong> Neurocrine has an established and active psychiatry speaker bureau. As a multi-location practice prescriber managing patients on antipsychotics, you have natural credibility on TD recognition and management.</p>
+      <p><span class="action-tag">Action</span> <span class="action">Express interest in the Ingrezza speaker bureau by connecting with a Neurocrine MSL. Highlight your experience managing TD across multiple practice locations with psychiatrists and PMHNPs.</span></p>
+    </div>
+
+    <div class="pipeline-card">
+      <div class="drug-name">4. Axsome Therapeutics (Auvelity)</div>
+      <p><strong>Product:</strong> Auvelity (dextromethorphan/bupropion) for MDD &mdash; the first oral rapid-acting antidepressant</p>
+      <p><strong>MSL Contact Strategy:</strong> Search LinkedIn for <a href="https://www.linkedin.com/search/results/people/?keywords=axsome%20therapeutics%20MSL" target="_blank">"Axsome Therapeutics MSL"</a>.</p>
+      <p><strong>Reason to reach out NOW:</strong> Auvelity is still building market presence as a relatively new approval. Axsome actively recruits speakers who can discuss the rapid-acting mechanism and positioning vs. traditional antidepressants.</p>
+      <p><span class="action-tag">Action</span> <span class="action">Connect with Axsome MSL team. Pitch your practice data and experience with rapid-acting interventions as a complement to their Auvelity education platform.</span></p>
+    </div>
+
+    <div class="pipeline-card">
+      <div class="drug-name">5. AbbVie (Vraylar + Psychedelic Pipeline)</div>
+      <p><strong>Product:</strong> Vraylar (cariprazine) for schizophrenia, bipolar mania, bipolar depression, and adjunctive MDD. Pipeline: bretisilocin (psychedelic-based depression asset acquired from Gilgamesh for $1.2B)</p>
+      <p><strong>MSL Contact Strategy:</strong> Search LinkedIn for <a href="https://www.linkedin.com/search/results/people/?keywords=abbvie%20MSL%20psychiatry%20florida" target="_blank">"AbbVie MSL psychiatry Florida"</a>.</p>
+      <p><strong>Reason to reach out NOW:</strong> AbbVie has a mature Vraylar speaker bureau AND is building a psychedelic psychiatry pipeline via bretisilocin. This dual positioning &mdash; established product + emerging pipeline &mdash; creates multiple KOL entry points.</p>
+      <p><span class="action-tag">Action</span> <span class="action">Connect with AbbVie MSLs. Express interest in both Vraylar education and their emerging psychedelic pipeline program. Mention your integrative psychiatry focus as a bridge between traditional pharmacology and novel mechanisms.</span></p>
+    </div>
+
+    <h3>Advisory Board Opportunities</h3>
+    <p>Advisory boards are typically assembled 6&ndash;12 months before or after a new approval. Based on the current pipeline, these companies are most likely assembling advisory boards now:</p>
+    <ul>
+      <li><span class="action">J&amp;J/Caplyta</span> &mdash; MDD launch advisory boards (post-approval market shaping)</li>
+      <li><span class="action">Compass Pathways</span> &mdash; Pre-submission advisory boards on REMS design and clinical implementation</li>
+      <li><span class="action">Vanda Pharmaceuticals</span> &mdash; Bysanti launch planning advisory boards</li>
+      <li><span class="action">MindMed</span> &mdash; Phase 3 design and clinical advisory for MM120</li>
+    </ul>
+
+    <h3>Calling Card Presentation Topic</h3>
+    <p>Create a proactive "calling card" slide deck you can share with MSLs:</p>
+    <p><span class="action-tag">Action</span> <span class="action">Develop a 15&ndash;20 slide deck: "Optimizing Depression Outcomes in Community Practice: An Integrative Framework for Treatment-Resistant Patients." This bridges pharmacology + whole-person care, showcases your unique positioning, and gives MSLs a tangible reason to recommend you for speaker programs. Send as a PDF to MSL contacts with your CV.</span></p>
+
+    <h3>Sunshine Act / Open Payments Compliance</h3>
+    <p>The CMS Open Payments database (Program Year 2024 data published) now contains 16.16 million records totaling $13.18 billion. Florida ranks as the 3rd highest state for physician payments ($862M+).</p>
+    <p><strong>Key data on psychiatry payments:</strong> Per CMS data, 55.7% of active psychiatrists received payments from pharmaceutical manufacturers (2016&ndash;2017 analysis). Speaker compensation and consulting fees constituted 71.4% of total payments. The top 2.8% of psychiatrists received 82.6% of all payments. Top-paying manufacturers to psychiatrists include Otsuka, Alkermes, and Sunovion.</p>
+    <p><strong>Top 15 Psychiatry Speakers in Florida:</strong> The CMS Open Payments database can be queried directly at <a href="https://openpaymentsdata.cms.gov/" target="_blank">openpaymentsdata.cms.gov</a> by filtering: Specialty = Psychiatry, State = Florida, Nature of Payment = Compensation for Services (speaking). ProPublica's Dollars for Docs (<a href="https://projects.propublica.org/docdollars/" target="_blank">link</a>) also provides historical data. Note: 2024 program year data is the most recent available; 2025&ndash;2026 data has not yet been published.</p>
+    <p><span class="action-tag">Action</span> <span class="action">Review the CMS Open Payments database for the top-paid psychiatry speakers in Florida. Identify who is active, which companies they speak for, and which therapeutic areas. Use this to identify gaps where you could position yourself (e.g., if top speakers are heavily focused on schizophrenia but not MDD or anxiety, that's your opportunity).</span></p>
+
+    <h3>Pharma-Sponsored Initiatives</h3>
+    <ul>
+      <li><span class="action">REMS Programs:</span> With COMP360 psilocybin approaching FDA submission, a REMS program is virtually certain. Volunteer early for REMS training and education roles.</li>
+      <li><span class="action">Patient Education Campaigns:</span> J&amp;J will likely launch MDD patient awareness campaigns around Caplyta. Position yourself as a physician spokesperson for patient-facing materials.</li>
+      <li><span class="action">Disease Awareness:</span> May is Mental Health Awareness Month &mdash; pharma companies frequently partner with KOLs for media and educational campaigns during this period. Proactively reach out to MSLs in April to offer participation.</li>
+    </ul>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 5: Competitive Intelligence    -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section" id="s5">
+  <div class="section-header" onclick="toggleSection('s5')">
+    <span class="icon">&#x1F50D;</span>
+    <h2>Section 5: Competitive Intelligence</h2>
+    <svg class="chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+  </div>
+  <div class="section-body">
+
+    <h3>Most Visible Psychiatric KOLs in Florida</h3>
+    <p>Based on current conference lineups, publications, and media presence:</p>
+    <ul>
+      <li><strong>Speakers at the SoFlo Psych Conference 2026</strong> &mdash; PER (Physicians' Education Resource) selects regional experts for presentations and panels. These speakers are actively positioned as Florida's psychiatric thought leaders. Monitor their topics and emulate their conference engagement strategy.</li>
+      <li><strong>FPS Spring 2026 Meeting faculty</strong> &mdash; Faculty selected for the FPS meeting at Omni Orlando are currently Florida's most visible FPS-affiliated speakers. As Chapter President, you have an insider advantage here.</li>
+      <li><strong>Lantie Jorandby, MD</strong> &mdash; Board-certified in psychiatry and addiction psychiatry/medicine, CMO at Lakeview Health (Jacksonville). Active speaker and media presence in addiction and dual-diagnosis. <em>Lesson: She carved a niche in addiction psychiatry that overlaps with but doesn't compete with your focus areas.</em></li>
+      <li><strong>Academic faculty at UF, UM, and Nova Southeastern</strong> &mdash; University-affiliated psychiatrists have built-in publication and speaking infrastructure. Your advantage: real-world community practice perspective that academic speakers can't offer.</li>
+    </ul>
+
+    <h3>Underserved Niche Topics &mdash; Opportunities to Own</h3>
+    <ul>
+      <li><span class="action">First-Responder Mental Health:</span> Very few psychiatrists nationally have positioned themselves as the go-to expert for law enforcement, firefighter, and paramedic mental health. Your existing work with first responders gives you a head start. This is a high-media-interest topic with natural pharma alignment (PTSD treatments, anxiety medications).</li>
+      <li><span class="action">Athlete Mental Health in Psychiatry:</span> The conversation around athlete mental health (post-Simone Biles, Naomi Osaka) is mainstream, but few psychiatrists &mdash; particularly DOs &mdash; are positioning as expert speakers. Your patient population gives you authentic credibility.</li>
+      <li><span class="action">Integrative/Whole-Person Psychiatry:</span> The Integrative Mental Health Conference (2026) and growing research on nutritional psychiatry, exercise interventions, and mind-body approaches create a lane that few traditional psychopharmacology speakers occupy. Your TMW brand is perfectly aligned.</li>
+      <li><span class="action">DO Physician KOL Representation:</span> DOs are significantly underrepresented as pharma KOLs. This is both a challenge and an opportunity &mdash; position yourself as a champion for DO representation in psychiatric thought leadership. Pitch op-eds and talks on "Bridging the DO-MD Gap in Psychiatric KOL Development."</li>
+      <li><span class="action">Psychedelic-Assisted Therapy in Community Practice:</span> Most psychedelic therapy KOLs are academic. Position yourself as the community practice voice for implementation of psychedelic-assisted therapies as they approach approval.</li>
+    </ul>
+
+    <h3>Content Formats Working Best for Psychiatric KOLs (2025&ndash;2026)</h3>
+    <ul>
+      <li><strong>Short-form video (Instagram Reels, TikTok, LinkedIn Video):</strong> 60&ndash;90 second clinical pearls are the highest-engagement format. Psychiatrists like Dr. Tracey Marks have built massive audiences with educational short-form content.</li>
+      <li><strong>LinkedIn long-form posts and articles:</strong> This remains the #1 platform for professional visibility with MSLs and pharma executives. Weekly posting frequency is optimal.</li>
+      <li><strong>Podcasts (guest appearances):</strong> Appearing on established psychiatric podcasts (Carlat Psychiatry Podcast, Psychiatry &amp; Psychotherapy Podcast) builds authority without the production overhead of hosting your own.</li>
+      <li><strong>Newsletter/Substack:</strong> Several psychiatric KOLs are building direct-to-audience platforms. Consider a monthly "Total Mental Wellness Clinical Insights" newsletter.</li>
+      <li><strong>X (Twitter) engagement:</strong> Still relevant for real-time conference commentary (#APA2026) and engaging with pharma/academic thought leaders.</li>
+    </ul>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 6: Clinical Insight of the Day -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section" id="s6">
+  <div class="section-header" onclick="toggleSection('s6')">
+    <span class="icon">&#x1F9E0;</span>
+    <h2>Section 6: Clinical Insight of the Day</h2>
+    <svg class="chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+  </div>
+  <div class="section-body">
+
+    <h3>Lumateperone (Caplyta) as Adjunctive MDD Therapy: What Clinicians Need to Know</h3>
+
+    <p><strong>The Evidence:</strong> The FDA approval of Caplyta for adjunctive MDD (November 2025) was supported by two positive Phase 3 trials. Study 501 showed a 4.9-point MADRS separation vs. placebo (effect size 0.61), and Study 502 showed a 4.5-point separation (effect size 0.56). In the open-label extension, 80% of patients achieved response and 65% reached remission. Notably, lumateperone's unique mechanism &mdash; simultaneous modulation of serotonin, dopamine, and glutamate signaling &mdash; differentiates it from existing augmentation strategies.</p>
+
+    <p><strong>Clinical Pearl:</strong> Unlike aripiprazole or quetiapine augmentation, lumateperone demonstrated these MDD benefits with a favorable metabolic and movement disorder profile. The 6-month extension data showing 65% remission rates is particularly clinically meaningful &mdash; this suggests durable benefit, not just acute symptom reduction. For patients who have failed SSRI/SNRI monotherapy and are hesitant about weight gain or akathisia from traditional atypical antipsychotic augmentation, lumateperone offers a compelling alternative.</p>
+
+    <p><strong>3 Ways to Use This:</strong></p>
+
+    <p><strong>1. Talking Point for Pharma Meetings:</strong> "The Caplyta MDD data represents a potential paradigm shift in augmentation strategy. The effect sizes of 0.56&ndash;0.61 are among the highest we've seen for adjunctive antidepressant therapy, and the tolerability profile addresses the primary reason patients and clinicians hesitate to augment with atypical antipsychotics."</p>
+
+    <p><strong>2. LinkedIn Post Script:</strong></p>
+    <p style="background: var(--green-soft); border-left: 3px solid var(--green-light); padding: 14px 18px; border-radius: 0 8px 8px 0; font-style: italic;">
+      "65% remission in depression. That's not a typo.<br><br>
+      The Caplyta open-label extension data for MDD shows what many of us hope for but rarely achieve: sustained remission in patients who had already failed first-line treatment. Here's what makes the mechanism different and why I believe this changes our augmentation algorithm..."
+    </p>
+
+    <p><strong>3. CME Lecture Foundation:</strong> This data could anchor a CME talk: "Rethinking Augmentation in MDD: From STAR*D to Lumateperone &mdash; A 2026 Evidence Update." This is an ideal pharma-sponsored or independent CME topic given the recency of approval.</p>
+
+    <p><em>Source: <a href="https://www.jnj.com/media-center/press-releases/fda-approval-of-caplyta-lumateperone-has-the-potential-to-reset-treatment-expectations-offering-hope-for-remission-in-adults-with-major-depressive-disorder" target="_blank">J&amp;J Press Release</a> | <a href="https://www.psychiatrictimes.com/view/fda-approves-caplyta-for-adjunctive-treatment-of-major-depressive-disorder" target="_blank">Psychiatric Times</a></em></p>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION 7: Weekly Deep Dive (Tuesday)     -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" id="s7">
+  <div class="section-header" onclick="toggleSection('s7')">
+    <span class="icon">&#x1F4DD;</span>
+    <h2>Section 7: Tuesday Deep Dive &mdash; Publication Strategy</h2>
+    <svg class="chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+  </div>
+  <div class="section-body">
+
+    <h3>Priority Publication Opportunity: Frontiers in Psychiatry</h3>
+
+    <div class="pipeline-card">
+      <div class="drug-name">Research Topic: "Reviews in Psychiatry 2026: Psychopharmacology"</div>
+      <div class="company">Frontiers in Psychiatry | Open Access, High Visibility</div>
+      <p><strong>Deadline:</strong> Manuscript summary due <strong>April 17, 2026</strong> (31 days from today). Full manuscript due September 25, 2026.</p>
+      <p><strong>Why this journal:</strong> Frontiers in Psychiatry is an open-access journal with high visibility and a strong digital footprint. Open-access articles get cited more frequently and are more easily found by pharma medical affairs teams evaluating potential KOLs. The "Reviews in Psychiatry 2026" research topic is specifically soliciting review articles &mdash; perfect for establishing thought leadership without requiring original data.</p>
+      <p><a href="https://www.frontiersin.org/research-topics/75761/reviews-in-psychiatry-2026-psychopharmacology" target="_blank">Submit Here &rarr;</a></p>
+    </div>
+
+    <h3>Recommended Article Topic</h3>
+    <p><strong>Title:</strong> "Integrative Augmentation Strategies for Treatment-Resistant Depression: Bridging Pharmacological Innovation and Whole-Person Care in Community Practice"</p>
+
+    <p><strong>Article Outline:</strong></p>
+    <ul>
+      <li><strong>Introduction:</strong> The TRD burden in community psychiatric practice. STAR*D-level context: ~1/3 of MDD patients don't remit with first-line treatment. The need for a comprehensive augmentation framework.</li>
+      <li><strong>Pharmacological Innovations (2024&ndash;2026):</strong> Lumateperone for adjunctive MDD, esketamine monotherapy expansion, COMP360 psilocybin Phase 3 data, MM120 for GAD/MDD, BNC-210 for social anxiety. Mechanism of action comparisons and clinical positioning.</li>
+      <li><strong>Integrative Augmentation Approaches:</strong> Exercise prescriptions (evidence from meta-analyses), nutritional psychiatry interventions, mindfulness-based cognitive therapy for relapse prevention, neuromodulation devices (Proliv Rx, TMS), sleep optimization protocols.</li>
+      <li><strong>A Clinical Framework:</strong> Propose a stepped-care model integrating pharmacological and non-pharmacological approaches. Include a visual algorithm clinicians can use in practice.</li>
+      <li><strong>Special Populations:</strong> Adaptations for athletes, first responders, executives, and LGBTQ+ patients &mdash; your clinical niches.</li>
+      <li><strong>Conclusion:</strong> The future of TRD treatment is multimodal. Community psychiatrists are uniquely positioned to implement integrative approaches.</li>
+    </ul>
+
+    <h3>Alternative Publication Targets</h3>
+
+    <div class="opp-card">
+      <div class="opp-title">The Journal of Clinical Psychiatry &mdash; Perspectives/Commentary</div>
+      <p><strong>Suggested piece:</strong> A 1,500-word perspective article: "What Community Psychiatrists Need to Know About the Psychedelic Pipeline: Preparing Practices for a New Treatment Paradigm." The JCP Perspectives section is shorter, faster to publish, and highly read by practicing psychiatrists.</p>
+      <p><a href="https://www.psychiatrist.com/jcp/" target="_blank">Journal of Clinical Psychiatry</a></p>
+    </div>
+
+    <div class="opp-card">
+      <div class="opp-title">Psychiatry International (MDPI) &mdash; Special Issue</div>
+      <p><strong>Special Issue:</strong> "Precision Approaches to Anxiety and Depression: Integrating Digital Technologies in Mental Health Research" &mdash; deadline November 30, 2026. This gives you more time and aligns with your telehealth practice model.</p>
+      <p><a href="https://www.mdpi.com/journal/psychiatryint" target="_blank">Psychiatry International</a></p>
+    </div>
+
+    <div class="opp-card">
+      <div class="opp-title">Journal of Mood &amp; Anxiety Disorders (ADAA)</div>
+      <p><strong>Suggested piece:</strong> A clinical review on anxiety treatment in first responders, highlighting unique pharmacological considerations and whole-person approaches for occupational stress disorders.</p>
+      <p><a href="https://adaa.org/professionals/journal" target="_blank">JMAD</a></p>
+    </div>
+
+    <div class="opp-card">
+      <div class="opp-title">Case Report: Psychiatric Times or BMC Psychiatry</div>
+      <p><strong>Suggested topic:</strong> A case series on multi-modal treatment approaches for treatment-resistant PTSD in first responders, combining pharmacotherapy with integrative interventions. Case reports require less time than full review articles and are valuable for KOL portfolios.</p>
+      <p><a href="https://bmcpsychiatry.biomedcentral.com/" target="_blank">BMC Psychiatry</a> | <a href="https://www.psychiatrictimes.com/" target="_blank">Psychiatric Times</a></p>
+    </div>
+
+    <h3>Submission Strategy &amp; Timeline</h3>
+    <ul>
+      <li><span class="action">This week (by March 22):</span> Draft the 500-word manuscript summary for Frontiers in Psychiatry. Outline the review article structure.</li>
+      <li><span class="action">By March 31:</span> Submit the manuscript summary to Frontiers. Simultaneously draft the JCP Perspectives piece (1,500 words).</li>
+      <li><span class="action">April&ndash;May:</span> Write the full Frontiers review article. Submit the JCP Perspectives piece.</li>
+      <li><span class="action">June&ndash;September:</span> Finalize and submit the Frontiers review article. Begin the case series for BMC Psychiatry.</li>
+    </ul>
+
+    <p><strong>DO-Specific Strategy:</strong> In all publications, include your DO credential prominently. Consider adding a brief commentary paragraph in each article about the importance of DO representation in psychiatric research and KOL development. This builds your brand as a DO champion in psychiatry.</p>
+
+    <p><span class="action-tag">Action</span> <span class="action">Block 2 hours on your calendar THIS WEEK to draft the Frontiers manuscript summary. The April 17 deadline is your highest-priority publication action item right now.</span></p>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- TODAY'S TOP 3 ACTIONS                  -->
+<!-- ═══════════════════════════════════════ -->
+<div class="top-actions">
+  <h2>Today's Top 3 Actions</h2>
+
+  <div class="top-action-item">
+    <div class="action-num">1</div>
+    <div class="action-text"><strong>Submit a WCP 2026 Abstract (Deadline: March 23)</strong> &mdash; You have only 6 days. Submit an abstract on "Whole-Person Psychiatry in Multi-Location Community Practice: Outcomes and Lessons from Florida." This puts you on the global stage. <a href="https://wcp-congress.com/" target="_blank" style="color: var(--green-pale);">Submit here</a></div>
+  </div>
+
+  <div class="top-action-item">
+    <div class="action-num">2</div>
+    <div class="action-text"><strong>Connect with J&amp;J Neuroscience MSLs on LinkedIn</strong> &mdash; Caplyta's MDD approval is the biggest speaker bureau opportunity in psychiatry right now. Search "Johnson Johnson MSL neuroscience Florida" and send 2&ndash;3 personalized connection requests today using the draft message in Section 3.</div>
+  </div>
+
+  <div class="top-action-item">
+    <div class="action-num">3</div>
+    <div class="action-text"><strong>Post on LinkedIn about COMP360 Phase 3 Results</strong> &mdash; The psychedelic therapy story is dominating psychiatric news. Use the draft hook in Section 3 to publish a thought-leadership post TODAY. Tag Compass Pathways and relevant hashtags to maximize visibility with pharma medical affairs teams.</div>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<footer>
+  <p>Total Mental Wellness &mdash; KOL Strategy Briefing &copy; 2026 | Generated for Dr. Audrey La Noce, DO, DFAPA</p>
+  <p style="margin-top: 4px;">Confidential &mdash; For strategic planning purposes only</p>
+</footer>
+
+<script>
+function toggleSection(id) {
+  const section = document.getElementById(id);
+  section.classList.toggle('collapsed');
+}
+</script>
+
+</body>
+</html>

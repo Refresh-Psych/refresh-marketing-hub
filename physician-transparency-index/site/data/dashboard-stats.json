@@ -1,0 +1,11 @@
+{
+  "totalPayments": 16939453778.29,
+  "totalRecords": 82123736,
+  "totalPhysicians": 1598851,
+  "totalCompanies": 3256,
+  "totalStates": 61,
+  "yearRange": {
+    "min": 2018,
+    "max": 2024
+  }
+}

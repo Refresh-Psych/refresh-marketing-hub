@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Total Mental Wellness — KOL Strategy Briefing | March 16, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #2a7a4b;
+    --green-mid: #3da06a;
+    --green-light: #e8f5ee;
+    --green-accent: #45b97c;
+    --blue-dark: #1a3a5c;
+    --blue-mid: #2d6fa0;
+    --blue-light: #eaf2fa;
+    --black: #1a1a2e;
+    --gray-dark: #3a3a4a;
+    --gray-mid: #6b7280;
+    --gray-light: #f4f6f8;
+    --white: #ffffff;
+    --shadow: 0 2px 12px rgba(42,122,75,0.08);
+    --shadow-hover: 0 4px 20px rgba(42,122,75,0.14);
+    --radius: 10px;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Nunito Sans', 'Open Sans', sans-serif;
+    background: linear-gradient(135deg, #f0f7f3 0%, #eaf2fa 50%, #f4f6f8 100%);
+    color: var(--gray-dark);
+    font-size: 16.5px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* Decorative leaf SVGs */
+  .leaf-bg {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 0; opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath d='M60 10 C30 30 10 60 20 90 C30 70 50 50 60 10Z' fill='%232a7a4b'/%3E%3Cpath d='M60 10 C90 30 110 60 100 90 C90 70 70 50 60 10Z' fill='%233da06a'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 24px 20px 60px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 60%, var(--green-accent) 100%);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 28px;
+    box-shadow: 0 6px 30px rgba(42,122,75,0.18);
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    color: var(--white);
+  }
+
+  .header-logo {
+    flex-shrink: 0;
+  }
+
+  .header-logo svg {
+    width: 80px;
+    height: 80px;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
+  }
+
+  .header-text h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+  }
+
+  .header-text .subtitle {
+    font-size: 15px;
+    opacity: 0.92;
+    font-weight: 500;
+  }
+
+  .header-text .date {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-top: 6px;
+    font-weight: 400;
+  }
+
+  /* Section cards */
+  .section {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-left: 4px solid var(--green-mid);
+    transition: box-shadow 0.2s;
+  }
+
+  .section:hover {
+    box-shadow: var(--shadow-hover);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 28px;
+    cursor: pointer;
+    user-select: none;
+    background: linear-gradient(90deg, var(--green-light) 0%, var(--white) 100%);
+    border-bottom: 1px solid rgba(42,122,75,0.08);
+    transition: background 0.2s;
+  }
+
+  .section-header:hover {
+    background: linear-gradient(90deg, #dcf0e4 0%, var(--white) 100%);
+  }
+
+  .section-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--green-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 18px;
+    color: white;
+  }
+
+  .section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--green-dark);
+    flex: 1;
+  }
+
+  .section-number {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--green-accent);
+    background: var(--green-light);
+    padding: 2px 10px;
+    border-radius: 12px;
+  }
+
+  .chevron {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+    color: var(--green-mid);
+  }
+
+  .section.collapsed .chevron {
+    transform: rotate(-90deg);
+  }
+
+  .section-body {
+    padding: 24px 28px 28px;
+    transition: max-height 0.4s ease, padding 0.3s ease, opacity 0.3s ease;
+    overflow: hidden;
+  }
+
+  .section.collapsed .section-body {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+  }
+
+  /* Content styling */
+  h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--blue-dark);
+    margin: 22px 0 10px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--green-light);
+  }
+
+  h3:first-child { margin-top: 0; }
+
+  .item {
+    background: var(--gray-light);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 12px 0;
+    border-left: 3px solid var(--green-accent);
+  }
+
+  .item-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--green-dark);
+    margin-bottom: 6px;
+  }
+
+  .item p {
+    margin: 6px 0;
+    font-size: 15.5px;
+  }
+
+  .action {
+    font-weight: 700;
+    color: var(--blue-dark);
+  }
+
+  a {
+    color: var(--blue-mid);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(45,111,160,0.3);
+    transition: border-color 0.2s;
+  }
+
+  a:hover {
+    border-color: var(--blue-mid);
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 12px;
+    margin-right: 6px;
+    margin-bottom: 4px;
+  }
+
+  .tag-new { background: #dcfce7; color: #166534; }
+  .tag-pipeline { background: #dbeafe; color: #1e40af; }
+  .tag-action { background: #fef3c7; color: #92400e; }
+  .tag-opportunity { background: #ede9fe; color: #5b21b6; }
+  .tag-urgent { background: #fee2e2; color: #991b1b; }
+
+  /* Summary box */
+  .summary-box {
+    background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
+    border-radius: 14px;
+    padding: 32px 36px;
+    margin-top: 32px;
+    color: var(--white);
+    box-shadow: 0 6px 30px rgba(42,122,75,0.2);
+  }
+
+  .summary-box h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .summary-item {
+    background: rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 12px 0;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .summary-item .rank {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    margin-right: 12px;
+    opacity: 0.9;
+  }
+
+  .summary-item p {
+    font-size: 15.5px;
+    line-height: 1.6;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 32px 20px 12px;
+    font-size: 13px;
+    color: var(--gray-mid);
+  }
+
+  /* Mobile */
+  @media (max-width: 700px) {
+    .header { flex-direction: column; text-align: center; padding: 28px 20px; }
+    .header-text h1 { font-size: 21px; }
+    .section-header { padding: 16px 18px; }
+    .section-body { padding: 18px; }
+    .summary-box { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="leaf-bg"></div>
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-logo">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="leafGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#a8e6cf"/>
+          <stop offset="100%" stop-color="#ffffff"/>
+        </linearGradient>
+      </defs>
+      <!-- Head silhouette -->
+      <ellipse cx="50" cy="55" rx="22" ry="28" fill="rgba(255,255,255,0.9)"/>
+      <!-- Leaves growing from head -->
+      <path d="M50 27 C40 15 25 12 30 5 C38 10 45 18 50 27Z" fill="url(#leafGrad)" opacity="0.9"/>
+      <path d="M50 27 C55 12 68 5 72 2 C68 12 58 20 50 27Z" fill="url(#leafGrad)" opacity="0.85"/>
+      <path d="M50 27 C42 8 48 -2 55 -5 C52 8 50 18 50 27Z" fill="url(#leafGrad)" opacity="0.8"/>
+      <path d="M38 32 C28 22 18 22 15 18 C24 22 32 26 38 32Z" fill="url(#leafGrad)" opacity="0.7"/>
+      <path d="M62 32 C72 22 82 22 85 18 C76 22 68 26 62 32Z" fill="url(#leafGrad)" opacity="0.7"/>
+    </svg>
+  </div>
+  <div class="header-text">
+    <h1>Total Mental Wellness — KOL Strategy Briefing</h1>
+    <div class="subtitle">Daily Intelligence Report for Dr. Audrey La Noce, DO, DFAPA</div>
+    <div class="date">Monday, March 16, 2026 &nbsp;|&nbsp; Fort Lauderdale, FL</div>
+  </div>
+</div>
+
+<!-- SECTION 1: Pharma & Biotech Pipeline Intelligence -->
+<div class="section" id="section1">
+  <div class="section-header" onclick="toggleSection('section1')">
+    <div class="section-icon">&#x1F9EC;</div>
+    <span class="section-number">01</span>
+    <span class="section-title">Pharma & Biotech Pipeline Intelligence</span>
+    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-title"><span class="tag tag-new">NEW APPROVAL</span> Bysanti (Milsaperidone) — Bipolar I & Schizophrenia</div>
+      <p><strong>What happened:</strong> On February 20, 2026, the FDA approved Vanda Pharmaceuticals' Bysanti (milsaperidone) tablets — a new chemical entity atypical antipsychotic — for acute manic/mixed episodes in bipolar I disorder and schizophrenia in adults. Commercial availability is expected Q3 2026. Vanda is also conducting a Phase III trial of Bysanti as adjunctive treatment for treatment-resistant MDD, with results expected by end of 2026.</p>
+      <p><strong>Why it matters for you:</strong> Brand-new product launches require speakers. As a DO psychiatrist with bipolar and mood disorder expertise, you're well-positioned to be part of early speaker recruitment. The TRD expansion would directly align with your integrative psychiatry focus.</p>
+      <p class="action">&#x27A1; Action: Proactively reach out to Vanda Pharmaceuticals' Medical Affairs team via LinkedIn. Identify their VP of Medical Affairs or MSL covering Florida. Express interest in speaker/advisory opportunities for Bysanti's launch, noting your DFAPA credential, multi-location practice, and bipolar disorder clinical focus. Timing is ideal since they're pre-launch.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-title"><span class="tag tag-new">NEW APPROVAL</span> ProlivRx — At-Home Neuromodulation for MDD</div>
+      <p><strong>What happened:</strong> The FDA approved Neurolief's ProlivRx (January 2026), the first prescription at-home brain neuromodulation therapy as adjunctive treatment for adults with MDD who failed at least one prior antidepressant. Approved via Class III PMA pathway based on the MOOD Study.</p>
+      <p><strong>Why it matters for you:</strong> This device sits at the intersection of integrative and conventional psychiatry — your sweet spot. As a whole-person psychiatrist, speaking about non-pharmacological augmentation strategies positions you as forward-thinking.</p>
+      <p class="action">&#x27A1; Action: Contact Neurolief's medical affairs team to explore speaker/educator opportunities for ProlivRx. Pitch yourself as a practice-based KOL who can speak to integrating neuromodulation into outpatient psychiatric care across multiple clinic sites.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-title"><span class="tag tag-pipeline">PIPELINE</span> Cobenfy (Xanomeline/Trospium) — Expanding Indications</div>
+      <p><strong>What happened:</strong> Bristol Myers Squibb's Cobenfy — the first non-dopaminergic antipsychotic (muscarinic agonist) — continues aggressive expansion. It is projected to become a blockbuster by 2026 with peak sales forecast of $10B. BMS is actively building its speaker network and launched in the UK in 2026. BMS released Phase 3 ARISE trial results evaluating Cobenfy as adjunctive therapy to atypical antipsychotics in schizophrenia.</p>
+      <p><strong>Why it matters for you:</strong> This is the biggest new mechanism in schizophrenia since the 1950s. BMS is actively recruiting speakers — Dr. Peter Weiden is already on their bureau. High-profile, high-demand product.</p>
+      <p class="action">&#x27A1; Action: Connect with BMS's Florida-region MSL team on LinkedIn. Request a medical education meeting on Cobenfy. Express interest in speaker training programs. Your multi-provider practice means you can offer real-world prescribing experience across multiple clinicians.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-title"><span class="tag tag-pipeline">PIPELINE</span> COMP360 Psilocybin — Treatment-Resistant Depression & PTSD</div>
+      <p><strong>What happened:</strong> Compass Pathways' COMP360 psilocybin advanced Phase 3 efficacy results for TRD, and the FDA accepted an IND for COMP360 in PTSD, allowing initiation of a Phase 2b/3 trial (25 mg vs 1 mg, two administrations).</p>
+      <p><strong>Why it matters for you:</strong> Psychedelic-assisted therapy is a differentiating niche. Your integrative psychiatry brand and PTSD focus make you a natural fit for unbranded disease-state education around psychedelic-assisted treatment models.</p>
+      <p class="action">&#x27A1; Action: Begin positioning as a thought leader in psychedelic-informed psychiatry. Write a LinkedIn post this week about the COMP360 PTSD IND acceptance and what it means for clinical practice. This builds credibility before companies recruit speakers.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-title"><span class="tag tag-pipeline">PIPELINE</span> MM120 (LSD-based) — Generalized Anxiety Disorder</div>
+      <p><strong>What happened:</strong> MindMed's MM120, a pharmaceutical-grade LSD formulation for GAD, showed impressive Phase 2b results published in JAMA: 65% response rate, 48% remission at 3 months from a single dose. Moving toward Phase 3.</p>
+      <p><strong>Why it matters for you:</strong> Anxiety is a core clinical focus area. A single-dose psychedelic treatment for GAD would be revolutionary. MindMed will need speakers who can educate on anxiety disorders and novel treatment paradigms.</p>
+      <p class="action">&#x27A1; Action: Follow MindMed on LinkedIn and identify their medical affairs leads. Prepare talking points about the MM120 JAMA data for future presentations. Consider writing a brief clinical commentary on psychedelic approaches to anxiety.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-title"><span class="tag tag-pipeline">PIPELINE</span> GLP-1 RA Safety Update — Psychiatric Relevance</div>
+      <p><strong>What happened:</strong> The FDA directed removal of suicidal ideation/behavior warnings from GLP-1 RA labels (liraglutide, semaglutide, tirzepatide) after a comprehensive review found no increased risk.</p>
+      <p><strong>Why it matters for you:</strong> This is a huge talking point for psychiatrists who manage patients on GLP-1 medications. Excellent topic for a grand rounds or CME presentation on metabolic-psychiatric comorbidities.</p>
+      <p class="action">&#x27A1; Action: Develop a short presentation deck on "GLP-1 Agonists and Psychiatric Safety: What Psychiatrists Need to Know" — highly relevant for pharma-sponsored disease-state education.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-title"><span class="tag tag-pipeline">PIPELINE</span> Additional Noteworthy Developments</div>
+      <p><strong>Alto Neuroscience (ANRO):</strong> Presenting at Stifel 2026 Virtual CNS Forum (March 17 — tomorrow). Their Precision Psychiatry Platform uses EEG biomarkers to match patients to treatments. Watch this company for future speaker needs.</p>
+      <p><strong>Oral Brexanolone (LPCN 1154 — Lipocine):</strong> Phase 3 trial ongoing for postpartum depression; DSMB recommended continuation. Could be a first-line oral PPD treatment.</p>
+      <p><strong>GlyphAllo (SPT-300 — Seaport Therapeutics):</strong> Being developed for MDD with anxious distress using improved oral allopregnanolone (GABA-A modulation).</p>
+      <p><strong>Fasedienol (Vistagen):</strong> Nasal spray in development for social anxiety disorder — novel delivery mechanism.</p>
+      <p><strong>Denovo Biopharma DB103:</strong> Phase 2 trial of pomaglumetad methionil for first-episode psychosis, targeting mGlu2/3 receptors — first-in-class psychiatric drug avoiding dopamine blockade side effects.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 2: Speaking Opportunity Leads -->
+<div class="section" id="section2">
+  <div class="section-header" onclick="toggleSection('section2')">
+    <div class="section-icon">&#x1F3A4;</div>
+    <span class="section-number">02</span>
+    <span class="section-title">Speaking Opportunity Leads</span>
+    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="section-body">
+
+    <h3>Conferences with Open/Upcoming Submissions</h3>
+
+    <div class="item">
+      <div class="item-title"><span class="tag tag-urgent">DEADLINE IMMINENT</span> World Congress of Psychiatry (WCP) 2026</div>
+      <p><strong>Deadline:</strong> Abstract submission closes March 23, 2026 (one week from today).</p>
+      <p><strong>Pitch angle:</strong> Submit on integrative approaches to treatment-resistant mood disorders in diverse populations, or a poster on whole-person psychiatry outcomes from your multi-location practice.</p>
+      <p class="action">&#x27A1; Action: Submit an abstract by March 23. Suggested title: "Whole-Person Psychiatry Outcomes Across a Multi-Location Florida Practice: A Real-World Analysis of Integrated Treatment Approaches." Visit <a href="https://wcp-congress.com/" target="_blank">wcp-congress.com</a>.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-title"><span class="tag tag-opportunity">CONFERENCE</span> APA Annual Meeting 2026 — San Francisco</div>
+      <p><strong>Dates:</strong> May 16–20, 2026. Theme: "Empowering the Psychiatric Workforce: Taking Control of Our Practices One Step at a Time."</p>
+      <p><strong>Note:</strong> New Research poster submissions closed January 8. However, APA members can still attend and network at industry symposia, poster sessions, and side events.</p>
+      <p class="action">&#x27A1; Action: Register for APA 2026. As FPS Chapter President, request a meeting with APA leadership. Attend industry-sponsored satellite symposia to network with pharma medical affairs teams. Schedule meetings with MSLs attending the conference.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-title"><span class="tag tag-opportunity">FLORIDA — LOCAL</span> Living Legends in Psychopharmacology 2026</div>
+      <p><strong>Dates:</strong> April 17–18, 2026, University of Miami Miller School of Medicine, Sunny Isles Beach, FL.</p>
+      <p><strong>Focus:</strong> Integration of neuroscience, precision medicine, and AI into psychiatric treatment.</p>
+      <p class="action">&#x27A1; Action: Register immediately. This is your backyard. Network with speakers and organizers. Offer to moderate a panel or present at a future iteration. Your integrative psychiatry focus aligns perfectly with the precision medicine theme.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-title"><span class="tag tag-opportunity">FLORIDA — LOCAL</span> FPS Spring CME Meeting</div>
+      <p><strong>Dates:</strong> April 24–26, 2026.</p>
+      <p><strong>Your role:</strong> As Broward County Chapter President, you have a built-in platform.</p>
+      <p class="action">&#x27A1; Action: Volunteer to present or moderate a session. Suggest a topic on "New Psychiatric Medications in 2026: What Every Practicing Psychiatrist Needs to Know" — covering Bysanti, Cobenfy, ProlivRx, and pipeline developments. This positions you as the go-to clinical educator in Florida. Visit <a href="https://www.floridapsych.org/" target="_blank">floridapsych.org</a>.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-title"><span class="tag tag-opportunity">FLORIDA — BROWARD</span> 11th Annual South Florida Behavioral Health Conference</div>
+      <p><strong>Dates:</strong> May 27–28, 2026 (per search) or April 17–18 (conflicting dates found), Hollywood, FL (Broward County).</p>
+      <p><strong>Organizer:</strong> United Way Broward, Broward Behavioral Health Coalition, FL DCF.</p>
+      <p class="action">&#x27A1; Action: As FPS Broward Chapter President, contact the organizing committee to offer your expertise as a speaker or panelist. Pitch: "Psychiatric Innovation for Community Behavioral Health: From Practice to Policy." This is literally in your county — maximum visibility with minimal travel.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-title"><span class="tag tag-opportunity">CONFERENCE</span> NEI Fall Congress 2026</div>
+      <p><strong>Dates:</strong> November 5–8, 2026, The Broadmoor, Colorado Springs, CO. Pre-conference November 4.</p>
+      <p><strong>Credits:</strong> 32+ CME/CE credits. Immersive psychopharmacology education with world-renowned faculty.</p>
+      <p class="action">&#x27A1; Action: Register early. NEI is the premier psychopharmacology education organization. Attend to network with NEI faculty and explore future teaching opportunities. Contact NEI about guest faculty roles for 2027. Visit <a href="https://www.neiglobal.com/" target="_blank">neiglobal.com</a>.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-title"><span class="tag tag-opportunity">CONFERENCE</span> Southern Florida Psychiatry Conference 2026</div>
+      <p><strong>Dates:</strong> December 4–5, 2026, JW Marriott Miami Turnberry Resort & Spa, Aventura, FL.</p>
+      <p><strong>Focus:</strong> Evidence-based management of MDD, SUDs, and schizophrenia. Regional expert presentations and panel discussions.</p>
+      <p class="action">&#x27A1; Action: This is in Aventura — one of your practice locations. Contact PER (Physicians' Education Resource) to submit as a speaker/panelist. Your multi-location South Florida practice and DFAPA credential make you an ideal regional expert. Visit <a href="https://www.gotoper.com/courses/southern-florida-psychiatry-conference" target="_blank">gotoper.com</a>.</p>
+    </div>
+
+    <h3>Podcast & Media Opportunities</h3>
+
+    <div class="item">
+      <div class="item-title"><span class="tag tag-opportunity">PODCAST</span> High-Value Podcast Targets</div>
+      <p><strong>Future of Psychiatry Podcast</strong> — Actively seeking guest experts. Contact via their website at <a href="https://www.telepsychhealth.com/futurepsychiatrypodcast/" target="_blank">telepsychhealth.com</a>. Pitch angle: "Building a Multi-Location Integrative Psychiatry Practice in Florida."</p>
+      <p><strong>Psychiatry & Psychotherapy Podcast</strong> — One of the top-ranked psychiatry podcasts. Features interviews with residents through expert psychiatrists. Pitch: Your expertise in treating special populations (athletes, first responders, executives).</p>
+      <p><strong>APA Medical Mind Podcast</strong> — APA's flagship podcast covering emerging trends. As an APA Distinguished Fellow, you have strong credibility. Pitch: "Integrative Psychiatry and the Whole-Person Approach to Treatment-Resistant Conditions."</p>
+      <p class="action">&#x27A1; Action: Send a pitch email to the Future of Psychiatry Podcast this week. Mention your DFAPA credential, FPS leadership, and multi-location practice as unique angles.</p>
+    </div>
+
+    <h3>CME/CE Platform Opportunities</h3>
+
+    <div class="item">
+      <div class="item-title"><span class="tag tag-opportunity">CME</span> Digital Education Platforms</div>
+      <p><strong>Medscape:</strong> Accepts guest expert faculty for CME webinars. Psychiatry is a high-demand specialty on the platform.</p>
+      <p><strong>PsychU (Otsuka):</strong> Pharma-sponsored education platform. Check for open calls for faculty contributions.</p>
+      <p><strong>NEI Online:</strong> Neuroscience Education Institute offers online CME modules — explore contributing as an author/reviewer.</p>
+      <p class="action">&#x27A1; Action: Submit a faculty application to Medscape's psychiatry CME program. Propose a module on "Navigating the 2026 Psychiatric Treatment Landscape: New Approvals and Emerging Therapies."</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 3: KOL Visibility & Personal Brand Actions -->
+<div class="section" id="section3">
+  <div class="section-header" onclick="toggleSection('section3')">
+    <div class="section-icon">&#x1F4A1;</div>
+    <span class="section-number">03</span>
+    <span class="section-title">KOL Visibility & Personal Brand Actions</span>
+    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="section-body">
+
+    <h3>1. LinkedIn Post Idea — Publish Today</h3>
+    <div class="item">
+      <div class="item-title">Hook: The GLP-1 Suicidality Update</div>
+      <p><strong>Draft first line:</strong> "The FDA just told pharma companies to REMOVE the suicidal ideation warning from GLP-1 medications. Here's what every psychiatrist needs to know — and why this matters for your patients on Ozempic, Mounjaro, or Wegovy."</p>
+      <p><strong>Content angle:</strong> Explain the FDA's comprehensive review finding no increased psychiatric risk. Discuss the psychiatric-metabolic interface. Note that psychiatrists should still monitor mood but can reassure patients. Tag #psychiatry #mentalhealth #GLP1 #FDA</p>
+      <p class="action">&#x27A1; Action: Write and publish this LinkedIn post today. It ties into breaking FDA news and positions you at the intersection of psychiatry and metabolic health — a hot topic in 2026.</p>
+    </div>
+
+    <h3>2. LinkedIn Connection Target</h3>
+    <div class="item">
+      <div class="item-title">Connect: Alto Neuroscience Leadership</div>
+      <p>Alto Neuroscience (ANRO) is presenting at the Stifel Virtual CNS Forum <strong>tomorrow, March 17</strong>. They are a precision psychiatry company using EEG biomarkers — your integrative, data-informed approach aligns well.</p>
+      <p><strong>Draft connection message:</strong> "Hi [Name], I'm Dr. Audrey La Noce, a board-certified psychiatrist (DFAPA) and FPS Chapter President in South Florida. I'm excited about Alto's Precision Psychiatry Platform and its potential to transform how we match patients to treatments. I'd love to connect and learn more about how practicing clinicians like me can support your mission. Looking forward to following the Stifel CNS Forum presentation tomorrow."</p>
+      <p class="action">&#x27A1; Action: Search LinkedIn for Alto Neuroscience's Chief Medical Officer or VP of Medical Affairs. Send this connection request today — timing is perfect ahead of their forum presentation.</p>
+    </div>
+
+    <h3>3. Publication Opportunity</h3>
+    <div class="item">
+      <div class="item-title">Target: Clinical Commentary or Perspectives Piece</div>
+      <p><strong>Suggested topic:</strong> "DO Physicians as Key Opinion Leaders in Psychiatry: Bridging the Representation Gap in Pharmaceutical Education"</p>
+      <p><strong>Target journals/outlets:</strong></p>
+      <p>• <strong>Psychiatric Times</strong> — Accepts clinical commentaries and perspectives (high visibility, widely read by practicing psychiatrists and pharma)</p>
+      <p>• <strong>Journal of the American Osteopathic Association (JAOA)</strong> — Perfect for a piece on DO representation in pharma KOL roles</p>
+      <p>• <strong>Psychiatric News (APA)</strong> — As a DFAPA, you have a strong platform here</p>
+      <p class="action">&#x27A1; Action: Draft a 1,200-word perspectives piece for Psychiatric Times on DO under-representation in pharma speaker bureaus. This positions you as a thought leader AND raises your visibility with pharma companies reading the publication. Deadline: Draft outline by Friday.</p>
+    </div>
+
+    <h3>4. Strategic Engagement</h3>
+    <div class="item">
+      <div class="item-title">Engage: Cobenfy Discussion Posts</div>
+      <p>Cobenfy (xanomeline/trospium) generates significant LinkedIn discussion. Look for posts by Dr. Peter Weiden (BMS speaker bureau member) and other psychiatric KOLs discussing muscarinic agonism in schizophrenia.</p>
+      <p class="action">&#x27A1; Action: Search LinkedIn for recent Cobenfy posts by prominent psychiatrists. Leave a thoughtful clinical comment that demonstrates your expertise. Example: "As a practicing psychiatrist managing schizophrenia across multiple Florida locations, I'm seeing significant patient interest in non-dopaminergic options. The ARISE adjunctive data adds an important clinical dimension..." This signals to BMS medical affairs that you're engaged and knowledgeable.</p>
+    </div>
+
+    <h3>5. Media/PR Angle</h3>
+    <div class="item">
+      <div class="item-title">News Hook: GLP-1 Medications and Mental Health</div>
+      <p>The FDA's removal of suicidality warnings from GLP-1 labels is generating consumer media coverage. Millions of patients on Ozempic/Wegovy/Mounjaro will see these headlines and have questions for their mental health providers.</p>
+      <p class="action">&#x27A1; Action: Pitch yourself to South Florida media (Sun Sentinel, Miami Herald, local NBC/CBS affiliates) as an expert source on GLP-1 medications and psychiatric safety. Draft pitch: "Board-certified psychiatrist available to comment on FDA's removal of mental health warnings from popular weight-loss medications — what patients need to know." Include your DFAPA credential and FPS leadership role. Also pitch to HARO (Help a Reporter Out) or Qwoted for national media opportunities.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 4: Pharma Relationship Building -->
+<div class="section" id="section4">
+  <div class="section-header" onclick="toggleSection('section4')">
+    <div class="section-icon">&#x1F91D;</div>
+    <span class="section-number">04</span>
+    <span class="section-title">Pharma Relationship Building</span>
+    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="section-body">
+
+    <h3>Target Companies & Contact Strategies</h3>
+
+    <div class="item">
+      <div class="item-title">1. Bristol Myers Squibb — Cobenfy (xanomeline/trospium)</div>
+      <p><strong>Product:</strong> Cobenfy — first-in-class muscarinic agonist for schizophrenia. Projected blockbuster ($10B peak sales). UK launch 2026. Adjunctive indication being pursued.</p>
+      <p><strong>MSL Strategy:</strong> Search LinkedIn for "Medical Science Liaison Bristol Myers Squibb Neuroscience Florida" or "MSL BMS Psychiatry Southeast." BMS has a large MSL team covering their Cobenfy launch.</p>
+      <p><strong>Reason to reach out now:</strong> BMS is in full commercial expansion mode and actively building speaker capacity for Cobenfy. Your multi-provider practice offers real-world prescribing data from multiple clinicians.</p>
+      <p class="action">&#x27A1; Action: Find and connect with BMS's Florida neuroscience MSL on LinkedIn. Message: "I'm a DFAPA psychiatrist leading a multi-location practice in South Florida. I'm deeply interested in the muscarinic agonist mechanism and would welcome the opportunity to discuss Cobenfy's clinical data and potential speaker/advisory opportunities."</p>
+    </div>
+
+    <div class="item">
+      <div class="item-title">2. Vanda Pharmaceuticals — Bysanti (milsaperidone)</div>
+      <p><strong>Product:</strong> Bysanti — newly approved NCE atypical antipsychotic for bipolar I and schizophrenia. Q3 2026 commercial launch. Phase III TRD trial ongoing.</p>
+      <p><strong>MSL Strategy:</strong> Search LinkedIn for "Vanda Pharmaceuticals Medical Affairs" or "Medical Science Liaison Vanda." As a smaller company pre-launch, they will be building their speaker network from scratch — easier entry point than established products.</p>
+      <p><strong>Reason to reach out now:</strong> Pre-launch is the optimal time to establish relationships. Vanda needs speakers who can educate about a new mechanism and differentiate Bysanti from existing antipsychotics.</p>
+      <p class="action">&#x27A1; Action: Connect with Vanda's Head of Medical Affairs on LinkedIn. Request an introductory call to discuss the Bysanti clinical program and how your practice could support their launch education efforts in Florida.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-title">3. Johnson & Johnson / Janssen — Spravato (esketamine)</div>
+      <p><strong>Product:</strong> Spravato — intranasal esketamine for TRD and MDD with suicidal ideation. Established product with ongoing speaker needs. J&J recently submitted sNDA for Spravato as first-and-only monotherapy for adults with TRD.</p>
+      <p><strong>MSL Strategy:</strong> Search LinkedIn for "MSL Janssen Neuroscience Florida" or "Medical Science Liaison Johnson Johnson Psychiatry." Janssen has an established and well-funded speaker program. Contact via <a href="https://www.jnjmedicalconnect.com/products/spravato" target="_blank">jnjmedicalconnect.com</a>.</p>
+      <p><strong>Reason to reach out now:</strong> The monotherapy sNDA could mean expanded indications and a fresh round of speaker recruitment. Your TRD and treatment-resistant conditions expertise is directly relevant.</p>
+      <p class="action">&#x27A1; Action: Reach out to Janssen's Florida MSL. If your practice offers Spravato, mention your clinical experience. If not, express interest in starting and request an educational meeting on the product and REMS requirements.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-title">4. Otsuka / Lundbeck Alliance — CNS Portfolio</div>
+      <p><strong>Products:</strong> Rexulti (brexpiprazole) for MDD adjunct/schizophrenia/Alzheimer's agitation; Abilify Maintena (aripiprazole LAI); Centanafadine for ADHD (FDA Priority Review). Five psychiatric/neurologic therapies developed through their global alliance.</p>
+      <p><strong>MSL Strategy:</strong> Search LinkedIn for "Otsuka Medical Science Liaison Psychiatry Florida" or "Lundbeck MSL Southeast." Otsuka also runs PsychU, a medical education platform.</p>
+      <p><strong>Reason to reach out now:</strong> Centanafadine for ADHD has Priority Review — a potential new launch needing speakers. Rexulti continues to expand indications.</p>
+      <p class="action">&#x27A1; Action: Connect with Otsuka's Florida psychiatry MSL. Explore PsychU faculty opportunities at <a href="https://www.psychu.org" target="_blank">psychu.org</a>. Also investigate speaker bureau opportunities for Rexulti in MDD/agitation.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-title">5. AbbVie — Psychiatry Pipeline</div>
+      <p><strong>Products/Pipeline:</strong> AbbVie is actively recruiting Medical Science Liaisons for neuroscience (82 current MSL openings). They have a Scientific Director role specifically for Psychiatry Pipeline Medical Strategy. AbbVie has also entered the psychedelic space through acquisitions.</p>
+      <p><strong>MSL Strategy:</strong> Search LinkedIn for "AbbVie Medical Science Liaison Neuroscience" — 82 current positions listed. Their Florida MSL team covers psychiatry.</p>
+      <p><strong>Reason to reach out now:</strong> AbbVie is clearly investing heavily in CNS/psychiatry with massive MSL hiring. They're building relationships with community psychiatrists ahead of pipeline product launches.</p>
+      <p class="action">&#x27A1; Action: Identify AbbVie's Southeast neuroscience MSL on LinkedIn. Request an introductory meeting. Mention your multi-location prescriber network and clinical experience across their therapeutic areas (depression, anxiety).</p>
+    </div>
+
+    <h3>Calling Card Presentation Topic</h3>
+    <div class="item">
+      <div class="item-title">Proactive Deck to Share with MSLs</div>
+      <p><strong>Suggested topic:</strong> "Integrative Approaches to Treatment-Resistant Mood Disorders: A Real-World Perspective from Multi-Location Outpatient Psychiatry"</p>
+      <p>This deck should cover: (1) your clinical philosophy of whole-person psychiatry, (2) real-world treatment algorithms used in your practice, (3) special population considerations (athletes, first responders, executives), and (4) where new medications/devices fit into the treatment paradigm.</p>
+      <p class="action">&#x27A1; Action: Create a 15-20 slide deck this month. Use it when meeting with MSLs — it demonstrates your clinical depth, teaching ability, and practice-level prescribing influence.</p>
+    </div>
+
+    <h3>Sunshine Act / Open Payments</h3>
+    <div class="item">
+      <div class="item-title">Open Payments Compliance & Florida Speaker Data</div>
+      <p><strong>Latest data:</strong> CMS published Program Year 2024 Open Payments data on June 30, 2025 — 16.16 million records totaling $13.18 billion in payments. This data is publicly searchable at <a href="https://openpaymentsdata.cms.gov/" target="_blank">openpaymentsdata.cms.gov</a>.</p>
+      <p><strong>How to use this data:</strong> Search by specialty (Psychiatry) and state (Florida) to identify: (a) which companies are paying the most for speaker programs, (b) who the top-compensated Florida psychiatrists are (your competition), and (c) which drugs have the highest speaker budgets.</p>
+      <p><strong>Top-compensated drugs in psychiatry typically include:</strong> Spravato (J&J), Cobenfy (BMS), Vraylar (AbbVie), Rexulti (Otsuka/Lundbeck), Caplyta (Intra-Cellular), Lybalvi (Alkermes), Auvelity (Axsome), and recently Bysanti (Vanda).</p>
+      <p class="action">&#x27A1; Action: Visit <a href="https://openpaymentsdata.cms.gov/" target="_blank">openpaymentsdata.cms.gov</a> today. Search "Psychiatry" + "Florida" to see the top 15 compensated speakers and which companies are paying them. This intelligence tells you exactly which bureaus to target and who your KOL competitors are. Note: Reviewing your own Open Payments profile regularly ensures accuracy and compliance.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 5: Competitive Intelligence -->
+<div class="section" id="section5">
+  <div class="section-header" onclick="toggleSection('section5')">
+    <div class="section-icon">&#x1F50D;</div>
+    <span class="section-number">05</span>
+    <span class="section-title">Competitive Intelligence</span>
+    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="section-body">
+
+    <h3>Visible Florida Psychiatric KOLs</h3>
+    <div class="item">
+      <p>Several Florida-based psychiatrists are actively building KOL profiles in 2026:</p>
+      <p><strong>Dr. Lantie Jorandby, MD</strong> — Board-certified psychiatrist and addiction specialist, CMO of Lakeview Health (Jacksonville). Dual-boarded in psychiatry and addiction medicine. Visible in the substance use disorder space. <em>What to learn:</em> Her dual-specialty positioning gives her niche authority. Consider emphasizing your own multi-population expertise similarly.</p>
+      <p><strong>University of Miami / Miller School of Medicine Faculty</strong> — Hosting "Living Legends in Psychopharmacology" conference. UM faculty are deeply embedded in pharma KOL networks. <em>What to learn:</em> Academic affiliation boosts KOL credibility. Consider pursuing a voluntary/adjunct faculty appointment at a Florida medical school to add institutional affiliation.</p>
+      <p><strong>PER (Physicians' Education Resource) Regional Experts</strong> — PER recruits regional psychiatric experts for their Southern Florida Psychiatry Conference in Aventura. These speakers get pharma-level visibility. <em>What to learn:</em> PER is a pipeline to pharma-sponsored speaking. Getting on their roster opens doors.</p>
+      <p class="action">&#x27A1; Action: Research your specific regional competitors on Open Payments. Identify which Florida psychiatrists receive the highest speaker compensation and from which companies. This reveals gaps you can fill.</p>
+    </div>
+
+    <h3>Underserved Niche Opportunities</h3>
+    <div class="item">
+      <p>Based on pipeline and market analysis, these niche areas have fewer established KOLs and represent opportunities for you to become the go-to expert:</p>
+      <p><strong>1. Psychedelic-Informed Psychiatry:</strong> With COMP360 and MM120 advancing, there's a growing need for practicing psychiatrists (not just academic researchers) who can speak about integrating psychedelic-assisted therapy into real-world clinical practice. Your integrative psychiatry brand is ideal.</p>
+      <p><strong>2. First-Responder Mental Health:</strong> A severely underserved niche with minimal KOL saturation. You already treat first responders. Position yourself as THE expert in Florida for law enforcement/fire/EMS psychiatric care.</p>
+      <p><strong>3. Athlete Mental Health:</strong> Post-Simone Biles era, athlete mental health has mainstream attention but few psychiatrist KOLs. You treat athletes — leverage this into media appearances and speaking.</p>
+      <p><strong>4. Psychiatric Neuromodulation (Non-TMS):</strong> ProlivRx's approval opens a new space beyond TMS. Few practicing psychiatrists are speaking about at-home neuromodulation yet.</p>
+      <p><strong>5. Metabolic-Psychiatric Interface:</strong> GLP-1 medications, metabolic syndrome in psychiatric patients, and weight management — a rapidly growing intersection.</p>
+      <p class="action">&#x27A1; Action: Choose 2–3 of these niches to focus your KOL positioning. First responder mental health + psychedelic-informed psychiatry + metabolic-psychiatric interface creates a unique and in-demand profile.</p>
+    </div>
+
+    <h3>Content Formats Working Best in 2025–2026</h3>
+    <div class="item">
+      <p><strong>Short-form video (highest growth):</strong> 60–90 second clinical pearls on Instagram Reels, LinkedIn video, and TikTok. Psychiatric content is trending — especially medication explainers and "myth vs. fact" formats.</p>
+      <p><strong>LinkedIn long-form posts:</strong> Still the #1 platform for pharma/medical KOL visibility. Posts with personal clinical perspective + data perform best. Aim for 2–3 posts per week.</p>
+      <p><strong>Podcast guesting:</strong> Low effort, high reach. One podcast interview can reach 10,000+ targeted listeners. Focus on getting booked on the top 35 psychiatry podcasts.</p>
+      <p><strong>Newsletter/Substack:</strong> Several psychiatric KOLs are building dedicated email lists. Consider a monthly "South Florida Psychiatry Update" newsletter.</p>
+      <p><strong>X/Twitter:</strong> Less effective for pharma KOL positioning in 2026 compared to LinkedIn, but useful for real-time conference engagement (live-tweeting). Good for conference networking.</p>
+      <p class="action">&#x27A1; Action: Prioritize LinkedIn posts (2–3x/week) + one short-form video per week + monthly podcast guest appearances. This combination maximizes KOL visibility with manageable time investment.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 6: Clinical Insight of the Day -->
+<div class="section" id="section6">
+  <div class="section-header" onclick="toggleSection('section6')">
+    <div class="section-icon">&#x1F9E0;</div>
+    <span class="section-number">06</span>
+    <span class="section-title">Clinical Insight of the Day</span>
+    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-title">GLP-1 Receptor Agonists and Psychiatric Safety: The FDA's Definitive Answer</div>
+      <p><strong>The evidence:</strong> Following a comprehensive pharmacovigilance review, the FDA has directed manufacturers of liraglutide (Saxenda/Victoza), semaglutide (Ozempic/Wegovy/Rybelsus), and tirzepatide (Mounjaro/Zepbound) to <em>remove</em> the warnings about suicidal ideation and behavior from their prescribing labels. This is based on their conclusion that the totality of evidence does not support an association between GLP-1 receptor agonists and increased suicidality risk.</p>
+      <p><strong>Why this matters clinically:</strong> An estimated 15+ million Americans are on GLP-1 medications. Psychiatric patients with comorbid metabolic conditions (obesity, type 2 diabetes) are disproportionately affected by these labeling decisions. This FDA action provides evidence-based reassurance that co-prescribing GLP-1 RAs alongside psychiatric medications does not carry additional suicidality risk.</p>
+    </div>
+
+    <h3>Three Ways to Use This Insight</h3>
+
+    <div class="item">
+      <div class="item-title">1. As a Talking Point for Pharma Meetings</div>
+      <p>"The metabolic-psychiatric interface is one of the most important frontiers in our field. With the FDA's definitive conclusion that GLP-1 agonists do not increase suicidality risk, psychiatrists can more confidently collaborate with primary care on metabolic health. This is exactly the kind of integrated, whole-person approach our practice at Total Mental Wellness emphasizes."</p>
+    </div>
+
+    <div class="item">
+      <div class="item-title">2. As a LinkedIn Post / Short Video Script</div>
+      <p><strong>Script (60 seconds):</strong> "Breaking news that matters for every psychiatrist: The FDA just directed drug companies to REMOVE the suicidal ideation warnings from GLP-1 medications like Ozempic, Wegovy, and Mounjaro. After a comprehensive review, they found no increased psychiatric risk. What does this mean for your patients? If you're managing depression or anxiety in a patient who also struggles with weight — and let's be honest, that's a LOT of our patients — you can now have more confident conversations about GLP-1 therapy without the psychiatric safety concern hanging over the discussion. This is whole-person psychiatry in action. I'm Dr. Audrey La Noce — follow for more psychiatric updates that actually matter for clinical practice."</p>
+    </div>
+
+    <div class="item">
+      <div class="item-title">3. As a Foundation for a CME Lecture</div>
+      <p><strong>Proposed title:</strong> "The Metabolic-Psychiatric Interface: GLP-1 Agonists, Weight Management, and Mental Health Outcomes in Psychiatric Populations"</p>
+      <p><strong>Abstract angle:</strong> Review the FDA's GLP-1 safety assessment, discuss metabolic comorbidities in psychiatric patients taking antipsychotics/mood stabilizers, present emerging data on GLP-1 effects on neuroinflammation and mood, and provide practical co-prescribing guidance.</p>
+      <p><strong>Target venues:</strong> APA 2027 abstract, FPS CME session, Medscape CME module, or pharma-sponsored disease-state education.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 7: Monday Deep Dive — Speaker Bureau Landscape -->
+<div class="section" id="section7">
+  <div class="section-header" onclick="toggleSection('section7')">
+    <div class="section-icon">&#x1F4CA;</div>
+    <span class="section-number">07</span>
+    <span class="section-title">Monday Deep Dive: Speaker Bureau Landscape</span>
+    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="section-body">
+
+    <h3>2026 Speaker Bureau Market Overview</h3>
+    <div class="item">
+      <p>The pharma speaker bureau landscape has evolved significantly. Key trends in 2026:</p>
+      <p><strong>Virtual/hybrid dominance:</strong> Per BCG survey, 91% of HCPs now prefer remote speaker programs. This works in your favor — you can speak nationally without leaving your practice.</p>
+      <p><strong>On-demand formats growing:</strong> Pre-recorded speaker content with live Q&A sessions are becoming standard. Companies like PharMethod, SpeakerRx, and IQVIA manage these programs at scale.</p>
+      <p><strong>Compliance evolution:</strong> The Speaker Programs Summit (held March 2–4, 2026 in Philadelphia) highlighted increased regulatory scrutiny on speaker programs. Companies want speakers who are compliant, data-driven, and on-label.</p>
+      <p><strong>CNS market size:</strong> Global CNS therapeutics market estimated at $271.3B by 2034 (8.5% CAGR). This means sustained and growing investment in psychiatric speaker programs.</p>
+    </div>
+
+    <h3>Companies Actively Recruiting Psychiatric Speakers</h3>
+    <div class="item">
+      <div class="item-title">Tier 1: Highest-Priority Targets (Active Launch/Expansion)</div>
+      <p><strong>Bristol Myers Squibb (Cobenfy):</strong> Most aggressive speaker recruitment in psychiatry right now. First-in-class product requiring intensive physician education. <span class="tag tag-urgent">HOT</span></p>
+      <p><strong>Vanda Pharmaceuticals (Bysanti):</strong> Pre-launch phase — building speaker network from scratch. Lower barrier to entry. Q3 2026 launch timeline. <span class="tag tag-urgent">HOT</span></p>
+      <p><strong>Neurolief (ProlivRx):</strong> New device approval needing clinical educator network. Smaller company = easier access to leadership. <span class="tag tag-action">NEW</span></p>
+    </div>
+
+    <div class="item">
+      <div class="item-title">Tier 2: Established Programs (Ongoing Recruitment)</div>
+      <p><strong>Johnson & Johnson / Janssen (Spravato):</strong> Well-funded speaker program. sNDA for monotherapy could trigger new training cohorts.</p>
+      <p><strong>Otsuka / Lundbeck (Rexulti, Abilify Maintena, Centanafadine):</strong> Multiple products across mood disorders, schizophrenia, and ADHD. Large speaker infrastructure.</p>
+      <p><strong>AbbVie (Vraylar, Pipeline):</strong> 82 MSL positions open — massive investment in field-based medical education. Pipeline products in psychiatry being advanced.</p>
+      <p><strong>Intra-Cellular Therapies (Caplyta):</strong> Lumateperone for schizophrenia and bipolar depression. Growing speaker needs.</p>
+      <p><strong>Axsome Therapeutics (Auvelity):</strong> Dextromethorphan/bupropion for MDD. Newer product still building speaker base.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-title">Tier 3: Emerging Companies to Watch</div>
+      <p><strong>Compass Pathways (COMP360):</strong> If approved, will need a completely new speaker paradigm for psychedelic-assisted therapy.</p>
+      <p><strong>MindMed (MM120):</strong> GAD indication progressing. Novel mechanism requires extensive physician education.</p>
+      <p><strong>Seaport Therapeutics (SPT-300/GlyphAllo):</strong> MDD with anxious distress — neurosteroid mechanism. Early stage but watch closely.</p>
+      <p><strong>Alto Neuroscience:</strong> Precision psychiatry platform. Will need clinical educators who can speak about biomarker-guided treatment.</p>
+    </div>
+
+    <h3>How to Get on a Speaker Bureau — Your Action Plan</h3>
+    <div class="item">
+      <p><strong>Step 1: MSL Relationship (Weeks 1–4).</strong> Connect with MSLs from your top 3 target companies on LinkedIn. Request medical education meetings. Show clinical curiosity about their products. <em>You are here.</em></p>
+      <p><strong>Step 2: Advisory Board Nomination (Months 1–3).</strong> After establishing MSL relationships, express interest in advisory boards. These are often a gateway to speaker bureau nomination. Advisory boards pay $2,000–$5,000 per session and require less time commitment.</p>
+      <p><strong>Step 3: Speaker Training (Months 2–6).</strong> Once nominated, you'll attend a speaker training program (typically 1–2 days). You must pass a certification process demonstrating product knowledge and on-label presentation skills.</p>
+      <p><strong>Step 4: Active Speaking (Months 3–12).</strong> Begin with local/regional programs, then expand to national. Virtual programs let you speak nationwide from Florida.</p>
+    </div>
+
+    <h3>Leveraging Your Unique Differentiators</h3>
+    <div class="item">
+      <p><strong>DO Physician:</strong> DOs are under-represented in pharma KOL roles. Position this as a strength — you bring an osteopathic, whole-person perspective that resonates with the growing integrative movement in psychiatry. Pharma companies seeking diversity in their speaker panels should see you as addressing a gap.</p>
+      <p><strong>DFAPA Credential:</strong> Distinguished Fellow status signals peer recognition at the highest level. Always lead with this in introductions. Only a small percentage of psychiatrists hold DFAPA — it's a credibility multiplier.</p>
+      <p><strong>FPS Chapter President:</strong> This gives you convening power. Offer to host pharma-sponsored educational events through your chapter. MSLs love chapter presidents because they provide access to a built-in audience of psychiatrists.</p>
+      <p><strong>Multi-Location Practice:</strong> Your practice employs psychiatrists, PMHNPs, and therapists across Fort Lauderdale, Aventura, and Lakeland. This means pharma companies get access to a prescriber network, not just a single physician. Emphasize this in every conversation.</p>
+      <p class="action">&#x27A1; Action: Update your LinkedIn headline to: "Psychiatrist | DFAPA | FPS Chapter President | Founder, Total Mental Wellness (3 FL Locations) | Speaker & Integrative Psychiatry Expert" — this signals speaker-readiness to pharma scouts.</p>
+    </div>
+
+    <h3>This Week's Speaker Bureau Actions</h3>
+    <div class="item">
+      <p><strong>Monday (Today):</strong> Send LinkedIn connection requests to MSLs at BMS and Vanda. <span class="tag tag-urgent">DO TODAY</span></p>
+      <p><strong>Tuesday:</strong> Research Open Payments data — identify top Florida psychiatry speakers and which companies pay them.</p>
+      <p><strong>Wednesday:</strong> Draft your "calling card" presentation outline (15–20 slides on integrative approaches to treatment-resistant mood disorders).</p>
+      <p><strong>Thursday:</strong> Connect with Janssen and Otsuka MSLs on LinkedIn.</p>
+      <p><strong>Friday:</strong> Submit WCP abstract (deadline March 23). Begin drafting Psychiatric Times perspectives piece on DO KOL representation.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- TODAY'S TOP 3 ACTIONS -->
+<div class="summary-box">
+  <h2>&#x1F31F; Today's Top 3 Actions</h2>
+  <div class="summary-item">
+    <p><span class="rank">#1</span> <strong>Submit WCP Abstract (Deadline: March 23)</strong> — You have exactly one week. Draft and submit an abstract on whole-person psychiatry outcomes from your multi-location practice. This is a global stage opportunity. Visit <a href="https://wcp-congress.com/" target="_blank" style="color:#a8e6cf;">wcp-congress.com</a>.</p>
+  </div>
+  <div class="summary-item">
+    <p><span class="rank">#2</span> <strong>Connect with BMS & Vanda MSLs on LinkedIn</strong> — Cobenfy (BMS) is the hottest product in psychiatry. Bysanti (Vanda) is pre-launch with low competition for speaker spots. Send personalized connection requests today. These relationships are the gateway to speaker bureaus.</p>
+  </div>
+  <div class="summary-item">
+    <p><span class="rank">#3</span> <strong>Publish LinkedIn Post on GLP-1 FDA Safety Update</strong> — This is a timely, high-engagement topic that positions you at the metabolic-psychiatric interface. Use the draft hook provided in Section 3. Post before 10 AM EST for maximum visibility.</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Total Mental Wellness — KOL Strategy Briefing &nbsp;|&nbsp; Generated March 16, 2026</p>
+  <p>Confidential — Prepared for Dr. Audrey La Noce, DO, DFAPA</p>
+</div>
+
+</div>
+
+<script>
+function toggleSection(id) {
+  const section = document.getElementById(id);
+  section.classList.toggle('collapsed');
+}
+
+// All sections start expanded (no collapsed class by default)
+</script>
+
+</body>
+</html>

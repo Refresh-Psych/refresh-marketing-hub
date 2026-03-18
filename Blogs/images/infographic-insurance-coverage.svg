@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs>
+    <filter id="shadow4" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#2D3748" flood-opacity="0.10"/>
+    </filter>
+    <linearGradient id="headerGrad4" x1="0" y1="0" x2="800" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2B6CB0"/>
+      <stop offset="100%" stop-color="#1E5A9A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="1000" rx="16" fill="#FFFFFF"/>
+
+  <!-- Header -->
+  <rect width="800" height="130" rx="16" fill="url(#headerGrad4)"/>
+  <rect y="114" width="800" height="16" fill="url(#headerGrad4)"/>
+  <circle cx="720" cy="35" r="45" fill="#FFFFFF" opacity="0.05"/>
+  <circle cx="70" cy="100" r="30" fill="#FFFFFF" opacity="0.04"/>
+  <text x="400" y="55" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="27" fill="#FFFFFF">Insurance Coverage for</text>
+  <text x="400" y="90" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="27" fill="#FFFFFF">Telehealth ADHD in Florida</text>
+  <text x="400" y="118" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="13" fill="#F6C744" letter-spacing="1.5">WHAT YOU NEED TO KNOW ABOUT COVERAGE</text>
+
+  <!-- SECTION 1: Private Insurance -->
+  <rect x="40" y="155" rx="14" width="720" height="255" fill="#F7FAFD" stroke="#D6E4F0" stroke-width="1.5" filter="url(#shadow4)"/>
+
+  <!-- Section header with icon -->
+  <rect x="40" y="155" rx="14" width="720" height="52" fill="#2B6CB0"/>
+  <rect x="40" y="192" width="720" height="15" fill="#2B6CB0"/>
+
+  <!-- Shield icon -->
+  <circle cx="82" cy="181" r="17" fill="#FFFFFF" opacity="0.2"/>
+  <text x="82" y="188" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#FFFFFF">&#128737;</text>
+  <text x="110" y="189" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="19" fill="#FFFFFF">Private Insurance</text>
+
+  <text x="70" y="235" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="15" fill="#2D3748">Florida's telehealth parity law requires insurers to cover telehealth visits</text>
+  <text x="70" y="255" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="15" fill="#2D3748">at the same rate as in-person appointments.</text>
+
+  <!-- Insurance logos/badges -->
+  <text x="70" y="288" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="14" fill="#2B6CB0">Accepted Plans at Refresh Psychiatry:</text>
+
+  <rect x="70" y="302" rx="18" width="90" height="32" fill="#2B6CB0" opacity="0.08" stroke="#2B6CB0" stroke-width="1"/>
+  <text x="115" y="323" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="13" fill="#2B6CB0">Aetna</text>
+
+  <rect x="172" y="302" rx="18" width="90" height="32" fill="#2B6CB0" opacity="0.08" stroke="#2B6CB0" stroke-width="1"/>
+  <text x="217" y="323" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="13" fill="#2B6CB0">United</text>
+
+  <rect x="274" y="302" rx="18" width="90" height="32" fill="#2B6CB0" opacity="0.08" stroke="#2B6CB0" stroke-width="1"/>
+  <text x="319" y="323" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="13" fill="#2B6CB0">Cigna</text>
+
+  <rect x="376" y="302" rx="18" width="100" height="32" fill="#2B6CB0" opacity="0.08" stroke="#2B6CB0" stroke-width="1"/>
+  <text x="426" y="323" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="13" fill="#2B6CB0">Humana</text>
+
+  <rect x="488" y="302" rx="18" width="90" height="32" fill="#2B6CB0" opacity="0.08" stroke="#2B6CB0" stroke-width="1"/>
+  <text x="533" y="323" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="13" fill="#2B6CB0">AvMed</text>
+
+  <rect x="590" y="302" rx="18" width="70" height="32" fill="#2B6CB0" opacity="0.08" stroke="#2B6CB0" stroke-width="1"/>
+  <text x="625" y="323" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="13" fill="#2B6CB0">UMR</text>
+
+  <rect x="672" y="302" rx="18" width="75" height="32" fill="#2B6CB0" opacity="0.08" stroke="#2B6CB0" stroke-width="1"/>
+  <text x="710" y="323" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="13" fill="#2B6CB0">Oscar</text>
+
+  <!-- Parity note -->
+  <rect x="70" y="350" rx="6" width="670" height="30" fill="#38A169" opacity="0.08"/>
+  <text x="85" y="370" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="13" fill="#38A169">&#10003; FL Telehealth Parity: Same copay and coverage as in-person psychiatric visits</text>
+
+  <!-- Divider -->
+  <line x1="100" y1="425" x2="700" y2="425" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- SECTION 2: Medicare -->
+  <rect x="40" y="440" rx="14" width="720" height="160" fill="#FFFFFF" stroke="#D6E4F0" stroke-width="1.5" filter="url(#shadow4)"/>
+
+  <rect x="40" y="440" rx="14" width="720" height="52" fill="#2B6CB0" opacity="0.85"/>
+  <rect x="40" y="477" width="720" height="15" fill="#2B6CB0" opacity="0.85"/>
+
+  <circle cx="82" cy="466" r="17" fill="#FFFFFF" opacity="0.2"/>
+  <text x="82" y="473" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#FFFFFF">&#9733;</text>
+  <text x="110" y="474" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="19" fill="#FFFFFF">Medicare</text>
+
+  <text x="70" y="520" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="15" fill="#2D3748">Geographic restrictions for telehealth mental health services have been</text>
+  <text x="70" y="542" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="15" fill="#2D3748">removed as of 2026. Medicare now covers psychiatric telehealth visits</text>
+  <text x="70" y="564" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="15" fill="#2D3748">from the patient's home without originating site requirements.</text>
+
+  <rect x="70" y="578" rx="6" width="670" height="28" fill="#38A169" opacity="0.08"/>
+  <text x="85" y="597" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="13" fill="#38A169">&#10003; No geographic restrictions as of 2026 for behavioral health</text>
+
+  <!-- SECTION 3: Medicaid -->
+  <rect x="40" y="630" rx="14" width="720" height="140" fill="#F7FAFD" stroke="#D6E4F0" stroke-width="1.5" filter="url(#shadow4)"/>
+
+  <rect x="40" y="630" rx="14" width="720" height="52" fill="#2B6CB0" opacity="0.70"/>
+  <rect x="40" y="667" width="720" height="15" fill="#2B6CB0" opacity="0.70"/>
+
+  <circle cx="82" cy="656" r="17" fill="#FFFFFF" opacity="0.2"/>
+  <text x="82" y="663" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#FFFFFF">&#9734;</text>
+  <text x="110" y="664" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="19" fill="#FFFFFF">Medicaid (Florida)</text>
+
+  <text x="70" y="710" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="15" fill="#2D3748">Florida Medicaid covers behavioral health services delivered via</text>
+  <text x="70" y="732" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="15" fill="#2D3748">telehealth, including psychiatric evaluations and medication management.</text>
+
+  <!-- Yellow Tip Box -->
+  <rect x="40" y="800" rx="14" width="720" height="100" fill="#F6C744" opacity="0.18" stroke="#F6C744" stroke-width="2"/>
+  <rect x="40" y="800" rx="14" width="8" height="100" fill="#F6C744"/>
+
+  <!-- Lightbulb icon area -->
+  <circle cx="82" cy="835" r="20" fill="#F6C744" opacity="0.35"/>
+  <text x="82" y="843" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="20" fill="#D69E2E">&#9432;</text>
+
+  <text x="115" y="830" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="16" fill="#2D3748">Pro Tip: Billing Codes to Know</text>
+  <text x="115" y="855" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="14" fill="#2D3748">Ask your insurer about CPT codes</text>
+  <text x="345" y="855" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="14" fill="#2B6CB0">99213-99215</text>
+  <text x="448" y="855" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="14" fill="#2D3748"> (follow-up) and</text>
+  <text x="115" y="878" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="14" fill="#2B6CB0">99205</text>
+  <text x="158" y="878" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="14" fill="#2D3748"> (new patient eval) with modifier</text>
+  <text x="388" y="878" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="14" fill="#2B6CB0">-95</text>
+  <text x="410" y="878" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="14" fill="#2D3748"> for telehealth.</text>
+
+  <!-- Footer -->
+  <rect x="0" y="940" width="800" height="60" fill="#2B6CB0"/>
+  <rect x="0" y="940" width="800" height="4" fill="#F6C744"/>
+  <text x="400" y="978" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="16" fill="#FFFFFF">Refresh Psychiatry  |  (954) 603-4081</text>
+</svg>
