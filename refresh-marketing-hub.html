@@ -1968,34 +1968,142 @@
   }
 
   /* ═══════════════ RESPONSIVE ═══════════════ */
+  /* ═══════════════ TABLET ═══════════════ */
   @media (max-width: 1100px) {
     .hero-stats { display: none; }
-    .video-grid { grid-template-columns: 1fr; }
+    .video-grid { grid-template-columns: 1fr 1fr; }
     .podcast-hero { grid-template-columns: 1fr; }
     .podcast-art { max-width: 300px; margin: 0 auto; }
     .content-grid { grid-template-columns: 1fr 1fr; }
     .campaigns-grid { grid-template-columns: 1fr; }
-    .competitor-grid { grid-template-columns: 1fr; }
+    .competitor-grid { grid-template-columns: 1fr 1fr; }
     .brief-score-grid { grid-template-columns: repeat(3, 1fr); }
     .podcast-topics { grid-template-columns: 1fr 1fr; }
     .analytics-row { grid-template-columns: 1fr 1fr; }
     .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
   }
 
+  /* ═══════════════ MOBILE ═══════════════ */
   @media (max-width: 700px) {
-    .hero { padding: 70px 24px 40px; min-height: 440px; }
-    .hero h1 { font-size: 38px; }
+    /* Hero */
+    .hero { padding: 60px 20px 36px; min-height: 380px; }
+    .hero h1 { font-size: 30px; line-height: 1.2; }
+    .hero p { font-size: 15px; max-width: 100%; }
     .hero-locations { display: none; }
-    .nav-bar { padding: 0 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .hero-cta { flex-direction: column; gap: 10px; }
+    .hero-cta .btn { width: 100%; text-align: center; padding: 14px 20px; font-size: 14px; }
+
+    /* Nav */
+    .nav-bar {
+      padding: 0 12px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
     .nav-bar::-webkit-scrollbar { display: none; }
-    .content-wrap { padding: 28px 20px 60px; }
-    .content-grid { grid-template-columns: 1fr; }
+    .nav-tab { padding: 14px 16px; font-size: 12px; white-space: nowrap; }
+    .nav-tab .tab-count { font-size: 9px; min-width: 18px; height: 18px; margin-left: 4px; }
+
+    /* Content */
+    .content-wrap { padding: 20px 16px 50px; }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .section-header h2 { font-size: 22px; }
+
+    /* Video Grid */
+    .video-grid { grid-template-columns: 1fr; gap: 16px; }
+    .video-card:hover { transform: none; }
+    .video-thumb.portrait { max-height: 360px; }
+    .play-icon { width: 56px; height: 56px; }
+    .play-icon::after { border-width: 9px 0 9px 16px; margin-left: 3px; }
+    .video-info { padding: 12px 14px; flex-direction: column; gap: 10px; }
+    .video-info-left h3 { font-size: 14px; }
+    .video-meta { font-size: 11px; gap: 6px; }
+    .download-btn { align-self: flex-start; font-size: 11px; padding: 5px 12px; }
+
+    /* Video Modal — fullscreen on mobile */
+    .video-modal-overlay { padding: 0; align-items: flex-start; }
+    .video-modal {
+      max-width: 100% !important;
+      width: 100%;
+      height: 100dvh;
+      justify-content: center;
+    }
+    .video-modal video {
+      border-radius: 0;
+      max-height: 70dvh;
+      width: 100%;
+      object-fit: contain;
+    }
+    .video-modal.portrait-mode { max-width: 100% !important; }
+    .video-modal.portrait-mode video { max-height: 80dvh; }
+    .video-modal-close {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 10001;
+      width: 44px;
+      height: 44px;
+      font-size: 24px;
+    }
+    .video-modal-title { font-size: 15px; padding: 0 20px; }
+
+    /* Podcast */
+    .podcast-hero { padding: 20px; gap: 20px; }
+    .podcast-art { max-width: 100%; height: 200px; }
+    .podcast-art h3 { font-size: 20px; }
     .podcast-topics { grid-template-columns: 1fr; }
-    .podcast-hero { padding: 24px; gap: 24px; }
-    .analytics-row { grid-template-columns: 1fr; }
-    .hub-footer { flex-direction: column; gap: 20px; text-align: center; }
-    .content-controls { flex-direction: column; align-items: stretch; }
-    .filter-chips { overflow-x: auto; }
+    .podcast-details h2 { font-size: 18px; }
+    .podcast-player { flex-direction: column; gap: 12px; }
+
+    /* Content Cards */
+    .content-grid { grid-template-columns: 1fr; gap: 14px; }
+    .content-controls { flex-direction: column; align-items: stretch; gap: 10px; }
+    .filter-chips { overflow-x: auto; -webkit-overflow-scrolling: touch; flex-wrap: nowrap; padding-bottom: 4px; }
+    .filter-chips::-webkit-scrollbar { display: none; }
+    .filter-chip { white-space: nowrap; font-size: 12px; }
+
+    /* Campaigns */
+    .campaigns-grid { grid-template-columns: 1fr; gap: 14px; }
+
+    /* Competitors */
+    .competitor-grid { grid-template-columns: 1fr; gap: 14px; }
+    .competitor-comparison { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .competitor-comparison table { min-width: 600px; font-size: 12px; }
+    .gap-card { padding: 16px; }
+
+    /* Brief */
+    .brief-score-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .brief-section summary { padding: 14px 16px; font-size: 14px; }
+    .brief-section .brief-body { padding: 14px 16px; }
+    .brief-table { font-size: 11px; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .brief-table th, .brief-table td { padding: 8px 10px; }
+    .battle-plan-card { padding: 14px; }
+
+    /* Analytics */
+    .analytics-row { grid-template-columns: 1fr; gap: 14px; }
+
+    /* Viral */
+    .viral-grid { grid-template-columns: 1fr; gap: 14px; }
+
+    /* Footer */
+    .hub-footer { flex-direction: column; gap: 16px; text-align: center; padding: 20px; }
+
+    /* Commands panel */
+    .commands-panel { display: none; }
+
+    /* General touch improvements */
+    * { -webkit-tap-highlight-color: transparent; }
+    button, a { min-height: 44px; }
+  }
+
+  /* ═══════════════ SMALL MOBILE ═══════════════ */
+  @media (max-width: 400px) {
+    .hero h1 { font-size: 26px; }
+    .hero { padding: 50px 16px 30px; min-height: 320px; }
+    .content-wrap { padding: 16px 12px 40px; }
+    .nav-tab { padding: 12px 12px; font-size: 11px; }
+    .video-thumb.portrait { max-height: 300px; }
+    .brief-score-grid { grid-template-columns: 1fr; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -2104,9 +2212,7 @@
 
   .viral-takeaway strong { color: var(--deep-blue); }
 
-  @media (max-width: 768px) {
-    .viral-grid { grid-template-columns: 1fr; }
-  }
+  /* viral mobile handled in main @media (max-width: 700px) block */
 
   /* ═══════════════ CONTENT CARD BANNERS ═══════════════ */
   .content-card-banner {
@@ -2324,7 +2430,7 @@
     <div class="video-grid">
       <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/why-choose-refresh.mp4', 'Why Choose Refresh — Social Ad', false)">
         <div class="video-thumb">
-          <video class="video-preview" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/why-choose-refresh.mp4" muted loop preload="metadata"></video>
+          <video class="video-preview" playsinline webkit-playsinline src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/why-choose-refresh.mp4" muted loop preload="metadata"></video>
           <div class="video-thumb-bg landscape-bg">
             <div>
               <div style="font-size: 28px; margin-bottom: 10px;">Why Choose<br>Refresh Psychiatry?</div>
@@ -2350,7 +2456,7 @@
 
       <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/services-showcase.mp4', 'Services Overview — Reels/Stories', true)">
         <div class="video-thumb portrait">
-          <video class="video-preview" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/services-showcase.mp4" muted loop preload="metadata"></video>
+          <video class="video-preview" playsinline webkit-playsinline src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/services-showcase.mp4" muted loop preload="metadata"></video>
           <div class="video-thumb-bg portrait-bg">
             <div>
               <div style="font-size: 24px; margin-bottom: 10px;">Services<br>Showcase</div>
@@ -2376,7 +2482,7 @@
 
       <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/adhd-treatment.mp4', 'ADHD Treatment — Reels/Stories', true)">
         <div class="video-thumb portrait">
-          <video class="video-preview" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/adhd-treatment.mp4" muted loop preload="metadata"></video>
+          <video class="video-preview" playsinline webkit-playsinline src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/adhd-treatment.mp4" muted loop preload="metadata"></video>
           <div class="video-thumb-bg portrait-bg">
             <div>
               <div style="font-size: 24px; margin-bottom: 10px;">ADHD<br>Treatment</div>
@@ -2402,7 +2508,7 @@
 
       <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/telehealth-fl.mp4', 'Telehealth Florida — Social Ad', false)">
         <div class="video-thumb">
-          <video class="video-preview" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/telehealth-fl.mp4" muted loop preload="metadata"></video>
+          <video class="video-preview" playsinline webkit-playsinline src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/telehealth-fl.mp4" muted loop preload="metadata"></video>
           <div class="video-thumb-bg landscape-bg">
             <div>
               <div style="font-size: 28px; margin-bottom: 10px;">Telehealth<br>Across Florida</div>
@@ -2430,7 +2536,7 @@
 
       <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/V1-ChildVsAdultADHD.mp4', 'ADHD: Child vs Adult Presentation', true)">
         <div class="video-thumb portrait">
-          <video class="video-preview" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/V1-ChildVsAdultADHD.mp4" muted loop preload="metadata"></video>
+          <video class="video-preview" playsinline webkit-playsinline src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/V1-ChildVsAdultADHD.mp4" muted loop preload="metadata"></video>
           <div class="video-thumb-bg portrait-bg">
             <div style="font-size:3rem">👨‍👧</div>
             <div style="color:#2B6CB0;font-weight:700;font-size:1.1rem">ADHD Comparison</div>
@@ -2453,7 +2559,7 @@
 
       <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/V2-Pharmacogenomics.mp4', 'Pharmacogenomic Testing: Your DNA Guide', false)">
         <div class="video-thumb">
-          <video class="video-preview" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/V2-Pharmacogenomics.mp4" muted loop preload="metadata"></video>
+          <video class="video-preview" playsinline webkit-playsinline src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/V2-Pharmacogenomics.mp4" muted loop preload="metadata"></video>
           <div class="video-thumb-bg landscape-bg">
             <div style="font-size:3rem">🧬</div>
             <div style="color:#2B6CB0;font-weight:700;font-size:1.1rem">DNA Science</div>
@@ -2476,7 +2582,7 @@
 
       <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/V3-TelepsychiatryFL.mp4', 'Telehealth Psychiatry Across Florida', false)">
         <div class="video-thumb">
-          <video class="video-preview" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/V3-TelepsychiatryFL.mp4" muted loop preload="metadata"></video>
+          <video class="video-preview" playsinline webkit-playsinline src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/V3-TelepsychiatryFL.mp4" muted loop preload="metadata"></video>
           <div class="video-thumb-bg landscape-bg">
             <div style="font-size:3rem">💻</div>
             <div style="color:#2B6CB0;font-weight:700;font-size:1.1rem">Telehealth FL</div>
@@ -2499,7 +2605,7 @@
 
       <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/V4-AnxietyVsDepression.mp4', 'Anxiety vs Depression: Know the Difference', true)">
         <div class="video-thumb portrait">
-          <video class="video-preview" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/V4-AnxietyVsDepression.mp4" muted loop preload="metadata"></video>
+          <video class="video-preview" playsinline webkit-playsinline src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/V4-AnxietyVsDepression.mp4" muted loop preload="metadata"></video>
           <div class="video-thumb-bg portrait-bg">
             <div style="font-size:3rem">🧠</div>
             <div style="color:#2B6CB0;font-weight:700;font-size:1.1rem">Anxiety vs Depression</div>
@@ -2522,7 +2628,7 @@
 
       <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/V5-FirstAppointment.mp4', 'Your First Psychiatry Appointment', true)">
         <div class="video-thumb portrait">
-          <video class="video-preview" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/V5-FirstAppointment.mp4" muted loop preload="metadata"></video>
+          <video class="video-preview" playsinline webkit-playsinline src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/V5-FirstAppointment.mp4" muted loop preload="metadata"></video>
           <div class="video-thumb-bg portrait-bg">
             <div style="font-size:3rem">🩺</div>
             <div style="color:#2B6CB0;font-weight:700;font-size:1.1rem">First Visit Guide</div>
@@ -2545,7 +2651,7 @@
 
       <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/V6-SpringAnxiety.mp4', 'Spring Anxiety: Seasonal Mental Health', false)">
         <div class="video-thumb">
-          <video class="video-preview" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/V6-SpringAnxiety.mp4" muted loop preload="metadata"></video>
+          <video class="video-preview" playsinline webkit-playsinline src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/V6-SpringAnxiety.mp4" muted loop preload="metadata"></video>
           <div class="video-thumb-bg landscape-bg">
             <div style="font-size:3rem">🌸</div>
             <div style="color:#2B6CB0;font-weight:700;font-size:1.1rem">Spring Anxiety</div>
@@ -2568,7 +2674,7 @@
 
       <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/V7-WhyRefresh.mp4', 'Why Choose Refresh Psychiatry', true)">
         <div class="video-thumb portrait">
-          <video class="video-preview" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/V7-WhyRefresh.mp4" muted loop preload="metadata"></video>
+          <video class="video-preview" playsinline webkit-playsinline src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/V7-WhyRefresh.mp4" muted loop preload="metadata"></video>
           <div class="video-thumb-bg portrait-bg">
             <div style="font-size:3rem">💙</div>
             <div style="color:#2B6CB0;font-weight:700;font-size:1.1rem">Brand Story</div>
@@ -2593,7 +2699,7 @@
 
       <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B1-DopamineMyth.mp4', 'Dopamine Detox Is a Myth', true)">
         <div class="video-thumb portrait">
-          <video class="video-preview" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B1-DopamineMyth.mp4" muted loop preload="metadata"></video>
+          <video class="video-preview" playsinline webkit-playsinline src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B1-DopamineMyth.mp4" muted loop preload="metadata"></video>
           <div class="video-thumb-bg portrait-bg">
             <div style="font-size:3rem">🧠</div>
             <div style="color:#F6C744;font-weight:700;font-size:1.1rem">Dopamine Myth</div>
@@ -2616,7 +2722,7 @@
 
       <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B2-ADHDTelehealth2026.mp4', 'ADHD Meds via Telehealth 2026', true)">
         <div class="video-thumb portrait">
-          <video class="video-preview" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B2-ADHDTelehealth2026.mp4" muted loop preload="metadata"></video>
+          <video class="video-preview" playsinline webkit-playsinline src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B2-ADHDTelehealth2026.mp4" muted loop preload="metadata"></video>
           <div class="video-thumb-bg portrait-bg">
             <div style="font-size:3rem">💊</div>
             <div style="color:#2B6CB0;font-weight:700;font-size:1.1rem">ADHD Telehealth</div>
@@ -2639,7 +2745,7 @@
 
       <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B3-BoxBreathing.mp4', 'Box Breathing in 30 Seconds', true)">
         <div class="video-thumb portrait">
-          <video class="video-preview" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B3-BoxBreathing.mp4" muted loop preload="metadata"></video>
+          <video class="video-preview" playsinline webkit-playsinline src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B3-BoxBreathing.mp4" muted loop preload="metadata"></video>
           <div class="video-thumb-bg portrait-bg">
             <div style="font-size:3rem">🌬️</div>
             <div style="color:#4ECDC4;font-weight:700;font-size:1.1rem">Box Breathing</div>
@@ -2662,7 +2768,7 @@
 
       <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B4-SpringAnxiety2.mp4', 'Spring Anxiety Is Real', false)">
         <div class="video-thumb">
-          <video class="video-preview" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B4-SpringAnxiety2.mp4" muted loop preload="metadata"></video>
+          <video class="video-preview" playsinline webkit-playsinline src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B4-SpringAnxiety2.mp4" muted loop preload="metadata"></video>
           <div class="video-thumb-bg landscape-bg">
             <div style="font-size:3rem">🌸</div>
             <div style="color:#E88EBE;font-weight:700;font-size:1.1rem">Spring Anxiety</div>
@@ -2685,7 +2791,7 @@
 
       <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B5-DaylightSaving.mp4', 'Daylight Saving & Mental Health', false)">
         <div class="video-thumb">
-          <video class="video-preview" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B5-DaylightSaving.mp4" muted loop preload="metadata"></video>
+          <video class="video-preview" playsinline webkit-playsinline src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B5-DaylightSaving.mp4" muted loop preload="metadata"></video>
           <div class="video-thumb-bg landscape-bg">
             <div style="font-size:3rem">🕐</div>
             <div style="color:#7C5CFC;font-weight:700;font-size:1.1rem">DST Impact</div>
@@ -4576,7 +4682,7 @@
 <div class="video-modal-overlay" id="videoModal">
   <div class="video-modal" id="videoModalInner">
     <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
-    <video id="modalVideo" controls></video>
+    <video id="modalVideo" controls playsinline webkit-playsinline preload="auto"></video>
     <div class="video-modal-title" id="modalVideoTitle"></div>
   </div>
 </div>
@@ -4804,13 +4910,17 @@
   })();
 
   // ═══════════ VIDEO PLAYERS ═══════════
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
   document.querySelectorAll('.video-preview').forEach(video => {
     video.addEventListener('loadeddata', () => {
       video.closest('.video-thumb').classList.add('video-loaded');
     });
-    const thumb = video.closest('.video-thumb');
-    thumb.addEventListener('mouseenter', () => { video.currentTime = 0; video.play().catch(() => {}); });
-    thumb.addEventListener('mouseleave', () => { video.pause(); });
+    // Only enable hover preview on desktop (not touch/mobile)
+    if (!isTouchDevice) {
+      const thumb = video.closest('.video-thumb');
+      thumb.addEventListener('mouseenter', () => { video.currentTime = 0; video.play().catch(() => {}); });
+      thumb.addEventListener('mouseleave', () => { video.pause(); });
+    }
   });
 
   function openVideoModal(src, title, isPortrait) {
@@ -4818,36 +4928,61 @@
     const inner = document.getElementById('videoModalInner');
     const vid = document.getElementById('modalVideo');
     const titleEl = document.getElementById('modalVideoTitle');
-    // Reset video state to ensure clean playback with sound
+
+    // Reset video state
     vid.pause();
     vid.removeAttribute('src');
     vid.load();
+
+    // Ensure unmuted with sound
     vid.muted = false;
     vid.volume = 1.0;
+
+    // Set attributes for mobile compatibility
+    vid.setAttribute('playsinline', '');
+    vid.setAttribute('webkit-playsinline', '');
+    vid.setAttribute('preload', 'auto');
+
     vid.src = src;
     titleEl.textContent = title;
     inner.classList.toggle('portrait-mode', isPortrait);
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
-    // User click gesture allows unmuted autoplay
-    vid.play().catch(() => {});
+
+    // Scroll to top of modal on mobile
+    overlay.scrollTop = 0;
+
+    // Mobile: let user tap play via native controls
+    // Desktop: auto-play since click gesture allows it
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 700;
+    if (!isMobile) {
+      vid.play().catch(() => {});
+    }
+    // On mobile, the native controls play button is shown — user taps it
   }
 
   function closeVideoModal() {
     const overlay = document.getElementById('videoModal');
     const vid = document.getElementById('modalVideo');
     vid.pause();
-    vid.src = '';
+    vid.removeAttribute('src');
+    vid.load();
     overlay.classList.remove('open');
     document.body.style.overflow = '';
   }
 
+  // Close modal on backdrop tap (but not on video tap)
   document.getElementById('videoModal').addEventListener('click', (e) => {
     if (e.target === e.currentTarget) closeVideoModal();
   });
+  // Close on Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeVideoModal();
   });
+  // Prevent body scroll on iOS when modal is open
+  document.getElementById('videoModal').addEventListener('touchmove', (e) => {
+    if (e.target === e.currentTarget) e.preventDefault();
+  }, { passive: false });
 
   // ═══════════ CONTENT FILTER + SEARCH ═══════════
   let activeFilter = 'all';
