@@ -4458,7 +4458,7 @@
 <div class="video-modal-overlay" id="videoModal">
   <div class="video-modal" id="videoModalInner">
     <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
-    <video id="modalVideo" controls autoplay></video>
+    <video id="modalVideo" controls></video>
     <div class="video-modal-title" id="modalVideoTitle"></div>
   </div>
 </div>
@@ -4700,11 +4700,18 @@
     const inner = document.getElementById('videoModalInner');
     const vid = document.getElementById('modalVideo');
     const titleEl = document.getElementById('modalVideoTitle');
+    // Reset video state to ensure clean playback with sound
+    vid.pause();
+    vid.removeAttribute('src');
+    vid.load();
+    vid.muted = false;
+    vid.volume = 1.0;
     vid.src = src;
     titleEl.textContent = title;
     inner.classList.toggle('portrait-mode', isPortrait);
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
+    // User click gesture allows unmuted autoplay
     vid.play().catch(() => {});
   }
 
