@@ -5468,8 +5468,41 @@
     <div class="section-header" style="margin:32px 0 24px;">
       <div class="section-header-left">
         <h2>AI Visibility Overview</h2>
-        <p>How Refresh Psychiatry ranks across ChatGPT, Gemini, and Perplexity — the new search frontier</p>
+        <p>How Refresh Psychiatry ranks across ChatGPT (883M users), Gemini (400M users), and Perplexity (22M users) — AI search converts at <strong>14.2% vs Google's 2.8%</strong> (5x advantage)</p>
       </div>
+    </div>
+
+    <!-- AI Key Stats -->
+    <div class="analytics-chart reveal" style="background:linear-gradient(135deg,#0d1117,#161b22);color:#fff;padding:20px 28px;margin-bottom:20px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+        <div style="display:flex;gap:28px;flex-wrap:wrap;">
+          <div style="text-align:center;">
+            <div style="font-size:28px;font-weight:800;color:#10A37F;">883M</div>
+            <div style="font-size:10px;opacity:0.5;">ChatGPT Monthly Users</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:28px;font-weight:800;color:#4285F4;">400M</div>
+            <div style="font-size:10px;opacity:0.5;">Gemini Monthly Users</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:28px;font-weight:800;color:#22B8CF;">22M</div>
+            <div style="font-size:10px;opacity:0.5;">Perplexity Monthly Users</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:28px;font-weight:800;color:var(--yellow);">14.2%</div>
+            <div style="font-size:10px;opacity:0.5;">AI Search CVR (vs 2.8% Google)</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:28px;font-weight:800;color:#E53E3E;">58.5%</div>
+            <div style="font-size:10px;opacity:0.5;">Zero-Click Searches</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:28px;font-weight:800;color:#48BB78;">86%</div>
+            <div style="font-size:10px;opacity:0.5;">AI Citations from Brand Sources</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:12px;font-size:11px;opacity:0.4;">Sources: Exposure Ninja AI Search Stats 2026, ScaleDon, PracticeBeat GEO Report. 61% of US adults now use AI; 58% use AI for service recommendations.</div>
     </div>
 
     <!-- AI Platform Score Cards -->
@@ -5581,7 +5614,7 @@
       </div>
 
       <div class="analytics-chart reveal">
-        <h3>What AI Engines Value <span class="chart-badge">Ranking factors</span></h3>
+        <h3>What AI Engines Value <span class="chart-badge">7 proven ranking factors</span></h3>
         <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px;">
           <div style="padding:12px 14px;background:rgba(16,163,127,0.05);border-radius:8px;border-left:3px solid #10A37F;">
             <div style="display:flex;justify-content:space-between;align-items:center;">
@@ -5698,7 +5731,7 @@
       </div>
       <div style="margin-top:20px;padding:14px 18px;background:rgba(246,199,68,0.12);border-radius:10px;border:1px solid rgba(246,199,68,0.2);">
         <div style="font-weight:800;color:var(--yellow);margin-bottom:4px;">Why This Matters Now</div>
-        <div style="font-size:12px;opacity:0.8;">Talkiatry is hiring a "Director of Organic Growth" specifically for "Search Everywhere Optimization" — targeting ChatGPT, Perplexity, video search, and social platforms. <strong>The AI search land grab is happening right now.</strong> Practices that optimize for AI visibility in 2026 will own the next decade of patient acquisition. Every month of delay = competitors building an insurmountable citation advantage.</div>
+        <div style="font-size:12px;opacity:0.8;">Talkiatry is hiring a "Director of Organic Growth" specifically for "Search Everywhere Optimization." <strong>The AI search land grab is happening right now.</strong> Key stats: AI search CVR is <strong>14.2%</strong> (5x Google's 2.8%). 58.5% of searches are zero-click. Refresh is listed in <strong>0 "best of" roundup articles</strong> — Talkiatry is in 10+, BetterHelp in 15+. These roundups are the #1 source AI cites when recommending providers. 86% of AI citations come from brand-managed sources. The ADHD blog already ranking ~#5 proves the model works — it just needs to be scaled 10x.</div>
       </div>
     </div>
 
@@ -6390,11 +6423,11 @@
     const body = document.getElementById('aiQueryBody');
     if (!body) return;
     const queries = [
-      { q:'"best telehealth psychiatrist florida"', gpt:'❌', gem:'🟡', perp:'❌', cited:'Talkiatry, BetterHelp, Cerebral', action:'Create "Best Telehealth Psychiatrist FL 2026" pillar page' },
-      { q:'"online psychiatrist for ADHD"', gpt:'❌', gem:'❌', perp:'❌', cited:'Talkiatry #1, Done (now defunct), Cerebral', action:'ADHD pillar page + Dr. Nepa author schema' },
+      { q:'"best telehealth psychiatrist florida"', gpt:'❌', gem:'❌', perp:'❌', cited:'My Psychiatrist, Harmony United, One Stop Psych, APH', action:'Create "Best Telehealth Psychiatrist FL 2026" pillar page + pitch to roundup lists' },
+      { q:'"online psychiatrist ADHD florida"', gpt:'❌', gem:'🟡', perp:'❌', cited:'ADHD blog ranks ~#5 organically (bright spot!)', action:'Expand ADHD content cluster + add author schema' },
       { q:'"psychiatrist that takes Aetna Florida"', gpt:'❌', gem:'🟡', perp:'❌', cited:'Talkiatry, Zocdoc directory', action:'Insurance landing pages + Zocdoc listing' },
       { q:'"refresh psychiatry reviews"', gpt:'🟡', gem:'✅', perp:'🟡', cited:'Google reviews surface in Gemini', action:'Encourage Google reviews + respond to all' },
-      { q:'"integrative psychiatrist telehealth"', gpt:'❌', gem:'❌', perp:'❌', cited:'Nobody — blue ocean!', action:'<strong style="color:#48BB78">MASSIVE OPPORTUNITY</strong> — first to create authority content wins' },
+      { q:'"integrative psychiatrist florida"', gpt:'❌', gem:'❌', perp:'❌', cited:'True North, BeNu, Vijapura, Neurogarden', action:'<strong style="color:#48BB78">MASSIVE OPPORTUNITY</strong> — TMW brand can dominate with content' },
       { q:'"psychiatrist davie florida"', gpt:'❌', gem:'✅', perp:'❌', cited:'Google Business Profile surfaces', action:'Strengthen GBP + local citations + location page' },
       { q:'"talkiatry alternatives"', gpt:'❌', gem:'❌', perp:'❌', cited:'BetterHelp, Cerebral, Grow', action:'Create "Refresh vs Talkiatry" comparison page' },
       { q:'"anxiety medication telehealth"', gpt:'❌', gem:'❌', perp:'❌', cited:'Talkiatry, BetterHelp, WebMD', action:'Anxiety pillar page + medication management content' },
