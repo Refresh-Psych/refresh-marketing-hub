@@ -920,60 +920,6 @@
   .speed-btn:active { transform: scale(0.95); }
   .speed-btn.active { background: linear-gradient(135deg, var(--blue), var(--deep-blue)); color: var(--white); border-color: transparent; box-shadow: 0 2px 8px rgba(43,108,176,0.3); }
 
-  /* Podcast topics */
-  .podcast-topics {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    margin-top: 36px;
-  }
-
-  .topic-card {
-    background: var(--surface-elevated);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 24px;
-    transition: all var(--transition);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .topic-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--blue), var(--yellow));
-    opacity: 0;
-    transition: opacity var(--transition);
-  }
-
-  .topic-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--border-hover);
-  }
-
-  .topic-card:hover::before { opacity: 1; }
-
-  .topic-card .icon { font-size: 26px; margin-bottom: 10px; }
-
-  .topic-card h4 {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--deep-blue);
-    margin-bottom: 5px;
-  }
-
-  .topic-card p {
-    font-size: 12px;
-    color: var(--charcoal);
-    opacity: 0.5;
-    line-height: 1.55;
-  }
-
   /* Podcast archive */
   .podcast-archive {
     margin-top: 40px;
@@ -2477,7 +2423,6 @@
     .campaigns-grid { grid-template-columns: 1fr; }
     .competitor-grid { grid-template-columns: 1fr 1fr; }
     .brief-score-grid { grid-template-columns: repeat(3, 1fr); }
-    .podcast-topics { grid-template-columns: 1fr 1fr; }
     .analytics-row { grid-template-columns: 1fr 1fr; }
     .analytics-grid-2 { grid-template-columns: 1fr; }
     .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
@@ -2599,7 +2544,6 @@
     .podcast-hero { padding: 20px; gap: 20px; }
     .podcast-art { max-width: 100%; height: 200px; }
     .podcast-art h3 { font-size: 20px; }
-    .podcast-topics { grid-template-columns: 1fr; }
     .podcast-details h2 { font-size: 18px; }
     .podcast-player { gap: 10px; padding: 14px 16px; }
 
@@ -3496,15 +3440,6 @@
           <button class="speed-btn" id="podcastSpeedBtn" onclick="cyclePodcastSpeed()" title="Playback speed">1x</button>
         </div>
       </div>
-    </div>
-
-    <div class="podcast-topics">
-      <div class="topic-card reveal"><div class="icon">📍</div><h4>Local SEO Domination</h4><p>Google Business Profile, local citations, and map pack ranking strategies for multi-location practices.</p></div>
-      <div class="topic-card reveal"><div class="icon">🔑</div><h4>High-Intent Keywords</h4><p>Targeting 'psychiatrist near me' and insurance-specific searches that convert at 8x the rate of generic terms.</p></div>
-      <div class="topic-card reveal"><div class="icon">📝</div><h4>Content Strategy</h4><p>Pillar pages, blog clusters, and FAQ schema that build topical authority in psychiatry.</p></div>
-      <div class="topic-card reveal"><div class="icon">🏆</div><h4>Competing with Nationals</h4><p>How a local practice can outrank Talkiatry, Cerebral, and BetterHelp in your market.</p></div>
-      <div class="topic-card reveal"><div class="icon">📱</div><h4>Technical SEO</h4><p>Site speed, mobile optimization, schema markup, and Core Web Vitals for healthcare sites.</p></div>
-      <div class="topic-card reveal"><div class="icon">📈</div><h4>Measuring SEO ROI</h4><p>Tracking organic traffic to booked appointments — the metrics that prove SEO is working.</p></div>
     </div>
 
     <!-- PODCAST INSIGHTS (Key Takeaways, Infographic, Action Items) -->
@@ -7969,12 +7904,6 @@
     podcastProgress.style.width = '0%';
     podcastCurrentTime.textContent = '0:00';
     podcastDuration.textContent = '--:--';
-
-    // Update topic cards
-    const topicsContainer = document.querySelector('.podcast-topics');
-    topicsContainer.innerHTML = ep.topics.map(t =>
-      `<div class="topic-card reveal"><div class="icon">${t.icon}</div><h4>${t.title}</h4><p>${t.desc}</p></div>`
-    ).join('');
 
     // Auto-play the selected episode
     podcastAudio.addEventListener('canplay', function onCanPlay() {
