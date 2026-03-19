@@ -900,23 +900,24 @@
   }
 
   .speed-btn {
-    min-width: 44px;
-    height: 32px;
-    border-radius: var(--radius-sm);
-    background: rgba(43,108,176,0.08);
-    border: 1px solid rgba(43,108,176,0.15);
+    min-width: 48px;
+    height: 36px;
+    border-radius: 18px;
+    background: rgba(43,108,176,0.1);
+    border: 1.5px solid rgba(43,108,176,0.2);
     cursor: pointer;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 700;
     color: var(--blue);
     transition: all 0.2s ease;
     flex-shrink: 0;
-    padding: 0 8px;
+    padding: 0 10px;
+    letter-spacing: -0.5px;
   }
-  .speed-btn:hover { background: rgba(43,108,176,0.15); border-color: var(--blue); }
+  .speed-btn:hover { background: rgba(43,108,176,0.18); border-color: var(--blue); transform: scale(1.05); }
   .speed-btn:active { transform: scale(0.95); }
-  .speed-btn.active { background: var(--blue); color: var(--white); border-color: var(--blue); }
+  .speed-btn.active { background: linear-gradient(135deg, var(--blue), var(--deep-blue)); color: var(--white); border-color: transparent; box-shadow: 0 2px 8px rgba(43,108,176,0.3); }
 
   /* Podcast topics */
   .podcast-topics {
@@ -3065,8 +3066,8 @@
 
       <div class="podcast-details">
         <div class="episode-label"><span class="live-dot"></span> NotebookLM · Deep Dive</div>
-        <h2>📱 Daily Social Media Strategy for Psychiatric Practices</h2>
-        <p>An AI-generated podcast covering the complete daily social media playbook — content pillars, platform-specific tactics for Instagram/Facebook/LinkedIn/TikTok, HIPAA-compliant content creation, destigmatizing mental health, and building an engagement-driven content calendar for practices like Refresh Psychiatry.</p>
+        <h2>🔍 SEO for Mental Health Practices</h2>
+        <p>A deep dive into search engine optimization specifically for psychiatric and mental health practices — local SEO, Google Business Profile optimization, content strategy, keyword targeting for high-intent patients, and competing against national telehealth platforms like Talkiatry, Cerebral, and BetterHelp.</p>
 
         <audio id="podcastAudio" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v1.0-media/podcast-social-media-strategy.mp3" preload="metadata"></audio>
         <div class="podcast-player">
@@ -3086,12 +3087,12 @@
     </div>
 
     <div class="podcast-topics">
-      <div class="topic-card reveal"><div class="icon">📅</div><h4>Content Pillars & Calendar</h4><p>Build a 5-day posting framework: Mental Health Monday, Tip Tuesday, Educational Wednesday, LinkedIn Thursday, Reel Friday.</p></div>
-      <div class="topic-card reveal"><div class="icon">📸</div><h4>Instagram & Reels Strategy</h4><p>Carousel best practices, Reel hooks that stop the scroll, hashtag strategy, and Stories engagement tactics for healthcare.</p></div>
-      <div class="topic-card reveal"><div class="icon">👥</div><h4>Facebook Community Building</h4><p>Group engagement, testimonial-style posts, Mental Health Monday series, and local community outreach that drives trust.</p></div>
-      <div class="topic-card reveal"><div class="icon">💼</div><h4>LinkedIn for Referral Partners</h4><p>B2B content for therapists and PCPs, thought leadership articles, and practice growth updates that build referral pipelines.</p></div>
-      <div class="topic-card reveal"><div class="icon">🔒</div><h4>HIPAA-Compliant Content</h4><p>Creating warm, authentic content while staying fully compliant — hypothetical stories, safe messaging, and disclosure rules.</p></div>
-      <div class="topic-card reveal"><div class="icon">📊</div><h4>Measuring & Optimizing</h4><p>Track engagement, DM inquiries, website clicks, and conversion rates — then iterate your content mix weekly.</p></div>
+      <div class="topic-card reveal"><div class="icon">📍</div><h4>Local SEO Domination</h4><p>Google Business Profile, local citations, and map pack ranking strategies for multi-location practices.</p></div>
+      <div class="topic-card reveal"><div class="icon">🔑</div><h4>High-Intent Keywords</h4><p>Targeting "psychiatrist near me" and insurance-specific searches that convert at 8x the rate of generic terms.</p></div>
+      <div class="topic-card reveal"><div class="icon">📝</div><h4>Content Strategy</h4><p>Pillar pages, blog clusters, and FAQ schema that build topical authority in psychiatry.</p></div>
+      <div class="topic-card reveal"><div class="icon">🏆</div><h4>Competing with Nationals</h4><p>How a local practice can outrank Talkiatry, Cerebral, and BetterHelp in your market.</p></div>
+      <div class="topic-card reveal"><div class="icon">📱</div><h4>Technical SEO</h4><p>Site speed, mobile optimization, schema markup, and Core Web Vitals for healthcare sites.</p></div>
+      <div class="topic-card reveal"><div class="icon">📈</div><h4>Measuring SEO ROI</h4><p>Tracking organic traffic to booked appointments — the metrics that prove SEO is working.</p></div>
     </div>
   </section>
 
