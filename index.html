@@ -4279,6 +4279,226 @@
       </div>
     </div>
 
+    <!-- ═══ LIVE SEO AUDIT REPORT ═══ -->
+    <div class="section-header" style="margin-bottom: 24px;">
+      <div class="section-header-left">
+        <h2>Live SEO Audit — refreshpsychiatry.com</h2>
+        <p>Comprehensive crawl results from March 19, 2026 · 14 findings across 4 priority levels</p>
+      </div>
+    </div>
+
+    <!-- Audit Score Card -->
+    <div class="analytics-row" style="margin-bottom:24px;">
+      <div class="analytics-card reveal" style="border-left:4px solid #E53E3E;">
+        <div class="analytics-icon" style="background:rgba(229,62,62,0.1);color:#E53E3E;">🚨</div>
+        <div class="analytics-label">Critical Issues</div>
+        <div class="analytics-value" style="color:#E53E3E;">3</div>
+        <div class="analytics-subtext">Schema, Locations, FAQ</div>
+      </div>
+      <div class="analytics-card reveal" style="border-left:4px solid var(--yellow-dim);">
+        <div class="analytics-icon" style="background:rgba(246,199,68,0.12);color:var(--yellow-dim);">⚠️</div>
+        <div class="analytics-label">High Priority</div>
+        <div class="analytics-value" style="color:var(--yellow-dim);">3</div>
+        <div class="analytics-subtext">Insurance, Headings, Meta</div>
+      </div>
+      <div class="analytics-card reveal" style="border-left:4px solid var(--blue);">
+        <div class="analytics-icon" style="background:rgba(43,108,176,0.08);color:var(--blue);">📋</div>
+        <div class="analytics-label">Medium Priority</div>
+        <div class="analytics-value" style="color:var(--blue);">4</div>
+        <div class="analytics-subtext">Perf, Titles, Linking, Desc</div>
+      </div>
+      <div class="analytics-card reveal" style="border-left:4px solid #48BB78;">
+        <div class="analytics-icon" style="background:rgba(72,187,120,0.1);color:#48BB78;">✅</div>
+        <div class="analytics-label">Low Priority</div>
+        <div class="analytics-value" style="color:#48BB78;">4</div>
+        <div class="analytics-subtext">URLs, Alt text, Dups, Tech</div>
+      </div>
+    </div>
+
+    <!-- Critical Findings -->
+    <details class="brief-section reveal" open style="margin-bottom:16px;">
+      <summary style="background:linear-gradient(135deg,#E53E3E10,#E53E3E05);border-left:4px solid #E53E3E;">🚨 CRITICAL: No Schema Markup on Subpages</summary>
+      <div class="brief-body">
+        <p><strong>Finding:</strong> Only the homepage has JSON-LD structured data. Every subpage — services, conditions, FAQ, contact, team, blog index — has <strong>zero</strong> schema markup.</p>
+        <table class="brief-table">
+          <thead><tr><th>Page</th><th>Missing Schema</th><th>Impact</th></tr></thead>
+          <tbody>
+            <tr><td>/faq (22 Q&amp;A pairs)</td><td style="color:#E53E3E;font-weight:700;">FAQPage</td><td>Losing rich snippet opportunity for 22 answers</td></tr>
+            <tr><td>/adhd, /anxiety, /depression</td><td style="color:#E53E3E;font-weight:700;">MedicalCondition + MedicalWebPage</td><td>No health content rich results</td></tr>
+            <tr><td>/services</td><td style="color:#E53E3E;font-weight:700;">Service / MedicalProcedure</td><td>Services not visible in Google structured results</td></tr>
+            <tr><td>/ourteam</td><td style="color:#E53E3E;font-weight:700;">Person / Physician</td><td>Missing E-E-A-T signals for medical content</td></tr>
+            <tr><td>Homepage LocalBusiness</td><td style="color:var(--yellow-dim);font-weight:700;">Only Davie address (1/16 locations)</td><td>15 locations invisible to local search</td></tr>
+          </tbody>
+        </table>
+        <div class="brief-alert" style="background:rgba(72,187,120,0.06);border-left:3px solid #48BB78;padding:12px 16px;border-radius:8px;margin-top:12px;">
+          <strong>🎯 Quick Win:</strong> Adding FAQPage schema to /faq (22 Q&amp;As already written) is the single highest-ROI fix. Can be done in under 1 hour and dramatically increases SERP visibility.
+        </div>
+      </div>
+    </details>
+
+    <details class="brief-section reveal" style="margin-bottom:16px;">
+      <summary style="background:linear-gradient(135deg,#E53E3E10,#E53E3E05);border-left:4px solid #E53E3E;">🚨 CRITICAL: Zero Location Landing Pages (0/16)</summary>
+      <div class="brief-body">
+        <p><strong>Finding:</strong> The practice claims 16 locations but <strong>not a single dedicated location landing page exists</strong>. Every city URL returns 404. Massachusetts and Texas are completely absent from the site.</p>
+        <table class="brief-table">
+          <thead><tr><th>Location</th><th>URL Status</th><th>Target Keywords</th></tr></thead>
+          <tbody>
+            <tr><td>Davie, FL</td><td style="color:var(--yellow-dim);">Homepage only</td><td>psychiatrist davie fl, mental health davie florida</td></tr>
+            <tr><td>Fort Lauderdale, FL</td><td style="color:#E53E3E;">404</td><td>psychiatrist fort lauderdale, telepsych fort lauderdale</td></tr>
+            <tr><td>Miami, FL</td><td style="color:#E53E3E;">404</td><td>psychiatrist miami, telepsychiatry miami, adhd miami</td></tr>
+            <tr><td>West Palm Beach, FL</td><td style="color:#E53E3E;">404</td><td>psychiatrist west palm beach, online psych wpb</td></tr>
+            <tr><td>Orlando, FL</td><td style="color:#E53E3E;">404</td><td>psychiatrist orlando fl, online mental health orlando</td></tr>
+            <tr><td>Boca Raton, FL</td><td style="color:#E53E3E;">404</td><td>psychiatrist boca raton, adhd specialist boca raton</td></tr>
+            <tr><td>Boston, MA</td><td style="color:#E53E3E;">404</td><td>psychiatrist boston ma, telepsychiatry boston</td></tr>
+            <tr><td>Worcester, MA</td><td style="color:#E53E3E;">404</td><td>psychiatrist worcester ma, mental health worcester</td></tr>
+            <tr><td>Dallas, TX</td><td style="color:#E53E3E;">404</td><td>psychiatrist dallas tx, online psychiatrist dallas</td></tr>
+            <tr><td>Fort Worth, TX</td><td style="color:#E53E3E;">404</td><td>psychiatrist fort worth, mental health fort worth</td></tr>
+            <tr><td>Arlington, TX</td><td style="color:#E53E3E;">404</td><td>psychiatrist arlington tx, online psychiatry arlington</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:12px;font-size:13px;opacity:0.7;">Each page needs: unique H1, MedicalBusiness schema, embedded Google Map, location-specific testimonials, and geo-targeted content.</p>
+      </div>
+    </details>
+
+    <details class="brief-section reveal" style="margin-bottom:16px;">
+      <summary style="background:linear-gradient(135deg,#E53E3E10,#E53E3E05);border-left:4px solid #E53E3E;">🚨 CRITICAL: FAQ Page Missing Schema + H1</summary>
+      <div class="brief-body">
+        <p>The <code>/faq</code> page has <strong>22 well-written Q&amp;A pairs</strong> covering insurance, telehealth, medications, HIPAA — but zero FAQPage structured data and <strong>no H1 tag</strong> (the only page on the site missing one).</p>
+        <div class="brief-alert" style="background:rgba(43,108,176,0.06);border-left:3px solid var(--blue);padding:12px 16px;border-radius:8px;">
+          <strong>Fix time:</strong> ~30 minutes. Add FAQPage JSON-LD schema with all 22 Q&amp;A pairs + H1 tag. This is the single fastest win for rich SERP results.
+        </div>
+      </div>
+    </details>
+
+    <!-- High Priority -->
+    <details class="brief-section reveal" style="margin-bottom:16px;">
+      <summary style="background:linear-gradient(135deg,rgba(246,199,68,0.08),rgba(246,199,68,0.02));border-left:4px solid var(--yellow-dim);">⚠️ HIGH: No Insurance-Specific Landing Pages</summary>
+      <div class="brief-body">
+        <p>Every insurance URL returns 404: /aetna, /cigna, /united-healthcare, /humana, /avmed, /umr, /oscar. These are <strong>extremely high-intent keywords</strong> with 4x conversion rates.</p>
+        <table class="brief-table">
+          <thead><tr><th>Insurance</th><th>Target Keyword</th><th>Est. Volume</th><th>Competition</th></tr></thead>
+          <tbody>
+            <tr><td>Aetna</td><td>"psychiatrist that takes Aetna Florida"</td><td>1,400/mo</td><td style="color:#48BB78;font-weight:700;">Low</td></tr>
+            <tr><td>United Healthcare</td><td>"UHC psychiatrist telehealth"</td><td>1,100/mo</td><td style="color:#48BB78;font-weight:700;">Low</td></tr>
+            <tr><td>Cigna</td><td>"Cigna psychiatrist online"</td><td>960/mo</td><td style="color:#48BB78;font-weight:700;">Low</td></tr>
+            <tr><td>Humana</td><td>"Humana mental health telehealth"</td><td>780/mo</td><td style="color:#48BB78;font-weight:700;">Uncontested</td></tr>
+            <tr><td>Oscar</td><td>"Oscar Health psychiatrist"</td><td>420/mo</td><td style="color:#48BB78;font-weight:700;">Uncontested</td></tr>
+            <tr><td>AvMed</td><td>"AvMed psychiatrist Florida"</td><td>340/mo</td><td style="color:#48BB78;font-weight:700;">Uncontested</td></tr>
+            <tr><td>UMR</td><td>"UMR mental health coverage"</td><td>290/mo</td><td style="color:#48BB78;font-weight:700;">Uncontested</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <details class="brief-section reveal" style="margin-bottom:16px;">
+      <summary style="background:linear-gradient(135deg,rgba(246,199,68,0.08),rgba(246,199,68,0.02));border-left:4px solid var(--yellow-dim);">⚠️ HIGH: Heading Hierarchy Issues</summary>
+      <div class="brief-body">
+        <table class="brief-table">
+          <thead><tr><th>Page</th><th>Issue</th><th>Fix</th></tr></thead>
+          <tbody>
+            <tr><td>/faq</td><td style="color:#E53E3E;">Missing H1 entirely</td><td>Add H1: "Frequently Asked Questions"</td></tr>
+            <tr><td>/adhd</td><td>20+ H3 tags, many empty</td><td>Promote content H3s to H2s, remove empty tags</td></tr>
+            <tr><td>All pages</td><td>Nav bar uses H2 for "Telepsychiatry Services in Davie"</td><td>Change to div/span — not content-relevant</td></tr>
+            <tr><td>/services</td><td>Generic H1: "Treatments"</td><td>"Mental Health Services | Psychiatry &amp; Therapy in Florida"</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <details class="brief-section reveal" style="margin-bottom:16px;">
+      <summary style="background:linear-gradient(135deg,rgba(246,199,68,0.08),rgba(246,199,68,0.02));border-left:4px solid var(--yellow-dim);">⚠️ HIGH: Blog Meta Descriptions Missing/Inconsistent</summary>
+      <div class="brief-body">
+        <p>Most recent blog post ("Your Brain Isn't Broken: Dopamine Detox Myth") has <strong>no meta description</strong>. Some blog titles contain emojis in the &lt;title&gt; tag which display inconsistently in SERPs.</p>
+        <p><strong>Action:</strong> Audit all 45 blog posts for missing meta descriptions. Remove emojis from title tags. Ensure every post has unique 120-155 char description with target keyword.</p>
+      </div>
+    </details>
+
+    <!-- Medium Priority -->
+    <details class="brief-section reveal" style="margin-bottom:16px;">
+      <summary style="border-left:4px solid var(--blue);">📋 MEDIUM: Title Tag Issues (5 pages)</summary>
+      <div class="brief-body">
+        <table class="brief-table">
+          <thead><tr><th>Page</th><th>Current Title</th><th>Issue</th><th>Fix</th></tr></thead>
+          <tbody>
+            <tr><td>/copy-of-pharmacogenomic...</td><td>"...Ssevices"</td><td style="color:#E53E3E;">Typo</td><td>Fix to "Services"</td></tr>
+            <tr><td>/therapy-services</td><td>"Expert Anxiety Treatment Davie FL"</td><td>Wrong page content</td><td>Align with therapy services</td></tr>
+            <tr><td>/blog</td><td>"BLOG  | Refresh..."</td><td>Double space</td><td>Remove extra space</td></tr>
+            <tr><td>/affordable-options</td><td>"Insurance | Refresh..."</td><td>Generic</td><td>"Insurance Accepted | Aetna, Cigna, United &amp; More"</td></tr>
+            <tr><td>/services</td><td>77 chars (too long)</td><td>Truncated in SERPs</td><td>Keep under 60 chars</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <details class="brief-section reveal" style="margin-bottom:16px;">
+      <summary style="border-left:4px solid var(--blue);">📋 MEDIUM: Page Performance (Large file sizes)</summary>
+      <div class="brief-body">
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="width:140px;font-size:12px;font-weight:600;">FAQ Page</span>
+            <div class="ad-mini-bar" style="flex:1"><div class="ad-mini-bar-fill" style="width:91%;background:#E53E3E"></div></div>
+            <span style="font-size:11px;font-weight:700;color:#E53E3E">1.37 MB</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="width:140px;font-size:12px;font-weight:600;">Blog Index</span>
+            <div class="ad-mini-bar" style="flex:1"><div class="ad-mini-bar-fill" style="width:83%;background:#E53E3E"></div></div>
+            <span style="font-size:11px;font-weight:700;color:#E53E3E">1.25 MB</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="width:140px;font-size:12px;font-weight:600;">Homepage</span>
+            <div class="ad-mini-bar" style="flex:1"><div class="ad-mini-bar-fill" style="width:74%;background:var(--yellow-dim)"></div></div>
+            <span style="font-size:11px;font-weight:700;color:var(--yellow-dim)">1.11 MB</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="width:140px;font-size:12px;font-weight:600;">Contact</span>
+            <div class="ad-mini-bar" style="flex:1"><div class="ad-mini-bar-fill" style="width:60%;background:var(--yellow-dim)"></div></div>
+            <span style="font-size:11px;font-weight:700;color:var(--yellow-dim)">908 KB</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="width:140px;font-size:12px;font-weight:600;">ADHD Page</span>
+            <div class="ad-mini-bar" style="flex:1"><div class="ad-mini-bar-fill" style="width:59%;background:var(--yellow-dim)"></div></div>
+            <span style="font-size:11px;font-weight:700;color:var(--yellow-dim)">885 KB</span>
+          </div>
+        </div>
+        <p style="margin-top:10px;font-size:11px;opacity:0.5;">Wix Thunderbolt renderer limitation. Enable Wix Turbo, optimize images, lazy load below-fold content.</p>
+      </div>
+    </details>
+
+    <details class="brief-section reveal" style="margin-bottom:16px;">
+      <summary style="border-left:4px solid var(--blue);">📋 MEDIUM: Weak Internal Linking on Condition Pages</summary>
+      <div class="brief-body">
+        <p>Condition pages (/adhd, /anxiety, /depression) have only 1-2 H2s and don't cross-link to related conditions, blog posts, or provider pages.</p>
+        <p><strong>Fix:</strong> Add "Related Conditions", "Related Blog Posts", and provider bio links. Add BreadcrumbList schema. Use contextual anchor text.</p>
+      </div>
+    </details>
+
+    <!-- Top 5 Actions -->
+    <div class="analytics-chart reveal" style="background:linear-gradient(135deg,var(--navy),var(--deep-blue));color:#fff;padding:28px;">
+      <h3 style="color:var(--yellow);margin-bottom:16px;">🎯 Top 5 Highest-Impact SEO Actions</h3>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div style="min-width:32px;height:32px;border-radius:50%;background:var(--yellow);color:var(--navy);font-weight:800;display:flex;align-items:center;justify-content:center;">1</div>
+          <div><div style="font-weight:700;">Add FAQPage Schema to /faq</div><div style="font-size:12px;opacity:0.7;">22 Q&amp;As already written. ~30 min fix. Immediate rich snippet results.</div></div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div style="min-width:32px;height:32px;border-radius:50%;background:var(--yellow);color:var(--navy);font-weight:800;display:flex;align-items:center;justify-content:center;">2</div>
+          <div><div style="font-weight:700;">Build 16 Location Landing Pages</div><div style="font-size:12px;opacity:0.7;">Each with unique content + MedicalBusiness schema. Unlocks local pack for every city.</div></div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div style="min-width:32px;height:32px;border-radius:50%;background:var(--yellow);color:var(--navy);font-weight:800;display:flex;align-items:center;justify-content:center;">3</div>
+          <div><div style="font-weight:700;">Add MedicalBusiness Schema Site-Wide</div><div style="font-size:12px;opacity:0.7;">Replace generic LocalBusiness. Add to every page with areaServed for all 16 locations.</div></div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div style="min-width:32px;height:32px;border-radius:50%;background:var(--yellow);color:var(--navy);font-weight:800;display:flex;align-items:center;justify-content:center;">4</div>
+          <div><div style="font-weight:700;">Create 7 Insurance Landing Pages</div><div style="font-size:12px;opacity:0.7;">Aetna, UHC, Cigna, Humana, Oscar, AvMed, UMR. 4x conversion rate on these terms.</div></div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div style="min-width:32px;height:32px;border-radius:50%;background:var(--yellow);color:var(--navy);font-weight:800;display:flex;align-items:center;justify-content:center;">5</div>
+          <div><div style="font-weight:700;">Fix Heading Hierarchy</div><div style="font-size:12px;opacity:0.7;">Restore /faq H1, promote H3s to H2s on condition pages, remove nav-bar H2.</div></div>
+        </div>
+      </div>
+    </div>
+
   </section>
 
   <!-- DAILY BRIEF -->
