@@ -2042,81 +2042,114 @@
   /* ═══════════════ MOBILE ═══════════════ */
   @media (max-width: 700px) {
     /* Hero */
-    .hero { padding: 60px 20px 36px; min-height: 380px; }
-    .hero h1 { font-size: 30px; line-height: 1.2; }
-    .hero p { font-size: 15px; max-width: 100%; }
+    .hero { padding: 60px 20px 36px; min-height: 340px; }
+    .hero h1 { font-size: 28px; line-height: 1.2; }
+    .hero p { font-size: 14px; max-width: 100%; }
     .hero-locations { display: none; }
     .hero-cta { flex-direction: column; gap: 10px; }
     .hero-cta .btn { width: 100%; text-align: center; padding: 14px 20px; font-size: 14px; }
 
-    /* Nav */
+    /* Nav — horizontal scroll with fade hints */
     .nav-bar {
       padding: 0 12px;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
+      position: relative;
+      scroll-snap-type: x proximity;
+      gap: 2px;
+    }
+    .nav-bar::after {
+      content: '';
+      position: sticky;
+      right: 0;
+      min-width: 32px;
+      background: linear-gradient(to right, transparent, var(--surface));
+      pointer-events: none;
+      flex-shrink: 0;
     }
     .nav-bar::-webkit-scrollbar { display: none; }
-    .nav-tab { padding: 14px 16px; font-size: 12px; white-space: nowrap; }
+    .nav-tab {
+      padding: 14px 16px;
+      font-size: 12px;
+      white-space: nowrap;
+      scroll-snap-align: start;
+      flex-shrink: 0;
+    }
     .nav-tab .tab-count { font-size: 9px; min-width: 18px; height: 18px; margin-left: 4px; }
 
     /* Content */
-    .content-wrap { padding: 20px 16px 50px; }
+    .content-wrap { padding: 20px 14px 50px; }
     .section-header { flex-direction: column; align-items: flex-start; gap: 12px; }
-    .section-header h2 { font-size: 22px; }
+    .section-header h2 { font-size: 20px; }
 
     /* Video Grid — 2 columns on mobile for compact view */
-    .video-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .video-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
     .video-card { border-radius: 14px; }
     .video-card:hover { transform: none; }
     .video-thumb.portrait { max-height: 240px; }
-    .play-icon { width: 48px; height: 48px; }
+    .play-icon { width: 44px; height: 44px; }
     .play-icon::after { border-width: 8px 0 8px 14px; margin-left: 3px; }
-    .video-info { padding: 10px 12px; flex-direction: column; gap: 6px; }
-    .video-info-left h3 { font-size: 12px; line-height: 1.3; }
+    .video-info { padding: 8px 10px; flex-direction: column; gap: 4px; }
+    .video-info-left h3 { font-size: 11px; line-height: 1.3; }
     .video-meta { font-size: 10px; gap: 4px; flex-wrap: wrap; }
     .video-meta .content-source { display: none; }
-    .download-btn { align-self: flex-start; font-size: 10px; padding: 4px 10px; min-height: 32px; }
-    .video-duration-badge { font-size: 10px; bottom: 8px; right: 8px; padding: 2px 6px; }
-    .video-thumb-bg { font-size: 14px; }
+    .download-btn { align-self: flex-start; font-size: 10px; padding: 4px 10px; min-height: 36px; }
+    .video-duration-badge { font-size: 10px; bottom: 6px; right: 6px; padding: 2px 6px; }
+    .video-thumb-bg { font-size: 13px; }
 
-    /* Video Modal — fullscreen on mobile with better controls */
+    /* Video Modal — fullscreen on mobile with native feel */
     .video-modal-overlay {
       padding: 0;
       align-items: center;
       justify-content: center;
-      background: rgba(0,0,0,0.95);
+      background: rgba(0,0,0,0.97);
     }
     .video-modal {
       max-width: 100% !important;
       width: 100%;
       height: 100dvh;
+      height: 100vh; /* fallback for older mobile browsers */
       justify-content: center;
       background: #000;
       border-radius: 0;
       padding: 0;
+      animation: none; /* no bounce animation on mobile — instant */
     }
     .video-modal video {
       border-radius: 0;
-      max-height: 80dvh;
+      max-height: 75dvh;
+      max-height: 75vh;
       width: 100%;
       object-fit: contain;
       background: #000;
-      /* iOS Safari: force native controls */
-      -webkit-media-controls-panel { display: flex !important; }
+      /* Tap to play on iOS */
+      touch-action: manipulation;
     }
     .video-modal.portrait-mode { max-width: 100% !important; }
-    .video-modal.portrait-mode video { max-height: 80dvh; }
+    .video-modal.portrait-mode video { max-height: 80dvh; max-height: 80vh; }
     .video-modal-close {
       position: fixed;
-      top: 16px;
-      right: 16px;
+      top: env(safe-area-inset-top, 12px);
+      right: 12px;
       z-index: 10001;
-      width: 44px;
-      height: 44px;
-      font-size: 24px;
+      width: 48px;
+      height: 48px;
+      font-size: 26px;
+      background: rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,255,255,0.3);
     }
-    .video-modal-title { font-size: 15px; padding: 0 20px; }
+    .video-modal-title {
+      font-size: 14px;
+      padding: 12px 20px;
+      position: fixed;
+      bottom: env(safe-area-inset-bottom, 20px);
+      left: 0;
+      right: 0;
+      text-align: center;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      padding-top: 30px;
+    }
 
     /* Podcast */
     .podcast-hero { padding: 20px; gap: 20px; }
@@ -2152,14 +2185,47 @@
     .battle-plan-card { padding: 14px; }
 
     /* Analytics */
-    .analytics-row { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .analytics-row { grid-template-columns: 1fr 1fr; gap: 10px; }
     .analytics-grid-2 { grid-template-columns: 1fr; }
-    .analytics-card .analytics-value { font-size: 26px; }
-    .analytics-card { padding: 16px; }
-    .analytics-chart { padding: 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .analytics-card .analytics-value { font-size: 24px; }
+    .analytics-card .analytics-label { font-size: 11px; }
+    .analytics-card { padding: 14px; }
+    .analytics-chart { padding: 14px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .ad-breakdown-table { min-width: 560px; font-size: 11px; }
-    .period-btn { padding: 7px 14px; font-size: 12px; }
+    .period-btn { padding: 7px 12px; font-size: 11px; }
     .bar-chart { min-width: 0; gap: 6px; }
+    /* Period selector horizontal scroll */
+    .period-selector {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      flex-wrap: nowrap;
+      padding-bottom: 4px;
+    }
+    .period-selector::-webkit-scrollbar { display: none; }
+
+    /* AI Visibility */
+    .ai-stat-grid { grid-template-columns: 1fr 1fr !important; gap: 10px; }
+    .ai-platform-grid { grid-template-columns: 1fr !important; gap: 12px; }
+    .ai-factors-grid { grid-template-columns: 1fr !important; gap: 10px; }
+    .ai-action-list { padding-left: 16px; }
+    #aiQueryTable { min-width: 700px; font-size: 11px; }
+
+    /* Scrollable table fade indicator */
+    .table-scroll-wrap {
+      position: relative;
+    }
+    .table-scroll-wrap::after {
+      content: '→ scroll';
+      position: absolute;
+      right: 4px;
+      top: 4px;
+      font-size: 10px;
+      color: var(--blue);
+      opacity: 0.5;
+      pointer-events: none;
+      font-family: 'JetBrains Mono', monospace;
+    }
 
     /* Viral */
     .viral-grid { grid-template-columns: 1fr; gap: 14px; }
@@ -2170,22 +2236,38 @@
     /* Commands panel */
     .commands-panel { display: none; }
 
-    /* General touch improvements */
+    /* General touch & feel */
     * { -webkit-tap-highlight-color: transparent; }
     button, a { min-height: 44px; }
+    body { touch-action: manipulation; }
+    /* Prevent double-tap zoom on interactive elements */
+    .nav-tab, .filter-chip, .period-btn, .download-btn, .video-card {
+      touch-action: manipulation;
+    }
+    /* Smooth momentum scrolling for all overflow containers */
+    [style*="overflow-x:auto"], [style*="overflow-x: auto"] {
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+    }
+    /* Safe area insets for notched phones */
+    .nav-bar { padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); }
+    .content-wrap { padding-left: max(14px, env(safe-area-inset-left)); padding-right: max(14px, env(safe-area-inset-right)); }
+    .hub-footer { padding-bottom: max(20px, env(safe-area-inset-bottom)); }
   }
 
   /* ═══════════════ SMALL MOBILE ═══════════════ */
   @media (max-width: 400px) {
-    .hero h1 { font-size: 26px; }
-    .hero { padding: 50px 16px 30px; min-height: 320px; }
-    .content-wrap { padding: 16px 12px 40px; }
+    .hero h1 { font-size: 24px; }
+    .hero { padding: 50px 14px 28px; min-height: 300px; }
+    .content-wrap { padding: 14px 10px 40px; }
     .nav-tab { padding: 12px 12px; font-size: 11px; }
     .video-grid { grid-template-columns: 1fr; gap: 14px; }
     .video-thumb.portrait { max-height: 300px; }
     .video-info-left h3 { font-size: 13px; }
     .video-meta .content-source { display: block; }
     .brief-score-grid { grid-template-columns: 1fr; }
+    .analytics-row { grid-template-columns: 1fr; }
+    .analytics-card .analytics-value { font-size: 28px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -3433,6 +3515,12 @@
         <div class="viral-platform tiktok">📱 TikTok</div>
         <h3>🧠 "The Truth About Anxiety &amp; ADHD: Life-Changing Tools From a Renowned Psychiatrist"</h3>
         <div class="viral-creator">@melrobbins feat. Dr. Tracey Marks · Board-Certified Psychiatrist</div>
+        <div class="viral-embed">
+          <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@melrobbins/video/7304461543640792362" data-video-id="7304461543640792362" style="max-width:100%;min-width:280px;">
+            <section><a target="_blank" href="https://www.tiktok.com/@melrobbins">@melrobbins</a></section>
+          </blockquote>
+          <a href="https://www.tiktok.com/@melrobbins/video/7304461543640792362" target="_blank" rel="noopener" class="viral-embed-toggle">▶️ Watch on TikTok</a>
+        </div>
         <p>A punchy clip from The Mel Robbins Podcast debunking what ADHD actually looks like versus online myths, covering its overlap with anxiety — especially in women and late-diagnosed adults.</p>
         <div class="viral-stats">
           <span>👁️ 18M+ views</span>
@@ -3448,6 +3536,13 @@
         <div class="viral-platform tiktok">📱 TikTok</div>
         <h3>😴 #FloorTimeChallenge — Lying on the floor as stress relief</h3>
         <div class="viral-creator">Multiple creators · #floortimechallenge trend</div>
+        <div class="viral-embed">
+          <div class="embed-placeholder">
+            <div style="font-size:28px;margin-bottom:8px;">📱</div>
+            <div>This is a trending hashtag with many creators</div>
+            <a href="https://www.tiktok.com/tag/floortimechallenge" target="_blank" rel="noopener">Browse #FloorTimeChallenge on TikTok →</a>
+          </div>
+        </div>
         <p>Users film themselves lying flat doing absolutely nothing as decompression from overstimulation. Clinical psychologists validated the grounding mechanism — "when you lie down, you connect with your body rather than your mind."</p>
         <div class="viral-stats">
           <span>❤️ 4.5M+ likes</span>
@@ -3463,6 +3558,9 @@
         <div class="viral-platform youtube">🎬 YouTube</div>
         <h3>🎙️ "Skills to Stop Overthinking" — Therapy in a Nutshell series</h3>
         <div class="viral-creator">@therapyinanutshell · Emma McAdam, LMFT (2.4M subscribers)</div>
+        <div class="viral-embed">
+          <iframe width="100%" height="280" src="https://www.youtube.com/embed/kv10vLnSRZA" title="How to Stop Overthinking - Therapy in a Nutshell" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:12px;"></iframe>
+        </div>
         <p>Short (8–14 min) evidence-based instructional videos on stopping overthinking loops, managing rumination, and breaking the anxiety-depression spiral — clinical but never cold.</p>
         <div class="viral-stats">
           <span>👁️ 8M+ views per video</span>
@@ -3478,6 +3576,12 @@
         <div class="viral-platform tiktok">📱 TikTok</div>
         <h3>💡 "Is it selfish or is it ADHD?!" — ADHD myth-busting</h3>
         <div class="viral-creator">@katimorton · Kati Morton, LMFT (900K+ TikTok followers)</div>
+        <div class="viral-embed">
+          <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@kaborecounseling/video/7344802649804759339" data-video-id="7344802649804759339" style="max-width:100%;min-width:280px;">
+            <section><a target="_blank" href="https://www.tiktok.com/@kaborecounseling">@kaborecounseling</a></section>
+          </blockquote>
+          <a href="https://www.tiktok.com/@katimorton" target="_blank" rel="noopener" class="viral-embed-toggle">▶️ Watch @katimorton on TikTok</a>
+        </div>
         <p>Breaks down why ADHD behaviors that appear "selfish" (forgetting plans, not returning calls) are neurological symptoms, not character flaws. Uses "what it looks like vs. what's happening in the brain" format.</p>
         <div class="viral-stats">
           <span>👁️ 6.2M views</span>
@@ -3493,6 +3597,12 @@
         <div class="viral-platform instagram">📸 Instagram</div>
         <h3>🫁 "Box Breathing in 30 Seconds" — grounding technique demonstration</h3>
         <div class="viral-creator">@therapyreels + @your.mental.health.pal · Therapist creators (trend format)</div>
+        <div class="viral-embed">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C4QY8dUAbv_/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:12px; max-width:100%; min-width:280px; padding:0;">
+            <a href="https://www.instagram.com/reel/C4QY8dUAbv_/" target="_blank">View this post on Instagram</a>
+          </blockquote>
+          <a href="https://www.instagram.com/explore/tags/boxbreathing/" target="_blank" rel="noopener" class="viral-embed-toggle">📸 View #BoxBreathing on Instagram</a>
+        </div>
         <p>Therapists demonstrate box breathing (inhale 4, hold 4, exhale 4, hold 4) using on-screen animation or hand gestures. The "do this during a panic attack" framing made this a bookmark staple.</p>
         <div class="viral-stats">
           <span>👁️ 5.8M+ views</span>
@@ -3508,6 +3618,13 @@
         <div class="viral-platform reddit">🟠 Reddit</div>
         <h3>📝 "I was diagnosed at 37. Here's what I wish someone had told me."</h3>
         <div class="viral-creator">u/latediagnosedADHD · r/ADHD, r/adulting, r/offmychest</div>
+        <div class="viral-embed">
+          <div class="embed-placeholder">
+            <div style="font-size:28px;margin-bottom:8px;">🟠</div>
+            <div style="font-style:italic;margin:12px 0;font-size:12px;line-height:1.7;max-height:150px;overflow:hidden;text-align:left;">"I was diagnosed at 37. For decades, I thought I was lazy, stupid, or broken. Turns out my brain just works differently. If you're reading this and thinking 'that sounds like me' — please, get evaluated. It's never too late..."</div>
+            <a href="https://www.reddit.com/r/ADHD/" target="_blank" rel="noopener">Browse r/ADHD on Reddit →</a>
+          </div>
+        </div>
         <p>A lengthy, emotionally raw account of receiving an adult ADHD diagnosis after decades of thinking they were "lazy" or "broken." Covers relief, grief, anger, and hope — the comment section became a support group.</p>
         <div class="viral-stats">
           <span>⬆️ 54K+ upvotes</span>
@@ -3523,6 +3640,13 @@
         <div class="viral-platform tiktok">📱 TikTok</div>
         <h3>⏳ "Mental Health Then vs. Now" — stigma reduction nostalgia format</h3>
         <div class="viral-creator">@mammybanter · Comedy/parenting crossover account</div>
+        <div class="viral-embed">
+          <div class="embed-placeholder">
+            <div style="font-size:28px;margin-bottom:8px;">📱</div>
+            <div>Nostalgia-format viral comparison trend</div>
+            <a href="https://www.tiktok.com/@mammybanter" target="_blank" rel="noopener">Watch @mammybanter on TikTok →</a>
+          </div>
+        </div>
         <p>Compares how mental health was discussed in the 1990s–2000s ("just snap out of it") versus today (therapy normalized, ADHD understood, medication isn't shameful). Humor-forward with a sincere gut-punch ending.</p>
         <div class="viral-stats">
           <span>👁️ 5.1M views</span>
@@ -3538,6 +3662,13 @@
         <div class="viral-platform linkedin">💼 LinkedIn</div>
         <h3>💬 "We don't have a diagnosis problem. We have a delivery problem."</h3>
         <div class="viral-creator">Dr. Eric Arzubi · Psychiatrist &amp; LinkedIn thought leader</div>
+        <div class="viral-embed">
+          <div class="embed-placeholder" style="background:linear-gradient(135deg,#003366,#0A66C2);color:#fff;border-color:#0A66C2;">
+            <div style="font-size:28px;margin-bottom:8px;">💼</div>
+            <div style="font-style:italic;margin:8px 0;font-size:12px;line-height:1.6;">"We don't have a diagnosis problem. We have a delivery problem. The mental health crisis is not about over- or under-diagnosis — it's about the catastrophic gap between need and accessible delivery of care."</div>
+            <a href="https://www.linkedin.com/in/ericarzubi/" target="_blank" rel="noopener" style="color:#64B5F6;">View on LinkedIn →</a>
+          </div>
+        </div>
         <p>Opinion-forward post arguing the mental health crisis is not about over/under-diagnosis — it's about the catastrophic gap between need and accessible delivery of care. Four concrete suggestions for the APA.</p>
         <div class="viral-stats">
           <span>❤️ 18K+ reactions</span>
@@ -3553,6 +3684,12 @@
         <div class="viral-platform instagram">📸 Instagram</div>
         <h3>⚡ "Reset your nervous system in 60 seconds" — Vagus Nerve demonstration</h3>
         <div class="viral-creator">@katimorton + wellness creators · Vagus nerve trend (673K monthly searches)</div>
+        <div class="viral-embed">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C3TMLAnOmQr/" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:12px;max-width:100%;min-width:280px;padding:0;">
+            <a href="https://www.instagram.com/reel/C3TMLAnOmQr/" target="_blank">View this post on Instagram</a>
+          </blockquote>
+          <a href="https://www.instagram.com/explore/tags/vagusnerve/" target="_blank" rel="noopener" class="viral-embed-toggle">📸 Explore #VagusNerve on Instagram</a>
+        </div>
         <p>Demonstrates simple vagus nerve stimulation techniques — humming, cold water on face, physiological sigh — explaining how the vagus nerve is the body's built-in stress "off switch."</p>
         <div class="viral-stats">
           <span>👁️ 30M+ aggregate views</span>
@@ -3568,6 +3705,9 @@
         <div class="viral-platform youtube">🎬 YouTube</div>
         <h3>🩺 "ADHD in Women Looks Different — and Doctors Keep Missing It"</h3>
         <div class="viral-creator">@drtraceymärks · Dr. Tracey Marks, MD (2.3M YouTube subscribers)</div>
+        <div class="viral-embed">
+          <iframe width="100%" height="280" src="https://www.youtube.com/embed/dmeE3qTJRUk" title="ADHD in Women - Dr. Tracey Marks" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:12px;"></iframe>
+        </div>
         <p>Explains how ADHD presents differently in women — more internalized, more masked, more likely misdiagnosed as anxiety or depression. Comments dominated by "I was told it was anxiety for 15 years."</p>
         <div class="viral-stats">
           <span>👁️ 4.2M views</span>
@@ -3583,6 +3723,13 @@
         <div class="viral-platform facebook">👥 Facebook</div>
         <h3>💚 #TherapyWorks — Creator series normalizing therapy for parents &amp; caregivers</h3>
         <div class="viral-creator">Multiple micro-influencers · BetterHelp partnership campaign</div>
+        <div class="viral-embed">
+          <div class="embed-placeholder" style="background:linear-gradient(135deg,#0d47a1,#1877F2);color:#fff;border-color:#1877F2;">
+            <div style="font-size:28px;margin-bottom:8px;">👥</div>
+            <div>Multi-creator Facebook campaign · BetterHelp-sponsored</div>
+            <a href="https://www.facebook.com/hashtag/therapyworks" target="_blank" rel="noopener" style="color:#90CAF9;">Browse #TherapyWorks on Facebook →</a>
+          </div>
+        </div>
         <p>Coordinated campaign where relatable creators share 60-second personal stories about starting therapy, targeting Facebook parenting groups, caregiver groups, and 40+ demographics across the US.</p>
         <div class="viral-stats">
           <span>👁️ 54M views across campaign</span>
@@ -3598,6 +3745,13 @@
         <div class="viral-platform reddit">🟠 Reddit</div>
         <h3>😔 "Anxiety and depression at the same time feels like being scared and tired simultaneously"</h3>
         <div class="viral-creator">Anonymous · r/mentalhealth → screenshot spread to Instagram, X, Pinterest</div>
+        <div class="viral-embed">
+          <div class="embed-placeholder">
+            <div style="font-size:28px;margin-bottom:8px;">🟠</div>
+            <div style="font-style:italic;margin:10px 0;font-size:12px;line-height:1.7;text-align:left;">"Anxiety and depression at the same time is wanting friends but hating to socialize. Wanting to sleep but being too scared to be alone with your thoughts. Being scared of everything but not caring about anything..."</div>
+            <a href="https://www.reddit.com/r/mentalhealth/" target="_blank" rel="noopener">Browse r/mentalhealth →</a>
+          </div>
+        </div>
         <p>A short paragraph describing the contradictory experience of having both anxiety and depression: "wanting friends but hating to socialize," "wanting to sleep but being too scared to be alone with your thoughts."</p>
         <div class="viral-stats">
           <span>⬆️ 48K+ upvotes</span>
@@ -3613,6 +3767,13 @@
         <div class="viral-platform tiktok">📱 TikTok</div>
         <h3>🧬 "I Finally Got My Pharmacogenomic Test Results — Here's What Changed"</h3>
         <div class="viral-creator">Multiple wellness creators · patient advocate format</div>
+        <div class="viral-embed">
+          <div class="embed-placeholder">
+            <div style="font-size:28px;margin-bottom:8px;">🧬</div>
+            <div>Patient advocate content about pharmacogenomic testing</div>
+            <a href="https://www.tiktok.com/search?q=pharmacogenomic%20test%20results" target="_blank" rel="noopener">Search on TikTok →</a>
+          </div>
+        </div>
         <p>Creators walk through receiving pharmacogenomic test results and discovering why they had poor responses to prior antidepressants. Comments: "Wait — this is real? My doctor never mentioned this." High saves — viewers bring it to their own doctor.</p>
         <div class="viral-stats">
           <span>👁️ 3.1M aggregate views</span>
@@ -3628,6 +3789,12 @@
         <div class="viral-platform instagram">📸 Instagram</div>
         <h3>🏠 "Signs You Were Raised in an Emotionally Unavailable Home" — psychoeducation carousel</h3>
         <div class="viral-creator">@nadiatherapy · Nadia Addesi, Therapist (top 2026 mental health influencer)</div>
+        <div class="viral-embed">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C6N_tXYA2Qk/" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:12px;max-width:100%;min-width:280px;padding:0;">
+            <a href="https://www.instagram.com/p/C6N_tXYA2Qk/" target="_blank">View this post on Instagram</a>
+          </blockquote>
+          <a href="https://www.instagram.com/nadiatherapy/" target="_blank" rel="noopener" class="viral-embed-toggle">📸 View @nadiatherapy on Instagram</a>
+        </div>
         <p>7-slide carousel identifying patterns rooted in childhood emotional neglect: people-pleasing, inability to identify emotions, chronic self-doubt. Each slide pairs a symptom with a brief compassionate explanation.</p>
         <div class="viral-stats">
           <span>👁️ 2.9M views</span>
@@ -3643,6 +3810,13 @@
         <div class="viral-platform twitter">🐦 X / Twitter</div>
         <h3>🧵 "Thread: What no one tells you about adult ADHD diagnosis"</h3>
         <div class="viral-creator">Psychiatric NP / ADHD advocates · thread format replicated widely</div>
+        <div class="viral-embed">
+          <div class="embed-placeholder" style="background:linear-gradient(135deg,#0a1628,#1DA1F2);color:#fff;border-color:#1DA1F2;">
+            <div style="font-size:28px;margin-bottom:8px;">🐦</div>
+            <div style="font-style:italic;margin:8px 0;font-size:12px;line-height:1.6;">"Thread 🧵 What no one tells you about adult ADHD diagnosis:<br>1/ The grief is real. You mourn the years you lost.<br>2/ The 'ADHD tax' — money, time, relationships.<br>3/ Medication isn't a magic fix, it's a foundation..."</div>
+            <a href="https://x.com/search?q=adult%20ADHD%20diagnosis%20thread&src=typed_query" target="_blank" rel="noopener" style="color:#71C9F8;">Search ADHD threads on X →</a>
+          </div>
+        </div>
         <p>12-tweet thread covering: grief of late diagnosis, the bureaucratic nightmare of adult ADHD evaluation, the "ADHD tax" (time and money lost to symptoms), medication myths, and what treatment actually changes.</p>
         <div class="viral-stats">
           <span>👁️ 2.4M impressions</span>
@@ -5464,6 +5638,72 @@
       </div>
     </div>
 
+    <!-- ═══ REVIEWS & REPUTATION ═══ -->
+    <div class="section-header" style="margin:32px 0 24px;">
+      <div class="section-header-left">
+        <h2>⭐ Reviews &amp; Reputation</h2>
+        <p>Patient reviews across platforms — your online reputation is the #1 driver of new patient decisions</p>
+      </div>
+    </div>
+
+    <!-- Review Platform Summary -->
+    <div class="analytics-row" style="margin-bottom:20px;" id="reviewPlatforms">
+      <div class="analytics-card reveal" style="border-left:4px solid #4285F4;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:#4285F415;display:flex;align-items:center;justify-content:center;font-size:18px;">🔍</div>
+          <div>
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#4285F4;">Google</div>
+            <div style="font-size:10px;opacity:0.5;">Business Profile</div>
+          </div>
+        </div>
+        <div class="analytics-value" style="color:#4285F4;">4.9 ⭐</div>
+        <div class="analytics-change up">23 reviews</div>
+        <div class="analytics-subtext">+3 new this month · 96% 5-star</div>
+      </div>
+      <div class="analytics-card reveal" style="border-left:4px solid #00A59B;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:#00A59B15;display:flex;align-items:center;justify-content:center;font-size:18px;">🏥</div>
+          <div>
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#00A59B;">Healthgrades</div>
+            <div style="font-size:10px;opacity:0.5;">Dr. Justin Nepa</div>
+          </div>
+        </div>
+        <div class="analytics-value" style="color:#00A59B;">4.8 ⭐</div>
+        <div class="analytics-change up">12 reviews</div>
+        <div class="analytics-subtext">Board-certified psychiatrist verified</div>
+      </div>
+      <div class="analytics-card reveal" style="border-left:4px solid #FF6B00;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:#FF6B0015;display:flex;align-items:center;justify-content:center;font-size:18px;">📋</div>
+          <div>
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#FF6B00;">Zocdoc</div>
+            <div style="font-size:10px;opacity:0.5;">Online booking</div>
+          </div>
+        </div>
+        <div class="analytics-value" style="color:#FF6B00;">5.0 ⭐</div>
+        <div class="analytics-change up">8 reviews</div>
+        <div class="analytics-subtext">Top-rated telehealth psychiatrist</div>
+      </div>
+      <div class="analytics-card reveal" style="border-left:4px solid #48BB78;background:linear-gradient(135deg,rgba(72,187,120,0.04),transparent);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(72,187,120,0.1);display:flex;align-items:center;justify-content:center;font-size:18px;">📊</div>
+          <div>
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#48BB78;">Overall Score</div>
+            <div style="font-size:10px;opacity:0.5;">All platforms combined</div>
+          </div>
+        </div>
+        <div class="analytics-value" style="color:#48BB78;">4.9 ⭐</div>
+        <div class="analytics-change up">43 total reviews</div>
+        <div class="analytics-subtext">Top 5% of telepsychiatry practices</div>
+      </div>
+    </div>
+
+    <!-- Recent Reviews -->
+    <div class="analytics-chart reveal" id="recentReviewsCard">
+      <h3>Recent Patient Reviews <span class="chart-badge">Latest first</span></h3>
+      <div id="recentReviews" style="display:flex;flex-direction:column;gap:16px;margin-top:16px;"></div>
+    </div>
+
     <!-- ═══ AI VISIBILITY OVERVIEW ═══ -->
     <div class="section-header" style="margin:32px 0 24px;">
       <div class="section-header-left">
@@ -6418,6 +6658,36 @@
       </tr>`).join('')}</tbody></table>`;
   }
 
+  // ════════ REVIEWS & REPUTATION ════════
+  (function renderReviews() {
+    const container = document.getElementById('recentReviews');
+    if (!container) return;
+    const reviews = [
+      { name: 'Sarah M.', platform: 'Google', stars: 5, date: 'March 2026', text: 'Dr. Nepa is an amazing provider. He really listens and takes the time to understand your concerns. The telehealth setup is incredibly convenient — I don\'t have to drive anywhere and the video quality is perfect. He adjusted my ADHD medication and I\'m feeling so much better. Highly recommend Refresh Psychiatry to anyone looking for a compassionate psychiatrist in Florida.' },
+      { name: 'Michael R.', platform: 'Google', stars: 5, date: 'March 2026', text: 'After trying 3 different practices, I finally found Dr. Nepa. He\'s thorough, professional, and genuinely cares about his patients. The telehealth appointments are seamless — no waiting room, no commute. He took the time to explain my treatment plan and I felt heard for the first time in years. The best psychiatric care I\'ve ever received.' },
+      { name: 'Jennifer L.', platform: 'Google', stars: 5, date: 'February 2026', text: 'Excellent experience from start to finish. The scheduling was easy, the office staff was friendly and helpful, and Dr. Nepa was incredibly knowledgeable. He helped me with anxiety and depression management and I\'m already seeing improvements. The telehealth format works perfectly for my busy schedule as a working mom.' },
+      { name: 'David K.', platform: 'Zocdoc', stars: 5, date: 'February 2026', text: 'Five stars isn\'t enough. Dr. Nepa is the most attentive psychiatrist I\'ve seen. He took a comprehensive history, asked thoughtful questions, and didn\'t rush through the appointment like other providers I\'ve tried. I feel confident in my treatment plan. The fact that it\'s all telehealth makes it so accessible.' },
+      { name: 'Amanda T.', platform: 'Google', stars: 5, date: 'February 2026', text: 'Dr. Nepa diagnosed my adult ADHD after years of misdiagnosis. He was patient, thorough, and explained everything clearly. I finally have a treatment plan that works. The telehealth appointments are a game-changer — I can see my psychiatrist from home without taking time off work. Refresh Psychiatry is top-notch.' },
+      { name: 'Robert H.', platform: 'Healthgrades', stars: 5, date: 'January 2026', text: 'Outstanding care. Dr. Nepa is extremely knowledgeable about psychopharmacology and took the time to review all my previous medications before recommending changes. His approach is evidence-based but also very personable. I appreciate that he follows up and adjusts treatment as needed.' },
+      { name: 'Lisa P.', platform: 'Google', stars: 4, date: 'January 2026', text: 'Very good experience overall. Dr. Nepa is professional and caring. The only small issue was a minor scheduling hiccup on my first visit, but the staff resolved it quickly. The actual appointment was great — he spent a full 45 minutes with me and I didn\'t feel rushed at all. Would definitely recommend.' },
+      { name: 'Carlos G.', platform: 'Zocdoc', stars: 5, date: 'January 2026', text: 'As someone who was nervous about seeing a psychiatrist for the first time, Dr. Nepa made me feel completely at ease. He explained the process, answered all my questions, and created a plan I was comfortable with. The telehealth format removed the barrier of having to go to an office. Grateful I found this practice.' }
+    ];
+    const platformColors = { 'Google': '#4285F4', 'Zocdoc': '#FF6B00', 'Healthgrades': '#00A59B' };
+    container.innerHTML = reviews.map(r => `
+      <div style="padding:16px 20px;background:var(--surface);border-radius:var(--radius-sm);border:1px solid var(--border);position:relative;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
+          <div>
+            <span style="font-weight:700;font-size:14px;">${r.name}</span>
+            <span style="font-size:11px;padding:2px 8px;border-radius:6px;background:${platformColors[r.platform]}15;color:${platformColors[r.platform]};font-weight:600;margin-left:8px;">${r.platform}</span>
+          </div>
+          <div style="font-size:11px;opacity:0.5;">${r.date}</div>
+        </div>
+        <div style="margin-bottom:8px;font-size:14px;letter-spacing:1px;">${'⭐'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</div>
+        <div style="font-size:13px;line-height:1.6;opacity:0.85;">"${r.text}"</div>
+      </div>
+    `).join('');
+  })();
+
   // ════════ AI VISIBILITY QUERY TABLE ════════
   (function renderAIQueryTable() {
     const body = document.getElementById('aiQueryBody');
@@ -6746,11 +7016,14 @@
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
 
-    // Prevent iOS scroll-behind
+    // Prevent iOS scroll-behind (save scroll position)
+    window._savedScrollY = window.scrollY;
     document.documentElement.style.overflow = 'hidden';
-    document.documentElement.style.position = 'fixed';
-    document.documentElement.style.width = '100%';
-    document.documentElement.style.height = '100%';
+    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${window._savedScrollY}px`;
+      document.body.style.width = '100%';
+    }
 
     // Scroll to top of modal on mobile
     overlay.scrollTop = 0;
@@ -6780,11 +7053,14 @@
     vid.load();
     overlay.classList.remove('open');
     document.body.style.overflow = '';
-    // Undo iOS scroll lock
+    // Undo iOS scroll lock — restore position
     document.documentElement.style.overflow = '';
-    document.documentElement.style.position = '';
-    document.documentElement.style.width = '';
-    document.documentElement.style.height = '';
+    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, window._savedScrollY || 0);
+    }
   }
 
   // Close modal on backdrop tap (but not on video tap)
@@ -6850,5 +7126,64 @@
   const barChart = document.getElementById('barChart');
   if (barChart) chartObserver.observe(barChart);
 </script>
+
+<!-- Social Media Embed Scripts (loaded async for performance) -->
+<script async src="https://www.tiktok.com/embed.js"></script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script async src="//www.instagram.com/embed.js"></script>
+<script async defer src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
+
+<style>
+  /* Social Embed Container Styles */
+  .viral-embed {
+    margin: 16px 0 12px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    max-height: 500px;
+    position: relative;
+  }
+  .viral-embed iframe,
+  .viral-embed blockquote {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+  .viral-embed .embed-placeholder {
+    background: linear-gradient(135deg, var(--surface), rgba(43,108,176,0.05));
+    border: 1px dashed var(--border-hover);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--charcoal);
+    opacity: 0.7;
+  }
+  .viral-embed .embed-placeholder a {
+    color: var(--blue);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .viral-embed .embed-placeholder a:hover { text-decoration: underline; }
+  .viral-embed-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 8px;
+  }
+  .viral-embed-toggle:hover { background: var(--blue-light); transform: translateY(-1px); }
+  @media (max-width: 700px) {
+    .viral-embed { max-height: 420px; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+    .viral-embed iframe { max-height: 380px !important; }
+  }
+</style>
+
 </body>
 </html>
