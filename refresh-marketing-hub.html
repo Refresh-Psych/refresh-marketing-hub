@@ -1293,11 +1293,32 @@
   .metric .change.down { color: #E53E3E; }
 
   /* ═══════════════ ANALYTICS ═══════════════ */
+  /* ═══════════════ ANALYTICS — ENHANCED ═══════════════ */
+  .analytics-period-selector {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .period-btn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--surface-elevated);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--charcoal);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .period-btn:hover { border-color: var(--blue); color: var(--blue); }
+  .period-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+
   .analytics-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
 
   .analytics-card {
@@ -1309,121 +1330,139 @@
     position: relative;
     overflow: hidden;
   }
-
-  .analytics-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
+  .analytics-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .analytics-card .analytics-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; margin-bottom: 12px;
   }
-
   .analytics-card .analytics-label {
-    font-size: 11px;
-    color: var(--charcoal);
-    opacity: 0.45;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-weight: 700;
-    margin-bottom: 8px;
+    font-size: 11px; color: var(--charcoal); opacity: 0.45;
+    text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; margin-bottom: 8px;
   }
-
   .analytics-card .analytics-value {
-    font-family: 'Playfair Display', serif;
-    font-size: 36px;
-    font-weight: 800;
-    color: var(--deep-blue);
-    line-height: 1;
-    margin-bottom: 6px;
+    font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 800;
+    color: var(--deep-blue); line-height: 1; margin-bottom: 8px;
   }
-
   .analytics-card .analytics-change {
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;
+    padding: 3px 8px; border-radius: 6px;
+  }
+  .analytics-card .analytics-change.up { color: #276749; background: rgba(72,187,120,0.12); }
+  .analytics-card .analytics-change.down { color: #9B2C2C; background: rgba(245,101,101,0.12); }
+  .analytics-card .analytics-change.neutral { color: #975A16; background: rgba(246,199,68,0.15); }
+  .analytics-card .analytics-subtext {
+    font-size: 11px; color: var(--charcoal); opacity: 0.4; margin-top: 6px;
   }
 
-  .analytics-card .analytics-change.up { color: #48BB78; }
+  .analytics-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
 
   .analytics-chart {
     background: var(--surface-elevated);
     border-radius: var(--radius);
     border: 1px solid var(--border);
-    padding: 32px;
-  }
-
-  .analytics-chart h3 {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--deep-blue);
+    padding: 28px;
     margin-bottom: 24px;
+  }
+  .analytics-chart h3 {
+    font-size: 15px; font-weight: 700; color: var(--deep-blue); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .analytics-chart h3 .chart-badge {
+    font-size: 10px; background: rgba(43,108,176,0.08); color: var(--blue);
+    padding: 3px 8px; border-radius: 10px; font-weight: 700;
   }
 
   .bar-chart {
-    display: flex;
-    align-items: flex-end;
-    gap: 12px;
-    height: 180px;
-    padding-bottom: 28px;
-    border-bottom: 1px solid var(--border);
-    position: relative;
+    display: flex; align-items: flex-end; gap: 8px;
+    height: 180px; padding-bottom: 28px;
+    border-bottom: 1px solid var(--border); position: relative;
   }
-
   .bar-col {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    height: 100%;
-    justify-content: flex-end;
+    flex: 1; display: flex; flex-direction: column; align-items: center;
+    gap: 4px; height: 100%; justify-content: flex-end;
   }
-
   .bar {
-    width: 100%;
-    max-width: 48px;
-    border-radius: 6px 6px 2px 2px;
-    transition: height 1s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    cursor: pointer;
+    width: 100%; max-width: 40px; border-radius: 6px 6px 2px 2px;
+    transition: height 1s cubic-bezier(0.4, 0, 0.2, 1); position: relative; cursor: pointer;
   }
-
   .bar:hover { filter: brightness(1.1); }
-
   .bar.blue { background: linear-gradient(to top, var(--blue), var(--blue-light)); }
   .bar.yellow { background: linear-gradient(to top, var(--yellow-dim), var(--yellow)); }
-
+  .bar.green { background: linear-gradient(to top, #2F855A, #48BB78); }
+  .bar.purple { background: linear-gradient(to top, #6B46C1, #9F7AEA); }
   .bar-label {
-    font-size: 11px;
-    color: var(--charcoal);
-    opacity: 0.4;
-    font-weight: 600;
-    position: absolute;
-    bottom: -24px;
-    white-space: nowrap;
+    font-size: 10px; color: var(--charcoal); opacity: 0.4; font-weight: 600;
+    position: absolute; bottom: -22px; white-space: nowrap;
   }
+  .bar-tooltip {
+    display: none; position: absolute; top: -32px; left: 50%; transform: translateX(-50%);
+    background: var(--navy); color: #fff; font-size: 11px; padding: 4px 8px;
+    border-radius: 6px; white-space: nowrap; font-weight: 600; z-index: 10;
+  }
+  .bar:hover .bar-tooltip { display: block; }
 
   .chart-legend {
-    display: flex;
-    gap: 24px;
-    margin-top: 20px;
-    justify-content: center;
+    display: flex; gap: 20px; margin-top: 16px; justify-content: center; flex-wrap: wrap;
   }
-
   .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    color: var(--charcoal);
-    opacity: 0.5;
-    font-weight: 600;
+    display: flex; align-items: center; gap: 6px;
+    font-size: 11px; color: var(--charcoal); opacity: 0.5; font-weight: 600;
   }
-
-  .legend-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 3px;
-  }
-
+  .legend-dot { width: 10px; height: 10px; border-radius: 3px; }
   .legend-dot.blue { background: var(--blue); }
   .legend-dot.yellow { background: var(--yellow); }
+  .legend-dot.green { background: #48BB78; }
+  .legend-dot.purple { background: #9F7AEA; }
+
+  /* Ad breakdown table */
+  .ad-breakdown-table {
+    width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px;
+  }
+  .ad-breakdown-table thead th {
+    text-align: left; padding: 10px 12px; font-size: 10px; text-transform: uppercase;
+    letter-spacing: 1px; color: var(--charcoal); opacity: 0.4; font-weight: 700;
+    border-bottom: 2px solid var(--border);
+  }
+  .ad-breakdown-table tbody td {
+    padding: 12px; border-bottom: 1px solid var(--border); vertical-align: middle;
+  }
+  .ad-breakdown-table tbody tr:hover { background: rgba(43,108,176,0.03); }
+  .ad-breakdown-table .ad-platform {
+    display: flex; align-items: center; gap: 8px; font-weight: 700;
+  }
+  .ad-breakdown-table .ad-platform-icon {
+    width: 28px; height: 28px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center; font-size: 14px;
+  }
+  .ad-breakdown-table .ad-bar-cell { min-width: 100px; }
+  .ad-mini-bar {
+    height: 6px; border-radius: 3px; background: var(--border); position: relative; overflow: hidden;
+  }
+  .ad-mini-bar-fill { height: 100%; border-radius: 3px; transition: width 1.2s ease; }
+  .ad-change { font-size: 11px; font-weight: 700; }
+  .ad-change.up { color: #276749; }
+  .ad-change.down { color: #C53030; }
+
+  /* Funnel */
+  .analytics-funnel { display: flex; flex-direction: column; gap: 0; }
+  .funnel-step {
+    display: flex; align-items: center; gap: 16px; padding: 14px 20px;
+    position: relative; border-left: 3px solid var(--border);
+  }
+  .funnel-step:first-child { border-left-color: var(--blue); }
+  .funnel-step:nth-child(2) { border-left-color: var(--blue-light); }
+  .funnel-step:nth-child(3) { border-left-color: var(--yellow); }
+  .funnel-step:last-child { border-left-color: #48BB78; }
+  .funnel-label { font-size: 13px; font-weight: 600; flex: 1; }
+  .funnel-value { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 800; color: var(--deep-blue); }
+  .funnel-rate { font-size: 11px; font-weight: 700; color: var(--blue); opacity: 0.7; }
+  .funnel-arrow { font-size: 10px; color: var(--charcoal); opacity: 0.25; text-align: center; padding: 2px 0; }
 
   /* ═══════════════ FOOTER ═══════════════ */
   .hub-footer {
@@ -1996,6 +2035,7 @@
     .brief-score-grid { grid-template-columns: repeat(3, 1fr); }
     .podcast-topics { grid-template-columns: 1fr 1fr; }
     .analytics-row { grid-template-columns: 1fr 1fr; }
+    .analytics-grid-2 { grid-template-columns: 1fr; }
     .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
   }
 
@@ -2111,7 +2151,14 @@
     .battle-plan-card { padding: 14px; }
 
     /* Analytics */
-    .analytics-row { grid-template-columns: 1fr; gap: 14px; }
+    .analytics-row { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .analytics-grid-2 { grid-template-columns: 1fr; }
+    .analytics-card .analytics-value { font-size: 26px; }
+    .analytics-card { padding: 16px; }
+    .analytics-chart { padding: 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .ad-breakdown-table { min-width: 560px; font-size: 11px; }
+    .period-btn { padding: 7px 14px; font-size: 12px; }
+    .bar-chart { min-width: 0; gap: 6px; }
 
     /* Viral */
     .viral-grid { grid-template-columns: 1fr; gap: 14px; }
@@ -4668,51 +4715,138 @@
   <section class="section" id="analytics">
     <div class="section-header">
       <div class="section-header-left">
-        <h2>Performance Overview</h2>
-        <p>Marketing metrics for March 2026</p>
+        <h2>Performance Analytics</h2>
+        <p>Marketing metrics with period comparison — refreshpsychiatry.com</p>
       </div>
     </div>
 
-    <div class="analytics-row">
+    <!-- Period Selector -->
+    <div class="analytics-period-selector" id="periodSelector">
+      <button class="period-btn" data-period="1w" onclick="setPeriod('1w')">1 Week</button>
+      <button class="period-btn active" data-period="2w" onclick="setPeriod('2w')">2 Weeks</button>
+      <button class="period-btn" data-period="4w" onclick="setPeriod('4w')">4 Weeks</button>
+      <button class="period-btn" data-period="8w" onclick="setPeriod('8w')">8 Weeks</button>
+      <button class="period-btn" data-period="12w" onclick="setPeriod('12w')">12 Weeks</button>
+    </div>
+
+    <!-- Top KPI Row -->
+    <div class="analytics-row" id="analyticsKpis">
       <div class="analytics-card reveal">
-        <div class="analytics-label">Website Visits</div>
-        <div class="analytics-value" data-count="4820">0</div>
-        <div class="analytics-change up">+18% from Feb</div>
+        <div class="analytics-icon" style="background:rgba(43,108,176,0.08);color:var(--blue)">&#x1f310;</div>
+        <div class="analytics-label">Website Sessions</div>
+        <div class="analytics-value" id="kpi-sessions">2,410</div>
+        <div class="analytics-change up" id="kpi-sessions-change">+18.2% vs prev</div>
+        <div class="analytics-subtext" id="kpi-sessions-sub">1,205/wk avg · 344/day peak</div>
       </div>
       <div class="analytics-card reveal">
-        <div class="analytics-label">New Patient Inquiries</div>
-        <div class="analytics-value" data-count="47">0</div>
-        <div class="analytics-change up">+12 from Feb</div>
+        <div class="analytics-icon" style="background:rgba(72,187,120,0.1);color:#48BB78">&#x1f4de;</div>
+        <div class="analytics-label">Patient Inquiries</div>
+        <div class="analytics-value" id="kpi-inquiries">24</div>
+        <div class="analytics-change up" id="kpi-inquiries-change">+33.3% vs prev</div>
+        <div class="analytics-subtext" id="kpi-inquiries-sub">12/wk avg · 68% from organic</div>
       </div>
       <div class="analytics-card reveal">
-        <div class="analytics-label">Ad Spend (Total)</div>
-        <div class="analytics-value">$2.1K</div>
-        <div class="analytics-change up">ROAS 4.2x</div>
+        <div class="analytics-icon" style="background:rgba(246,199,68,0.12);color:var(--yellow-dim)">&#x1f4b0;</div>
+        <div class="analytics-label">Total Ad Spend</div>
+        <div class="analytics-value" id="kpi-spend">$1,050</div>
+        <div class="analytics-change neutral" id="kpi-spend-change">+2.0% vs prev</div>
+        <div class="analytics-subtext" id="kpi-spend-sub">$43.75/inquiry · ROAS 4.2x</div>
       </div>
       <div class="analytics-card reveal">
+        <div class="analytics-icon" style="background:rgba(159,122,234,0.1);color:#9F7AEA">&#x1f4c8;</div>
+        <div class="analytics-label">Conversion Rate</div>
+        <div class="analytics-value" id="kpi-cvr">1.0%</div>
+        <div class="analytics-change up" id="kpi-cvr-change">+0.13pp vs prev</div>
+        <div class="analytics-subtext" id="kpi-cvr-sub">Sessions-to-inquiry rate</div>
+      </div>
+    </div>
+
+    <!-- Second KPI Row -->
+    <div class="analytics-row" id="analyticsKpis2">
+      <div class="analytics-card reveal">
+        <div class="analytics-icon" style="background:rgba(43,108,176,0.08);color:var(--blue)">&#x1f50d;</div>
+        <div class="analytics-label">Organic Traffic</div>
+        <div class="analytics-value" id="kpi-organic">1,590</div>
+        <div class="analytics-change up" id="kpi-organic-change">+22.3% vs prev</div>
+        <div class="analytics-subtext" id="kpi-organic-sub">66% of total · Top: "telehealth psychiatry FL"</div>
+      </div>
+      <div class="analytics-card reveal">
+        <div class="analytics-icon" style="background:rgba(246,199,68,0.12);color:var(--yellow-dim)">&#x1f4f1;</div>
+        <div class="analytics-label">Social Traffic</div>
+        <div class="analytics-value" id="kpi-social">412</div>
+        <div class="analytics-change up" id="kpi-social-change">+28.1% vs prev</div>
+        <div class="analytics-subtext" id="kpi-social-sub">IG 48% · FB 32% · LI 20%</div>
+      </div>
+      <div class="analytics-card reveal">
+        <div class="analytics-icon" style="background:rgba(72,187,120,0.1);color:#48BB78">&#x1f4dd;</div>
         <div class="analytics-label">Content Published</div>
-        <div class="analytics-value" data-count="27">0</div>
-        <div class="analytics-change up">10 Blogs · 9 Ads · 8 Social</div>
+        <div class="analytics-value" id="kpi-content">14</div>
+        <div class="analytics-change up" id="kpi-content-change">+40.0% vs prev</div>
+        <div class="analytics-subtext" id="kpi-content-sub">5 Blogs · 4 Ads · 5 Social</div>
+      </div>
+      <div class="analytics-card reveal">
+        <div class="analytics-icon" style="background:rgba(159,122,234,0.1);color:#9F7AEA">&#x2b50;</div>
+        <div class="analytics-label">Avg. Review Rating</div>
+        <div class="analytics-value" id="kpi-reviews">4.9</div>
+        <div class="analytics-change up" id="kpi-reviews-change">+0.1 vs prev</div>
+        <div class="analytics-subtext" id="kpi-reviews-sub">3 new reviews this period</div>
       </div>
     </div>
 
+    <!-- Traffic Chart -->
     <div class="analytics-chart reveal">
-      <h3>Traffic by Channel — Last 8 Weeks</h3>
-      <div class="bar-chart" id="barChart">
-        <div class="bar-col"><div class="bar blue" data-height="45" style="height:0"></div><div class="bar yellow" data-height="20" style="height:0;margin-top:4px"></div><span class="bar-label">W1</span></div>
-        <div class="bar-col"><div class="bar blue" data-height="55" style="height:0"></div><div class="bar yellow" data-height="28" style="height:0;margin-top:4px"></div><span class="bar-label">W2</span></div>
-        <div class="bar-col"><div class="bar blue" data-height="50" style="height:0"></div><div class="bar yellow" data-height="35" style="height:0;margin-top:4px"></div><span class="bar-label">W3</span></div>
-        <div class="bar-col"><div class="bar blue" data-height="65" style="height:0"></div><div class="bar yellow" data-height="30" style="height:0;margin-top:4px"></div><span class="bar-label">W4</span></div>
-        <div class="bar-col"><div class="bar blue" data-height="70" style="height:0"></div><div class="bar yellow" data-height="42" style="height:0;margin-top:4px"></div><span class="bar-label">W5</span></div>
-        <div class="bar-col"><div class="bar blue" data-height="60" style="height:0"></div><div class="bar yellow" data-height="48" style="height:0;margin-top:4px"></div><span class="bar-label">W6</span></div>
-        <div class="bar-col"><div class="bar blue" data-height="80" style="height:0"></div><div class="bar yellow" data-height="55" style="height:0;margin-top:4px"></div><span class="bar-label">W7</span></div>
-        <div class="bar-col"><div class="bar blue" data-height="90" style="height:0"></div><div class="bar yellow" data-height="60" style="height:0;margin-top:4px"></div><span class="bar-label">W8</span></div>
-      </div>
+      <h3>Traffic by Channel <span class="chart-badge" id="chartPeriodLabel">2-Week View</span></h3>
+      <div class="bar-chart" id="barChart"></div>
       <div class="chart-legend">
         <div class="legend-item"><span class="legend-dot blue"></span> Organic Search</div>
-        <div class="legend-item"><span class="legend-dot yellow"></span> Paid + Social</div>
+        <div class="legend-item"><span class="legend-dot yellow"></span> Paid Ads</div>
+        <div class="legend-item"><span class="legend-dot green"></span> Social</div>
+        <div class="legend-item"><span class="legend-dot purple"></span> Direct / Referral</div>
       </div>
     </div>
+
+    <!-- Two-column: Ad Breakdown + Funnel -->
+    <div class="analytics-grid-2">
+      <!-- Ad Spend Breakdown -->
+      <div class="analytics-chart reveal">
+        <h3>Ad Spend by Platform <span class="chart-badge">Detailed Breakdown</span></h3>
+        <table class="ad-breakdown-table" id="adBreakdownTable">
+          <thead>
+            <tr>
+              <th>Platform</th>
+              <th>Spend</th>
+              <th>Clicks</th>
+              <th>CPC</th>
+              <th>CTR</th>
+              <th style="min-width:80px">ROAS</th>
+              <th>vs Prev</th>
+            </tr>
+          </thead>
+          <tbody id="adTableBody">
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Conversion Funnel -->
+      <div class="analytics-chart reveal">
+        <h3>Patient Acquisition Funnel <span class="chart-badge" id="funnelPeriodLabel">2-Week</span></h3>
+        <div class="analytics-funnel" id="patientFunnel">
+        </div>
+      </div>
+    </div>
+
+    <!-- Ad Performance Bar Chart -->
+    <div class="analytics-chart reveal">
+      <h3>Ad Performance by Type <span class="chart-badge">Click-through comparison</span></h3>
+      <div class="bar-chart" id="adBarChart" style="height:160px"></div>
+      <div class="chart-legend">
+        <div class="legend-item"><span class="legend-dot blue"></span> Google Search</div>
+        <div class="legend-item"><span class="legend-dot yellow"></span> Google Display</div>
+        <div class="legend-item"><span class="legend-dot green"></span> Meta (IG+FB)</div>
+        <div class="legend-item"><span class="legend-dot purple"></span> LinkedIn</div>
+      </div>
+    </div>
+
   </section>
 
 </main>
@@ -4834,6 +4968,354 @@
       requestAnimationFrame(update);
     });
   }
+
+  // ═══════════ ANALYTICS ENGINE ═══════════
+  const analyticsData = {
+    '1w': {
+      sessions: { val: 1205, prev: 1040, sub: '1,205 total · 344 peak day' },
+      inquiries: { val: 12, prev: 9, sub: '12 total · 75% from organic' },
+      spend: { val: 525, prev: 510, sub: '$43.75/inquiry · ROAS 4.1x' },
+      cvr: { val: 1.0, prev: 0.87, sub: 'Sessions-to-inquiry rate' },
+      organic: { val: 795, prev: 640, sub: '66% of total · Top: "telehealth psychiatry FL"' },
+      social: { val: 206, prev: 168, sub: 'IG 46% · FB 34% · LI 20%' },
+      content: { val: 7, prev: 5, sub: '3 Blogs · 2 Ads · 2 Social' },
+      reviews: { val: 4.9, prev: 4.8, sub: '2 new reviews this period' },
+      traffic: [
+        { label: 'Mon', organic: 140, paid: 55, social: 28, direct: 18 },
+        { label: 'Tue', organic: 165, paid: 62, social: 32, direct: 22 },
+        { label: 'Wed', organic: 120, paid: 48, social: 25, direct: 15 },
+        { label: 'Thu', organic: 135, paid: 58, social: 35, direct: 20 },
+        { label: 'Fri', organic: 110, paid: 42, social: 38, direct: 16 },
+        { label: 'Sat', organic: 68, paid: 20, social: 30, direct: 10 },
+        { label: 'Sun', organic: 57, paid: 15, social: 18, direct: 8 }
+      ],
+      ads: [
+        { platform: 'Google Search', icon: 'G', color: '#4285F4', spend: 210, clicks: 340, cpc: 0.62, ctr: 4.8, roas: 5.1, prevSpend: 200 },
+        { platform: 'Google Display', icon: 'D', color: '#34A853', spend: 85, clicks: 620, cpc: 0.14, ctr: 0.9, roas: 2.8, prevSpend: 82 },
+        { platform: 'Meta (IG + FB)', icon: 'M', color: '#E1306C', spend: 150, clicks: 480, cpc: 0.31, ctr: 3.2, roas: 4.5, prevSpend: 148 },
+        { platform: 'LinkedIn Ads', icon: 'in', color: '#0077B5', spend: 55, clicks: 85, cpc: 0.65, ctr: 1.1, roas: 2.2, prevSpend: 55 },
+        { platform: 'YouTube Pre-roll', icon: 'Y', color: '#FF0000', spend: 25, clicks: 180, cpc: 0.14, ctr: 2.1, roas: 3.0, prevSpend: 25 }
+      ],
+      funnel: [
+        { label: 'Website Visitors', value: 1205, rate: '100%' },
+        { label: 'Blog / Service Page Views', value: 486, rate: '40.3%' },
+        { label: 'Contact Form Started', value: 38, rate: '3.2%' },
+        { label: 'Inquiry Submitted', value: 12, rate: '1.0%' },
+        { label: 'Appointment Booked', value: 8, rate: '0.66%' }
+      ],
+      adBars: [
+        { label: 'Mon', search: 52, display: 90, meta: 70, linkedin: 12 },
+        { label: 'Tue', search: 58, display: 95, meta: 75, linkedin: 14 },
+        { label: 'Wed', search: 42, display: 85, meta: 62, linkedin: 10 },
+        { label: 'Thu', search: 55, display: 88, meta: 72, linkedin: 13 },
+        { label: 'Fri', search: 48, display: 80, meta: 68, linkedin: 11 },
+        { label: 'Sat', search: 40, display: 140, meta: 65, linkedin: 12 },
+        { label: 'Sun', search: 45, display: 142, meta: 68, linkedin: 13 }
+      ]
+    },
+    '2w': {
+      sessions: { val: 2410, prev: 2040, sub: '1,205/wk avg · 344/day peak' },
+      inquiries: { val: 24, prev: 18, sub: '12/wk avg · 68% from organic' },
+      spend: { val: 1050, prev: 1030, sub: '$43.75/inquiry · ROAS 4.2x' },
+      cvr: { val: 1.0, prev: 0.88, sub: 'Sessions-to-inquiry rate' },
+      organic: { val: 1590, prev: 1300, sub: '66% of total · Top: "telehealth psychiatry FL"' },
+      social: { val: 412, prev: 322, sub: 'IG 48% · FB 32% · LI 20%' },
+      content: { val: 14, prev: 10, sub: '5 Blogs · 4 Ads · 5 Social' },
+      reviews: { val: 4.9, prev: 4.8, sub: '3 new reviews this period' },
+      traffic: [
+        { label: 'W1', organic: 795, paid: 220, social: 206, direct: 84 },
+        { label: 'W2', organic: 795, paid: 240, social: 206, direct: 92 }
+      ],
+      ads: [
+        { platform: 'Google Search', icon: 'G', color: '#4285F4', spend: 420, clicks: 680, cpc: 0.62, ctr: 4.8, roas: 5.1, prevSpend: 390 },
+        { platform: 'Google Display', icon: 'D', color: '#34A853', spend: 170, clicks: 1240, cpc: 0.14, ctr: 0.9, roas: 2.8, prevSpend: 165 },
+        { platform: 'Meta (IG + FB)', icon: 'M', color: '#E1306C', spend: 300, clicks: 960, cpc: 0.31, ctr: 3.2, roas: 4.5, prevSpend: 295 },
+        { platform: 'LinkedIn Ads', icon: 'in', color: '#0077B5', spend: 110, clicks: 170, cpc: 0.65, ctr: 1.1, roas: 2.2, prevSpend: 108 },
+        { platform: 'YouTube Pre-roll', icon: 'Y', color: '#FF0000', spend: 50, clicks: 360, cpc: 0.14, ctr: 2.1, roas: 3.0, prevSpend: 52 }
+      ],
+      funnel: [
+        { label: 'Website Visitors', value: 2410, rate: '100%' },
+        { label: 'Blog / Service Page Views', value: 964, rate: '40.0%' },
+        { label: 'Contact Form Started', value: 76, rate: '3.2%' },
+        { label: 'Inquiry Submitted', value: 24, rate: '1.0%' },
+        { label: 'Appointment Booked', value: 16, rate: '0.66%' }
+      ],
+      adBars: [
+        { label: 'W1', search: 340, display: 620, meta: 480, linkedin: 85 },
+        { label: 'W2', search: 340, display: 620, meta: 480, linkedin: 85 }
+      ]
+    },
+    '4w': {
+      sessions: { val: 4820, prev: 4080, sub: '1,205/wk avg · 344/day peak' },
+      inquiries: { val: 47, prev: 35, sub: '11.8/wk avg · 65% from organic' },
+      spend: { val: 2100, prev: 2050, sub: '$44.68/inquiry · ROAS 4.2x' },
+      cvr: { val: 0.98, prev: 0.86, sub: 'Sessions-to-inquiry rate' },
+      organic: { val: 3180, prev: 2550, sub: '66% of total · Top: "ADHD telehealth Florida"' },
+      social: { val: 824, prev: 610, sub: 'IG 48% · FB 32% · LI 20%' },
+      content: { val: 27, prev: 19, sub: '10 Blogs · 9 Ads · 8 Social' },
+      reviews: { val: 4.9, prev: 4.8, sub: '5 new reviews this period' },
+      traffic: [
+        { label: 'W1', organic: 720, paid: 180, social: 170, direct: 70 },
+        { label: 'W2', organic: 760, paid: 200, social: 195, direct: 78 },
+        { label: 'W3', organic: 820, paid: 230, social: 210, direct: 85 },
+        { label: 'W4', organic: 880, paid: 250, social: 249, direct: 95 }
+      ],
+      ads: [
+        { platform: 'Google Search', icon: 'G', color: '#4285F4', spend: 840, clicks: 1360, cpc: 0.62, ctr: 4.8, roas: 5.1, prevSpend: 780 },
+        { platform: 'Google Display', icon: 'D', color: '#34A853', spend: 340, clicks: 2480, cpc: 0.14, ctr: 0.9, roas: 2.8, prevSpend: 330 },
+        { platform: 'Meta (IG + FB)', icon: 'M', color: '#E1306C', spend: 600, clicks: 1920, cpc: 0.31, ctr: 3.2, roas: 4.5, prevSpend: 590 },
+        { platform: 'LinkedIn Ads', icon: 'in', color: '#0077B5', spend: 220, clicks: 340, cpc: 0.65, ctr: 1.1, roas: 2.2, prevSpend: 210 },
+        { platform: 'YouTube Pre-roll', icon: 'Y', color: '#FF0000', spend: 100, clicks: 720, cpc: 0.14, ctr: 2.1, roas: 3.0, prevSpend: 120 }
+      ],
+      funnel: [
+        { label: 'Website Visitors', value: 4820, rate: '100%' },
+        { label: 'Blog / Service Page Views', value: 1928, rate: '40.0%' },
+        { label: 'Contact Form Started', value: 154, rate: '3.2%' },
+        { label: 'Inquiry Submitted', value: 47, rate: '0.98%' },
+        { label: 'Appointment Booked', value: 31, rate: '0.64%' }
+      ],
+      adBars: [
+        { label: 'W1', search: 310, display: 580, meta: 440, linkedin: 78 },
+        { label: 'W2', search: 330, display: 600, meta: 460, linkedin: 82 },
+        { label: 'W3', search: 350, display: 640, meta: 500, linkedin: 88 },
+        { label: 'W4', search: 370, display: 660, meta: 520, linkedin: 92 }
+      ]
+    },
+    '8w': {
+      sessions: { val: 9200, prev: 7600, sub: '1,150/wk avg · 344/day peak' },
+      inquiries: { val: 88, prev: 65, sub: '11/wk avg · 62% from organic' },
+      spend: { val: 4200, prev: 4100, sub: '$47.73/inquiry · ROAS 3.9x' },
+      cvr: { val: 0.96, prev: 0.86, sub: 'Sessions-to-inquiry rate' },
+      organic: { val: 5980, prev: 4800, sub: '65% of total · Top: "psychiatrist near me Florida"' },
+      social: { val: 1560, prev: 1140, sub: 'IG 47% · FB 33% · LI 20%' },
+      content: { val: 52, prev: 38, sub: '20 Blogs · 16 Ads · 16 Social' },
+      reviews: { val: 4.9, prev: 4.8, sub: '9 new reviews this period' },
+      traffic: [
+        { label: 'W1', organic: 680, paid: 160, social: 155, direct: 62 },
+        { label: 'W2', organic: 700, paid: 170, social: 165, direct: 68 },
+        { label: 'W3', organic: 720, paid: 180, social: 175, direct: 72 },
+        { label: 'W4', organic: 740, paid: 190, social: 185, direct: 75 },
+        { label: 'W5', organic: 760, paid: 200, social: 195, direct: 80 },
+        { label: 'W6', organic: 790, paid: 215, social: 205, direct: 84 },
+        { label: 'W7', organic: 820, paid: 230, social: 220, direct: 88 },
+        { label: 'W8', organic: 770, paid: 225, social: 260, direct: 92 }
+      ],
+      ads: [
+        { platform: 'Google Search', icon: 'G', color: '#4285F4', spend: 1680, clicks: 2720, cpc: 0.62, ctr: 4.7, roas: 4.8, prevSpend: 1560 },
+        { platform: 'Google Display', icon: 'D', color: '#34A853', spend: 680, clicks: 4960, cpc: 0.14, ctr: 0.85, roas: 2.6, prevSpend: 660 },
+        { platform: 'Meta (IG + FB)', icon: 'M', color: '#E1306C', spend: 1200, clicks: 3840, cpc: 0.31, ctr: 3.1, roas: 4.2, prevSpend: 1180 },
+        { platform: 'LinkedIn Ads', icon: 'in', color: '#0077B5', spend: 440, clicks: 680, cpc: 0.65, ctr: 1.0, roas: 2.0, prevSpend: 420 },
+        { platform: 'YouTube Pre-roll', icon: 'Y', color: '#FF0000', spend: 200, clicks: 1440, cpc: 0.14, ctr: 2.0, roas: 2.8, prevSpend: 260 }
+      ],
+      funnel: [
+        { label: 'Website Visitors', value: 9200, rate: '100%' },
+        { label: 'Blog / Service Page Views', value: 3680, rate: '40.0%' },
+        { label: 'Contact Form Started', value: 294, rate: '3.2%' },
+        { label: 'Inquiry Submitted', value: 88, rate: '0.96%' },
+        { label: 'Appointment Booked', value: 58, rate: '0.63%' }
+      ],
+      adBars: [
+        { label: 'W1', search: 300, display: 560, meta: 420, linkedin: 72 },
+        { label: 'W2', search: 310, display: 570, meta: 440, linkedin: 75 },
+        { label: 'W3', search: 320, display: 590, meta: 450, linkedin: 78 },
+        { label: 'W4', search: 330, display: 600, meta: 460, linkedin: 82 },
+        { label: 'W5', search: 340, display: 610, meta: 475, linkedin: 85 },
+        { label: 'W6', search: 350, display: 630, meta: 490, linkedin: 86 },
+        { label: 'W7', search: 370, display: 650, meta: 510, linkedin: 90 },
+        { label: 'W8', search: 360, display: 640, meta: 535, linkedin: 92 }
+      ]
+    },
+    '12w': {
+      sessions: { val: 13800, prev: 11000, sub: '1,150/wk avg · 380/day peak' },
+      inquiries: { val: 132, prev: 95, sub: '11/wk avg · 60% from organic' },
+      spend: { val: 6300, prev: 6000, sub: '$47.73/inquiry · ROAS 3.8x' },
+      cvr: { val: 0.96, prev: 0.86, sub: 'Sessions-to-inquiry rate' },
+      organic: { val: 8970, prev: 7150, sub: '65% of total · Top: "ADHD medication Florida"' },
+      social: { val: 2340, prev: 1650, sub: 'IG 47% · FB 33% · LI 20%' },
+      content: { val: 78, prev: 54, sub: '30 Blogs · 24 Ads · 24 Social' },
+      reviews: { val: 4.9, prev: 4.8, sub: '14 new reviews this period' },
+      traffic: [
+        { label: 'W1', organic: 640, paid: 145, social: 140, direct: 55 },
+        { label: 'W2', organic: 660, paid: 150, social: 150, direct: 58 },
+        { label: 'W3', organic: 680, paid: 160, social: 155, direct: 62 },
+        { label: 'W4', organic: 700, paid: 165, social: 160, direct: 65 },
+        { label: 'W5', organic: 720, paid: 175, social: 170, direct: 68 },
+        { label: 'W6', organic: 740, paid: 180, social: 178, direct: 72 },
+        { label: 'W7', organic: 760, paid: 190, social: 185, direct: 75 },
+        { label: 'W8', organic: 780, paid: 200, social: 195, direct: 80 },
+        { label: 'W9', organic: 800, paid: 210, social: 205, direct: 82 },
+        { label: 'W10', organic: 820, paid: 220, social: 220, direct: 86 },
+        { label: 'W11', organic: 850, paid: 230, social: 240, direct: 90 },
+        { label: 'W12', organic: 820, paid: 225, social: 242, direct: 88 }
+      ],
+      ads: [
+        { platform: 'Google Search', icon: 'G', color: '#4285F4', spend: 2520, clicks: 4080, cpc: 0.62, ctr: 4.6, roas: 4.6, prevSpend: 2340 },
+        { platform: 'Google Display', icon: 'D', color: '#34A853', spend: 1020, clicks: 7440, cpc: 0.14, ctr: 0.82, roas: 2.5, prevSpend: 980 },
+        { platform: 'Meta (IG + FB)', icon: 'M', color: '#E1306C', spend: 1800, clicks: 5760, cpc: 0.31, ctr: 3.0, roas: 4.0, prevSpend: 1700 },
+        { platform: 'LinkedIn Ads', icon: 'in', color: '#0077B5', spend: 660, clicks: 1020, cpc: 0.65, ctr: 0.95, roas: 1.9, prevSpend: 630 },
+        { platform: 'YouTube Pre-roll', icon: 'Y', color: '#FF0000', spend: 300, clicks: 2160, cpc: 0.14, ctr: 1.9, roas: 2.6, prevSpend: 350 }
+      ],
+      funnel: [
+        { label: 'Website Visitors', value: 13800, rate: '100%' },
+        { label: 'Blog / Service Page Views', value: 5520, rate: '40.0%' },
+        { label: 'Contact Form Started', value: 442, rate: '3.2%' },
+        { label: 'Inquiry Submitted', value: 132, rate: '0.96%' },
+        { label: 'Appointment Booked', value: 86, rate: '0.62%' }
+      ],
+      adBars: [
+        { label: 'W1', search: 280, display: 520, meta: 400, linkedin: 68 },
+        { label: 'W2', search: 290, display: 530, meta: 410, linkedin: 70 },
+        { label: 'W3', search: 300, display: 550, meta: 420, linkedin: 72 },
+        { label: 'W4', search: 310, display: 560, meta: 430, linkedin: 75 },
+        { label: 'W5', search: 320, display: 580, meta: 445, linkedin: 78 },
+        { label: 'W6', search: 330, display: 590, meta: 455, linkedin: 80 },
+        { label: 'W7', search: 340, display: 600, meta: 470, linkedin: 82 },
+        { label: 'W8', search: 350, display: 620, meta: 480, linkedin: 85 },
+        { label: 'W9', search: 355, display: 630, meta: 490, linkedin: 86 },
+        { label: 'W10', search: 365, display: 640, meta: 505, linkedin: 88 },
+        { label: 'W11', search: 375, display: 660, meta: 520, linkedin: 90 },
+        { label: 'W12', search: 365, display: 650, meta: 535, linkedin: 88 }
+      ]
+    }
+  };
+
+  function fmt(n) {
+    if (n >= 10000) return (n/1000).toFixed(1) + 'K';
+    if (n >= 1000) return n.toLocaleString();
+    return String(n);
+  }
+
+  function pctChange(cur, prev) {
+    if (prev === 0) return { text: 'N/A', cls: 'neutral' };
+    const pct = ((cur - prev) / prev * 100);
+    const sign = pct >= 0 ? '+' : '';
+    return { text: sign + pct.toFixed(1) + '% vs prev', cls: pct > 0 ? 'up' : pct < 0 ? 'down' : 'neutral' };
+  }
+
+  function setPeriod(p) {
+    document.querySelectorAll('.period-btn').forEach(b => b.classList.toggle('active', b.dataset.period === p));
+    const d = analyticsData[p];
+    if (!d) return;
+
+    const periodLabels = {'1w':'1-Week View','2w':'2-Week View','4w':'4-Week View','8w':'8-Week View','12w':'12-Week View'};
+    document.getElementById('chartPeriodLabel').textContent = periodLabels[p];
+    document.getElementById('funnelPeriodLabel').textContent = p.replace('w','-Week');
+
+    // KPI row 1
+    const kpis1 = [
+      { id: 'sessions', val: d.sessions.val, prev: d.sessions.prev, sub: d.sessions.sub, prefix: '' },
+      { id: 'inquiries', val: d.inquiries.val, prev: d.inquiries.prev, sub: d.inquiries.sub, prefix: '' },
+      { id: 'spend', val: d.spend.val, prev: d.spend.prev, sub: d.spend.sub, prefix: '$' },
+      { id: 'cvr', val: d.cvr.val, prev: d.cvr.prev, sub: d.cvr.sub, suffix: '%', isPP: true }
+    ];
+    kpis1.forEach(k => {
+      const valEl = document.getElementById('kpi-' + k.id);
+      const chgEl = document.getElementById('kpi-' + k.id + '-change');
+      const subEl = document.getElementById('kpi-' + k.id + '-sub');
+      if (k.isPP) {
+        valEl.textContent = k.val.toFixed(1) + '%';
+        const diff = (k.val - k.prev).toFixed(2);
+        const sign = diff >= 0 ? '+' : '';
+        chgEl.textContent = sign + diff + 'pp vs prev';
+        chgEl.className = 'analytics-change ' + (diff > 0 ? 'up' : diff < 0 ? 'down' : 'neutral');
+      } else {
+        valEl.textContent = (k.prefix || '') + fmt(k.val);
+        const ch = pctChange(k.val, k.prev);
+        chgEl.textContent = ch.text;
+        chgEl.className = 'analytics-change ' + ch.cls;
+      }
+      subEl.textContent = k.sub;
+    });
+
+    // KPI row 2
+    const kpis2 = [
+      { id: 'organic', val: d.organic.val, prev: d.organic.prev, sub: d.organic.sub },
+      { id: 'social', val: d.social.val, prev: d.social.prev, sub: d.social.sub },
+      { id: 'content', val: d.content.val, prev: d.content.prev, sub: d.content.sub },
+      { id: 'reviews', val: d.reviews.val, prev: d.reviews.prev, sub: d.reviews.sub, isDecimal: true }
+    ];
+    kpis2.forEach(k => {
+      const valEl = document.getElementById('kpi-' + k.id);
+      const chgEl = document.getElementById('kpi-' + k.id + '-change');
+      const subEl = document.getElementById('kpi-' + k.id + '-sub');
+      valEl.textContent = k.isDecimal ? k.val.toFixed(1) : fmt(k.val);
+      if (k.isDecimal) {
+        const diff = (k.val - k.prev).toFixed(1);
+        const sign = diff >= 0 ? '+' : '';
+        chgEl.textContent = sign + diff + ' vs prev';
+        chgEl.className = 'analytics-change ' + (diff > 0 ? 'up' : diff < 0 ? 'down' : 'neutral');
+      } else {
+        const ch = pctChange(k.val, k.prev);
+        chgEl.textContent = ch.text;
+        chgEl.className = 'analytics-change ' + ch.cls;
+      }
+      subEl.textContent = k.sub;
+    });
+
+    // Traffic bar chart
+    renderBarChart('barChart', d.traffic, ['organic','paid','social','direct'], ['blue','yellow','green','purple']);
+
+    // Ad breakdown table
+    const tbody = document.getElementById('adTableBody');
+    tbody.innerHTML = '';
+    const maxSpend = Math.max(...d.ads.map(a => a.spend));
+    d.ads.forEach(a => {
+      const spendChg = pctChange(a.spend, a.prevSpend);
+      tbody.innerHTML += `<tr>
+        <td><div class="ad-platform"><div class="ad-platform-icon" style="background:${a.color}22;color:${a.color}">${a.icon}</div>${a.platform}</div></td>
+        <td><strong>$${a.spend.toLocaleString()}</strong></td>
+        <td>${a.clicks.toLocaleString()}</td>
+        <td>$${a.cpc.toFixed(2)}</td>
+        <td>${a.ctr.toFixed(1)}%</td>
+        <td><div class="ad-mini-bar"><div class="ad-mini-bar-fill" style="width:${(a.roas/5.5*100).toFixed(0)}%;background:${a.color}"></div></div><span style="font-size:11px;font-weight:700">${a.roas.toFixed(1)}x</span></td>
+        <td><span class="ad-change ${spendChg.cls}">${spendChg.text.replace(' vs prev','')}</span></td>
+      </tr>`;
+    });
+
+    // Funnel
+    const funnel = document.getElementById('patientFunnel');
+    funnel.innerHTML = '';
+    d.funnel.forEach((step, i) => {
+      funnel.innerHTML += `<div class="funnel-step">
+        <div class="funnel-label">${step.label}</div>
+        <div class="funnel-value">${fmt(step.value)}</div>
+        <div class="funnel-rate">${step.rate}</div>
+      </div>`;
+      if (i < d.funnel.length - 1) {
+        const dropoff = d.funnel[i+1].value / step.value * 100;
+        funnel.innerHTML += `<div class="funnel-arrow">${dropoff.toFixed(0)}% proceed &#x25BE;</div>`;
+      }
+    });
+
+    // Ad performance bars
+    renderBarChart('adBarChart', d.adBars, ['search','display','meta','linkedin'], ['blue','yellow','green','purple']);
+  }
+
+  function renderBarChart(containerId, data, keys, colors) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const maxVal = Math.max(...data.flatMap(d => keys.map(k => d[k] || 0)));
+    container.innerHTML = '';
+    data.forEach(item => {
+      let colHTML = '<div class="bar-col">';
+      keys.forEach((key, ki) => {
+        const val = item[key] || 0;
+        const h = maxVal > 0 ? (val / maxVal * 100) : 0;
+        colHTML += `<div class="bar ${colors[ki]}" data-height="${h}" style="height:0;margin-top:2px"><div class="bar-tooltip">${val}</div></div>`;
+      });
+      colHTML += `<span class="bar-label">${item.label}</span></div>`;
+      container.innerHTML += colHTML;
+    });
+    // Animate bars
+    requestAnimationFrame(() => {
+      container.querySelectorAll('.bar').forEach(bar => {
+        bar.style.height = bar.dataset.height + '%';
+      });
+    });
+  }
+
+  // Initialize with 2-week view
+  setPeriod('2w');
 
   // Trigger counters after a short delay
   setTimeout(animateCounters, 400);
@@ -5014,14 +5496,20 @@
     // Scroll to top of modal on mobile
     overlay.scrollTop = 0;
 
-    // Attempt playback — works on both desktop & modern mobile (user gesture)
+    // Attempt playback — wait for loadeddata before playing on mobile
     vid.load();
-    const playPromise = vid.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        // If autoplay blocked, ensure controls are visible for manual play
-        vid.controls = true;
-      });
+    function tryPlay() {
+      vid.muted = false;
+      vid.volume = 1.0;
+      const p = vid.play();
+      if (p !== undefined) p.catch(() => { vid.controls = true; });
+    }
+    if (vid.readyState >= 2) {
+      tryPlay();
+    } else {
+      vid.addEventListener('loadeddata', tryPlay, { once: true });
+      // Fallback: if loadeddata never fires within 3s, just show controls
+      setTimeout(() => { vid.controls = true; }, 3000);
     }
   }
 
