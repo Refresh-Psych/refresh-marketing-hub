@@ -2,6 +2,43 @@
   "notebook_url": null,
   "notebook_id": null,
   "audio_release_tag": "v3.0-daily-podcast",
+  "day_of_week_angles": {
+    "monday": {
+      "angle": "Case Study Deep Dive",
+      "instruction": "Find a real psychiatric practice success/failure story. Build the episode around their journey. Use names, numbers, timeline.",
+      "title_format": "How [Practice/Person] [Achieved/Failed at] [Topic] — Lessons for Your Practice"
+    },
+    "tuesday": {
+      "angle": "Data & Numbers",
+      "instruction": "Make this the most data-heavy episode of the week. Every claim backed by a statistic. Benchmarks, ROI figures, conversion rates.",
+      "title_format": "The Numbers Behind [Topic]: [Surprising Stat] That Changes Everything"
+    },
+    "wednesday": {
+      "angle": "Myth-Busting / Contrarian Takes",
+      "instruction": "Challenge conventional wisdom. Frame 3-5 common beliefs about this topic that are wrong or outdated. Be provocative but evidence-based.",
+      "title_format": "[Number] [Topic] Myths That Are Costing Your Practice [Money/Patients/Time]"
+    },
+    "thursday": {
+      "angle": "Expert Roundup",
+      "instruction": "Synthesize insights from 3-5 different experts (psychiatrists, consultants, marketers). Attribute quotes and perspectives to specific people.",
+      "title_format": "What [Number] Experts Say About [Topic] in 2026"
+    },
+    "friday": {
+      "angle": "Step-by-Step Playbook",
+      "instruction": "Hyper-tactical numbered steps the listener can follow this weekend. Include time estimates and expected outcomes for each step.",
+      "title_format": "The [Timeframe] [Topic] Playbook: [Number] Steps to [Outcome]"
+    },
+    "saturday": {
+      "angle": "Trends & Future",
+      "instruction": "Focus on what's changing in the next 1-3 years. New technology, regulations, market shifts. Help practices prepare for what's coming.",
+      "title_format": "The Future of [Topic]: [Number] Trends Reshaping Psychiatry in [Year]"
+    },
+    "sunday": {
+      "angle": "Refresh Psychiatry Spotlight",
+      "instruction": "Analyze this topic specifically for a 16-location telepsychiatry practice across FL/MA/TX. Reference real competitive dynamics and market conditions.",
+      "title_format": "[Topic] for Multi-State Telepsychiatry: A 16-Location Strategy"
+    }
+  },
   "topics": [
     {
       "id": 1,

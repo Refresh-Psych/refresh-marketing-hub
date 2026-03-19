@@ -1115,6 +1115,276 @@
     letter-spacing: 0.5px;
   }
 
+  /* ═══════════ PODCAST INSIGHTS PANEL ═══════════ */
+  .podcast-insights {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .insights-section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .insights-section-header .section-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .insights-section-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--deep-blue);
+  }
+  .insights-section-header .section-tag {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-left: auto;
+  }
+
+  /* --- Key Takeaways --- */
+  .takeaways-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .takeaway-card {
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 22px 24px;
+    display: flex;
+    gap: 16px;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .takeaway-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--blue), var(--yellow));
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+  .takeaway-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-hover);
+  }
+  .takeaway-card:hover::before { opacity: 1; }
+  .takeaway-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--blue), var(--deep-blue));
+    color: var(--white);
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .takeaway-content h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--deep-blue);
+    margin-bottom: 5px;
+    line-height: 1.35;
+  }
+  .takeaway-content p {
+    font-size: 12px;
+    color: var(--charcoal);
+    opacity: 0.55;
+    line-height: 1.6;
+  }
+
+  /* --- Stats Infographic --- */
+  .stats-infographic {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .stat-visual {
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 26px 20px;
+    text-align: center;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-visual::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--blue), var(--yellow));
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+  .stat-visual:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-hover);
+  }
+  .stat-visual:hover::after { opacity: 1; }
+  .stat-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--deep-blue);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-number .stat-suffix {
+    font-size: 18px;
+    color: var(--blue);
+  }
+  .stat-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--charcoal);
+    opacity: 0.7;
+    margin-bottom: 4px;
+  }
+  .stat-context {
+    font-size: 10px;
+    color: var(--charcoal);
+    opacity: 0.4;
+    line-height: 1.4;
+    font-style: italic;
+  }
+
+  /* --- Action Items --- */
+  .action-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .action-item {
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 18px 22px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    transition: all var(--transition);
+    cursor: pointer;
+  }
+  .action-item:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-hover);
+  }
+  .action-item.checked {
+    opacity: 0.5;
+    background: rgba(43,108,176,0.02);
+  }
+  .action-item.checked .action-check {
+    background: linear-gradient(135deg, #48BB78, #38A169);
+    border-color: transparent;
+  }
+  .action-item.checked .action-check::after {
+    content: '';
+    width: 10px;
+    height: 6px;
+    border-left: 2px solid var(--white);
+    border-bottom: 2px solid var(--white);
+    transform: rotate(-45deg);
+    margin-top: -2px;
+  }
+  .action-item.checked .action-text h4 {
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+  .action-check {
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    border: 2px solid rgba(43,108,176,0.25);
+    background: var(--surface);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    margin-top: 1px;
+  }
+  .action-item:hover .action-check { border-color: var(--blue); }
+  .action-text { flex: 1; }
+  .action-text h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--deep-blue);
+    margin-bottom: 3px;
+    transition: all 0.2s ease;
+  }
+  .action-text p {
+    font-size: 12px;
+    color: var(--charcoal);
+    opacity: 0.5;
+    line-height: 1.55;
+  }
+  .action-effort {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .action-effort.quick {
+    color: #38A169;
+    background: rgba(56,161,105,0.1);
+  }
+  .action-effort.moderate {
+    color: var(--blue);
+    background: rgba(43,108,176,0.1);
+  }
+  .action-effort.deep {
+    color: #D69E2E;
+    background: rgba(214,158,46,0.1);
+  }
+
+  /* Responsive */
+  @media (max-width: 1100px) {
+    .stats-infographic { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 700px) {
+    .takeaways-grid { grid-template-columns: 1fr; }
+    .stats-infographic { grid-template-columns: 1fr 1fr; }
+    .stat-number { font-size: 28px; }
+  }
+
   /* ═══════════════ CONTENT LIBRARY ═══════════════ */
   .content-controls {
     display: flex;
@@ -3235,6 +3505,39 @@
       <div class="topic-card reveal"><div class="icon">🏆</div><h4>Competing with Nationals</h4><p>How a local practice can outrank Talkiatry, Cerebral, and BetterHelp in your market.</p></div>
       <div class="topic-card reveal"><div class="icon">📱</div><h4>Technical SEO</h4><p>Site speed, mobile optimization, schema markup, and Core Web Vitals for healthcare sites.</p></div>
       <div class="topic-card reveal"><div class="icon">📈</div><h4>Measuring SEO ROI</h4><p>Tracking organic traffic to booked appointments — the metrics that prove SEO is working.</p></div>
+    </div>
+
+    <!-- PODCAST INSIGHTS (Key Takeaways, Infographic, Action Items) -->
+    <div class="podcast-insights" id="podcastInsights">
+      <!-- Key Takeaways -->
+      <div class="reveal">
+        <div class="insights-section-header">
+          <div class="section-icon" style="background: rgba(43,108,176,0.08);">&#128161;</div>
+          <h3>Key Takeaways</h3>
+          <span class="section-tag" style="color: var(--blue); background: rgba(43,108,176,0.08);">Insights</span>
+        </div>
+        <div class="takeaways-grid" id="takeawaysGrid"></div>
+      </div>
+
+      <!-- Stats Infographic -->
+      <div class="reveal">
+        <div class="insights-section-header">
+          <div class="section-icon" style="background: rgba(246,199,68,0.12);">&#128202;</div>
+          <h3>By the Numbers</h3>
+          <span class="section-tag" style="color: #D69E2E; background: rgba(214,158,46,0.08);">Infographic</span>
+        </div>
+        <div class="stats-infographic" id="statsInfographic"></div>
+      </div>
+
+      <!-- Action Items -->
+      <div class="reveal">
+        <div class="insights-section-header">
+          <div class="section-icon" style="background: rgba(56,161,105,0.08);">&#9989;</div>
+          <h3>Action Items for Your Practice</h3>
+          <span class="section-tag" style="color: #38A169; background: rgba(56,161,105,0.08);">Do This Week</span>
+        </div>
+        <div class="action-items-list" id="actionItemsList"></div>
+      </div>
     </div>
 
     <!-- PODCAST ARCHIVE -->
@@ -7553,6 +7856,34 @@
         { icon: '🏆', title: 'Competing with Nationals', desc: 'How a local practice can outrank Talkiatry, Cerebral, and BetterHelp in your market.' },
         { icon: '📱', title: 'Technical SEO', desc: 'Site speed, mobile optimization, schema markup, and Core Web Vitals for healthcare sites.' },
         { icon: '📈', title: 'Measuring SEO ROI', desc: 'Tracking organic traffic to booked appointments — the metrics that prove SEO is working.' }
+      ],
+      takeaways: [
+        { title: 'Google Business Profile is your #1 asset', body: '70% of psychiatrists haven\'t optimized their GBP. Complete every field, add photos weekly, seed the Q&A section, and post updates every 7 days to dominate the local map pack.' },
+        { title: 'Target insurance-specific keywords', body: 'Searches like "psychiatrist that takes Aetna near me" convert at 8x the rate of generic terms. Build dedicated landing pages for each insurance you accept across all 16 locations.' },
+        { title: 'Local citations compound over time', body: 'Get listed on 40+ directories (Healthgrades, Zocdoc, Psychology Today, Vitals) with perfectly consistent NAP data. Inconsistencies kill your local ranking.' },
+        { title: 'Content clusters build topical authority', body: 'Create pillar pages for each core service (ADHD, anxiety, depression, medication management) with 5-8 supporting blog posts linking back. Google rewards depth.' },
+        { title: 'Technical SEO is table stakes', body: 'Core Web Vitals, mobile-first indexing, schema markup (MedicalBusiness, Physician), and sub-3-second load times are non-negotiable for healthcare sites.' },
+        { title: 'Track organic-to-appointment pipeline', body: 'Set up conversion tracking from Google organic click to appointment booking. Know your cost-per-acquisition from SEO vs. paid ads to justify continued investment.' }
+      ],
+      stats: [
+        { icon: '🔍', number: '46', suffix: '%', label: 'Local Intent Searches', context: 'of all Google searches have local intent' },
+        { icon: '📍', number: '3', suffix: 'x', label: 'Map Pack Click Rate', context: 'more clicks than organic results below' },
+        { icon: '📈', number: '8', suffix: 'x', label: 'Insurance Keyword ROI', context: 'conversion rate vs. generic terms' },
+        { icon: '⏱️', number: '90', suffix: ' days', label: 'Page 1 Timeline', context: 'average time to reach first page with local SEO' },
+        { icon: '📸', number: '35', suffix: '%', label: 'Photo Engagement Boost', context: 'more engagement with GBP photos' },
+        { icon: '🏆', number: '73', suffix: '%', label: 'Patients Stop at Page 1', context: 'never scroll past first 3 results' },
+        { icon: '💰', number: '14.6', suffix: '%', label: 'SEO Close Rate', context: 'vs. 1.7% for outbound marketing' },
+        { icon: '📊', number: '40', suffix: '+', label: 'Directory Listings', context: 'needed for strong citation profile' }
+      ],
+      actions: [
+        { title: 'Claim & verify all 16 Google Business Profiles', body: 'Ensure each Refresh Psychiatry location has a verified, fully completed GBP with correct hours, insurance list, and categories set to "Psychiatrist."', effort: 'moderate' },
+        { title: 'Add 5 new photos to each GBP this week', body: 'Upload professional office photos, team headshots, and branded graphics. Listings with photos get 35% more clicks to their website.', effort: 'quick' },
+        { title: 'Seed Q&A on each GBP with 10 common questions', body: 'Pre-populate questions patients ask: "Do you take Aetna?", "Do you offer telehealth?", "How long is a first visit?" Answer them yourself.', effort: 'quick' },
+        { title: 'Build insurance-specific landing pages', body: 'Create pages for "Psychiatrist accepting Aetna in Davie FL", "United Healthcare psychiatrist Fort Lauderdale", etc. for your top 5 insurance carriers.', effort: 'deep' },
+        { title: 'Audit NAP consistency across 40+ directories', body: 'Use a tool like BrightLocal or Moz Local to scan all citations. Fix any name/address/phone inconsistencies that hurt local SEO.', effort: 'moderate' },
+        { title: 'Publish one GBP post per location per week', body: 'Share a mental health tip, new blog post, or provider spotlight. Weekly posting signals to Google that your listing is active.', effort: 'moderate' },
+        { title: 'Add schema markup to all location pages', body: 'Implement MedicalBusiness and Physician structured data on each location page so Google can display rich results.', effort: 'deep' },
+        { title: 'Set up Google Analytics goal tracking for appointments', body: 'Track form submissions and phone clicks as conversions. Connect to Search Console to see which keywords drive actual bookings.', effort: 'moderate' }
       ]
     },
     {
@@ -7568,6 +7899,34 @@
         { icon: '💼', title: 'LinkedIn for Referral Partners', desc: 'B2B content for therapists and PCPs, thought leadership articles, and practice growth updates that build referral pipelines.' },
         { icon: '🔒', title: 'HIPAA-Compliant Content', desc: 'Creating warm, authentic content while staying fully compliant — hypothetical stories, safe messaging, and disclosure rules.' },
         { icon: '📊', title: 'Measuring & Optimizing', desc: 'Track engagement, DM inquiries, website clicks, and conversion rates — then iterate your content mix weekly.' }
+      ],
+      takeaways: [
+        { title: 'Use the 5-day content pillar framework', body: 'Mental Health Monday (awareness), Tip Tuesday (practical advice), Educational Wednesday (deep dives), LinkedIn Thursday (B2B referrals), Reel Friday (short-form video). Consistency beats creativity.' },
+        { title: '"As a psychiatrist..." is the highest-converting hook', body: 'Start every Reel or TikTok with professional authority. This hook format generates 3-5x more saves and shares than generic mental health content.' },
+        { title: 'Carousels outperform single images 2:1', body: 'Instagram carousels (8-10 slides) with bold headlines, one insight per slide, and a CTA on the last slide consistently drive the highest engagement for healthcare accounts.' },
+        { title: 'LinkedIn drives referral partnerships, not patients', body: 'Focus LinkedIn content on thought leadership for therapists, PCPs, and HR directors. Share case study formats (anonymized) and practice growth insights to build B2B referral pipelines.' },
+        { title: 'HIPAA compliance is non-negotiable', body: 'Never share real patient stories, even with consent. Use composite/hypothetical scenarios, avoid before/after language, and have a compliance checklist for every post before it goes live.' },
+        { title: 'Track DM-to-appointment conversion rate', body: 'The metric that matters most isn\'t likes — it\'s how many DM inquiries convert to scheduled appointments. Set up a simple tracking sheet and review weekly.' }
+      ],
+      stats: [
+        { icon: '📱', number: '5', suffix: ' days', label: 'Posting Framework', context: 'one themed pillar per weekday' },
+        { icon: '🎬', number: '3-5', suffix: 'x', label: 'Reel Hook Performance', context: '"As a psychiatrist..." vs. generic hooks' },
+        { icon: '📸', number: '2', suffix: ':1', label: 'Carousel vs. Single Image', context: 'engagement ratio on Instagram' },
+        { icon: '💼', number: '47', suffix: '%', label: 'LinkedIn B2B Reach', context: 'of decision-makers use LinkedIn daily' },
+        { icon: '👥', number: '68', suffix: '%', label: 'Trust from Social Proof', context: 'of patients check social media before booking' },
+        { icon: '📊', number: '10', suffix: '-15%', label: 'Engagement Rate Goal', context: 'for healthcare Instagram accounts' },
+        { icon: '🔒', number: '100', suffix: '%', label: 'HIPAA Compliance', context: 'required on every post — no exceptions' },
+        { icon: '📈', number: '12', suffix: ' weeks', label: 'Traction Timeline', context: 'to see consistent engagement growth' }
+      ],
+      actions: [
+        { title: 'Set up the 5-day content calendar template', body: 'Create a shared Google Sheet or Notion board with Mon-Fri pillar themes. Batch-create 2 weeks of content at a time for consistency.', effort: 'quick' },
+        { title: 'Record 3 "As a psychiatrist..." Reels', body: 'Film short (30-60 sec) authority-hook videos addressing common questions: ADHD myths, when to seek help, medication fears. Post one per week.', effort: 'quick' },
+        { title: 'Design 5 Instagram carousel templates', body: 'Use Canva to create branded carousel templates (Refresh Blue + Yellow) for educational content, tips, and myth-busting. Repurpose across topics.', effort: 'moderate' },
+        { title: 'Publish a LinkedIn thought leadership post', body: 'Write a 300-word post about a trend in psychiatry practice management. Tag local therapists and PCPs. Aim for 1 post per week.', effort: 'quick' },
+        { title: 'Build a HIPAA compliance checklist for social posts', body: 'Create a 10-point checklist every post must pass before publishing: no real patient info, no before/after, safe messaging guidelines, proper disclaimers.', effort: 'moderate' },
+        { title: 'Set up DM-to-appointment tracking', body: 'Create a simple spreadsheet tracking: DM date, platform, inquiry type, appointment scheduled (Y/N), and new patient (Y/N). Review weekly.', effort: 'quick' },
+        { title: 'Create a Mental Health Monday series for Facebook', body: 'Design a 4-week series of awareness posts with consistent branding. Share personal (non-patient) stories about why you chose psychiatry.', effort: 'moderate' },
+        { title: 'Run a 7-day Instagram Stories engagement experiment', body: 'Post daily Stories with polls, quizzes, and "Ask Me Anything" boxes for one week. Track how many DMs and profile visits result.', effort: 'quick' }
       ]
     }
   ];
@@ -7629,11 +7988,62 @@
     // Re-render episode list to update "now playing" state
     renderEpisodeList();
 
+    // Render insights panels
+    renderPodcastInsights(ep);
+
+    renderEpisodeList();
+
     // Scroll to player
     document.querySelector('.podcast-hero').scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
+  // ═══════════ PODCAST INSIGHTS RENDERING ═══════════
+  function renderPodcastInsights(ep) {
+    // Key Takeaways
+    const takeawaysGrid = document.getElementById('takeawaysGrid');
+    if (ep.takeaways && ep.takeaways.length) {
+      takeawaysGrid.innerHTML = ep.takeaways.map((t, i) =>
+        `<div class="takeaway-card">
+          <div class="takeaway-num">${i + 1}</div>
+          <div class="takeaway-content">
+            <h4>${t.title}</h4>
+            <p>${t.body}</p>
+          </div>
+        </div>`
+      ).join('');
+    }
+
+    // Stats Infographic
+    const statsGrid = document.getElementById('statsInfographic');
+    if (ep.stats && ep.stats.length) {
+      statsGrid.innerHTML = ep.stats.map(s =>
+        `<div class="stat-visual">
+          <div class="stat-icon">${s.icon}</div>
+          <div class="stat-number">${s.number}<span class="stat-suffix">${s.suffix}</span></div>
+          <div class="stat-label">${s.label}</div>
+          <div class="stat-context">${s.context}</div>
+        </div>`
+      ).join('');
+    }
+
+    // Action Items
+    const actionsList = document.getElementById('actionItemsList');
+    if (ep.actions && ep.actions.length) {
+      actionsList.innerHTML = ep.actions.map(a =>
+        `<div class="action-item" onclick="this.classList.toggle('checked')">
+          <div class="action-check"></div>
+          <div class="action-text">
+            <h4>${a.title}</h4>
+            <p>${a.body}</p>
+          </div>
+          <span class="action-effort ${a.effort}">${a.effort === 'quick' ? '15 min' : a.effort === 'moderate' ? '1-2 hrs' : 'Half day'}</span>
+        </div>`
+      ).join('');
+    }
+  }
+
   // Initial render
+  renderPodcastInsights(podcastEpisodes[0]);
   renderEpisodeList();
 
   // ═══════════ AUDIO VISUALIZER (CSS-based, no Web Audio API) ═══════════
