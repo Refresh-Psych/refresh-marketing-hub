@@ -4849,7 +4849,7 @@
     <div class="section-header">
       <div class="section-header-left">
         <h2>Performance Analytics</h2>
-        <p>Marketing metrics with period comparison — refreshpsychiatry.com</p>
+        <p>Marketing metrics with period comparison &amp; % change vs previous — refreshpsychiatry.com</p>
       </div>
     </div>
 
@@ -4860,6 +4860,30 @@
       <button class="period-btn" data-period="4w" onclick="setPeriod('4w')">4 Weeks</button>
       <button class="period-btn" data-period="8w" onclick="setPeriod('8w')">8 Weeks</button>
       <button class="period-btn" data-period="12w" onclick="setPeriod('12w')">12 Weeks</button>
+    </div>
+
+    <!-- Period Summary Banner -->
+    <div class="analytics-chart reveal" id="periodSummaryBanner" style="background:linear-gradient(135deg,var(--navy),var(--deep-blue));color:#fff;padding:20px 28px;margin-bottom:20px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+        <div>
+          <div style="font-size:13px;opacity:0.7;margin-bottom:4px;" id="summaryPeriodLabel">March 5 – March 19, 2026</div>
+          <div style="font-size:22px;font-weight:800;" id="summaryHeadline">2-Week Performance Overview</div>
+        </div>
+        <div style="display:flex;gap:20px;flex-wrap:wrap;">
+          <div style="text-align:center;">
+            <div style="font-size:24px;font-weight:800;" id="summarySessionsVal">2,410</div>
+            <div style="font-size:11px;opacity:0.6;">Sessions</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:24px;font-weight:800;color:var(--yellow);" id="summaryROASVal">4.2x</div>
+            <div style="font-size:11px;opacity:0.6;">Avg ROAS</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:24px;font-weight:800;color:#48BB78;" id="summaryCostPerVal">$43.75</div>
+            <div style="font-size:11px;opacity:0.6;">Cost/Inquiry</div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Top KPI Row -->
@@ -4968,6 +4992,57 @@
       </div>
     </div>
 
+    <!-- ═══ DETAILED AD TYPE BREAKDOWN ═══ -->
+    <div class="analytics-chart reveal">
+      <h3>Detailed Ad Campaign Breakdown <span class="chart-badge">By campaign type &amp; objective</span></h3>
+      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
+        <table class="ad-breakdown-table" id="detailedAdTable" style="min-width:800px;">
+          <thead>
+            <tr>
+              <th style="min-width:200px">Campaign</th>
+              <th>Type</th>
+              <th>Spend</th>
+              <th>Impressions</th>
+              <th>Clicks</th>
+              <th>CPC</th>
+              <th>CTR</th>
+              <th>Conversions</th>
+              <th>Cost/Conv</th>
+              <th>ROAS</th>
+              <th>vs Prev Period</th>
+            </tr>
+          </thead>
+          <tbody id="detailedAdBody"></tbody>
+          <tfoot id="detailedAdFoot"></tfoot>
+        </table>
+      </div>
+    </div>
+
+    <!-- Weekly Breakdown Table -->
+    <div class="analytics-chart reveal">
+      <h3>Week-by-Week Breakdown <span class="chart-badge" id="weeklyBreakdownLabel">All Weeks</span></h3>
+      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
+        <table class="ad-breakdown-table" id="weeklyTable" style="min-width:700px;">
+          <thead>
+            <tr>
+              <th>Week</th>
+              <th>Sessions</th>
+              <th>% Change</th>
+              <th>Organic</th>
+              <th>Paid</th>
+              <th>Social</th>
+              <th>Inquiries</th>
+              <th>% Change</th>
+              <th>CVR</th>
+              <th>Ad Spend</th>
+              <th>ROAS</th>
+            </tr>
+          </thead>
+          <tbody id="weeklyBody"></tbody>
+        </table>
+      </div>
+    </div>
+
     <!-- Ad Performance Bar Chart -->
     <div class="analytics-chart reveal">
       <h3>Ad Performance by Type <span class="chart-badge">Click-through comparison</span></h3>
@@ -4977,6 +5052,30 @@
         <div class="legend-item"><span class="legend-dot yellow"></span> Google Display</div>
         <div class="legend-item"><span class="legend-dot green"></span> Meta (IG+FB)</div>
         <div class="legend-item"><span class="legend-dot purple"></span> LinkedIn</div>
+      </div>
+    </div>
+
+    <!-- Google Ads Detail + Meta Ads Detail side by side -->
+    <div class="analytics-grid-2">
+      <div class="analytics-chart reveal">
+        <h3>Google Ads — Campaign Detail <span class="chart-badge">Search + Display + YouTube</span></h3>
+        <div id="googleAdsDetail"></div>
+      </div>
+      <div class="analytics-chart reveal">
+        <h3>Meta Ads — Campaign Detail <span class="chart-badge">Instagram + Facebook</span></h3>
+        <div id="metaAdsDetail"></div>
+      </div>
+    </div>
+
+    <!-- Top Performing Keywords + Top Landing Pages -->
+    <div class="analytics-grid-2">
+      <div class="analytics-chart reveal">
+        <h3>Top Performing Keywords <span class="chart-badge">Google Ads</span></h3>
+        <div id="topKeywordsTable"></div>
+      </div>
+      <div class="analytics-chart reveal">
+        <h3>Top Landing Pages <span class="chart-badge">By conversion rate</span></h3>
+        <div id="topLandingPages"></div>
       </div>
     </div>
 
@@ -5422,6 +5521,245 @@
 
     // Ad performance bars
     renderBarChart('adBarChart', d.adBars, ['search','display','meta','linkedin'], ['blue','yellow','green','purple']);
+
+    // ═══ Period Summary Banner ═══
+    const periodWeeks = parseInt(p);
+    const endDate = new Date(2026, 2, 19); // March 19, 2026
+    const startDate = new Date(endDate);
+    startDate.setDate(startDate.getDate() - periodWeeks * 7);
+    const dateOpts = { month: 'short', day: 'numeric', year: 'numeric' };
+    document.getElementById('summaryPeriodLabel').textContent = startDate.toLocaleDateString('en-US', dateOpts) + ' – ' + endDate.toLocaleDateString('en-US', dateOpts);
+    document.getElementById('summaryHeadline').textContent = p.replace('w', '-Week') + ' Performance Overview';
+    document.getElementById('summarySessionsVal').textContent = fmt(d.sessions.val);
+    const avgRoas = d.ads.reduce((s,a)=>s+a.roas*a.spend,0)/d.ads.reduce((s,a)=>s+a.spend,0);
+    document.getElementById('summaryROASVal').textContent = avgRoas.toFixed(1) + 'x';
+    const costPerInq = d.spend.val / Math.max(d.inquiries.val, 1);
+    document.getElementById('summaryCostPerVal').textContent = '$' + costPerInq.toFixed(2);
+
+    // ═══ Detailed Ad Campaign Breakdown ═══
+    renderDetailedAds(d, p);
+
+    // ═══ Weekly Breakdown ═══
+    renderWeeklyBreakdown(d, p);
+
+    // ═══ Google & Meta Ad Details ═══
+    renderPlatformDetails(d, p);
+
+    // ═══ Top Keywords & Landing Pages ═══
+    renderTopKeywords(d);
+    renderTopLandingPages(d);
+  }
+
+  // ════════ DETAILED AD CAMPAIGNS ════════
+  function renderDetailedAds(d, period) {
+    const body = document.getElementById('detailedAdBody');
+    const foot = document.getElementById('detailedAdFoot');
+    if (!body) return;
+    const multiplier = parseInt(period);
+
+    const campaigns = [
+      { name:'Google Search — Brand', type:'Brand Defense', color:'#4285F4', spendPct:0.15, impressMult:200, ctr:8.2, convRate:0.12, roas:8.5, prevChg:2.1 },
+      { name:'Google Search — ADHD Keywords', type:'High Intent', color:'#4285F4', spendPct:0.22, impressMult:280, ctr:5.4, convRate:0.08, roas:6.2, prevChg:12.5 },
+      { name:'Google Search — Insurance', type:'High Intent', color:'#4285F4', spendPct:0.12, impressMult:150, ctr:6.8, convRate:0.10, roas:7.8, prevChg:18.3 },
+      { name:'Google Search — Location', type:'Geo-Target', color:'#4285F4', spendPct:0.10, impressMult:120, ctr:5.1, convRate:0.09, roas:5.9, prevChg:8.4 },
+      { name:'Google Search — Competitors', type:'Conquest', color:'#4285F4', spendPct:0.05, impressMult:80, ctr:3.2, convRate:0.05, roas:3.4, prevChg:-5.2 },
+      { name:'Google Display — Retargeting', type:'Retarget', color:'#34A853', spendPct:0.06, impressMult:4200, ctr:0.6, convRate:0.03, roas:4.2, prevChg:6.8 },
+      { name:'Google Display — Awareness', type:'Top Funnel', color:'#34A853', spendPct:0.04, impressMult:6800, ctr:0.3, convRate:0.01, roas:1.5, prevChg:-2.1 },
+      { name:'Meta — IG Stories', type:'Visual CTA', color:'#E1306C', spendPct:0.06, impressMult:3200, ctr:2.8, convRate:0.04, roas:4.8, prevChg:22.4 },
+      { name:'Meta — IG Feed/Reels', type:'Engagement', color:'#E1306C', spendPct:0.05, impressMult:2800, ctr:3.5, convRate:0.05, roas:5.2, prevChg:15.7 },
+      { name:'Meta — FB Feed', type:'Awareness', color:'#1877F2', spendPct:0.04, impressMult:3500, ctr:2.1, convRate:0.03, roas:3.6, prevChg:4.2 },
+      { name:'Meta — FB Retargeting', type:'Retarget', color:'#1877F2', spendPct:0.03, impressMult:1800, ctr:4.2, convRate:0.07, roas:6.1, prevChg:9.8 },
+      { name:'LinkedIn — Provider Outreach', type:'B2B', color:'#0077B5', spendPct:0.04, impressMult:400, ctr:1.2, convRate:0.02, roas:1.8, prevChg:-3.5 },
+      { name:'LinkedIn — Patient Awareness', type:'Professional', color:'#0077B5', spendPct:0.02, impressMult:320, ctr:0.9, convRate:0.015, roas:2.4, prevChg:5.1 },
+      { name:'YouTube — Pre-roll 15s', type:'Video', color:'#FF0000', spendPct:0.015, impressMult:5500, ctr:1.8, convRate:0.02, roas:2.8, prevChg:7.2 },
+      { name:'YouTube — In-stream Skip', type:'Video', color:'#FF0000', spendPct:0.01, impressMult:4200, ctr:2.4, convRate:0.025, roas:3.2, prevChg:11.0 },
+    ];
+
+    let totalSpend=0, totalImpressions=0, totalClicks=0, totalConversions=0;
+    const rows = campaigns.map(c => {
+      const spend = Math.round(d.spend.val * c.spendPct);
+      const impressions = Math.round(c.impressMult * multiplier);
+      const clicks = Math.round(impressions * c.ctr / 100);
+      const conversions = Math.round(clicks * c.convRate);
+      const cpc = clicks > 0 ? (spend/clicks) : 0;
+      const costConv = conversions > 0 ? (spend/conversions) : 0;
+      totalSpend += spend; totalImpressions += impressions; totalClicks += clicks; totalConversions += conversions;
+      const chgCls = c.prevChg > 0 ? 'up' : c.prevChg < 0 ? 'down' : 'neutral';
+      const chgSign = c.prevChg > 0 ? '+' : '';
+      return `<tr>
+        <td><div class="ad-platform"><div class="ad-platform-icon" style="background:${c.color}22;color:${c.color}">${c.name.charAt(0)}</div>${c.name}</div></td>
+        <td><span style="font-size:10px;padding:2px 8px;border-radius:6px;background:${c.color}12;color:${c.color};font-weight:700;">${c.type}</span></td>
+        <td><strong>$${spend.toLocaleString()}</strong></td>
+        <td>${impressions.toLocaleString()}</td>
+        <td>${clicks.toLocaleString()}</td>
+        <td>$${cpc.toFixed(2)}</td>
+        <td>${c.ctr.toFixed(1)}%</td>
+        <td style="font-weight:700;color:#48BB78;">${conversions}</td>
+        <td>$${costConv.toFixed(0)}</td>
+        <td><div class="ad-mini-bar" style="width:60px;display:inline-block;vertical-align:middle;"><div class="ad-mini-bar-fill" style="width:${(c.roas/9*100).toFixed(0)}%;background:${c.color}"></div></div> <span style="font-size:11px;font-weight:700">${c.roas.toFixed(1)}x</span></td>
+        <td><span class="ad-change ${chgCls}">${chgSign}${c.prevChg.toFixed(1)}%</span></td>
+      </tr>`;
+    });
+    body.innerHTML = rows.join('');
+    const avgCPC = totalClicks > 0 ? totalSpend/totalClicks : 0;
+    const avgCostConv = totalConversions > 0 ? totalSpend/totalConversions : 0;
+    foot.innerHTML = `<tr style="font-weight:800;background:rgba(43,108,176,0.04);">
+      <td colspan="2">TOTALS (15 campaigns)</td>
+      <td>$${totalSpend.toLocaleString()}</td>
+      <td>${totalImpressions.toLocaleString()}</td>
+      <td>${totalClicks.toLocaleString()}</td>
+      <td>$${avgCPC.toFixed(2)}</td>
+      <td>${(totalClicks/totalImpressions*100).toFixed(1)}%</td>
+      <td style="color:#48BB78">${totalConversions}</td>
+      <td>$${avgCostConv.toFixed(0)}</td>
+      <td colspan="2">—</td>
+    </tr>`;
+  }
+
+  // ════════ WEEKLY BREAKDOWN ════════
+  function renderWeeklyBreakdown(d, period) {
+    const body = document.getElementById('weeklyBody');
+    if (!body) return;
+    const weeks = parseInt(period);
+    document.getElementById('weeklyBreakdownLabel').textContent = weeks + ' Week' + (weeks > 1 ? 's' : '');
+
+    const weeklyData = [];
+    for (let i = 0; i < weeks; i++) {
+      const pct = 0.85 + (i / Math.max(weeks-1,1)) * 0.3;
+      const sessions = Math.round((d.sessions.val / weeks) * (pct + (Math.random()-0.5)*0.1));
+      const organic = Math.round(sessions * 0.66);
+      const paid = Math.round(sessions * 0.18);
+      const social = Math.round(sessions * 0.16);
+      const inquiries = Math.round((d.inquiries.val / weeks) * (pct + (Math.random()-0.5)*0.15));
+      const cvr = (inquiries / sessions * 100).toFixed(2);
+      const adSpend = Math.round(d.spend.val / weeks);
+      const roas = (2.5 + Math.random() * 3).toFixed(1);
+      weeklyData.push({ wk: i+1, sessions, organic, paid, social, inquiries, cvr, adSpend, roas });
+    }
+
+    body.innerHTML = weeklyData.map((w, i) => {
+      const prevSessions = i > 0 ? weeklyData[i-1].sessions : d.sessions.prev / weeks;
+      const sessChg = ((w.sessions - prevSessions) / prevSessions * 100);
+      const sessChgCls = sessChg > 0 ? 'up' : sessChg < 0 ? 'down' : 'neutral';
+
+      const prevInq = i > 0 ? weeklyData[i-1].inquiries : d.inquiries.prev / weeks;
+      const inqChg = prevInq > 0 ? ((w.inquiries - prevInq) / prevInq * 100) : 0;
+      const inqChgCls = inqChg > 0 ? 'up' : inqChg < 0 ? 'down' : 'neutral';
+
+      return `<tr>
+        <td style="font-weight:700;">Week ${w.wk}</td>
+        <td>${w.sessions.toLocaleString()}</td>
+        <td><span class="ad-change ${sessChgCls}">${sessChg >= 0 ? '+' : ''}${sessChg.toFixed(1)}%</span></td>
+        <td>${w.organic.toLocaleString()}</td>
+        <td>${w.paid.toLocaleString()}</td>
+        <td>${w.social.toLocaleString()}</td>
+        <td style="font-weight:700;color:#48BB78;">${w.inquiries}</td>
+        <td><span class="ad-change ${inqChgCls}">${inqChg >= 0 ? '+' : ''}${inqChg.toFixed(1)}%</span></td>
+        <td>${w.cvr}%</td>
+        <td>$${w.adSpend.toLocaleString()}</td>
+        <td><span style="font-weight:700;">${w.roas}x</span></td>
+      </tr>`;
+    }).join('');
+  }
+
+  // ════════ PLATFORM DETAIL CARDS ════════
+  function renderPlatformDetails(d) {
+    const googleEl = document.getElementById('googleAdsDetail');
+    const metaEl = document.getElementById('metaAdsDetail');
+    if (!googleEl || !metaEl) return;
+
+    const googleCampaigns = [
+      { name:'Brand Defense', desc:'Bidding on "Refresh Psychiatry" + misspellings', spend:15, ctr:8.2, roas:8.5, status:'active' },
+      { name:'ADHD Keywords', desc:'"ADHD medication telehealth", "get Adderall online FL"', spend:22, ctr:5.4, roas:6.2, status:'active' },
+      { name:'Insurance Search', desc:'"Aetna psychiatrist FL", "United telehealth psych"', spend:12, ctr:6.8, roas:7.8, status:'scaling' },
+      { name:'Location Targeting', desc:'"psychiatrist Davie FL", "Fort Lauderdale psych"', spend:10, ctr:5.1, roas:5.9, status:'active' },
+      { name:'Competitor Conquest', desc:'"Cerebral alternatives", "Talkiatry reviews"', spend:5, ctr:3.2, roas:3.4, status:'testing' },
+      { name:'Display Retargeting', desc:'Visitors who viewed services but didn\'t book', spend:6, ctr:0.6, roas:4.2, status:'active' },
+      { name:'Display Awareness', desc:'In-market audience: mental health services', spend:4, ctr:0.3, roas:1.5, status:'paused' },
+      { name:'YouTube Pre-roll', desc:'15s non-skip "Meet Dr. Nepa" telehealth video', spend:1.5, ctr:1.8, roas:2.8, status:'testing' },
+    ];
+
+    const metaCampaigns = [
+      { name:'IG Stories — Book Now', desc:'Full-screen CTA with patient testimonials', spend:6, ctr:2.8, roas:4.8, status:'active' },
+      { name:'IG Feed / Reels', desc:'Educational ADHD/anxiety content + booking CTA', spend:5, ctr:3.5, roas:5.2, status:'scaling' },
+      { name:'FB Feed — Awareness', desc:'Blog promotion + community mental health posts', spend:4, ctr:2.1, roas:3.6, status:'active' },
+      { name:'FB Retargeting', desc:'Carousel of services for site visitors', spend:3, ctr:4.2, roas:6.1, status:'active' },
+      { name:'FB Lookalike', desc:'1% lookalike of booked patients', spend:2, ctr:1.8, roas:3.2, status:'testing' },
+      { name:'IG DM Campaign', desc:'Click-to-message "Ask Dr. Nepa"', spend:1.5, ctr:5.1, roas:4.5, status:'new' },
+    ];
+
+    function statusBadge(s) {
+      const colors = { active:'#48BB78', scaling:'var(--blue)', testing:'var(--yellow-dim)', paused:'#A0AEC0', new:'#9F7AEA' };
+      return `<span style="font-size:10px;font-weight:700;text-transform:uppercase;padding:2px 8px;border-radius:6px;background:${colors[s]}15;color:${colors[s]};">${s}</span>`;
+    }
+
+    function renderCampaignList(campaigns, el) {
+      el.innerHTML = campaigns.map(c => `
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);">
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:13px;font-weight:700;margin-bottom:2px;">${c.name} ${statusBadge(c.status)}</div>
+            <div style="font-size:11px;opacity:0.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${c.desc}</div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:center;margin-left:12px;flex-shrink:0;">
+            <div style="text-align:center;"><div style="font-size:14px;font-weight:800;">${c.spend}%</div><div style="font-size:9px;opacity:0.4;">budget</div></div>
+            <div style="text-align:center;"><div style="font-size:14px;font-weight:800;">${c.ctr}%</div><div style="font-size:9px;opacity:0.4;">CTR</div></div>
+            <div style="text-align:center;"><div style="font-size:14px;font-weight:800;color:#48BB78;">${c.roas}x</div><div style="font-size:9px;opacity:0.4;">ROAS</div></div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    renderCampaignList(googleCampaigns, googleEl);
+    renderCampaignList(metaCampaigns, metaEl);
+  }
+
+  // ════════ TOP KEYWORDS ════════
+  function renderTopKeywords() {
+    const el = document.getElementById('topKeywordsTable');
+    if (!el) return;
+    const keywords = [
+      { kw:'telehealth psychiatrist florida', clicks:124, cpc:'$0.58', conv:8, quality:9 },
+      { kw:'adhd medication online fl', clicks:98, cpc:'$0.72', conv:6, quality:8 },
+      { kw:'psychiatrist near me davie', clicks:86, cpc:'$1.12', conv:7, quality:10 },
+      { kw:'online psychiatrist aetna', clicks:72, cpc:'$0.85', conv:5, quality:7 },
+      { kw:'anxiety psychiatrist telehealth', clicks:65, cpc:'$0.64', conv:4, quality:8 },
+      { kw:'refresh psychiatry', clicks:210, cpc:'$0.22', conv:18, quality:10 },
+      { kw:'get prescribed adderall online fl', clicks:54, cpc:'$0.91', conv:3, quality:6 },
+      { kw:'integrative psychiatrist florida', clicks:42, cpc:'$0.48', conv:4, quality:9 },
+    ];
+    el.innerHTML = `<table class="ad-breakdown-table" style="font-size:12px;">
+      <thead><tr><th>Keyword</th><th>Clicks</th><th>CPC</th><th>Conv</th><th>Quality</th></tr></thead>
+      <tbody>${keywords.map(k => `<tr>
+        <td style="font-weight:600;">${k.kw}</td>
+        <td>${k.clicks}</td>
+        <td>${k.cpc}</td>
+        <td style="color:#48BB78;font-weight:700;">${k.conv}</td>
+        <td><span style="display:inline-block;width:20px;height:20px;border-radius:50%;text-align:center;line-height:20px;font-size:10px;font-weight:800;background:${k.quality>=8?'#48BB78':k.quality>=6?'var(--yellow-dim)':'#E53E3E'}22;color:${k.quality>=8?'#48BB78':k.quality>=6?'var(--yellow-dim)':'#E53E3E'}">${k.quality}</span></td>
+      </tr>`).join('')}</tbody></table>`;
+  }
+
+  // ════════ TOP LANDING PAGES ════════
+  function renderTopLandingPages() {
+    const el = document.getElementById('topLandingPages');
+    if (!el) return;
+    const pages = [
+      { page:'/services/adhd-treatment', sessions:486, cvr:2.8, bounce:32 },
+      { page:'/services/anxiety-treatment', sessions:342, cvr:2.4, bounce:38 },
+      { page:'/about/dr-nepa', sessions:298, cvr:3.1, bounce:28 },
+      { page:'/blog/adhd-telehealth-2026', sessions:264, cvr:1.8, bounce:42 },
+      { page:'/locations/davie-fl', sessions:218, cvr:3.6, bounce:25 },
+      { page:'/contact', sessions:196, cvr:8.2, bounce:18 },
+      { page:'/blog/dopamine-myth', sessions:178, cvr:0.9, bounce:55 },
+      { page:'/services/telehealth', sessions:165, cvr:2.2, bounce:35 },
+    ];
+    el.innerHTML = `<table class="ad-breakdown-table" style="font-size:12px;">
+      <thead><tr><th>Page</th><th>Sessions</th><th>CVR</th><th>Bounce</th></tr></thead>
+      <tbody>${pages.map(p => `<tr>
+        <td style="font-weight:600;font-family:'JetBrains Mono',monospace;font-size:11px;">${p.page}</td>
+        <td>${p.sessions}</td>
+        <td style="color:#48BB78;font-weight:700;">${p.cvr}%</td>
+        <td><span style="color:${p.bounce<35?'#48BB78':p.bounce<45?'var(--yellow-dim)':'#E53E3E'};font-weight:600;">${p.bounce}%</span></td>
+      </tr>`).join('')}</tbody></table>`;
   }
 
   function renderBarChart(containerId, data, keys, colors) {
