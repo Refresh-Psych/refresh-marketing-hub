@@ -973,6 +973,147 @@
     line-height: 1.55;
   }
 
+  /* Podcast archive */
+  .podcast-archive {
+    margin-top: 40px;
+  }
+  .podcast-archive-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+  .podcast-archive-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--deep-blue);
+  }
+  .podcast-archive-header .episode-count {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--blue);
+    background: rgba(43,108,176,0.08);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+  .episode-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .episode-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .episode-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--blue);
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+  .episode-item:hover { transform: translateX(4px); box-shadow: var(--shadow-md); border-color: var(--border-hover); }
+  .episode-item:hover::before { opacity: 1; }
+  .episode-item.now-playing { border-color: var(--blue); background: rgba(43,108,176,0.03); }
+  .episode-item.now-playing::before { opacity: 1; background: linear-gradient(180deg, var(--blue), var(--yellow)); }
+  .episode-play-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), var(--deep-blue));
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(43,108,176,0.2);
+  }
+  .episode-play-btn:hover { transform: scale(1.1); }
+  .episode-play-btn::after {
+    content: '';
+    width: 0; height: 0;
+    border-style: solid;
+    border-width: 6px 0 6px 11px;
+    border-color: transparent transparent transparent var(--white);
+    margin-left: 2px;
+  }
+  .episode-item.now-playing .episode-play-btn::after {
+    border: none;
+    width: 10px; height: 12px;
+    margin-left: 0;
+    background: linear-gradient(to right,
+      var(--white) 0%, var(--white) 30%,
+      transparent 30%, transparent 70%,
+      var(--white) 70%, var(--white) 100%
+    );
+  }
+  .episode-info { flex: 1; min-width: 0; }
+  .episode-info .ep-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .episode-info .ep-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--deep-blue);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .episode-info .ep-desc {
+    font-size: 12px;
+    color: var(--charcoal);
+    opacity: 0.5;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .episode-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .episode-meta .ep-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--charcoal);
+    opacity: 0.4;
+  }
+  .episode-meta .now-badge {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--white);
+    background: var(--blue);
+    padding: 2px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
   /* ═══════════════ CONTENT LIBRARY ═══════════════ */
   .content-controls {
     display: flex;
@@ -3093,6 +3234,17 @@
       <div class="topic-card reveal"><div class="icon">🏆</div><h4>Competing with Nationals</h4><p>How a local practice can outrank Talkiatry, Cerebral, and BetterHelp in your market.</p></div>
       <div class="topic-card reveal"><div class="icon">📱</div><h4>Technical SEO</h4><p>Site speed, mobile optimization, schema markup, and Core Web Vitals for healthcare sites.</p></div>
       <div class="topic-card reveal"><div class="icon">📈</div><h4>Measuring SEO ROI</h4><p>Tracking organic traffic to booked appointments — the metrics that prove SEO is working.</p></div>
+    </div>
+
+    <!-- PODCAST ARCHIVE -->
+    <div class="podcast-archive reveal">
+      <div class="podcast-archive-header">
+        <h3>All Episodes</h3>
+        <span class="episode-count" id="episodeCount">2 episodes</span>
+      </div>
+      <div class="episode-list" id="episodeList">
+        <!-- Episodes are rendered by JS from podcastEpisodes array -->
+      </div>
     </div>
   </section>
 
@@ -7384,6 +7536,104 @@
     btn.textContent = speed + 'x';
     btn.classList.toggle('active', speed !== 1);
   }
+
+  // ═══════════ PODCAST EPISODE ARCHIVE ═══════════
+  const podcastEpisodes = [
+    {
+      ep: 2,
+      title: '🔍 SEO for Mental Health Practices',
+      desc: 'Local SEO, Google Business Profile optimization, high-intent keywords, and competing against national telehealth platforms.',
+      date: 'Mar 19, 2026',
+      audio: 'https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v1.0-media/podcast-social-media-strategy.mp3',
+      topics: [
+        { icon: '📍', title: 'Local SEO Domination', desc: 'Google Business Profile, local citations, and map pack ranking strategies for multi-location practices.' },
+        { icon: '🔑', title: 'High-Intent Keywords', desc: 'Targeting "psychiatrist near me" and insurance-specific searches that convert at 8x the rate of generic terms.' },
+        { icon: '📝', title: 'Content Strategy', desc: 'Pillar pages, blog clusters, and FAQ schema that build topical authority in psychiatry.' },
+        { icon: '🏆', title: 'Competing with Nationals', desc: 'How a local practice can outrank Talkiatry, Cerebral, and BetterHelp in your market.' },
+        { icon: '📱', title: 'Technical SEO', desc: 'Site speed, mobile optimization, schema markup, and Core Web Vitals for healthcare sites.' },
+        { icon: '📈', title: 'Measuring SEO ROI', desc: 'Tracking organic traffic to booked appointments — the metrics that prove SEO is working.' }
+      ]
+    },
+    {
+      ep: 1,
+      title: '📱 Daily Social Media Strategy for Psychiatric Practices',
+      desc: 'Content pillars, platform-specific tactics for Instagram/Facebook/LinkedIn/TikTok, HIPAA-compliant content creation, and building an engagement-driven content calendar.',
+      date: 'Mar 18, 2026',
+      audio: 'https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v1.0-media/podcast-social-media-strategy.mp3',
+      topics: [
+        { icon: '📅', title: 'Content Pillars & Calendar', desc: 'Build a 5-day posting framework: Mental Health Monday, Tip Tuesday, Educational Wednesday, LinkedIn Thursday, Reel Friday.' },
+        { icon: '📸', title: 'Instagram & Reels Strategy', desc: 'Carousel best practices, Reel hooks that stop the scroll, hashtag strategy, and Stories engagement tactics for healthcare.' },
+        { icon: '👥', title: 'Facebook Community Building', desc: 'Group engagement, testimonial-style posts, Mental Health Monday series, and local community outreach that drives trust.' },
+        { icon: '💼', title: 'LinkedIn for Referral Partners', desc: 'B2B content for therapists and PCPs, thought leadership articles, and practice growth updates that build referral pipelines.' },
+        { icon: '🔒', title: 'HIPAA-Compliant Content', desc: 'Creating warm, authentic content while staying fully compliant — hypothetical stories, safe messaging, and disclosure rules.' },
+        { icon: '📊', title: 'Measuring & Optimizing', desc: 'Track engagement, DM inquiries, website clicks, and conversion rates — then iterate your content mix weekly.' }
+      ]
+    }
+  ];
+
+  let currentEpisodeIdx = 0;
+
+  function renderEpisodeList() {
+    const list = document.getElementById('episodeList');
+    const countEl = document.getElementById('episodeCount');
+    countEl.textContent = podcastEpisodes.length + ' episode' + (podcastEpisodes.length !== 1 ? 's' : '');
+    list.innerHTML = podcastEpisodes.map((ep, idx) => `
+      <div class="episode-item ${idx === currentEpisodeIdx ? 'now-playing' : ''}" onclick="loadEpisode(${idx})" title="Play Episode ${ep.ep}">
+        <button class="episode-play-btn" aria-label="Play Episode ${ep.ep}"></button>
+        <div class="episode-info">
+          <div class="ep-number">Episode ${ep.ep}</div>
+          <div class="ep-title">${ep.title}</div>
+          <div class="ep-desc">${ep.desc}</div>
+        </div>
+        <div class="episode-meta">
+          <span class="ep-date">${ep.date}</span>
+          ${idx === currentEpisodeIdx ? '<span class="now-badge">Now Playing</span>' : ''}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function loadEpisode(idx) {
+    const ep = podcastEpisodes[idx];
+    currentEpisodeIdx = idx;
+
+    // Update hero section
+    document.querySelector('.podcast-details .episode-label').innerHTML =
+      '<span class="live-dot"></span> NotebookLM · Deep Dive · Episode ' + ep.ep;
+    document.querySelector('.podcast-details h2').textContent = ep.title;
+    document.querySelector('.podcast-details > p').textContent = ep.desc;
+
+    // Update audio source
+    const wasPlaying = !podcastAudio.paused;
+    podcastAudio.src = ep.audio;
+    podcastAudio.load();
+    podcastProgress.style.width = '0%';
+    podcastCurrentTime.textContent = '0:00';
+
+    // Update topic cards
+    const topicsContainer = document.querySelector('.podcast-topics');
+    topicsContainer.innerHTML = ep.topics.map(t =>
+      `<div class="topic-card reveal"><div class="icon">${t.icon}</div><h4>${t.title}</h4><p>${t.desc}</p></div>`
+    ).join('');
+
+    // Auto-play the selected episode
+    podcastAudio.addEventListener('canplay', function onCanPlay() {
+      podcastAudio.removeEventListener('canplay', onCanPlay);
+      podcastAudio.play().then(() => {
+        podcastPlayBtn.classList.add('playing');
+        startVisualizer();
+      }).catch(() => {});
+    });
+
+    // Re-render episode list to update "now playing" state
+    renderEpisodeList();
+
+    // Scroll to player
+    document.querySelector('.podcast-hero').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // Initial render
+  renderEpisodeList();
 
   // ═══════════ AUDIO VISUALIZER (CSS-based, no Web Audio API) ═══════════
   const visCanvas = document.getElementById('audioVisualizer');
