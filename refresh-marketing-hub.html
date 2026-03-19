@@ -482,6 +482,22 @@
     margin-left: 4px;
   }
 
+  /* Duration badge on video thumbnails */
+  .video-duration-badge {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: rgba(0,0,0,0.75);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.5px;
+    z-index: 3;
+  }
+
   .video-info {
     padding: 20px 24px;
     display: flex;
@@ -2009,30 +2025,45 @@
     .section-header { flex-direction: column; align-items: flex-start; gap: 12px; }
     .section-header h2 { font-size: 22px; }
 
-    /* Video Grid */
-    .video-grid { grid-template-columns: 1fr; gap: 16px; }
+    /* Video Grid — 2 columns on mobile for compact view */
+    .video-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .video-card { border-radius: 14px; }
     .video-card:hover { transform: none; }
-    .video-thumb.portrait { max-height: 360px; }
-    .play-icon { width: 56px; height: 56px; }
-    .play-icon::after { border-width: 9px 0 9px 16px; margin-left: 3px; }
-    .video-info { padding: 12px 14px; flex-direction: column; gap: 10px; }
-    .video-info-left h3 { font-size: 14px; }
-    .video-meta { font-size: 11px; gap: 6px; }
-    .download-btn { align-self: flex-start; font-size: 11px; padding: 5px 12px; }
+    .video-thumb.portrait { max-height: 240px; }
+    .play-icon { width: 48px; height: 48px; }
+    .play-icon::after { border-width: 8px 0 8px 14px; margin-left: 3px; }
+    .video-info { padding: 10px 12px; flex-direction: column; gap: 6px; }
+    .video-info-left h3 { font-size: 12px; line-height: 1.3; }
+    .video-meta { font-size: 10px; gap: 4px; flex-wrap: wrap; }
+    .video-meta .content-source { display: none; }
+    .download-btn { align-self: flex-start; font-size: 10px; padding: 4px 10px; min-height: 32px; }
+    .video-duration-badge { font-size: 10px; bottom: 8px; right: 8px; padding: 2px 6px; }
+    .video-thumb-bg { font-size: 14px; }
 
-    /* Video Modal — fullscreen on mobile */
-    .video-modal-overlay { padding: 0; align-items: flex-start; }
+    /* Video Modal — fullscreen on mobile with better controls */
+    .video-modal-overlay {
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.95);
+    }
     .video-modal {
       max-width: 100% !important;
       width: 100%;
       height: 100dvh;
       justify-content: center;
+      background: #000;
+      border-radius: 0;
+      padding: 0;
     }
     .video-modal video {
       border-radius: 0;
-      max-height: 70dvh;
+      max-height: 80dvh;
       width: 100%;
       object-fit: contain;
+      background: #000;
+      /* iOS Safari: force native controls */
+      -webkit-media-controls-panel { display: flex !important; }
     }
     .video-modal.portrait-mode { max-width: 100% !important; }
     .video-modal.portrait-mode video { max-height: 80dvh; }
@@ -2102,7 +2133,10 @@
     .hero { padding: 50px 16px 30px; min-height: 320px; }
     .content-wrap { padding: 16px 12px 40px; }
     .nav-tab { padding: 12px 12px; font-size: 11px; }
+    .video-grid { grid-template-columns: 1fr; gap: 14px; }
     .video-thumb.portrait { max-height: 300px; }
+    .video-info-left h3 { font-size: 13px; }
+    .video-meta .content-source { display: block; }
     .brief-score-grid { grid-template-columns: 1fr; }
   }
 
@@ -2424,7 +2458,7 @@
     <div class="section-header">
       <div class="section-header-left">
         <h2>Video Assets</h2>
-        <p>16 programmatic videos with professional voice narration — 11 original + 5 new from latest blog posts</p>
+        <p>16 videos with professional female voice narration — 11 original + 5 × 60-second deep dives from latest blog posts</p>
       </div>
     </div>
     <div class="video-grid">
@@ -2695,120 +2729,135 @@
         </div>
       </div>
 
-      <!-- ══ BLOG-BASED VIDEOS (5 new — from latest published blogs) ══ -->
+      <!-- ══ BLOG-BASED VIDEOS (5 x 60s — from latest published blogs) ══ -->
 
-      <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B1-DopamineMyth.mp4', 'Dopamine Detox Is a Myth', true)">
+      <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-blog-60s/Blog1-DopamineMyth.mp4', 'Your Brain Isn\'t Broken: The Dopamine Detox Myth', true)">
         <div class="video-thumb portrait">
-          <video class="video-preview" playsinline webkit-playsinline src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B1-DopamineMyth.mp4" muted loop preload="metadata"></video>
-          <div class="video-thumb-bg portrait-bg">
-            <div style="font-size:3rem">🧠</div>
-            <div style="color:#F6C744;font-weight:700;font-size:1.1rem">Dopamine Myth</div>
+          <div class="video-thumb-bg portrait-bg" style="background:linear-gradient(135deg,#0d2137 0%,#1a3a5c 50%,#2B6CB0 100%)">
+            <div>
+              <div style="font-size:3rem">🧠</div>
+              <div style="color:#F6C744;font-weight:700;font-size:1.1rem;margin-top:8px">Dopamine Myth</div>
+              <div style="font-size:11px;opacity:0.6;margin-top:4px">60s Deep Dive</div>
+            </div>
           </div>
           <div class="play-overlay"><div class="play-icon"></div></div>
+          <div class="video-duration-badge">1:00</div>
         </div>
         <div class="video-info">
           <div class="video-info-left">
-            <h3>Dopamine Detox Is a Myth</h3>
+            <h3>Your Brain Isn't Broken: The Dopamine Detox Myth</h3>
             <div class="video-meta">
-              <span class="meta-tag">Blog Video</span>
+              <span class="meta-tag" style="background:#F6C744;color:#0d2137">Blog Video</span>
               <span class="style-tag">Education</span>
-              <span>1080x1920 &bull; 25s &bull; 30fps</span>
+              <span>1080x1920 &bull; 60s &bull; 24fps</span>
             </div>
-            <div class="video-meta"><span class="content-source">📝 Blog: Your Brain Isn't Broken (Mar 18)</span></div>
+            <div class="video-meta"><span class="content-source"><a href="https://www.refreshpsychiatry.com/post/your-brain-isn-t-broken-why-the-dopamine-detox-is-a-scientific-myth-and-what-to-do-instead" target="_blank" onclick="event.stopPropagation()" style="color:inherit;text-decoration:underline">📝 Blog: Your Brain Isn't Broken (Mar 18)</a></span></div>
           </div>
-          <a class="download-btn" href="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B1-DopamineMyth.mp4" download>MP4</a>
+          <a class="download-btn" href="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-blog-60s/Blog1-DopamineMyth.mp4" download onclick="event.stopPropagation()">MP4</a>
         </div>
       </div>
 
-      <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B2-ADHDTelehealth2026.mp4', 'ADHD Meds via Telehealth 2026', true)">
+      <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-blog-60s/Blog2-ADHDTelehealth.mp4', 'ADHD Medication via Telehealth in 2026', true)">
         <div class="video-thumb portrait">
-          <video class="video-preview" playsinline webkit-playsinline src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B2-ADHDTelehealth2026.mp4" muted loop preload="metadata"></video>
-          <div class="video-thumb-bg portrait-bg">
-            <div style="font-size:3rem">💊</div>
-            <div style="color:#2B6CB0;font-weight:700;font-size:1.1rem">ADHD Telehealth</div>
+          <div class="video-thumb-bg portrait-bg" style="background:linear-gradient(135deg,#0d2137 0%,#1a3a5c 50%,#2B6CB0 100%)">
+            <div>
+              <div style="font-size:3rem">💊</div>
+              <div style="color:#2B6CB0;font-weight:700;font-size:1.1rem;margin-top:8px;color:#F6C744">ADHD Telehealth</div>
+              <div style="font-size:11px;opacity:0.6;margin-top:4px">60s Deep Dive</div>
+            </div>
           </div>
           <div class="play-overlay"><div class="play-icon"></div></div>
+          <div class="video-duration-badge">1:00</div>
         </div>
         <div class="video-info">
           <div class="video-info-left">
-            <h3>ADHD Meds via Telehealth 2026</h3>
+            <h3>ADHD Medication via Telehealth in 2026</h3>
             <div class="video-meta">
-              <span class="meta-tag">Blog Video</span>
+              <span class="meta-tag" style="background:#F6C744;color:#0d2137">Blog Video</span>
               <span class="style-tag">FL Guide</span>
-              <span>1080x1920 &bull; 25s &bull; 30fps</span>
+              <span>1080x1920 &bull; 60s &bull; 24fps</span>
             </div>
-            <div class="video-meta"><span class="content-source">📝 Blog: ADHD Medication Through Telehealth (Mar 16)</span></div>
+            <div class="video-meta"><span class="content-source"><a href="https://www.refreshpsychiatry.com/post/can-you-get-adhd-medication-through-telehealth-in-2026-everything-florida-patients-need-to-know" target="_blank" onclick="event.stopPropagation()" style="color:inherit;text-decoration:underline">📝 Blog: ADHD Meds Through Telehealth (Mar 16)</a></span></div>
           </div>
-          <a class="download-btn" href="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B2-ADHDTelehealth2026.mp4" download>MP4</a>
+          <a class="download-btn" href="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-blog-60s/Blog2-ADHDTelehealth.mp4" download onclick="event.stopPropagation()">MP4</a>
         </div>
       </div>
 
-      <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B3-BoxBreathing.mp4', 'Box Breathing in 30 Seconds', true)">
+      <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-blog-60s/Blog3-BoxBreathing.mp4', 'Box Breathing in 30 Seconds: Instant Calm', true)">
         <div class="video-thumb portrait">
-          <video class="video-preview" playsinline webkit-playsinline src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B3-BoxBreathing.mp4" muted loop preload="metadata"></video>
-          <div class="video-thumb-bg portrait-bg">
-            <div style="font-size:3rem">🌬️</div>
-            <div style="color:#4ECDC4;font-weight:700;font-size:1.1rem">Box Breathing</div>
+          <div class="video-thumb-bg portrait-bg" style="background:linear-gradient(135deg,#0d2137 0%,#134e5e 50%,#4ECDC4 100%)">
+            <div>
+              <div style="font-size:3rem">🌬️</div>
+              <div style="color:#4ECDC4;font-weight:700;font-size:1.1rem;margin-top:8px">Box Breathing</div>
+              <div style="font-size:11px;opacity:0.6;margin-top:4px">60s Deep Dive</div>
+            </div>
           </div>
           <div class="play-overlay"><div class="play-icon"></div></div>
+          <div class="video-duration-badge">1:00</div>
         </div>
         <div class="video-info">
           <div class="video-info-left">
-            <h3>Box Breathing in 30 Seconds</h3>
+            <h3>Box Breathing in 30 Seconds: Instant Calm</h3>
             <div class="video-meta">
-              <span class="meta-tag">Blog Video</span>
+              <span class="meta-tag" style="background:#F6C744;color:#0d2137">Blog Video</span>
               <span class="style-tag">Technique</span>
-              <span>1080x1920 &bull; 25s &bull; 30fps</span>
+              <span>1080x1920 &bull; 60s &bull; 24fps</span>
             </div>
-            <div class="video-meta"><span class="content-source">📝 Blog: Psychiatrist's Guide to Instant Calm (Mar 15)</span></div>
+            <div class="video-meta"><span class="content-source"><a href="https://www.refreshpsychiatry.com/post/box-breathing-in-30-seconds-a-psychiatrist-s-guide-to-instant-calm" target="_blank" onclick="event.stopPropagation()" style="color:inherit;text-decoration:underline">📝 Blog: Psychiatrist's Guide to Instant Calm (Mar 15)</a></span></div>
           </div>
-          <a class="download-btn" href="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B3-BoxBreathing.mp4" download>MP4</a>
+          <a class="download-btn" href="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-blog-60s/Blog3-BoxBreathing.mp4" download onclick="event.stopPropagation()">MP4</a>
         </div>
       </div>
 
-      <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B4-SpringAnxiety2.mp4', 'Spring Anxiety Is Real', false)">
-        <div class="video-thumb">
-          <video class="video-preview" playsinline webkit-playsinline src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B4-SpringAnxiety2.mp4" muted loop preload="metadata"></video>
-          <div class="video-thumb-bg landscape-bg">
-            <div style="font-size:3rem">🌸</div>
-            <div style="color:#E88EBE;font-weight:700;font-size:1.1rem">Spring Anxiety</div>
+      <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-blog-60s/Blog4-SpringAnxiety.mp4', 'Why Does My Anxiety Get Worse in Spring?', true)">
+        <div class="video-thumb portrait">
+          <div class="video-thumb-bg portrait-bg" style="background:linear-gradient(135deg,#2d1b4e 0%,#8e4585 50%,#E88EBE 100%)">
+            <div>
+              <div style="font-size:3rem">🌸</div>
+              <div style="color:#E88EBE;font-weight:700;font-size:1.1rem;margin-top:8px">Spring Anxiety</div>
+              <div style="font-size:11px;opacity:0.6;margin-top:4px">60s Deep Dive</div>
+            </div>
           </div>
           <div class="play-overlay"><div class="play-icon"></div></div>
+          <div class="video-duration-badge">1:00</div>
         </div>
         <div class="video-info">
           <div class="video-info-left">
-            <h3>Spring Anxiety Is Real</h3>
+            <h3>Why Does My Anxiety Get Worse in Spring?</h3>
             <div class="video-meta">
-              <span class="meta-tag">Blog Video</span>
+              <span class="meta-tag" style="background:#F6C744;color:#0d2137">Blog Video</span>
               <span class="style-tag">Seasonal</span>
-              <span>1920x1080 &bull; 25s &bull; 30fps</span>
+              <span>1080x1920 &bull; 60s &bull; 24fps</span>
             </div>
-            <div class="video-meta"><span class="content-source">📝 Blog: Why Anxiety Gets Worse in Spring (Mar 15)</span></div>
+            <div class="video-meta"><span class="content-source"><a href="https://www.refreshpsychiatry.com/post/why-does-my-anxiety-get-worse-in-spring-seasonal-symptoms-you-shouldn-t-ignore" target="_blank" onclick="event.stopPropagation()" style="color:inherit;text-decoration:underline">📝 Blog: Anxiety Worse in Spring (Mar 15)</a></span></div>
           </div>
-          <a class="download-btn" href="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B4-SpringAnxiety2.mp4" download>MP4</a>
+          <a class="download-btn" href="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-blog-60s/Blog4-SpringAnxiety.mp4" download onclick="event.stopPropagation()">MP4</a>
         </div>
       </div>
 
-      <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B5-DaylightSaving.mp4', 'Daylight Saving & Mental Health', false)">
-        <div class="video-thumb">
-          <video class="video-preview" playsinline webkit-playsinline src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B5-DaylightSaving.mp4" muted loop preload="metadata"></video>
-          <div class="video-thumb-bg landscape-bg">
-            <div style="font-size:3rem">🕐</div>
-            <div style="color:#7C5CFC;font-weight:700;font-size:1.1rem">DST Impact</div>
+      <div class="video-card reveal" onclick="openVideoModal('https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-blog-60s/Blog5-DaylightSaving.mp4', 'The Hidden Mental Health Impact of Daylight Saving', true)">
+        <div class="video-thumb portrait">
+          <div class="video-thumb-bg portrait-bg" style="background:linear-gradient(135deg,#1a1a2e 0%,#3d2c8d 50%,#7C5CFC 100%)">
+            <div>
+              <div style="font-size:3rem">🕐</div>
+              <div style="color:#7C5CFC;font-weight:700;font-size:1.1rem;margin-top:8px">DST Impact</div>
+              <div style="font-size:11px;opacity:0.6;margin-top:4px">60s Deep Dive</div>
+            </div>
           </div>
           <div class="play-overlay"><div class="play-icon"></div></div>
+          <div class="video-duration-badge">1:00</div>
         </div>
         <div class="video-info">
           <div class="video-info-left">
-            <h3>Daylight Saving & Mental Health</h3>
+            <h3>The Hidden Mental Health Impact of Daylight Saving</h3>
             <div class="video-meta">
-              <span class="meta-tag">Blog Video</span>
+              <span class="meta-tag" style="background:#F6C744;color:#0d2137">Blog Video</span>
               <span class="style-tag">Awareness</span>
-              <span>1920x1080 &bull; 25s &bull; 30fps</span>
+              <span>1080x1920 &bull; 60s &bull; 24fps</span>
             </div>
-            <div class="video-meta"><span class="content-source">📝 Blog: Hidden Impact of DST (Mar 14)</span></div>
+            <div class="video-meta"><span class="content-source"><a href="https://www.refreshpsychiatry.com/post/why-you-feel-off-this-week-the-hidden-mental-health-impact-of-daylight-saving-time" target="_blank" onclick="event.stopPropagation()" style="color:inherit;text-decoration:underline">📝 Blog: Hidden Impact of DST (Mar 14)</a></span></div>
           </div>
-          <a class="download-btn" href="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v2.0-media-narrated/B5-DaylightSaving.mp4" download>MP4</a>
+          <a class="download-btn" href="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-blog-60s/Blog5-DaylightSaving.mp4" download onclick="event.stopPropagation()">MP4</a>
         </div>
       </div>
 
@@ -4928,8 +4977,9 @@
     const inner = document.getElementById('videoModalInner');
     const vid = document.getElementById('modalVideo');
     const titleEl = document.getElementById('modalVideoTitle');
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 700;
 
-    // Reset video state
+    // Reset video state completely
     vid.pause();
     vid.removeAttribute('src');
     vid.load();
@@ -4938,27 +4988,41 @@
     vid.muted = false;
     vid.volume = 1.0;
 
-    // Set attributes for mobile compatibility
+    // Mobile compatibility attributes
     vid.setAttribute('playsinline', '');
     vid.setAttribute('webkit-playsinline', '');
     vid.setAttribute('preload', 'auto');
+    vid.setAttribute('controls', '');
+    vid.setAttribute('x-webkit-airplay', 'allow');
 
+    // iOS Safari: remove any previous source elements and set src directly
+    while (vid.firstChild) vid.removeChild(vid.firstChild);
     vid.src = src;
+    vid.type = 'video/mp4';
+
     titleEl.textContent = title;
     inner.classList.toggle('portrait-mode', isPortrait);
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
 
+    // Prevent iOS scroll-behind
+    document.documentElement.style.overflow = 'hidden';
+    document.documentElement.style.position = 'fixed';
+    document.documentElement.style.width = '100%';
+    document.documentElement.style.height = '100%';
+
     // Scroll to top of modal on mobile
     overlay.scrollTop = 0;
 
-    // Mobile: let user tap play via native controls
-    // Desktop: auto-play since click gesture allows it
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 700;
-    if (!isMobile) {
-      vid.play().catch(() => {});
+    // Attempt playback — works on both desktop & modern mobile (user gesture)
+    vid.load();
+    const playPromise = vid.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // If autoplay blocked, ensure controls are visible for manual play
+        vid.controls = true;
+      });
     }
-    // On mobile, the native controls play button is shown — user taps it
   }
 
   function closeVideoModal() {
@@ -4969,6 +5033,11 @@
     vid.load();
     overlay.classList.remove('open');
     document.body.style.overflow = '';
+    // Undo iOS scroll lock
+    document.documentElement.style.overflow = '';
+    document.documentElement.style.position = '';
+    document.documentElement.style.width = '';
+    document.documentElement.style.height = '';
   }
 
   // Close modal on backdrop tap (but not on video tap)
