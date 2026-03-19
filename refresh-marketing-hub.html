@@ -2137,9 +2137,10 @@
     .campaigns-grid { grid-template-columns: 1fr; gap: 14px; }
 
     /* Competitors */
-    .competitor-grid { grid-template-columns: 1fr; gap: 14px; }
+    .competitor-grid { grid-template-columns: 1fr !important; gap: 14px; }
     .competitor-comparison { overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .competitor-comparison table { min-width: 600px; font-size: 12px; }
+    #seoKeywordTable { min-width: 900px; font-size: 11px; }
     .gap-card { padding: 16px; }
 
     /* Brief */
@@ -4146,6 +4147,138 @@
 
     </div>
 
+    <!-- ═══ COMPETITOR SEO KEYWORD INTELLIGENCE ═══ -->
+    <div class="section-header" style="margin-bottom: 24px;">
+      <div class="section-header-left">
+        <h2>SEO Keyword Intelligence</h2>
+        <p>Competitor keyword rankings, search volume, and where Refresh can outrank them</p>
+      </div>
+    </div>
+
+    <!-- Keyword Category Tabs -->
+    <div class="seo-tabs" style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;">
+      <button class="period-btn active" onclick="filterSeoTable('all', this)">All Keywords</button>
+      <button class="period-btn" onclick="filterSeoTable('branded', this)">Branded</button>
+      <button class="period-btn" onclick="filterSeoTable('condition', this)">Conditions</button>
+      <button class="period-btn" onclick="filterSeoTable('treatment', this)">Treatment</button>
+      <button class="period-btn" onclick="filterSeoTable('local', this)">Local/Geo</button>
+      <button class="period-btn" onclick="filterSeoTable('comparison', this)">Comparison</button>
+      <button class="period-btn" onclick="filterSeoTable('insurance', this)">Insurance</button>
+    </div>
+
+    <div class="comparison-table-wrap reveal" style="margin-bottom:32px;">
+      <table class="comparison-table" id="seoKeywordTable" style="font-size:13px;">
+        <thead>
+          <tr>
+            <th style="min-width:220px">Keyword</th>
+            <th>Volume/mo</th>
+            <th>CPC</th>
+            <th>Difficulty</th>
+            <th class="refresh-col">Refresh</th>
+            <th>Talkiatry</th>
+            <th>Cerebral</th>
+            <th>Grow</th>
+            <th>BetterHelp</th>
+            <th style="min-width:140px">Opportunity</th>
+          </tr>
+        </thead>
+        <tbody id="seoTableBody">
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SEO Gap Summary Cards -->
+    <div class="competitor-grid" style="grid-template-columns:repeat(3,1fr);margin-bottom:32px;">
+      <div class="analytics-chart reveal" style="margin-bottom:0">
+        <h3 style="font-size:14px;">Keyword Gaps by Category</h3>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="width:120px;font-size:12px;font-weight:600;">ADHD / Focus</span>
+            <div class="ad-mini-bar" style="flex:1"><div class="ad-mini-bar-fill" style="width:35%;background:var(--blue)"></div></div>
+            <span style="font-size:11px;font-weight:700;color:var(--blue)">35% covered</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="width:120px;font-size:12px;font-weight:600;">Anxiety</span>
+            <div class="ad-mini-bar" style="flex:1"><div class="ad-mini-bar-fill" style="width:28%;background:#48BB78"></div></div>
+            <span style="font-size:11px;font-weight:700;color:#48BB78">28% covered</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="width:120px;font-size:12px;font-weight:600;">Depression</span>
+            <div class="ad-mini-bar" style="flex:1"><div class="ad-mini-bar-fill" style="width:22%;background:var(--yellow-dim)"></div></div>
+            <span style="font-size:11px;font-weight:700;color:var(--yellow-dim)">22% covered</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="width:120px;font-size:12px;font-weight:600;">Telehealth</span>
+            <div class="ad-mini-bar" style="flex:1"><div class="ad-mini-bar-fill" style="width:55%;background:var(--blue)"></div></div>
+            <span style="font-size:11px;font-weight:700;color:var(--blue)">55% covered</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="width:120px;font-size:12px;font-weight:600;">Insurance</span>
+            <div class="ad-mini-bar" style="flex:1"><div class="ad-mini-bar-fill" style="width:15%;background:#C53030"></div></div>
+            <span style="font-size:11px;font-weight:700;color:#C53030">15% covered</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="width:120px;font-size:12px;font-weight:600;">Integrative</span>
+            <div class="ad-mini-bar" style="flex:1"><div class="ad-mini-bar-fill" style="width:80%;background:#48BB78"></div></div>
+            <span style="font-size:11px;font-weight:700;color:#48BB78">80% uncontested</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="analytics-chart reveal" style="margin-bottom:0">
+        <h3 style="font-size:14px;">Competitor Domain Authority</h3>
+        <div style="display:flex;flex-direction:column;gap:14px;margin-top:16px;">
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:600;margin-bottom:4px;"><span>BetterHelp</span><span>DA 78</span></div>
+            <div class="ad-mini-bar"><div class="ad-mini-bar-fill" style="width:78%;background:#9F7AEA"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:600;margin-bottom:4px;"><span>Talkiatry</span><span>DA 62</span></div>
+            <div class="ad-mini-bar"><div class="ad-mini-bar-fill" style="width:62%;background:#E1306C"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:600;margin-bottom:4px;"><span>Cerebral</span><span>DA 58</span></div>
+            <div class="ad-mini-bar"><div class="ad-mini-bar-fill" style="width:58%;background:#FF6B6B"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:600;margin-bottom:4px;"><span>Grow Therapy</span><span>DA 55</span></div>
+            <div class="ad-mini-bar"><div class="ad-mini-bar-fill" style="width:55%;background:#34A853"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:600;margin-bottom:4px;"><span style="color:var(--blue);font-weight:800">Refresh Psychiatry</span><span style="color:var(--blue)">DA 28</span></div>
+            <div class="ad-mini-bar"><div class="ad-mini-bar-fill" style="width:28%;background:var(--blue)"></div></div>
+          </div>
+        </div>
+        <p style="font-size:11px;color:var(--charcoal);opacity:0.5;margin-top:12px;">Lower DA = focus on long-tail, local, and low-competition keywords first. Build authority through consistent content.</p>
+      </div>
+
+      <div class="analytics-chart reveal" style="margin-bottom:0">
+        <h3 style="font-size:14px;">Quick-Win Keywords (Rank in 30 days)</h3>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px;">
+          <div style="padding:10px 14px;background:rgba(72,187,120,0.06);border-radius:8px;border-left:3px solid #48BB78;">
+            <div style="font-size:12px;font-weight:700;">"integrative psychiatrist Florida"</div>
+            <div style="font-size:11px;color:var(--charcoal);opacity:0.5;">260/mo · $3.20 CPC · 0 competitors ranking</div>
+          </div>
+          <div style="padding:10px 14px;background:rgba(72,187,120,0.06);border-radius:8px;border-left:3px solid #48BB78;">
+            <div style="font-size:12px;font-weight:700;">"psychiatrist that takes Aetna Davie FL"</div>
+            <div style="font-size:11px;color:var(--charcoal);opacity:0.5;">140/mo · $4.80 CPC · KD 8 — Lowest difficulty</div>
+          </div>
+          <div style="padding:10px 14px;background:rgba(72,187,120,0.06);border-radius:8px;border-left:3px solid #48BB78;">
+            <div style="font-size:12px;font-weight:700;">"telehealth ADHD medication Florida 2026"</div>
+            <div style="font-size:11px;color:var(--charcoal);opacity:0.5;">480/mo · $5.10 CPC · KD 12 — Blog already ranking</div>
+          </div>
+          <div style="padding:10px 14px;background:rgba(72,187,120,0.06);border-radius:8px;border-left:3px solid #48BB78;">
+            <div style="font-size:12px;font-weight:700;">"Cerebral alternatives Florida"</div>
+            <div style="font-size:11px;color:var(--charcoal);opacity:0.5;">320/mo · $2.90 CPC · KD 15 — High-intent switchers</div>
+          </div>
+          <div style="padding:10px 14px;background:rgba(72,187,120,0.06);border-radius:8px;border-left:3px solid #48BB78;">
+            <div style="font-size:12px;font-weight:700;">"holistic psychiatry telehealth"</div>
+            <div style="font-size:11px;color:var(--charcoal);opacity:0.5;">190/mo · $2.40 CPC · KD 5 — Blue ocean</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </section>
 
   <!-- DAILY BRIEF -->
@@ -5316,6 +5449,105 @@
 
   // Initialize with 2-week view
   setPeriod('2w');
+
+  // ═══════════ SEO KEYWORD INTELLIGENCE ═══════════
+  const seoKeywords = [
+    // BRANDED
+    { kw:'cerebral psychiatry',cat:'branded',vol:'22,200',cpc:'$1.80',kd:'Medium',refresh:'—',talkiatry:'—',cerebral:'#1',grow:'—',better:'—',opp:'Brand defense — create "Cerebral alternatives" page' },
+    { kw:'talkiatry reviews',cat:'branded',vol:'18,100',cpc:'$2.10',kd:'Medium',refresh:'—',talkiatry:'#1',cerebral:'—',grow:'—',better:'—',opp:'Create "Refresh vs Talkiatry" comparison page' },
+    { kw:'betterhelp reviews',cat:'branded',vol:'40,500',cpc:'$1.50',kd:'High',refresh:'—',talkiatry:'—',cerebral:'—',grow:'Page 2',better:'#1',opp:'Target "BetterHelp alternatives for psychiatry"' },
+    { kw:'cerebral alternatives',cat:'branded',vol:'3,600',cpc:'$2.90',kd:'Low',refresh:'—',talkiatry:'#8',cerebral:'#3',grow:'—',better:'—',opp:'<strong style="color:#48BB78">HIGH PRIORITY</strong> — easy rank, high-intent switchers' },
+    { kw:'is cerebral safe',cat:'branded',vol:'2,400',cpc:'$1.20',kd:'Low',refresh:'—',talkiatry:'—',cerebral:'#2',grow:'—',better:'—',opp:'Trust content — "How Refresh protects your data"' },
+    { kw:'talkiatry vs cerebral',cat:'comparison',vol:'1,900',cpc:'$3.40',kd:'Low',refresh:'—',talkiatry:'#1',cerebral:'#4',grow:'—',better:'—',opp:'Insert Refresh into 3-way comparison page' },
+    { kw:'betterhelp vs talkiatry',cat:'comparison',vol:'2,800',cpc:'$2.80',kd:'Medium',refresh:'—',talkiatry:'#3',cerebral:'—',grow:'#5',better:'#1',opp:'Add Refresh as the psychiatry alternative' },
+
+    // CONDITIONS
+    { kw:'online psychiatrist for ADHD',cat:'condition',vol:'8,100',cpc:'$6.20',kd:'High',refresh:'Page 3',talkiatry:'#2',cerebral:'#5',grow:'—',better:'—',opp:'Optimize blog + build dedicated ADHD landing page' },
+    { kw:'ADHD medication telehealth',cat:'condition',vol:'6,600',cpc:'$5.80',kd:'Medium',refresh:'#12',talkiatry:'#1',cerebral:'#7',grow:'—',better:'—',opp:'Blog already ranking — add internal links + schema' },
+    { kw:'anxiety treatment online',cat:'condition',vol:'12,100',cpc:'$4.50',kd:'High',refresh:'—',talkiatry:'#4',cerebral:'#8',grow:'#6',better:'#1',opp:'Create pillar page: "Complete Guide to Online Anxiety Treatment"' },
+    { kw:'depression medication telehealth',cat:'condition',vol:'4,400',cpc:'$5.20',kd:'Medium',refresh:'—',talkiatry:'#3',cerebral:'#6',grow:'—',better:'—',opp:'New blog post + link from existing depression content' },
+    { kw:'bipolar disorder telehealth',cat:'condition',vol:'2,200',cpc:'$4.80',kd:'Low',refresh:'—',talkiatry:'#5',cerebral:'—',grow:'—',better:'—',opp:'<strong style="color:#48BB78">EASY WIN</strong> — low KD, no strong competitor' },
+    { kw:'PTSD psychiatrist online',cat:'condition',vol:'1,800',cpc:'$5.50',kd:'Low',refresh:'—',talkiatry:'#6',cerebral:'—',grow:'—',better:'Page 2',opp:'Uncontested — create service page + blog' },
+    { kw:'insomnia psychiatrist telehealth',cat:'condition',vol:'1,200',cpc:'$4.10',kd:'Low',refresh:'—',talkiatry:'—',cerebral:'—',grow:'—',better:'—',opp:'<strong style="color:#48BB78">BLUE OCEAN</strong> — nobody ranking' },
+
+    // TREATMENT
+    { kw:'telehealth psychiatrist',cat:'treatment',vol:'14,800',cpc:'$7.40',kd:'High',refresh:'Page 2',talkiatry:'#1',cerebral:'#3',grow:'—',better:'—',opp:'Core term — strengthen with backlinks + on-page' },
+    { kw:'online psychiatrist',cat:'treatment',vol:'33,100',cpc:'$6.80',kd:'Very High',refresh:'—',talkiatry:'#1',cerebral:'#4',grow:'—',better:'#7',opp:'Long-term target — build authority with supporting content' },
+    { kw:'psychiatrist near me telehealth',cat:'treatment',vol:'5,400',cpc:'$8.20',kd:'Medium',refresh:'#18',talkiatry:'#2',cerebral:'—',grow:'—',better:'—',opp:'Add "near me" variants to all location pages' },
+    { kw:'get prescribed Adderall online',cat:'treatment',vol:'9,900',cpc:'$4.50',kd:'High',refresh:'—',talkiatry:'#3',cerebral:'—',grow:'—',better:'—',opp:'ADHD blog series targets this — needs dedicated page' },
+    { kw:'Vyvanse telehealth prescription',cat:'treatment',vol:'3,200',cpc:'$5.90',kd:'Medium',refresh:'—',talkiatry:'#4',cerebral:'—',grow:'—',better:'—',opp:'Medication-specific landing page opportunity' },
+    { kw:'pharmacogenomic testing psychiatry',cat:'treatment',vol:'1,400',cpc:'$3.20',kd:'Low',refresh:'#8',talkiatry:'—',cerebral:'—',grow:'—',better:'—',opp:'<strong style="color:#48BB78">ALREADY RANKING</strong> — push to page 1 with more content' },
+    { kw:'integrative psychiatry',cat:'treatment',vol:'2,600',cpc:'$3.80',kd:'Low',refresh:'#15',talkiatry:'—',cerebral:'—',grow:'—',better:'—',opp:'<strong style="color:#48BB78">UNCONTESTED</strong> — Total Mental Wellness brand play' },
+
+    // LOCAL/GEO
+    { kw:'psychiatrist in Davie FL',cat:'local',vol:'880',cpc:'$9.50',kd:'Low',refresh:'#3',talkiatry:'—',cerebral:'—',grow:'—',better:'—',opp:'Already ranking — add reviews + schema markup' },
+    { kw:'telehealth psychiatrist Florida',cat:'local',vol:'3,600',cpc:'$7.80',kd:'Medium',refresh:'#9',talkiatry:'#2',cerebral:'—',grow:'—',better:'—',opp:'Strengthen with FL-specific content + backlinks' },
+    { kw:'psychiatrist Fort Lauderdale',cat:'local',vol:'1,900',cpc:'$10.20',kd:'Medium',refresh:'#7',talkiatry:'—',cerebral:'—',grow:'#12',better:'—',opp:'Near top — optimize GMB + add city landing page' },
+    { kw:'online psychiatrist Massachusetts',cat:'local',vol:'1,200',cpc:'$8.40',kd:'Low',refresh:'#14',talkiatry:'#3',cerebral:'—',grow:'—',better:'—',opp:'Create MA-specific landing page + blog content' },
+    { kw:'psychiatrist DFW Texas telehealth',cat:'local',vol:'720',cpc:'$7.60',kd:'Low',refresh:'—',talkiatry:'#5',cerebral:'—',grow:'—',better:'—',opp:'<strong style="color:#48BB78">NEW MARKET</strong> — build TX location pages ASAP' },
+    { kw:'psychiatrist Miami telehealth',cat:'local',vol:'2,100',cpc:'$9.80',kd:'Medium',refresh:'#11',talkiatry:'#4',cerebral:'—',grow:'—',better:'—',opp:'High-value geo — dedicated Miami landing page' },
+    { kw:'psychiatrist Coral Springs FL',cat:'local',vol:'590',cpc:'$8.90',kd:'Low',refresh:'#5',talkiatry:'—',cerebral:'—',grow:'—',better:'—',opp:'Already top 5 — add patient testimonials' },
+    { kw:'psychiatrist Pembroke Pines',cat:'local',vol:'480',cpc:'$9.10',kd:'Low',refresh:'#6',talkiatry:'—',cerebral:'—',grow:'—',better:'—',opp:'Strong position — maintain with fresh content' },
+
+    // INSURANCE
+    { kw:'psychiatrist that takes Aetna Florida',cat:'insurance',vol:'1,400',cpc:'$8.50',kd:'Low',refresh:'—',talkiatry:'#6',cerebral:'—',grow:'—',better:'—',opp:'<strong style="color:#48BB78">HIGH PRIORITY</strong> — create Aetna landing page' },
+    { kw:'United Healthcare psychiatrist telehealth',cat:'insurance',vol:'1,100',cpc:'$7.90',kd:'Low',refresh:'—',talkiatry:'#4',cerebral:'—',grow:'—',better:'—',opp:'Dedicated UHC page with FL/MA/TX targeting' },
+    { kw:'Cigna psychiatrist online',cat:'insurance',vol:'960',cpc:'$7.20',kd:'Low',refresh:'—',talkiatry:'#5',cerebral:'—',grow:'—',better:'—',opp:'Insurance landing page — conversion rate 4x higher' },
+    { kw:'Humana mental health telehealth',cat:'insurance',vol:'780',cpc:'$6.80',kd:'Low',refresh:'—',talkiatry:'—',cerebral:'—',grow:'—',better:'—',opp:'<strong style="color:#48BB78">UNCONTESTED</strong> — nobody ranking for this' },
+    { kw:'Oscar Health psychiatrist',cat:'insurance',vol:'420',cpc:'$5.50',kd:'Very Low',refresh:'—',talkiatry:'—',cerebral:'—',grow:'—',better:'—',opp:'<strong style="color:#48BB78">UNCONTESTED</strong> — create page, rank in days' },
+    { kw:'AvMed psychiatrist Florida',cat:'insurance',vol:'340',cpc:'$6.20',kd:'Very Low',refresh:'—',talkiatry:'—',cerebral:'—',grow:'—',better:'—',opp:'<strong style="color:#48BB78">UNCONTESTED</strong> — zero competition' },
+    { kw:'UMR mental health coverage',cat:'insurance',vol:'290',cpc:'$4.80',kd:'Very Low',refresh:'—',talkiatry:'—',cerebral:'—',grow:'—',better:'—',opp:'<strong style="color:#48BB78">UNCONTESTED</strong> — create page immediately' },
+
+    // COMPARISON
+    { kw:'best online psychiatrist 2026',cat:'comparison',vol:'6,600',cpc:'$5.20',kd:'High',refresh:'—',talkiatry:'#2',cerebral:'#8',grow:'#4',better:'#5',opp:'Create "Best Online Psychiatrist in FL 2026" listicle' },
+    { kw:'Refresh Psychiatry vs Talkiatry',cat:'comparison',vol:'210',cpc:'$3.80',kd:'Very Low',refresh:'—',talkiatry:'—',cerebral:'—',grow:'—',better:'—',opp:'Own this term — create comparison landing page' },
+    { kw:'best telehealth psychiatrist Florida',cat:'comparison',vol:'1,800',cpc:'$8.60',kd:'Low',refresh:'—',talkiatry:'#3',cerebral:'—',grow:'—',better:'—',opp:'<strong style="color:#48BB78">HIGH PRIORITY</strong> — create listicle + geo-target' },
+    { kw:'therapist vs psychiatrist',cat:'comparison',vol:'27,100',cpc:'$2.10',kd:'High',refresh:'—',talkiatry:'#6',cerebral:'—',grow:'#1',better:'#3',opp:'Educational blog — top-of-funnel awareness play' },
+    { kw:'psychiatrist vs psychologist',cat:'comparison',vol:'22,200',cpc:'$1.80',kd:'High',refresh:'—',talkiatry:'—',cerebral:'—',grow:'#2',better:'#4',opp:'Create comprehensive comparison guide' },
+  ];
+
+  function rankClass(rank) {
+    if (rank === '—') return 'style="color:var(--charcoal);opacity:0.25;"';
+    if (rank.includes('#1') || rank.includes('#2') || rank.includes('#3')) return 'style="color:#48BB78;font-weight:800;"';
+    if (rank.includes('Page 2') || rank.includes('Page 3')) return 'style="color:var(--yellow-dim);font-weight:600;"';
+    return 'style="font-weight:600;"';
+  }
+
+  function kdColor(kd) {
+    if (kd === 'Very Low') return '#48BB78';
+    if (kd === 'Low') return '#48BB78';
+    if (kd === 'Medium') return 'var(--yellow-dim)';
+    return '#E53E3E';
+  }
+
+  function buildSeoTable(filter) {
+    const tbody = document.getElementById('seoTableBody');
+    if (!tbody) return;
+    const filtered = filter === 'all' ? seoKeywords : seoKeywords.filter(k => k.cat === filter);
+    tbody.innerHTML = '';
+    filtered.forEach(k => {
+      tbody.innerHTML += `<tr data-cat="${k.cat}">
+        <td style="font-weight:700;">${k.kw}</td>
+        <td>${k.vol}</td>
+        <td style="font-weight:600;">${k.cpc}</td>
+        <td><span style="color:${kdColor(k.kd)};font-weight:700;font-size:11px;padding:2px 8px;border-radius:8px;background:${kdColor(k.kd)}15;">${k.kd}</span></td>
+        <td class="refresh-col" ${rankClass(k.refresh)}>${k.refresh}</td>
+        <td ${rankClass(k.talkiatry)}>${k.talkiatry}</td>
+        <td ${rankClass(k.cerebral)}>${k.cerebral}</td>
+        <td ${rankClass(k.grow)}>${k.grow}</td>
+        <td ${rankClass(k.better)}>${k.better}</td>
+        <td style="font-size:11px;">${k.opp}</td>
+      </tr>`;
+    });
+  }
+
+  function filterSeoTable(cat, btn) {
+    document.querySelectorAll('.seo-tabs .period-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    buildSeoTable(cat);
+  }
+
+  buildSeoTable('all');
 
   // Trigger counters after a short delay
   setTimeout(animateCounters, 400);
