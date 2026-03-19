@@ -1,0 +1,427 @@
+{
+  "notebook_url": null,
+  "notebook_id": null,
+  "audio_release_tag": "v3.0-daily-podcast",
+  "topics": [
+    {
+      "id": 1,
+      "title": "Private Practice Growth Strategies",
+      "subtitle": "Building a thriving psychiatric practice from the ground up",
+      "emoji": "📈",
+      "description": "Actionable strategies for growing a private psychiatric practice — patient acquisition funnels, referral network building, geographic expansion, adding new service lines, and revenue diversification. Real-world tactics for solo practitioners and group practices.",
+      "search_queries": [
+        "private practice psychiatry growth strategies 2026",
+        "how to grow psychiatric practice patient volume",
+        "psychiatric practice business development tactics"
+      ],
+      "topic_cards": [
+        { "icon": "🎯", "title": "Patient Acquisition Funnels", "desc": "From first Google search to booked appointment — optimizing every step of the patient journey." },
+        { "icon": "🤝", "title": "Referral Network Building", "desc": "How to build a steady stream of PCP, therapist, and specialist referrals that compound over time." },
+        { "icon": "📍", "title": "Geographic Expansion", "desc": "When and how to add locations — telehealth-first vs. brick-and-mortar, state licensing, and market selection." },
+        { "icon": "💰", "title": "Revenue Diversification", "desc": "Beyond med management — pharmacogenomics, therapy services, TMS, ketamine, and cash-pay offerings." },
+        { "icon": "📊", "title": "KPIs That Matter", "desc": "The 8 metrics every practice owner should track weekly — and what each number actually tells you." },
+        { "icon": "🚀", "title": "Scaling Without Burnout", "desc": "Hiring your first NP or PA, delegating clinical load, and building systems that grow without you." }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "SEO for Mental Health Practices",
+      "subtitle": "Dominating Google search in your local market",
+      "emoji": "🔍",
+      "description": "A deep dive into search engine optimization specifically for psychiatric and mental health practices — local SEO, Google Business Profile optimization, content strategy, keyword targeting for high-intent patients, and competing against national telehealth platforms.",
+      "search_queries": [
+        "SEO for psychiatrists mental health practices 2026",
+        "local SEO healthcare private practice",
+        "Google Business Profile optimization psychiatrist"
+      ],
+      "topic_cards": [
+        { "icon": "📍", "title": "Local SEO Domination", "desc": "Google Business Profile, local citations, and map pack ranking strategies for multi-location practices." },
+        { "icon": "🔑", "title": "High-Intent Keywords", "desc": "Targeting 'psychiatrist near me' and insurance-specific searches that convert at 8x the rate of generic terms." },
+        { "icon": "📝", "title": "Content Strategy", "desc": "Pillar pages, blog clusters, and FAQ schema that build topical authority in psychiatry." },
+        { "icon": "🏆", "title": "Competing with Nationals", "desc": "How a local practice can outrank Talkiatry, Cerebral, and BetterHelp in your market." },
+        { "icon": "📱", "title": "Technical SEO", "desc": "Site speed, mobile optimization, schema markup, and Core Web Vitals for healthcare sites." },
+        { "icon": "📈", "title": "Measuring SEO ROI", "desc": "Tracking organic traffic to booked appointments — the metrics that prove SEO is working." }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Social Media Marketing for Psychiatrists",
+      "subtitle": "Building trust and authority through content",
+      "emoji": "📱",
+      "description": "Platform-specific social media strategies for psychiatric practices — Instagram Reels, TikTok hooks, LinkedIn thought leadership, Facebook community building. HIPAA-compliant content creation, destigmatizing mental health, and converting followers to patients.",
+      "search_queries": [
+        "social media marketing psychiatrist practice 2026",
+        "HIPAA compliant social media mental health",
+        "psychiatrist Instagram TikTok content strategy"
+      ],
+      "topic_cards": [
+        { "icon": "🎬", "title": "Reels & TikTok Hooks", "desc": "The 'As a psychiatrist...' hook formula, trending sounds, and video formats that drive 10x reach." },
+        { "icon": "📸", "title": "Instagram Strategy", "desc": "Carousels, Stories, and grid aesthetics — building a feed that converts browsers to patients." },
+        { "icon": "💼", "title": "LinkedIn for B2B", "desc": "Thought leadership content that builds referral pipelines with therapists, PCPs, and employers." },
+        { "icon": "🔒", "title": "HIPAA-Safe Content", "desc": "Creating warm, authentic content while staying fully compliant — composite stories and safe messaging." },
+        { "icon": "📅", "title": "Content Calendar", "desc": "A 5-day posting framework that balances education, engagement, and conversion." },
+        { "icon": "📊", "title": "Measuring Impact", "desc": "From likes to leads — tracking which content actually drives new patient inquiries." }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Patient Retention & Engagement",
+      "subtitle": "Keeping patients engaged in their treatment journey",
+      "emoji": "🫂",
+      "description": "Strategies for reducing no-show rates, improving treatment adherence, and building long-term patient relationships in telepsychiatry. Covers patient communication, appointment reminders, follow-up workflows, and creating a practice culture that patients don't want to leave.",
+      "search_queries": [
+        "patient retention strategies psychiatry practice",
+        "reduce no-show rate telepsychiatry",
+        "patient engagement mental health treatment adherence"
+      ],
+      "topic_cards": [
+        { "icon": "📉", "title": "No-Show Prevention", "desc": "Multi-touch reminder systems, flexible scheduling, and the psychology behind why patients ghost." },
+        { "icon": "💊", "title": "Treatment Adherence", "desc": "Medication compliance strategies, psychoeducation techniques, and motivational interviewing basics." },
+        { "icon": "💬", "title": "Patient Communication", "desc": "Secure messaging, between-visit check-ins, and building rapport in a telehealth-first world." },
+        { "icon": "⭐", "title": "Experience Design", "desc": "From intake to follow-up — designing every touchpoint to feel warm, professional, and easy." },
+        { "icon": "📊", "title": "Retention Metrics", "desc": "Tracking 90-day retention, lifetime value, and churn — the numbers behind patient loyalty." },
+        { "icon": "🔄", "title": "Re-engagement", "desc": "Win-back campaigns for lapsed patients — when and how to reach out without being pushy." }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Telehealth Technology & Best Practices",
+      "subtitle": "Delivering exceptional virtual psychiatric care",
+      "emoji": "💻",
+      "description": "Optimizing telehealth delivery for psychiatric practices — platform selection, video quality, virtual waiting rooms, EHR integration, patient onboarding, and creating a professional virtual presence. Plus emerging tech like AI scribes, ambient listening, and remote monitoring.",
+      "search_queries": [
+        "telehealth best practices psychiatry 2026",
+        "telepsychiatry technology platform comparison",
+        "AI tools psychiatric telehealth practice"
+      ],
+      "topic_cards": [
+        { "icon": "🖥️", "title": "Platform Optimization", "desc": "Video quality, connection stability, and the tech stack that makes telehealth feel seamless." },
+        { "icon": "🤖", "title": "AI Scribes & Tools", "desc": "Ambient documentation, AI-assisted note-taking, and tools that give you 30 minutes back per day." },
+        { "icon": "📋", "title": "Virtual Intake Flow", "desc": "Digital forms, e-consent, and onboarding workflows that reduce admin time by 60%." },
+        { "icon": "🏥", "title": "Hybrid Models", "desc": "When to offer in-person vs. virtual — designing a flexible practice model patients love." },
+        { "icon": "🔐", "title": "Security & Compliance", "desc": "HIPAA-compliant platforms, BAAs, encryption, and protecting patient data in transit." },
+        { "icon": "📱", "title": "Mobile-First Care", "desc": "Patients on phones — optimizing the experience for the 65% who connect from mobile devices." }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Insurance & Revenue Cycle Management",
+      "subtitle": "Maximizing collections and minimizing denials",
+      "emoji": "💵",
+      "description": "Revenue cycle optimization for psychiatric practices — credentialing, payer contracting, billing optimization, denial management, and the cash-pay vs. insurance debate. Covers CPT coding for psychiatry, E/M documentation, and strategies to increase average reimbursement.",
+      "search_queries": [
+        "psychiatry billing revenue cycle optimization 2026",
+        "insurance credentialing psychiatric practice",
+        "psychiatry CPT coding reimbursement strategies"
+      ],
+      "topic_cards": [
+        { "icon": "📋", "title": "Credentialing Strategy", "desc": "Which payers to join first, how to negotiate rates, and the credentialing timeline every new practice needs." },
+        { "icon": "💰", "title": "Billing Optimization", "desc": "CPT code selection, E/M level accuracy, and add-on codes most psychiatrists leave on the table." },
+        { "icon": "❌", "title": "Denial Management", "desc": "The top 5 denial reasons in psychiatry and how to prevent 80% of them before they happen." },
+        { "icon": "💳", "title": "Cash-Pay Strategy", "desc": "When going out-of-network makes sense — pricing, superbills, and building a cash-pay arm." },
+        { "icon": "📊", "title": "Revenue KPIs", "desc": "Collection rate, days in AR, denial rate, and cost per claim — the metrics that drive profitability." },
+        { "icon": "🔄", "title": "Payer Mix Optimization", "desc": "Balancing your payer mix for maximum revenue — when to add or drop insurance contracts." }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Reputation Management & Online Reviews",
+      "subtitle": "Your online reputation is your #1 marketing asset",
+      "emoji": "⭐",
+      "description": "Building and protecting your online reputation as a psychiatric practice — review generation strategies, HIPAA-compliant response templates, managing negative reviews, Google Business Profile optimization, and leveraging social proof for patient acquisition.",
+      "search_queries": [
+        "online reputation management psychiatrist 2026",
+        "how to get more Google reviews psychiatric practice",
+        "HIPAA compliant review response templates healthcare"
+      ],
+      "topic_cards": [
+        { "icon": "⭐", "title": "Review Generation", "desc": "Ethical, effective systems for encouraging happy patients to share their experience online." },
+        { "icon": "💬", "title": "Response Templates", "desc": "HIPAA-compliant response frameworks for positive, negative, and neutral reviews." },
+        { "icon": "🛡️", "title": "Reputation Defense", "desc": "Handling fake reviews, competitor attacks, and the nuclear scenario of a viral negative post." },
+        { "icon": "📍", "title": "GBP Optimization", "desc": "Photos, posts, Q&A, and attributes that make your Google listing convert 3x better." },
+        { "icon": "📊", "title": "Monitoring Systems", "desc": "Automated alerts, sentiment tracking, and the tools that keep you ahead of reputation issues." },
+        { "icon": "🏆", "title": "Social Proof Strategy", "desc": "Turning reviews into website testimonials, social content, and ad creative that builds trust." }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Competitive Intelligence for Practices",
+      "subtitle": "Know your market — outmaneuver the competition",
+      "emoji": "🕵️",
+      "description": "How to systematically track and outcompete both local practices and national telehealth platforms. Ad intelligence, pricing analysis, content gap analysis, market positioning, and finding blue ocean opportunities in psychiatry.",
+      "search_queries": [
+        "competitive intelligence healthcare practice",
+        "psychiatry market analysis competitor tracking",
+        "telehealth psychiatry competitive landscape 2026"
+      ],
+      "topic_cards": [
+        { "icon": "🔍", "title": "Competitor Tracking", "desc": "Tools and frameworks for monitoring what Talkiatry, Cerebral, and local competitors are doing." },
+        { "icon": "📢", "title": "Ad Intelligence", "desc": "Reading competitors' Google Ads, Meta Ad Library, and reverse-engineering their marketing spend." },
+        { "icon": "📊", "title": "Content Gap Analysis", "desc": "Finding the keywords and topics your competitors rank for that you don't — and closing the gap." },
+        { "icon": "🎯", "title": "Positioning Strategy", "desc": "Defining your unique value proposition in a crowded telepsychiatry market." },
+        { "icon": "💰", "title": "Pricing Intelligence", "desc": "Understanding competitor pricing, insurance networks, and where to compete on value vs. cost." },
+        { "icon": "🌊", "title": "Blue Ocean Plays", "desc": "Underserved niches, uncontested keywords, and market gaps nobody else is targeting." }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Hiring & Building Your Clinical Team",
+      "subtitle": "Recruiting, retaining, and managing providers",
+      "emoji": "👥",
+      "description": "The complete guide to building a psychiatric practice team — recruiting psychiatrists, NPs, PAs, and therapists. Compensation models, credentialing workflows, onboarding processes, managing remote clinical teams, and creating a culture that retains top talent.",
+      "search_queries": [
+        "hiring psychiatrist nurse practitioner private practice",
+        "psychiatric practice team building compensation models",
+        "recruiting providers telepsychiatry practice 2026"
+      ],
+      "topic_cards": [
+        { "icon": "🔎", "title": "Provider Recruitment", "desc": "Where to find great clinicians — job boards, networking, residency programs, and recruitment agencies." },
+        { "icon": "💰", "title": "Compensation Models", "desc": "Salary vs. productivity, split models, bonuses, and equity — what top candidates actually want." },
+        { "icon": "📋", "title": "Onboarding & Training", "desc": "Getting a new provider from contract to first patient in 30 days — the credentialing fast-track." },
+        { "icon": "🏠", "title": "Remote Team Management", "desc": "Managing a distributed clinical team — supervision, collaboration, and maintaining quality standards." },
+        { "icon": "❤️", "title": "Retention Strategy", "desc": "Why providers leave and what makes them stay — flexibility, autonomy, culture, and growth paths." },
+        { "icon": "⚖️", "title": "Legal Considerations", "desc": "Employment vs. 1099, non-competes, malpractice coverage, and compliance across state lines." }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Compliance & Regulatory Navigation",
+      "subtitle": "Staying compliant in an evolving regulatory landscape",
+      "emoji": "⚖️",
+      "description": "Navigating the complex regulatory environment for telepsychiatry — DEA prescribing rules, Ryan Haight Act, state licensing requirements, HIPAA compliance, controlled substance prescribing via telehealth, and preparing for upcoming regulatory changes.",
+      "search_queries": [
+        "telepsychiatry compliance DEA regulations 2026",
+        "telehealth prescribing controlled substances rules",
+        "HIPAA compliance psychiatric practice requirements"
+      ],
+      "topic_cards": [
+        { "icon": "💊", "title": "DEA & Controlled Substances", "desc": "The evolving rules for prescribing stimulants and benzos via telehealth — what's changing and when." },
+        { "icon": "🏛️", "title": "State Licensing", "desc": "Interstate compact, state-by-state telehealth rules, and managing licenses across multiple states." },
+        { "icon": "🔐", "title": "HIPAA Deep Dive", "desc": "Beyond the basics — BAAs, breach notification, social media compliance, and AI tool risks." },
+        { "icon": "📋", "title": "Documentation Standards", "desc": "Medical record requirements, informed consent, and the documentation that protects you in audits." },
+        { "icon": "⏰", "title": "Regulatory Horizon", "desc": "Upcoming changes to watch — DEA permanent rules, state law changes, and CMS telehealth waivers." },
+        { "icon": "🛡️", "title": "Audit Preparation", "desc": "What triggers a payer audit, how to prepare, and the documentation practices that keep you safe." }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "AI Tools for Psychiatric Practices",
+      "subtitle": "Leveraging artificial intelligence to work smarter",
+      "emoji": "🤖",
+      "description": "How AI is transforming psychiatric practice operations — AI scribes, clinical decision support, patient triage, automated scheduling, AI-powered marketing, and the ethical considerations of AI in mental healthcare. Practical tools you can implement this week.",
+      "search_queries": [
+        "AI tools psychiatric practice 2026",
+        "AI scribes mental health documentation",
+        "artificial intelligence psychiatry practice management"
+      ],
+      "topic_cards": [
+        { "icon": "📝", "title": "AI Documentation", "desc": "AI scribes, ambient listening, and automated note generation — saving 2+ hours daily on charting." },
+        { "icon": "🧠", "title": "Clinical Decision Support", "desc": "AI-assisted treatment planning, drug interaction checking, and pharmacogenomics integration." },
+        { "icon": "📞", "title": "Patient Triage", "desc": "AI chatbots for intake screening, symptom assessment, and routing patients to the right level of care." },
+        { "icon": "📈", "title": "AI-Powered Marketing", "desc": "Using AI to generate content, optimize ads, analyze competitors, and personalize patient outreach." },
+        { "icon": "⚖️", "title": "Ethics & Liability", "desc": "Where AI helps vs. where it creates risk — informed consent, bias, and the human-in-the-loop imperative." },
+        { "icon": "🔮", "title": "What's Coming Next", "desc": "Predictive analytics, digital phenotyping, and the AI tools that will reshape psychiatry by 2028." }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Pharmacogenomics as a Differentiator",
+      "subtitle": "Using DNA-guided prescribing to stand out",
+      "emoji": "🧬",
+      "description": "How pharmacogenomic testing is transforming psychiatric prescribing — the science behind CYP450 testing, implementing GeneSight and similar panels, marketing pharmacogenomics as a practice differentiator, insurance coverage, and the clinical evidence.",
+      "search_queries": [
+        "pharmacogenomic testing psychiatry implementation",
+        "GeneSight psychiatric practice marketing",
+        "pharmacogenomics mental health prescribing 2026"
+      ],
+      "topic_cards": [
+        { "icon": "🧬", "title": "The Science", "desc": "CYP450 enzymes, gene-drug interactions, and how DNA testing reduces trial-and-error prescribing by 50%." },
+        { "icon": "🏥", "title": "Implementation Guide", "desc": "Choosing a testing vendor, workflow integration, and training your team on pharmacogenomic results." },
+        { "icon": "📢", "title": "Marketing Advantage", "desc": "How to position DNA-guided prescribing as your #1 differentiator — content, ads, and patient education." },
+        { "icon": "💰", "title": "Insurance & Coverage", "desc": "Which payers cover PGx testing, how to get authorization, and cash-pay pricing strategies." },
+        { "icon": "📊", "title": "Clinical Evidence", "desc": "The studies that support pharmacogenomic prescribing — and how to talk about them with patients." },
+        { "icon": "🎯", "title": "Patient Selection", "desc": "Who benefits most from PGx testing — treatment-resistant cases, polypharmacy, and first-episode patients." }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Content Marketing & Thought Leadership",
+      "subtitle": "Becoming the go-to authority in your market",
+      "emoji": "✍️",
+      "description": "Building a content engine for your psychiatric practice — blogging strategy, video content, podcast creation, email newsletters, and establishing yourself as a thought leader. How content compounds over time to drive organic patient acquisition.",
+      "search_queries": [
+        "content marketing psychiatric practice thought leadership",
+        "healthcare blog strategy patient acquisition",
+        "psychiatrist thought leader personal brand building"
+      ],
+      "topic_cards": [
+        { "icon": "📝", "title": "Blog Strategy", "desc": "Pillar content, keyword clusters, and the publishing cadence that builds topical authority." },
+        { "icon": "🎬", "title": "Video Content", "desc": "From talking-head explainers to polished Reels — video formats that build trust and reach." },
+        { "icon": "🎙️", "title": "Podcast & Audio", "desc": "Starting a practice podcast, guest appearances, and audio content that deepens patient trust." },
+        { "icon": "📧", "title": "Email Newsletters", "desc": "Building a subscriber list, nurture sequences, and email content that converts to appointments." },
+        { "icon": "📰", "title": "Media & PR", "desc": "Getting quoted in press, HARO pitches, and building authority through third-party validation." },
+        { "icon": "📊", "title": "Content ROI", "desc": "Tracking which content drives actual patient bookings — the metrics that justify your content investment." }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "Financial Planning for Practice Owners",
+      "subtitle": "Building wealth through your practice",
+      "emoji": "🏦",
+      "description": "Financial strategies for psychiatrist-entrepreneurs — practice valuation, owner compensation optimization, tax planning, retirement strategies, emergency reserves, and planning for eventual exit or sale. The business of owning a psychiatric practice.",
+      "search_queries": [
+        "financial planning psychiatrist practice owner",
+        "psychiatric practice valuation sale exit strategy",
+        "physician practice owner tax strategy wealth building"
+      ],
+      "topic_cards": [
+        { "icon": "💰", "title": "Owner Compensation", "desc": "Salary vs. distributions, S-corp optimization, and the compensation structure that minimizes your tax burden." },
+        { "icon": "📊", "title": "Practice Valuation", "desc": "What drives practice value — revenue multiples, patient panel value, and building a sellable business." },
+        { "icon": "🏦", "title": "Tax Strategy", "desc": "Retirement plans, QBI deductions, and the tax moves every practice owner should make before year-end." },
+        { "icon": "📈", "title": "Growth Investment", "desc": "When to reinvest vs. take profit — the framework for smart capital allocation in your practice." },
+        { "icon": "🛡️", "title": "Risk Protection", "desc": "Malpractice, disability, key-person insurance, and the safety nets every practice owner needs." },
+        { "icon": "🚪", "title": "Exit Planning", "desc": "Selling, merging, or transitioning your practice — planning your exit from day one." }
+      ]
+    },
+    {
+      "id": 15,
+      "title": "Multi-Location Practice Management",
+      "subtitle": "Scaling from one location to many",
+      "emoji": "🏢",
+      "description": "Lessons from scaling a psychiatric practice across multiple states and locations — operational systems, quality standardization, technology infrastructure, regional marketing, and managing a distributed team. What works and what breaks when you scale.",
+      "search_queries": [
+        "multi-location psychiatric practice management",
+        "scaling telepsychiatry practice multiple states",
+        "multi-site healthcare practice operations"
+      ],
+      "topic_cards": [
+        { "icon": "🏗️", "title": "Operational Systems", "desc": "SOPs, checklists, and workflows that maintain quality across 5, 10, or 20 locations." },
+        { "icon": "📍", "title": "Market Selection", "desc": "How to evaluate new markets — demand signals, competitor density, payer mix, and licensing ease." },
+        { "icon": "💻", "title": "Tech Infrastructure", "desc": "Unified EHR, scheduling across time zones, and the tech stack that makes multi-site feel seamless." },
+        { "icon": "📢", "title": "Regional Marketing", "desc": "Location-specific SEO, hyper-local content, and Google Business profiles for every market." },
+        { "icon": "👥", "title": "Distributed Leadership", "desc": "Regional leads, clinical directors, and the org chart that lets you manage by exception." },
+        { "icon": "📊", "title": "Performance Dashboards", "desc": "Location-level metrics, benchmarking, and the data that tells you where to focus attention." }
+      ]
+    },
+    {
+      "id": 16,
+      "title": "Marketing Psychology for Healthcare",
+      "subtitle": "The science behind patient decision-making",
+      "emoji": "🧠",
+      "description": "Understanding the psychology of healthcare consumer behavior — why patients choose one provider over another, trust signals, social proof, urgency vs. empathy in marketing, and ethical persuasion in mental health marketing.",
+      "search_queries": [
+        "healthcare marketing psychology patient decision making",
+        "trust signals healthcare consumer behavior",
+        "ethical marketing mental health services"
+      ],
+      "topic_cards": [
+        { "icon": "🧠", "title": "Decision Psychology", "desc": "The patient decision journey — what triggers the search, what builds trust, and what closes the booking." },
+        { "icon": "⭐", "title": "Social Proof", "desc": "Reviews, testimonials, and trust badges — the signals that convert 72% of healthcare shoppers." },
+        { "icon": "🎯", "title": "Ethical Persuasion", "desc": "Using behavioral science to help people get help — without manipulation or fear-mongering." },
+        { "icon": "🖼️", "title": "Visual Psychology", "desc": "Colors, imagery, and design patterns that communicate warmth, competence, and accessibility." },
+        { "icon": "✍️", "title": "Copywriting Formulas", "desc": "Headlines, CTAs, and messaging frameworks that resonate with people seeking mental health care." },
+        { "icon": "📊", "title": "Testing & Optimization", "desc": "A/B testing landing pages, ad creative, and messaging to find what actually moves patients to act." }
+      ]
+    },
+    {
+      "id": 17,
+      "title": "Community Partnerships & Referral Networks",
+      "subtitle": "Building relationships that drive growth",
+      "emoji": "🤝",
+      "description": "Building strategic partnerships that feed your practice — PCP referral relationships, therapist networks, employer mental health programs, school partnerships, and community outreach. The relationships that create a sustainable patient pipeline.",
+      "search_queries": [
+        "psychiatry referral network building strategies",
+        "healthcare community partnerships mental health",
+        "physician referral relationship development"
+      ],
+      "topic_cards": [
+        { "icon": "🏥", "title": "PCP Partnerships", "desc": "Building referral relationships with primary care — what PCPs need from psychiatrists and how to deliver." },
+        { "icon": "🧘", "title": "Therapist Networks", "desc": "Creating bidirectional referral pathways with therapists — the partnership that benefits everyone." },
+        { "icon": "🏢", "title": "Employer Programs", "desc": "Corporate mental health partnerships, EAP alternatives, and B2B revenue opportunities." },
+        { "icon": "🎓", "title": "School & University", "desc": "College counseling center partnerships and school-based referral programs in your market." },
+        { "icon": "🏘️", "title": "Community Outreach", "desc": "Mental health awareness events, free screenings, and community presence that builds brand equity." },
+        { "icon": "📊", "title": "Tracking Referral ROI", "desc": "Attribution, referral source tracking, and measuring which partnerships actually drive revenue." }
+      ]
+    },
+    {
+      "id": 18,
+      "title": "Work-Life Balance for Psychiatrist-Entrepreneurs",
+      "subtitle": "Running a practice without running yourself into the ground",
+      "emoji": "⚖️",
+      "description": "The unique challenges of being both a clinician and a business owner — setting boundaries, delegation, burnout prevention, time management, and designing a practice that serves your life goals. Practical strategies from psychiatrists who've found balance.",
+      "search_queries": [
+        "psychiatrist burnout prevention practice owner",
+        "work-life balance physician entrepreneur",
+        "psychiatrist practice management time optimization"
+      ],
+      "topic_cards": [
+        { "icon": "⏰", "title": "Time Architecture", "desc": "Designing your ideal week — clinical hours, admin blocks, and protected personal time." },
+        { "icon": "🤝", "title": "Delegation Mastery", "desc": "What to do yourself, what to delegate to staff, and what to automate — the CEO mindset shift." },
+        { "icon": "🧘", "title": "Burnout Prevention", "desc": "Recognizing the warning signs, building recovery into your schedule, and the power of clinical variety." },
+        { "icon": "🏠", "title": "Boundaries That Work", "desc": "Patient communication limits, after-hours policies, and protecting your personal time without guilt." },
+        { "icon": "📈", "title": "Practice Design", "desc": "Building a practice around your life — choosing a patient panel size, schedule, and service mix you love." },
+        { "icon": "🎯", "title": "Goal Alignment", "desc": "Defining what 'enough' looks like — income targets, lifestyle goals, and the practice that supports them." }
+      ]
+    },
+    {
+      "id": 19,
+      "title": "Paid Advertising for Psychiatric Practices",
+      "subtitle": "Google Ads, Meta Ads, and beyond",
+      "emoji": "📣",
+      "description": "Running profitable ad campaigns for psychiatric practices — Google Search ads, Meta/Instagram campaigns, YouTube pre-roll, LinkedIn B2B advertising. Budget allocation, creative best practices, landing page optimization, and tracking ROAS in healthcare.",
+      "search_queries": [
+        "Google Ads psychiatric practice strategy 2026",
+        "Meta ads psychiatrist healthcare advertising",
+        "paid advertising mental health practice ROI"
+      ],
+      "topic_cards": [
+        { "icon": "🔍", "title": "Google Search Ads", "desc": "Keyword strategy, negative keywords, ad copy formulas, and the campaigns that drive booked appointments." },
+        { "icon": "📱", "title": "Meta & Instagram Ads", "desc": "Audience targeting, creative formats, and the funnel from awareness to booking on social platforms." },
+        { "icon": "🎬", "title": "Video Advertising", "desc": "YouTube pre-roll, TikTok ads, and video creative that builds trust in 15 seconds." },
+        { "icon": "🎯", "title": "Landing Pages", "desc": "The anatomy of a high-converting healthcare landing page — copy, design, and trust elements." },
+        { "icon": "💰", "title": "Budget Strategy", "desc": "How much to spend, where to allocate, and the ROAS benchmarks for psychiatric practice advertising." },
+        { "icon": "📊", "title": "Attribution & Tracking", "desc": "Call tracking, form attribution, and proving which ad dollars actually produce patients." }
+      ]
+    },
+    {
+      "id": 20,
+      "title": "Emerging Treatments in Psychiatry",
+      "subtitle": "What's next in psychiatric treatment",
+      "emoji": "🔬",
+      "description": "New and emerging treatments transforming psychiatric practice — ketamine/esketamine, TMS, psychedelic-assisted therapy, digital therapeutics, neuromodulation, and novel drug mechanisms. What practice owners need to know about adding these services.",
+      "search_queries": [
+        "emerging psychiatric treatments 2026",
+        "ketamine TMS psychiatric practice implementation",
+        "psychedelic therapy psychiatry new treatments"
+      ],
+      "topic_cards": [
+        { "icon": "💉", "title": "Ketamine & Esketamine", "desc": "Adding Spravato or IV ketamine to your practice — clinical protocols, business models, and reimbursement." },
+        { "icon": "🧲", "title": "TMS Integration", "desc": "Transcranial magnetic stimulation — leasing vs. buying, insurance coverage, and patient selection." },
+        { "icon": "🍄", "title": "Psychedelic-Assisted Therapy", "desc": "The regulatory landscape, training requirements, and timeline for adding MDMA or psilocybin services." },
+        { "icon": "📱", "title": "Digital Therapeutics", "desc": "FDA-cleared digital treatments, prescription apps, and how they integrate with traditional prescribing." },
+        { "icon": "⚡", "title": "Neuromodulation", "desc": "Beyond TMS — tDCS, VNS, and the neuromodulation landscape for treatment-resistant conditions." },
+        { "icon": "💊", "title": "Novel Drug Mechanisms", "desc": "New drug classes in the pipeline — orexin modulators, neurosteroids, and psychoplastogens." }
+      ]
+    },
+    {
+      "id": 21,
+      "title": "Scaling from Solo to Group Practice",
+      "subtitle": "The transition from clinician to CEO",
+      "emoji": "🚀",
+      "description": "The journey from solo practitioner to group practice owner — when to make the leap, first hires, operational infrastructure, leadership development, and the mindset shift from doing the work to building the business. Lessons from psychiatrists who've scaled successfully.",
+      "search_queries": [
+        "solo to group psychiatric practice transition",
+        "scaling psychiatry practice first hire",
+        "psychiatrist practice owner CEO transition"
+      ],
+      "topic_cards": [
+        { "icon": "🤔", "title": "When to Scale", "desc": "The signals that you're ready — patient demand, financial runway, and the inflection point decision." },
+        { "icon": "👤", "title": "First Hires", "desc": "NP, PA, or psychiatrist? Admin or clinical first? The hiring sequence that reduces risk." },
+        { "icon": "🏗️", "title": "Infrastructure First", "desc": "The systems, processes, and technology you need BEFORE your first hire — not after." },
+        { "icon": "🧠", "title": "CEO Mindset Shift", "desc": "From 'I see patients' to 'I build a company that sees patients' — the hardest transition in medicine." },
+        { "icon": "📊", "title": "Financial Modeling", "desc": "Break-even analysis, provider productivity targets, and the math behind profitable scaling." },
+        { "icon": "⚠️", "title": "Common Pitfalls", "desc": "The mistakes every scaling practice makes — and how to avoid the ones that cost real money." }
+      ]
+    }
+  ]
+}

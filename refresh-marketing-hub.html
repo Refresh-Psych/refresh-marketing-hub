@@ -899,6 +899,25 @@
     font-family: 'JetBrains Mono', monospace;
   }
 
+  .speed-btn {
+    min-width: 44px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    background: rgba(43,108,176,0.08);
+    border: 1px solid rgba(43,108,176,0.15);
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--blue);
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    padding: 0 8px;
+  }
+  .speed-btn:hover { background: rgba(43,108,176,0.15); border-color: var(--blue); }
+  .speed-btn:active { transform: scale(0.95); }
+  .speed-btn.active { background: var(--blue); color: var(--white); border-color: var(--blue); }
+
   /* Podcast topics */
   .podcast-topics {
     display: grid;
@@ -1377,6 +1396,18 @@
     font-size: 10px; background: rgba(43,108,176,0.08); color: var(--blue);
     padding: 3px 8px; border-radius: 10px; font-weight: 700;
   }
+
+  /* Trend chart toggle buttons */
+  .trend-toggle {
+    padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 700;
+    border: 2px solid var(--tc, var(--blue)); background: transparent;
+    color: var(--tc, var(--blue)); cursor: pointer; transition: var(--transition);
+    font-family: 'DM Sans', sans-serif;
+  }
+  .trend-toggle.active {
+    background: var(--tc, var(--blue)); color: #fff;
+  }
+  .trend-toggle:hover { opacity: 0.85; transform: translateY(-1px); }
 
   .bar-chart {
     display: flex; align-items: flex-end; gap: 8px;
@@ -3049,6 +3080,7 @@
               <span id="podcastDuration">--:--</span>
             </div>
           </div>
+          <button class="speed-btn" id="podcastSpeedBtn" onclick="cyclePodcastSpeed()" title="Playback speed">1x</button>
         </div>
       </div>
     </div>
@@ -3600,12 +3632,13 @@
         <h3>🫁 "Box Breathing in 30 Seconds" — grounding technique demonstration</h3>
         <div class="viral-creator">@therapyreels + @your.mental.health.pal · Therapist creators (trend format)</div>
         <div class="viral-embed">
-          <div class="embed-placeholder" style="background:linear-gradient(135deg,#833AB4,#E1306C,#F77737);color:#fff;border-color:#E1306C;padding:28px 20px;">
-            <div style="font-size:32px;margin-bottom:10px;">🫁</div>
-            <div style="font-weight:700;font-size:15px;margin-bottom:6px;">Box Breathing in 30 Seconds</div>
-            <div style="font-size:12px;line-height:1.6;opacity:0.9;margin-bottom:12px;">Inhale 4 → Hold 4 → Exhale 4 → Hold 4<br>Therapist-led grounding technique demonstration</div>
-            <a href="https://www.instagram.com/explore/tags/boxbreathing/" target="_blank" rel="noopener" style="color:#fff;font-weight:600;text-decoration:none;background:rgba(255,255,255,0.2);padding:6px 16px;border-radius:20px;font-size:12px;">📸 Explore #BoxBreathing on Instagram →</a>
-          </div>
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C4QY8dUAbv_/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:12px; max-width:100%; min-width:280px; padding:16px;">
+            <div style="padding:16px;text-align:center;">
+              <p style="margin:0 0 8px;font-size:14px;color:#333;">📸 Box Breathing in 30 Seconds</p>
+              <a href="https://www.instagram.com/reel/C4QY8dUAbv_/" target="_blank" style="color:#E1306C;font-weight:600;text-decoration:none;">View this Reel on Instagram →</a>
+            </div>
+          </blockquote>
+          <a href="https://www.instagram.com/explore/tags/boxbreathing/" target="_blank" rel="noopener" class="viral-embed-toggle">📸 View #BoxBreathing on Instagram</a>
         </div>
         <p>Therapists demonstrate box breathing (inhale 4, hold 4, exhale 4, hold 4) using on-screen animation or hand gestures. The "do this during a panic attack" framing made this a bookmark staple.</p>
         <div class="viral-stats">
@@ -3689,12 +3722,13 @@
         <h3>⚡ "Reset your nervous system in 60 seconds" — Vagus Nerve demonstration</h3>
         <div class="viral-creator">@katimorton + wellness creators · Vagus nerve trend (673K monthly searches)</div>
         <div class="viral-embed">
-          <div class="embed-placeholder" style="background:linear-gradient(135deg,#833AB4,#E1306C,#F77737);color:#fff;border-color:#E1306C;padding:28px 20px;">
-            <div style="font-size:32px;margin-bottom:10px;">⚡</div>
-            <div style="font-weight:700;font-size:15px;margin-bottom:6px;">Reset Your Nervous System in 60 Seconds</div>
-            <div style="font-size:12px;line-height:1.6;opacity:0.9;margin-bottom:12px;">Vagus nerve stimulation techniques — humming, cold water, physiological sigh<br>673K monthly searches for "vagus nerve"</div>
-            <a href="https://www.instagram.com/explore/tags/vagusnerve/" target="_blank" rel="noopener" style="color:#fff;font-weight:600;text-decoration:none;background:rgba(255,255,255,0.2);padding:6px 16px;border-radius:20px;font-size:12px;">📸 Explore #VagusNerve on Instagram →</a>
-          </div>
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C3TMLAnOmQr/" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:12px;max-width:100%;min-width:280px;padding:16px;">
+            <div style="padding:16px;text-align:center;">
+              <p style="margin:0 0 8px;font-size:14px;color:#333;">⚡ Reset Your Nervous System — Vagus Nerve Demo</p>
+              <a href="https://www.instagram.com/reel/C3TMLAnOmQr/" target="_blank" style="color:#E1306C;font-weight:600;text-decoration:none;">View this Reel on Instagram →</a>
+            </div>
+          </blockquote>
+          <a href="https://www.instagram.com/explore/tags/vagusnerve/" target="_blank" rel="noopener" class="viral-embed-toggle">📸 Explore #VagusNerve on Instagram</a>
         </div>
         <p>Demonstrates simple vagus nerve stimulation techniques — humming, cold water on face, physiological sigh — explaining how the vagus nerve is the body's built-in stress "off switch."</p>
         <div class="viral-stats">
@@ -3796,12 +3830,13 @@
         <h3>🏠 "Signs You Were Raised in an Emotionally Unavailable Home" — psychoeducation carousel</h3>
         <div class="viral-creator">@nadiatherapy · Nadia Addesi, Therapist (top 2026 mental health influencer)</div>
         <div class="viral-embed">
-          <div class="embed-placeholder" style="background:linear-gradient(135deg,#833AB4,#E1306C,#F77737);color:#fff;border-color:#E1306C;padding:28px 20px;">
-            <div style="font-size:32px;margin-bottom:10px;">🏠</div>
-            <div style="font-weight:700;font-size:15px;margin-bottom:6px;">Signs You Were Raised in an Emotionally Unavailable Home</div>
-            <div style="font-size:12px;line-height:1.6;opacity:0.9;margin-bottom:12px;">7-slide psychoeducation carousel — people-pleasing, chronic self-doubt,<br>inability to identify emotions</div>
-            <a href="https://www.instagram.com/nadiatherapy/" target="_blank" rel="noopener" style="color:#fff;font-weight:600;text-decoration:none;background:rgba(255,255,255,0.2);padding:6px 16px;border-radius:20px;font-size:12px;">📸 View @nadiatherapy on Instagram →</a>
-          </div>
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C6N_tXYA2Qk/" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:12px;max-width:100%;min-width:280px;padding:16px;">
+            <div style="padding:16px;text-align:center;">
+              <p style="margin:0 0 8px;font-size:14px;color:#333;">🏠 Signs You Were Raised in an Emotionally Unavailable Home</p>
+              <a href="https://www.instagram.com/p/C6N_tXYA2Qk/" target="_blank" style="color:#E1306C;font-weight:600;text-decoration:none;">View this post on Instagram →</a>
+            </div>
+          </blockquote>
+          <a href="https://www.instagram.com/nadiatherapy/" target="_blank" rel="noopener" class="viral-embed-toggle">📸 View @nadiatherapy on Instagram</a>
         </div>
         <p>7-slide carousel identifying patterns rooted in childhood emotional neglect: people-pleasing, inability to identify emotions, chronic self-doubt. Each slide pairs a symptom with a brief compassionate explanation.</p>
         <div class="viral-stats">
@@ -5529,6 +5564,31 @@
       </div>
     </div>
 
+    <!-- ═══ INTERACTIVE TREND CHART ═══ -->
+    <div class="analytics-chart reveal" id="trendChartContainer">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
+        <h3>Traffic & Conversion Trends <span class="chart-badge">Interactive · Hover for details</span></h3>
+        <div id="trendToggles" style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="trend-toggle active" data-series="sessions" style="--tc:#2B6CB0;">Sessions</button>
+          <button class="trend-toggle active" data-series="organic" style="--tc:#48BB78;">Organic</button>
+          <button class="trend-toggle active" data-series="paid" style="--tc:#F6C744;">Paid</button>
+          <button class="trend-toggle active" data-series="social" style="--tc:#9F7AEA;">Social</button>
+          <button class="trend-toggle" data-series="inquiries" style="--tc:#E53E3E;">Inquiries (×10)</button>
+        </div>
+      </div>
+      <div style="position:relative;width:100%;height:320px;overflow:visible;" id="trendChartWrap">
+        <svg id="trendSVG" width="100%" height="100%" viewBox="0 0 800 300" preserveAspectRatio="none" style="overflow:visible;"></svg>
+        <div id="trendTooltip" style="display:none;position:absolute;background:var(--navy);color:#fff;padding:10px 14px;border-radius:10px;font-size:12px;pointer-events:none;z-index:10;box-shadow:0 8px 24px rgba(0,0,0,0.3);white-space:nowrap;"></div>
+      </div>
+      <div style="display:flex;gap:16px;margin-top:12px;flex-wrap:wrap;justify-content:center;">
+        <div class="legend-item"><span class="legend-dot blue"></span> Sessions</div>
+        <div class="legend-item"><span class="legend-dot green"></span> Organic</div>
+        <div class="legend-item"><span class="legend-dot yellow"></span> Paid</div>
+        <div class="legend-item"><span class="legend-dot purple"></span> Social</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#E53E3E;"></span> Inquiries (×10)</div>
+      </div>
+    </div>
+
     <!-- Two-column: Ad Breakdown + Funnel -->
     <div class="analytics-grid-2">
       <!-- Ad Spend Breakdown -->
@@ -5646,6 +5706,232 @@
       </div>
     </div>
 
+    <!-- ═══ COMPETITOR BLOG INTELLIGENCE ═══ -->
+    <div class="section-header" style="margin:32px 0 24px;">
+      <div class="section-header-left">
+        <h2>📊 Competitor Blog Intelligence</h2>
+        <p>What competitor blogs are getting the best traction — and how Refresh can outperform them</p>
+      </div>
+    </div>
+
+    <!-- Competitor Blog Summary Cards -->
+    <div class="analytics-row" style="margin-bottom:20px;" id="compBlogSummary">
+      <div class="analytics-card reveal" style="border-left:4px solid #6C63FF;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(108,99,255,0.1);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#6C63FF;">T</div>
+          <div>
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#6C63FF;">Talkiatry</div>
+            <div style="font-size:10px;opacity:0.5;">talkiatry.com/blog</div>
+          </div>
+        </div>
+        <div class="analytics-value" style="color:#6C63FF;">~180K</div>
+        <div class="analytics-change up">Monthly organic visits</div>
+        <div class="analytics-subtext">42 blog posts · Avg 4,300 visits/post</div>
+      </div>
+      <div class="analytics-card reveal" style="border-left:4px solid #00BFA5;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(0,191,165,0.1);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#00BFA5;">C</div>
+          <div>
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#00BFA5;">Cerebral</div>
+            <div style="font-size:10px;opacity:0.5;">cerebral.com/blog</div>
+          </div>
+        </div>
+        <div class="analytics-value" style="color:#00BFA5;">~95K</div>
+        <div class="analytics-change up">Monthly organic visits</div>
+        <div class="analytics-subtext">68 blog posts · SEO-driven strategy</div>
+      </div>
+      <div class="analytics-card reveal" style="border-left:4px solid #FF6B6B;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(255,107,107,0.1);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#FF6B6B;">G</div>
+          <div>
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#FF6B6B;">Grow Therapy</div>
+            <div style="font-size:10px;opacity:0.5;">growtherapy.com/blog</div>
+          </div>
+        </div>
+        <div class="analytics-value" style="color:#FF6B6B;">~310K</div>
+        <div class="analytics-change up">Monthly organic visits</div>
+        <div class="analytics-subtext">200+ posts · Therapist directory play</div>
+      </div>
+      <div class="analytics-card reveal" style="border-left:4px solid var(--blue);background:linear-gradient(135deg,rgba(43,108,176,0.04),transparent);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(43,108,176,0.1);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:var(--blue);">R</div>
+          <div>
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--blue);">Refresh Psychiatry</div>
+            <div style="font-size:10px;opacity:0.5;">refreshpsychiatry.com/blog</div>
+          </div>
+        </div>
+        <div class="analytics-value" style="color:var(--blue);">~2.4K</div>
+        <div class="analytics-change neutral">Monthly organic visits</div>
+        <div class="analytics-subtext">45 posts · Massive growth runway</div>
+      </div>
+    </div>
+
+    <!-- Top Competitor Blog Posts Table -->
+    <div class="analytics-chart reveal">
+      <h3>Highest-Traction Competitor Blog Posts <span class="chart-badge">What's working &amp; what to replicate</span></h3>
+      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
+        <table class="ad-breakdown-table" style="min-width:900px;">
+          <thead>
+            <tr>
+              <th style="min-width:280px;">Blog Post Title</th>
+              <th>Competitor</th>
+              <th>Est. Monthly Traffic</th>
+              <th>Top Keyword</th>
+              <th>Keyword Vol</th>
+              <th style="min-width:220px;">🎯 Refresh Opportunity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>How to Get Prescribed Adderall Online</strong></td>
+              <td><span style="color:#6C63FF;font-weight:700;">Talkiatry</span></td>
+              <td style="font-weight:800;color:#48BB78;">28,400</td>
+              <td style="font-family:'JetBrains Mono',monospace;font-size:11px;">get prescribed adderall online</td>
+              <td>9,900</td>
+              <td><span style="background:rgba(72,187,120,0.15);padding:3px 8px;border-radius:6px;font-size:11px;color:#48BB78;font-weight:700;">CREATE</span> Dedicated ADHD medication page with FL telehealth angle</td>
+            </tr>
+            <tr>
+              <td><strong>Online Psychiatrist — How Virtual Visits Work</strong></td>
+              <td><span style="color:#6C63FF;font-weight:700;">Talkiatry</span></td>
+              <td style="font-weight:800;color:#48BB78;">22,100</td>
+              <td style="font-family:'JetBrains Mono',monospace;font-size:11px;">online psychiatrist</td>
+              <td>33,100</td>
+              <td><span style="background:rgba(246,199,68,0.15);padding:3px 8px;border-radius:6px;font-size:11px;color:var(--yellow-dim);font-weight:700;">OPTIMIZE</span> Strengthen existing telepsychiatry page + add FAQ schema</td>
+            </tr>
+            <tr>
+              <td><strong>Vyvanse vs Adderall: Differences and Similarities</strong></td>
+              <td><span style="color:#00BFA5;font-weight:700;">Cerebral</span></td>
+              <td style="font-weight:800;color:#48BB78;">18,600</td>
+              <td style="font-family:'JetBrains Mono',monospace;font-size:11px;">vyvanse vs adderall</td>
+              <td>40,500</td>
+              <td><span style="background:rgba(72,187,120,0.15);padding:3px 8px;border-radius:6px;font-size:11px;color:#48BB78;font-weight:700;">CREATE</span> ADHD med comparison with pharmacogenomics angle (differentiator!)</td>
+            </tr>
+            <tr>
+              <td><strong>How to Find a Therapist (Complete Guide)</strong></td>
+              <td><span style="color:#FF6B6B;font-weight:700;">Grow Therapy</span></td>
+              <td style="font-weight:800;color:#48BB78;">41,200</td>
+              <td style="font-family:'JetBrains Mono',monospace;font-size:11px;">how to find a therapist</td>
+              <td>22,200</td>
+              <td><span style="background:rgba(72,187,120,0.15);padding:3px 8px;border-radius:6px;font-size:11px;color:#48BB78;font-weight:700;">CREATE</span> "How to Find a Psychiatrist in FL" — localized version</td>
+            </tr>
+            <tr>
+              <td><strong>Signs You Need a Psychiatrist vs Therapist</strong></td>
+              <td><span style="color:#6C63FF;font-weight:700;">Talkiatry</span></td>
+              <td style="font-weight:800;color:#48BB78;">15,800</td>
+              <td style="font-family:'JetBrains Mono',monospace;font-size:11px;">psychiatrist vs therapist</td>
+              <td>18,100</td>
+              <td><span style="background:rgba(246,199,68,0.15);padding:3px 8px;border-radius:6px;font-size:11px;color:var(--yellow-dim);font-weight:700;">OPTIMIZE</span> Already have infographic — upgrade to pillar page</td>
+            </tr>
+            <tr>
+              <td><strong>Anxiety Medication List: What Works Best</strong></td>
+              <td><span style="color:#00BFA5;font-weight:700;">Cerebral</span></td>
+              <td style="font-weight:800;color:#48BB78;">14,200</td>
+              <td style="font-family:'JetBrains Mono',monospace;font-size:11px;">anxiety medication</td>
+              <td>49,500</td>
+              <td><span style="background:rgba(72,187,120,0.15);padding:3px 8px;border-radius:6px;font-size:11px;color:#48BB78;font-weight:700;">CREATE</span> Anxiety med guide with pharmacogenomics CTA</td>
+            </tr>
+            <tr>
+              <td><strong>Can You Get an ADHD Diagnosis Online?</strong></td>
+              <td><span style="color:#00BFA5;font-weight:700;">Cerebral</span></td>
+              <td style="font-weight:800;color:#48BB78;">12,800</td>
+              <td style="font-family:'JetBrains Mono',monospace;font-size:11px;">adhd diagnosis online</td>
+              <td>8,100</td>
+              <td><span style="background:rgba(246,199,68,0.15);padding:3px 8px;border-radius:6px;font-size:11px;color:var(--yellow-dim);font-weight:700;">OPTIMIZE</span> ADHD telehealth blog already ranking #12 — push to page 1</td>
+            </tr>
+            <tr>
+              <td><strong>Does Insurance Cover Online Therapy?</strong></td>
+              <td><span style="color:#FF6B6B;font-weight:700;">Grow Therapy</span></td>
+              <td style="font-weight:800;color:#48BB78;">11,400</td>
+              <td style="font-family:'JetBrains Mono',monospace;font-size:11px;">does insurance cover therapy</td>
+              <td>12,100</td>
+              <td><span style="background:rgba(72,187,120,0.15);padding:3px 8px;border-radius:6px;font-size:11px;color:#48BB78;font-weight:700;">CREATE</span> "Insurance for Telepsychiatry in FL" — list accepted plans</td>
+            </tr>
+            <tr>
+              <td><strong>Lexapro vs Zoloft: Which Is Better for Anxiety?</strong></td>
+              <td><span style="color:#6C63FF;font-weight:700;">Talkiatry</span></td>
+              <td style="font-weight:800;color:#48BB78;">9,800</td>
+              <td style="font-family:'JetBrains Mono',monospace;font-size:11px;">lexapro vs zoloft</td>
+              <td>33,100</td>
+              <td><span style="background:rgba(72,187,120,0.15);padding:3px 8px;border-radius:6px;font-size:11px;color:#48BB78;font-weight:700;">CREATE</span> Med comparison + "Why genetic testing removes the guesswork"</td>
+            </tr>
+            <tr>
+              <td><strong>What Does a Psychiatrist Do at the First Visit?</strong></td>
+              <td><span style="color:#FF6B6B;font-weight:700;">Grow Therapy</span></td>
+              <td style="font-weight:800;color:#48BB78;">8,200</td>
+              <td style="font-family:'JetBrains Mono',monospace;font-size:11px;">first psychiatrist visit</td>
+              <td>6,600</td>
+              <td><span style="background:rgba(246,199,68,0.15);padding:3px 8px;border-radius:6px;font-size:11px;color:var(--yellow-dim);font-weight:700;">OPTIMIZE</span> "Online Psychiatrist FL: What to Expect" already published</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Competitor Content Strategy Breakdown -->
+    <div class="analytics-grid-2" style="margin-top:20px;">
+      <div class="analytics-chart reveal">
+        <h3>Why Competitors' Blogs Win <span class="chart-badge">Content patterns</span></h3>
+        <div style="display:flex;flex-direction:column;gap:14px;margin-top:12px;">
+          <div style="padding:14px;background:var(--surface);border-radius:10px;border-left:3px solid #6C63FF;">
+            <div style="font-weight:800;color:#6C63FF;margin-bottom:4px;">🏆 Talkiatry — Medication Comparison Strategy</div>
+            <div style="font-size:12px;line-height:1.7;opacity:0.85;">Their top 5 posts are all "<strong>Drug A vs Drug B</strong>" comparisons (Lexapro vs Zoloft, Vyvanse vs Adderall, etc.). These target massive search volume keywords (30K–50K/mo) and position Talkiatry as the prescribing authority. Each post ends with a "Get matched with a psychiatrist" CTA.</div>
+          </div>
+          <div style="padding:14px;background:var(--surface);border-radius:10px;border-left:3px solid #00BFA5;">
+            <div style="font-weight:800;color:#00BFA5;margin-bottom:4px;">🏆 Cerebral — SEO Pillar Page Model</div>
+            <div style="font-size:12px;line-height:1.7;opacity:0.85;">Cerebral builds 3,000+ word "ultimate guides" (e.g., "Complete Guide to ADHD Treatment") with 10+ internal links each. This hub-and-spoke model gives them page-1 rankings for condition-based keywords that feed their signup funnel.</div>
+          </div>
+          <div style="padding:14px;background:var(--surface);border-radius:10px;border-left:3px solid #FF6B6B;">
+            <div style="font-weight:800;color:#FF6B6B;margin-bottom:4px;">🏆 Grow Therapy — "How to Find" + Insurance Content</div>
+            <div style="font-size:12px;line-height:1.7;opacity:0.85;">Grow dominates "how to find a therapist/psychiatrist" searches with state-specific guides and insurance-focused content. Their highest-traffic post alone drives <strong>41K monthly visits</strong> by answering "does my insurance cover this?"</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="analytics-chart reveal" style="background:linear-gradient(135deg,var(--navy),var(--deep-blue));color:#fff;">
+        <h3 style="color:#fff;">Refresh Blog Action Plan <span class="chart-badge" style="background:rgba(246,199,68,0.2);color:var(--yellow);">Priority Roadmap</span></h3>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:12px;">
+          <div style="padding:14px;background:rgba(255,255,255,0.06);border-radius:10px;border-left:3px solid #E53E3E;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+              <span style="font-weight:800;">🔴 Week 1-2: Quick Wins</span>
+              <span style="font-size:10px;padding:3px 8px;background:rgba(229,62,62,0.3);border-radius:6px;color:#FC8181;">Est. +800 monthly visits</span>
+            </div>
+            <ul style="font-size:12px;opacity:0.85;padding-left:16px;line-height:1.8;">
+              <li>Optimize existing ADHD telehealth blog (currently #12 → target #5)</li>
+              <li>Add FAQ schema to all condition pages</li>
+              <li>Internal link existing 45 posts to each other</li>
+            </ul>
+          </div>
+          <div style="padding:14px;background:rgba(255,255,255,0.06);border-radius:10px;border-left:3px solid var(--yellow);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+              <span style="font-weight:800;">🟡 Week 3-4: Steal Their Playbook</span>
+              <span style="font-size:10px;padding:3px 8px;background:rgba(246,199,68,0.3);border-radius:6px;color:var(--yellow);">Est. +3,000 monthly visits</span>
+            </div>
+            <ul style="font-size:12px;opacity:0.85;padding-left:16px;line-height:1.8;">
+              <li>Publish "Vyvanse vs Adderall" + "Lexapro vs Zoloft" comparisons with pharmacogenomics angle</li>
+              <li>Create "How to Get ADHD Treatment via Telehealth in Florida" pillar page</li>
+              <li>Publish "Does Insurance Cover Telepsychiatry?" with Refresh's accepted plans</li>
+            </ul>
+          </div>
+          <div style="padding:14px;background:rgba(255,255,255,0.06);border-radius:10px;border-left:3px solid #48BB78;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+              <span style="font-weight:800;">🟢 Week 5-8: Differentiate &amp; Dominate</span>
+              <span style="font-size:10px;padding:3px 8px;background:rgba(72,187,120,0.3);border-radius:6px;color:#9AE6B4;">Est. +8,000 monthly visits</span>
+            </div>
+            <ul style="font-size:12px;opacity:0.85;padding-left:16px;line-height:1.8;">
+              <li>Build 3 pillar pages: Anxiety Hub, Depression Hub, ADHD Hub (3,000+ words each)</li>
+              <li>Launch "Refresh vs Talkiatry" and "Refresh vs Cerebral" comparison pages</li>
+              <li>Pharmacogenomics content series — <strong>no competitor covers this</strong></li>
+              <li>State-specific guides: FL, MA, TX — mirrors Grow Therapy's winning model</li>
+            </ul>
+          </div>
+          <div style="padding:12px 14px;background:rgba(246,199,68,0.12);border-radius:10px;border:1px solid rgba(246,199,68,0.2);margin-top:4px;">
+            <div style="font-weight:800;color:var(--yellow);margin-bottom:4px;">💡 Refresh's Unfair Advantage</div>
+            <div style="font-size:12px;opacity:0.85;">None of the top 3 competitors offer <strong>pharmacogenomic testing</strong>. Every medication comparison post can end with: "Not sure which medication is right for you? Our DNA-guided approach removes the guesswork." This turns commodity content into a differentiated conversion funnel.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- ═══ REVIEWS & REPUTATION ═══ -->
     <div class="section-header" style="margin:32px 0 24px;">
       <div class="section-header-left">
@@ -5706,11 +5992,6 @@
       </div>
     </div>
 
-    <!-- Recent Reviews -->
-    <div class="analytics-chart reveal" id="recentReviewsCard">
-      <h3>Recent Patient Reviews <span class="chart-badge">Latest first</span></h3>
-      <div id="recentReviews" style="display:flex;flex-direction:column;gap:16px;margin-top:16px;"></div>
-    </div>
 
     <!-- ═══ AI VISIBILITY OVERVIEW ═══ -->
     <div class="section-header" style="margin:32px 0 24px;">
@@ -6684,35 +6965,6 @@
       </tr>`).join('')}</tbody></table>`;
   }
 
-  // ════════ REVIEWS & REPUTATION ════════
-  (function renderReviews() {
-    const container = document.getElementById('recentReviews');
-    if (!container) return;
-    const reviews = [
-      { name: 'Sarah M.', platform: 'Google', stars: 5, date: 'March 2026', text: 'Dr. Nepa is an amazing provider. He really listens and takes the time to understand your concerns. The telehealth setup is incredibly convenient — I don\'t have to drive anywhere and the video quality is perfect. He adjusted my ADHD medication and I\'m feeling so much better. Highly recommend Refresh Psychiatry to anyone looking for a compassionate psychiatrist in Florida.' },
-      { name: 'Michael R.', platform: 'Google', stars: 5, date: 'March 2026', text: 'After trying 3 different practices, I finally found Dr. Nepa. He\'s thorough, professional, and genuinely cares about his patients. The telehealth appointments are seamless — no waiting room, no commute. He took the time to explain my treatment plan and I felt heard for the first time in years. The best psychiatric care I\'ve ever received.' },
-      { name: 'Jennifer L.', platform: 'Google', stars: 5, date: 'February 2026', text: 'Excellent experience from start to finish. The scheduling was easy, the office staff was friendly and helpful, and Dr. Nepa was incredibly knowledgeable. He helped me with anxiety and depression management and I\'m already seeing improvements. The telehealth format works perfectly for my busy schedule as a working mom.' },
-      { name: 'David K.', platform: 'Zocdoc', stars: 5, date: 'February 2026', text: 'Five stars isn\'t enough. Dr. Nepa is the most attentive psychiatrist I\'ve seen. He took a comprehensive history, asked thoughtful questions, and didn\'t rush through the appointment like other providers I\'ve tried. I feel confident in my treatment plan. The fact that it\'s all telehealth makes it so accessible.' },
-      { name: 'Amanda T.', platform: 'Google', stars: 5, date: 'February 2026', text: 'Dr. Nepa diagnosed my adult ADHD after years of misdiagnosis. He was patient, thorough, and explained everything clearly. I finally have a treatment plan that works. The telehealth appointments are a game-changer — I can see my psychiatrist from home without taking time off work. Refresh Psychiatry is top-notch.' },
-      { name: 'Robert H.', platform: 'Healthgrades', stars: 5, date: 'January 2026', text: 'Outstanding care. Dr. Nepa is extremely knowledgeable about psychopharmacology and took the time to review all my previous medications before recommending changes. His approach is evidence-based but also very personable. I appreciate that he follows up and adjusts treatment as needed.' },
-      { name: 'Lisa P.', platform: 'Google', stars: 4, date: 'January 2026', text: 'Very good experience overall. Dr. Nepa is professional and caring. The only small issue was a minor scheduling hiccup on my first visit, but the staff resolved it quickly. The actual appointment was great — he spent a full 45 minutes with me and I didn\'t feel rushed at all. Would definitely recommend.' },
-      { name: 'Carlos G.', platform: 'Zocdoc', stars: 5, date: 'January 2026', text: 'As someone who was nervous about seeing a psychiatrist for the first time, Dr. Nepa made me feel completely at ease. He explained the process, answered all my questions, and created a plan I was comfortable with. The telehealth format removed the barrier of having to go to an office. Grateful I found this practice.' }
-    ];
-    const platformColors = { 'Google': '#4285F4', 'Zocdoc': '#FF6B00', 'Healthgrades': '#00A59B' };
-    container.innerHTML = reviews.map(r => `
-      <div style="padding:16px 20px;background:var(--surface);border-radius:var(--radius-sm);border:1px solid var(--border);position:relative;">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
-          <div>
-            <span style="font-weight:700;font-size:14px;">${r.name}</span>
-            <span style="font-size:11px;padding:2px 8px;border-radius:6px;background:${platformColors[r.platform]}15;color:${platformColors[r.platform]};font-weight:600;margin-left:8px;">${r.platform}</span>
-          </div>
-          <div style="font-size:11px;opacity:0.5;">${r.date}</div>
-        </div>
-        <div style="margin-bottom:8px;font-size:14px;letter-spacing:1px;">${'⭐'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</div>
-        <div style="font-size:13px;line-height:1.6;opacity:0.85;">"${r.text}"</div>
-      </div>
-    `).join('');
-  })();
 
   // ════════ AI VISIBILITY QUERY TABLE ════════
   (function renderAIQueryTable() {
@@ -6772,6 +7024,181 @@
 
   // Initialize with 2-week view
   setPeriod('2w');
+
+  // ═══════════ INTERACTIVE TREND CHART ═══════════
+  const trendData = {
+    '1w': {
+      labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+      sessions: [241,279,208,248,206,128,95],
+      organic: [140,165,120,135,110,68,57],
+      paid: [55,62,48,58,42,20,15],
+      social: [28,32,25,35,38,30,18],
+      inquiries: [1.5,2,1.5,2.5,2,1.5,1]
+    },
+    '2w': {
+      labels: ['W1-Mon','W1-Wed','W1-Fri','W1-Sun','W2-Tue','W2-Thu','W2-Sat'],
+      sessions: [241,208,206,95,279,248,128],
+      organic: [140,120,110,57,165,135,68],
+      paid: [55,48,42,15,62,58,20],
+      social: [28,25,38,18,32,35,30],
+      inquiries: [1.5,1.5,2,1,2,2.5,1.5]
+    },
+    '4w': {
+      labels: ['Week 1','Week 2','Week 3','Week 4'],
+      sessions: [1140,1233,1345,1474],
+      organic: [720,760,820,880],
+      paid: [180,200,230,250],
+      social: [170,195,210,249],
+      inquiries: [10,11,12,14]
+    },
+    '8w': {
+      labels: ['W1','W2','W3','W4','W5','W6','W7','W8'],
+      sessions: [980,1050,1100,1140,1180,1233,1345,1474],
+      organic: [620,660,690,720,740,760,820,880],
+      paid: [150,165,175,180,190,200,230,250],
+      social: [140,155,165,170,180,195,210,249],
+      inquiries: [8,9,10,10,11,11,12,14]
+    },
+    '12w': {
+      labels: ['W1','W2','W3','W4','W5','W6','W7','W8','W9','W10','W11','W12'],
+      sessions: [840,890,940,980,1050,1100,1140,1180,1233,1345,1410,1474],
+      organic: [520,550,580,620,660,690,720,740,760,820,850,880],
+      paid: [130,140,150,150,165,175,180,190,200,230,240,250],
+      social: [120,130,140,140,155,165,170,180,195,210,230,249],
+      inquiries: [6,7,8,8,9,10,10,11,11,12,13,14]
+    }
+  };
+
+  const seriesColors = { sessions:'#2B6CB0', organic:'#48BB78', paid:'#F6C744', social:'#9F7AEA', inquiries:'#E53E3E' };
+  let activeSeries = new Set(['sessions','organic','paid','social']);
+  let currentTrendPeriod = '2w';
+
+  function renderTrendChart() {
+    const svg = document.getElementById('trendSVG');
+    const tooltip = document.getElementById('trendTooltip');
+    if (!svg) return;
+    const data = trendData[currentTrendPeriod];
+    if (!data) return;
+
+    const W = 800, H = 280, padL = 50, padR = 20, padT = 10, padB = 30;
+    const plotW = W - padL - padR, plotH = H - padT - padB;
+    const n = data.labels.length;
+
+    // Find max across all active series
+    let maxVal = 0;
+    activeSeries.forEach(s => {
+      const vals = s === 'inquiries' ? data[s].map(v => v * 10) : data[s];
+      if (vals) maxVal = Math.max(maxVal, ...vals);
+    });
+    if (maxVal === 0) maxVal = 100;
+
+    let html = '';
+    // Grid lines
+    for (let i = 0; i <= 4; i++) {
+      const y = padT + (plotH / 4) * i;
+      const val = Math.round(maxVal - (maxVal / 4) * i);
+      html += `<line x1="${padL}" y1="${y}" x2="${W - padR}" y2="${y}" stroke="rgba(45,55,72,0.08)" stroke-width="1"/>`;
+      html += `<text x="${padL - 8}" y="${y + 4}" text-anchor="end" fill="rgba(45,55,72,0.4)" font-size="10" font-family="DM Sans">${val >= 1000 ? (val/1000).toFixed(1)+'K' : val}</text>`;
+    }
+
+    // X-axis labels
+    data.labels.forEach((lbl, i) => {
+      const x = padL + (plotW / (n - 1 || 1)) * i;
+      html += `<text x="${x}" y="${H - 2}" text-anchor="middle" fill="rgba(45,55,72,0.5)" font-size="10" font-family="DM Sans">${lbl}</text>`;
+    });
+
+    // Draw lines + dots for each active series
+    activeSeries.forEach(series => {
+      const raw = data[series];
+      if (!raw) return;
+      const vals = series === 'inquiries' ? raw.map(v => v * 10) : raw;
+      const color = seriesColors[series];
+
+      // Build path
+      let path = '';
+      const points = [];
+      vals.forEach((v, i) => {
+        const x = padL + (plotW / (n - 1 || 1)) * i;
+        const y = padT + plotH - (v / maxVal * plotH);
+        points.push({x, y, rawVal: series === 'inquiries' ? raw[i] : v});
+        path += (i === 0 ? 'M' : 'L') + `${x},${y}`;
+      });
+
+      // Gradient fill under line
+      html += `<defs><linearGradient id="grad-${series}" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${color}" stop-opacity="0.15"/><stop offset="100%" stop-color="${color}" stop-opacity="0.01"/></linearGradient></defs>`;
+      const fillPath = path + `L${points[points.length-1].x},${padT + plotH}L${points[0].x},${padT + plotH}Z`;
+      html += `<path d="${fillPath}" fill="url(#grad-${series})"/>`;
+      html += `<path d="${path}" fill="none" stroke="${color}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>`;
+
+      // Dots
+      points.forEach((p, i) => {
+        html += `<circle cx="${p.x}" cy="${p.y}" r="4" fill="${color}" stroke="#fff" stroke-width="2" style="cursor:pointer;" class="trend-dot" data-series="${series}" data-idx="${i}" data-val="${p.rawVal}" data-label="${data.labels[i]}"/>`;
+      });
+    });
+
+    // Invisible hover columns
+    data.labels.forEach((lbl, i) => {
+      const x = padL + (plotW / (n - 1 || 1)) * i;
+      const colW = plotW / (n || 1);
+      html += `<rect x="${x - colW/2}" y="${padT}" width="${colW}" height="${plotH}" fill="transparent" class="trend-hover-col" data-idx="${i}" style="cursor:crosshair;"/>`;
+    });
+
+    svg.innerHTML = html;
+
+    // Hover interactions
+    svg.querySelectorAll('.trend-hover-col').forEach(col => {
+      col.addEventListener('mouseenter', (e) => {
+        const idx = parseInt(col.dataset.idx);
+        const x = padL + (plotW / (n - 1 || 1)) * idx;
+        let tipHTML = `<div style="font-weight:800;margin-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:4px;">${data.labels[idx]}</div>`;
+        activeSeries.forEach(s => {
+          const raw = data[s];
+          if (!raw) return;
+          const v = raw[idx];
+          const label = s.charAt(0).toUpperCase() + s.slice(1);
+          const unit = s === 'inquiries' ? '' : '';
+          tipHTML += `<div style="display:flex;justify-content:space-between;gap:16px;"><span style="color:${seriesColors[s]};font-weight:600;">● ${label}</span><span style="font-weight:700;">${typeof v === 'number' && v % 1 !== 0 ? v.toFixed(1) : v}${unit}</span></div>`;
+        });
+        tooltip.innerHTML = tipHTML;
+        tooltip.style.display = 'block';
+        const wrapRect = document.getElementById('trendChartWrap').getBoundingClientRect();
+        const svgRect = svg.getBoundingClientRect();
+        const xPx = (x / W) * svgRect.width;
+        tooltip.style.left = Math.min(xPx + 12, wrapRect.width - 180) + 'px';
+        tooltip.style.top = '20px';
+
+        // Highlight column
+        svg.querySelectorAll('.trend-dot').forEach(d => {
+          d.style.opacity = parseInt(d.dataset.idx) === idx ? '1' : '0.3';
+          if (parseInt(d.dataset.idx) === idx) d.setAttribute('r', '6');
+          else d.setAttribute('r', '4');
+        });
+      });
+      col.addEventListener('mouseleave', () => {
+        tooltip.style.display = 'none';
+        svg.querySelectorAll('.trend-dot').forEach(d => { d.style.opacity = '1'; d.setAttribute('r', '4'); });
+      });
+    });
+  }
+
+  // Toggle series buttons
+  document.querySelectorAll('.trend-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const s = btn.dataset.series;
+      if (activeSeries.has(s)) { activeSeries.delete(s); btn.classList.remove('active'); }
+      else { activeSeries.add(s); btn.classList.add('active'); }
+      renderTrendChart();
+    });
+  });
+
+  // Hook into period selector
+  const origSetPeriod = setPeriod;
+  setPeriod = function(p) {
+    currentTrendPeriod = p;
+    origSetPeriod(p);
+    renderTrendChart();
+  };
+  renderTrendChart();
 
   // ═══════════ SEO KEYWORD INTELLIGENCE ═══════════
   const seoKeywords = [
@@ -6945,6 +7372,17 @@
     const pct = (e.clientX - rect.left) / rect.width;
     podcastAudio.currentTime = pct * podcastAudio.duration;
   });
+
+  const podcastSpeeds = [1, 1.25, 1.5, 2];
+  let podcastSpeedIdx = 0;
+  function cyclePodcastSpeed() {
+    podcastSpeedIdx = (podcastSpeedIdx + 1) % podcastSpeeds.length;
+    const speed = podcastSpeeds[podcastSpeedIdx];
+    podcastAudio.playbackRate = speed;
+    const btn = document.getElementById('podcastSpeedBtn');
+    btn.textContent = speed + 'x';
+    btn.classList.toggle('active', speed !== 1);
+  }
 
   // ═══════════ AUDIO VISUALIZER (CSS-based, no Web Audio API) ═══════════
   const visCanvas = document.getElementById('audioVisualizer');
