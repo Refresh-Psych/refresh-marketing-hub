@@ -806,6 +806,7 @@
     display: flex;
     align-items: center;
     gap: 14px;
+    flex-wrap: nowrap;
   }
 
   .player-btn {
@@ -2330,7 +2331,7 @@
     .podcast-art h3 { font-size: 20px; }
     .podcast-topics { grid-template-columns: 1fr; }
     .podcast-details h2 { font-size: 18px; }
-    .podcast-player { flex-direction: column; gap: 12px; }
+    .podcast-player { gap: 10px; padding: 14px 16px; }
 
     /* Content Cards */
     .content-grid { grid-template-columns: 1fr; gap: 14px; }
@@ -2731,7 +2732,7 @@
       <div class="label">Video Assets</div>
     </div>
     <div class="stat-card">
-      <div class="number" data-count="1">0</div>
+      <div class="number" data-count="2">0</div>
       <div class="label">Podcast</div>
     </div>
     <div class="stat-card">
@@ -2747,7 +2748,7 @@
   <button class="nav-tab" data-tab="analytics">Analytics</button>
   <button class="nav-tab" data-tab="competitors">Competitors<span class="tab-count">4</span></button>
   <button class="nav-tab" data-tab="video">Video<span class="tab-count">16</span></button>
-  <button class="nav-tab" data-tab="podcast">Podcast<span class="tab-count">1</span></button>
+  <button class="nav-tab" data-tab="podcast">Podcast<span class="tab-count">2</span></button>
   <button class="nav-tab" data-tab="content">Content<span class="tab-count">27</span></button>
   <button class="nav-tab" data-tab="campaigns">Campaigns<span class="tab-count">6</span></button>
   <button class="nav-tab" data-tab="viral">🔥 Viral<span class="tab-count">15</span></button>
@@ -3207,10 +3208,10 @@
 
       <div class="podcast-details">
         <div class="episode-label"><span class="live-dot"></span> NotebookLM · Deep Dive · Episode 2</div>
-        <h2>🔍 SEO for Mental Health Practices</h2>
-        <p>A deep dive into search engine optimization specifically for psychiatric and mental health practices — local SEO, Google Business Profile optimization, content strategy, keyword targeting for high-intent patients, and competing against national telehealth platforms like Talkiatry, Cerebral, and BetterHelp.</p>
+        <h2>🔍 SEO for Mental Health Practices: How One Psychiatrist Went from Page 4 to #1 in 90 Days</h2>
+        <p>Why 73% of patients never scroll past the first 3 Google results — and exactly how to get your practice there. We break down local SEO domination, Google Business Profile hacks, the keywords that actually convert to booked appointments, and how small practices can outrank Talkiatry, Cerebral, and BetterHelp in their local market.</p>
 
-        <audio id="podcastAudio" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v1.0-media/podcast-social-media-strategy.mp3" preload="metadata"></audio>
+        <audio id="podcastAudio" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-daily-podcast/podcast-2026-03-19.mp3" preload="metadata"></audio>
         <div class="podcast-player">
           <button class="player-btn" id="podcastPlayBtn" onclick="togglePodcast(this)"></button>
           <div class="player-track">
@@ -3229,7 +3230,7 @@
 
     <div class="podcast-topics">
       <div class="topic-card reveal"><div class="icon">📍</div><h4>Local SEO Domination</h4><p>Google Business Profile, local citations, and map pack ranking strategies for multi-location practices.</p></div>
-      <div class="topic-card reveal"><div class="icon">🔑</div><h4>High-Intent Keywords</h4><p>Targeting "psychiatrist near me" and insurance-specific searches that convert at 8x the rate of generic terms.</p></div>
+      <div class="topic-card reveal"><div class="icon">🔑</div><h4>High-Intent Keywords</h4><p>Targeting 'psychiatrist near me' and insurance-specific searches that convert at 8x the rate of generic terms.</p></div>
       <div class="topic-card reveal"><div class="icon">📝</div><h4>Content Strategy</h4><p>Pillar pages, blog clusters, and FAQ schema that build topical authority in psychiatry.</p></div>
       <div class="topic-card reveal"><div class="icon">🏆</div><h4>Competing with Nationals</h4><p>How a local practice can outrank Talkiatry, Cerebral, and BetterHelp in your market.</p></div>
       <div class="topic-card reveal"><div class="icon">📱</div><h4>Technical SEO</h4><p>Site speed, mobile optimization, schema markup, and Core Web Vitals for healthcare sites.</p></div>
@@ -7541,13 +7542,13 @@
   const podcastEpisodes = [
     {
       ep: 2,
-      title: '🔍 SEO for Mental Health Practices',
-      desc: 'Local SEO, Google Business Profile optimization, high-intent keywords, and competing against national telehealth platforms.',
+      title: '🔍 SEO for Mental Health Practices: How One Psychiatrist Went from Page 4 to #1 in 90 Days',
+      desc: 'Why 73% of patients never scroll past the first 3 Google results — and exactly how to get your practice there. Local SEO, GBP hacks, high-intent keywords, and outranking national telehealth platforms.',
       date: 'Mar 19, 2026',
-      audio: 'https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v1.0-media/podcast-social-media-strategy.mp3',
+      audio: 'https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-daily-podcast/podcast-2026-03-19.mp3',
       topics: [
         { icon: '📍', title: 'Local SEO Domination', desc: 'Google Business Profile, local citations, and map pack ranking strategies for multi-location practices.' },
-        { icon: '🔑', title: 'High-Intent Keywords', desc: 'Targeting "psychiatrist near me" and insurance-specific searches that convert at 8x the rate of generic terms.' },
+        { icon: '🔑', title: 'High-Intent Keywords', desc: "Targeting 'psychiatrist near me' and insurance-specific searches that convert at 8x the rate of generic terms." },
         { icon: '📝', title: 'Content Strategy', desc: 'Pillar pages, blog clusters, and FAQ schema that build topical authority in psychiatry.' },
         { icon: '🏆', title: 'Competing with Nationals', desc: 'How a local practice can outrank Talkiatry, Cerebral, and BetterHelp in your market.' },
         { icon: '📱', title: 'Technical SEO', desc: 'Site speed, mobile optimization, schema markup, and Core Web Vitals for healthcare sites.' },
@@ -7604,11 +7605,11 @@
     document.querySelector('.podcast-details > p').textContent = ep.desc;
 
     // Update audio source
-    const wasPlaying = !podcastAudio.paused;
     podcastAudio.src = ep.audio;
     podcastAudio.load();
     podcastProgress.style.width = '0%';
     podcastCurrentTime.textContent = '0:00';
+    podcastDuration.textContent = '--:--';
 
     // Update topic cards
     const topicsContainer = document.querySelector('.podcast-topics');
