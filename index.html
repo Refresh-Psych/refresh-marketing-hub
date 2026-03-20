@@ -7313,9 +7313,15 @@
       const cvr = (inquiries / sessions * 100).toFixed(2);
       const adSpend = Math.round(d.spend.val / months);
       const roas = (2.5 + Math.random() * 3).toFixed(1);
-      // Calculate which calendar month this is (going back from current month)
+      // Calculate which calendar month and year this is (going back from current month)
       const mIdx = (currentMonthIdx - (months - 1) + i + 12) % 12;
-      monthlyData.push({ monthName: monthNames[mIdx], sessions, organic, paid, social, inquiries, cvr, adSpend, roas });
+      const currentYear = new Date().getFullYear();
+      const monthsBack = months - 1 - i;
+      const yearForMonth = currentYear - Math.floor((currentMonthIdx - (currentMonthIdx - monthsBack) + 12 * 10) / 12 - 10 + 0.0001);
+      // Simpler: calculate actual date
+      const actualDate = new Date(currentYear, currentMonthIdx - (months - 1) + i, 1);
+      const displayYear = actualDate.getFullYear();
+      monthlyData.push({ monthName: monthNames[mIdx] + ' ' + displayYear, sessions, organic, paid, social, inquiries, cvr, adSpend, roas });
     }
 
     body.innerHTML = monthlyData.map((w, i) => {
