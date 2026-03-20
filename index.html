@@ -124,35 +124,68 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: 2;
-    width: 320px;
-    height: 400px;
+    width: 340px;
+    height: 440px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(0,0,0,0.15);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(8px);
   }
 
   .hero-map svg {
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0 8px 32px rgba(0,0,0,0.3));
+    transition: transform 0.4s ease;
+    cursor: grab;
   }
+  .hero-map svg:active { cursor: grabbing; }
+
+  .map-zoom-controls {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 5;
+  }
+  .map-zoom-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+  .map-zoom-btn:hover { background: rgba(43,108,176,0.6); border-color: rgba(255,255,255,0.3); }
 
   .map-pin {
     cursor: pointer;
     transition: transform 0.2s ease;
   }
   .map-pin:hover {
-    transform: scale(1.3);
-  }
-  .map-pin:hover .pin-label {
-    opacity: 1;
+    transform: scale(1.2);
   }
 
   .pin-label {
-    font-size: 8px;
+    font-size: 7.5px;
     font-weight: 700;
     fill: #ffffff;
-    opacity: 0;
-    transition: opacity 0.2s ease;
     pointer-events: none;
     text-anchor: middle;
+    paint-order: stroke;
+    stroke: rgba(0,0,0,0.6);
+    stroke-width: 2.5px;
+    stroke-linejoin: round;
   }
 
   @keyframes pinDrop {
@@ -3054,152 +3087,188 @@
   </div>
 
   <!-- Florida Location Map -->
-  <div class="hero-map">
-    <svg viewBox="0 0 400 480" xmlns="http://www.w3.org/2000/svg">
+  <div class="hero-map" id="heroMap">
+    <svg id="flMap" viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="mapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#2B6CB0;stop-opacity:0.35"/>
+          <stop offset="0%" style="stop-color:#2B6CB0;stop-opacity:0.4"/>
           <stop offset="50%" style="stop-color:#1a4a7a;stop-opacity:0.3"/>
-          <stop offset="100%" style="stop-color:#F6C744;stop-opacity:0.2"/>
+          <stop offset="100%" style="stop-color:#F6C744;stop-opacity:0.15"/>
         </linearGradient>
         <linearGradient id="mapStroke" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#2B6CB0;stop-opacity:0.8"/>
+          <stop offset="0%" style="stop-color:#2B6CB0;stop-opacity:0.9"/>
           <stop offset="100%" style="stop-color:#F6C744;stop-opacity:0.9"/>
         </linearGradient>
         <filter id="mapGlow">
-          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feGaussianBlur stdDeviation="2.5" result="blur"/>
           <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>
         <filter id="pinGlow">
-          <feGaussianBlur stdDeviation="2" result="blur"/>
+          <feGaussianBlur stdDeviation="1.5" result="blur"/>
           <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>
       </defs>
 
-      <!-- Florida outline (simplified) -->
+      <!-- Accurate Florida outline -->
       <path d="
-        M 60,30 L 120,28 L 180,25 L 240,22 L 300,20 L 340,22 L 355,30
-        L 358,50 L 360,80 L 355,100 L 348,115
-        L 340,120 L 335,135 L 338,155 L 342,170
-        L 345,185 L 342,200 L 338,215 L 332,235
-        L 325,255 L 318,275 L 308,295 L 298,315
-        L 285,335 L 272,352 L 258,368 L 245,382
-        L 232,395 L 220,405 L 210,412 L 200,418
-        L 192,422 L 185,428 L 180,435 L 178,442
-        L 180,448 L 185,452 L 192,450 L 198,445
-        L 205,438 L 212,432 L 218,428 L 225,425
-        L 215,430 L 200,440 L 188,448 L 180,455
-        L 170,458 L 160,455 L 155,448 L 152,438
-        L 148,425 L 142,410 L 135,395 L 128,378
-        L 118,360 L 108,345 L 98,332 L 88,322
-        L 78,315 L 68,310 L 58,308 L 48,310
-        L 40,315 L 35,322 L 32,330 L 28,340
-        L 25,350 L 22,345 L 20,335 L 22,320
-        L 28,305 L 35,290 L 38,275 L 40,260
-        L 38,240 L 35,220 L 32,200 L 30,180
-        L 28,160 L 25,140 L 22,120 L 20,100
-        L 22,80 L 25,60 L 30,45 L 40,35 L 60,30 Z
+        M 48,18 L 58,17 L 80,16 L 110,14 L 140,12 L 170,11 L 200,10 L 230,9
+        L 260,10 L 285,11 L 310,14 L 330,18 L 342,22 L 348,28
+        L 350,36 L 352,48 L 354,62 L 356,78 L 358,90
+        L 357,98 L 352,105 L 348,108
+        L 350,115 L 354,125 L 358,138 L 360,148
+        L 358,155 L 354,160 L 350,162
+        L 348,168 L 350,178 L 354,190 L 356,200
+        L 354,208 L 350,215 L 345,222
+        L 340,230 L 335,240 L 332,248
+        L 330,258 L 328,268 L 325,278
+        L 320,290 L 315,300 L 310,310
+        L 305,320 L 298,332 L 290,344
+        L 282,356 L 274,366 L 266,376
+        L 258,384 L 250,392 L 242,398
+        L 234,404 L 226,410 L 218,416
+        L 212,420 L 206,426 L 200,432
+        L 196,438 L 194,444 L 194,450
+        L 196,456 L 200,460 L 206,462
+        L 212,460 L 218,456 L 222,450
+        L 226,444 L 228,440 L 230,436
+        L 226,442 L 220,450 L 212,458
+        L 204,464 L 196,466 L 188,464
+        L 182,458 L 178,450 L 174,440
+        L 170,428 L 164,414 L 158,400
+        L 150,386 L 142,372 L 134,360
+        L 126,348 L 118,338 L 108,328
+        L 98,320 L 88,314 L 78,310
+        L 68,308 L 58,308 L 48,312
+        L 40,318 L 34,326 L 30,336
+        L 28,346 L 26,354 L 24,348
+        L 22,338 L 22,326 L 24,314
+        L 28,302 L 32,290 L 36,278
+        L 38,266 L 40,254 L 40,242
+        L 38,228 L 36,214 L 34,200
+        L 32,186 L 30,170 L 28,154
+        L 26,138 L 24,122 L 22,106
+        L 22,90 L 22,74 L 24,58
+        L 28,44 L 34,32 L 42,22 L 48,18 Z
       " fill="url(#mapGrad)" stroke="url(#mapStroke)" stroke-width="1.5" filter="url(#mapGlow)"/>
 
-      <!-- Subtle grid lines inside Florida -->
-      <line x1="80" y1="60" x2="80" y2="310" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-      <line x1="160" y1="30" x2="160" y2="440" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-      <line x1="240" y1="22" x2="240" y2="395" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-      <line x1="320" y1="22" x2="320" y2="270" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-      <line x1="20" y1="100" x2="360" y2="100" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-      <line x1="20" y1="200" x2="345" y2="200" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-      <line x1="25" y1="300" x2="310" y2="300" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+      <!-- Panhandle (west extension) -->
+      <path d="
+        M 48,18 L 42,22 L 34,32 L 28,44 L 24,58 L 22,74
+        L 20,72 L 16,68 L 10,66 L 6,64 L 4,60
+        L 4,56 L 6,52 L 10,48 L 16,44
+        L 14,40 L 10,36 L 6,32 L 4,28
+        L 6,24 L 10,20 L 16,18
+        L 22,16 L 30,16 L 38,17 L 48,18 Z
+      " fill="url(#mapGrad)" stroke="url(#mapStroke)" stroke-width="1.5"/>
 
-      <!-- ═══ LOCATION PINS ═══ -->
+      <!-- Florida Keys hint -->
+      <path d="
+        M 194,450 L 188,458 L 182,462 L 176,464 L 170,464
+        L 164,462 L 158,458 L 152,456 L 146,456
+        L 140,458 L 134,460 L 128,460
+      " fill="none" stroke="rgba(246,199,68,0.3)" stroke-width="1.5" stroke-dasharray="4,3"/>
 
-      <!-- Orlando -->
+      <!-- Lake Okeechobee -->
+      <ellipse cx="268" cy="340" rx="22" ry="18" fill="rgba(43,108,176,0.12)" stroke="rgba(43,108,176,0.25)" stroke-width="0.8"/>
+      <text x="268" y="343" text-anchor="middle" font-size="5" fill="rgba(255,255,255,0.25)" font-family="'DM Sans',sans-serif">L. Okeechobee</text>
+
+      <!-- ═══ LOCATION PINS WITH LABELS ═══ -->
+
+      <!-- Orlando (lat 28.54, lon -81.38) -->
       <g class="map-pin" data-city="Orlando">
-        <circle cx="268" cy="168" r="10" fill="rgba(43,108,176,0.25)" stroke="none"/>
-        <path d="M268,148 c-7,0 -12,5 -12,12 c0,9 12,20 12,20 s12,-11 12,-20 c0,-7 -5,-12 -12,-12z" fill="#2B6CB0" filter="url(#pinGlow)"/>
-        <circle cx="268" cy="160" r="4" fill="#ffffff"/>
-        <text class="pin-label" x="268" y="143">Orlando</text>
+        <circle cx="252" cy="215" r="8" fill="rgba(43,108,176,0.2)" stroke="none"/>
+        <path d="M252,199 c-6,0 -10,4.5 -10,10 c0,8 10,17 10,17 s10,-9 10,-17 c0,-5.5 -4,-10 -10,-10z" fill="#2B6CB0" filter="url(#pinGlow)"/>
+        <circle cx="252" cy="209" r="3.5" fill="#ffffff"/>
+        <text class="pin-label" x="252" y="195">Orlando</text>
       </g>
 
-      <!-- Winter Park -->
+      <!-- Winter Park (lat 28.60, lon -81.34) — just NE of Orlando -->
       <g class="map-pin" data-city="Winter Park">
-        <circle cx="280" cy="162" r="10" fill="rgba(246,199,68,0.2)" stroke="none"/>
-        <path d="M280,142 c-7,0 -12,5 -12,12 c0,9 12,20 12,20 s12,-11 12,-20 c0,-7 -5,-12 -12,-12z" fill="#F6C744" filter="url(#pinGlow)"/>
-        <circle cx="280" cy="154" r="4" fill="#ffffff"/>
-        <text class="pin-label" x="280" y="137">Winter Park</text>
+        <circle cx="266" cy="208" r="8" fill="rgba(246,199,68,0.2)" stroke="none"/>
+        <path d="M266,192 c-6,0 -10,4.5 -10,10 c0,8 10,17 10,17 s10,-9 10,-17 c0,-5.5 -4,-10 -10,-10z" fill="#F6C744" filter="url(#pinGlow)"/>
+        <circle cx="266" cy="202" r="3.5" fill="#ffffff"/>
+        <text class="pin-label" x="266" y="188">Winter Park</text>
       </g>
 
-      <!-- Vero Beach -->
+      <!-- Vero Beach (lat 27.64, lon -80.39) -->
       <g class="map-pin" data-city="Vero Beach">
-        <circle cx="318" cy="215" r="10" fill="rgba(72,187,120,0.2)" stroke="none"/>
-        <path d="M318,195 c-7,0 -12,5 -12,12 c0,9 12,20 12,20 s12,-11 12,-20 c0,-7 -5,-12 -12,-12z" fill="#48BB78" filter="url(#pinGlow)"/>
-        <circle cx="318" cy="207" r="4" fill="#ffffff"/>
-        <text class="pin-label" x="318" y="190">Vero Beach</text>
+        <circle cx="322" cy="272" r="8" fill="rgba(72,187,120,0.2)" stroke="none"/>
+        <path d="M322,256 c-6,0 -10,4.5 -10,10 c0,8 10,17 10,17 s10,-9 10,-17 c0,-5.5 -4,-10 -10,-10z" fill="#48BB78" filter="url(#pinGlow)"/>
+        <circle cx="322" cy="266" r="3.5" fill="#ffffff"/>
+        <text class="pin-label" x="322" y="252">Vero Beach</text>
       </g>
 
-      <!-- West Palm Beach -->
+      <!-- West Palm Beach (lat 26.72, lon -80.05) -->
       <g class="map-pin" data-city="West Palm Beach">
-        <circle cx="308" cy="268" r="10" fill="rgba(43,108,176,0.25)" stroke="none"/>
-        <path d="M308,248 c-7,0 -12,5 -12,12 c0,9 12,20 12,20 s12,-11 12,-20 c0,-7 -5,-12 -12,-12z" fill="#2B6CB0" filter="url(#pinGlow)"/>
-        <circle cx="308" cy="260" r="4" fill="#ffffff"/>
-        <text class="pin-label" x="308" y="243">W. Palm Beach</text>
+        <circle cx="316" cy="332" r="8" fill="rgba(43,108,176,0.2)" stroke="none"/>
+        <path d="M316,316 c-6,0 -10,4.5 -10,10 c0,8 10,17 10,17 s10,-9 10,-17 c0,-5.5 -4,-10 -10,-10z" fill="#2B6CB0" filter="url(#pinGlow)"/>
+        <circle cx="316" cy="326" r="3.5" fill="#ffffff"/>
+        <text class="pin-label" x="340" y="328">W. Palm Beach</text>
       </g>
 
-      <!-- Wellington -->
+      <!-- Wellington (lat 26.66, lon -80.27) — west of WPB -->
       <g class="map-pin" data-city="Wellington">
-        <circle cx="290" cy="278" r="10" fill="rgba(246,199,68,0.2)" stroke="none"/>
-        <path d="M290,258 c-7,0 -12,5 -12,12 c0,9 12,20 12,20 s12,-11 12,-20 c0,-7 -5,-12 -12,-12z" fill="#F6C744" filter="url(#pinGlow)"/>
-        <circle cx="290" cy="270" r="4" fill="#ffffff"/>
-        <text class="pin-label" x="290" y="253">Wellington</text>
+        <circle cx="296" cy="338" r="8" fill="rgba(246,199,68,0.2)" stroke="none"/>
+        <path d="M296,322 c-6,0 -10,4.5 -10,10 c0,8 10,17 10,17 s10,-9 10,-17 c0,-5.5 -4,-10 -10,-10z" fill="#F6C744" filter="url(#pinGlow)"/>
+        <circle cx="296" cy="332" r="3.5" fill="#ffffff"/>
+        <text class="pin-label" x="276" y="334">Wellington</text>
       </g>
 
-      <!-- Coconut Creek -->
+      <!-- Coconut Creek (lat 26.25, lon -80.18) -->
       <g class="map-pin" data-city="Coconut Creek">
-        <circle cx="295" cy="298" r="10" fill="rgba(72,187,120,0.2)" stroke="none"/>
-        <path d="M295,278 c-7,0 -12,5 -12,12 c0,9 12,20 12,20 s12,-11 12,-20 c0,-7 -5,-12 -12,-12z" fill="#48BB78" filter="url(#pinGlow)"/>
-        <circle cx="295" cy="290" r="4" fill="#ffffff"/>
-        <text class="pin-label" x="295" y="273">Coconut Creek</text>
+        <circle cx="306" cy="364" r="8" fill="rgba(72,187,120,0.2)" stroke="none"/>
+        <path d="M306,348 c-6,0 -10,4.5 -10,10 c0,8 10,17 10,17 s10,-9 10,-17 c0,-5.5 -4,-10 -10,-10z" fill="#48BB78" filter="url(#pinGlow)"/>
+        <circle cx="306" cy="358" r="3.5" fill="#ffffff"/>
+        <text class="pin-label" x="306" y="344">Coconut Creek</text>
       </g>
 
-      <!-- Coral Springs -->
+      <!-- Coral Springs (lat 26.27, lon -80.27) — west of Coconut Creek -->
       <g class="map-pin" data-city="Coral Springs">
-        <circle cx="280" cy="305" r="10" fill="rgba(43,108,176,0.25)" stroke="none"/>
-        <path d="M280,285 c-7,0 -12,5 -12,12 c0,9 12,20 12,20 s12,-11 12,-20 c0,-7 -5,-12 -12,-12z" fill="#2B6CB0" filter="url(#pinGlow)"/>
-        <circle cx="280" cy="297" r="4" fill="#ffffff"/>
-        <text class="pin-label" x="280" y="280">Coral Springs</text>
+        <circle cx="288" cy="362" r="8" fill="rgba(43,108,176,0.2)" stroke="none"/>
+        <path d="M288,346 c-6,0 -10,4.5 -10,10 c0,8 10,17 10,17 s10,-9 10,-17 c0,-5.5 -4,-10 -10,-10z" fill="#2B6CB0" filter="url(#pinGlow)"/>
+        <circle cx="288" cy="356" r="3.5" fill="#ffffff"/>
+        <text class="pin-label" x="268" y="354">Coral Springs</text>
       </g>
 
-      <!-- Pembroke Pines -->
+      <!-- Pembroke Pines (lat 26.01, lon -80.22) -->
       <g class="map-pin" data-city="Pembroke Pines">
-        <circle cx="278" cy="325" r="10" fill="rgba(246,199,68,0.2)" stroke="none"/>
-        <path d="M278,305 c-7,0 -12,5 -12,12 c0,9 12,20 12,20 s12,-11 12,-20 c0,-7 -5,-12 -12,-12z" fill="#F6C744" filter="url(#pinGlow)"/>
-        <circle cx="278" cy="317" r="4" fill="#ffffff"/>
-        <text class="pin-label" x="278" y="300">Pembroke Pines</text>
+        <circle cx="300" cy="384" r="8" fill="rgba(246,199,68,0.2)" stroke="none"/>
+        <path d="M300,368 c-6,0 -10,4.5 -10,10 c0,8 10,17 10,17 s10,-9 10,-17 c0,-5.5 -4,-10 -10,-10z" fill="#F6C744" filter="url(#pinGlow)"/>
+        <circle cx="300" cy="378" r="3.5" fill="#ffffff"/>
+        <text class="pin-label" x="300" y="364">Pembroke Pines</text>
       </g>
 
-      <!-- Davie (HQ) - larger pin -->
+      <!-- Davie HQ (lat 26.06, lon -80.23) — pulsing gold star -->
       <g class="map-pin" data-city="Davie">
-        <circle cx="272" cy="318" r="14" fill="rgba(246,199,68,0.15)" stroke="rgba(246,199,68,0.4)" stroke-width="1">
-          <animate attributeName="r" values="14;18;14" dur="2s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+        <circle cx="294" cy="392" r="12" fill="rgba(246,199,68,0.12)" stroke="rgba(246,199,68,0.35)" stroke-width="1">
+          <animate attributeName="r" values="12;16;12" dur="2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite"/>
         </circle>
-        <path d="M272,293 c-9,0 -15,6 -15,15 c0,11 15,25 15,25 s15,-14 15,-25 c0,-9 -6,-15 -15,-15z" fill="#F6C744" stroke="#ffffff" stroke-width="1.5" filter="url(#pinGlow)"/>
-        <circle cx="272" cy="308" r="5" fill="#ffffff"/>
-        <text class="pin-label" x="272" y="286" style="opacity:1;font-size:9px;fill:#F6C744">★ Davie HQ</text>
+        <path d="M294,374 c-8,0 -13,5.5 -13,13 c0,10 13,22 13,22 s13,-12 13,-22 c0,-7.5 -5,-13 -13,-13z" fill="#F6C744" stroke="#ffffff" stroke-width="1.5" filter="url(#pinGlow)"/>
+        <circle cx="294" cy="387" r="4.5" fill="#ffffff"/>
+        <text class="pin-label" x="294" y="368" style="font-size:8.5px;fill:#F6C744">★ Davie HQ</text>
       </g>
 
-      <!-- Miami -->
+      <!-- Miami (lat 25.76, lon -80.19) -->
       <g class="map-pin" data-city="Miami">
-        <circle cx="268" cy="345" r="10" fill="rgba(72,187,120,0.2)" stroke="none"/>
-        <path d="M268,325 c-7,0 -12,5 -12,12 c0,9 12,20 12,20 s12,-11 12,-20 c0,-7 -5,-12 -12,-12z" fill="#48BB78" filter="url(#pinGlow)"/>
-        <circle cx="268" cy="337" r="4" fill="#ffffff"/>
-        <text class="pin-label" x="268" y="320">Miami</text>
+        <circle cx="302" cy="408" r="8" fill="rgba(72,187,120,0.2)" stroke="none"/>
+        <path d="M302,392 c-6,0 -10,4.5 -10,10 c0,8 10,17 10,17 s10,-9 10,-17 c0,-5.5 -4,-10 -10,-10z" fill="#48BB78" filter="url(#pinGlow)"/>
+        <circle cx="302" cy="402" r="3.5" fill="#ffffff"/>
+        <text class="pin-label" x="322" y="404">Miami</text>
       </g>
 
       <!-- "10 Locations" badge -->
-      <rect x="130" y="420" rx="12" ry="12" width="140" height="28" fill="rgba(0,0,0,0.35)" stroke="rgba(246,199,68,0.4)" stroke-width="1"/>
-      <text x="200" y="439" text-anchor="middle" font-size="11" font-weight="700" fill="#F6C744" font-family="'DM Sans',sans-serif">📍 10 FL Locations</text>
+      <rect x="120" y="480" rx="10" ry="10" width="160" height="26" fill="rgba(0,0,0,0.35)" stroke="rgba(246,199,68,0.4)" stroke-width="1"/>
+      <text x="200" y="497" text-anchor="middle" font-size="10.5" font-weight="700" fill="#F6C744" font-family="'DM Sans',sans-serif">📍 10 Florida Locations</text>
 
     </svg>
+
+    <!-- Zoom Controls -->
+    <div class="map-zoom-controls">
+      <button class="map-zoom-btn" onclick="zoomMap(1)" title="Zoom In">+</button>
+      <button class="map-zoom-btn" onclick="zoomMap(-1)" title="Zoom Out">−</button>
+      <button class="map-zoom-btn" onclick="zoomMap(0)" title="Reset" style="font-size:12px">⟳</button>
+    </div>
   </div>
 
   <div class="hero-stats">
@@ -6950,6 +7019,30 @@
 </div>
 
 <script>
+  // ═══════════ FLORIDA MAP ZOOM ═══════════
+  (function(){
+    const svg = document.getElementById('flMap');
+    if (!svg) return;
+    let zoom = 1, panX = 0, panY = 0;
+    const baseVB = { x: 0, y: 0, w: 400, h: 520 };
+    // Zoom presets: full state → south FL → Broward/Dade detail
+    const zoomLevels = [
+      { x: 0, y: 0, w: 400, h: 520 },       // full state
+      { x: 180, y: 240, w: 200, h: 260 },    // south florida
+      { x: 245, y: 330, w: 100, h: 130 },    // broward/dade closeup
+    ];
+    let currentZoom = 0;
+    function zoomMap(dir) {
+      if (dir === 0) { currentZoom = 0; }
+      else if (dir === 1) { currentZoom = Math.min(currentZoom + 1, zoomLevels.length - 1); }
+      else { currentZoom = Math.max(currentZoom - 1, 0); }
+      const vb = zoomLevels[currentZoom];
+      svg.setAttribute('viewBox', `${vb.x} ${vb.y} ${vb.w} ${vb.h}`);
+      svg.style.transition = 'all 0.5s ease';
+    }
+    window.zoomMap = zoomMap;
+  })();
+
   // ═══════════ TAB NAVIGATION ═══════════
   const tabs = document.querySelectorAll('.nav-tab');
   const sections = document.querySelectorAll('.section');
