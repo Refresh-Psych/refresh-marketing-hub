@@ -5908,6 +5908,54 @@
         <h2>Performance Analytics</h2>
         <p>Marketing metrics with period comparison &amp; % change vs previous — refreshpsychiatry.com</p>
       </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button onclick="document.getElementById('dataSourceModal').style.display='flex'" style="background:linear-gradient(135deg,#2B6CB0,#1a4a7a);color:#fff;border:none;padding:10px 20px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all 0.2s;">
+          <span style="font-size:16px;">🔗</span> Connect Live Data
+        </button>
+      </div>
+    </div>
+
+    <!-- Data Source Connection Modal -->
+    <div id="dataSourceModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;backdrop-filter:blur(4px);" onclick="if(event.target===this)this.style.display='none'">
+      <div style="background:#fff;border-radius:16px;max-width:640px;width:90%;max-height:85vh;overflow-y:auto;padding:36px;box-shadow:0 24px 48px rgba(0,0,0,0.2);position:relative;">
+        <button onclick="this.closest('#dataSourceModal').style.display='none'" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:#999;">✕</button>
+        <h3 style="font-size:22px;font-weight:800;color:#1a365d;margin-bottom:6px;">🔗 Connect Live Data Sources</h3>
+        <p style="color:#718096;font-size:13px;margin-bottom:24px;">Choose how to feed real analytics into your dashboard.</p>
+
+        <div style="background:#F7FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:20px;margin-bottom:16px;">
+          <h4 style="font-size:15px;font-weight:700;color:#2B6CB0;margin-bottom:8px;">📊 Option 1: Google Sheets (Easiest)</h4>
+          <ol style="font-size:13px;color:#4A5568;line-height:1.8;padding-left:20px;">
+            <li>Create a Google Sheet with columns: <code style="background:#EDF2F7;padding:2px 6px;border-radius:4px;font-size:11px;">Month, Sessions, Organic, Paid, Social, Inquiries, AdSpend, ROAS</code></li>
+            <li>Enter your real monthly data (one row per month)</li>
+            <li>Go to <strong>File → Share → Publish to web → CSV</strong></li>
+            <li>Copy the published CSV URL</li>
+            <li>Give me the URL and I'll connect it to this dashboard</li>
+          </ol>
+        </div>
+
+        <div style="background:#F7FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:20px;margin-bottom:16px;">
+          <h4 style="font-size:15px;font-weight:700;color:#48BB78;margin-bottom:8px;">📈 Option 2: Google Analytics 4 Embed</h4>
+          <p style="font-size:13px;color:#4A5568;line-height:1.6;">Create a Looker Studio report from your GA4 data and embed it directly. Provides real-time, auto-updating charts and tables.</p>
+        </div>
+
+        <div style="background:#F7FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:20px;margin-bottom:16px;">
+          <h4 style="font-size:15px;font-weight:700;color:#F6C744;margin-bottom:8px;">💰 Option 3: Manual Monthly Update</h4>
+          <p style="font-size:13px;color:#4A5568;line-height:1.6;">Share your monthly GA4 / Google Ads / Meta Ads numbers with me and I'll hardcode them directly into the dashboard for accuracy.</p>
+        </div>
+
+        <div style="text-align:center;margin-top:20px;">
+          <p style="font-size:12px;color:#A0AEC0;">Currently using: <strong style="color:#E53E3E;">Sample/Demo Data</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Demo Data Disclaimer -->
+    <div class="analytics-disclaimer reveal" style="background:linear-gradient(135deg,#FFF8E1,#FFF3CD);border:1px solid #F6C744;border-radius:12px;padding:16px 24px;margin-bottom:20px;display:flex;align-items:center;gap:14px;">
+      <span style="font-size:24px;flex-shrink:0;">⚠️</span>
+      <div>
+        <strong style="color:#2D3748;font-size:14px;">Sample Data — Not Connected to Live Sources</strong>
+        <p style="margin:4px 0 0;font-size:12px;color:#4A5568;line-height:1.5;">These analytics are <strong>simulated placeholder data</strong> generated for demonstration purposes. They do not reflect actual website traffic, ad spend, or patient inquiries. To display real metrics, connect Google Analytics 4, Google Ads, or update the Google Sheet data source.</p>
+      </div>
     </div>
 
     <!-- Period Selector -->
@@ -6758,6 +6806,60 @@
     localStorage.setItem(key, JSON.stringify(saved));
   }
 
+  // ═══════════ GOOGLE SHEETS DATA SOURCE ═══════════
+  // To connect real data:
+  // 1. Create a Google Sheet with columns: Month, Sessions, Organic, Paid, Social, Inquiries, AdSpend, ROAS
+  // 2. Publish the sheet: File → Share → Publish to web → CSV
+  // 3. Paste the published CSV URL below
+  // 4. The dashboard will auto-pull real data on load
+
+  const SHEETS_CSV_URL = ''; // Paste your published Google Sheet CSV URL here
+
+  let realMonthlyData = null;
+
+  async function fetchSheetData() {
+    if (!SHEETS_CSV_URL) return null;
+    try {
+      const res = await fetch(SHEETS_CSV_URL);
+      const csv = await res.text();
+      const rows = csv.trim().split('\n').slice(1); // skip header
+      return rows.map(row => {
+        const cols = row.split(',');
+        return {
+          monthName: cols[0]?.trim() || '',
+          sessions: parseInt(cols[1]) || 0,
+          organic: parseInt(cols[2]) || 0,
+          paid: parseInt(cols[3]) || 0,
+          social: parseInt(cols[4]) || 0,
+          inquiries: parseInt(cols[5]) || 0,
+          adSpend: parseInt(cols[6]) || 0,
+          roas: parseFloat(cols[7]) || 0
+        };
+      });
+    } catch(e) {
+      console.warn('Sheet fetch failed, using sample data:', e);
+      return null;
+    }
+  }
+
+  // Attempt to load real data on page init
+  fetchSheetData().then(data => {
+    if (data && data.length > 0) {
+      realMonthlyData = data;
+      // Update disclaimer to show connected status
+      const disc = document.querySelector('.analytics-disclaimer');
+      if (disc) {
+        disc.style.background = 'linear-gradient(135deg,#E6FFFA,#C6F6D5)';
+        disc.style.borderColor = '#48BB78';
+        disc.querySelector('span').textContent = '✅';
+        disc.querySelector('strong').textContent = 'Live Data Connected — Google Sheets';
+        disc.querySelector('p').textContent = 'These analytics are pulled from your connected Google Sheet. Last updated: ' + new Date().toLocaleDateString();
+      }
+      // Re-render with real data
+      if (typeof setPeriod === 'function') setPeriod(document.querySelector('.period-btn.active')?.dataset.period || '12m');
+    }
+  });
+
   // ═══════════ TAB NAVIGATION ═══════════
   const tabs = document.querySelectorAll('.nav-tab');
   const sections = document.querySelectorAll('.section');
@@ -7302,26 +7404,34 @@
     // Current month is March 2026 (index 2). Work backwards from current month.
     const currentMonthIdx = new Date().getMonth(); // 0-based
 
-    const monthlyData = [];
-    for (let i = 0; i < months; i++) {
-      const pct = 0.85 + (i / Math.max(months-1,1)) * 0.3;
-      const sessions = Math.round((d.sessions.val / months) * (pct + (Math.random()-0.5)*0.1));
-      const organic = Math.round(sessions * 0.66);
-      const paid = Math.round(sessions * 0.18);
-      const social = Math.round(sessions * 0.16);
-      const inquiries = Math.round((d.inquiries.val / months) * (pct + (Math.random()-0.5)*0.15));
-      const cvr = (inquiries / sessions * 100).toFixed(2);
-      const adSpend = Math.round(d.spend.val / months);
-      const roas = (2.5 + Math.random() * 3).toFixed(1);
-      // Calculate which calendar month and year this is (going back from current month)
-      const mIdx = (currentMonthIdx - (months - 1) + i + 12) % 12;
-      const currentYear = new Date().getFullYear();
-      const monthsBack = months - 1 - i;
-      const yearForMonth = currentYear - Math.floor((currentMonthIdx - (currentMonthIdx - monthsBack) + 12 * 10) / 12 - 10 + 0.0001);
-      // Simpler: calculate actual date
-      const actualDate = new Date(currentYear, currentMonthIdx - (months - 1) + i, 1);
-      const displayYear = actualDate.getFullYear();
-      monthlyData.push({ monthName: monthNames[mIdx] + ' ' + displayYear, sessions, organic, paid, social, inquiries, cvr, adSpend, roas });
+    let monthlyData = [];
+
+    // Use real Google Sheets data if available
+    if (realMonthlyData && realMonthlyData.length > 0) {
+      const sliced = realMonthlyData.slice(-months);
+      monthlyData = sliced.map(r => ({
+        ...r,
+        cvr: r.sessions > 0 ? (r.inquiries / r.sessions * 100).toFixed(2) : '0.00',
+        roas: r.roas ? r.roas.toFixed(1) : '0.0'
+      }));
+    } else {
+      // Fallback: generate sample data
+      for (let i = 0; i < months; i++) {
+        const pct = 0.85 + (i / Math.max(months-1,1)) * 0.3;
+        const sessions = Math.round((d.sessions.val / months) * (pct + (Math.random()-0.5)*0.1));
+        const organic = Math.round(sessions * 0.66);
+        const paid = Math.round(sessions * 0.18);
+        const social = Math.round(sessions * 0.16);
+        const inquiries = Math.round((d.inquiries.val / months) * (pct + (Math.random()-0.5)*0.15));
+        const cvr = (inquiries / sessions * 100).toFixed(2);
+        const adSpend = Math.round(d.spend.val / months);
+        const roas = (2.5 + Math.random() * 3).toFixed(1);
+        const mIdx = (currentMonthIdx - (months - 1) + i + 12) % 12;
+        const currentYear = new Date().getFullYear();
+        const actualDate = new Date(currentYear, currentMonthIdx - (months - 1) + i, 1);
+        const displayYear = actualDate.getFullYear();
+        monthlyData.push({ monthName: monthNames[mIdx] + ' ' + displayYear, sessions, organic, paid, social, inquiries, cvr, adSpend, roas });
+      }
     }
 
     body.innerHTML = monthlyData.map((w, i) => {
