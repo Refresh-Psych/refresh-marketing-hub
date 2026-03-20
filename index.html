@@ -5912,11 +5912,11 @@
 
     <!-- Period Selector -->
     <div class="analytics-period-selector" id="periodSelector">
-      <button class="period-btn active" data-period="1m" onclick="setPeriod('1m')">1 Month</button>
+      <button class="period-btn" data-period="1m" onclick="setPeriod('1m')">1 Month</button>
       <button class="period-btn" data-period="3m" onclick="setPeriod('3m')">3 Months</button>
       <button class="period-btn" data-period="6m" onclick="setPeriod('6m')">6 Months</button>
       <button class="period-btn" data-period="9m" onclick="setPeriod('9m')">9 Months</button>
-      <button class="period-btn" data-period="12m" onclick="setPeriod('12m')">12 Months</button>
+      <button class="period-btn active" data-period="12m" onclick="setPeriod('12m')">12 Months</button>
     </div>
 
     <!-- Period Summary Banner -->
@@ -7500,8 +7500,8 @@
     });
   }
 
-  // Initialize with 1-month view
-  setPeriod('1m');
+  // Initialize with 12-month view
+  setPeriod('12m');
 
   // ═══════════ INTERACTIVE TREND CHART ═══════════
   const trendData = {
@@ -7549,7 +7549,7 @@
 
   const seriesColors = { sessions:'#2B6CB0', organic:'#48BB78', paid:'#F6C744', social:'#9F7AEA', inquiries:'#E53E3E' };
   let activeSeries = new Set(['sessions','organic','paid','social']);
-  let currentTrendPeriod = '1m';
+  let currentTrendPeriod = '12m';
 
   function renderTrendChart() {
     const svg = document.getElementById('trendSVG');
