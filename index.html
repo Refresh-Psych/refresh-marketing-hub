@@ -6743,6 +6743,21 @@
 </div>
 
 <script>
+  // ═══════════ ACTION ITEM PERSISTENCE ═══════════
+  function toggleActionItem(el) {
+    el.classList.toggle('checked');
+    const ep = el.dataset.ep;
+    const idx = el.dataset.idx;
+    const key = 'podcastActions_ep' + ep;
+    const saved = JSON.parse(localStorage.getItem(key) || '{}');
+    if (el.classList.contains('checked')) {
+      saved[idx] = true;
+    } else {
+      delete saved[idx];
+    }
+    localStorage.setItem(key, JSON.stringify(saved));
+  }
+
   // ═══════════ TAB NAVIGATION ═══════════
   const tabs = document.querySelectorAll('.nav-tab');
   const sections = document.querySelectorAll('.section');
@@ -8018,19 +8033,21 @@
       ).join('');
     }
 
-    // Action Items
+    // Action Items (with localStorage persistence)
     const actionsList = document.getElementById('actionItemsList');
     if (ep.actions && ep.actions.length) {
-      actionsList.innerHTML = ep.actions.map(a =>
-        `<div class="action-item" onclick="this.classList.toggle('checked')">
+      const savedChecks = JSON.parse(localStorage.getItem('podcastActions_ep' + currentEpisode) || '{}');
+      actionsList.innerHTML = ep.actions.map((a, i) => {
+        const isChecked = savedChecks[i] ? ' checked' : '';
+        return `<div class="action-item${isChecked}" data-ep="${currentEpisode}" data-idx="${i}" onclick="toggleActionItem(this)">
           <div class="action-check"></div>
           <div class="action-text">
             <h4>${a.title}</h4>
             <p>${a.body}</p>
           </div>
           <span class="action-effort ${a.effort}">${a.effort === 'quick' ? '15 min' : a.effort === 'moderate' ? '1-2 hrs' : 'Half day'}</span>
-        </div>`
-      ).join('');
+        </div>`;
+      }).join('');
     }
   }
 
