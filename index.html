@@ -5912,11 +5912,11 @@
 
     <!-- Period Selector -->
     <div class="analytics-period-selector" id="periodSelector">
-      <button class="period-btn" data-period="1w" onclick="setPeriod('1w')">1 Week</button>
-      <button class="period-btn active" data-period="2w" onclick="setPeriod('2w')">2 Weeks</button>
-      <button class="period-btn" data-period="4w" onclick="setPeriod('4w')">4 Weeks</button>
-      <button class="period-btn" data-period="8w" onclick="setPeriod('8w')">8 Weeks</button>
-      <button class="period-btn" data-period="12w" onclick="setPeriod('12w')">12 Weeks</button>
+      <button class="period-btn active" data-period="1m" onclick="setPeriod('1m')">1 Month</button>
+      <button class="period-btn" data-period="3m" onclick="setPeriod('3m')">3 Months</button>
+      <button class="period-btn" data-period="6m" onclick="setPeriod('6m')">6 Months</button>
+      <button class="period-btn" data-period="9m" onclick="setPeriod('9m')">9 Months</button>
+      <button class="period-btn" data-period="12m" onclick="setPeriod('12m')">12 Months</button>
     </div>
 
     <!-- Period Summary Banner -->
@@ -6102,12 +6102,12 @@
 
     <!-- Weekly Breakdown Table -->
     <div class="analytics-chart reveal">
-      <h3>Week-by-Week Breakdown <span class="chart-badge" id="weeklyBreakdownLabel">All Weeks</span></h3>
+      <h3>Month-by-Month Breakdown <span class="chart-badge" id="weeklyBreakdownLabel">All Months</span></h3>
       <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
         <table class="ad-breakdown-table" id="weeklyTable" style="min-width:700px;">
           <thead>
             <tr>
-              <th>Week</th>
+              <th>Month</th>
               <th>Sessions</th>
               <th>% Change</th>
               <th>Organic</th>
@@ -6876,210 +6876,212 @@
 
   // ═══════════ ANALYTICS ENGINE ═══════════
   const analyticsData = {
-    '1w': {
-      sessions: { val: 1205, prev: 1040, sub: '1,205 total · 344 peak day' },
-      inquiries: { val: 12, prev: 9, sub: '12 total · 75% from organic' },
-      spend: { val: 525, prev: 510, sub: '$43.75/inquiry · ROAS 4.1x' },
+    '1m': {
+      sessions: { val: 5180, prev: 4470, sub: '5,180 total · 344 peak day' },
+      inquiries: { val: 52, prev: 39, sub: '52 total · 72% from organic' },
+      spend: { val: 2250, prev: 2190, sub: '$43.27/inquiry · ROAS 4.2x' },
       cvr: { val: 1.0, prev: 0.87, sub: 'Sessions-to-inquiry rate' },
-      organic: { val: 795, prev: 640, sub: '66% of total · Top: "telehealth psychiatry FL"' },
-      social: { val: 206, prev: 168, sub: 'IG 46% · FB 34% · LI 20%' },
-      content: { val: 7, prev: 5, sub: '3 Blogs · 2 Ads · 2 Social' },
-      reviews: { val: 4.9, prev: 4.8, sub: '2 new reviews this period' },
-      traffic: [
-        { label: 'Mon', organic: 140, paid: 55, social: 28, direct: 18 },
-        { label: 'Tue', organic: 165, paid: 62, social: 32, direct: 22 },
-        { label: 'Wed', organic: 120, paid: 48, social: 25, direct: 15 },
-        { label: 'Thu', organic: 135, paid: 58, social: 35, direct: 20 },
-        { label: 'Fri', organic: 110, paid: 42, social: 38, direct: 16 },
-        { label: 'Sat', organic: 68, paid: 20, social: 30, direct: 10 },
-        { label: 'Sun', organic: 57, paid: 15, social: 18, direct: 8 }
-      ],
-      ads: [
-        { platform: 'Google Search', icon: 'G', color: '#4285F4', spend: 210, clicks: 340, cpc: 0.62, ctr: 4.8, roas: 5.1, prevSpend: 200 },
-        { platform: 'Google Display', icon: 'D', color: '#34A853', spend: 85, clicks: 620, cpc: 0.14, ctr: 0.9, roas: 2.8, prevSpend: 82 },
-        { platform: 'Meta (IG + FB)', icon: 'M', color: '#E1306C', spend: 150, clicks: 480, cpc: 0.31, ctr: 3.2, roas: 4.5, prevSpend: 148 },
-        { platform: 'LinkedIn Ads', icon: 'in', color: '#0077B5', spend: 55, clicks: 85, cpc: 0.65, ctr: 1.1, roas: 2.2, prevSpend: 55 },
-        { platform: 'YouTube Pre-roll', icon: 'Y', color: '#FF0000', spend: 25, clicks: 180, cpc: 0.14, ctr: 2.1, roas: 3.0, prevSpend: 25 }
-      ],
-      funnel: [
-        { label: 'Website Visitors', value: 1205, rate: '100%' },
-        { label: 'Blog / Service Page Views', value: 486, rate: '40.3%' },
-        { label: 'Contact Form Started', value: 38, rate: '3.2%' },
-        { label: 'Inquiry Submitted', value: 12, rate: '1.0%' },
-        { label: 'Appointment Booked', value: 8, rate: '0.66%' }
-      ],
-      adBars: [
-        { label: 'Mon', search: 52, display: 90, meta: 70, linkedin: 12 },
-        { label: 'Tue', search: 58, display: 95, meta: 75, linkedin: 14 },
-        { label: 'Wed', search: 42, display: 85, meta: 62, linkedin: 10 },
-        { label: 'Thu', search: 55, display: 88, meta: 72, linkedin: 13 },
-        { label: 'Fri', search: 48, display: 80, meta: 68, linkedin: 11 },
-        { label: 'Sat', search: 40, display: 140, meta: 65, linkedin: 12 },
-        { label: 'Sun', search: 45, display: 142, meta: 68, linkedin: 13 }
-      ]
-    },
-    '2w': {
-      sessions: { val: 2410, prev: 2040, sub: '1,205/wk avg · 344/day peak' },
-      inquiries: { val: 24, prev: 18, sub: '12/wk avg · 68% from organic' },
-      spend: { val: 1050, prev: 1030, sub: '$43.75/inquiry · ROAS 4.2x' },
-      cvr: { val: 1.0, prev: 0.88, sub: 'Sessions-to-inquiry rate' },
-      organic: { val: 1590, prev: 1300, sub: '66% of total · Top: "telehealth psychiatry FL"' },
-      social: { val: 412, prev: 322, sub: 'IG 48% · FB 32% · LI 20%' },
+      organic: { val: 3420, prev: 2750, sub: '66% of total · Top: "telehealth psychiatry FL"' },
+      social: { val: 885, prev: 722, sub: 'IG 46% · FB 34% · LI 20%' },
       content: { val: 14, prev: 10, sub: '5 Blogs · 4 Ads · 5 Social' },
-      reviews: { val: 4.9, prev: 4.8, sub: '3 new reviews this period' },
+      reviews: { val: 4.9, prev: 4.8, sub: '6 new reviews this period' },
       traffic: [
-        { label: 'W1', organic: 795, paid: 220, social: 206, direct: 84 },
-        { label: 'W2', organic: 795, paid: 240, social: 206, direct: 92 }
+        { label: 'Wk 1', organic: 780, paid: 195, social: 190, direct: 78 },
+        { label: 'Wk 2', organic: 820, paid: 210, social: 210, direct: 85 },
+        { label: 'Wk 3', organic: 870, paid: 230, social: 225, direct: 90 },
+        { label: 'Wk 4', organic: 950, paid: 255, social: 260, direct: 100 }
       ],
       ads: [
-        { platform: 'Google Search', icon: 'G', color: '#4285F4', spend: 420, clicks: 680, cpc: 0.62, ctr: 4.8, roas: 5.1, prevSpend: 390 },
-        { platform: 'Google Display', icon: 'D', color: '#34A853', spend: 170, clicks: 1240, cpc: 0.14, ctr: 0.9, roas: 2.8, prevSpend: 165 },
-        { platform: 'Meta (IG + FB)', icon: 'M', color: '#E1306C', spend: 300, clicks: 960, cpc: 0.31, ctr: 3.2, roas: 4.5, prevSpend: 295 },
-        { platform: 'LinkedIn Ads', icon: 'in', color: '#0077B5', spend: 110, clicks: 170, cpc: 0.65, ctr: 1.1, roas: 2.2, prevSpend: 108 },
-        { platform: 'YouTube Pre-roll', icon: 'Y', color: '#FF0000', spend: 50, clicks: 360, cpc: 0.14, ctr: 2.1, roas: 3.0, prevSpend: 52 }
+        { platform: 'Google Search', icon: 'G', color: '#4285F4', spend: 900, clicks: 1460, cpc: 0.62, ctr: 4.8, roas: 5.1, prevSpend: 860 },
+        { platform: 'Google Display', icon: 'D', color: '#34A853', spend: 365, clicks: 2665, cpc: 0.14, ctr: 0.9, roas: 2.8, prevSpend: 352 },
+        { platform: 'Meta (IG + FB)', icon: 'M', color: '#E1306C', spend: 645, clicks: 2065, cpc: 0.31, ctr: 3.2, roas: 4.5, prevSpend: 636 },
+        { platform: 'LinkedIn Ads', icon: 'in', color: '#0077B5', spend: 237, clicks: 365, cpc: 0.65, ctr: 1.1, roas: 2.2, prevSpend: 232 },
+        { platform: 'YouTube Pre-roll', icon: 'Y', color: '#FF0000', spend: 108, clicks: 775, cpc: 0.14, ctr: 2.1, roas: 3.0, prevSpend: 110 }
       ],
       funnel: [
-        { label: 'Website Visitors', value: 2410, rate: '100%' },
-        { label: 'Blog / Service Page Views', value: 964, rate: '40.0%' },
-        { label: 'Contact Form Started', value: 76, rate: '3.2%' },
-        { label: 'Inquiry Submitted', value: 24, rate: '1.0%' },
-        { label: 'Appointment Booked', value: 16, rate: '0.66%' }
+        { label: 'Website Visitors', value: 5180, rate: '100%' },
+        { label: 'Blog / Service Page Views', value: 2072, rate: '40.0%' },
+        { label: 'Contact Form Started', value: 166, rate: '3.2%' },
+        { label: 'Inquiry Submitted', value: 52, rate: '1.0%' },
+        { label: 'Appointment Booked', value: 34, rate: '0.66%' }
       ],
       adBars: [
-        { label: 'W1', search: 340, display: 620, meta: 480, linkedin: 85 },
-        { label: 'W2', search: 340, display: 620, meta: 480, linkedin: 85 }
+        { label: 'Wk 1', search: 330, display: 610, meta: 460, linkedin: 82 },
+        { label: 'Wk 2', search: 350, display: 640, meta: 490, linkedin: 86 },
+        { label: 'Wk 3', search: 370, display: 670, meta: 520, linkedin: 90 },
+        { label: 'Wk 4', search: 410, display: 745, meta: 595, linkedin: 107 }
       ]
     },
-    '4w': {
-      sessions: { val: 4820, prev: 4080, sub: '1,205/wk avg · 344/day peak' },
-      inquiries: { val: 47, prev: 35, sub: '11.8/wk avg · 65% from organic' },
-      spend: { val: 2100, prev: 2050, sub: '$44.68/inquiry · ROAS 4.2x' },
-      cvr: { val: 0.98, prev: 0.86, sub: 'Sessions-to-inquiry rate' },
-      organic: { val: 3180, prev: 2550, sub: '66% of total · Top: "ADHD telehealth Florida"' },
-      social: { val: 824, prev: 610, sub: 'IG 48% · FB 32% · LI 20%' },
-      content: { val: 27, prev: 19, sub: '10 Blogs · 9 Ads · 8 Social' },
-      reviews: { val: 4.9, prev: 4.8, sub: '5 new reviews this period' },
-      traffic: [
-        { label: 'W1', organic: 720, paid: 180, social: 170, direct: 70 },
-        { label: 'W2', organic: 760, paid: 200, social: 195, direct: 78 },
-        { label: 'W3', organic: 820, paid: 230, social: 210, direct: 85 },
-        { label: 'W4', organic: 880, paid: 250, social: 249, direct: 95 }
-      ],
-      ads: [
-        { platform: 'Google Search', icon: 'G', color: '#4285F4', spend: 840, clicks: 1360, cpc: 0.62, ctr: 4.8, roas: 5.1, prevSpend: 780 },
-        { platform: 'Google Display', icon: 'D', color: '#34A853', spend: 340, clicks: 2480, cpc: 0.14, ctr: 0.9, roas: 2.8, prevSpend: 330 },
-        { platform: 'Meta (IG + FB)', icon: 'M', color: '#E1306C', spend: 600, clicks: 1920, cpc: 0.31, ctr: 3.2, roas: 4.5, prevSpend: 590 },
-        { platform: 'LinkedIn Ads', icon: 'in', color: '#0077B5', spend: 220, clicks: 340, cpc: 0.65, ctr: 1.1, roas: 2.2, prevSpend: 210 },
-        { platform: 'YouTube Pre-roll', icon: 'Y', color: '#FF0000', spend: 100, clicks: 720, cpc: 0.14, ctr: 2.1, roas: 3.0, prevSpend: 120 }
-      ],
-      funnel: [
-        { label: 'Website Visitors', value: 4820, rate: '100%' },
-        { label: 'Blog / Service Page Views', value: 1928, rate: '40.0%' },
-        { label: 'Contact Form Started', value: 154, rate: '3.2%' },
-        { label: 'Inquiry Submitted', value: 47, rate: '0.98%' },
-        { label: 'Appointment Booked', value: 31, rate: '0.64%' }
-      ],
-      adBars: [
-        { label: 'W1', search: 310, display: 580, meta: 440, linkedin: 78 },
-        { label: 'W2', search: 330, display: 600, meta: 460, linkedin: 82 },
-        { label: 'W3', search: 350, display: 640, meta: 500, linkedin: 88 },
-        { label: 'W4', search: 370, display: 660, meta: 520, linkedin: 92 }
-      ]
-    },
-    '8w': {
-      sessions: { val: 9200, prev: 7600, sub: '1,150/wk avg · 344/day peak' },
-      inquiries: { val: 88, prev: 65, sub: '11/wk avg · 62% from organic' },
-      spend: { val: 4200, prev: 4100, sub: '$47.73/inquiry · ROAS 3.9x' },
-      cvr: { val: 0.96, prev: 0.86, sub: 'Sessions-to-inquiry rate' },
-      organic: { val: 5980, prev: 4800, sub: '65% of total · Top: "psychiatrist near me Florida"' },
-      social: { val: 1560, prev: 1140, sub: 'IG 47% · FB 33% · LI 20%' },
-      content: { val: 52, prev: 38, sub: '20 Blogs · 16 Ads · 16 Social' },
-      reviews: { val: 4.9, prev: 4.8, sub: '9 new reviews this period' },
-      traffic: [
-        { label: 'W1', organic: 680, paid: 160, social: 155, direct: 62 },
-        { label: 'W2', organic: 700, paid: 170, social: 165, direct: 68 },
-        { label: 'W3', organic: 720, paid: 180, social: 175, direct: 72 },
-        { label: 'W4', organic: 740, paid: 190, social: 185, direct: 75 },
-        { label: 'W5', organic: 760, paid: 200, social: 195, direct: 80 },
-        { label: 'W6', organic: 790, paid: 215, social: 205, direct: 84 },
-        { label: 'W7', organic: 820, paid: 230, social: 220, direct: 88 },
-        { label: 'W8', organic: 770, paid: 225, social: 260, direct: 92 }
-      ],
-      ads: [
-        { platform: 'Google Search', icon: 'G', color: '#4285F4', spend: 1680, clicks: 2720, cpc: 0.62, ctr: 4.7, roas: 4.8, prevSpend: 1560 },
-        { platform: 'Google Display', icon: 'D', color: '#34A853', spend: 680, clicks: 4960, cpc: 0.14, ctr: 0.85, roas: 2.6, prevSpend: 660 },
-        { platform: 'Meta (IG + FB)', icon: 'M', color: '#E1306C', spend: 1200, clicks: 3840, cpc: 0.31, ctr: 3.1, roas: 4.2, prevSpend: 1180 },
-        { platform: 'LinkedIn Ads', icon: 'in', color: '#0077B5', spend: 440, clicks: 680, cpc: 0.65, ctr: 1.0, roas: 2.0, prevSpend: 420 },
-        { platform: 'YouTube Pre-roll', icon: 'Y', color: '#FF0000', spend: 200, clicks: 1440, cpc: 0.14, ctr: 2.0, roas: 2.8, prevSpend: 260 }
-      ],
-      funnel: [
-        { label: 'Website Visitors', value: 9200, rate: '100%' },
-        { label: 'Blog / Service Page Views', value: 3680, rate: '40.0%' },
-        { label: 'Contact Form Started', value: 294, rate: '3.2%' },
-        { label: 'Inquiry Submitted', value: 88, rate: '0.96%' },
-        { label: 'Appointment Booked', value: 58, rate: '0.63%' }
-      ],
-      adBars: [
-        { label: 'W1', search: 300, display: 560, meta: 420, linkedin: 72 },
-        { label: 'W2', search: 310, display: 570, meta: 440, linkedin: 75 },
-        { label: 'W3', search: 320, display: 590, meta: 450, linkedin: 78 },
-        { label: 'W4', search: 330, display: 600, meta: 460, linkedin: 82 },
-        { label: 'W5', search: 340, display: 610, meta: 475, linkedin: 85 },
-        { label: 'W6', search: 350, display: 630, meta: 490, linkedin: 86 },
-        { label: 'W7', search: 370, display: 650, meta: 510, linkedin: 90 },
-        { label: 'W8', search: 360, display: 640, meta: 535, linkedin: 92 }
-      ]
-    },
-    '12w': {
-      sessions: { val: 13800, prev: 11000, sub: '1,150/wk avg · 380/day peak' },
-      inquiries: { val: 132, prev: 95, sub: '11/wk avg · 60% from organic' },
-      spend: { val: 6300, prev: 6000, sub: '$47.73/inquiry · ROAS 3.8x' },
-      cvr: { val: 0.96, prev: 0.86, sub: 'Sessions-to-inquiry rate' },
-      organic: { val: 8970, prev: 7150, sub: '65% of total · Top: "ADHD medication Florida"' },
-      social: { val: 2340, prev: 1650, sub: 'IG 47% · FB 33% · LI 20%' },
-      content: { val: 78, prev: 54, sub: '30 Blogs · 24 Ads · 24 Social' },
+    '3m': {
+      sessions: { val: 15540, prev: 12600, sub: '5,180/mo avg · 380 peak day' },
+      inquiries: { val: 156, prev: 110, sub: '52/mo avg · 68% from organic' },
+      spend: { val: 6750, prev: 6400, sub: '$43.27/inquiry · ROAS 4.1x' },
+      cvr: { val: 1.0, prev: 0.87, sub: 'Sessions-to-inquiry rate' },
+      organic: { val: 10260, prev: 8100, sub: '66% of total · Top: "ADHD telehealth Florida"' },
+      social: { val: 2655, prev: 1950, sub: 'IG 48% · FB 32% · LI 20%' },
+      content: { val: 42, prev: 30, sub: '16 Blogs · 13 Ads · 13 Social' },
       reviews: { val: 4.9, prev: 4.8, sub: '14 new reviews this period' },
       traffic: [
-        { label: 'W1', organic: 640, paid: 145, social: 140, direct: 55 },
-        { label: 'W2', organic: 660, paid: 150, social: 150, direct: 58 },
-        { label: 'W3', organic: 680, paid: 160, social: 155, direct: 62 },
-        { label: 'W4', organic: 700, paid: 165, social: 160, direct: 65 },
-        { label: 'W5', organic: 720, paid: 175, social: 170, direct: 68 },
-        { label: 'W6', organic: 740, paid: 180, social: 178, direct: 72 },
-        { label: 'W7', organic: 760, paid: 190, social: 185, direct: 75 },
-        { label: 'W8', organic: 780, paid: 200, social: 195, direct: 80 },
-        { label: 'W9', organic: 800, paid: 210, social: 205, direct: 82 },
-        { label: 'W10', organic: 820, paid: 220, social: 220, direct: 86 },
-        { label: 'W11', organic: 850, paid: 230, social: 240, direct: 90 },
-        { label: 'W12', organic: 820, paid: 225, social: 242, direct: 88 }
+        { label: 'M1', organic: 3100, paid: 780, social: 750, direct: 310 },
+        { label: 'M2', organic: 3400, paid: 860, social: 850, direct: 350 },
+        { label: 'M3', organic: 3760, paid: 950, social: 1055, direct: 395 }
       ],
       ads: [
-        { platform: 'Google Search', icon: 'G', color: '#4285F4', spend: 2520, clicks: 4080, cpc: 0.62, ctr: 4.6, roas: 4.6, prevSpend: 2340 },
-        { platform: 'Google Display', icon: 'D', color: '#34A853', spend: 1020, clicks: 7440, cpc: 0.14, ctr: 0.82, roas: 2.5, prevSpend: 980 },
-        { platform: 'Meta (IG + FB)', icon: 'M', color: '#E1306C', spend: 1800, clicks: 5760, cpc: 0.31, ctr: 3.0, roas: 4.0, prevSpend: 1700 },
-        { platform: 'LinkedIn Ads', icon: 'in', color: '#0077B5', spend: 660, clicks: 1020, cpc: 0.65, ctr: 0.95, roas: 1.9, prevSpend: 630 },
-        { platform: 'YouTube Pre-roll', icon: 'Y', color: '#FF0000', spend: 300, clicks: 2160, cpc: 0.14, ctr: 1.9, roas: 2.6, prevSpend: 350 }
+        { platform: 'Google Search', icon: 'G', color: '#4285F4', spend: 2700, clicks: 4380, cpc: 0.62, ctr: 4.8, roas: 5.0, prevSpend: 2520 },
+        { platform: 'Google Display', icon: 'D', color: '#34A853', spend: 1095, clicks: 7995, cpc: 0.14, ctr: 0.88, roas: 2.7, prevSpend: 1060 },
+        { platform: 'Meta (IG + FB)', icon: 'M', color: '#E1306C', spend: 1935, clicks: 6195, cpc: 0.31, ctr: 3.2, roas: 4.4, prevSpend: 1900 },
+        { platform: 'LinkedIn Ads', icon: 'in', color: '#0077B5', spend: 710, clicks: 1095, cpc: 0.65, ctr: 1.1, roas: 2.1, prevSpend: 680 },
+        { platform: 'YouTube Pre-roll', icon: 'Y', color: '#FF0000', spend: 324, clicks: 2325, cpc: 0.14, ctr: 2.0, roas: 2.9, prevSpend: 340 }
       ],
       funnel: [
-        { label: 'Website Visitors', value: 13800, rate: '100%' },
-        { label: 'Blog / Service Page Views', value: 5520, rate: '40.0%' },
-        { label: 'Contact Form Started', value: 442, rate: '3.2%' },
-        { label: 'Inquiry Submitted', value: 132, rate: '0.96%' },
-        { label: 'Appointment Booked', value: 86, rate: '0.62%' }
+        { label: 'Website Visitors', value: 15540, rate: '100%' },
+        { label: 'Blog / Service Page Views', value: 6216, rate: '40.0%' },
+        { label: 'Contact Form Started', value: 497, rate: '3.2%' },
+        { label: 'Inquiry Submitted', value: 156, rate: '1.0%' },
+        { label: 'Appointment Booked', value: 102, rate: '0.66%' }
       ],
       adBars: [
-        { label: 'W1', search: 280, display: 520, meta: 400, linkedin: 68 },
-        { label: 'W2', search: 290, display: 530, meta: 410, linkedin: 70 },
-        { label: 'W3', search: 300, display: 550, meta: 420, linkedin: 72 },
-        { label: 'W4', search: 310, display: 560, meta: 430, linkedin: 75 },
-        { label: 'W5', search: 320, display: 580, meta: 445, linkedin: 78 },
-        { label: 'W6', search: 330, display: 590, meta: 455, linkedin: 80 },
-        { label: 'W7', search: 340, display: 600, meta: 470, linkedin: 82 },
-        { label: 'W8', search: 350, display: 620, meta: 480, linkedin: 85 },
-        { label: 'W9', search: 355, display: 630, meta: 490, linkedin: 86 },
-        { label: 'W10', search: 365, display: 640, meta: 505, linkedin: 88 },
-        { label: 'W11', search: 375, display: 660, meta: 520, linkedin: 90 },
-        { label: 'W12', search: 365, display: 650, meta: 535, linkedin: 88 }
+        { label: 'M1', search: 1300, display: 2400, meta: 1800, linkedin: 320 },
+        { label: 'M2', search: 1440, display: 2650, meta: 2050, linkedin: 365 },
+        { label: 'M3', search: 1640, display: 2945, meta: 2345, linkedin: 410 }
+      ]
+    },
+    '6m': {
+      sessions: { val: 33400, prev: 26000, sub: '5,567/mo avg · 410 peak day' },
+      inquiries: { val: 330, prev: 230, sub: '55/mo avg · 64% from organic' },
+      spend: { val: 13500, prev: 12800, sub: '$40.91/inquiry · ROAS 4.0x' },
+      cvr: { val: 0.99, prev: 0.88, sub: 'Sessions-to-inquiry rate' },
+      organic: { val: 21710, prev: 16900, sub: '65% of total · Top: "psychiatrist near me Florida"' },
+      social: { val: 5680, prev: 3900, sub: 'IG 47% · FB 33% · LI 20%' },
+      content: { val: 84, prev: 58, sub: '32 Blogs · 26 Ads · 26 Social' },
+      reviews: { val: 4.9, prev: 4.8, sub: '28 new reviews this period' },
+      traffic: [
+        { label: 'M1', organic: 2950, paid: 680, social: 660, direct: 270 },
+        { label: 'M2', organic: 3150, paid: 730, social: 730, direct: 300 },
+        { label: 'M3', organic: 3400, paid: 790, social: 810, direct: 330 },
+        { label: 'M4', organic: 3650, paid: 850, social: 900, direct: 360 },
+        { label: 'M5', organic: 3960, paid: 920, social: 1010, direct: 395 },
+        { label: 'M6', organic: 4200, paid: 1000, social: 1170, direct: 410 }
+      ],
+      ads: [
+        { platform: 'Google Search', icon: 'G', color: '#4285F4', spend: 5400, clicks: 8760, cpc: 0.62, ctr: 4.7, roas: 4.8, prevSpend: 5040 },
+        { platform: 'Google Display', icon: 'D', color: '#34A853', spend: 2190, clicks: 15990, cpc: 0.14, ctr: 0.85, roas: 2.6, prevSpend: 2130 },
+        { platform: 'Meta (IG + FB)', icon: 'M', color: '#E1306C', spend: 3870, clicks: 12390, cpc: 0.31, ctr: 3.1, roas: 4.2, prevSpend: 3800 },
+        { platform: 'LinkedIn Ads', icon: 'in', color: '#0077B5', spend: 1420, clicks: 2190, cpc: 0.65, ctr: 1.0, roas: 2.0, prevSpend: 1360 },
+        { platform: 'YouTube Pre-roll', icon: 'Y', color: '#FF0000', spend: 648, clicks: 4650, cpc: 0.14, ctr: 2.0, roas: 2.8, prevSpend: 670 }
+      ],
+      funnel: [
+        { label: 'Website Visitors', value: 33400, rate: '100%' },
+        { label: 'Blog / Service Page Views', value: 13360, rate: '40.0%' },
+        { label: 'Contact Form Started', value: 1069, rate: '3.2%' },
+        { label: 'Inquiry Submitted', value: 330, rate: '0.99%' },
+        { label: 'Appointment Booked', value: 214, rate: '0.64%' }
+      ],
+      adBars: [
+        { label: 'M1', search: 1200, display: 2200, meta: 1700, linkedin: 300 },
+        { label: 'M2', search: 1280, display: 2350, meta: 1820, linkedin: 320 },
+        { label: 'M3', search: 1380, display: 2520, meta: 1960, linkedin: 345 },
+        { label: 'M4', search: 1480, display: 2700, meta: 2100, linkedin: 370 },
+        { label: 'M5', search: 1600, display: 2880, meta: 2280, linkedin: 395 },
+        { label: 'M6', search: 1700, display: 3060, meta: 2480, linkedin: 420 }
+      ]
+    },
+    '9m': {
+      sessions: { val: 52200, prev: 39000, sub: '5,800/mo avg · 440 peak day' },
+      inquiries: { val: 522, prev: 350, sub: '58/mo avg · 62% from organic' },
+      spend: { val: 20250, prev: 18900, sub: '$38.79/inquiry · ROAS 3.9x' },
+      cvr: { val: 1.0, prev: 0.90, sub: 'Sessions-to-inquiry rate' },
+      organic: { val: 33930, prev: 25350, sub: '65% of total · Top: "ADHD medication Florida"' },
+      social: { val: 8870, prev: 5850, sub: 'IG 47% · FB 33% · LI 20%' },
+      content: { val: 126, prev: 85, sub: '48 Blogs · 39 Ads · 39 Social' },
+      reviews: { val: 4.9, prev: 4.8, sub: '42 new reviews this period' },
+      traffic: [
+        { label: 'M1', organic: 2800, paid: 640, social: 600, direct: 250 },
+        { label: 'M2', organic: 3000, paid: 690, social: 680, direct: 280 },
+        { label: 'M3', organic: 3250, paid: 750, social: 760, direct: 310 },
+        { label: 'M4', organic: 3500, paid: 810, social: 850, direct: 340 },
+        { label: 'M5', organic: 3750, paid: 870, social: 940, direct: 370 },
+        { label: 'M6', organic: 4000, paid: 940, social: 1030, direct: 390 },
+        { label: 'M7', organic: 4250, paid: 1010, social: 1120, direct: 415 },
+        { label: 'M8', organic: 4530, paid: 1080, social: 1230, direct: 440 },
+        { label: 'M9', organic: 4850, paid: 1150, social: 1360, direct: 470 }
+      ],
+      ads: [
+        { platform: 'Google Search', icon: 'G', color: '#4285F4', spend: 8100, clicks: 13140, cpc: 0.62, ctr: 4.6, roas: 4.6, prevSpend: 7560 },
+        { platform: 'Google Display', icon: 'D', color: '#34A853', spend: 3285, clicks: 23985, cpc: 0.14, ctr: 0.82, roas: 2.5, prevSpend: 3150 },
+        { platform: 'Meta (IG + FB)', icon: 'M', color: '#E1306C', spend: 5805, clicks: 18585, cpc: 0.31, ctr: 3.0, roas: 4.0, prevSpend: 5400 },
+        { platform: 'LinkedIn Ads', icon: 'in', color: '#0077B5', spend: 2130, clicks: 3285, cpc: 0.65, ctr: 0.95, roas: 1.9, prevSpend: 2040 },
+        { platform: 'YouTube Pre-roll', icon: 'Y', color: '#FF0000', spend: 972, clicks: 6975, cpc: 0.14, ctr: 1.9, roas: 2.6, prevSpend: 1050 }
+      ],
+      funnel: [
+        { label: 'Website Visitors', value: 52200, rate: '100%' },
+        { label: 'Blog / Service Page Views', value: 20880, rate: '40.0%' },
+        { label: 'Contact Form Started', value: 1670, rate: '3.2%' },
+        { label: 'Inquiry Submitted', value: 522, rate: '1.0%' },
+        { label: 'Appointment Booked', value: 339, rate: '0.65%' }
+      ],
+      adBars: [
+        { label: 'M1', search: 1100, display: 2050, meta: 1580, linkedin: 280 },
+        { label: 'M2', search: 1180, display: 2180, meta: 1700, linkedin: 300 },
+        { label: 'M3', search: 1270, display: 2330, meta: 1830, linkedin: 320 },
+        { label: 'M4', search: 1360, display: 2500, meta: 1960, linkedin: 340 },
+        { label: 'M5', search: 1450, display: 2680, meta: 2100, linkedin: 362 },
+        { label: 'M6', search: 1550, display: 2850, meta: 2250, linkedin: 385 },
+        { label: 'M7', search: 1650, display: 3020, meta: 2400, linkedin: 405 },
+        { label: 'M8', search: 1750, display: 3200, meta: 2570, linkedin: 430 },
+        { label: 'M9', search: 1850, display: 3380, meta: 2750, linkedin: 455 }
+      ]
+    },
+    '12m': {
+      sessions: { val: 72000, prev: 52000, sub: '6,000/mo avg · 460 peak day' },
+      inquiries: { val: 720, prev: 470, sub: '60/mo avg · 60% from organic' },
+      spend: { val: 27000, prev: 25000, sub: '$37.50/inquiry · ROAS 3.8x' },
+      cvr: { val: 1.0, prev: 0.90, sub: 'Sessions-to-inquiry rate' },
+      organic: { val: 46800, prev: 33800, sub: '65% of total · Top: "psychiatrist near me FL"' },
+      social: { val: 12240, prev: 7800, sub: 'IG 47% · FB 33% · LI 20%' },
+      content: { val: 168, prev: 110, sub: '64 Blogs · 52 Ads · 52 Social' },
+      reviews: { val: 4.9, prev: 4.8, sub: '56 new reviews this period' },
+      traffic: [
+        { label: 'M1', organic: 2600, paid: 580, social: 540, direct: 230 },
+        { label: 'M2', organic: 2800, paid: 630, social: 620, direct: 250 },
+        { label: 'M3', organic: 3000, paid: 680, social: 700, direct: 280 },
+        { label: 'M4', organic: 3200, paid: 730, social: 780, direct: 310 },
+        { label: 'M5', organic: 3400, paid: 780, social: 860, direct: 340 },
+        { label: 'M6', organic: 3600, paid: 830, social: 940, direct: 365 },
+        { label: 'M7', organic: 3850, paid: 890, social: 1020, direct: 390 },
+        { label: 'M8', organic: 4100, paid: 950, social: 1100, direct: 415 },
+        { label: 'M9', organic: 4350, paid: 1010, social: 1190, direct: 440 },
+        { label: 'M10', organic: 4600, paid: 1070, social: 1280, direct: 460 },
+        { label: 'M11', organic: 4900, paid: 1130, social: 1380, direct: 485 },
+        { label: 'M12', organic: 5200, paid: 1200, social: 1490, direct: 510 }
+      ],
+      ads: [
+        { platform: 'Google Search', icon: 'G', color: '#4285F4', spend: 10800, clicks: 17520, cpc: 0.62, ctr: 4.5, roas: 4.5, prevSpend: 10000 },
+        { platform: 'Google Display', icon: 'D', color: '#34A853', spend: 4380, clicks: 31980, cpc: 0.14, ctr: 0.80, roas: 2.4, prevSpend: 4200 },
+        { platform: 'Meta (IG + FB)', icon: 'M', color: '#E1306C', spend: 7740, clicks: 24780, cpc: 0.31, ctr: 2.9, roas: 3.8, prevSpend: 7200 },
+        { platform: 'LinkedIn Ads', icon: 'in', color: '#0077B5', spend: 2840, clicks: 4380, cpc: 0.65, ctr: 0.90, roas: 1.8, prevSpend: 2700 },
+        { platform: 'YouTube Pre-roll', icon: 'Y', color: '#FF0000', spend: 1296, clicks: 9300, cpc: 0.14, ctr: 1.8, roas: 2.5, prevSpend: 1400 }
+      ],
+      funnel: [
+        { label: 'Website Visitors', value: 72000, rate: '100%' },
+        { label: 'Blog / Service Page Views', value: 28800, rate: '40.0%' },
+        { label: 'Contact Form Started', value: 2304, rate: '3.2%' },
+        { label: 'Inquiry Submitted', value: 720, rate: '1.0%' },
+        { label: 'Appointment Booked', value: 468, rate: '0.65%' }
+      ],
+      adBars: [
+        { label: 'M1', search: 1000, display: 1900, meta: 1450, linkedin: 260 },
+        { label: 'M2', search: 1060, display: 2000, meta: 1530, linkedin: 275 },
+        { label: 'M3', search: 1130, display: 2120, meta: 1630, linkedin: 290 },
+        { label: 'M4', search: 1200, display: 2250, meta: 1730, linkedin: 308 },
+        { label: 'M5', search: 1280, display: 2380, meta: 1840, linkedin: 325 },
+        { label: 'M6', search: 1360, display: 2520, meta: 1960, linkedin: 345 },
+        { label: 'M7', search: 1440, display: 2660, meta: 2080, linkedin: 365 },
+        { label: 'M8', search: 1530, display: 2810, meta: 2210, linkedin: 385 },
+        { label: 'M9', search: 1620, display: 2960, meta: 2350, linkedin: 408 },
+        { label: 'M10', search: 1710, display: 3110, meta: 2500, linkedin: 430 },
+        { label: 'M11', search: 1810, display: 3280, meta: 2660, linkedin: 452 },
+        { label: 'M12', search: 1900, display: 3440, meta: 2820, linkedin: 475 }
       ]
     }
   };
@@ -7102,9 +7104,9 @@
     const d = analyticsData[p];
     if (!d) return;
 
-    const periodLabels = {'1w':'1-Week View','2w':'2-Week View','4w':'4-Week View','8w':'8-Week View','12w':'12-Week View'};
+    const periodLabels = {'1m':'1-Month View','3m':'3-Month View','6m':'6-Month View','9m':'9-Month View','12m':'12-Month View'};
     document.getElementById('chartPeriodLabel').textContent = periodLabels[p];
-    document.getElementById('funnelPeriodLabel').textContent = p.replace('w','-Week');
+    document.getElementById('funnelPeriodLabel').textContent = p.replace('m','-Month');
 
     // KPI row 1
     const kpis1 = [
@@ -7293,34 +7295,34 @@
   function renderWeeklyBreakdown(d, period) {
     const body = document.getElementById('weeklyBody');
     if (!body) return;
-    const weeks = parseInt(period);
-    document.getElementById('weeklyBreakdownLabel').textContent = weeks + ' Week' + (weeks > 1 ? 's' : '');
+    const months = parseInt(period);
+    document.getElementById('weeklyBreakdownLabel').textContent = months + ' Month' + (months > 1 ? 's' : '');
 
-    const weeklyData = [];
-    for (let i = 0; i < weeks; i++) {
-      const pct = 0.85 + (i / Math.max(weeks-1,1)) * 0.3;
-      const sessions = Math.round((d.sessions.val / weeks) * (pct + (Math.random()-0.5)*0.1));
+    const monthlyData = [];
+    for (let i = 0; i < months; i++) {
+      const pct = 0.85 + (i / Math.max(months-1,1)) * 0.3;
+      const sessions = Math.round((d.sessions.val / months) * (pct + (Math.random()-0.5)*0.1));
       const organic = Math.round(sessions * 0.66);
       const paid = Math.round(sessions * 0.18);
       const social = Math.round(sessions * 0.16);
-      const inquiries = Math.round((d.inquiries.val / weeks) * (pct + (Math.random()-0.5)*0.15));
+      const inquiries = Math.round((d.inquiries.val / months) * (pct + (Math.random()-0.5)*0.15));
       const cvr = (inquiries / sessions * 100).toFixed(2);
-      const adSpend = Math.round(d.spend.val / weeks);
+      const adSpend = Math.round(d.spend.val / months);
       const roas = (2.5 + Math.random() * 3).toFixed(1);
-      weeklyData.push({ wk: i+1, sessions, organic, paid, social, inquiries, cvr, adSpend, roas });
+      monthlyData.push({ wk: i+1, sessions, organic, paid, social, inquiries, cvr, adSpend, roas });
     }
 
-    body.innerHTML = weeklyData.map((w, i) => {
-      const prevSessions = i > 0 ? weeklyData[i-1].sessions : d.sessions.prev / weeks;
+    body.innerHTML = monthlyData.map((w, i) => {
+      const prevSessions = i > 0 ? monthlyData[i-1].sessions : d.sessions.prev / months;
       const sessChg = ((w.sessions - prevSessions) / prevSessions * 100);
       const sessChgCls = sessChg > 0 ? 'up' : sessChg < 0 ? 'down' : 'neutral';
 
-      const prevInq = i > 0 ? weeklyData[i-1].inquiries : d.inquiries.prev / weeks;
+      const prevInq = i > 0 ? monthlyData[i-1].inquiries : d.inquiries.prev / months;
       const inqChg = prevInq > 0 ? ((w.inquiries - prevInq) / prevInq * 100) : 0;
       const inqChgCls = inqChg > 0 ? 'up' : inqChg < 0 ? 'down' : 'neutral';
 
       return `<tr>
-        <td style="font-weight:700;">Week ${w.wk}</td>
+        <td style="font-weight:700;">Month ${w.wk}</td>
         <td>${w.sessions.toLocaleString()}</td>
         <td><span class="ad-change ${sessChgCls}">${sessChg >= 0 ? '+' : ''}${sessChg.toFixed(1)}%</span></td>
         <td>${w.organic.toLocaleString()}</td>
@@ -7492,56 +7494,56 @@
     });
   }
 
-  // Initialize with 2-week view
-  setPeriod('2w');
+  // Initialize with 1-month view
+  setPeriod('1m');
 
   // ═══════════ INTERACTIVE TREND CHART ═══════════
   const trendData = {
-    '1w': {
-      labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
-      sessions: [241,279,208,248,206,128,95],
-      organic: [140,165,120,135,110,68,57],
-      paid: [55,62,48,58,42,20,15],
-      social: [28,32,25,35,38,30,18],
-      inquiries: [1.5,2,1.5,2.5,2,1.5,1]
-    },
-    '2w': {
-      labels: ['W1-Mon','W1-Wed','W1-Fri','W1-Sun','W2-Tue','W2-Thu','W2-Sat'],
-      sessions: [241,208,206,95,279,248,128],
-      organic: [140,120,110,57,165,135,68],
-      paid: [55,48,42,15,62,58,20],
-      social: [28,25,38,18,32,35,30],
-      inquiries: [1.5,1.5,2,1,2,2.5,1.5]
-    },
-    '4w': {
-      labels: ['Week 1','Week 2','Week 3','Week 4'],
+    '1m': {
+      labels: ['Wk 1','Wk 2','Wk 3','Wk 4'],
       sessions: [1140,1233,1345,1474],
       organic: [720,760,820,880],
       paid: [180,200,230,250],
       social: [170,195,210,249],
-      inquiries: [10,11,12,14]
+      inquiries: [10,12,14,16]
     },
-    '8w': {
-      labels: ['W1','W2','W3','W4','W5','W6','W7','W8'],
-      sessions: [980,1050,1100,1140,1180,1233,1345,1474],
-      organic: [620,660,690,720,740,760,820,880],
-      paid: [150,165,175,180,190,200,230,250],
-      social: [140,155,165,170,180,195,210,249],
-      inquiries: [8,9,10,10,11,11,12,14]
+    '3m': {
+      labels: ['M1','M2','M3'],
+      sessions: [4820,5180,5540],
+      organic: [3100,3400,3760],
+      paid: [780,860,950],
+      social: [750,850,1055],
+      inquiries: [48,52,56]
     },
-    '12w': {
-      labels: ['W1','W2','W3','W4','W5','W6','W7','W8','W9','W10','W11','W12'],
-      sessions: [840,890,940,980,1050,1100,1140,1180,1233,1345,1410,1474],
-      organic: [520,550,580,620,660,690,720,740,760,820,850,880],
-      paid: [130,140,150,150,165,175,180,190,200,230,240,250],
-      social: [120,130,140,140,155,165,170,180,195,210,230,249],
-      inquiries: [6,7,8,8,9,10,10,11,11,12,13,14]
+    '6m': {
+      labels: ['M1','M2','M3','M4','M5','M6'],
+      sessions: [4200,4540,4930,5300,5680,6050],
+      organic: [2950,3150,3400,3650,3960,4200],
+      paid: [680,730,790,850,920,1000],
+      social: [660,730,810,900,1010,1170],
+      inquiries: [42,48,52,56,60,66]
+    },
+    '9m': {
+      labels: ['M1','M2','M3','M4','M5','M6','M7','M8','M9'],
+      sessions: [4000,4290,4640,5000,5370,5740,6090,6450,6830],
+      organic: [2800,3000,3250,3500,3750,4000,4250,4530,4850],
+      paid: [640,690,750,810,870,940,1010,1080,1150],
+      social: [600,680,760,850,940,1030,1120,1230,1360],
+      inquiries: [40,44,48,52,56,60,64,68,72]
+    },
+    '12m': {
+      labels: ['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10','M11','M12'],
+      sessions: [3800,4100,4400,4720,5050,5370,5700,6050,6400,6750,7110,7500],
+      organic: [2600,2800,3000,3200,3400,3600,3850,4100,4350,4600,4900,5200],
+      paid: [580,630,680,730,780,830,890,950,1010,1070,1130,1200],
+      social: [540,620,700,780,860,940,1020,1100,1190,1280,1380,1490],
+      inquiries: [35,40,44,48,52,56,60,64,68,72,76,80]
     }
   };
 
   const seriesColors = { sessions:'#2B6CB0', organic:'#48BB78', paid:'#F6C744', social:'#9F7AEA', inquiries:'#E53E3E' };
   let activeSeries = new Set(['sessions','organic','paid','social']);
-  let currentTrendPeriod = '2w';
+  let currentTrendPeriod = '1m';
 
   function renderTrendChart() {
     const svg = document.getElementById('trendSVG');
