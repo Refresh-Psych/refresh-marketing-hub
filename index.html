@@ -7291,12 +7291,16 @@
     </tr>`;
   }
 
-  // ════════ WEEKLY BREAKDOWN ════════
+  // ════════ MONTHLY BREAKDOWN ════════
   function renderWeeklyBreakdown(d, period) {
     const body = document.getElementById('weeklyBody');
     if (!body) return;
     const months = parseInt(period);
     document.getElementById('weeklyBreakdownLabel').textContent = months + ' Month' + (months > 1 ? 's' : '');
+
+    const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    // Current month is March 2026 (index 2). Work backwards from current month.
+    const currentMonthIdx = new Date().getMonth(); // 0-based
 
     const monthlyData = [];
     for (let i = 0; i < months; i++) {
@@ -7309,7 +7313,9 @@
       const cvr = (inquiries / sessions * 100).toFixed(2);
       const adSpend = Math.round(d.spend.val / months);
       const roas = (2.5 + Math.random() * 3).toFixed(1);
-      monthlyData.push({ wk: i+1, sessions, organic, paid, social, inquiries, cvr, adSpend, roas });
+      // Calculate which calendar month this is (going back from current month)
+      const mIdx = (currentMonthIdx - (months - 1) + i + 12) % 12;
+      monthlyData.push({ monthName: monthNames[mIdx], sessions, organic, paid, social, inquiries, cvr, adSpend, roas });
     }
 
     body.innerHTML = monthlyData.map((w, i) => {
@@ -7322,7 +7328,7 @@
       const inqChgCls = inqChg > 0 ? 'up' : inqChg < 0 ? 'down' : 'neutral';
 
       return `<tr>
-        <td style="font-weight:700;">Month ${w.wk}</td>
+        <td style="font-weight:700;">${w.monthName}</td>
         <td>${w.sessions.toLocaleString()}</td>
         <td><span class="ad-change ${sessChgCls}">${sessChg >= 0 ? '+' : ''}${sessChg.toFixed(1)}%</span></td>
         <td>${w.organic.toLocaleString()}</td>
