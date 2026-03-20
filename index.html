@@ -4,6 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Refresh Psychiatry — Marketing Content Hub</title>
+<meta name="description" content="Refresh Psychiatry's internal marketing intelligence hub — daily briefings, competitive analysis, analytics, content library, and campaign management for 16 telepsychiatry locations across Florida, Massachusetts, and Texas.">
+<meta name="author" content="Refresh Psychiatry and Therapy">
+<meta name="robots" content="noindex, nofollow">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Refresh Studio — Marketing Intelligence Hub">
+<meta property="og:description" content="Daily intelligence briefings, competitive analysis, analytics dashboards, and content management for Refresh Psychiatry's 16 telepsychiatry locations.">
+<meta property="og:image" content="https://refresh-psych.github.io/refresh-marketing-hub/refresh-logo.avif">
+<meta property="og:url" content="https://refresh-psych.github.io/refresh-marketing-hub/">
+<meta property="og:site_name" content="Refresh Studio">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Refresh Studio — Marketing Intelligence Hub">
+<meta name="twitter:description" content="Daily intelligence briefings, competitive analysis, and content management for Refresh Psychiatry.">
+<meta name="twitter:image" content="https://refresh-psych.github.io/refresh-marketing-hub/refresh-logo.avif">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://refresh-psych.github.io/refresh-marketing-hub/">
+
+<!-- Theme Color -->
+<meta name="theme-color" content="#2B6CB0">
+
 <link rel="icon" type="image/avif" href="refresh-logo.avif">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,6 +56,119 @@
     --radius-sm: 12px;
     --radius-xs: 8px;
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--blue);
+    color: white;
+    padding: 8px 16px;
+    z-index: 99999;
+    font-size: 14px;
+    border-radius: 0 0 8px 0;
+    transition: top 0.2s;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
+
+  /* ═══════════════ DARK THEME ═══════════════ */
+  [data-theme="dark"] {
+    --blue: #3b82f6;
+    --blue-light: #60a5fa;
+    --deep-blue: #93c5fd;
+    --navy: #0d1117;
+    --yellow: #fbbf24;
+    --yellow-dim: #f59e0b;
+    --yellow-glow: rgba(251,191,36,0.12);
+    --white: #e6edf3;
+    --cream: #0d1117;
+    --charcoal: #e6edf3;
+    --surface: #0d1117;
+    --surface-elevated: #161b22;
+    --border: rgba(255,255,255,0.1);
+    --border-hover: rgba(255,255,255,0.2);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+    --shadow-md: 0 8px 30px rgba(0,0,0,0.4);
+    --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
+    --shadow-glow: 0 0 40px rgba(251,191,36,0.1);
+  }
+
+  [data-theme="dark"] .nav-bar {
+    background: rgba(13, 17, 23, 0.88);
+  }
+
+  [data-theme="dark"] .nav-brand-text {
+    color: var(--white);
+  }
+
+  [data-theme="dark"] .nav-brand-text em {
+    color: #8b949e;
+  }
+
+  [data-theme="dark"] .nav-tab.active {
+    color: var(--white);
+  }
+
+  [data-theme="dark"] .section-header-left h2 {
+    color: #e6edf3;
+  }
+
+  [data-theme="dark"] .hero {
+    background: linear-gradient(155deg, #010409 0%, #0d1117 40%, #1a3a5c 85%, #2B6CB0 100%);
+  }
+
+  [data-theme="dark"] .brief-table thead,
+  [data-theme="dark"] .comparison-table thead {
+    background: #1c2333;
+  }
+
+  [data-theme="dark"] .brief-section summary:hover,
+  [data-theme="dark"] .comparison-table tbody tr:hover,
+  [data-theme="dark"] .brief-table tbody tr:hover,
+  [data-theme="dark"] .ad-breakdown-table tbody tr:hover {
+    background: rgba(56,139,253,0.06);
+  }
+
+  [data-theme="dark"] .comparison-table td.refresh-col {
+    background: rgba(59,130,246,0.08);
+  }
+
+  [data-theme="dark"] .content-card h3,
+  [data-theme="dark"] .campaign-card h3,
+  [data-theme="dark"] .brief-section .brief-body h4 {
+    color: #e6edf3;
+  }
+
+  [data-theme="dark"] ::-webkit-scrollbar-track { background: #0d1117; }
+  [data-theme="dark"] ::-webkit-scrollbar-thumb { background: rgba(139,148,158,0.3); }
+  [data-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: rgba(139,148,158,0.5); }
+
+  /* Dark mode toggle button */
+  .theme-toggle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--surface-elevated);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-left: auto;
+    flex-shrink: 0;
+    transition: all var(--transition);
+    box-shadow: var(--shadow-sm);
+    line-height: 1;
+  }
+
+  .theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-hover);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -2968,13 +3105,14 @@
 </style>
 </head>
 <body>
+<a href="#daily-brief" class="skip-link">Skip to main content</a>
 
 <!-- Scroll Progress -->
 <div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- ═══════════ HERO ═══════════ -->
 <header class="hero">
-  <canvas class="hero-canvas" id="heroCanvas"></canvas>
+  <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true" role="presentation"></canvas>
   <div class="hero-content">
     <div class="hero-badge"><span class="dot"></span> Marketing Content Hub</div>
     <div class="hero-title-row">
@@ -3016,26 +3154,27 @@
 </header>
 
 <!-- ═══════════ NAV ═══════════ -->
-<nav class="nav-bar" id="navBar">
+<nav class="nav-bar" id="navBar" role="tablist" aria-label="Content sections">
   <div class="nav-brand">
     <img src="refresh-logo.avif" alt="Refresh" class="nav-logo">
     <span class="nav-brand-text">Refresh <em>Studio</em></span>
   </div>
-  <button class="nav-tab active" data-tab="daily-brief">Daily Brief<span class="tab-count">37</span></button>
-  <button class="nav-tab" data-tab="analytics">Analytics</button>
-  <button class="nav-tab" data-tab="competitors">Competitors<span class="tab-count">4</span></button>
-  <button class="nav-tab" data-tab="video">Video<span class="tab-count">16</span></button>
-  <button class="nav-tab" data-tab="podcast">Podcast<span class="tab-count">2</span></button>
-  <button class="nav-tab" data-tab="content">Content<span class="tab-count">27</span></button>
-  <button class="nav-tab" data-tab="campaigns">Campaigns<span class="tab-count">6</span></button>
-  <button class="nav-tab" data-tab="viral">🔥 Viral<span class="tab-count">15</span></button>
+  <button class="nav-tab active" id="tab-daily-brief" data-tab="daily-brief" role="tab" aria-label="Daily Brief" aria-selected="true" aria-controls="daily-brief" tabindex="0">Daily Brief<span class="tab-count">37</span></button>
+  <button class="nav-tab" id="tab-analytics" data-tab="analytics" role="tab" aria-label="Analytics" aria-selected="false" aria-controls="analytics" tabindex="-1">Analytics</button>
+  <button class="nav-tab" id="tab-competitors" data-tab="competitors" role="tab" aria-label="Competitors" aria-selected="false" aria-controls="competitors" tabindex="-1">Competitors<span class="tab-count">4</span></button>
+  <button class="nav-tab" id="tab-video" data-tab="video" role="tab" aria-label="Video" aria-selected="false" aria-controls="video" tabindex="-1">Video<span class="tab-count">16</span></button>
+  <button class="nav-tab" id="tab-podcast" data-tab="podcast" role="tab" aria-label="Podcast" aria-selected="false" aria-controls="podcast" tabindex="-1">Podcast<span class="tab-count">2</span></button>
+  <button class="nav-tab" id="tab-content" data-tab="content" role="tab" aria-label="Content" aria-selected="false" aria-controls="content" tabindex="-1">Content<span class="tab-count">27</span></button>
+  <button class="nav-tab" id="tab-campaigns" data-tab="campaigns" role="tab" aria-label="Campaigns" aria-selected="false" aria-controls="campaigns" tabindex="-1">Campaigns<span class="tab-count">6</span></button>
+  <button class="nav-tab" id="tab-viral" data-tab="viral" role="tab" aria-label="Viral" aria-selected="false" aria-controls="viral" tabindex="-1">🔥 Viral<span class="tab-count">15</span></button>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
 </nav>
 
 <!-- ═══════════ CONTENT ═══════════ -->
 <main class="content-wrap">
 
   <!-- VIDEO SECTION -->
-  <section class="section" id="video">
+  <section class="section" id="video" role="tabpanel" aria-labelledby="tab-video">
     <div class="section-header">
       <div class="section-header-left">
         <h2>Video Assets</h2>
@@ -3468,7 +3607,7 @@
   </section>
 
   <!-- PODCAST SECTION -->
-  <section class="section" id="podcast">
+  <section class="section" id="podcast" role="tabpanel" aria-labelledby="tab-podcast">
     <div class="section-header">
       <div class="section-header-left">
         <h2>Podcast Studio</h2>
@@ -3478,7 +3617,7 @@
 
     <div class="podcast-hero reveal">
       <div class="podcast-art">
-        <canvas class="audio-visualizer" id="audioVisualizer" width="200" height="80"></canvas>
+        <canvas class="audio-visualizer" id="audioVisualizer" width="200" height="80" aria-hidden="true" role="presentation"></canvas>
         <h3>Refresh Psychiatry</h3>
         <div class="subtitle">Audio Overview</div>
       </div>
@@ -3551,7 +3690,7 @@
   </section>
 
   <!-- CONTENT LIBRARY -->
-  <section class="section" id="content">
+  <section class="section" id="content" role="tabpanel" aria-labelledby="tab-content">
     <div class="section-header">
       <div class="section-header-left">
         <h2>Content Library</h2>
@@ -3874,7 +4013,7 @@
   </section>
 
   <!-- CAMPAIGNS -->
-  <section class="section" id="campaigns">
+  <section class="section" id="campaigns" role="tabpanel" aria-labelledby="tab-campaigns">
     <div class="section-header">
       <div class="section-header-left">
         <h2>Active Campaigns</h2>
@@ -3987,7 +4126,7 @@
   </section>
 
   <!-- VIRAL MENTAL HEALTH CONTENT -->
-  <section class="section" id="viral">
+  <section class="section" id="viral" role="tabpanel" aria-labelledby="tab-viral">
     <div class="section-header">
       <div class="section-header-left">
         <h2>🔥 Viral Mental Health Content</h2>
@@ -4417,7 +4556,7 @@
   </section>
 
   <!-- COMPETITORS -->
-  <section class="section" id="competitors">
+  <section class="section" id="competitors" role="tabpanel" aria-labelledby="tab-competitors">
     <div class="section-header">
       <div class="section-header-left">
         <h2>Competitive Intelligence</h2>
@@ -5341,7 +5480,7 @@
   </section>
 
   <!-- DAILY BRIEF -->
-  <section class="section active" id="daily-brief">
+  <section class="section active" id="daily-brief" role="tabpanel" aria-labelledby="tab-daily-brief">
     <div class="section-header">
       <div class="section-header-left">
         <h2 id="briefing-title">📅 Daily Intelligence Briefing — <script>document.write(new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}))</script></h2>
@@ -5927,7 +6066,7 @@
   </section>
 
   <!-- ANALYTICS -->
-  <section class="section" id="analytics">
+  <section class="section" id="analytics" role="tabpanel" aria-labelledby="tab-analytics">
     <div class="section-header">
       <div class="section-header-left">
         <h2>Performance Analytics</h2>
@@ -6981,36 +7120,72 @@
   const tabs = document.querySelectorAll('.nav-tab');
   const sections = document.querySelectorAll('.section');
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      sections.forEach(s => s.classList.remove('active'));
-      tab.classList.add('active');
-      const section = document.getElementById(tab.dataset.tab);
-      section.classList.add('active');
-      // Trigger reveals in new section
-      setTimeout(() => {
-        section.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-      }, 50);
-      // Re-process social embeds when Viral tab is shown
-      if (tab.dataset.tab === 'viral') {
-        setTimeout(() => {
-          if (window.instgrm && window.instgrm.Embeds) {
-            window.instgrm.Embeds.process();
-          }
-          // Fix Instagram iframes stuck at height 0 from loading in hidden tab
-          section.querySelectorAll('iframe[src*="instagram.com"]').forEach(f => {
-            if (!f.offsetHeight || f.offsetHeight < 100) {
-              f.style.minHeight = '480px';
-              f.style.width = '100%';
-            }
-          });
-          if (window.tiktokEmbed && window.tiktokEmbed.lib) {
-            window.tiktokEmbed.lib.render();
-          }
-        }, 300);
-      }
+  function activateTab(tab) {
+    tabs.forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+      t.setAttribute('tabindex', '-1');
     });
+    sections.forEach(s => s.classList.remove('active'));
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+    tab.setAttribute('tabindex', '0');
+    const section = document.getElementById(tab.dataset.tab);
+    section.classList.add('active');
+    // Trigger reveals in new section
+    setTimeout(() => {
+      section.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    }, 50);
+    // Re-process social embeds when Viral tab is shown
+    if (tab.dataset.tab === 'viral') {
+      setTimeout(() => {
+        if (window.instgrm && window.instgrm.Embeds) {
+          window.instgrm.Embeds.process();
+        }
+        // Fix Instagram iframes stuck at height 0 from loading in hidden tab
+        section.querySelectorAll('iframe[src*="instagram.com"]').forEach(f => {
+          if (!f.offsetHeight || f.offsetHeight < 100) {
+            f.style.minHeight = '480px';
+            f.style.width = '100%';
+          }
+        });
+        if (window.tiktokEmbed && window.tiktokEmbed.lib) {
+          window.tiktokEmbed.lib.render();
+        }
+      }, 300);
+    }
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => activateTab(tab));
+  });
+
+  // ═══════════ KEYBOARD NAV FOR TABS ═══════════
+  const tabList = document.getElementById('navBar');
+  tabList.addEventListener('keydown', (e) => {
+    const tabArray = Array.from(tabs);
+    const currentIndex = tabArray.indexOf(document.activeElement);
+    if (currentIndex === -1) return;
+
+    let newIndex;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      newIndex = (currentIndex + 1) % tabArray.length;
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      newIndex = (currentIndex - 1 + tabArray.length) % tabArray.length;
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      newIndex = 0;
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      newIndex = tabArray.length - 1;
+    } else {
+      return;
+    }
+
+    tabArray[newIndex].focus();
+    activateTab(tabArray[newIndex]);
   });
 
   // ═══════════ SCROLL PROGRESS ═══════════
@@ -8584,6 +8759,38 @@
     .viral-embed iframe { max-height: 380px !important; }
   }
 </style>
+
+<script>
+  // ═══════════ DARK MODE TOGGLE ═══════════
+  (function() {
+    const toggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    const STORAGE_KEY = 'refresh-theme';
+
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        html.setAttribute('data-theme', 'dark');
+        toggle.textContent = '☀️';
+        toggle.setAttribute('aria-label', 'Switch to light mode');
+      } else {
+        html.removeAttribute('data-theme');
+        toggle.textContent = '🌙';
+        toggle.setAttribute('aria-label', 'Switch to dark mode');
+      }
+    }
+
+    // Load saved preference (default to light)
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) applyTheme(saved);
+
+    toggle.addEventListener('click', function() {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      localStorage.setItem(STORAGE_KEY, newTheme);
+      applyTheme(newTheme);
+    });
+  })();
+</script>
 
 </body>
 </html>
