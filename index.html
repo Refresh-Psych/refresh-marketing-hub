@@ -4023,7 +4023,7 @@
         <div class="viral-rank">#2</div>
         <div class="viral-platform tiktok">📱 TikTok</div>
         <h3>📱 Gen Z's Viral Hack to Fix Their Attention Spans — And It May Actually Work</h3>
-        <div class="viral-creator">USA Today · Published March 20, 2026 · Trending across TikTok</div>
+        <div class="viral-creator">USA Today · Published <script>document.write(new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}))</script> · Trending across TikTok</div>
         <div class="viral-embed">
           <div class="embed-placeholder">
             <div style="font-size:28px;margin-bottom:8px;">📱</div>
@@ -5344,11 +5344,34 @@
   <section class="section active" id="daily-brief">
     <div class="section-header">
       <div class="section-header-left">
-        <h2>📅 Daily Intelligence Briefing — March 20, 2026</h2>
-        <p>Cycle Day 5/7 — Social Media Content Strategy Workshop · Generated 6:00 AM ET</p>
+        <h2 id="briefing-title">📅 Daily Intelligence Briefing — <script>document.write(new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}))</script></h2>
+        <p id="briefing-subtitle"></p>
       </div>
     </div>
-    <div class="brief-cycle-badge">🔄 Cycle Day 5 — Social Media Content Strategy Workshop</div>
+    <div class="brief-cycle-badge" id="briefing-cycle-badge"></div>
+    <script>
+    (function(){
+      var themes = [
+        'Off-Label Treatment Deep Dive',
+        'Revenue Optimization Strategy',
+        'Psychiatric Drug Pipeline Analysis',
+        'Malpractice Case Study',
+        'Social Media Content Strategy Workshop',
+        'Telehealth Regulatory Landscape',
+        'Emerging Research Methodology'
+      ];
+      // March 16, 2026 = Cycle Day 1 (reference anchor)
+      var epoch = new Date(2026, 2, 16);
+      var today = new Date();
+      var diffDays = Math.floor((today - epoch) / 86400000);
+      var cycleDay = ((diffDays % 7) + 7) % 7 + 1;
+      var theme = themes[cycleDay - 1];
+      document.getElementById('briefing-subtitle').textContent =
+        'Cycle Day ' + cycleDay + '/7 — ' + theme + ' · Generated 6:00 AM ET';
+      document.getElementById('briefing-cycle-badge').textContent =
+        '🔄 Cycle Day ' + cycleDay + ' — ' + theme;
+    })();
+    </script>
 
     <!-- ════════════ PART 1: CLINICAL & REGULATORY ════════════ -->
     <div class="brief-part-header">Part 1: Clinical &amp; Regulatory Intelligence</div>
