@@ -79,6 +79,7 @@
     overflow: hidden;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 100px 60px 70px;
   }
 
@@ -114,7 +115,62 @@
     position: relative;
     z-index: 2;
     max-width: 700px;
+    flex: 1;
   }
+
+  .hero-map {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 320px;
+    height: 400px;
+  }
+
+  .hero-map svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 8px 32px rgba(0,0,0,0.3));
+  }
+
+  .map-pin {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  .map-pin:hover {
+    transform: scale(1.3);
+  }
+  .map-pin:hover .pin-label {
+    opacity: 1;
+  }
+
+  .pin-label {
+    font-size: 8px;
+    font-weight: 700;
+    fill: #ffffff;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    text-anchor: middle;
+  }
+
+  @keyframes pinDrop {
+    0% { opacity: 0; transform: translateY(-8px); }
+    60% { opacity: 1; transform: translateY(1px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .map-pin { animation: pinDrop 0.5s ease forwards; }
+  .map-pin:nth-child(2) { animation-delay: 0.1s; }
+  .map-pin:nth-child(3) { animation-delay: 0.15s; }
+  .map-pin:nth-child(4) { animation-delay: 0.2s; }
+  .map-pin:nth-child(5) { animation-delay: 0.25s; }
+  .map-pin:nth-child(6) { animation-delay: 0.3s; }
+  .map-pin:nth-child(7) { animation-delay: 0.35s; }
+  .map-pin:nth-child(8) { animation-delay: 0.4s; }
+  .map-pin:nth-child(9) { animation-delay: 0.45s; }
+  .map-pin:nth-child(10) { animation-delay: 0.5s; }
 
   .hero-badge {
     display: inline-flex;
@@ -237,7 +293,7 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: 2;
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 14px;
   }
@@ -2482,7 +2538,8 @@
   /* ═══════════════ MOBILE ═══════════════ */
   @media (max-width: 700px) {
     /* Hero */
-    .hero { padding: 60px 20px 36px; min-height: 340px; }
+    .hero { padding: 60px 20px 36px; min-height: 340px; flex-wrap: wrap; }
+    .hero-map { display: none; }
     .hero-title-row { gap: 16px; }
     .hero-logo { width: 80px; }
     .hero h1 { font-size: 28px; line-height: 1.2; }
@@ -2995,6 +3052,156 @@
       <a class="location-pill" href="https://www.google.com/search?q=Refresh+Psychiatry+and+Therapy+Vero+Beach+FL" target="_blank" rel="noopener"><span class="pin">📍</span> Vero Beach</a>
     </div>
   </div>
+
+  <!-- Florida Location Map -->
+  <div class="hero-map">
+    <svg viewBox="0 0 400 480" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="mapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#2B6CB0;stop-opacity:0.35"/>
+          <stop offset="50%" style="stop-color:#1a4a7a;stop-opacity:0.3"/>
+          <stop offset="100%" style="stop-color:#F6C744;stop-opacity:0.2"/>
+        </linearGradient>
+        <linearGradient id="mapStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#2B6CB0;stop-opacity:0.8"/>
+          <stop offset="100%" style="stop-color:#F6C744;stop-opacity:0.9"/>
+        </linearGradient>
+        <filter id="mapGlow">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="pinGlow">
+          <feGaussianBlur stdDeviation="2" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- Florida outline (simplified) -->
+      <path d="
+        M 60,30 L 120,28 L 180,25 L 240,22 L 300,20 L 340,22 L 355,30
+        L 358,50 L 360,80 L 355,100 L 348,115
+        L 340,120 L 335,135 L 338,155 L 342,170
+        L 345,185 L 342,200 L 338,215 L 332,235
+        L 325,255 L 318,275 L 308,295 L 298,315
+        L 285,335 L 272,352 L 258,368 L 245,382
+        L 232,395 L 220,405 L 210,412 L 200,418
+        L 192,422 L 185,428 L 180,435 L 178,442
+        L 180,448 L 185,452 L 192,450 L 198,445
+        L 205,438 L 212,432 L 218,428 L 225,425
+        L 215,430 L 200,440 L 188,448 L 180,455
+        L 170,458 L 160,455 L 155,448 L 152,438
+        L 148,425 L 142,410 L 135,395 L 128,378
+        L 118,360 L 108,345 L 98,332 L 88,322
+        L 78,315 L 68,310 L 58,308 L 48,310
+        L 40,315 L 35,322 L 32,330 L 28,340
+        L 25,350 L 22,345 L 20,335 L 22,320
+        L 28,305 L 35,290 L 38,275 L 40,260
+        L 38,240 L 35,220 L 32,200 L 30,180
+        L 28,160 L 25,140 L 22,120 L 20,100
+        L 22,80 L 25,60 L 30,45 L 40,35 L 60,30 Z
+      " fill="url(#mapGrad)" stroke="url(#mapStroke)" stroke-width="1.5" filter="url(#mapGlow)"/>
+
+      <!-- Subtle grid lines inside Florida -->
+      <line x1="80" y1="60" x2="80" y2="310" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+      <line x1="160" y1="30" x2="160" y2="440" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+      <line x1="240" y1="22" x2="240" y2="395" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+      <line x1="320" y1="22" x2="320" y2="270" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+      <line x1="20" y1="100" x2="360" y2="100" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+      <line x1="20" y1="200" x2="345" y2="200" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+      <line x1="25" y1="300" x2="310" y2="300" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+
+      <!-- ═══ LOCATION PINS ═══ -->
+
+      <!-- Orlando -->
+      <g class="map-pin" data-city="Orlando">
+        <circle cx="268" cy="168" r="10" fill="rgba(43,108,176,0.25)" stroke="none"/>
+        <path d="M268,148 c-7,0 -12,5 -12,12 c0,9 12,20 12,20 s12,-11 12,-20 c0,-7 -5,-12 -12,-12z" fill="#2B6CB0" filter="url(#pinGlow)"/>
+        <circle cx="268" cy="160" r="4" fill="#ffffff"/>
+        <text class="pin-label" x="268" y="143">Orlando</text>
+      </g>
+
+      <!-- Winter Park -->
+      <g class="map-pin" data-city="Winter Park">
+        <circle cx="280" cy="162" r="10" fill="rgba(246,199,68,0.2)" stroke="none"/>
+        <path d="M280,142 c-7,0 -12,5 -12,12 c0,9 12,20 12,20 s12,-11 12,-20 c0,-7 -5,-12 -12,-12z" fill="#F6C744" filter="url(#pinGlow)"/>
+        <circle cx="280" cy="154" r="4" fill="#ffffff"/>
+        <text class="pin-label" x="280" y="137">Winter Park</text>
+      </g>
+
+      <!-- Vero Beach -->
+      <g class="map-pin" data-city="Vero Beach">
+        <circle cx="318" cy="215" r="10" fill="rgba(72,187,120,0.2)" stroke="none"/>
+        <path d="M318,195 c-7,0 -12,5 -12,12 c0,9 12,20 12,20 s12,-11 12,-20 c0,-7 -5,-12 -12,-12z" fill="#48BB78" filter="url(#pinGlow)"/>
+        <circle cx="318" cy="207" r="4" fill="#ffffff"/>
+        <text class="pin-label" x="318" y="190">Vero Beach</text>
+      </g>
+
+      <!-- West Palm Beach -->
+      <g class="map-pin" data-city="West Palm Beach">
+        <circle cx="308" cy="268" r="10" fill="rgba(43,108,176,0.25)" stroke="none"/>
+        <path d="M308,248 c-7,0 -12,5 -12,12 c0,9 12,20 12,20 s12,-11 12,-20 c0,-7 -5,-12 -12,-12z" fill="#2B6CB0" filter="url(#pinGlow)"/>
+        <circle cx="308" cy="260" r="4" fill="#ffffff"/>
+        <text class="pin-label" x="308" y="243">W. Palm Beach</text>
+      </g>
+
+      <!-- Wellington -->
+      <g class="map-pin" data-city="Wellington">
+        <circle cx="290" cy="278" r="10" fill="rgba(246,199,68,0.2)" stroke="none"/>
+        <path d="M290,258 c-7,0 -12,5 -12,12 c0,9 12,20 12,20 s12,-11 12,-20 c0,-7 -5,-12 -12,-12z" fill="#F6C744" filter="url(#pinGlow)"/>
+        <circle cx="290" cy="270" r="4" fill="#ffffff"/>
+        <text class="pin-label" x="290" y="253">Wellington</text>
+      </g>
+
+      <!-- Coconut Creek -->
+      <g class="map-pin" data-city="Coconut Creek">
+        <circle cx="295" cy="298" r="10" fill="rgba(72,187,120,0.2)" stroke="none"/>
+        <path d="M295,278 c-7,0 -12,5 -12,12 c0,9 12,20 12,20 s12,-11 12,-20 c0,-7 -5,-12 -12,-12z" fill="#48BB78" filter="url(#pinGlow)"/>
+        <circle cx="295" cy="290" r="4" fill="#ffffff"/>
+        <text class="pin-label" x="295" y="273">Coconut Creek</text>
+      </g>
+
+      <!-- Coral Springs -->
+      <g class="map-pin" data-city="Coral Springs">
+        <circle cx="280" cy="305" r="10" fill="rgba(43,108,176,0.25)" stroke="none"/>
+        <path d="M280,285 c-7,0 -12,5 -12,12 c0,9 12,20 12,20 s12,-11 12,-20 c0,-7 -5,-12 -12,-12z" fill="#2B6CB0" filter="url(#pinGlow)"/>
+        <circle cx="280" cy="297" r="4" fill="#ffffff"/>
+        <text class="pin-label" x="280" y="280">Coral Springs</text>
+      </g>
+
+      <!-- Pembroke Pines -->
+      <g class="map-pin" data-city="Pembroke Pines">
+        <circle cx="278" cy="325" r="10" fill="rgba(246,199,68,0.2)" stroke="none"/>
+        <path d="M278,305 c-7,0 -12,5 -12,12 c0,9 12,20 12,20 s12,-11 12,-20 c0,-7 -5,-12 -12,-12z" fill="#F6C744" filter="url(#pinGlow)"/>
+        <circle cx="278" cy="317" r="4" fill="#ffffff"/>
+        <text class="pin-label" x="278" y="300">Pembroke Pines</text>
+      </g>
+
+      <!-- Davie (HQ) - larger pin -->
+      <g class="map-pin" data-city="Davie">
+        <circle cx="272" cy="318" r="14" fill="rgba(246,199,68,0.15)" stroke="rgba(246,199,68,0.4)" stroke-width="1">
+          <animate attributeName="r" values="14;18;14" dur="2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <path d="M272,293 c-9,0 -15,6 -15,15 c0,11 15,25 15,25 s15,-14 15,-25 c0,-9 -6,-15 -15,-15z" fill="#F6C744" stroke="#ffffff" stroke-width="1.5" filter="url(#pinGlow)"/>
+        <circle cx="272" cy="308" r="5" fill="#ffffff"/>
+        <text class="pin-label" x="272" y="286" style="opacity:1;font-size:9px;fill:#F6C744">★ Davie HQ</text>
+      </g>
+
+      <!-- Miami -->
+      <g class="map-pin" data-city="Miami">
+        <circle cx="268" cy="345" r="10" fill="rgba(72,187,120,0.2)" stroke="none"/>
+        <path d="M268,325 c-7,0 -12,5 -12,12 c0,9 12,20 12,20 s12,-11 12,-20 c0,-7 -5,-12 -12,-12z" fill="#48BB78" filter="url(#pinGlow)"/>
+        <circle cx="268" cy="337" r="4" fill="#ffffff"/>
+        <text class="pin-label" x="268" y="320">Miami</text>
+      </g>
+
+      <!-- "10 Locations" badge -->
+      <rect x="130" y="420" rx="12" ry="12" width="140" height="28" fill="rgba(0,0,0,0.35)" stroke="rgba(246,199,68,0.4)" stroke-width="1"/>
+      <text x="200" y="439" text-anchor="middle" font-size="11" font-weight="700" fill="#F6C744" font-family="'DM Sans',sans-serif">📍 10 FL Locations</text>
+
+    </svg>
+  </div>
+
   <div class="hero-stats">
     <div class="stat-card">
       <div class="number" data-count="10">0</div>
