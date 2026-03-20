@@ -147,12 +147,18 @@
     50% { opacity: 0.4; transform: scale(0.6); }
   }
 
+  .hero-title-row {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
   .hero-logo {
-    width: 180px;
+    width: 130px;
     height: auto;
-    margin-bottom: 18px;
     border-radius: 16px;
     filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3));
+    flex-shrink: 0;
     animation: logoFloat 4s ease-in-out infinite;
   }
 
@@ -2481,7 +2487,8 @@
   @media (max-width: 700px) {
     /* Hero */
     .hero { padding: 60px 20px 36px; min-height: 340px; }
-    .hero-logo { width: 120px; margin-bottom: 12px; }
+    .hero-title-row { gap: 16px; }
+    .hero-logo { width: 80px; }
     .hero h1 { font-size: 28px; line-height: 1.2; }
     .hero p { font-size: 14px; max-width: 100%; }
     .nav-brand-text { display: none; }
@@ -2974,8 +2981,10 @@
   <canvas class="hero-canvas" id="heroCanvas"></canvas>
   <div class="hero-content">
     <div class="hero-badge"><span class="dot"></span> Marketing Content Hub</div>
-    <img src="refresh-logo.avif" alt="Refresh Psychiatry Logo" class="hero-logo">
-    <h1>Refresh Psychiatry<br><em>Content Studio</em></h1>
+    <div class="hero-title-row">
+      <img src="refresh-logo.avif" alt="Refresh Psychiatry Logo" class="hero-logo">
+      <h1>Refresh Psychiatry<br><em>Content Studio</em></h1>
+    </div>
     <p>Your centralized dashboard for video, podcast, social media, and advertising assets. Create, preview, and launch campaigns — all in one place.</p>
     <div class="hero-locations">
       <span class="location-pill"><span class="pin">📍</span> Davie</span>
