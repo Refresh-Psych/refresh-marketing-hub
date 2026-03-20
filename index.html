@@ -3991,7 +3991,7 @@
     <div class="section-header">
       <div class="section-header-left">
         <h2>🔥 Viral Mental Health Content</h2>
-        <p>Top 15 most-shared psychiatric and mental health posts across social media — updated March 15, 2026</p>
+        <p id="viralDateLabel">Top 15 most-shared psychiatric and mental health posts across social media — updated <script>document.write(new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}))</script></p>
       </div>
     </div>
     <div class="viral-grid">
@@ -6815,7 +6815,8 @@
   // 3. Paste the published CSV URL below
   // 4. The dashboard will auto-pull real data on load
 
-  const SHEETS_CSV_URL = ''; // Paste your published Google Sheet CSV URL here
+  const SHEETS_CSV_URL = ''; // Paste your published Google Sheet CSV URL here (MonthlyData tab)
+  const VIRAL_SHEETS_CSV_URL = ''; // Paste your published Google Sheet CSV URL here (ViralContent tab)
 
   let realMonthlyData = null;
 
@@ -6861,6 +6862,95 @@
       if (typeof setPeriod === 'function') setPeriod(document.querySelector('.period-btn.active')?.dataset.period || '12m');
     }
   });
+
+  // ═══════════ VIRAL CONTENT AUTO-UPDATE ═══════════
+  const VIRAL_PLATFORM_META = {
+    tiktok: { emoji: '📱', label: 'TikTok', cssClass: 'tiktok', bgClass: 'tiktok-bg' },
+    instagram: { emoji: '📸', label: 'Instagram', cssClass: 'instagram', bgClass: 'instagram-bg' },
+    youtube: { emoji: '🎬', label: 'YouTube', cssClass: 'youtube', bgClass: 'youtube-bg' },
+    twitter: { emoji: '🐦', label: 'X / Twitter', cssClass: 'twitter', bgClass: 'twitter-bg' },
+    reddit: { emoji: '🟠', label: 'Reddit', cssClass: 'reddit', bgClass: 'reddit-bg' },
+    linkedin: { emoji: '💼', label: 'LinkedIn', cssClass: 'linkedin', bgClass: 'linkedin-bg' },
+    facebook: { emoji: '👤', label: 'Facebook', cssClass: 'facebook', bgClass: 'facebook-bg' }
+  };
+
+  async function fetchViralContent() {
+    if (!VIRAL_SHEETS_CSV_URL) return;
+    try {
+      const res = await fetch(VIRAL_SHEETS_CSV_URL);
+      const csv = await res.text();
+      const rows = csv.trim().split('\n').slice(1);
+      if (rows.length === 0) return;
+
+      const items = rows.map(row => {
+        // Parse CSV properly (handle commas in quoted fields)
+        const cols = row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g) || [];
+        const clean = cols.map(c => c.replace(/^"|"$/g, '').trim());
+        return {
+          rank: clean[0] || '',
+          platform: (clean[1] || 'tiktok').toLowerCase(),
+          emoji: clean[2] || '🧠',
+          title: clean[3] || '',
+          creator: clean[4] || '',
+          description: clean[5] || '',
+          views: clean[6] || '',
+          likes: clean[7] || '',
+          shares: clean[8] || '',
+          takeaway: clean[9] || '',
+          link: clean[10] || '',
+          date: clean[11] || ''
+        };
+      }).filter(item => item.title);
+
+      if (items.length === 0) return;
+
+      // Update the "updated" date in the header
+      const viralHeader = document.querySelector('#viral .section-header p');
+      if (viralHeader) {
+        const latestDate = items[0].date || new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        viralHeader.textContent = `Top ${items.length} most-shared psychiatric and mental health posts across social media — updated ${latestDate}`;
+      }
+
+      // Rebuild viral grid
+      const grid = document.querySelector('#viral .viral-grid');
+      if (!grid) return;
+
+      grid.innerHTML = items.map(item => {
+        const pm = VIRAL_PLATFORM_META[item.platform] || VIRAL_PLATFORM_META.tiktok;
+        const statsHtml = [
+          item.views ? `<span>👁️ ${item.views}</span>` : '',
+          item.likes ? `<span>❤️ ${item.likes}</span>` : '',
+          item.shares ? `<span>🔁 ${item.shares}</span>` : ''
+        ].filter(Boolean).join('');
+
+        return `
+          <div class="viral-card reveal">
+            <div class="viral-card-banner ${pm.bgClass}"><span class="banner-icon">${item.emoji}</span></div>
+            <div class="viral-rank">#${item.rank}</div>
+            <div class="viral-platform ${pm.cssClass}">${pm.emoji} ${pm.label}</div>
+            <h3>${item.emoji} ${item.title}</h3>
+            <div class="viral-creator">${item.creator}</div>
+            ${item.link ? `<div class="viral-embed"><div class="embed-placeholder"><div style="font-size:28px;margin-bottom:8px;">${pm.emoji}</div><a href="${item.link}" target="_blank" rel="noopener">View on ${pm.label} →</a></div></div>` : ''}
+            <p>${item.description}</p>
+            ${statsHtml ? `<div class="viral-stats">${statsHtml}</div>` : ''}
+            ${item.takeaway ? `<div class="viral-takeaway"><strong>🎯 Takeaway:</strong> ${item.takeaway}</div>` : ''}
+          </div>
+        `;
+      }).join('');
+
+      // Re-observe reveals
+      grid.querySelectorAll('.reveal').forEach(el => {
+        if (typeof revealObserver !== 'undefined') revealObserver.observe(el);
+      });
+
+      console.log('✅ Viral content updated from Google Sheet — ' + items.length + ' items');
+    } catch(e) {
+      console.warn('Viral sheet fetch failed, using hardcoded content:', e);
+    }
+  }
+
+  // Auto-fetch viral content on load
+  fetchViralContent();
 
   // ═══════════ TAB NAVIGATION ═══════════
   const tabs = document.querySelectorAll('.nav-tab');

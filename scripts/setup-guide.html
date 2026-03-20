@@ -117,6 +117,21 @@
     <p>The <code>mergeGoogleAdsData()</code> function in the script will automatically merge this into your MonthlyData sheet.</p>
   </div>
 
+  <h2>Bonus: Daily Viral Mental Health Content</h2>
+  <div class="step-card">
+    <span class="badge badge-med">Optional — 5 minutes</span>
+    <p>Automatically update the "Viral Mental Health Content" section daily:</p>
+    <ol style="padding-left: 24px; margin: 8px 0;">
+      <li>In your spreadsheet, create a new tab called <strong>"ViralContent"</strong></li>
+      <li>Add headers: <code style="background:#EDF2F7;padding:2px 6px;border-radius:4px;font-size:11px;">Rank, Platform, Emoji, Title, Creator, Description, Views, Likes, Shares, Takeaway, Link, Date</code></li>
+      <li>Add the <a href="viral-content-updater.js" target="_blank">viral-content-updater.js</a> script to your Apps Script project</li>
+      <li>Add a daily trigger for <code>dailyViralUpdate</code> (same as Step 3 above)</li>
+      <li>Publish the <strong>"ViralContent"</strong> tab as CSV and share the URL</li>
+    </ol>
+    <p>The script searches Reddit (r/mentalhealth, r/ADHD, r/anxiety, etc.), YouTube, and Google News daily for trending mental health content and curates the top 15 with Refresh-specific takeaways.</p>
+    <div class="tip">For YouTube results, optionally add a free YouTube Data API key (Google Cloud Console → APIs → YouTube Data API v3). Reddit and Google News work without any API key.</div>
+  </div>
+
 </div>
 </body>
 </html>
