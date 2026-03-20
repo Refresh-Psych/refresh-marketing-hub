@@ -8036,10 +8036,10 @@
     // Action Items (with localStorage persistence)
     const actionsList = document.getElementById('actionItemsList');
     if (ep.actions && ep.actions.length) {
-      const savedChecks = JSON.parse(localStorage.getItem('podcastActions_ep' + currentEpisode) || '{}');
+      const savedChecks = JSON.parse(localStorage.getItem('podcastActions_ep' + currentEpisodeIdx) || '{}');
       actionsList.innerHTML = ep.actions.map((a, i) => {
         const isChecked = savedChecks[i] ? ' checked' : '';
-        return `<div class="action-item${isChecked}" data-ep="${currentEpisode}" data-idx="${i}" onclick="toggleActionItem(this)">
+        return `<div class="action-item${isChecked}" data-ep="${currentEpisodeIdx}" data-idx="${i}" onclick="toggleActionItem(this)">
           <div class="action-check"></div>
           <div class="action-text">
             <h4>${a.title}</h4>
