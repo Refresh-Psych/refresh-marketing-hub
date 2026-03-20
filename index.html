@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Refresh Psychiatry — Marketing Content Hub</title>
+<link rel="icon" type="image/avif" href="refresh-logo.avif">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,400&family=Playfair+Display:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -146,6 +147,20 @@
     50% { opacity: 0.4; transform: scale(0.6); }
   }
 
+  .hero-logo {
+    width: 180px;
+    height: auto;
+    margin-bottom: 18px;
+    border-radius: 16px;
+    filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3));
+    animation: logoFloat 4s ease-in-out infinite;
+  }
+
+  @keyframes logoFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
   .hero h1 {
     font-family: 'Playfair Display', Georgia, serif;
     font-size: 58px;
@@ -281,11 +296,45 @@
     border-bottom: 1px solid var(--border);
     padding: 0 60px;
     display: flex;
+    align-items: center;
     gap: 4px;
     transition: box-shadow var(--transition);
   }
 
   .nav-bar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px 8px 0;
+    border-right: 1px solid var(--border);
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+
+  .nav-logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: 6px;
+  }
+
+  .nav-brand-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--deep-blue);
+    letter-spacing: -0.3px;
+    white-space: nowrap;
+  }
+
+  .nav-brand-text em {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--charcoal);
+    opacity: 0.5;
+  }
 
   .nav-tab {
     padding: 18px 24px;
@@ -2432,8 +2481,12 @@
   @media (max-width: 700px) {
     /* Hero */
     .hero { padding: 60px 20px 36px; min-height: 340px; }
+    .hero-logo { width: 120px; margin-bottom: 12px; }
     .hero h1 { font-size: 28px; line-height: 1.2; }
     .hero p { font-size: 14px; max-width: 100%; }
+    .nav-brand-text { display: none; }
+    .nav-brand { padding-right: 10px; margin-right: 4px; }
+    .nav-logo { width: 26px; height: 26px; }
     .hero-locations { display: none; }
     .hero-cta { flex-direction: column; gap: 10px; }
     .hero-cta .btn { width: 100%; text-align: center; padding: 14px 20px; font-size: 14px; }
@@ -2921,6 +2974,7 @@
   <canvas class="hero-canvas" id="heroCanvas"></canvas>
   <div class="hero-content">
     <div class="hero-badge"><span class="dot"></span> Marketing Content Hub</div>
+    <img src="refresh-logo.avif" alt="Refresh Psychiatry Logo" class="hero-logo">
     <h1>Refresh Psychiatry<br><em>Content Studio</em></h1>
     <p>Your centralized dashboard for video, podcast, social media, and advertising assets. Create, preview, and launch campaigns — all in one place.</p>
     <div class="hero-locations">
@@ -2958,6 +3012,10 @@
 
 <!-- ═══════════ NAV ═══════════ -->
 <nav class="nav-bar" id="navBar">
+  <div class="nav-brand">
+    <img src="refresh-logo.avif" alt="Refresh" class="nav-logo">
+    <span class="nav-brand-text">Refresh <em>Studio</em></span>
+  </div>
   <button class="nav-tab active" data-tab="daily-brief">Daily Brief<span class="tab-count">37</span></button>
   <button class="nav-tab" data-tab="analytics">Analytics</button>
   <button class="nav-tab" data-tab="competitors">Competitors<span class="tab-count">4</span></button>
