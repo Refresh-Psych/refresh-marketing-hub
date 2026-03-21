@@ -3736,7 +3736,7 @@
         <h2>⚖️ The Future of Work-Life Balance: 6 Trends Reshaping How Psychiatrists Run Their Practices in 2027 and Beyond</h2>
         <p>Burnout is at 53% among psychiatrists — the highest of any specialty. But the next three years bring AI scribes, async telehealth, four-day clinical weeks, and new business models that will fundamentally redesign what work-life balance means for practice owners. We map out the 6 biggest trends and exactly what Refresh Psychiatry should do to ride them.</p>
 
-        <audio id="podcastAudio" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-daily-podcast/podcast-2026-03-21.mp3" preload="metadata"></audio>
+        <audio id="podcastAudio" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-daily-podcast/podcast-2026-03-21.mp3" preload="auto" playsinline webkit-playsinline></audio>
         <div class="podcast-player">
           <button class="player-btn" id="podcastPlayBtn" onclick="togglePodcast(this)"></button>
           <div class="player-track">
@@ -8696,16 +8696,44 @@ Same-week telehealth appointments available. Aetna, United, Cigna, Humana and mo
     cancelAnimationFrame(visualizerRAF);
   });
 
+  // iOS Safari requires unlocking audio on first user gesture
+  let iosAudioUnlocked = false;
+  function unlockiOSAudio() {
+    if (iosAudioUnlocked) return Promise.resolve();
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (!isIOS) { iosAudioUnlocked = true; return Promise.resolve(); }
+    // Create a silent buffer and play it to unlock the audio context
+    podcastAudio.muted = true;
+    return podcastAudio.play().then(() => {
+      podcastAudio.pause();
+      podcastAudio.muted = false;
+      podcastAudio.currentTime = 0;
+      iosAudioUnlocked = true;
+    }).catch(() => {
+      podcastAudio.muted = false;
+      iosAudioUnlocked = true;
+    });
+  }
+
   function togglePodcast(btn) {
     if (podcastAudio.paused) {
-      podcastAudio.play().then(() => {
+      unlockiOSAudio().then(() => {
+        return podcastAudio.play();
+      }).then(() => {
         btn.classList.add('playing');
         startVisualizer();
       }).catch(err => {
         console.error('Audio play failed:', err);
-        // Try without visualizer context
-        podcastAudio.play();
-        btn.classList.add('playing');
+        // Fallback: load and retry within same gesture chain
+        podcastAudio.load();
+        setTimeout(() => {
+          podcastAudio.play().then(() => {
+            btn.classList.add('playing');
+            startVisualizer();
+          }).catch(() => {
+            btn.classList.remove('playing');
+          });
+        }, 100);
       });
     } else {
       podcastAudio.pause();
@@ -8719,6 +8747,22 @@ Same-week telehealth appointments available. Aetna, United, Cigna, Humana and mo
     const pct = (e.clientX - rect.left) / rect.width;
     podcastAudio.currentTime = pct * podcastAudio.duration;
   });
+
+  // Touch support for iOS scrubbing
+  podcastBar.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    const rect = podcastBar.getBoundingClientRect();
+    const touch = e.touches[0];
+    const pct = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
+    podcastAudio.currentTime = pct * podcastAudio.duration;
+  }, { passive: false });
+  podcastBar.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    const rect = podcastBar.getBoundingClientRect();
+    const touch = e.touches[0];
+    const pct = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
+    podcastAudio.currentTime = pct * podcastAudio.duration;
+  }, { passive: false });
 
   const podcastSpeeds = [1, 1.25, 1.5, 2];
   let podcastSpeedIdx = 0;
@@ -9063,20 +9107,21 @@ Same-week telehealth appointments available. Aetna, United, Cigna, Humana and mo
     document.querySelector('.podcast-details h2').textContent = ep.title;
     document.querySelector('.podcast-details > p').textContent = ep.desc;
 
-    // Update audio source
+    // Update audio source and play within the user gesture
+    podcastAudio.pause();
     podcastAudio.src = ep.audio;
-    podcastAudio.load();
     podcastProgress.style.width = '0%';
     podcastCurrentTime.textContent = '0:00';
     podcastDuration.textContent = '--:--';
 
-    // Auto-play the selected episode
-    podcastAudio.addEventListener('canplay', function onCanPlay() {
-      podcastAudio.removeEventListener('canplay', onCanPlay);
-      podcastAudio.play().then(() => {
-        podcastPlayBtn.classList.add('playing');
-        startVisualizer();
-      }).catch(() => {});
+    // Play directly within user tap gesture (iOS requires this)
+    podcastAudio.load();
+    podcastAudio.play().then(() => {
+      podcastPlayBtn.classList.add('playing');
+      startVisualizer();
+    }).catch(() => {
+      // If blocked, user can tap the play button manually
+      podcastPlayBtn.classList.remove('playing');
     });
 
     // Re-render episode list to update "now playing" state
