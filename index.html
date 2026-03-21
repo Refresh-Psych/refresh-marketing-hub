@@ -1509,6 +1509,115 @@
     background: rgba(214,158,46,0.1);
   }
 
+  /* Sub-goals within action items */
+  .action-item-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .action-item-wrapper .action-item {
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  }
+  .action-item-wrapper.collapsed .action-item {
+    border-radius: var(--radius-sm);
+  }
+  .action-item-wrapper.collapsed .subgoals-list {
+    display: none;
+  }
+  .action-expand {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: rgba(43,108,176,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition: all 0.2s ease;
+  }
+  .action-expand svg {
+    width: 12px;
+    height: 12px;
+    stroke: var(--blue);
+    transition: transform 0.2s ease;
+  }
+  .action-item-wrapper.collapsed .action-expand svg {
+    transform: rotate(-90deg);
+  }
+  .subgoals-list {
+    background: rgba(43,108,176,0.015);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    padding: 6px 12px 8px 62px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .subgoal-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .subgoal-item:hover {
+    background: rgba(43,108,176,0.04);
+  }
+  .subgoal-check {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    border: 1.5px solid rgba(43,108,176,0.2);
+    background: var(--surface);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    margin-top: 1px;
+  }
+  .subgoal-item:hover .subgoal-check {
+    border-color: var(--blue);
+  }
+  .subgoal-item.checked .subgoal-check {
+    background: linear-gradient(135deg, #48BB78, #38A169);
+    border-color: transparent;
+  }
+  .subgoal-item.checked .subgoal-check::after {
+    content: '';
+    width: 7px;
+    height: 4px;
+    border-left: 1.5px solid var(--white);
+    border-bottom: 1.5px solid var(--white);
+    transform: rotate(-45deg);
+    margin-top: -1px;
+  }
+  .subgoal-text {
+    flex: 1;
+    font-size: 12px;
+    color: var(--charcoal);
+    line-height: 1.5;
+  }
+  .subgoal-item.checked .subgoal-text {
+    text-decoration: line-through;
+    opacity: 0.45;
+  }
+  .subgoals-progress {
+    font-size: 10px;
+    color: var(--blue);
+    opacity: 0.6;
+    font-weight: 600;
+    margin-left: auto;
+    white-space: nowrap;
+    padding: 2px 8px;
+    background: rgba(43,108,176,0.06);
+    border-radius: 10px;
+  }
+
   /* Responsive */
   @media (max-width: 1100px) {
     .stats-infographic { grid-template-columns: repeat(2, 1fr); }
@@ -3163,7 +3272,7 @@
   <button class="nav-tab" id="tab-analytics" data-tab="analytics" role="tab" aria-label="Analytics" aria-selected="false" aria-controls="analytics" tabindex="-1">Analytics</button>
   <button class="nav-tab" id="tab-competitors" data-tab="competitors" role="tab" aria-label="Competitors" aria-selected="false" aria-controls="competitors" tabindex="-1">Competitors<span class="tab-count">4</span></button>
   <button class="nav-tab" id="tab-video" data-tab="video" role="tab" aria-label="Video" aria-selected="false" aria-controls="video" tabindex="-1">Video<span class="tab-count">16</span></button>
-  <button class="nav-tab" id="tab-podcast" data-tab="podcast" role="tab" aria-label="Podcast" aria-selected="false" aria-controls="podcast" tabindex="-1">Podcast<span class="tab-count">2</span></button>
+  <button class="nav-tab" id="tab-podcast" data-tab="podcast" role="tab" aria-label="Podcast" aria-selected="false" aria-controls="podcast" tabindex="-1">Podcast<span class="tab-count" id="podcastTabCount">3</span></button>
   <button class="nav-tab" id="tab-content" data-tab="content" role="tab" aria-label="Content" aria-selected="false" aria-controls="content" tabindex="-1">Content<span class="tab-count">27</span></button>
   <button class="nav-tab" id="tab-campaigns" data-tab="campaigns" role="tab" aria-label="Campaigns" aria-selected="false" aria-controls="campaigns" tabindex="-1">Campaigns<span class="tab-count">6</span></button>
   <button class="nav-tab" id="tab-viral" data-tab="viral" role="tab" aria-label="Viral" aria-selected="false" aria-controls="viral" tabindex="-1">🔥 Viral<span class="tab-count">15</span></button>
@@ -7269,12 +7378,54 @@ Same-week telehealth appointments available. Aetna, United, Cigna, Humana and mo
 <script>
   // ═══════════ ACTION ITEM PERSISTENCE ═══════════
   function toggleActionItem(el) {
+    // Don't toggle if clicking on the expand button or subgoals
+    if (el.closest('.action-expand')) return;
     el.classList.toggle('checked');
     const ep = el.dataset.ep;
     const idx = el.dataset.idx;
     const key = 'podcastActions_ep' + ep;
     const saved = JSON.parse(localStorage.getItem(key) || '{}');
     if (el.classList.contains('checked')) {
+      saved[idx] = true;
+    } else {
+      delete saved[idx];
+    }
+    localStorage.setItem(key, JSON.stringify(saved));
+  }
+
+  function toggleSubgoal(event, el) {
+    event.stopPropagation();
+    el.classList.toggle('checked');
+    const ep = el.dataset.ep;
+    const idx = el.dataset.idx;
+    const sub = el.dataset.sub;
+    const key = 'podcastSubActions_ep' + ep;
+    const saved = JSON.parse(localStorage.getItem(key) || '{}');
+    const subKey = idx + '_' + sub;
+    if (el.classList.contains('checked')) {
+      saved[subKey] = true;
+    } else {
+      delete saved[subKey];
+    }
+    localStorage.setItem(key, JSON.stringify(saved));
+
+    // Update progress counter
+    const wrapper = el.closest('.action-item-wrapper');
+    const totalSubs = wrapper.querySelectorAll('.subgoal-item').length;
+    const checkedSubs = wrapper.querySelectorAll('.subgoal-item.checked').length;
+    const progressEl = wrapper.querySelector('.subgoals-progress');
+    if (progressEl) progressEl.textContent = checkedSubs + '/' + totalSubs;
+  }
+
+  function toggleActionCollapse(event, el) {
+    event.stopPropagation();
+    const wrapper = el.closest('.action-item-wrapper');
+    wrapper.classList.toggle('collapsed');
+    const idx = wrapper.dataset.idx;
+    const ep = wrapper.querySelector('.action-item').dataset.ep;
+    const key = 'podcastActionsCollapsed_ep' + ep;
+    const saved = JSON.parse(localStorage.getItem(key) || '{}');
+    if (wrapper.classList.contains('collapsed')) {
       saved[idx] = true;
     } else {
       delete saved[idx];
@@ -8615,12 +8766,63 @@ Same-week telehealth appointments available. Aetna, United, Cigna, Humana and mo
         { icon: '⚡', number: '23', suffix: '%', label: 'Faster Growth', context: 'practices with high delegation velocity vs. peers' }
       ],
       actions: [
-        { title: 'Start a Freed AI free trial today', body: 'Go to getfreed.ai and sign up for free. Run it on your next 5 patient sessions. If it saves 30 minutes per day, roll it out practice-wide. The ROI is immediate.', effort: 'quick' },
-        { title: 'Send a 10-question schedule survey to all providers', body: 'Ask: ideal days, hours, patient load, interest in 4-day week. The act of asking improves retention before you even change anything.', effort: 'quick' },
-        { title: 'Write your "What the Owner Does" document', body: 'One page. Every task you currently do that could be delegated goes on a second list with an assigned owner. Review quarterly.', effort: 'moderate' },
-        { title: 'Apply for Gold Carding under FL SB 320', body: 'Submit applications to Aetna, UHC, and Cigna. Document your PA approval rates to qualify. Estimated 2-4 hours/week per provider saved.', effort: 'moderate' },
-        { title: 'Pilot a psychiatry membership at one location', body: 'Test $199-249/month for same-week access and direct messaging at your highest-demand location. 20 members = proof of concept for scaling.', effort: 'deep' },
-        { title: 'Audit IMLCC compact coverage for all providers', body: 'Verify which providers have expedited multi-state licensing through IMLCC. This enables geographic flexibility for both hiring and patient access.', effort: 'moderate' }
+        { title: 'Start a Freed AI free trial today', body: 'Go to getfreed.ai and sign up for free. Run it on your next 5 patient sessions. If it saves 30 minutes per day, roll it out practice-wide. The ROI is immediate.', effort: 'quick', subgoals: [
+          'Create a Freed AI account at getfreed.ai (takes 2 minutes)',
+          'Install the Freed AI Chrome extension or desktop app',
+          'Run a test session with a consenting patient to learn the interface',
+          'Complete 5 full patient sessions with Freed AI running',
+          'Compare note completion time vs. your baseline — document savings',
+          'If >20 min/day saved, present ROI to practice manager for practice-wide rollout'
+        ]},
+        { title: 'Send a 10-question schedule survey to all providers', body: 'Ask: ideal days, hours, patient load, interest in 4-day week. The act of asking improves retention before you even change anything.', effort: 'quick', subgoals: [
+          'Draft 10 questions: preferred days, start/end times, max patients/day, 4-day interest, telehealth vs. in-person ratio',
+          'Add questions about top 3 scheduling frustrations and ideal patient mix',
+          'Create a Google Form or SurveyMonkey with anonymous option',
+          'Send survey to all providers with a 5-day deadline',
+          'Compile results into a one-page summary with top themes',
+          'Schedule a 15-min team meeting to share findings and next steps'
+        ]},
+        { title: 'Write your "What the Owner Does" document', body: 'One page. Every task you currently do that could be delegated goes on a second list with an assigned owner. Review quarterly.', effort: 'moderate', subgoals: [
+          'Block 90 minutes of uninterrupted time on your calendar',
+          'List every recurring task you do weekly (clinical, admin, financial, marketing)',
+          'Categorize each task: "Only I can do this" vs. "Someone else could do this"',
+          'For delegatable tasks, identify the ideal person or role to own it',
+          'Estimate hours/week recovered if all delegatable tasks are reassigned',
+          'Draft a transition plan for the top 3 highest-impact delegations',
+          'Set a quarterly calendar reminder to review and update the document'
+        ]},
+        { title: 'Apply for Gold Carding under FL SB 320', body: 'Submit applications to Aetna, UHC, and Cigna. Document your PA approval rates to qualify. Estimated 2-4 hours/week per provider saved.', effort: 'moderate', subgoals: [
+          'Pull your prior authorization approval rate data for the past 12 months',
+          'Verify you meet the 90%+ approval threshold required for Gold Card status',
+          'Download the Gold Card application from Aetna\'s provider portal',
+          'Submit Gold Card application to UHC using their Provider Express system',
+          'Submit Gold Card application to Cigna through their credentialing portal',
+          'Create a tracking spreadsheet: insurer, date submitted, status, follow-up date',
+          'Set bi-weekly reminders to follow up on pending applications',
+          'Once approved, notify all providers and update your PA workflow documentation'
+        ]},
+        { title: 'Pilot a psychiatry membership at one location', body: 'Test $199-249/month for same-week access and direct messaging at your highest-demand location. 20 members = proof of concept for scaling.', effort: 'deep', subgoals: [
+          'Choose your highest-demand location with longest wait times for the pilot',
+          'Define membership benefits: same-week scheduling, direct messaging, extended visits',
+          'Set pricing ($199-249/month) and create a simple membership agreement',
+          'Consult with a healthcare attorney on compliance (anti-kickback, fee-splitting)',
+          'Build a one-page landing page or PDF explaining the membership',
+          'Identify 20 existing patients most likely to convert (high-frequency, self-pay)',
+          'Personally offer membership to these 20 patients over the next 2 weeks',
+          'Set up billing infrastructure (Stripe, Square, or your PM system)',
+          'Track enrollment, utilization, and patient satisfaction for 90 days',
+          'At 20 members, evaluate unit economics and plan expansion to other locations'
+        ]},
+        { title: 'Audit IMLCC compact coverage for all providers', body: 'Verify which providers have expedited multi-state licensing through IMLCC. This enables geographic flexibility for both hiring and patient access.', effort: 'moderate', subgoals: [
+          'Create a spreadsheet of all providers with their current state licenses',
+          'Check IMLCC.org to confirm which states are currently in the compact',
+          'Verify if FL, MA, and TX are all active IMLCC member states',
+          'For each provider, determine eligibility for the IMLCC compact license',
+          'Identify any providers with licensing in non-compact states that need traditional renewal',
+          'Calculate cost savings of compact vs. individual state licensing',
+          'Submit IMLCC applications for eligible providers who haven\'t yet applied',
+          'Update your credentialing database with compact license status for all providers'
+        ]}
       ]
     },
     {
@@ -8656,14 +8858,74 @@ Same-week telehealth appointments available. Aetna, United, Cigna, Humana and mo
         { icon: '📊', number: '40', suffix: '+', label: 'Directory Listings', context: 'needed for strong citation profile' }
       ],
       actions: [
-        { title: 'Claim & verify all 16 Google Business Profiles', body: 'Ensure each Refresh Psychiatry location has a verified, fully completed GBP with correct hours, insurance list, and categories set to "Psychiatrist."', effort: 'moderate' },
-        { title: 'Add 5 new photos to each GBP this week', body: 'Upload professional office photos, team headshots, and branded graphics. Listings with photos get 35% more clicks to their website.', effort: 'quick' },
-        { title: 'Seed Q&A on each GBP with 10 common questions', body: 'Pre-populate questions patients ask: "Do you take Aetna?", "Do you offer telehealth?", "How long is a first visit?" Answer them yourself.', effort: 'quick' },
-        { title: 'Build insurance-specific landing pages', body: 'Create pages for "Psychiatrist accepting Aetna in Davie FL", "United Healthcare psychiatrist Fort Lauderdale", etc. for your top 5 insurance carriers.', effort: 'deep' },
-        { title: 'Audit NAP consistency across 40+ directories', body: 'Use a tool like BrightLocal or Moz Local to scan all citations. Fix any name/address/phone inconsistencies that hurt local SEO.', effort: 'moderate' },
-        { title: 'Publish one GBP post per location per week', body: 'Share a mental health tip, new blog post, or provider spotlight. Weekly posting signals to Google that your listing is active.', effort: 'moderate' },
-        { title: 'Add schema markup to all location pages', body: 'Implement MedicalBusiness and Physician structured data on each location page so Google can display rich results.', effort: 'deep' },
-        { title: 'Set up Google Analytics goal tracking for appointments', body: 'Track form submissions and phone clicks as conversions. Connect to Search Console to see which keywords drive actual bookings.', effort: 'moderate' }
+        { title: 'Claim & verify all 16 Google Business Profiles', body: 'Ensure each Refresh Psychiatry location has a verified, fully completed GBP with correct hours, insurance list, and categories set to "Psychiatrist."', effort: 'moderate', subgoals: [
+          'List all 16 locations and check which have claimed GBP listings',
+          'Claim any unclaimed profiles using the Google Business verification process',
+          'Set primary category to "Psychiatrist" and add secondary categories (Mental Health Clinic, Telehealth)',
+          'Update hours of operation for each location — include telehealth hours',
+          'Add all accepted insurance plans to the "Insurance" attribute for each listing',
+          'Write a unique 750-character business description for each location',
+          'Verify phone numbers and website URLs are correct across all 16 profiles'
+        ]},
+        { title: 'Add 5 new photos to each GBP this week', body: 'Upload professional office photos, team headshots, and branded graphics. Listings with photos get 35% more clicks to their website.', effort: 'quick', subgoals: [
+          'Take or gather professional photos of each office exterior and waiting area',
+          'Collect updated headshots of providers at each location',
+          'Create 2-3 Refresh-branded graphics (logo, services overview, telehealth promo)',
+          'Upload at least 5 photos per location with descriptive alt text',
+          'Set a cover photo and logo for each GBP listing'
+        ]},
+        { title: 'Seed Q&A on each GBP with 10 common questions', body: 'Pre-populate questions patients ask: "Do you take Aetna?", "Do you offer telehealth?", "How long is a first visit?" Answer them yourself.', effort: 'quick', subgoals: [
+          'Draft 10 FAQ questions based on most common patient intake calls',
+          'Write concise, keyword-rich answers for each question (include location-specific details)',
+          'Post Q&A entries on your top 5 highest-traffic GBP listings first',
+          'Roll out Q&A to remaining 11 locations within the week',
+          'Set a monthly reminder to review and add new questions based on patient trends'
+        ]},
+        { title: 'Build insurance-specific landing pages', body: 'Create pages for "Psychiatrist accepting Aetna in Davie FL", "United Healthcare psychiatrist Fort Lauderdale", etc. for your top 5 insurance carriers.', effort: 'deep', subgoals: [
+          'Identify your top 5 insurance carriers by patient volume (Aetna, UHC, Cigna, Humana, Avmed)',
+          'Map insurance + location keyword combinations (e.g., "Aetna psychiatrist Davie FL")',
+          'Research search volume for each keyword combo using Google Keyword Planner',
+          'Create a page template with H1, provider list, insurance details, and booking CTA',
+          'Write unique 500-word content for each insurance/location page (avoid duplicate content)',
+          'Add internal links from main service pages to insurance landing pages',
+          'Implement MedicalBusiness schema markup on each new page',
+          'Submit new URLs to Google Search Console for indexing'
+        ]},
+        { title: 'Audit NAP consistency across 40+ directories', body: 'Use a tool like BrightLocal or Moz Local to scan all citations. Fix any name/address/phone inconsistencies that hurt local SEO.', effort: 'moderate', subgoals: [
+          'Sign up for BrightLocal or Moz Local citation audit tool',
+          'Run a scan for each of your 16 locations to identify inconsistencies',
+          'Export a spreadsheet of all found citations with discrepancies flagged',
+          'Prioritize fixing top directories: Healthgrades, Zocdoc, Psychology Today, Vitals, WebMD',
+          'Submit corrections to each directory — update name, address, phone to match GBP exactly',
+          'Suppress or remove any duplicate listings found during the audit',
+          'Set a quarterly reminder to re-audit citation consistency'
+        ]},
+        { title: 'Publish one GBP post per location per week', body: 'Share a mental health tip, new blog post, or provider spotlight. Weekly posting signals to Google that your listing is active.', effort: 'moderate', subgoals: [
+          'Create a 4-week GBP posting calendar with themed content (tips, blogs, spotlights, promos)',
+          'Design 4 branded post templates in Canva using Refresh Blue + Yellow palette',
+          'Write post copy for week 1 across all 16 locations (can reuse with location tweaks)',
+          'Schedule posts using a GBP management tool (Semrush, BrightLocal, or manual)',
+          'Track post engagement (views, clicks, actions) weekly in a spreadsheet',
+          'Iterate content mix based on which post types drive the most clicks'
+        ]},
+        { title: 'Add schema markup to all location pages', body: 'Implement MedicalBusiness and Physician structured data on each location page so Google can display rich results.', effort: 'deep', subgoals: [
+          'Review current location pages for any existing schema markup',
+          'Generate MedicalBusiness schema JSON-LD for each of the 16 locations',
+          'Add Physician schema for each provider listed on location pages',
+          'Include all required fields: name, address, phone, hours, insurance, geo coordinates',
+          'Validate schema using Google Rich Results Test tool for each page',
+          'Deploy schema to production and verify in Google Search Console',
+          'Monitor rich result appearances in Search Console over the next 30 days'
+        ]},
+        { title: 'Set up Google Analytics goal tracking for appointments', body: 'Track form submissions and phone clicks as conversions. Connect to Search Console to see which keywords drive actual bookings.', effort: 'moderate', subgoals: [
+          'Verify Google Analytics 4 is properly installed on refreshpsychiatry.com',
+          'Create a "Form Submission" conversion event for appointment request forms',
+          'Create a "Phone Click" conversion event for tel: link clicks',
+          'Set up a "Book Now" button click event for CTA tracking',
+          'Link Google Search Console to Google Analytics 4',
+          'Create a custom report showing organic keywords → page visits → conversions',
+          'Set up a monthly automated email report for key conversion metrics'
+        ]}
       ]
     },
     {
@@ -8699,14 +8961,70 @@ Same-week telehealth appointments available. Aetna, United, Cigna, Humana and mo
         { icon: '📈', number: '12', suffix: ' weeks', label: 'Traction Timeline', context: 'to see consistent engagement growth' }
       ],
       actions: [
-        { title: 'Set up the 5-day content calendar template', body: 'Create a shared Google Sheet or Notion board with Mon-Fri pillar themes. Batch-create 2 weeks of content at a time for consistency.', effort: 'quick' },
-        { title: 'Record 3 "As a psychiatrist..." Reels', body: 'Film short (30-60 sec) authority-hook videos addressing common questions: ADHD myths, when to seek help, medication fears. Post one per week.', effort: 'quick' },
-        { title: 'Design 5 Instagram carousel templates', body: 'Use Canva to create branded carousel templates (Refresh Blue + Yellow) for educational content, tips, and myth-busting. Repurpose across topics.', effort: 'moderate' },
-        { title: 'Publish a LinkedIn thought leadership post', body: 'Write a 300-word post about a trend in psychiatry practice management. Tag local therapists and PCPs. Aim for 1 post per week.', effort: 'quick' },
-        { title: 'Build a HIPAA compliance checklist for social posts', body: 'Create a 10-point checklist every post must pass before publishing: no real patient info, no before/after, safe messaging guidelines, proper disclaimers.', effort: 'moderate' },
-        { title: 'Set up DM-to-appointment tracking', body: 'Create a simple spreadsheet tracking: DM date, platform, inquiry type, appointment scheduled (Y/N), and new patient (Y/N). Review weekly.', effort: 'quick' },
-        { title: 'Create a Mental Health Monday series for Facebook', body: 'Design a 4-week series of awareness posts with consistent branding. Share personal (non-patient) stories about why you chose psychiatry.', effort: 'moderate' },
-        { title: 'Run a 7-day Instagram Stories engagement experiment', body: 'Post daily Stories with polls, quizzes, and "Ask Me Anything" boxes for one week. Track how many DMs and profile visits result.', effort: 'quick' }
+        { title: 'Set up the 5-day content calendar template', body: 'Create a shared Google Sheet or Notion board with Mon-Fri pillar themes. Batch-create 2 weeks of content at a time for consistency.', effort: 'quick', subgoals: [
+          'Create a Google Sheet with columns: Day, Pillar Theme, Platform, Caption, Hashtags, Visual, Status',
+          'Assign pillar themes: Mon (Awareness), Tue (Tips), Wed (Education), Thu (LinkedIn), Fri (Reels)',
+          'Pre-fill 2 weeks of content ideas based on current trending mental health topics',
+          'Share the calendar with your social media team or VA for collaboration',
+          'Block 2 hours every other Sunday for batch content creation'
+        ]},
+        { title: 'Record 3 "As a psychiatrist..." Reels', body: 'Film short (30-60 sec) authority-hook videos addressing common questions: ADHD myths, when to seek help, medication fears. Post one per week.', effort: 'quick', subgoals: [
+          'Write 3 scripts using the hook "As a psychiatrist..." — keep each under 60 seconds',
+          'Choose topics: ADHD myths, when to see a psychiatrist vs. therapist, medication fears',
+          'Set up a well-lit filming spot with a clean, professional background',
+          'Record all 3 Reels in one batch session (saves setup time)',
+          'Edit with captions (80% of viewers watch without sound)',
+          'Schedule one Reel per week — post during peak engagement hours (Tue/Thu 11am-1pm)'
+        ]},
+        { title: 'Design 5 Instagram carousel templates', body: 'Use Canva to create branded carousel templates (Refresh Blue + Yellow) for educational content, tips, and myth-busting. Repurpose across topics.', effort: 'moderate', subgoals: [
+          'Open Canva and create a new brand kit with Refresh Blue (#2B6CB0) and Yellow (#F6C744)',
+          'Design template 1: "Myth vs. Fact" — bold headline, icon, and one-sentence explanation per slide',
+          'Design template 2: "5 Signs You Should..." — numbered list format with gradient backgrounds',
+          'Design template 3: "Did You Know?" — statistic-focused with source citation on last slide',
+          'Design template 4: "Your Questions Answered" — FAQ format with Q on one slide, A on next',
+          'Design template 5: "Provider Spotlight" — photo, credentials, fun fact, booking CTA',
+          'Save all as Canva templates so your team can duplicate and customize for new topics'
+        ]},
+        { title: 'Publish a LinkedIn thought leadership post', body: 'Write a 300-word post about a trend in psychiatry practice management. Tag local therapists and PCPs. Aim for 1 post per week.', effort: 'quick', subgoals: [
+          'Choose a topic relevant to referral partners (e.g., "How psychiatry and therapy work better together")',
+          'Write a 300-word post with a personal anecdote or clinical insight (no patient details)',
+          'Add 3-5 relevant hashtags (#Psychiatry, #MentalHealthPractice, #SouthFlorida)',
+          'Tag 2-3 local therapists, PCPs, or healthcare leaders you want to build relationships with',
+          'Post during peak LinkedIn hours (Tue-Thu, 8-10am EST)',
+          'Reply to every comment within 24 hours to boost algorithm visibility'
+        ]},
+        { title: 'Build a HIPAA compliance checklist for social posts', body: 'Create a 10-point checklist every post must pass before publishing: no real patient info, no before/after, safe messaging guidelines, proper disclaimers.', effort: 'moderate', subgoals: [
+          'Review HHS social media guidance and HIPAA marketing rules',
+          'Draft 10 checklist items covering PHI, patient consent, safe messaging, and disclaimers',
+          'Include items for: no real patient stories, no before/after, no identifiable info in backgrounds',
+          'Add safe messaging guidelines for suicide and self-harm content',
+          'Include a disclaimer template: "This is educational content, not medical advice"',
+          'Format as a one-page PDF and Google Form for easy team use',
+          'Train all content creators on the checklist and require sign-off before posting'
+        ]},
+        { title: 'Set up DM-to-appointment tracking', body: 'Create a simple spreadsheet tracking: DM date, platform, inquiry type, appointment scheduled (Y/N), and new patient (Y/N). Review weekly.', effort: 'quick', subgoals: [
+          'Create a Google Sheet with columns: Date, Platform, Inquiry Type, Response Time, Appt Scheduled, New Patient',
+          'Add dropdown menus for Platform (IG, FB, LinkedIn, TikTok) and Inquiry Type (scheduling, pricing, insurance, general)',
+          'Assign one person to log all DM inquiries daily',
+          'Set a weekly Friday reminder to review the tracking sheet',
+          'Calculate your DM-to-appointment conversion rate each week'
+        ]},
+        { title: 'Create a Mental Health Monday series for Facebook', body: 'Design a 4-week series of awareness posts with consistent branding. Share personal (non-patient) stories about why you chose psychiatry.', effort: 'moderate', subgoals: [
+          'Plan 4 weeks of themes: Week 1 (Why I chose psychiatry), Week 2 (Stigma myths), Week 3 (Self-care for providers), Week 4 (Community spotlight)',
+          'Write post copy for each week — 150-200 words with a warm, personal tone',
+          'Design matching graphics using your Refresh brand templates in Canva',
+          'Schedule all 4 posts in advance using Meta Business Suite',
+          'Engage with every comment to build community — reply within 4 hours',
+          'At the end of 4 weeks, review engagement data and plan the next series'
+        ]},
+        { title: 'Run a 7-day Instagram Stories engagement experiment', body: 'Post daily Stories with polls, quizzes, and "Ask Me Anything" boxes for one week. Track how many DMs and profile visits result.', effort: 'quick', subgoals: [
+          'Plan 7 days of interactive Story content: Mon (poll), Tue (quiz), Wed (AMA), Thu (this or that), Fri (behind the scenes), Sat (weekend wellness tip), Sun (motivational quote)',
+          'Create Story graphics in advance using Canva Instagram Story templates',
+          'Post each Story between 9-11am when your audience is most active',
+          'Respond to every poll response, quiz answer, and AMA question within 2 hours',
+          'Screenshot your Insights at the end of each day (profile visits, DMs, reach)',
+          'Compile results into a one-page summary: which format drove the most engagement'
+        ]}
       ]
     }
   ];
@@ -8717,6 +9035,8 @@ Same-week telehealth appointments available. Aetna, United, Cigna, Humana and mo
     const list = document.getElementById('episodeList');
     const countEl = document.getElementById('episodeCount');
     countEl.textContent = podcastEpisodes.length + ' episode' + (podcastEpisodes.length !== 1 ? 's' : '');
+    const tabBadge = document.getElementById('podcastTabCount');
+    if (tabBadge) tabBadge.textContent = podcastEpisodes.length;
     list.innerHTML = podcastEpisodes.map((ep, idx) => `
       <div class="episode-item ${idx === currentEpisodeIdx ? 'now-playing' : ''}" onclick="loadEpisode(${idx})" title="Play Episode ${ep.ep}">
         <button class="episode-play-btn" aria-label="Play Episode ${ep.ep}"></button>
@@ -8800,19 +9120,38 @@ Same-week telehealth appointments available. Aetna, United, Cigna, Humana and mo
       ).join('');
     }
 
-    // Action Items (with localStorage persistence)
+    // Action Items (with localStorage persistence for items + subgoals)
     const actionsList = document.getElementById('actionItemsList');
     if (ep.actions && ep.actions.length) {
       const savedChecks = JSON.parse(localStorage.getItem('podcastActions_ep' + currentEpisodeIdx) || '{}');
+      const savedSubChecks = JSON.parse(localStorage.getItem('podcastSubActions_ep' + currentEpisodeIdx) || '{}');
+      const savedCollapsed = JSON.parse(localStorage.getItem('podcastActionsCollapsed_ep' + currentEpisodeIdx) || '{}');
       actionsList.innerHTML = ep.actions.map((a, i) => {
         const isChecked = savedChecks[i] ? ' checked' : '';
-        return `<div class="action-item${isChecked}" data-ep="${currentEpisodeIdx}" data-idx="${i}" onclick="toggleActionItem(this)">
-          <div class="action-check"></div>
-          <div class="action-text">
-            <h4>${a.title}</h4>
-            <p>${a.body}</p>
+        const isCollapsed = savedCollapsed[i] ? ' collapsed' : '';
+        const subgoals = a.subgoals || [];
+        const subCheckedCount = subgoals.filter((_, si) => savedSubChecks[i + '_' + si]).length;
+        const progressText = subgoals.length ? `${subCheckedCount}/${subgoals.length}` : '';
+        const subgoalsHtml = subgoals.length ? `<div class="subgoals-list">${subgoals.map((sg, si) => {
+          const subChecked = savedSubChecks[i + '_' + si] ? ' checked' : '';
+          return `<div class="subgoal-item${subChecked}" data-ep="${currentEpisodeIdx}" data-idx="${i}" data-sub="${si}" onclick="toggleSubgoal(event, this)">
+            <div class="subgoal-check"></div>
+            <div class="subgoal-text">${sg}</div>
+          </div>`;
+        }).join('')}</div>` : '';
+
+        return `<div class="action-item-wrapper${isCollapsed}" data-idx="${i}">
+          <div class="action-item${isChecked}" data-ep="${currentEpisodeIdx}" data-idx="${i}" onclick="toggleActionItem(this)">
+            <div class="action-check"></div>
+            <div class="action-text">
+              <h4>${a.title}</h4>
+              <p>${a.body}</p>
+            </div>
+            ${progressText ? `<span class="subgoals-progress">${progressText}</span>` : ''}
+            <span class="action-effort ${a.effort}">${a.effort === 'quick' ? '15 min' : a.effort === 'moderate' ? '1-2 hrs' : 'Half day'}</span>
+            ${subgoals.length ? `<div class="action-expand" onclick="toggleActionCollapse(event, this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></div>` : ''}
           </div>
-          <span class="action-effort ${a.effort}">${a.effort === 'quick' ? '15 min' : a.effort === 'moderate' ? '1-2 hrs' : 'Half day'}</span>
+          ${subgoalsHtml}
         </div>`;
       }).join('');
     }
