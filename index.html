@@ -2615,6 +2615,144 @@
   .brief-alert.green { background: rgba(0,184,148,0.06); border-left: 3px solid #00B894; }
   .brief-alert.blue { background: rgba(43,108,176,0.06); border-left: 3px solid var(--blue); }
 
+  /* ═══════════ TRENDING PULSE QUEUE ═══════════ */
+  .trend-queue { list-style: none; padding: 0; margin: 0; }
+
+  .trend-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+  }
+  .trend-item:hover { background: rgba(43,108,176,0.03); }
+
+  .trend-check {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border-radius: 50%;
+    border: 2px solid #cbd5e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+    transition: all 0.25s ease;
+    background: white;
+  }
+  .trend-check::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: transparent;
+    transition: all 0.25s ease;
+  }
+
+  .trend-item.used .trend-check {
+    border-color: #00B894;
+    background: #00B894;
+  }
+  .trend-item.used .trend-check::after { background: white; }
+
+  .trend-item.used .trend-content {
+    opacity: 0.45;
+    text-decoration: line-through;
+    text-decoration-color: rgba(0,0,0,0.2);
+  }
+
+  .trend-content { flex: 1; min-width: 0; }
+
+  .trend-title {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .trend-meta {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .trend-platform {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 10px;
+    background: rgba(43,108,176,0.1);
+    color: var(--blue);
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  .trend-score {
+    font-size: 12px;
+    white-space: nowrap;
+    min-width: 70px;
+    text-align: right;
+    margin-top: 2px;
+    color: var(--yellow);
+    letter-spacing: 1px;
+  }
+
+  .trend-queue-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 18px;
+    background: var(--surface-elevated);
+    border-radius: var(--radius-sm);
+    margin-bottom: 8px;
+    border: 1px solid var(--border);
+  }
+  .trend-queue-header h4 { margin: 0; font-size: 13px; color: var(--text); }
+  .trend-counter {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--blue);
+    background: rgba(43,108,176,0.08);
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+
+  .trend-completed-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    margin-top: 12px;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .trend-completed-toggle:hover { background: var(--surface-elevated); }
+  .trend-completed-toggle .arrow { transition: transform 0.25s; }
+  .trend-completed-toggle.open .arrow { transform: rotate(180deg); }
+
+  .trend-completed-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+  .trend-completed-list.open { max-height: 2000px; }
+
   .battle-plan-card {
     background: var(--surface-elevated);
     border: 1px solid var(--border);
@@ -5836,23 +5974,180 @@
 
     <!-- Section 8: Trending Pulse -->
     <details class="brief-section reveal" open>
-      <summary>📡 8. Trending Pulse — Top Mental Health Content Right Now</summary>
+      <summary>📡 8. Trending Pulse — Blog Topic Queue</summary>
       <div class="brief-body">
-        <table class="brief-table">
-          <thead><tr><th>#</th><th>Topic</th><th>Platform</th><th>Why Hot</th><th>Score</th></tr></thead>
-          <tbody>
-            <tr><td>1</td><td><strong>Cortisol Cocktail / "Cortisol Detox"</strong></td><td>TikTok, IG</td><td>DIY drink (OJ + sea salt + coconut water) claimed to lower cortisol. ~60,500 monthly searches. Myth-busting gold for psychiatrists.</td><td>⭐⭐⭐⭐⭐</td></tr>
-            <tr><td>2</td><td><strong>Vagus Nerve Hacks / Nervous System Regulation</strong></td><td>TikTok, YouTube</td><td>Polyvagal theory, breathwork, cold exposure. "Regulate your nervous system" — psychiatrist authority content performs well here.</td><td>⭐⭐⭐⭐⭐</td></tr>
-            <tr><td>3</td><td><strong>ADHD Self-Diagnosis Culture</strong></td><td>TikTok, Reddit</td><td>#ADHD 3M+ videos. 83% of TikTok MH advice misleading. Creates patient pipeline + need for corrective professional content.</td><td>⭐⭐⭐⭐⭐</td></tr>
-            <tr><td>4</td><td><strong>"Bed Rotting" vs. Depression</strong></td><td>TikTok, X</td><td>Spending entire days in bed framed as self-care. Fine line between rest and depressive withdrawal — education content.</td><td>⭐⭐⭐⭐</td></tr>
-            <tr><td>5</td><td><strong>Ashwagandha + Psychiatric Drug Interactions</strong></td><td>TikTok, YouTube</td><td>673K monthly searches. Patients on SSRIs not disclosing supplement use. Prescriber authority content.</td><td>⭐⭐⭐⭐</td></tr>
-            <tr><td>6</td><td><strong>Work-Life Balance / Burnout Culture</strong></td><td>LinkedIn, IG</td><td>Saturday trend — weekend posts about setting boundaries, recovery from hustle culture. High engagement Saturday mornings.</td><td>⭐⭐⭐⭐</td></tr>
-            <tr><td>7</td><td><strong>Teen Social Media &amp; Empathy Crisis</strong></td><td>All platforms</td><td>Johns Hopkins research March 2026. 78% of teens find MH resources on TikTok. Parent-targeted education content.</td><td>⭐⭐⭐⭐</td></tr>
-            <tr><td>8</td><td><strong>Spring Anxiety / Seasonal Transitions</strong></td><td>IG, Facebook</td><td>March 21 = first day of spring. Spring anxiety is real (allergies + light changes + school transitions). Timely content.</td><td>⭐⭐⭐⭐</td></tr>
-            <tr><td>9</td><td><strong>ADHD Brain Biotypes Research</strong></td><td>LinkedIn, Twitter</td><td>JAMA Psychiatry study trending in medical community. Translate for patient-facing content: "Your ADHD is unique to your brain."</td><td>⭐⭐⭐</td></tr>
-            <tr><td>10</td><td><strong>AI Therapy Apps Debate</strong></td><td>LinkedIn, Reddit</td><td>Controversy around AI chatbots as mental health tools. Strong psychiatrist opinion content — distinguish human clinical care from tech.</td><td>⭐⭐⭐</td></tr>
-          </tbody>
-        </table>
+        <div class="trend-queue-header">
+          <h4>🔥 Active Topics — Click to mark as blogged</h4>
+          <span class="trend-counter" id="trendActiveCount">20 remaining</span>
+        </div>
+        <ul class="trend-queue" id="trendQueue">
+          <li class="trend-item" data-trend-id="cortisol-cocktail" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Cortisol Cocktail / "Cortisol Detox" <span class="trend-platform">TikTok · IG</span></div>
+              <div class="trend-meta">DIY drink (OJ + sea salt + coconut water) claimed to lower cortisol. ~60,500 monthly searches. Myth-busting gold for psychiatrists.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="vagus-nerve-hacks" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Vagus Nerve Hacks / Nervous System Regulation <span class="trend-platform">TikTok · YouTube</span></div>
+              <div class="trend-meta">Polyvagal theory, breathwork, cold exposure. "Regulate your nervous system" — psychiatrist authority content performs well here.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="adhd-self-diagnosis" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">ADHD Self-Diagnosis Culture <span class="trend-platform">TikTok · Reddit</span></div>
+              <div class="trend-meta">#ADHD 3M+ videos. 83% of TikTok MH advice misleading. Creates patient pipeline + need for corrective professional content.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="bed-rotting" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">"Bed Rotting" vs. Depression <span class="trend-platform">TikTok · X</span></div>
+              <div class="trend-meta">Spending entire days in bed framed as self-care. Fine line between rest and depressive withdrawal — education content.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="ashwagandha-interactions" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Ashwagandha + Psychiatric Drug Interactions <span class="trend-platform">TikTok · YouTube</span></div>
+              <div class="trend-meta">673K monthly searches. Patients on SSRIs not disclosing supplement use. Prescriber authority content.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="burnout-culture" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Work-Life Balance / Burnout Culture <span class="trend-platform">LinkedIn · IG</span></div>
+              <div class="trend-meta">Weekend posts about setting boundaries, recovery from hustle culture. High engagement Saturday mornings.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="teen-social-media" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Teen Social Media &amp; Empathy Crisis <span class="trend-platform">All Platforms</span></div>
+              <div class="trend-meta">Johns Hopkins research March 2026. 78% of teens find MH resources on TikTok. Parent-targeted education content.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="spring-anxiety" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Spring Anxiety / Seasonal Transitions <span class="trend-platform">IG · Facebook</span></div>
+              <div class="trend-meta">Spring anxiety is real (allergies + light changes + school transitions). Timely content for March–April.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="adhd-biotypes" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">ADHD Brain Biotypes Research <span class="trend-platform">LinkedIn · X</span></div>
+              <div class="trend-meta">JAMA Psychiatry study trending in medical community. Translate for patients: "Your ADHD is unique to your brain."</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="ai-therapy-apps" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">AI Therapy Apps Debate <span class="trend-platform">LinkedIn · Reddit</span></div>
+              <div class="trend-meta">Controversy around AI chatbots as mental health tools. Strong opinion content — distinguish human clinical care from tech.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="doom-scrolling-dopamine" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Doom Scrolling &amp; Dopamine Dysregulation <span class="trend-platform">TikTok · IG</span></div>
+              <div class="trend-meta">"Dopamine detox" has 450K+ monthly searches. Explain the real neuroscience vs. the trend oversimplification.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="magnesium-anxiety" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Magnesium for Anxiety — Does It Actually Work? <span class="trend-platform">TikTok · YouTube</span></div>
+              <div class="trend-meta">Magnesium glycinate trending as "nature's Xanax." 390K monthly searches. Evidence-based psychiatrist take needed.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="microdosing-psilocybin" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Microdosing Psilocybin for Depression <span class="trend-platform">Reddit · YouTube</span></div>
+              <div class="trend-meta">Patients asking psychiatrists about psychedelics. FDA breakthrough therapy status. Educational explainer opportunity.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="gut-brain-axis" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Gut-Brain Axis &amp; Mental Health <span class="trend-platform">IG · YouTube</span></div>
+              <div class="trend-meta">Probiotic claims for anxiety/depression. New 2026 research on microbiome + SSRI efficacy. Hot for integrative psychiatry angle.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="high-functioning-anxiety" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">"High-Functioning Anxiety" — Is It Real? <span class="trend-platform">TikTok · IG</span></div>
+              <div class="trend-meta">Not a clinical diagnosis but resonates with millions. 210K monthly searches. Explain GAD, masking, and when to seek help.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="medication-shaming" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Medication Shaming on Social Media <span class="trend-platform">TikTok · X</span></div>
+              <div class="trend-meta">"You don't need meds, just go outside" going viral again. Anti-med rhetoric causing patients to stop treatment. Counter-narrative content.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="trauma-dumping" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">"Trauma Dumping" vs. Vulnerability <span class="trend-platform">TikTok · IG</span></div>
+              <div class="trend-meta">180K monthly searches. Where's the line between healthy sharing and oversharing? Therapist-perspective content.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="ozempic-mental-health" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Ozempic / GLP-1 &amp; Mental Health Side Effects <span class="trend-platform">All Platforms</span></div>
+              <div class="trend-meta">Reports of suicidal ideation, depression, and anhedonia on GLP-1 drugs. 820K+ monthly searches. Urgent prescriber education.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="parent-burnout" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Parent Burnout ≠ Bad Parenting <span class="trend-platform">Facebook · IG</span></div>
+              <div class="trend-meta">Parental burnout validated by WHO research. High engagement with 30-45 demo. Perfect for Refresh's family psychiatry angle.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="sleep-anxiety-revenge-bedtime" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Revenge Bedtime Procrastination <span class="trend-platform">TikTok · Reddit</span></div>
+              <div class="trend-meta">Staying up late as the only "me time." Links to anxiety, ADHD, depression. 140K monthly searches. Relatable + clinical depth.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐</div>
+          </li>
+        </ul>
+
+        <button class="trend-completed-toggle" id="trendCompletedToggle" onclick="toggleCompletedTrends()" style="display:none">
+          <span>✅ Completed / Blogged Topics (<span id="trendCompletedCount">0</span>)</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="trend-completed-list" id="trendCompletedList"></div>
       </div>
     </details>
 
@@ -8577,6 +8872,97 @@ Same-week telehealth appointments available. Aetna, United, Cigna, Humana and mo
   }, { threshold: 0.08 });
 
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // ═══════════ TRENDING PULSE QUEUE ═══════════
+  const TREND_STORAGE_KEY = 'refreshStudio_completedTrends';
+
+  function getCompletedTrends() {
+    return JSON.parse(localStorage.getItem(TREND_STORAGE_KEY) || '{}');
+  }
+
+  function saveCompletedTrends(data) {
+    localStorage.setItem(TREND_STORAGE_KEY, JSON.stringify(data));
+  }
+
+  function toggleTrend(el) {
+    const id = el.dataset.trendId;
+    const completed = getCompletedTrends();
+
+    if (el.classList.contains('used')) {
+      // Un-complete: remove from completed
+      delete completed[id];
+      el.classList.remove('used');
+    } else {
+      // Mark as completed with timestamp
+      completed[id] = { date: new Date().toISOString().split('T')[0] };
+      el.classList.add('used');
+    }
+    saveCompletedTrends(completed);
+    renderTrendQueue();
+  }
+
+  function renderTrendQueue() {
+    const completed = getCompletedTrends();
+    const queue = document.getElementById('trendQueue');
+    const completedList = document.getElementById('trendCompletedList');
+    const completedToggle = document.getElementById('trendCompletedToggle');
+    const allItems = queue.querySelectorAll('.trend-item');
+
+    let activeCount = 0;
+    let completedCount = 0;
+    let completedHTML = '<ul class="trend-queue">';
+
+    allItems.forEach(item => {
+      const id = item.dataset.trendId;
+      if (completed[id]) {
+        item.classList.add('used');
+        item.style.display = 'none';
+        completedCount++;
+        // Clone into completed section
+        const title = item.querySelector('.trend-title').innerHTML;
+        const date = completed[id].date || '';
+        completedHTML += '<li class="trend-item used" data-trend-id="' + id + '" onclick="uncompleteTrend(\'' + id + '\')">'
+          + '<div class="trend-check"></div>'
+          + '<div class="trend-content"><div class="trend-title">' + title + '</div>'
+          + '<div class="trend-meta" style="color:#00B894;font-weight:600">✅ Blogged on ' + date + ' — click to restore</div>'
+          + '</div></li>';
+      } else {
+        item.classList.remove('used');
+        item.style.display = '';
+        activeCount++;
+      }
+    });
+
+    completedHTML += '</ul>';
+
+    document.getElementById('trendActiveCount').textContent = activeCount + ' remaining';
+    document.getElementById('trendCompletedCount').textContent = completedCount;
+
+    if (completedCount > 0) {
+      completedToggle.style.display = '';
+      completedList.innerHTML = completedHTML;
+    } else {
+      completedToggle.style.display = 'none';
+      completedList.innerHTML = '';
+    }
+  }
+
+  function uncompleteTrend(id) {
+    const completed = getCompletedTrends();
+    delete completed[id];
+    saveCompletedTrends(completed);
+    renderTrendQueue();
+  }
+
+  function toggleCompletedTrends() {
+    const toggle = document.getElementById('trendCompletedToggle');
+    const list = document.getElementById('trendCompletedList');
+    toggle.classList.toggle('open');
+    list.classList.toggle('open');
+  }
+
+  // Initialize on page load
+  renderTrendQueue();
 
   // ═══════════ PODCAST PLAYER ═══════════
   const podcastAudio = document.getElementById('podcastAudio');
