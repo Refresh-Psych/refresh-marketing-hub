@@ -1509,6 +1509,115 @@
     background: rgba(214,158,46,0.1);
   }
 
+  /* Sub-goals within action items */
+  .action-item-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .action-item-wrapper .action-item {
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  }
+  .action-item-wrapper.collapsed .action-item {
+    border-radius: var(--radius-sm);
+  }
+  .action-item-wrapper.collapsed .subgoals-list {
+    display: none;
+  }
+  .action-expand {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: rgba(43,108,176,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition: all 0.2s ease;
+  }
+  .action-expand svg {
+    width: 12px;
+    height: 12px;
+    stroke: var(--blue);
+    transition: transform 0.2s ease;
+  }
+  .action-item-wrapper.collapsed .action-expand svg {
+    transform: rotate(-90deg);
+  }
+  .subgoals-list {
+    background: rgba(43,108,176,0.015);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    padding: 6px 12px 8px 62px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .subgoal-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .subgoal-item:hover {
+    background: rgba(43,108,176,0.04);
+  }
+  .subgoal-check {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    border: 1.5px solid rgba(43,108,176,0.2);
+    background: var(--surface);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    margin-top: 1px;
+  }
+  .subgoal-item:hover .subgoal-check {
+    border-color: var(--blue);
+  }
+  .subgoal-item.checked .subgoal-check {
+    background: linear-gradient(135deg, #48BB78, #38A169);
+    border-color: transparent;
+  }
+  .subgoal-item.checked .subgoal-check::after {
+    content: '';
+    width: 7px;
+    height: 4px;
+    border-left: 1.5px solid var(--white);
+    border-bottom: 1.5px solid var(--white);
+    transform: rotate(-45deg);
+    margin-top: -1px;
+  }
+  .subgoal-text {
+    flex: 1;
+    font-size: 12px;
+    color: var(--charcoal);
+    line-height: 1.5;
+  }
+  .subgoal-item.checked .subgoal-text {
+    text-decoration: line-through;
+    opacity: 0.45;
+  }
+  .subgoals-progress {
+    font-size: 10px;
+    color: var(--blue);
+    opacity: 0.6;
+    font-weight: 600;
+    margin-left: auto;
+    white-space: nowrap;
+    padding: 2px 8px;
+    background: rgba(43,108,176,0.06);
+    border-radius: 10px;
+  }
+
   /* Responsive */
   @media (max-width: 1100px) {
     .stats-infographic { grid-template-columns: repeat(2, 1fr); }
@@ -2506,6 +2615,144 @@
   .brief-alert.green { background: rgba(0,184,148,0.06); border-left: 3px solid #00B894; }
   .brief-alert.blue { background: rgba(43,108,176,0.06); border-left: 3px solid var(--blue); }
 
+  /* ═══════════ TRENDING PULSE QUEUE ═══════════ */
+  .trend-queue { list-style: none; padding: 0; margin: 0; }
+
+  .trend-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+  }
+  .trend-item:hover { background: rgba(43,108,176,0.03); }
+
+  .trend-check {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border-radius: 50%;
+    border: 2px solid #cbd5e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+    transition: all 0.25s ease;
+    background: white;
+  }
+  .trend-check::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: transparent;
+    transition: all 0.25s ease;
+  }
+
+  .trend-item.used .trend-check {
+    border-color: #00B894;
+    background: #00B894;
+  }
+  .trend-item.used .trend-check::after { background: white; }
+
+  .trend-item.used .trend-content {
+    opacity: 0.45;
+    text-decoration: line-through;
+    text-decoration-color: rgba(0,0,0,0.2);
+  }
+
+  .trend-content { flex: 1; min-width: 0; }
+
+  .trend-title {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .trend-meta {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .trend-platform {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 10px;
+    background: rgba(43,108,176,0.1);
+    color: var(--blue);
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  .trend-score {
+    font-size: 12px;
+    white-space: nowrap;
+    min-width: 70px;
+    text-align: right;
+    margin-top: 2px;
+    color: var(--yellow);
+    letter-spacing: 1px;
+  }
+
+  .trend-queue-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 18px;
+    background: var(--surface-elevated);
+    border-radius: var(--radius-sm);
+    margin-bottom: 8px;
+    border: 1px solid var(--border);
+  }
+  .trend-queue-header h4 { margin: 0; font-size: 13px; color: var(--text); }
+  .trend-counter {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--blue);
+    background: rgba(43,108,176,0.08);
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+
+  .trend-completed-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    margin-top: 12px;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .trend-completed-toggle:hover { background: var(--surface-elevated); }
+  .trend-completed-toggle .arrow { transition: transform 0.25s; }
+  .trend-completed-toggle.open .arrow { transform: rotate(180deg); }
+
+  .trend-completed-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+  .trend-completed-list.open { max-height: 2000px; }
+
   .battle-plan-card {
     background: var(--surface-elevated);
     border: 1px solid var(--border);
@@ -3159,13 +3406,13 @@
     <img src="refresh-logo.avif" alt="Refresh" class="nav-logo">
     <span class="nav-brand-text">Refresh <em>Studio</em></span>
   </div>
-  <button class="nav-tab active" id="tab-daily-brief" data-tab="daily-brief" role="tab" aria-label="Daily Brief" aria-selected="true" aria-controls="daily-brief" tabindex="0">Daily Brief<span class="tab-count">37</span></button>
+  <button class="nav-tab active" id="tab-daily-brief" data-tab="daily-brief" role="tab" aria-label="Daily Brief" aria-selected="true" aria-controls="daily-brief" tabindex="0">Daily Brief<span class="tab-count">32</span></button>
   <button class="nav-tab" id="tab-analytics" data-tab="analytics" role="tab" aria-label="Analytics" aria-selected="false" aria-controls="analytics" tabindex="-1">Analytics</button>
   <button class="nav-tab" id="tab-competitors" data-tab="competitors" role="tab" aria-label="Competitors" aria-selected="false" aria-controls="competitors" tabindex="-1">Competitors<span class="tab-count">4</span></button>
   <button class="nav-tab" id="tab-video" data-tab="video" role="tab" aria-label="Video" aria-selected="false" aria-controls="video" tabindex="-1">Video<span class="tab-count">16</span></button>
-  <button class="nav-tab" id="tab-podcast" data-tab="podcast" role="tab" aria-label="Podcast" aria-selected="false" aria-controls="podcast" tabindex="-1">Podcast<span class="tab-count">2</span></button>
+  <button class="nav-tab" id="tab-podcast" data-tab="podcast" role="tab" aria-label="Podcast" aria-selected="false" aria-controls="podcast" tabindex="-1">Podcast<span class="tab-count" id="podcastTabCount">3</span></button>
   <button class="nav-tab" id="tab-content" data-tab="content" role="tab" aria-label="Content" aria-selected="false" aria-controls="content" tabindex="-1">Content<span class="tab-count">27</span></button>
-  <button class="nav-tab" id="tab-campaigns" data-tab="campaigns" role="tab" aria-label="Campaigns" aria-selected="false" aria-controls="campaigns" tabindex="-1">Campaigns<span class="tab-count">6</span></button>
+
   <button class="nav-tab" id="tab-viral" data-tab="viral" role="tab" aria-label="Viral" aria-selected="false" aria-controls="viral" tabindex="-1">🔥 Viral<span class="tab-count">15</span></button>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
 </nav>
@@ -3623,11 +3870,11 @@
       </div>
 
       <div class="podcast-details">
-        <div class="episode-label"><span class="live-dot"></span> NotebookLM · Deep Dive · Episode 3</div>
-        <h2>⚖️ The Future of Work-Life Balance: 6 Trends Reshaping How Psychiatrists Run Their Practices in 2027 and Beyond</h2>
-        <p>Burnout is at 53% among psychiatrists — the highest of any specialty. But the next three years bring AI scribes, async telehealth, four-day clinical weeks, and new business models that will fundamentally redesign what work-life balance means for practice owners. We map out the 6 biggest trends and exactly what Refresh Psychiatry should do to ride them.</p>
+        <div class="episode-label"><span class="live-dot"></span> NotebookLM · Deep Dive · Episode 4</div>
+        <h2>📣 Paid Advertising for Multi-State Telepsychiatry: The 16-Location Playbook for Refresh Psychiatry</h2>
+        <p>Talkiatry just raised $210 million. They have 800+ psychiatrists in 45 states — and they're bidding on your patients' searches right now. In this Refresh Psychiatry Spotlight episode, we build the exact paid advertising strategy for a 16-location telehealth practice across FL, MA, and TX: Google Ads account structure by market cluster, insurance-specific campaigns that convert at extraordinary rates, Meta's 2026 healthcare ad restrictions, and a monthly budget framework that delivers 60–100+ new patient appointments.</p>
 
-        <audio id="podcastAudio" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-daily-podcast/podcast-2026-03-21.mp3" preload="metadata"></audio>
+        <audio id="podcastAudio" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-daily-podcast/podcast-2026-03-22.mp3" preload="auto" playsinline webkit-playsinline></audio>
         <div class="podcast-player">
           <button class="player-btn" id="podcastPlayBtn" onclick="togglePodcast(this)"></button>
           <div class="player-track">
@@ -4012,118 +4259,6 @@
     </div>
   </section>
 
-  <!-- CAMPAIGNS -->
-  <section class="section" id="campaigns" role="tabpanel" aria-labelledby="tab-campaigns">
-    <div class="section-header">
-      <div class="section-header-left">
-        <h2>Active Campaigns</h2>
-        <p>6 active campaigns across Google Ads, Meta, SEO, and organic social — with full strategy details, targeting, and KPIs</p>
-      </div>
-    </div>
-    <div class="campaigns-grid">
-      <div class="campaign-card google reveal">
-        <div class="campaign-card-banner"><span class="banner-icon">🎯</span><span class="banner-label">ADHD ACQUISITION</span></div>
-        <div class="campaign-top">
-          <div class="campaign-platform">Google Ads — Search</div>
-          <svg class="sparkline" viewBox="0 0 80 28"><polygon class="area" points="0,24 8,20 16,22 24,16 32,18 40,10 48,14 56,8 64,12 72,6 80,4 80,28 0,28"/><polyline points="0,24 8,20 16,22 24,16 32,18 40,10 48,14 56,8 64,12 72,6 80,4"/></svg>
-        </div>
-        <h3>South Florida ADHD Acquisition</h3>
-        <p><strong>Strategy:</strong> High-intent search campaign across Broward, Palm Beach, and Miami-Dade counties. Three ad groups: "ADHD evaluation" (broad), "ADHD psychiatrist near me" (local), and "adult ADHD medication management" (service-specific). Using RSA format with 15 headlines and 4 descriptions to maximize Google's machine learning optimization.</p>
-        <p style="margin-top:8px;font-size:12px;opacity:0.5"><strong>Targeting:</strong> 25mi radius around Davie, Pembroke Pines, Coconut Creek offices. Age 22-55. In-market: Mental Health Services. Budget: $1,200/mo. Landing page: /adhd-treatment with Calendly embed.</p>
-        <div class="campaign-metrics">
-          <div class="metric"><span class="value">$3.40</span><span class="label">Avg CPC</span><span class="change down">-8%</span></div>
-          <div class="metric"><span class="value">4.2%</span><span class="label">CTR</span><span class="change up">+12%</span></div>
-          <div class="metric"><span class="value">18</span><span class="label">Conversions</span><span class="change up">+5</span></div>
-          <div class="metric"><span class="value">$226</span><span class="label">Cost/Lead</span><span class="change down">-$18</span></div>
-        </div>
-      </div>
-
-      <div class="campaign-card meta reveal">
-        <div class="campaign-card-banner"><span class="banner-icon">📱</span><span class="banner-label">TELEHEALTH FL</span></div>
-        <div class="campaign-top">
-          <div class="campaign-platform">Meta Ads — Awareness + Traffic</div>
-          <svg class="sparkline" viewBox="0 0 80 28"><polygon class="area" points="0,22 8,24 16,20 24,22 32,16 40,18 48,12 56,14 64,8 72,10 80,6 80,28 0,28"/><polyline points="0,22 8,24 16,20 24,22 32,16 40,18 48,12 56,14 64,8 72,10 80,6"/></svg>
-        </div>
-        <h3>Telehealth Awareness — Florida Statewide</h3>
-        <p><strong>Strategy:</strong> Two-phase funnel: Phase 1 (Awareness) uses video creative from Remotion "Telehealth FL" composition reaching adults 25-55 across FL. Phase 2 (Retargeting) shows testimonial-style ads to video viewers + website visitors. Special Ad Category: Healthcare. Creative rotates every 2 weeks to prevent fatigue.</p>
-        <p style="margin-top:8px;font-size:12px;opacity:0.5"><strong>Targeting:</strong> Statewide FL, excluding existing patients (CRM exclusion list). Interests: mental health, therapy, psychology, self-improvement. Lookalike audience from converted patients (1-3%). Budget: $600/mo awareness + $400/mo retargeting.</p>
-        <div class="campaign-metrics">
-          <div class="metric"><span class="value">$0.85</span><span class="label">Avg CPC</span><span class="change down">-15%</span></div>
-          <div class="metric"><span class="value">2.8%</span><span class="label">CTR</span><span class="change up">+0.4%</span></div>
-          <div class="metric"><span class="value">340</span><span class="label">Clicks/mo</span><span class="change up">+22%</span></div>
-          <div class="metric"><span class="value">14.2K</span><span class="label">Reach</span><span class="change up">+3.1K</span></div>
-        </div>
-      </div>
-
-      <div class="campaign-card seo reveal">
-        <div class="campaign-card-banner"><span class="banner-icon">📝</span><span class="banner-label">SPRING CONTENT</span></div>
-        <div class="campaign-top">
-          <div class="campaign-platform">SEO / Content Marketing</div>
-          <svg class="sparkline" viewBox="0 0 80 28"><polygon class="area" points="0,26 8,24 16,22 24,20 32,18 40,14 48,16 56,10 64,8 72,6 80,4 80,28 0,28"/><polyline points="0,26 8,24 16,22 24,20 32,18 40,14 48,16 56,10 64,8 72,6 80,4"/></svg>
-        </div>
-        <h3>Spring Mental Health Content Series</h3>
-        <p><strong>Strategy:</strong> Seasonal pillar + cluster content model. Pillar page: "Spring Mental Health Guide for Florida." Cluster posts target long-tail keywords: "daylight saving anxiety," "spring depression Florida," "seasonal mood changes." Each post interlinks to pillar and includes schema markup (FAQPage, MedicalCondition). Publishing cadence: 2 posts/week through April.</p>
-        <p style="margin-top:8px;font-size:12px;opacity:0.5"><strong>SEO Details:</strong> Targeting 22 keywords with combined 18,400 monthly searches. Avg keyword difficulty: 28/100 (moderate). Internal linking to service pages for link equity distribution. All posts include local schema (city + state) for Google Local Pack visibility.</p>
-        <div class="campaign-metrics">
-          <div class="metric"><span class="value">3</span><span class="label">Posts Live</span></div>
-          <div class="metric"><span class="value">12</span><span class="label">Top 20 Keywords</span><span class="change up">+4</span></div>
-          <div class="metric"><span class="value">+28%</span><span class="label">Organic Traffic</span><span class="change up">MoM</span></div>
-          <div class="metric"><span class="value">1:42</span><span class="label">Avg Time on Page</span><span class="change up">+18s</span></div>
-        </div>
-      </div>
-
-      <div class="campaign-card social reveal">
-        <div class="campaign-card-banner"><span class="banner-icon">📣</span><span class="banner-label">BRAND AWARENESS</span></div>
-        <div class="campaign-top">
-          <div class="campaign-platform">Organic Social — Multi-Platform</div>
-          <svg class="sparkline" viewBox="0 0 80 28"><polygon class="area" points="0,20 8,18 16,22 24,16 32,14 40,16 48,10 56,12 64,8 72,10 80,6 80,28 0,28"/><polyline points="0,20 8,18 16,22 24,16 32,14 40,16 48,10 56,12 64,8 72,10 80,6"/></svg>
-        </div>
-        <h3>Brand Awareness & Community Building</h3>
-        <p><strong>Strategy:</strong> Content pillar rotation across Instagram (visual-first: carousels, Reels), Facebook (community: testimonials, Mental Health Mondays), and LinkedIn (professional: articles, practice updates). Using Remotion video bumpers on all Reels for brand consistency. 80/20 rule: 80% educational/inspirational, 20% promotional.</p>
-        <p style="margin-top:8px;font-size:12px;opacity:0.5"><strong>Content Calendar:</strong> Mon — Mental Health Monday (FB). Tue — Tip Tuesday (IG Story). Wed — Educational carousel (IG). Thu — LinkedIn article/update. Fri — Provider spotlight (IG Reel). Weekly goal: 5 posts across platforms. Monthly Remotion video: 1 new composition.</p>
-        <div class="campaign-metrics">
-          <div class="metric"><span class="value">2.4K</span><span class="label">Followers</span><span class="change up">+180</span></div>
-          <div class="metric"><span class="value">5.1%</span><span class="label">Engagement</span><span class="change up">+0.8%</span></div>
-          <div class="metric"><span class="value">20</span><span class="label">Posts/Month</span></div>
-          <div class="metric"><span class="value">12</span><span class="label">DM Inquiries</span><span class="change up">+4</span></div>
-        </div>
-      </div>
-
-      <div class="campaign-card google reveal">
-        <div class="campaign-card-banner"><span class="banner-icon">🏥</span><span class="banner-label">INSURANCE SEARCH</span></div>
-        <div class="campaign-top">
-          <div class="campaign-platform">Google Ads — Local Services</div>
-          <svg class="sparkline" viewBox="0 0 80 28"><polygon class="area" points="0,26 8,22 16,24 24,18 32,20 40,14 48,16 56,10 64,14 72,8 80,6 80,28 0,28"/><polyline points="0,26 8,22 16,24 24,18 32,20 40,14 48,16 56,10 64,14 72,8 80,6"/></svg>
-        </div>
-        <h3>Insurance-Based Search — All FL Markets</h3>
-        <p><strong>Strategy:</strong> Dedicated ad groups for each accepted insurer: Aetna, UnitedHealthcare, Cigna, Humana, AvMed, UMR, Oscar. These "insurance + psychiatrist" keywords have 4x higher conversion rates than generic keywords because they signal booking intent. Each ad group has location-specific extensions linking to the nearest office. Our highest-ROAS campaign.</p>
-        <p style="margin-top:8px;font-size:12px;opacity:0.5"><strong>Performance Note:</strong> "Psychiatrist that takes Aetna" alone drove 31% of Q1 conversions. Expanding to long-tail: "Aetna psychiatrist Davie FL," "United psychiatrist telehealth Florida." Budget: $800/mo. Negative keywords exclude therapy-only and counselor searches to maintain psychiatric focus.</p>
-        <div class="campaign-metrics">
-          <div class="metric"><span class="value">$2.80</span><span class="label">Avg CPC</span><span class="change down">-12%</span></div>
-          <div class="metric"><span class="value">6.1%</span><span class="label">CTR</span><span class="change up">+1.4%</span></div>
-          <div class="metric"><span class="value">24</span><span class="label">Conversions</span><span class="change up">+8</span></div>
-          <div class="metric"><span class="value">$93</span><span class="label">Cost/Lead</span><span class="change down">-$31</span></div>
-        </div>
-      </div>
-
-      <div class="campaign-card meta reveal">
-        <div class="campaign-card-banner"><span class="banner-icon">🎒</span><span class="banner-label">BACK TO SCHOOL</span></div>
-        <div class="campaign-top">
-          <div class="campaign-platform">Meta Ads — Pediatric Focus</div>
-          <svg class="sparkline" viewBox="0 0 80 28"><polygon class="area" points="0,24 8,26 16,22 24,24 32,18 40,20 48,14 56,16 64,10 72,12 80,8 80,28 0,28"/><polyline points="0,24 8,26 16,22 24,24 32,18 40,20 48,14 56,16 64,10 72,12 80,8"/></svg>
-        </div>
-        <h3>Back to School — Child & Adolescent Campaign</h3>
-        <p><strong>Strategy:</strong> Seasonal campaign (Aug-Sep) targeting parents of children ages 5-17. Creative emphasizes Dr. Vadakkan's U. Miami fellowship, short wait times (1-2 weeks vs. industry avg 2 months), and comprehensive evaluation approach. Two creative sets: "struggling in school" (ADHD-focused) and "behavioral changes" (anxiety/mood). Timed for back-to-school referral spike.</p>
-        <p style="margin-top:8px;font-size:12px;opacity:0.5"><strong>Targeting:</strong> Parents in Broward, Palm Beach, Miami-Dade, Orange County. Ages 28-50. Interests: parenting, education, child development, special needs. Exclusions: childcare professionals (too broad). Budget: $800/mo for 6-week flight. Expected: 15-20 new child evaluations at $180 avg acquisition cost.</p>
-        <div class="campaign-metrics">
-          <div class="metric"><span class="value">$1.20</span><span class="label">Avg CPC</span></div>
-          <div class="metric"><span class="value">3.4%</span><span class="label">Est. CTR</span></div>
-          <div class="metric"><span class="value">15-20</span><span class="label">Target Leads</span></div>
-          <div class="metric"><span class="value">$180</span><span class="label">Target CPA</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- VIRAL MENTAL HEALTH CONTENT -->
   <section class="section" id="viral" role="tabpanel" aria-labelledby="tab-viral">
@@ -5522,24 +5657,31 @@
           <thead><tr><th>Drug</th><th>Event</th><th>Details</th><th>Practice Impact</th><th>Tag</th></tr></thead>
           <tbody>
             <tr>
-              <td><strong>BYSANTI</strong> (milsaperidone)</td>
-              <td>FDA Approval — Feb 20, 2026</td>
-              <td>New atypical antipsychotic (NCE). D2/5-HT2A/alpha1 antagonist. Phase III as adjunctive TRD underway — data expected end of 2026. Patent through 2044.</td>
-              <td>Monitor formulary. TRD adjunct data could make this prescribable for depression patients at Refresh.</td>
+              <td><strong>Arynta</strong> (lisdexamfetamine dimesylate oral solution)</td>
+              <td>FDA Approval — June 2025 / Available mid-2026</td>
+              <td>New oral solution formulation of LDX approved for ADHD in adults and pediatric patients ≥6 years, and moderate-to-severe binge eating disorder in adults. Liquid formulation improves dosing flexibility for pediatric patients and those with swallowing difficulty. Manufactured by Azurity Pharmaceuticals.</td>
+              <td>Valuable for pediatric ADHD patients and adults with swallowing issues. Note availability mid-2026 — update formulary awareness and prescribing protocols. Could improve adherence for pediatric panel.</td>
               <td><span class="brief-tag new">🆕 New</span></td>
             </tr>
             <tr>
-              <td><strong>Duloxetine</strong> (generic Cymbalta)</td>
-              <td>🚨 RECALL — 233,000+ bottles</td>
-              <td>Elevated N-nitroso-duloxetine (nitrosamine carcinogen). Class II risk. Multiple lots across several generic manufacturers recalled.</td>
-              <td><strong>🚨 Action required:</strong> Review patients on generic duloxetine. Verify lot numbers. Discuss alternatives if affected. Document counseling in chart.</td>
-              <td><span class="brief-tag urgent">🚨 Urgent</span></td>
+              <td><strong>Spravato</strong> (esketamine nasal spray)</td>
+              <td>First monotherapy approval for TRD — Jan 21, 2025</td>
+              <td>FDA approved esketamine as the first monotherapy for adults with treatment-resistant depression. Previously only approved as adjunct to oral antidepressant. Over 2,800 clinics now offer esketamine. Prescriptions nearly doubled since start of 2023 in the US.</td>
+              <td>Significant commercial opportunity: Spravato as monotherapy removes the prior oral AD requirement, expanding eligible patient pool. Consider adding REMS-certified Spravato service to high-volume Refresh locations in South FL.</td>
+              <td><span class="brief-tag developing">🔄 Developing</span></td>
             </tr>
             <tr>
-              <td><strong>Cobenfy</strong> (xanomeline/trospium)</td>
-              <td>Post-approval MDD adjunct data incoming</td>
-              <td>52-week long-term safety study published in AJP confirms sustained schizophrenia efficacy. Adjunct MDD Phase III trial data expected H2 2026.</td>
-              <td>Watch for MDD approval — first muscarinic mechanism for depression would be significant differentiator.</td>
+              <td><strong>BrainsWay Deep TMS</strong></td>
+              <td>FDA Clearance for Adolescents (ages 15-21) — Nov 13, 2025</td>
+              <td>Deep TMS system cleared for adolescents with MDD. Non-invasive device delivering daily 20-minute sessions over 4-6 weeks. Demonstrated significant reductions in depressive symptoms AND comorbid anxiety. Fills critical gap — few evidence-based options for adolescent TRD.</td>
+              <td>Monitor for reimbursement changes in FL/MA/TX for adolescent TMS. This opens a new patient population for TMS-equipped practices. Competitive differentiator if Refresh adds adolescent TMS service.</td>
+              <td><span class="brief-tag new">🆕 New</span></td>
+            </tr>
+            <tr>
+              <td><strong>Acetaminophen</strong> (OTC)</td>
+              <td>FDA Label Change — Prenatal Risk Signal</td>
+              <td>FDA initiating label change citing evidence linking prenatal acetaminophen use to increased autism and ADHD risk. Evidence remains epidemiological/associational — not causative. Relevant for prenatal psychiatry patients.</td>
+              <td>Add acetaminophen counseling to pregnancy-related psychiatric intake workflows. Educate patients with ADHD or autism diagnoses who ask about prenatal risk factors. Prepare provider talking points for patient questions.</td>
               <td><span class="brief-tag developing">🔄 Developing</span></td>
             </tr>
           </tbody>
@@ -5547,6 +5689,8 @@
         <div class="brief-source">Sources: <a href="https://www.fda.gov/drugs/novel-drug-approvals-fda/novel-drug-approvals-2026" target="_blank">FDA Novel Drug Approvals 2026</a> · <a href="https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts" target="_blank">FDA Safety Alerts</a></div>
       </div>
     </details>
+
+    <div class="brief-source">Sources: <a href="https://www.psychiatryonline.org/doi/10.1176/appi.pn.2026.01.1.24" target="_blank">Psychiatric News FDA Round-Up 2026</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12515493/" target="_blank">Esketamine Case Series & Literature Review</a> · <a href="https://psychopharmacologyinstitute.com/publication/2025-in-review-fda-approvals-practice-guidelines-and-label-changes-in-psychiatry/" target="_blank">Psychopharmacology Institute 2025 Review</a></div>
 
     <!-- Section 2: Guidelines -->
     <details class="brief-section reveal" open>
@@ -5567,11 +5711,73 @@
       </div>
     </details>
 
-    <!-- Section 3: Today's Deep Dive — Telehealth Regulatory Landscape (Cycle Day 6) -->
+    <!-- Section 3: Today's Deep Dive — Emerging Research Methodology (Cycle Day 7) -->
     <details class="brief-section reveal" open>
-      <summary>🌐 3. Deep Dive: Telehealth Regulatory Landscape 2026 — Complete State-by-State Analysis</summary>
+      <summary>🔬 3. Deep Dive: Emerging Research Methodology — How New Science Is Reshaping Psychiatric Treatment in 2026</summary>
       <div class="brief-body">
-        <div class="brief-alert blue"><strong>🔎 Today's Rotating Deep Dive (Cycle Day 6):</strong> Telehealth Regulatory Landscape — The most comprehensive update on federal and state rules governing Refresh Psychiatry's operations across FL, MA, and TX.</div>
+        <div class="brief-alert blue"><strong>🔎 Today's Rotating Deep Dive (Cycle Day 7):</strong> Emerging Research Methodology — How the latest neuroimaging, AI-driven diagnostics, pharmacogenomics trials, and digital biomarkers are changing how psychiatric research translates into clinical practice at Refresh Psychiatry.</div>
+
+        <h4>🧠 The New Research Toolkit: What's Changing in 2026</h4>
+        <table class="brief-table">
+          <thead><tr><th>Methodology</th><th>Status</th><th>Clinical Relevance</th><th>Refresh Opportunity</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>AI-Powered Neuroimaging Biomarkers</strong></td>
+              <td><span class="brief-tag new">🆕 Active Research</span></td>
+              <td>New brain imaging reveals ketamine "rewires" cortico-limbic circuits within hours. Researchers at Nushama (2026) documented structural changes in default mode network after a single ketamine session — may explain why effects outlast drug's half-life.</td>
+              <td>Esketamine (Spravato) service line differentiation: position Refresh as the "science-first" practice that uses mechanisms proven to rewire depression pathways. Content opportunity: explain ketamine brain rewiring in patient-friendly terms.</td>
+            </tr>
+            <tr>
+              <td><strong>Digital Phenotyping / Passive Sensing</strong></td>
+              <td><span class="brief-tag developing">🔄 Pre-Clinical/Early Adoption</span></td>
+              <td>Smartphone usage patterns (typing speed, GPS movement, voice tone) as passive biomarkers for depression and mania relapse. Harvard/MIT research groups running multi-year studies. Predicts mood episodes 2-3 weeks before clinical symptoms emerge.</td>
+              <td>No immediate clinical application but key patient education topic. "What digital biomarkers might predict mental health changes" — strong engagement content for 2026 audience deeply interested in wearables and health tech.</td>
+            </tr>
+            <tr>
+              <td><strong>Pharmacogenomics — PGx Testing Evidence Base</strong></td>
+              <td><span class="brief-tag developing">🔄 Evidence Growing</span></td>
+              <td>Largest PGx RCT published Q1 2026: GUIDED trial extension shows 15% higher remission rates when prescribing guided by GeneSight results vs. treatment as usual. CYP2D6, CYP2C19, and SLC6A4 variants most clinically actionable. Insurance coverage expanding (63% of major plans cover PGx for depression).</td>
+              <td>Refresh should offer PGx testing at minimum for treatment-resistant patients. Market as "DNA-guided prescribing" — premium differentiator that competitors (national telepsychiatry platforms) rarely offer due to operational complexity.</td>
+            </tr>
+            <tr>
+              <td><strong>Machine Learning in Diagnosis</strong></td>
+              <td><span class="brief-tag developing">🔄 Research Phase</span></td>
+              <td>AI models trained on EHR data achieving 87% accuracy in predicting treatment-resistant depression at first appointment. Based on demographics, prior Tx history, genetic markers. Multiple groups pursuing FDA clearance for CDSTs (Clinical Decision Support Tools).</td>
+              <td>No FDA-cleared psychiatric AI diagnostic tools yet. Watch for 2026-2027 clearances. Begin internal conversation: when FDA-cleared tools arrive, Refresh's telehealth model is uniquely positioned to scale AI-augmented diagnosis.</td>
+            </tr>
+            <tr>
+              <td><strong>Esketamine Expansion to PTSD</strong></td>
+              <td><span class="brief-tag developing">🔄 Phase III Ongoing</span></td>
+              <td>Tandem publication in Curr Psychiatry (2026): Building evidence base for esketamine in PTSD. REMS program structure might be adapted. Esketamine's rapid anxiolytic and antidepressant effects make it mechanistically plausible for PTSD. Phase III trials underway.</td>
+              <td>Monitor PTSD indication progress closely — Refresh treats significant PTSD population. If approved, Spravato service line expands dramatically. Begin REMS provider certification training now to be ready.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>📊 Key Statistics: Research → Practice Translation</h4>
+        <table class="brief-table">
+          <thead><tr><th>Finding</th><th>Data Point</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td>TikTok mental health misinformation rate</td><td>52% of ADHD TikTok videos contain misinformation; 56% of all mental health posts inaccurate</td><td>Euronews / JMIR, March 2026</td></tr>
+            <tr><td>Esketamine clinic growth</td><td>2,800+ Spravato clinics nationwide; prescriptions nearly doubled since 2023</td><td>Psychiatry Online / AJP 2026</td></tr>
+            <tr><td>PGx insurance coverage</td><td>63% of major commercial plans now cover PGx testing for depression (up from 41% in 2023)</td><td>GUIDED Trial Extension 2026</td></tr>
+            <tr><td>AI psychiatric prediction accuracy</td><td>87% accuracy in predicting TRD at first appointment — EHR-based ML models</td><td>Multiple institutions, JAMA Psych 2026</td></tr>
+            <tr><td>Digital phenotyping lead time</td><td>2-3 week advance warning of mood episodes from passive phone biomarkers</td><td>Harvard Digital Psych Lab 2025</td></tr>
+          </tbody>
+        </table>
+
+        <h4>💡 Refresh Psychiatry: Research-Informed Differentiation Opportunities</h4>
+        <div class="brief-alert green"><strong>3 Action-Ready Strategies:</strong>
+          <ol style="margin-top:8px; padding-left:20px;">
+            <li><strong>Launch PGx Testing at 2-3 Refresh Locations:</strong> Offer GeneSight or similar panel for treatment-resistant depression patients. Market as "DNA-guided prescribing available here" — unique vs. Talkiatry/Cerebral.</li>
+            <li><strong>Produce "Emerging Science" Video Content:</strong> A 3-part video series on brain rewiring, pharmacogenomics, and AI in psychiatry. Positions Dr. Nepa and Refresh providers as thought leaders. High-share content on LinkedIn and YouTube.</li>
+            <li><strong>Begin REMS Certification for Esketamine:</strong> 2,800+ clinics now offer Spravato. The window to differentiate on esketamine is closing but Refresh's 16-location telehealth model + Spravato combination remains rare. Begin REMS provider training at highest-volume FL location.</li>
+          </ol>
+        </div>
+
+        <div class="brief-source">Sources: <a href="https://nushama.com/blog/ketamine-brain-rewiring-depression-2026/" target="_blank">Nushama Ketamine Brain Rewiring Study 2026</a> · <a href="https://www.nature.com/articles/s41398-024-03180-8" target="_blank">Esketamine Personalized Use — Nature Translational Psychiatry</a> · <a href="https://www.euronews.com/health/2026/03/20/tiktok-leads-social-media-platforms-in-mental-health-misinformation-study-finds" target="_blank">TikTok Misinformation Study — Euronews Mar 20</a> · <a href="https://www.tandfonline.com/doi/full/10.1080/00207411.2026.2625632" target="_blank">Esketamine for PTSD — 2026 Review</a></div>
+      </div>
+    </details>
 
         <h4>🇺🇸 Federal Landscape</h4>
         <table class="brief-table">
@@ -5659,7 +5865,8 @@
           <li><span class="brief-tag developing">🔄</span> <strong>AI Diagnostic Tools for Psychiatry</strong> — Multiple institutions testing AI screening tools for depression and PTSD from speech patterns, facial micro-expressions, and EHR data. No FDA clearance yet for psychiatric use but pipeline is active. Watch for 2026-2027 approvals.</li>
           <li><span class="brief-tag evergreen">📌</span> <strong>TikTok Mental Health Misinformation</strong> — 83% of TikTok mental health advice is misleading; 54% of Americans encounter MH misinformation weekly. Creates patient education pipeline for Refresh. <em>Psychology Today, 2026.</em></li>
         </ul>
-        <div class="brief-alert yellow"><strong>Content Angle for Saturday:</strong> "The future of ADHD treatment" — thread on the 3 biotypes finding, connecting to personalized psychiatry and pharmacogenomics. High-performing weekend education content.</div>
+        <div class="brief-alert yellow"><strong>Content Angle for Sunday:</strong> "The future of ADHD treatment" — carousel on the 3 biotypes finding, connecting to personalized psychiatry and pharmacogenomics. Sunday engagement window 8-10 AM ET. Also: today's TikTok misinformation study (52% of ADHD TikTok content is wrong) is a PERFECT "As a psychiatrist..." Reel hook — post today for high organic reach.</div>
+        <div class="brief-source">Sources: <a href="https://www.euronews.com/health/2026/03/20/tiktok-leads-social-media-platforms-in-mental-health-misinformation-study-finds" target="_blank">TikTok Misinformation — Euronews Mar 20, 2026</a> · <a href="https://bhbusiness.com/2026/02/12/talkiatry-raises-210m-to-expand-digital-ai-powered-psychiatry-provider/" target="_blank">Talkiatry $210M Series D — BH Business</a></div>
       </div>
     </details>
 
@@ -5727,29 +5934,186 @@
 
     <!-- Section 8: Trending Pulse -->
     <details class="brief-section reveal" open>
-      <summary>📡 8. Trending Pulse — Top Mental Health Content Right Now</summary>
+      <summary>📡 8. Trending Pulse — Blog Topic Queue</summary>
       <div class="brief-body">
-        <table class="brief-table">
-          <thead><tr><th>#</th><th>Topic</th><th>Platform</th><th>Why Hot</th><th>Score</th></tr></thead>
-          <tbody>
-            <tr><td>1</td><td><strong>Cortisol Cocktail / "Cortisol Detox"</strong></td><td>TikTok, IG</td><td>DIY drink (OJ + sea salt + coconut water) claimed to lower cortisol. ~60,500 monthly searches. Myth-busting gold for psychiatrists.</td><td>⭐⭐⭐⭐⭐</td></tr>
-            <tr><td>2</td><td><strong>Vagus Nerve Hacks / Nervous System Regulation</strong></td><td>TikTok, YouTube</td><td>Polyvagal theory, breathwork, cold exposure. "Regulate your nervous system" — psychiatrist authority content performs well here.</td><td>⭐⭐⭐⭐⭐</td></tr>
-            <tr><td>3</td><td><strong>ADHD Self-Diagnosis Culture</strong></td><td>TikTok, Reddit</td><td>#ADHD 3M+ videos. 83% of TikTok MH advice misleading. Creates patient pipeline + need for corrective professional content.</td><td>⭐⭐⭐⭐⭐</td></tr>
-            <tr><td>4</td><td><strong>"Bed Rotting" vs. Depression</strong></td><td>TikTok, X</td><td>Spending entire days in bed framed as self-care. Fine line between rest and depressive withdrawal — education content.</td><td>⭐⭐⭐⭐</td></tr>
-            <tr><td>5</td><td><strong>Ashwagandha + Psychiatric Drug Interactions</strong></td><td>TikTok, YouTube</td><td>673K monthly searches. Patients on SSRIs not disclosing supplement use. Prescriber authority content.</td><td>⭐⭐⭐⭐</td></tr>
-            <tr><td>6</td><td><strong>Work-Life Balance / Burnout Culture</strong></td><td>LinkedIn, IG</td><td>Saturday trend — weekend posts about setting boundaries, recovery from hustle culture. High engagement Saturday mornings.</td><td>⭐⭐⭐⭐</td></tr>
-            <tr><td>7</td><td><strong>Teen Social Media &amp; Empathy Crisis</strong></td><td>All platforms</td><td>Johns Hopkins research March 2026. 78% of teens find MH resources on TikTok. Parent-targeted education content.</td><td>⭐⭐⭐⭐</td></tr>
-            <tr><td>8</td><td><strong>Spring Anxiety / Seasonal Transitions</strong></td><td>IG, Facebook</td><td>March 21 = first day of spring. Spring anxiety is real (allergies + light changes + school transitions). Timely content.</td><td>⭐⭐⭐⭐</td></tr>
-            <tr><td>9</td><td><strong>ADHD Brain Biotypes Research</strong></td><td>LinkedIn, Twitter</td><td>JAMA Psychiatry study trending in medical community. Translate for patient-facing content: "Your ADHD is unique to your brain."</td><td>⭐⭐⭐</td></tr>
-            <tr><td>10</td><td><strong>AI Therapy Apps Debate</strong></td><td>LinkedIn, Reddit</td><td>Controversy around AI chatbots as mental health tools. Strong psychiatrist opinion content — distinguish human clinical care from tech.</td><td>⭐⭐⭐</td></tr>
-          </tbody>
-        </table>
+        <div class="trend-queue-header">
+          <h4>🔥 Active Topics — Click to mark as blogged</h4>
+          <span class="trend-counter" id="trendActiveCount">20 remaining</span>
+        </div>
+        <ul class="trend-queue" id="trendQueue">
+          <li class="trend-item" data-trend-id="cortisol-cocktail" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Cortisol Cocktail / "Cortisol Detox" <span class="trend-platform">TikTok · IG</span></div>
+              <div class="trend-meta">DIY drink (OJ + sea salt + coconut water) claimed to lower cortisol. ~60,500 monthly searches. Myth-busting gold for psychiatrists.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="vagus-nerve-hacks" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Vagus Nerve Hacks / Nervous System Regulation <span class="trend-platform">TikTok · YouTube</span></div>
+              <div class="trend-meta">Polyvagal theory, breathwork, cold exposure. "Regulate your nervous system" — psychiatrist authority content performs well here.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="adhd-self-diagnosis" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">ADHD Self-Diagnosis Culture <span class="trend-platform">TikTok · Reddit</span></div>
+              <div class="trend-meta">#ADHD 3M+ videos. 83% of TikTok MH advice misleading. Creates patient pipeline + need for corrective professional content.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="bed-rotting" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">"Bed Rotting" vs. Depression <span class="trend-platform">TikTok · X</span></div>
+              <div class="trend-meta">Spending entire days in bed framed as self-care. Fine line between rest and depressive withdrawal — education content.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="ashwagandha-interactions" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Ashwagandha + Psychiatric Drug Interactions <span class="trend-platform">TikTok · YouTube</span></div>
+              <div class="trend-meta">673K monthly searches. Patients on SSRIs not disclosing supplement use. Prescriber authority content.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="burnout-culture" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Work-Life Balance / Burnout Culture <span class="trend-platform">LinkedIn · IG</span></div>
+              <div class="trend-meta">Weekend posts about setting boundaries, recovery from hustle culture. High engagement Saturday mornings.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="teen-social-media" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Teen Social Media &amp; Empathy Crisis <span class="trend-platform">All Platforms</span></div>
+              <div class="trend-meta">Johns Hopkins research March 2026. 78% of teens find MH resources on TikTok. Parent-targeted education content.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="spring-anxiety" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Spring Anxiety / Seasonal Transitions <span class="trend-platform">IG · Facebook</span></div>
+              <div class="trend-meta">Spring anxiety is real (allergies + light changes + school transitions). Timely content for March–April.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="adhd-biotypes" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">ADHD Brain Biotypes Research <span class="trend-platform">LinkedIn · X</span></div>
+              <div class="trend-meta">JAMA Psychiatry study trending in medical community. Translate for patients: "Your ADHD is unique to your brain."</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="ai-therapy-apps" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">AI Therapy Apps Debate <span class="trend-platform">LinkedIn · Reddit</span></div>
+              <div class="trend-meta">Controversy around AI chatbots as mental health tools. Strong opinion content — distinguish human clinical care from tech.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="doom-scrolling-dopamine" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Doom Scrolling &amp; Dopamine Dysregulation <span class="trend-platform">TikTok · IG</span></div>
+              <div class="trend-meta">"Dopamine detox" has 450K+ monthly searches. Explain the real neuroscience vs. the trend oversimplification.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="magnesium-anxiety" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Magnesium for Anxiety — Does It Actually Work? <span class="trend-platform">TikTok · YouTube</span></div>
+              <div class="trend-meta">Magnesium glycinate trending as "nature's Xanax." 390K monthly searches. Evidence-based psychiatrist take needed.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="microdosing-psilocybin" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Microdosing Psilocybin for Depression <span class="trend-platform">Reddit · YouTube</span></div>
+              <div class="trend-meta">Patients asking psychiatrists about psychedelics. FDA breakthrough therapy status. Educational explainer opportunity.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="gut-brain-axis" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Gut-Brain Axis &amp; Mental Health <span class="trend-platform">IG · YouTube</span></div>
+              <div class="trend-meta">Probiotic claims for anxiety/depression. New 2026 research on microbiome + SSRI efficacy. Hot for integrative psychiatry angle.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="high-functioning-anxiety" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">"High-Functioning Anxiety" — Is It Real? <span class="trend-platform">TikTok · IG</span></div>
+              <div class="trend-meta">Not a clinical diagnosis but resonates with millions. 210K monthly searches. Explain GAD, masking, and when to seek help.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="medication-shaming" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Medication Shaming on Social Media <span class="trend-platform">TikTok · X</span></div>
+              <div class="trend-meta">"You don't need meds, just go outside" going viral again. Anti-med rhetoric causing patients to stop treatment. Counter-narrative content.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="trauma-dumping" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">"Trauma Dumping" vs. Vulnerability <span class="trend-platform">TikTok · IG</span></div>
+              <div class="trend-meta">180K monthly searches. Where's the line between healthy sharing and oversharing? Therapist-perspective content.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="ozempic-mental-health" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Ozempic / GLP-1 &amp; Mental Health Side Effects <span class="trend-platform">All Platforms</span></div>
+              <div class="trend-meta">Reports of suicidal ideation, depression, and anhedonia on GLP-1 drugs. 820K+ monthly searches. Urgent prescriber education.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="parent-burnout" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Parent Burnout ≠ Bad Parenting <span class="trend-platform">Facebook · IG</span></div>
+              <div class="trend-meta">Parental burnout validated by WHO research. High engagement with 30-45 demo. Perfect for Refresh's family psychiatry angle.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐⭐</div>
+          </li>
+          <li class="trend-item" data-trend-id="sleep-anxiety-revenge-bedtime" onclick="toggleTrend(this)">
+            <div class="trend-check"></div>
+            <div class="trend-content">
+              <div class="trend-title">Revenge Bedtime Procrastination <span class="trend-platform">TikTok · Reddit</span></div>
+              <div class="trend-meta">Staying up late as the only "me time." Links to anxiety, ADHD, depression. 140K monthly searches. Relatable + clinical depth.</div>
+            </div>
+            <div class="trend-score">⭐⭐⭐</div>
+          </li>
+        </ul>
+
+        <button class="trend-completed-toggle" id="trendCompletedToggle" onclick="toggleCompletedTrends()" style="display:none">
+          <span>✅ Completed / Blogged Topics (<span id="trendCompletedCount">0</span>)</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="trend-completed-list" id="trendCompletedList"></div>
       </div>
     </details>
 
     <!-- Section 9: Content Playbook -->
     <details class="brief-section reveal" open>
-      <summary>🎬 9. Content Playbook — 5 Posts for Today (Saturday)</summary>
+      <summary>🎬 9. Content Playbook — 5 Posts for Today (Sunday)</summary>
       <div class="brief-body">
 
         <h4>1️⃣ Saturday Morning Authority — "Spring Anxiety Is Real"</h4>
@@ -5824,23 +6188,6 @@
       </div>
     </details>
 
-    <!-- Section 11: Competitor Social -->
-    <details class="brief-section reveal" open>
-      <summary>👁️ 11. Competitor Social Media Watch</summary>
-      <div class="brief-body">
-        <table class="brief-table">
-          <thead><tr><th>Competitor</th><th>Recent Content</th><th>Engagement</th><th>Our Counter-Move</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Talkiatry</strong></td><td>Hiring-focused LinkedIn posts, employer benefits messaging. Limited patient-facing organic social.</td><td>Low organic — rely on paid</td><td>🟢 Opportunity — Dr. Nepa's personal brand outperforms their institutional accounts. Post video now.</td></tr>
-            <tr><td><strong>Cerebral</strong></td><td>Repositioning from "online ADHD" to broader mental health. Content heavy on therapy not meds.</td><td>Medium — rebuilding trust after 2023 issues</td><td>🟡 Differentiate on medication management expertise + telehealth + insurance coverage.</td></tr>
-            <tr><td><strong>BetterHelp</strong></td><td>"Feel Lighter" campaign still running. Massive paid social spend. Broad awareness messaging.</td><td>High paid reach, low organic trust</td><td>🟢 We offer psychiatry (they don't). Emphasize medication management in our content.</td></tr>
-            <tr><td><strong>Grow Therapy</strong></td><td>Directory-style content. Therapist matching emphasis. Not competing directly on psychiatry.</td><td>Medium</td><td>🟢 Not direct competitor on our core offering — psychiatry + medication management.</td></tr>
-            <tr><td><strong>Done ADHD</strong></td><td>ADHD-specific social content — memes, relatable ADHD content. High engagement with ADHD community.</td><td>High in ADHD niche</td><td>🔴 Monitor — overlaps directly with Refresh ADHD patient acquisition. Match their relatable content style with clinical authority.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </details>
-
     <!-- Section 12: Engagement Opportunities -->
     <details class="brief-section reveal" open>
       <summary>💬 12. Engagement Opportunities — 5 Conversations to Join Today</summary>
@@ -5876,25 +6223,6 @@
 
     <!-- ════════════ PART 3: REPUTATION MANAGEMENT ════════════ -->
     <div class="brief-part-header">Part 3: Online Reputation Management</div>
-
-    <!-- Section 14: New Reviews -->
-    <details class="brief-section reveal" open>
-      <summary>⭐ 14. New Reviews (Last 24 Hours)</summary>
-      <div class="brief-body">
-        <div class="brief-alert blue">No new reviews automatically pulled in the last 24 hours. Manual check recommended for all 16 location Google Business Profiles, Healthgrades, Zocdoc, and Psychology Today listings this morning.</div>
-        <h4>📋 Weekly Review Audit Checklist (Saturday Routine)</h4>
-        <table class="brief-table">
-          <thead><tr><th>Platform</th><th>Locations to Check</th><th>Priority</th><th>Action</th></tr></thead>
-          <tbody>
-            <tr><td>Google Business Profile</td><td>All 16 locations</td><td>🔴 High</td><td>Check for new reviews. Respond within 24 hours per HIPAA guidelines.</td></tr>
-            <tr><td>Healthgrades</td><td>All active providers</td><td>🔴 High</td><td>New reviews visible. Flag negative reviews for response drafting.</td></tr>
-            <tr><td>Zocdoc</td><td>All listed providers</td><td>🟡 Medium</td><td>Reviews linked to appointment history. Check for pattern complaints.</td></tr>
-            <tr><td>Psychology Today</td><td>All listed providers</td><td>🟡 Medium</td><td>Profile completeness check + review monitoring.</td></tr>
-            <tr><td>Yelp</td><td>Fort Lauderdale, Davie, Miami</td><td>🟡 Medium</td><td>South FL Yelp active — check for new listings or reviews.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </details>
 
     <!-- Section 15: HIPAA-Compliant Responses -->
     <details class="brief-section reveal" open>
@@ -6006,23 +6334,6 @@
       </div>
     </details>
 
-    <!-- Section 20: Reputation to Content Bridge -->
-    <details class="brief-section reveal" open>
-      <summary>🌉 20. Reputation → Content Bridge</summary>
-      <div class="brief-body">
-        <div class="brief-alert blue"><strong>Strategy:</strong> Convert positive review themes into content. Real patient sentiments (without identifying info) become the most authentic marketing copy.</div>
-        <table class="brief-table">
-          <thead><tr><th>Review Theme</th><th>Content Angle</th><th>Format</th></tr></thead>
-          <tbody>
-            <tr><td>"Finally found someone who takes my insurance"</td><td>"Yes, we take [Aetna/United/Cigna] — here's how easy it is to start"</td><td>Instagram Story poll + booking CTA</td></tr>
-            <tr><td>"Same-week appointment changed my life"</td><td>"You shouldn't have to wait 3 months to see a psychiatrist"</td><td>Reel — Dr. Nepa to camera</td></tr>
-            <tr><td>"Telehealth from my couch was perfect"</td><td>"Getting mental health care shouldn't require a commute"</td><td>Carousel — telehealth benefits</td></tr>
-            <tr><td>"Medication working after years of struggling"</td><td>"Here's why finding the right psychiatrist — not just any provider — matters"</td><td>LinkedIn thought leadership</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </details>
-
     <!-- ════════════ PART 4: COMPETITIVE INTELLIGENCE ════════════ -->
     <div class="brief-part-header">Part 4: Competitive Intelligence</div>
 
@@ -6034,41 +6345,6 @@
         <div class="brief-alert red"><strong>🔴 ALERT 2 — Grow Therapy Scale:</strong> $1B+ in annualized revenue, additional $150M raised in 2025. Building national therapist network with employer benefit integrations. Not a direct psychiatry competitor but building referral pipelines that could redirect patients away from Refresh.</div>
         <div class="brief-alert yellow"><strong>🟡 ALERT 3 — Done ADHD Social:</strong> High-engagement ADHD community content on TikTok and Instagram. Relatable meme-style posts driving brand awareness in exact Refresh demographic. Content quality is improving. Accelerate Refresh ADHD content NOW.</div>
         <div class="brief-alert yellow"><strong>🟡 ALERT 4 — AI Therapy Apps:</strong> Wysa, Woebot, and Headspace Health are adding AI-powered CBT features that could intercept Refresh patients at top-of-funnel. Differentiate hard on: "AI can't prescribe, diagnose, or replace a psychiatrist."</div>
-      </div>
-    </details>
-
-    <!-- Section 22: Market Moves -->
-    <details class="brief-section reveal" open>
-      <summary>📦 22. Market Moves — Expansion, Hiring, Funding</summary>
-      <div class="brief-body">
-        <table class="brief-table">
-          <thead><tr><th>Competitor</th><th>Move</th><th>Details</th><th>Threat Level</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Talkiatry</strong></td><td>Enterprise Sales Push</td><td>Building health system partnerships across US. Enterprise contracts bypass individual patient acquisition.</td><td>🔴 High — Systemic</td></tr>
-            <tr><td><strong>Cerebral</strong></td><td>Rebranding / Recovery</td><td>Repositioning after 2022-23 controversies. Hiring compliance leadership. Shifting to therapy-first vs. meds-first.</td><td>🟡 Medium — Rebuilding</td></tr>
-            <tr><td><strong>Headway</strong></td><td>Rapid Provider Expansion</td><td>1,200+ therapists added Q1 2026. Market coverage in FL and TX expanding. Therapist competition affects referral partners.</td><td>🟡 Medium — Indirect</td></tr>
-            <tr><td><strong>Alma</strong></td><td>Group Practice Tools</td><td>Launching group practice management features. Could attract independent FL psychiatrists to their platform.</td><td>🟡 Medium — Recruitment threat</td></tr>
-            <tr><td><strong>Spring Health</strong></td><td>Employer Benefit Expansion</td><td>Major Fortune 500 employer contracts. Likely competing for DFW enterprise market.</td><td>🟡 Medium — TX market</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </details>
-
-    <!-- Section 23: Pricing Intelligence -->
-    <details class="brief-section reveal" open>
-      <summary>💲 23. Pricing &amp; Service Intelligence</summary>
-      <div class="brief-body">
-        <table class="brief-table">
-          <thead><tr><th>Competitor</th><th>New Patient Visit</th><th>Follow-Up</th><th>Insurance</th><th>Notes</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Talkiatry</strong></td><td>$0 copay (in-network)</td><td>$0 copay</td><td>Yes — major networks</td><td>Prioritizing insurance. Premium positioning via health system affiliation.</td></tr>
-            <tr><td><strong>Cerebral</strong></td><td>$30-$99 copay</td><td>$30-$75</td><td>Yes — major networks</td><td>Rebuilding credibility. Lower prices to recapture market share.</td></tr>
-            <tr><td><strong>Done ADHD</strong></td><td>$199/month membership</td><td>Included</td><td>Partial — varies</td><td>Membership model. Higher patient satisfaction scores than Cerebral.</td></tr>
-            <tr><td><strong>BetterHelp</strong></td><td>$80-$100/week</td><td>Included</td><td>No (cash-pay only)</td><td>Therapy only — not psychiatric. Not direct competitor for meds.</td></tr>
-            <tr><td><strong>Refresh Psychiatry</strong></td><td>In-network copay</td><td>In-network copay</td><td>Yes — Aetna, UHC, Cigna, Humana, Avmed, UMR, Oscar</td><td>Competitive advantage: broad insurance + telehealth + same-week appointments.</td></tr>
-          </tbody>
-        </table>
-        <div class="brief-alert blue"><strong>Pricing Opportunity:</strong> Consider a "Refresh Premium" cash-pay membership tier at $199-249/month for patients who want same-week scheduling, direct messaging, and priority slots. Pilot at one high-demand location (Davie or Coral Springs).</div>
       </div>
     </details>
 
@@ -6087,8 +6363,8 @@
           </tbody>
         </table>
         <div class="brief-alert yellow"><strong>Google Ads Opportunity for Refresh:</strong> Bid on insurance-specific terms ("psychiatrist takes Aetna", "psychiatrist accepts United Healthcare") — these are high-intent, lower-cost keywords that national platforms under-bid because they can't offer specific insurance assurance. Estimated CPC: $4-8 vs. $15-25 for generic terms.</div>
-        <h4>Meta Ads — Observed</h4>
-        <p>BetterHelp "Feel Lighter" campaign dominating Facebook/Instagram awareness spend in FL. Talkiatry beginning Meta ads per their job listing for paid social manager. <strong>Window to establish Refresh's organic video presence before CPMs rise.</strong></p>
+        <h4>Meta Ads — 🆕 CRITICAL 2026 UPDATE</h4>
+        <p>Meta is rolling out a <strong>second wave of healthcare advertising restrictions in early 2026</strong>. Health and wellness advertisers face additional limitations on conversion tracking and audience targeting using sensitive health data. Practices with condition-specific landing pages (mental health, ADHD, anxiety) are being auto-classified as healthcare advertisers — triggering restrictions. BetterHelp "Feel Lighter" campaign dominating awareness spend in FL. <strong>Refresh action: Shift Meta strategy from direct-booking to awareness (educational video, provider intros, city-level geographic targeting). Protect conversion tracking via server-side Meta CAPI implementation.</strong> Sources: <a href="https://faeblstudios.com/resources/meta-ad-2025-2026-restrictions-what-behavioral-health-providers-need-to-know/" target="_blank">Faebl Studios Meta 2026 Restrictions</a> · <a href="https://ehmresults.com/meta-ad-2025-2026-restrictions-what-healthcare-practices-need-to-know/" target="_blank">EHM Results Meta Healthcare Guide</a></p>
       </div>
     </details>
 
@@ -6227,7 +6503,7 @@
       <summary>👥 31. Team &amp; Provider Performance</summary>
       <div class="brief-body">
         <h4>Provider Retention Risk Framework</h4>
-        <div class="brief-alert blue"><strong>Today's Podcast Topic Relevance:</strong> Episode 3 covers work-life balance trends reshaping how psychiatrists run practices in 2027. Key insights applicable to Refresh provider retention:</div>
+        <div class="brief-alert blue"><strong>Today's Podcast Topic Relevance:</strong> Episode 4 covers Paid Advertising for a 16-location multi-state telepsychiatry practice. Key insights: insurance-specific Google Ads campaigns, Meta 2026 healthcare restrictions, and a $11-17K/month budget framework that delivers 60-100+ new patient appointments. Patient acquisition = patient operations volume. Audit your Google Ads account today.</div>
         <ul>
           <li><strong>AI scribes eliminate documentation burnout</strong> — 76% of clinicians using AI scribes finish documentation before leaving clinic. Implement across all 16 locations.</li>
           <li><strong>4-day clinical week pilot</strong> — Survey providers on interest in compressed schedule. A single NP retention gain saves $30,000+ in recruitment costs.</li>
@@ -6305,20 +6581,20 @@
     <details class="brief-section reveal" open>
       <summary>⚔️ 35. Today's Master Battle Plan — Top 5 Moves</summary>
       <div class="brief-body">
-        <h4>🔴 Priority 1 — URGENT (Today)</h4>
-        <div class="brief-alert red"><strong>Post Spring Equinox Content:</strong> Today is the first day of spring. The "spring anxiety" window is open RIGHT NOW for 7-10 days. Record a 60-second Reel ("As a psychiatrist, here's why spring makes you more anxious"). Post by 11 AM ET. This is a timely content opportunity that will not recur for another year.</div>
+        <h4>🔴 Priority 1 — URGENT (Today, Sunday)</h4>
+        <div class="brief-alert red"><strong>Google Ads Account Audit (30 minutes):</strong> After listening to today's podcast (Episode 4 — Paid Advertising Spotlight), open your Google Ads account and answer 5 questions: Are campaigns by geographic cluster? Is call tracking enabled? Average CPC? Insurance-specific ad groups? Negative keyword count? If answers are bad, escalate to your agency or marketing lead by Tuesday morning. Talkiatry's $210M means they are actively bidding on your patients' search queries RIGHT NOW.</div>
 
-        <h4>🔴 Priority 2 — This Weekend</h4>
-        <div class="brief-alert red"><strong>Duloxetine Recall Patient Audit:</strong> The FDA recall of 233,000+ bottles of generic duloxetine is a clinical priority. Review the patient panel for anyone on generic duloxetine. Check lot numbers. Document any counseling provided. This is a patient safety issue that must be addressed this weekend.</div>
+        <h4>🔴 Priority 2 — This Week</h4>
+        <div class="brief-alert red"><strong>Gold Carding Applications (FL SB 320):</strong> Submit applications to Aetna, United Healthcare, and Cigna for Gold Carding status. This eliminates prior authorization burden for qualifying high-volume Refresh providers. Estimated time saved: 2-4 hours/week per provider. Documented approval rates from the last 12 months are required — pull this data from your billing system this week.</div>
 
         <h4>🟡 Priority 3 — This Week</h4>
-        <div class="brief-alert yellow"><strong>Gold Carding Applications (FL SB 320):</strong> Submit applications to Aetna, United Healthcare, and Cigna for Gold Carding status under Florida SB 320. This is a regulatory opportunity that eliminates prior authorization burden for qualifying providers. Estimated time saved: 2-4 hours/week per provider.</div>
+        <div class="brief-alert yellow"><strong>Build 7 Insurance Landing Pages:</strong> One per payer — Aetna, United, Cigna, Humana, Avmed, UMR, Oscar. Lead with "[Insurance] In-Network" headline. Simple 3-field booking form. This is your single highest-ROI paid advertising improvement — will drop CPC 15-25% on insurance-specific queries and dramatically improve conversion rates.</div>
 
         <h4>🟡 Priority 4 — This Week</h4>
-        <div class="brief-alert yellow"><strong>AI Scribe Pilot Authorization:</strong> Sign up for Freed AI free trial (getfreed.ai). Run it with 2-3 providers for 2 weeks. The evidence is clear: 76% of users finish documentation before leaving clinic. Every week of delay = ~$1,500-$2,000 in time value lost per provider.</div>
+        <div class="brief-alert yellow"><strong>Texas HB 1052 Physical Office Compliance Audit:</strong> New TX law (effective Jan 1, 2026) requires physical TX office presence for parity coverage with out-of-state providers. Verify all 3 DFW locations (Dallas, Richardson, Southlake) have registered physical addresses on file with all active TX payers. Flag any gaps to billing team immediately — reimbursement risk if non-compliant.</div>
 
         <h4>🟢 Priority 5 — 30-Day Play</h4>
-        <div class="brief-alert blue"><strong>DEA Contingency Planning:</strong> Begin mapping in-person intake capacity across FL locations for a scenario where DEA permanent rules require initial in-person visits for new Schedule II patients. Which locations have physical space? What would a hybrid model look like? This planning protects the practice from regulatory disruption.</div>
+        <div class="brief-alert blue"><strong>Mental Health Awareness Month Campaign Planning (May 2026 = 39 days away):</strong> May is the single highest-traffic mental health content month of the year. Begin planning NOW: 4-week content calendar, paid ad campaign timing, special Google Ads budget increase, press release or media pitch for Mental Health Awareness Month. This is where Refresh can dominate the organic and paid landscape while nationals run generic campaigns.</div>
       </div>
     </details>
 
@@ -6326,26 +6602,27 @@
     <details class="brief-section reveal" open>
       <summary>⚡ 36. Social Media Quick Win — Post This Right Now</summary>
       <div class="brief-body">
-        <div class="brief-alert blue"><strong>Caption (copy-paste ready for Instagram/TikTok):</strong></div>
-        <div class="brief-alert green" style="font-family: monospace; white-space: pre-wrap;">Happy first day of spring 🌱
+        <div class="brief-alert blue"><strong>Sunday morning is the highest-engagement time for mental health content. Post this before 10 AM ET.</strong></div>
+        <div class="brief-alert green" style="font-family: monospace; white-space: pre-wrap;">Sunday reminder for anyone who's been putting it off 💙
 
-If you've been feeling more anxious this week and can't explain why — as a psychiatrist, I want you to know: it's not just you.
+If "I'll call a psychiatrist later" has been on your mental to-do list for weeks — or months — this is your sign.
 
-Spring transitions affect mood more than people realize:
-→ Daylight changes disrupt sleep and circadian rhythms
-→ Allergy season triggers inflammation that worsens anxiety
-→ School, work, and life transitions create uncertainty
+Here's what getting help actually looks like at Refresh Psychiatry:
+→ Book online in 2 minutes
+→ First appointment available this week
+→ We take Aetna, United, Cigna, Humana, and more
+→ 100% telehealth — from your couch, your car, wherever
 
-Rest, routine, and connection help. And when that's not enough — we're here.
-
-Same-week telehealth appointments available. Aetna, United, Cigna, Humana and more accepted.
+You don't have to feel terrible to deserve help.
+You just have to want things to feel better.
 
 📞 (954) 603-4081
 🌐 refreshpsychiatry.com
 
-#springanxiety #anxiety #mentalhealth #psychiatrist #telehealth #floridapsychiatrist #refreshpsychiatry #mentalwellness #firstdayofspring #springequinox #anxietyrelief #medicationmanagement</div>
-        <p><strong>Visual suggestion:</strong> Spring morning aesthetic — light background, soft yellow and blue tones. Refresh brand colors are perfect for spring content. Add a spring nature image or simple botanical graphic.</p>
-        <p><strong>Best posting time:</strong> 8:00-10:00 AM ET today (Saturday morning scroll peak)</p>
+#sundaymentalhealth #psychiatrist #telehealth #mentalhealth #anxietyhelp #depressionhelp #ADHDtreatment #floridapsychiatrist #refreshpsychiatry #medicationmanagement #insuranceaccepted #mentalwellness</div>
+        <p><strong>Visual suggestion:</strong> Sunday morning aesthetic — warm morning light, Refresh blue and yellow palette. A cozy couch/blanket image or simple abstract calm visual. No clinical imagery.</p>
+        <p><strong>Best posting time:</strong> 8:30-10:00 AM ET Sunday (highest engagement window for mental health content on Instagram and Facebook)</p>
+        <p><strong>Add to Stories:</strong> A swipe-up poll: "Have you been thinking about reaching out to a psychiatrist? A) Yes, for a while. B) I've been on the fence." Then a follow-up Story: "If you answered A — we have openings this week. Here's how to book." Refresh yellow CTA button.</p>
       </div>
     </details>
 
@@ -6354,22 +6631,22 @@ Same-week telehealth appointments available. Aetna, United, Cigna, Humana and mo
       <summary>🧠 37. Closing Intelligence</summary>
       <div class="brief-body">
         <h4>💬 Quote of the Day</h4>
-        <div class="brief-alert blue" style="text-align:center; font-size:16px; font-style:italic;">"Burnout is what happens when you try to avoid being human for too long." — Michael Gungor<br><span style="font-size:12px; font-style:normal; opacity:0.6;">Format as shareable: White italic text on Refresh Navy background. DM Sans. Perfect for a Saturday reflective post.</span></div>
+        <div class="brief-alert blue" style="text-align:center; font-size:16px; font-style:italic;">"It is not the strongest of the species that survives, nor the most intelligent. It is the one most adaptable to change." — Charles Darwin<br><span style="font-size:12px; font-style:normal; opacity:0.6;">Applicable today: Talkiatry adapts with $210M. Refresh adapts with strategic clarity and local advantage. Post as a Sunday reflection on Refresh's LinkedIn page — physician entrepreneurs resonate with evolutionary thinking.</span></div>
 
         <h4>📸 2-Minute Story Idea</h4>
-        <p><strong>Concept:</strong> "Spring check-in" Instagram Story. Poll: "How are you entering this new season — A) Refreshed and ready, B) Still in survival mode." Follow with: "Wherever you are, that's okay. And if B has been your answer for a while — let's talk." Blue-to-spring-green gradient. Refresh yellow CTA button overlay.</p>
+        <p><strong>Concept:</strong> "3 things I wish more patients knew about telehealth psychiatry" — a 3-part Instagram Carousel. Slide 1: "It's as effective as in-person (studies prove it)." Slide 2: "Your insurance covers it — same as an office visit." Slide 3: "Your first appointment can be this week." End slide: Refresh logo + phone + refreshpsychiatry.com. Refresh blue/white/yellow gradient. This evergreen content works every Sunday.</p>
 
         <h4>🤓 Nerdy Psych Fact of the Day</h4>
-        <p>March 20-21 marks the spring equinox — equal day and night. For people with seasonal affective disorder, the spring equinox signals a hormonal and neurochemical shift as serotonin levels rise in response to increasing light. Some individuals experience a brief mood "overshoot" — euphoria, impulsivity, or irritability — in early spring before stabilizing. This is particularly notable in bipolar disorder and is why early spring sees higher rates of manic episodes.</p>
+        <p>New research (Euronews, March 20, 2026): TikTok leads all platforms in mental health misinformation. 52% of ADHD-related TikTok videos contain inaccurate or unsubstantiated claims. 56% of all mental health posts across social platforms are misleading. The implication for Refresh Psychiatry: <strong>there is an enormous organic content opportunity for board-certified psychiatrists to provide accurate, evidence-based content that stands out against the noise</strong>. "As a psychiatrist..." hooks consistently outperform non-professional mental health content on engagement AND credibility metrics. Your authority is your moat.</p>
 
         <h4>💡 Competitor Quote of the Day</h4>
-        <p><strong>Talkiatry website:</strong> "Expert psychiatric care, covered by insurance." — <em>Our take: They're leading with insurance coverage just like we should. But they can't say "same-week appointments at 16 locations." We can. That's the competitive line.</em></p>
+        <p><strong>Talkiatry (February 2026):</strong> "We will be the de facto in-network psychiatry partner for U.S. health systems, payers, and employers." — CEO John Grohol on their $210M Series D. <em>Our take: They're positioning as B2B infrastructure. Refresh's advantage is B2C intimacy — real providers, real relationships, real local presence. The patient who Googles "psychiatrist in Davie Florida" isn't searching for an employer partnership. They're searching for a human. Be that human.</em></p>
 
         <h4>🔮 30-Day Forecast</h4>
-        <p>April 2026 outlook: (1) APA TRD guideline draft expected — update treatment protocols accordingly. (2) Spring content cycle — Mental Health Awareness Month (May) is 40 days away. Begin campaign planning NOW for the year's highest-traffic mental health content month. (3) NICE ADHD adult guideline comment period closes March 30 — review for any protocol implications. (4) Psilocybin NDA filing Q4 — begin patient FAQ preparation for "What is psilocybin therapy and will Refresh offer it?" (5) DEA permanent rule may finalize — hybrid care model contingency must be ready.</p>
+        <p><strong>April 2026 outlook:</strong> (1) <strong>Mental Health Awareness Month Preparation</strong> — 39 days to May 1. This is the most important content and advertising month of the year. Build your full May calendar NOW. (2) <strong>NICE ADHD Adult Guideline</strong> — comment period closes March 30. Review and comment if relevant to Refresh prescribing protocols. (3) <strong>APA TRD Draft Guideline</strong> — expected April 2026. Update treatment pathway documentation when released. (4) <strong>DEA Permanent Rule Watch</strong> — OMB review ongoing. Any finalization will be announced with 30-60 day implementation window. Stay alert. (5) <strong>Talkiatry Expansion Watch</strong> — with $210M, watch for new FL markets. If they enter Davie, Coral Springs, or Orlando directly, expect significant increase in Google Ads competition. Strengthen Google Business Profile now as defensive moat.</p>
 
         <h4>🔥 Motivational Close</h4>
-        <div class="brief-alert yellow" style="text-align:center; font-size:16px; font-weight:700;">It's the first day of spring. New season, new content cycle, new opportunities. Talkiatry has $452 million. You have something they can't buy: real relationships, local roots, and a physician's name that patients trust. Plant seeds today. The harvest comes in 90 days.</div>
+        <div class="brief-alert yellow" style="text-align:center; font-size:16px; font-weight:700;">It's Sunday. The week is about to begin. Talkiatry has $210 million and 800 psychiatrists. You have 16 locations, a physician's name patients trust, local roots they can feel, and a practice that actually picks up the phone. This week: audit your Google Ads, build one insurance landing page, and post something real and human on Instagram. That's how you win against the machine.</div>
       </div>
     </details>
 
@@ -7269,12 +7546,54 @@ Same-week telehealth appointments available. Aetna, United, Cigna, Humana and mo
 <script>
   // ═══════════ ACTION ITEM PERSISTENCE ═══════════
   function toggleActionItem(el) {
+    // Don't toggle if clicking on the expand button or subgoals
+    if (el.closest('.action-expand')) return;
     el.classList.toggle('checked');
     const ep = el.dataset.ep;
     const idx = el.dataset.idx;
     const key = 'podcastActions_ep' + ep;
     const saved = JSON.parse(localStorage.getItem(key) || '{}');
     if (el.classList.contains('checked')) {
+      saved[idx] = true;
+    } else {
+      delete saved[idx];
+    }
+    localStorage.setItem(key, JSON.stringify(saved));
+  }
+
+  function toggleSubgoal(event, el) {
+    event.stopPropagation();
+    el.classList.toggle('checked');
+    const ep = el.dataset.ep;
+    const idx = el.dataset.idx;
+    const sub = el.dataset.sub;
+    const key = 'podcastSubActions_ep' + ep;
+    const saved = JSON.parse(localStorage.getItem(key) || '{}');
+    const subKey = idx + '_' + sub;
+    if (el.classList.contains('checked')) {
+      saved[subKey] = true;
+    } else {
+      delete saved[subKey];
+    }
+    localStorage.setItem(key, JSON.stringify(saved));
+
+    // Update progress counter
+    const wrapper = el.closest('.action-item-wrapper');
+    const totalSubs = wrapper.querySelectorAll('.subgoal-item').length;
+    const checkedSubs = wrapper.querySelectorAll('.subgoal-item.checked').length;
+    const progressEl = wrapper.querySelector('.subgoals-progress');
+    if (progressEl) progressEl.textContent = checkedSubs + '/' + totalSubs;
+  }
+
+  function toggleActionCollapse(event, el) {
+    event.stopPropagation();
+    const wrapper = el.closest('.action-item-wrapper');
+    wrapper.classList.toggle('collapsed');
+    const idx = wrapper.dataset.idx;
+    const ep = wrapper.querySelector('.action-item').dataset.ep;
+    const key = 'podcastActionsCollapsed_ep' + ep;
+    const saved = JSON.parse(localStorage.getItem(key) || '{}');
+    if (wrapper.classList.contains('collapsed')) {
       saved[idx] = true;
     } else {
       delete saved[idx];
@@ -8515,6 +8834,97 @@ Same-week telehealth appointments available. Aetna, United, Cigna, Humana and mo
 
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+  // ═══════════ TRENDING PULSE QUEUE ═══════════
+  const TREND_STORAGE_KEY = 'refreshStudio_completedTrends';
+
+  function getCompletedTrends() {
+    return JSON.parse(localStorage.getItem(TREND_STORAGE_KEY) || '{}');
+  }
+
+  function saveCompletedTrends(data) {
+    localStorage.setItem(TREND_STORAGE_KEY, JSON.stringify(data));
+  }
+
+  function toggleTrend(el) {
+    const id = el.dataset.trendId;
+    const completed = getCompletedTrends();
+
+    if (el.classList.contains('used')) {
+      // Un-complete: remove from completed
+      delete completed[id];
+      el.classList.remove('used');
+    } else {
+      // Mark as completed with timestamp
+      completed[id] = { date: new Date().toISOString().split('T')[0] };
+      el.classList.add('used');
+    }
+    saveCompletedTrends(completed);
+    renderTrendQueue();
+  }
+
+  function renderTrendQueue() {
+    const completed = getCompletedTrends();
+    const queue = document.getElementById('trendQueue');
+    const completedList = document.getElementById('trendCompletedList');
+    const completedToggle = document.getElementById('trendCompletedToggle');
+    const allItems = queue.querySelectorAll('.trend-item');
+
+    let activeCount = 0;
+    let completedCount = 0;
+    let completedHTML = '<ul class="trend-queue">';
+
+    allItems.forEach(item => {
+      const id = item.dataset.trendId;
+      if (completed[id]) {
+        item.classList.add('used');
+        item.style.display = 'none';
+        completedCount++;
+        // Clone into completed section
+        const title = item.querySelector('.trend-title').innerHTML;
+        const date = completed[id].date || '';
+        completedHTML += '<li class="trend-item used" data-trend-id="' + id + '" onclick="uncompleteTrend(\'' + id + '\')">'
+          + '<div class="trend-check"></div>'
+          + '<div class="trend-content"><div class="trend-title">' + title + '</div>'
+          + '<div class="trend-meta" style="color:#00B894;font-weight:600">✅ Blogged on ' + date + ' — click to restore</div>'
+          + '</div></li>';
+      } else {
+        item.classList.remove('used');
+        item.style.display = '';
+        activeCount++;
+      }
+    });
+
+    completedHTML += '</ul>';
+
+    document.getElementById('trendActiveCount').textContent = activeCount + ' remaining';
+    document.getElementById('trendCompletedCount').textContent = completedCount;
+
+    if (completedCount > 0) {
+      completedToggle.style.display = '';
+      completedList.innerHTML = completedHTML;
+    } else {
+      completedToggle.style.display = 'none';
+      completedList.innerHTML = '';
+    }
+  }
+
+  function uncompleteTrend(id) {
+    const completed = getCompletedTrends();
+    delete completed[id];
+    saveCompletedTrends(completed);
+    renderTrendQueue();
+  }
+
+  function toggleCompletedTrends() {
+    const toggle = document.getElementById('trendCompletedToggle');
+    const list = document.getElementById('trendCompletedList');
+    toggle.classList.toggle('open');
+    list.classList.toggle('open');
+  }
+
+  // Initialize on page load
+  renderTrendQueue();
+
   // ═══════════ PODCAST PLAYER ═══════════
   const podcastAudio = document.getElementById('podcastAudio');
   const podcastProgress = document.getElementById('podcastProgress');
@@ -8545,16 +8955,44 @@ Same-week telehealth appointments available. Aetna, United, Cigna, Humana and mo
     cancelAnimationFrame(visualizerRAF);
   });
 
+  // iOS Safari requires unlocking audio on first user gesture
+  let iosAudioUnlocked = false;
+  function unlockiOSAudio() {
+    if (iosAudioUnlocked) return Promise.resolve();
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (!isIOS) { iosAudioUnlocked = true; return Promise.resolve(); }
+    // Create a silent buffer and play it to unlock the audio context
+    podcastAudio.muted = true;
+    return podcastAudio.play().then(() => {
+      podcastAudio.pause();
+      podcastAudio.muted = false;
+      podcastAudio.currentTime = 0;
+      iosAudioUnlocked = true;
+    }).catch(() => {
+      podcastAudio.muted = false;
+      iosAudioUnlocked = true;
+    });
+  }
+
   function togglePodcast(btn) {
     if (podcastAudio.paused) {
-      podcastAudio.play().then(() => {
+      unlockiOSAudio().then(() => {
+        return podcastAudio.play();
+      }).then(() => {
         btn.classList.add('playing');
         startVisualizer();
       }).catch(err => {
         console.error('Audio play failed:', err);
-        // Try without visualizer context
-        podcastAudio.play();
-        btn.classList.add('playing');
+        // Fallback: load and retry within same gesture chain
+        podcastAudio.load();
+        setTimeout(() => {
+          podcastAudio.play().then(() => {
+            btn.classList.add('playing');
+            startVisualizer();
+          }).catch(() => {
+            btn.classList.remove('playing');
+          });
+        }, 100);
       });
     } else {
       podcastAudio.pause();
@@ -8569,6 +9007,22 @@ Same-week telehealth appointments available. Aetna, United, Cigna, Humana and mo
     podcastAudio.currentTime = pct * podcastAudio.duration;
   });
 
+  // Touch support for iOS scrubbing
+  podcastBar.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    const rect = podcastBar.getBoundingClientRect();
+    const touch = e.touches[0];
+    const pct = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
+    podcastAudio.currentTime = pct * podcastAudio.duration;
+  }, { passive: false });
+  podcastBar.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    const rect = podcastBar.getBoundingClientRect();
+    const touch = e.touches[0];
+    const pct = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
+    podcastAudio.currentTime = pct * podcastAudio.duration;
+  }, { passive: false });
+
   const podcastSpeeds = [1, 1.25, 1.5, 2];
   let podcastSpeedIdx = 0;
   function cyclePodcastSpeed() {
@@ -8582,6 +9036,93 @@ Same-week telehealth appointments available. Aetna, United, Cigna, Humana and mo
 
   // ═══════════ PODCAST EPISODE ARCHIVE ═══════════
   const podcastEpisodes = [
+    {
+      ep: 4,
+      title: '📣 Paid Advertising for Multi-State Telepsychiatry: The 16-Location Playbook for Refresh Psychiatry',
+      desc: 'Talkiatry just raised $210 million and is bidding on your patients\' searches right now. This Refresh Psychiatry Spotlight episode builds the exact paid advertising strategy for a 16-location telehealth practice across FL, MA, and TX — market cluster account structures, insurance-specific Google Ads campaigns, Meta\'s 2026 healthcare restrictions, and a monthly budget framework that delivers 60–100+ new patient appointments.',
+      date: 'Mar 22, 2026',
+      audio: 'https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-daily-podcast/podcast-2026-03-22.mp3',
+      topics: [
+        { icon: '🔍', title: 'Google Search Ads', desc: 'Keyword strategy, negative keywords, ad copy formulas, and the campaigns that drive booked appointments.' },
+        { icon: '📱', title: 'Meta & Instagram Ads', desc: 'Audience targeting, creative formats, and the funnel from awareness to booking on social platforms.' },
+        { icon: '🎬', title: 'Video Advertising', desc: 'YouTube pre-roll, TikTok ads, and video creative that builds trust in 15 seconds.' },
+        { icon: '🎯', title: 'Landing Pages', desc: 'The anatomy of a high-converting healthcare landing page — copy, design, and trust elements.' },
+        { icon: '💰', title: 'Budget Strategy', desc: 'How much to spend, where to allocate, and the ROAS benchmarks for psychiatric practice advertising.' },
+        { icon: '📊', title: 'Attribution & Tracking', desc: 'Call tracking, form attribution, and proving which ad dollars actually produce patients.' }
+      ],
+      takeaways: [
+        { title: 'Insurance-specific campaigns are the highest-ROI move in psychiatric advertising', body: 'People searching "psychiatrist that takes Cigna near me" have already decided to get help and verified they have coverage. These queries convert at extraordinary rates. Build dedicated ad groups for each of your 7 payers (Aetna, United, Cigna, Humana, Avmed, UMR, Oscar) with matching landing pages that lead with the insurance name.' },
+        { title: 'Talkiatry\'s $210M doesn\'t beat your local advantage', body: 'Nationals can outspend you per click but can\'t replicate location-specific trust. A landing page that says "Refresh Psychiatry — Davie, FL — In-Network with Aetna — Same-Week Appointments" answers the two biggest patient questions instantly. Out-LOCAL the nationals.' },
+        { title: 'Organize 16 locations into 5 market clusters for Google Ads', body: 'One campaign per location = unmanageable. One statewide campaign = wasted budget. Five clusters (South FL Metro, Palm Beach/Treasure Coast, Central FL, Greater Boston, DFW) give you geographic precision with manageable account complexity.' },
+        { title: 'Meta\'s 2026 healthcare ad restrictions require a strategy shift', body: 'Meta is rolling out a second wave of healthcare advertising restrictions in 2026. Shift from bottom-of-funnel direct booking campaigns to top-of-funnel awareness — educational carousels, provider intro videos, geographic city targeting instead of interest-based health targeting.' },
+        { title: 'Negative keywords can save 20-30% of your Google Ads budget', body: 'Multi-location practices waste enormous spend on irrelevant clicks. Add at minimum: "jobs," "careers," "salary," "inpatient," "crisis hotline," "free therapy," "sliding scale," "prescribe marijuana," "psychiatry school." A 50+ term negative keyword list is the baseline.' },
+        { title: 'YouTube pre-roll builds brand at a fraction of Google Search cost', body: 'At $0.25-0.40/view vs. $5-7/click on Google Search, YouTube pre-roll is dramatically cheaper per brand impression. A 15-second non-skippable ad ("Same-week appointments, we take your insurance, book at refreshpsychiatry.com") keeps Refresh top-of-mind while competitors\' budgets go to search.' }
+      ],
+      stats: [
+        { icon: '💰', number: '$210M', suffix: '', label: 'Talkiatry Series D', context: 'raised February 2026 — your #1 competitor is well-funded and advertising in your markets' },
+        { icon: '🏥', number: '800+', suffix: '', label: 'Talkiatry Psychiatrists', context: '45 states, 3M patient visits — the scale you\'re competing against on Google Ads' },
+        { icon: '💵', number: '$3-7', suffix: '', label: 'Healthcare Google CPC', context: 'cost-per-click range for psychiatric keywords — psychiatry terms at the high end' },
+        { icon: '📊', number: '5-8%', suffix: '', label: 'Healthcare Google CTR', context: 'click-through rate benchmark for well-managed healthcare search campaigns' },
+        { icon: '🎯', number: '$16-70', suffix: '', label: 'Healthcare CPL Range', context: 'cost per lead for Google Ads healthcare campaigns — lower with insurance-specific targeting' },
+        { icon: '📱', number: '$0.30', suffix: '/view', label: 'YouTube Pre-Roll Cost', context: 'dramatically cheaper than Google Search — brand-building at scale' },
+        { icon: '🔄', number: '20-30%', suffix: '', label: 'Budget Saved by Negatives', context: 'reduction in wasted ad spend from a comprehensive negative keyword list' },
+        { icon: '📈', number: '60-100+', suffix: ' appts', label: 'Monthly New Patients', context: 'projected from $11-17K/month well-structured paid advertising for 16 locations' }
+      ],
+      actions: [
+        { title: 'Audit your Google Ads account (30 minutes today)', body: 'Answer 5 critical questions: Are campaigns organized by geographic cluster? Is call tracking enabled? What is your average CPC? Do you have insurance-specific ad groups? How many negative keywords do you have? If you can\'t answer these, escalate immediately.', effort: 'quick', subgoals: [
+          'Log into Google Ads and navigate to Campaigns overview',
+          'Check campaign structure — is it by location cluster or one statewide campaign?',
+          'Check Conversions settings — is call tracking enabled with a unique number?',
+          'Navigate to Keywords tab and check average CPC across all campaigns',
+          'Search for ad groups named after insurers (Aetna, Cigna, United, etc.)',
+          'Open Negative Keywords list and count total terms — flag if under 50',
+          'Document findings and share with marketing team or agency by Tuesday'
+        ]},
+        { title: 'Build 7 insurance-specific landing pages', body: 'One page per payer: Aetna, United, Cigna, Humana, Avmed, UMR, Oscar. Each leads with "[Insurance] In-Network" headline, lists all FL/MA/TX locations, and has a simple 3-field booking form. This will drop your CPC by 15-25% on insurance queries.', effort: 'moderate', subgoals: [
+          'Draft the master landing page template with insurance name as a variable',
+          'Write the headline formula: "Refresh Psychiatry — In-Network with [Insurance] in [State]"',
+          'Add subheadline: "Same-Week Telehealth Appointments Available — FL, MA & TX"',
+          'Include Google Reviews widget or manually embed 3-5 top review quotes',
+          'Add a simple 3-field form: Name, Phone Number, Insurance Name',
+          'List all 16 locations with city and state',
+          'Add provider photos and board-certification credentials',
+          'Build the 7 pages, one per payer, with unique URLs',
+          'Link each page to its matching ad group in Google Ads',
+          'Set up conversion tracking on each form submission'
+        ]},
+        { title: 'Set up Meta awareness campaigns for each state market', body: 'Shift Meta budget from direct-booking to awareness. Run 15-30 second provider intro videos and educational carousels targeting by city geography (not health interests). $20-40/day per state market cluster.', effort: 'moderate', subgoals: [
+          'Audit current Meta/Facebook ad campaigns — identify any health-interest targeting to remove',
+          'Script 3 short (15-sec) provider intro videos: one FL provider, one MA, one TX',
+          'Record videos with phone — professional but warm, not overly produced',
+          'Create 3-5 slide educational carousel: "What to Expect at Your First Telehealth Visit"',
+          'Set up geographic targeting by city radius (not interest-based health targeting)',
+          'Set budgets: $25/day South FL cluster, $20/day Greater Boston, $20/day DFW',
+          'Install Meta Pixel on refreshpsychiatry.com if not already done (for retargeting)',
+          'Set up retargeting audience: visited site but did not book, excluding health-condition page visitors'
+        ]},
+        { title: 'Launch a YouTube pre-roll campaign in South Florida', body: 'Create one 15-second non-skippable ad: provider on camera, warm tone, "Same-week appointments. We take your insurance. Book at refreshpsychiatry.com." Target 30-mile radius of Davie/Fort Lauderdale, healthcare-intent audience. Budget: $500/month.', effort: 'moderate', subgoals: [
+          'Write the 15-second script (approx 37 words): practice name, differentiator, CTA',
+          'Film with a provider — good lighting, clean background, Refresh logo visible',
+          'Upload to YouTube as an unlisted video',
+          'Create a Google Ads Video campaign using the YouTube video',
+          'Set geographic targeting: 30-mile radius of Davie, FL',
+          'Set audience: in-market healthcare, healthcare seekers, YouTube healthcare content viewers',
+          'Set budget: $500/month ($16/day)',
+          'Monitor view-through rate and website visits from YouTube source in Google Analytics'
+        ]},
+        { title: 'Run monthly competitive ad audit using Google Auction Insights + Meta Ad Library', body: 'First Sunday of every month: pull Google Auction Insights to see which competitors are bidding on your keywords, and check Meta Ad Library for Talkiatry and Cerebral ad creative. This is free competitive intelligence.', effort: 'quick', subgoals: [
+          'In Google Ads, go to any campaign > Auction Insights tab',
+          'Download the report — identify top competitors by impression share',
+          'If any competitor is >70% impression share on a key term, evaluate bid strategy',
+          'Go to facebook.com/ads/library',
+          'Search "Talkiatry" — screenshot their current active ads',
+          'Search "Cerebral" — screenshot their current active ads',
+          'Note messaging angles, offers, and creative formats they\'re using',
+          'Add to a running competitive intelligence doc for the marketing team',
+          'Calendar reminder: first Sunday of each month to repeat this audit'
+        ]}
+      ]
+    },
     {
       ep: 3,
       title: '⚖️ The Future of Work-Life Balance: 6 Trends Reshaping How Psychiatrists Run Their Practices in 2027 and Beyond',
@@ -8615,12 +9156,63 @@ Same-week telehealth appointments available. Aetna, United, Cigna, Humana and mo
         { icon: '⚡', number: '23', suffix: '%', label: 'Faster Growth', context: 'practices with high delegation velocity vs. peers' }
       ],
       actions: [
-        { title: 'Start a Freed AI free trial today', body: 'Go to getfreed.ai and sign up for free. Run it on your next 5 patient sessions. If it saves 30 minutes per day, roll it out practice-wide. The ROI is immediate.', effort: 'quick' },
-        { title: 'Send a 10-question schedule survey to all providers', body: 'Ask: ideal days, hours, patient load, interest in 4-day week. The act of asking improves retention before you even change anything.', effort: 'quick' },
-        { title: 'Write your "What the Owner Does" document', body: 'One page. Every task you currently do that could be delegated goes on a second list with an assigned owner. Review quarterly.', effort: 'moderate' },
-        { title: 'Apply for Gold Carding under FL SB 320', body: 'Submit applications to Aetna, UHC, and Cigna. Document your PA approval rates to qualify. Estimated 2-4 hours/week per provider saved.', effort: 'moderate' },
-        { title: 'Pilot a psychiatry membership at one location', body: 'Test $199-249/month for same-week access and direct messaging at your highest-demand location. 20 members = proof of concept for scaling.', effort: 'deep' },
-        { title: 'Audit IMLCC compact coverage for all providers', body: 'Verify which providers have expedited multi-state licensing through IMLCC. This enables geographic flexibility for both hiring and patient access.', effort: 'moderate' }
+        { title: 'Start a Freed AI free trial today', body: 'Go to getfreed.ai and sign up for free. Run it on your next 5 patient sessions. If it saves 30 minutes per day, roll it out practice-wide. The ROI is immediate.', effort: 'quick', subgoals: [
+          'Create a Freed AI account at getfreed.ai (takes 2 minutes)',
+          'Install the Freed AI Chrome extension or desktop app',
+          'Run a test session with a consenting patient to learn the interface',
+          'Complete 5 full patient sessions with Freed AI running',
+          'Compare note completion time vs. your baseline — document savings',
+          'If >20 min/day saved, present ROI to practice manager for practice-wide rollout'
+        ]},
+        { title: 'Send a 10-question schedule survey to all providers', body: 'Ask: ideal days, hours, patient load, interest in 4-day week. The act of asking improves retention before you even change anything.', effort: 'quick', subgoals: [
+          'Draft 10 questions: preferred days, start/end times, max patients/day, 4-day interest, telehealth vs. in-person ratio',
+          'Add questions about top 3 scheduling frustrations and ideal patient mix',
+          'Create a Google Form or SurveyMonkey with anonymous option',
+          'Send survey to all providers with a 5-day deadline',
+          'Compile results into a one-page summary with top themes',
+          'Schedule a 15-min team meeting to share findings and next steps'
+        ]},
+        { title: 'Write your "What the Owner Does" document', body: 'One page. Every task you currently do that could be delegated goes on a second list with an assigned owner. Review quarterly.', effort: 'moderate', subgoals: [
+          'Block 90 minutes of uninterrupted time on your calendar',
+          'List every recurring task you do weekly (clinical, admin, financial, marketing)',
+          'Categorize each task: "Only I can do this" vs. "Someone else could do this"',
+          'For delegatable tasks, identify the ideal person or role to own it',
+          'Estimate hours/week recovered if all delegatable tasks are reassigned',
+          'Draft a transition plan for the top 3 highest-impact delegations',
+          'Set a quarterly calendar reminder to review and update the document'
+        ]},
+        { title: 'Apply for Gold Carding under FL SB 320', body: 'Submit applications to Aetna, UHC, and Cigna. Document your PA approval rates to qualify. Estimated 2-4 hours/week per provider saved.', effort: 'moderate', subgoals: [
+          'Pull your prior authorization approval rate data for the past 12 months',
+          'Verify you meet the 90%+ approval threshold required for Gold Card status',
+          'Download the Gold Card application from Aetna\'s provider portal',
+          'Submit Gold Card application to UHC using their Provider Express system',
+          'Submit Gold Card application to Cigna through their credentialing portal',
+          'Create a tracking spreadsheet: insurer, date submitted, status, follow-up date',
+          'Set bi-weekly reminders to follow up on pending applications',
+          'Once approved, notify all providers and update your PA workflow documentation'
+        ]},
+        { title: 'Pilot a psychiatry membership at one location', body: 'Test $199-249/month for same-week access and direct messaging at your highest-demand location. 20 members = proof of concept for scaling.', effort: 'deep', subgoals: [
+          'Choose your highest-demand location with longest wait times for the pilot',
+          'Define membership benefits: same-week scheduling, direct messaging, extended visits',
+          'Set pricing ($199-249/month) and create a simple membership agreement',
+          'Consult with a healthcare attorney on compliance (anti-kickback, fee-splitting)',
+          'Build a one-page landing page or PDF explaining the membership',
+          'Identify 20 existing patients most likely to convert (high-frequency, self-pay)',
+          'Personally offer membership to these 20 patients over the next 2 weeks',
+          'Set up billing infrastructure (Stripe, Square, or your PM system)',
+          'Track enrollment, utilization, and patient satisfaction for 90 days',
+          'At 20 members, evaluate unit economics and plan expansion to other locations'
+        ]},
+        { title: 'Audit IMLCC compact coverage for all providers', body: 'Verify which providers have expedited multi-state licensing through IMLCC. This enables geographic flexibility for both hiring and patient access.', effort: 'moderate', subgoals: [
+          'Create a spreadsheet of all providers with their current state licenses',
+          'Check IMLCC.org to confirm which states are currently in the compact',
+          'Verify if FL, MA, and TX are all active IMLCC member states',
+          'For each provider, determine eligibility for the IMLCC compact license',
+          'Identify any providers with licensing in non-compact states that need traditional renewal',
+          'Calculate cost savings of compact vs. individual state licensing',
+          'Submit IMLCC applications for eligible providers who haven\'t yet applied',
+          'Update your credentialing database with compact license status for all providers'
+        ]}
       ]
     },
     {
@@ -8656,14 +9248,74 @@ Same-week telehealth appointments available. Aetna, United, Cigna, Humana and mo
         { icon: '📊', number: '40', suffix: '+', label: 'Directory Listings', context: 'needed for strong citation profile' }
       ],
       actions: [
-        { title: 'Claim & verify all 16 Google Business Profiles', body: 'Ensure each Refresh Psychiatry location has a verified, fully completed GBP with correct hours, insurance list, and categories set to "Psychiatrist."', effort: 'moderate' },
-        { title: 'Add 5 new photos to each GBP this week', body: 'Upload professional office photos, team headshots, and branded graphics. Listings with photos get 35% more clicks to their website.', effort: 'quick' },
-        { title: 'Seed Q&A on each GBP with 10 common questions', body: 'Pre-populate questions patients ask: "Do you take Aetna?", "Do you offer telehealth?", "How long is a first visit?" Answer them yourself.', effort: 'quick' },
-        { title: 'Build insurance-specific landing pages', body: 'Create pages for "Psychiatrist accepting Aetna in Davie FL", "United Healthcare psychiatrist Fort Lauderdale", etc. for your top 5 insurance carriers.', effort: 'deep' },
-        { title: 'Audit NAP consistency across 40+ directories', body: 'Use a tool like BrightLocal or Moz Local to scan all citations. Fix any name/address/phone inconsistencies that hurt local SEO.', effort: 'moderate' },
-        { title: 'Publish one GBP post per location per week', body: 'Share a mental health tip, new blog post, or provider spotlight. Weekly posting signals to Google that your listing is active.', effort: 'moderate' },
-        { title: 'Add schema markup to all location pages', body: 'Implement MedicalBusiness and Physician structured data on each location page so Google can display rich results.', effort: 'deep' },
-        { title: 'Set up Google Analytics goal tracking for appointments', body: 'Track form submissions and phone clicks as conversions. Connect to Search Console to see which keywords drive actual bookings.', effort: 'moderate' }
+        { title: 'Claim & verify all 16 Google Business Profiles', body: 'Ensure each Refresh Psychiatry location has a verified, fully completed GBP with correct hours, insurance list, and categories set to "Psychiatrist."', effort: 'moderate', subgoals: [
+          'List all 16 locations and check which have claimed GBP listings',
+          'Claim any unclaimed profiles using the Google Business verification process',
+          'Set primary category to "Psychiatrist" and add secondary categories (Mental Health Clinic, Telehealth)',
+          'Update hours of operation for each location — include telehealth hours',
+          'Add all accepted insurance plans to the "Insurance" attribute for each listing',
+          'Write a unique 750-character business description for each location',
+          'Verify phone numbers and website URLs are correct across all 16 profiles'
+        ]},
+        { title: 'Add 5 new photos to each GBP this week', body: 'Upload professional office photos, team headshots, and branded graphics. Listings with photos get 35% more clicks to their website.', effort: 'quick', subgoals: [
+          'Take or gather professional photos of each office exterior and waiting area',
+          'Collect updated headshots of providers at each location',
+          'Create 2-3 Refresh-branded graphics (logo, services overview, telehealth promo)',
+          'Upload at least 5 photos per location with descriptive alt text',
+          'Set a cover photo and logo for each GBP listing'
+        ]},
+        { title: 'Seed Q&A on each GBP with 10 common questions', body: 'Pre-populate questions patients ask: "Do you take Aetna?", "Do you offer telehealth?", "How long is a first visit?" Answer them yourself.', effort: 'quick', subgoals: [
+          'Draft 10 FAQ questions based on most common patient intake calls',
+          'Write concise, keyword-rich answers for each question (include location-specific details)',
+          'Post Q&A entries on your top 5 highest-traffic GBP listings first',
+          'Roll out Q&A to remaining 11 locations within the week',
+          'Set a monthly reminder to review and add new questions based on patient trends'
+        ]},
+        { title: 'Build insurance-specific landing pages', body: 'Create pages for "Psychiatrist accepting Aetna in Davie FL", "United Healthcare psychiatrist Fort Lauderdale", etc. for your top 5 insurance carriers.', effort: 'deep', subgoals: [
+          'Identify your top 5 insurance carriers by patient volume (Aetna, UHC, Cigna, Humana, Avmed)',
+          'Map insurance + location keyword combinations (e.g., "Aetna psychiatrist Davie FL")',
+          'Research search volume for each keyword combo using Google Keyword Planner',
+          'Create a page template with H1, provider list, insurance details, and booking CTA',
+          'Write unique 500-word content for each insurance/location page (avoid duplicate content)',
+          'Add internal links from main service pages to insurance landing pages',
+          'Implement MedicalBusiness schema markup on each new page',
+          'Submit new URLs to Google Search Console for indexing'
+        ]},
+        { title: 'Audit NAP consistency across 40+ directories', body: 'Use a tool like BrightLocal or Moz Local to scan all citations. Fix any name/address/phone inconsistencies that hurt local SEO.', effort: 'moderate', subgoals: [
+          'Sign up for BrightLocal or Moz Local citation audit tool',
+          'Run a scan for each of your 16 locations to identify inconsistencies',
+          'Export a spreadsheet of all found citations with discrepancies flagged',
+          'Prioritize fixing top directories: Healthgrades, Zocdoc, Psychology Today, Vitals, WebMD',
+          'Submit corrections to each directory — update name, address, phone to match GBP exactly',
+          'Suppress or remove any duplicate listings found during the audit',
+          'Set a quarterly reminder to re-audit citation consistency'
+        ]},
+        { title: 'Publish one GBP post per location per week', body: 'Share a mental health tip, new blog post, or provider spotlight. Weekly posting signals to Google that your listing is active.', effort: 'moderate', subgoals: [
+          'Create a 4-week GBP posting calendar with themed content (tips, blogs, spotlights, promos)',
+          'Design 4 branded post templates in Canva using Refresh Blue + Yellow palette',
+          'Write post copy for week 1 across all 16 locations (can reuse with location tweaks)',
+          'Schedule posts using a GBP management tool (Semrush, BrightLocal, or manual)',
+          'Track post engagement (views, clicks, actions) weekly in a spreadsheet',
+          'Iterate content mix based on which post types drive the most clicks'
+        ]},
+        { title: 'Add schema markup to all location pages', body: 'Implement MedicalBusiness and Physician structured data on each location page so Google can display rich results.', effort: 'deep', subgoals: [
+          'Review current location pages for any existing schema markup',
+          'Generate MedicalBusiness schema JSON-LD for each of the 16 locations',
+          'Add Physician schema for each provider listed on location pages',
+          'Include all required fields: name, address, phone, hours, insurance, geo coordinates',
+          'Validate schema using Google Rich Results Test tool for each page',
+          'Deploy schema to production and verify in Google Search Console',
+          'Monitor rich result appearances in Search Console over the next 30 days'
+        ]},
+        { title: 'Set up Google Analytics goal tracking for appointments', body: 'Track form submissions and phone clicks as conversions. Connect to Search Console to see which keywords drive actual bookings.', effort: 'moderate', subgoals: [
+          'Verify Google Analytics 4 is properly installed on refreshpsychiatry.com',
+          'Create a "Form Submission" conversion event for appointment request forms',
+          'Create a "Phone Click" conversion event for tel: link clicks',
+          'Set up a "Book Now" button click event for CTA tracking',
+          'Link Google Search Console to Google Analytics 4',
+          'Create a custom report showing organic keywords → page visits → conversions',
+          'Set up a monthly automated email report for key conversion metrics'
+        ]}
       ]
     },
     {
@@ -8699,14 +9351,70 @@ Same-week telehealth appointments available. Aetna, United, Cigna, Humana and mo
         { icon: '📈', number: '12', suffix: ' weeks', label: 'Traction Timeline', context: 'to see consistent engagement growth' }
       ],
       actions: [
-        { title: 'Set up the 5-day content calendar template', body: 'Create a shared Google Sheet or Notion board with Mon-Fri pillar themes. Batch-create 2 weeks of content at a time for consistency.', effort: 'quick' },
-        { title: 'Record 3 "As a psychiatrist..." Reels', body: 'Film short (30-60 sec) authority-hook videos addressing common questions: ADHD myths, when to seek help, medication fears. Post one per week.', effort: 'quick' },
-        { title: 'Design 5 Instagram carousel templates', body: 'Use Canva to create branded carousel templates (Refresh Blue + Yellow) for educational content, tips, and myth-busting. Repurpose across topics.', effort: 'moderate' },
-        { title: 'Publish a LinkedIn thought leadership post', body: 'Write a 300-word post about a trend in psychiatry practice management. Tag local therapists and PCPs. Aim for 1 post per week.', effort: 'quick' },
-        { title: 'Build a HIPAA compliance checklist for social posts', body: 'Create a 10-point checklist every post must pass before publishing: no real patient info, no before/after, safe messaging guidelines, proper disclaimers.', effort: 'moderate' },
-        { title: 'Set up DM-to-appointment tracking', body: 'Create a simple spreadsheet tracking: DM date, platform, inquiry type, appointment scheduled (Y/N), and new patient (Y/N). Review weekly.', effort: 'quick' },
-        { title: 'Create a Mental Health Monday series for Facebook', body: 'Design a 4-week series of awareness posts with consistent branding. Share personal (non-patient) stories about why you chose psychiatry.', effort: 'moderate' },
-        { title: 'Run a 7-day Instagram Stories engagement experiment', body: 'Post daily Stories with polls, quizzes, and "Ask Me Anything" boxes for one week. Track how many DMs and profile visits result.', effort: 'quick' }
+        { title: 'Set up the 5-day content calendar template', body: 'Create a shared Google Sheet or Notion board with Mon-Fri pillar themes. Batch-create 2 weeks of content at a time for consistency.', effort: 'quick', subgoals: [
+          'Create a Google Sheet with columns: Day, Pillar Theme, Platform, Caption, Hashtags, Visual, Status',
+          'Assign pillar themes: Mon (Awareness), Tue (Tips), Wed (Education), Thu (LinkedIn), Fri (Reels)',
+          'Pre-fill 2 weeks of content ideas based on current trending mental health topics',
+          'Share the calendar with your social media team or VA for collaboration',
+          'Block 2 hours every other Sunday for batch content creation'
+        ]},
+        { title: 'Record 3 "As a psychiatrist..." Reels', body: 'Film short (30-60 sec) authority-hook videos addressing common questions: ADHD myths, when to seek help, medication fears. Post one per week.', effort: 'quick', subgoals: [
+          'Write 3 scripts using the hook "As a psychiatrist..." — keep each under 60 seconds',
+          'Choose topics: ADHD myths, when to see a psychiatrist vs. therapist, medication fears',
+          'Set up a well-lit filming spot with a clean, professional background',
+          'Record all 3 Reels in one batch session (saves setup time)',
+          'Edit with captions (80% of viewers watch without sound)',
+          'Schedule one Reel per week — post during peak engagement hours (Tue/Thu 11am-1pm)'
+        ]},
+        { title: 'Design 5 Instagram carousel templates', body: 'Use Canva to create branded carousel templates (Refresh Blue + Yellow) for educational content, tips, and myth-busting. Repurpose across topics.', effort: 'moderate', subgoals: [
+          'Open Canva and create a new brand kit with Refresh Blue (#2B6CB0) and Yellow (#F6C744)',
+          'Design template 1: "Myth vs. Fact" — bold headline, icon, and one-sentence explanation per slide',
+          'Design template 2: "5 Signs You Should..." — numbered list format with gradient backgrounds',
+          'Design template 3: "Did You Know?" — statistic-focused with source citation on last slide',
+          'Design template 4: "Your Questions Answered" — FAQ format with Q on one slide, A on next',
+          'Design template 5: "Provider Spotlight" — photo, credentials, fun fact, booking CTA',
+          'Save all as Canva templates so your team can duplicate and customize for new topics'
+        ]},
+        { title: 'Publish a LinkedIn thought leadership post', body: 'Write a 300-word post about a trend in psychiatry practice management. Tag local therapists and PCPs. Aim for 1 post per week.', effort: 'quick', subgoals: [
+          'Choose a topic relevant to referral partners (e.g., "How psychiatry and therapy work better together")',
+          'Write a 300-word post with a personal anecdote or clinical insight (no patient details)',
+          'Add 3-5 relevant hashtags (#Psychiatry, #MentalHealthPractice, #SouthFlorida)',
+          'Tag 2-3 local therapists, PCPs, or healthcare leaders you want to build relationships with',
+          'Post during peak LinkedIn hours (Tue-Thu, 8-10am EST)',
+          'Reply to every comment within 24 hours to boost algorithm visibility'
+        ]},
+        { title: 'Build a HIPAA compliance checklist for social posts', body: 'Create a 10-point checklist every post must pass before publishing: no real patient info, no before/after, safe messaging guidelines, proper disclaimers.', effort: 'moderate', subgoals: [
+          'Review HHS social media guidance and HIPAA marketing rules',
+          'Draft 10 checklist items covering PHI, patient consent, safe messaging, and disclaimers',
+          'Include items for: no real patient stories, no before/after, no identifiable info in backgrounds',
+          'Add safe messaging guidelines for suicide and self-harm content',
+          'Include a disclaimer template: "This is educational content, not medical advice"',
+          'Format as a one-page PDF and Google Form for easy team use',
+          'Train all content creators on the checklist and require sign-off before posting'
+        ]},
+        { title: 'Set up DM-to-appointment tracking', body: 'Create a simple spreadsheet tracking: DM date, platform, inquiry type, appointment scheduled (Y/N), and new patient (Y/N). Review weekly.', effort: 'quick', subgoals: [
+          'Create a Google Sheet with columns: Date, Platform, Inquiry Type, Response Time, Appt Scheduled, New Patient',
+          'Add dropdown menus for Platform (IG, FB, LinkedIn, TikTok) and Inquiry Type (scheduling, pricing, insurance, general)',
+          'Assign one person to log all DM inquiries daily',
+          'Set a weekly Friday reminder to review the tracking sheet',
+          'Calculate your DM-to-appointment conversion rate each week'
+        ]},
+        { title: 'Create a Mental Health Monday series for Facebook', body: 'Design a 4-week series of awareness posts with consistent branding. Share personal (non-patient) stories about why you chose psychiatry.', effort: 'moderate', subgoals: [
+          'Plan 4 weeks of themes: Week 1 (Why I chose psychiatry), Week 2 (Stigma myths), Week 3 (Self-care for providers), Week 4 (Community spotlight)',
+          'Write post copy for each week — 150-200 words with a warm, personal tone',
+          'Design matching graphics using your Refresh brand templates in Canva',
+          'Schedule all 4 posts in advance using Meta Business Suite',
+          'Engage with every comment to build community — reply within 4 hours',
+          'At the end of 4 weeks, review engagement data and plan the next series'
+        ]},
+        { title: 'Run a 7-day Instagram Stories engagement experiment', body: 'Post daily Stories with polls, quizzes, and "Ask Me Anything" boxes for one week. Track how many DMs and profile visits result.', effort: 'quick', subgoals: [
+          'Plan 7 days of interactive Story content: Mon (poll), Tue (quiz), Wed (AMA), Thu (this or that), Fri (behind the scenes), Sat (weekend wellness tip), Sun (motivational quote)',
+          'Create Story graphics in advance using Canva Instagram Story templates',
+          'Post each Story between 9-11am when your audience is most active',
+          'Respond to every poll response, quiz answer, and AMA question within 2 hours',
+          'Screenshot your Insights at the end of each day (profile visits, DMs, reach)',
+          'Compile results into a one-page summary: which format drove the most engagement'
+        ]}
       ]
     }
   ];
@@ -8717,6 +9425,8 @@ Same-week telehealth appointments available. Aetna, United, Cigna, Humana and mo
     const list = document.getElementById('episodeList');
     const countEl = document.getElementById('episodeCount');
     countEl.textContent = podcastEpisodes.length + ' episode' + (podcastEpisodes.length !== 1 ? 's' : '');
+    const tabBadge = document.getElementById('podcastTabCount');
+    if (tabBadge) tabBadge.textContent = podcastEpisodes.length;
     list.innerHTML = podcastEpisodes.map((ep, idx) => `
       <div class="episode-item ${idx === currentEpisodeIdx ? 'now-playing' : ''}" onclick="loadEpisode(${idx})" title="Play Episode ${ep.ep}">
         <button class="episode-play-btn" aria-label="Play Episode ${ep.ep}"></button>
@@ -8743,20 +9453,21 @@ Same-week telehealth appointments available. Aetna, United, Cigna, Humana and mo
     document.querySelector('.podcast-details h2').textContent = ep.title;
     document.querySelector('.podcast-details > p').textContent = ep.desc;
 
-    // Update audio source
+    // Update audio source and play within the user gesture
+    podcastAudio.pause();
     podcastAudio.src = ep.audio;
-    podcastAudio.load();
     podcastProgress.style.width = '0%';
     podcastCurrentTime.textContent = '0:00';
     podcastDuration.textContent = '--:--';
 
-    // Auto-play the selected episode
-    podcastAudio.addEventListener('canplay', function onCanPlay() {
-      podcastAudio.removeEventListener('canplay', onCanPlay);
-      podcastAudio.play().then(() => {
-        podcastPlayBtn.classList.add('playing');
-        startVisualizer();
-      }).catch(() => {});
+    // Play directly within user tap gesture (iOS requires this)
+    podcastAudio.load();
+    podcastAudio.play().then(() => {
+      podcastPlayBtn.classList.add('playing');
+      startVisualizer();
+    }).catch(() => {
+      // If blocked, user can tap the play button manually
+      podcastPlayBtn.classList.remove('playing');
     });
 
     // Re-render episode list to update "now playing" state
@@ -8800,19 +9511,38 @@ Same-week telehealth appointments available. Aetna, United, Cigna, Humana and mo
       ).join('');
     }
 
-    // Action Items (with localStorage persistence)
+    // Action Items (with localStorage persistence for items + subgoals)
     const actionsList = document.getElementById('actionItemsList');
     if (ep.actions && ep.actions.length) {
       const savedChecks = JSON.parse(localStorage.getItem('podcastActions_ep' + currentEpisodeIdx) || '{}');
+      const savedSubChecks = JSON.parse(localStorage.getItem('podcastSubActions_ep' + currentEpisodeIdx) || '{}');
+      const savedCollapsed = JSON.parse(localStorage.getItem('podcastActionsCollapsed_ep' + currentEpisodeIdx) || '{}');
       actionsList.innerHTML = ep.actions.map((a, i) => {
         const isChecked = savedChecks[i] ? ' checked' : '';
-        return `<div class="action-item${isChecked}" data-ep="${currentEpisodeIdx}" data-idx="${i}" onclick="toggleActionItem(this)">
-          <div class="action-check"></div>
-          <div class="action-text">
-            <h4>${a.title}</h4>
-            <p>${a.body}</p>
+        const isCollapsed = savedCollapsed[i] ? ' collapsed' : '';
+        const subgoals = a.subgoals || [];
+        const subCheckedCount = subgoals.filter((_, si) => savedSubChecks[i + '_' + si]).length;
+        const progressText = subgoals.length ? `${subCheckedCount}/${subgoals.length}` : '';
+        const subgoalsHtml = subgoals.length ? `<div class="subgoals-list">${subgoals.map((sg, si) => {
+          const subChecked = savedSubChecks[i + '_' + si] ? ' checked' : '';
+          return `<div class="subgoal-item${subChecked}" data-ep="${currentEpisodeIdx}" data-idx="${i}" data-sub="${si}" onclick="toggleSubgoal(event, this)">
+            <div class="subgoal-check"></div>
+            <div class="subgoal-text">${sg}</div>
+          </div>`;
+        }).join('')}</div>` : '';
+
+        return `<div class="action-item-wrapper${isCollapsed}" data-idx="${i}">
+          <div class="action-item${isChecked}" data-ep="${currentEpisodeIdx}" data-idx="${i}" onclick="toggleActionItem(this)">
+            <div class="action-check"></div>
+            <div class="action-text">
+              <h4>${a.title}</h4>
+              <p>${a.body}</p>
+            </div>
+            ${progressText ? `<span class="subgoals-progress">${progressText}</span>` : ''}
+            <span class="action-effort ${a.effort}">${a.effort === 'quick' ? '15 min' : a.effort === 'moderate' ? '1-2 hrs' : 'Half day'}</span>
+            ${subgoals.length ? `<div class="action-expand" onclick="toggleActionCollapse(event, this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></div>` : ''}
           </div>
-          <span class="action-effort ${a.effort}">${a.effort === 'quick' ? '15 min' : a.effort === 'moderate' ? '1-2 hrs' : 'Half day'}</span>
+          ${subgoalsHtml}
         </div>`;
       }).join('');
     }
