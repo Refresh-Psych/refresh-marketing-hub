@@ -3874,7 +3874,7 @@
         <h2>📣 Paid Advertising for Multi-State Telepsychiatry: The 16-Location Playbook for Refresh Psychiatry</h2>
         <p>Talkiatry just raised $210 million. They have 800+ psychiatrists in 45 states — and they're bidding on your patients' searches right now. In this Refresh Psychiatry Spotlight episode, we build the exact paid advertising strategy for a 16-location telehealth practice across FL, MA, and TX: Google Ads account structure by market cluster, insurance-specific campaigns that convert at extraordinary rates, Meta's 2026 healthcare ad restrictions, and a monthly budget framework that delivers 60–100+ new patient appointments.</p>
 
-        <audio id="podcastAudio" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-daily-podcast/podcast-2026-03-22.mp3" preload="auto" playsinline webkit-playsinline></audio>
+        <audio id="podcastAudio" preload="none" playsinline webkit-playsinline></audio>
         <div class="podcast-player">
           <button class="player-btn" id="podcastPlayBtn" onclick="togglePodcast(this)"></button>
           <div class="player-track">
@@ -8933,6 +8933,9 @@ You just have to want things to feel better.
   const podcastBar = document.getElementById('podcastBar');
   const podcastPlayBtn = document.getElementById('podcastPlayBtn');
 
+  // Set initial audio source (deferred to avoid mobile preload issues)
+  const initialPodcastSrc = 'https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-daily-podcast/podcast-2026-03-22.mp3';
+
   function formatTime(s) {
     const m = Math.floor(s / 60);
     const sec = Math.floor(s % 60);
@@ -8955,45 +8958,25 @@ You just have to want things to feel better.
     cancelAnimationFrame(visualizerRAF);
   });
 
-  // iOS Safari requires unlocking audio on first user gesture
-  let iosAudioUnlocked = false;
-  function unlockiOSAudio() {
-    if (iosAudioUnlocked) return Promise.resolve();
-    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    if (!isIOS) { iosAudioUnlocked = true; return Promise.resolve(); }
-    // Create a silent buffer and play it to unlock the audio context
-    podcastAudio.muted = true;
-    return podcastAudio.play().then(() => {
-      podcastAudio.pause();
-      podcastAudio.muted = false;
-      podcastAudio.currentTime = 0;
-      iosAudioUnlocked = true;
-    }).catch(() => {
-      podcastAudio.muted = false;
-      iosAudioUnlocked = true;
-    });
-  }
-
+  // Mobile Safari / iOS requires play() to be called directly and synchronously
+  // in the user gesture chain — no muted unlock tricks, no setTimeout wrappers.
   function togglePodcast(btn) {
     if (podcastAudio.paused) {
-      unlockiOSAudio().then(() => {
-        return podcastAudio.play();
-      }).then(() => {
-        btn.classList.add('playing');
-        startVisualizer();
-      }).catch(err => {
-        console.error('Audio play failed:', err);
-        // Fallback: load and retry within same gesture chain
-        podcastAudio.load();
-        setTimeout(() => {
-          podcastAudio.play().then(() => {
-            btn.classList.add('playing');
-            startVisualizer();
-          }).catch(() => {
-            btn.classList.remove('playing');
-          });
-        }, 100);
-      });
+      // If no source set yet (first play), set it now inside the gesture
+      if (!podcastAudio.src || podcastAudio.src === location.href) {
+        podcastAudio.src = initialPodcastSrc;
+      }
+      // Call play() synchronously inside the tap handler — critical for iOS/mobile
+      const playPromise = podcastAudio.play();
+      if (playPromise) {
+        playPromise.then(() => {
+          btn.classList.add('playing');
+          startVisualizer();
+        }).catch(err => {
+          console.warn('Audio play blocked:', err.message);
+          btn.classList.remove('playing');
+        });
+      }
     } else {
       podcastAudio.pause();
       btn.classList.remove('playing');
