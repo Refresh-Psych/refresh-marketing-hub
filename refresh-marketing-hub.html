@@ -28,6 +28,7 @@
 <!-- Theme Color -->
 <meta name="theme-color" content="#2B6CB0">
 
+<link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/avif" href="refresh-logo.avif">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -3888,7 +3889,7 @@
         <h2>📣 Paid Advertising for Multi-State Telepsychiatry: The 16-Location Playbook for Refresh Psychiatry</h2>
         <p>Talkiatry just raised $210 million. They have 800+ psychiatrists in 45 states — and they're bidding on your patients' searches right now. In this Refresh Psychiatry Spotlight episode, we build the exact paid advertising strategy for a 16-location telehealth practice across FL, MA, and TX: Google Ads account structure by market cluster, insurance-specific campaigns that convert at extraordinary rates, Meta's 2026 healthcare ad restrictions, and a monthly budget framework that delivers 60–100+ new patient appointments.</p>
 
-        <audio id="podcastAudio" preload="none" playsinline webkit-playsinline></audio>
+        <audio id="podcastAudio" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-daily-podcast/podcast-2026-03-22.mp3" preload="metadata" playsinline webkit-playsinline></audio>
         <div class="podcast-player">
           <button class="player-btn" id="podcastPlayBtn" onclick="togglePodcast(this)"></button>
           <div class="player-track">
@@ -8948,25 +8949,7 @@ You just have to want things to feel better.
   const podcastPlayBtn = document.getElementById('podcastPlayBtn');
 
   const initialPodcastSrc = 'https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-daily-podcast/podcast-2026-03-22.mp3';
-
-  // GitHub releases serve MP3s as application/octet-stream with signed redirect
-  // URLs that expire. Mobile browsers can't stream these. We fetch as blob and
-  // create an object URL with the correct audio/mpeg type.
-  const audioBlobCache = {};
   let currentAudioLoading = null;
-
-  function fetchAudioBlob(url) {
-    if (audioBlobCache[url]) return Promise.resolve(audioBlobCache[url]);
-    return fetch(url).then(r => {
-      if (!r.ok) throw new Error('HTTP ' + r.status);
-      return r.blob();
-    }).then(blob => {
-      const audioBlob = new Blob([blob], { type: 'audio/mpeg' });
-      const blobUrl = URL.createObjectURL(audioBlob);
-      audioBlobCache[url] = blobUrl;
-      return blobUrl;
-    });
-  }
 
   function formatTime(s) {
     const m = Math.floor(s / 60);
@@ -8999,31 +8982,27 @@ You just have to want things to feel better.
     if (currentAudioLoading) return; // prevent double-tap while loading
 
     if (podcastAudio.paused) {
-      // If audio already has a blob URL loaded, play directly
-      if (podcastAudio.src && podcastAudio.src.startsWith('blob:')) {
-        podcastAudio.play().then(() => {
-          btn.classList.add('playing');
-          startVisualizer();
-        }).catch(() => btn.classList.remove('playing'));
-        return;
+      // Ensure src is set (may have been cleared by episode switch)
+      if (!podcastAudio.src || podcastAudio.src === location.href) {
+        podcastAudio.src = podcastAudio.dataset.src || initialPodcastSrc;
       }
 
-      // Fetch MP3 as blob to get proper audio/mpeg content type
       btn.classList.add('loading');
-      const srcUrl = podcastAudio.dataset.src || initialPodcastSrc;
-      currentAudioLoading = fetchAudioBlob(srcUrl).then(blobUrl => {
-        podcastAudio.src = blobUrl;
-        return podcastAudio.play();
-      }).then(() => {
-        btn.classList.remove('loading');
-        btn.classList.add('playing');
-        startVisualizer();
-      }).catch(err => {
-        console.warn('Audio play failed:', err.message);
-        btn.classList.remove('loading', 'playing');
-      }).finally(() => {
-        currentAudioLoading = null;
-      });
+      // Direct play() — let browser handle streaming natively (no fetch/blob needed)
+      const playPromise = podcastAudio.play();
+      if (playPromise !== undefined) {
+        currentAudioLoading = playPromise;
+        playPromise.then(() => {
+          btn.classList.remove('loading');
+          btn.classList.add('playing');
+          startVisualizer();
+        }).catch(err => {
+          console.warn('Audio play failed:', err.message);
+          btn.classList.remove('loading', 'playing');
+        }).finally(() => {
+          currentAudioLoading = null;
+        });
+      }
     } else {
       podcastAudio.pause();
       btn.classList.remove('playing');
@@ -9490,20 +9469,21 @@ You just have to want things to feel better.
     podcastDuration.textContent = '--:--';
     podcastPlayBtn.classList.add('loading');
 
-    // Store the raw URL for togglePodcast fallback
+    // Set source directly and let browser stream natively
     podcastAudio.dataset.src = ep.audio;
+    podcastAudio.src = ep.audio;
+    podcastAudio.load();
 
-    // Fetch as blob then play — handles GitHub release redirect + content-type
-    fetchAudioBlob(ep.audio).then(blobUrl => {
-      podcastAudio.src = blobUrl;
-      return podcastAudio.play();
-    }).then(() => {
-      podcastPlayBtn.classList.remove('loading');
-      podcastPlayBtn.classList.add('playing');
-      startVisualizer();
-    }).catch(() => {
-      podcastPlayBtn.classList.remove('loading', 'playing');
-    });
+    const playPromise = podcastAudio.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        podcastPlayBtn.classList.remove('loading');
+        podcastPlayBtn.classList.add('playing');
+        startVisualizer();
+      }).catch(() => {
+        podcastPlayBtn.classList.remove('loading', 'playing');
+      });
+    }
 
     // Re-render episode list to update "now playing" state
     renderEpisodeList();
