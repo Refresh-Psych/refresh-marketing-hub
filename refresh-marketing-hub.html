@@ -1037,6 +1037,17 @@
     );
   }
 
+  .player-btn.loading::after {
+    border: 3px solid rgba(255,255,255,0.3);
+    border-top-color: var(--white);
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    margin-left: 0;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
   .player-track { flex: 1; display: flex; flex-direction: column; gap: 5px; }
 
   .player-bar {
@@ -8933,8 +8944,26 @@ You just have to want things to feel better.
   const podcastBar = document.getElementById('podcastBar');
   const podcastPlayBtn = document.getElementById('podcastPlayBtn');
 
-  // Set initial audio source (deferred to avoid mobile preload issues)
   const initialPodcastSrc = 'https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-daily-podcast/podcast-2026-03-22.mp3';
+
+  // GitHub releases serve MP3s as application/octet-stream with signed redirect
+  // URLs that expire. Mobile browsers can't stream these. We fetch as blob and
+  // create an object URL with the correct audio/mpeg type.
+  const audioBlobCache = {};
+  let currentAudioLoading = null;
+
+  function fetchAudioBlob(url) {
+    if (audioBlobCache[url]) return Promise.resolve(audioBlobCache[url]);
+    return fetch(url).then(r => {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.blob();
+    }).then(blob => {
+      const audioBlob = new Blob([blob], { type: 'audio/mpeg' });
+      const blobUrl = URL.createObjectURL(audioBlob);
+      audioBlobCache[url] = blobUrl;
+      return blobUrl;
+    });
+  }
 
   function formatTime(s) {
     const m = Math.floor(s / 60);
@@ -8958,25 +8987,40 @@ You just have to want things to feel better.
     cancelAnimationFrame(visualizerRAF);
   });
 
-  // Mobile Safari / iOS requires play() to be called directly and synchronously
-  // in the user gesture chain — no muted unlock tricks, no setTimeout wrappers.
+  podcastAudio.addEventListener('error', () => {
+    podcastPlayBtn.classList.remove('playing', 'loading');
+    console.error('Audio error:', podcastAudio.error);
+  });
+
   function togglePodcast(btn) {
+    if (currentAudioLoading) return; // prevent double-tap while loading
+
     if (podcastAudio.paused) {
-      // If no source set yet (first play), set it now inside the gesture
-      if (!podcastAudio.src || podcastAudio.src === location.href) {
-        podcastAudio.src = initialPodcastSrc;
-      }
-      // Call play() synchronously inside the tap handler — critical for iOS/mobile
-      const playPromise = podcastAudio.play();
-      if (playPromise) {
-        playPromise.then(() => {
+      // If audio already has a blob URL loaded, play directly
+      if (podcastAudio.src && podcastAudio.src.startsWith('blob:')) {
+        podcastAudio.play().then(() => {
           btn.classList.add('playing');
           startVisualizer();
-        }).catch(err => {
-          console.warn('Audio play blocked:', err.message);
-          btn.classList.remove('playing');
-        });
+        }).catch(() => btn.classList.remove('playing'));
+        return;
       }
+
+      // Fetch MP3 as blob to get proper audio/mpeg content type
+      btn.classList.add('loading');
+      const srcUrl = podcastAudio.dataset.src || initialPodcastSrc;
+      currentAudioLoading = fetchAudioBlob(srcUrl).then(blobUrl => {
+        podcastAudio.src = blobUrl;
+        return podcastAudio.play();
+      }).then(() => {
+        btn.classList.remove('loading');
+        btn.classList.add('playing');
+        startVisualizer();
+      }).catch(err => {
+        console.warn('Audio play failed:', err.message);
+        btn.classList.remove('loading', 'playing');
+      }).finally(() => {
+        currentAudioLoading = null;
+      });
     } else {
       podcastAudio.pause();
       btn.classList.remove('playing');
@@ -9436,21 +9480,26 @@ You just have to want things to feel better.
     document.querySelector('.podcast-details h2').textContent = ep.title;
     document.querySelector('.podcast-details > p').textContent = ep.desc;
 
-    // Update audio source and play within the user gesture
+    // Reset player UI
     podcastAudio.pause();
-    podcastAudio.src = ep.audio;
     podcastProgress.style.width = '0%';
     podcastCurrentTime.textContent = '0:00';
     podcastDuration.textContent = '--:--';
+    podcastPlayBtn.classList.add('loading');
 
-    // Play directly within user tap gesture (iOS requires this)
-    podcastAudio.load();
-    podcastAudio.play().then(() => {
+    // Store the raw URL for togglePodcast fallback
+    podcastAudio.dataset.src = ep.audio;
+
+    // Fetch as blob then play — handles GitHub release redirect + content-type
+    fetchAudioBlob(ep.audio).then(blobUrl => {
+      podcastAudio.src = blobUrl;
+      return podcastAudio.play();
+    }).then(() => {
+      podcastPlayBtn.classList.remove('loading');
       podcastPlayBtn.classList.add('playing');
       startVisualizer();
     }).catch(() => {
-      // If blocked, user can tap the play button manually
-      podcastPlayBtn.classList.remove('playing');
+      podcastPlayBtn.classList.remove('loading', 'playing');
     });
 
     // Re-render episode list to update "now playing" state
