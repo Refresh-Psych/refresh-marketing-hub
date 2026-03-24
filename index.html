@@ -4429,6 +4429,17 @@ Telehealth across FL, MA &amp; TX · We take your insurance
 
 <script>
   // ═══════════ ACTION ITEM PERSISTENCE ═══════════
+  // ═══════════ REVEAL OBSERVER ═══════════
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+
   function toggleActionItem(el) {
     // Don't toggle if clicking on the expand button or subgoals
     if (el.closest('.action-expand')) return;
