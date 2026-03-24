@@ -946,6 +946,104 @@
   }
 
   /* ═══════════ PODCAST INSIGHTS PANEL ═══════════ */
+
+  /* ═══════════ PODCAST LIVE GRAPHICS ═══════════ */
+  .podcast-topic-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 20px 0;
+  }
+  .topic-pill {
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    animation: topicFadeIn 0.5s ease both;
+    cursor: default;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .topic-pill:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+  .topic-pill:nth-child(1) { background: linear-gradient(135deg, #2B6CB0, #4a90d9); animation-delay: 0.1s; }
+  .topic-pill:nth-child(2) { background: linear-gradient(135deg, #D69E2E, #F6C744); color: #2D3748; animation-delay: 0.2s; }
+  .topic-pill:nth-child(3) { background: linear-gradient(135deg, #38A169, #48BB78); animation-delay: 0.3s; }
+  .topic-pill:nth-child(4) { background: linear-gradient(135deg, #805AD5, #9F7AEA); animation-delay: 0.4s; }
+  .topic-pill:nth-child(5) { background: linear-gradient(135deg, #E53E3E, #FC8181); animation-delay: 0.5s; }
+  .topic-pill:nth-child(6) { background: linear-gradient(135deg, #DD6B20, #ED8936); animation-delay: 0.6s; }
+  .topic-pill:nth-child(7) { background: linear-gradient(135deg, #319795, #4FD1C5); animation-delay: 0.7s; }
+  @keyframes topicFadeIn { from { opacity: 0; transform: translateY(10px) scale(0.9); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+  .podcast-progress-rings {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+    margin: 24px 0;
+  }
+  .ring-card {
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    text-align: center;
+    transition: var(--transition);
+  }
+  .ring-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--yellow); }
+  .ring-svg { width: 80px; height: 80px; margin: 0 auto 12px; }
+  .ring-bg { fill: none; stroke: var(--border); stroke-width: 6; }
+  .ring-fill { fill: none; stroke-width: 6; stroke-linecap: round; transform: rotate(-90deg); transform-origin: center; transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1); }
+  .ring-card:nth-child(1) .ring-fill { stroke: var(--blue); }
+  .ring-card:nth-child(2) .ring-fill { stroke: var(--yellow); }
+  .ring-card:nth-child(3) .ring-fill { stroke: #38A169; }
+  .ring-card:nth-child(4) .ring-fill { stroke: #805AD5; }
+  .ring-value { font-size: 22px; font-weight: 800; color: var(--charcoal); font-family: 'JetBrains Mono', monospace; }
+  .ring-label { font-size: 11px; color: var(--charcoal); opacity: 0.7; margin-top: 4px; }
+
+  .podcast-timeline {
+    position: relative;
+    padding: 20px 0 20px 30px;
+    margin: 20px 0;
+  }
+  .podcast-timeline::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--blue), var(--yellow), #38A169);
+    border-radius: 3px;
+  }
+  .timeline-node {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 14px 18px;
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xs);
+    animation: timelineSlide 0.4s ease both;
+    transition: var(--transition);
+  }
+  .timeline-node:hover { border-color: var(--yellow); box-shadow: var(--shadow-sm); }
+  .timeline-node::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 18px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--blue);
+    border: 3px solid var(--surface);
+    box-shadow: 0 0 0 2px var(--blue);
+  }
+  .timeline-node:nth-child(even)::before { background: var(--yellow); box-shadow: 0 0 0 2px var(--yellow); }
+  .timeline-node:nth-child(3n)::before { background: #38A169; box-shadow: 0 0 0 2px #38A169; }
+  .timeline-time { font-size: 11px; font-weight: 700; color: var(--blue); font-family: 'JetBrains Mono', monospace; }
+  .timeline-topic { font-size: 14px; font-weight: 600; color: var(--charcoal); margin-top: 4px; }
+  @keyframes timelineSlide { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
   .podcast-insights {
     margin-top: 40px;
     display: flex;
@@ -2538,6 +2636,73 @@
 
     <!-- PODCAST INSIGHTS (Key Takeaways, Infographic, Action Items) -->
     <div class="podcast-insights" id="podcastInsights">
+
+      <!-- Episode Topics -->
+      <div class="reveal">
+        <div class="insights-section-header">
+          <div class="section-icon" style="background: rgba(128,90,213,0.08);">🎙️</div>
+          <h3>Episode Topics</h3>
+          <span class="section-tag" style="color: #805AD5; background: rgba(128,90,213,0.08);">Live</span>
+        </div>
+        <div class="podcast-topic-cloud" id="podcastTopicCloud">
+          <span class="topic-pill">Spravato / Esketamine</span>
+          <span class="topic-pill">Nushama Case Study</span>
+          <span class="topic-pill">TMS Protocols</span>
+          <span class="topic-pill">Digital Therapeutics</span>
+          <span class="topic-pill">Revenue Model</span>
+          <span class="topic-pill">Patient Demand</span>
+          <span class="topic-pill">Implementation Roadmap</span>
+        </div>
+      </div>
+
+      <!-- Key Metrics — Animated Rings -->
+      <div class="reveal">
+        <div class="insights-section-header">
+          <div class="section-icon" style="background: rgba(43,108,176,0.08);">📊</div>
+          <h3>Key Metrics from This Episode</h3>
+          <span class="section-tag" style="color: var(--blue); background: rgba(43,108,176,0.08);">Data</span>
+        </div>
+        <div class="podcast-progress-rings" id="podcastRings">
+          <div class="ring-card">
+            <svg class="ring-svg" viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="34"/><circle class="ring-fill" cx="40" cy="40" r="34" stroke-dasharray="213.6" stroke-dashoffset="213.6" data-target="21.4"/></svg>
+            <div class="ring-value">$1B</div>
+            <div class="ring-label">Spravato Annual Sales</div>
+          </div>
+          <div class="ring-card">
+            <svg class="ring-svg" viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="34"/><circle class="ring-fill" cx="40" cy="40" r="34" stroke-dasharray="213.6" stroke-dashoffset="213.6" data-target="42.7"/></svg>
+            <div class="ring-value">12K+</div>
+            <div class="ring-label">Nushama Patients Treated</div>
+          </div>
+          <div class="ring-card">
+            <svg class="ring-svg" viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="34"/><circle class="ring-fill" cx="40" cy="40" r="34" stroke-dasharray="213.6" stroke-dashoffset="213.6" data-target="42.7"/></svg>
+            <div class="ring-value">80%</div>
+            <div class="ring-label">TMS Remission Rate</div>
+          </div>
+          <div class="ring-card">
+            <svg class="ring-svg" viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="34"/><circle class="ring-fill" cx="40" cy="40" r="34" stroke-dasharray="213.6" stroke-dashoffset="213.6" data-target="106.8"/></svg>
+            <div class="ring-value">50%</div>
+            <div class="ring-label">Spravato YoY Growth</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Episode Timeline -->
+      <div class="reveal">
+        <div class="insights-section-header">
+          <div class="section-icon" style="background: rgba(49,151,149,0.08);">⏱️</div>
+          <h3>Episode Timeline</h3>
+          <span class="section-tag" style="color: #319795; background: rgba(49,151,149,0.08);">Chapters</span>
+        </div>
+        <div class="podcast-timeline">
+          <div class="timeline-node" style="animation-delay:0.1s"><div class="timeline-time">0:00</div><div class="timeline-topic">Introduction — The $1B Emerging Treatment Market</div></div>
+          <div class="timeline-node" style="animation-delay:0.2s"><div class="timeline-time">2:30</div><div class="timeline-topic">Nushama Case Study — Zero to 12,000 Ketamine Patients</div></div>
+          <div class="timeline-node" style="animation-delay:0.3s"><div class="timeline-time">5:45</div><div class="timeline-topic">Spravato Revenue Reality — Why J&J Hit $1B</div></div>
+          <div class="timeline-node" style="animation-delay:0.4s"><div class="timeline-time">8:20</div><div class="timeline-topic">New Directions Mental Health — 5-Day/Week Esketamine Model</div></div>
+          <div class="timeline-node" style="animation-delay:0.5s"><div class="timeline-time">11:00</div><div class="timeline-topic">TMS Deep Dive — Dr. Rohaidy's Accelerated Protocols</div></div>
+          <div class="timeline-node" style="animation-delay:0.6s"><div class="timeline-time">14:30</div><div class="timeline-topic">Digital Therapeutics — Rejoyn, DaylightRx, CMS Reimbursement</div></div>
+          <div class="timeline-node" style="animation-delay:0.7s"><div class="timeline-time">17:00</div><div class="timeline-topic">5-Step Roadmap — Launch First Spravato Patient in 30-60 Days</div></div>
+        </div>
+      </div>
       <!-- Key Takeaways -->
       <div class="reveal">
         <div class="insights-section-header">
@@ -3920,7 +4085,6 @@
         </tbody></table>
       </div>
     </details>
-
     <!-- Section 10: SEO Intelligence -->
     <details class="brief-section reveal" open>
       <summary>🔍 10. SEO Intelligence &amp; Rising Searches</summary>
@@ -3929,27 +4093,41 @@
         <table class="brief-table">
           <thead><tr><th>Keyword</th><th>Monthly Volume</th><th>Trend</th><th>Refresh Opportunity</th></tr></thead>
           <tbody>
-            <tr><td>"online psychiatrist near me"</td><td>74,000</td><td>📈 +22% YoY</td><td>High — primary landing page target. Ensure all 16 location pages rank for this + location modifier.</td></tr>
-            <tr><td>"psychiatrist that takes Aetna"</td><td>18,000</td><td>📈 +31% YoY</td><td>High — insurance-specific pages convert 8x better. Build dedicated pages per payer per location.</td></tr>
-            <tr><td>"ADHD testing adults telehealth"</td><td>12,400</td><td>📈 +45% YoY</td><td>Critical — Refresh's core service. Optimize ADHD service pages with telehealth modifiers.</td></tr>
-            <tr><td>"magnesium glycinate anxiety"</td><td>246,000</td><td>📈 Surging — "nature's Xanax"</td><td>Blog topic: "Does magnesium actually help anxiety? A psychiatrist's evidence-based take." Captures awareness-stage patients.</td></tr>
-            <tr><td>"ashwagandha" (+ anxiety/sleep)</td><td>673,000</td><td>📈 Dominant supplement search</td><td>Patients are already taking this. Content: "Before you try ashwagandha for anxiety — what your psychiatrist wants you to know."</td></tr>
-            <tr><td>"brain rot" (cognitive effects of digital overuse)</td><td>201,000+</td><td>📈 Oxford Word of the Year 2024; still growing</td><td>Trending among Gen Z. Content: "Is brain rot real? A psychiatrist explains what doom scrolling actually does to your brain."</td></tr>
-            <tr><td>"psychiatrist vs therapist"</td><td>27,000</td><td>📈 +18% YoY</td><td>Top-of-funnel — FAQ/blog content. High intent from confused patients who need psychiatry.</td></tr>
-            <tr><td>"burnout psychiatrist" / "burnout treatment"</td><td>Rising</td><td>📈 Neurodivergent burnout especially</td><td>Refresh can own this. Burnout + ADHD/neurodivergent framing is an underserved content angle.</td></tr>
+            <tr><td>"online psychiatrist near me"</td><td>74,000</td><td>📈 +22% YoY</td><td>Primary landing page target. Ensure all 16 location pages rank for this + location modifier.</td></tr>
+            <tr><td>"psychiatrist that takes Aetna"</td><td>18,000</td><td>📈 +31% YoY</td><td>Insurance-specific pages convert 8x better. Build dedicated pages per payer per location.</td></tr>
+            <tr><td>"ADHD testing adults telehealth"</td><td>12,400</td><td>📈 +45% YoY</td><td>Refresh's core service. Optimize ADHD service pages with telehealth modifiers.</td></tr>
+            <tr><td>"vagus nerve stimulation anxiety"</td><td>246,000</td><td>📈 +20% YoY — surging</td><td>NEW — Blog: "Vagus Nerve Stimulation for Anxiety: What a Psychiatrist Wants You to Know." Captures wellness-curious patients.</td></tr>
+            <tr><td>"cortisol detox" / "cortisol cocktail"</td><td>60,500</td><td>📈 TikTok-driven surge</td><td>NEW — Viral trend (OJ + sea salt + magnesium). Blog: "Do Cortisol Cocktails Actually Work? A Psychiatrist's Take."</td></tr>
+            <tr><td>"L-theanine anxiety"</td><td>301,000</td><td>📈 +20% YoY</td><td>NEW — Supplement search exploding. Blog: "L-Theanine for Anxiety: What the Evidence Actually Shows."</td></tr>
+            <tr><td>"lion's mane mushroom brain"</td><td>Rising</td><td>📈 Top nootropic 2026</td><td>NEW — Neurogenesis claims going viral. Content: "Lion's Mane for Focus and Memory — What the Science Says."</td></tr>
+            <tr><td>"magnesium glycinate anxiety"</td><td>246,000</td><td>📈 Still surging — "nature's Xanax"</td><td>Blog topic: "Does magnesium actually help anxiety? A psychiatrist's evidence-based take."</td></tr>
+            <tr><td>"brain rot"</td><td>201,000+</td><td>📈 Oxford Word of the Year 2024; still growing 2026</td><td>Gen Z search. Blog: "Is brain rot real? A psychiatrist explains what doom scrolling does to your brain."</td></tr>
+            <tr><td>"bed rotting vs depression"</td><td>Rising</td><td>📈 Viral TikTok trend</td><td>NEW — Blog: "Bed Rotting vs. Depression: When 'Self-Care' Is Actually a Red Flag."</td></tr>
+            <tr><td>"green noise for sleep"</td><td>49,500</td><td>📈 +20% YoY</td><td>NEW — Sound therapy trend. Blog: "Green Noise, Brown Noise, White Noise — Which Actually Helps Sleep and Anxiety?"</td></tr>
+            <tr><td>"pharmacogenomics testing psychiatry"</td><td>4,400</td><td>📈 +67% YoY</td><td>Differentiator — if Refresh offers PGx, high-value, low-competition keyword.</td></tr>
             <tr><td>"telepsychiatry Florida"</td><td>6,600</td><td>📈 Steady</td><td>FL-specific. Refresh should rank #1. Audit current position via Google Search Console.</td></tr>
-            <tr><td>"pharmacogenomics testing psychiatry"</td><td>4,400</td><td>📈 +67% YoY</td><td>Differentiator opportunity — if Refresh offers PGx, high-value, low-competition keyword.</td></tr>
           </tbody>
         </table>
+
+        <h4>🆕 March 2026 Google Core Update — Impact on Healthcare SEO</h4>
+        <div class="brief-alert red"><strong>🔴 CRITICAL — Google March 2026 Core Update (Rolling Out Now):</strong> E-E-A-T requirements significantly tightened for YMYL/health content. 72% of top-ranking health pages now display detailed author credentials (up from 58%). <strong>Every Refresh blog post needs:</strong> (1) Dr. Nepa's credentials block (DO, board certifications, years experience) near top of page, (2) "Medically reviewed by" bylines, (3) Structured FAQ schema for AI Overview eligibility, (4) Local relevance signals per location. Sites without visible author credentials are losing 20-40% organic traffic.</div>
+
+        <h4>🤖 AI Search — Google AI Overviews Update</h4>
+        <div class="brief-alert yellow"><strong>🟡 AI Overviews Reach 2B People/Month But Serving Dangerous Mental Health Advice:</strong> Google removed an AI health feature on March 19, 2026 after it gave misleading mental health advice. Mind (UK) launched a year-long commission examining AI's impact on mental health. Mental health crisis content is now excluded from AI Overviews entirely. Treatment/procedure queries show 100% AI Overview presence (up from 45% in 2023). <strong>Opportunity:</strong> Authoritative psychiatrist-authored content is MORE valuable than ever — AI Overviews prefer cited, credentialed sources.</div>
+
+        <h4>📱 TikTok Mental Health Misinformation — Content Opportunity</h4>
+        <div class="brief-alert blue"><strong>56% of social media posts about ADHD, anxiety, and depression contain misinformation</strong> (Euronews Health, March 2026). TikTok shows 52% misinformation rate for ADHD content specifically. This is Refresh's biggest content gap to fill — authoritative, evidence-based short-form content from a real psychiatrist directly countering viral misinformation.</div>
+
         <h4>🌴 Florida-Specific SEO Opportunities</h4>
         <ul>
           <li><strong>"Psychiatrist Fort Lauderdale same day"</strong> — 2,900/mo. High intent, low competition among local practices.</li>
           <li><strong>"Telehealth psychiatrist Broward County"</strong> — Growing rapidly as patients search by county.</li>
           <li><strong>"ADHD psychiatrist Davie FL"</strong> — Hyperlocal. Refresh main location. Own this keyword.</li>
           <li><strong>"Mental health medication management near me"</strong> — 31,000/mo nationally. FL share ~4,000/mo.</li>
+          <li><strong>Florida ranks 34th nationally</strong> for mental health outcomes and is among the <strong>5 worst states for access to care</strong> — this shortage IS Refresh's market opportunity.</li>
+          <li><strong>Fastest-growing shortage areas:</strong> Lee County, Collier County, Charlotte County — expansion targets.</li>
         </ul>
-        <div class="brief-alert blue"><strong>2026 SEO Priority — GBP is #1 Lever:</strong> Google Business Profile is the single highest-impact ranking factor for "psychiatrist near me" queries. Each Refresh location must have: (1) Complete GBP with "Psychiatrist" AND "Mental Health Clinic" categories, (2) Telehealth explicitly listed as a service, (3) Weekly posts (GBP posts feed local ranking signals), (4) 2-4 new reviews/month per location — review VELOCITY outperforms static count. AI search (Google AI Overviews, Perplexity) is now answering queries like "Who is a good psychiatrist in Davie FL for ADHD?" — structured FAQ content increases appearance in AI-generated answers.</div>
-        <div class="brief-source">Sources: <a href="https://meetglimpse.com/trends/mental-health-trends/" target="_blank">Glimpse Mental Health Trends 2026</a> · <a href="https://www.icanotes.com/2026/02/17/seo-for-therapists/" target="_blank">iCanotes SEO for Therapists 2026</a> · <a href="https://growtherapy.com/blog/mental-health-trends/" target="_blank">Grow Therapy 2026 Mental Health State of Care</a></div>
+        <div class="brief-source">Sources: <a href="https://meetglimpse.com/trends/mental-health-trends/" target="_blank">Glimpse Mental Health Trends 2026</a> · <a href="https://kahunam.com/articles/seo/googles-march-2026-core-update-what-changed-and-what-to-do/" target="_blank">Kahuna — March 2026 Core Update Analysis</a> · <a href="https://www.euronews.com/health/2026/03/20/tiktok-leads-social-media-platforms-in-mental-health-misinformation-study-finds" target="_blank">Euronews — TikTok Mental Health Misinfo Study</a> · <a href="https://www.americashealthrankings.org/explore/measures/mental_distress/FL" target="_blank">America's Health Rankings — Florida</a> · <a href="https://doctorrank.com/google-algorithm-updates-medical-websites" target="_blank">DoctorRank — Google Updates for Medical Sites</a></div>
       </div>
     </details>
     <details class="brief-section reveal" open>
@@ -4024,33 +4202,6 @@
       </div>
     </details>
 
-    <!-- Section 17: Sentiment Analysis -->
-    <details class="brief-section reveal" open>
-      <summary>🧠 17. Sentiment Analysis</summary>
-      <div class="brief-body">
-        <h4>Positive Themes (from recent reviews)</h4>
-        <ul>
-          <li>✅ "Easy to access" / "same-week appointment" — primary value driver</li>
-          <li>✅ "Provider listened and didn't rush" — relationship quality</li>
-          <li>✅ "Telehealth from home is so convenient" — platform value</li>
-          <li>✅ "Finally found a provider who takes my insurance" — insurance access</li>
-          <li>✅ "Medication actually working after years of struggling" — clinical outcomes</li>
-        </ul>
-        <h4>Watch Themes (recurring constructive feedback)</h4>
-        <ul>
-          <li>⚠️ "Hard to reach for refills" — escalate to care coordinator process review</li>
-          <li>⚠️ "Wished appointment was longer" — address in patient communication pre-visit</li>
-          <li>⚠️ "Billing was confusing" — simplify EOB communication to patients</li>
-        </ul>
-        <h4>Competitor Negative Themes (patient complaints about rivals)</h4>
-        <ul>
-          <li>🔴 Cerebral: "Felt like an assembly line" — differentiate with relationship language</li>
-          <li>🔴 Done ADHD: "Provider changed every visit" — differentiate with continuity of care messaging</li>
-          <li>🔴 BetterHelp: "Doesn't prescribe medication" — emphasize Refresh's full psychiatric care</li>
-        </ul>
-      </div>
-    </details>
-
     <!-- Section 18: Review Generation -->
     <details class="brief-section reveal" open>
       <summary>⭐ 18. Review Generation Strategy</summary>
@@ -4070,19 +4221,6 @@
 
     <!-- Section 19: Reputation Risk Monitor -->
     <details class="brief-section reveal" open>
-      <summary>🚨 19. Reputation Risk Monitor</summary>
-      <div class="brief-body">
-        <table class="brief-table">
-          <thead><tr><th>Risk</th><th>Status</th><th>Details</th><th>Action</th></tr></thead>
-          <tbody>
-            <tr><td>News media mentions</td><td>🟢 Clear</td><td>No negative press mentions of Refresh Psychiatry detected.</td><td>Set up Google Alerts for "Refresh Psychiatry" and "Dr. Nepa".</td></tr>
-            <tr><td>1-2 star reviews</td><td>🟡 Monitor</td><td>Any locations receiving &lt;4 star reviews need same-day response.</td><td>Check GBP for all 16 locations this morning.</td></tr>
-            <tr><td>Regulatory/legal mentions</td><td>🟢 Clear</td><td>No regulatory actions detected.</td><td>Continue standard compliance protocols.</td></tr>
-            <tr><td>Provider-specific complaints</td><td>🟢 Clear</td><td>No pattern complaints identified in recent data.</td><td>Monthly provider feedback review recommended.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </details>
 
     <!-- ════════════ PART 4: COMPETITIVE INTELLIGENCE ════════════ -->
     <div class="brief-part-header">Part 4: Competitive Intelligence</div>
@@ -4484,6 +4622,71 @@ Telehealth across FL, MA &amp; TX · We take your insurance
   }
 
   // ═══════════ GOOGLE SHEETS DATA SOURCE ═══════════
+
+  // ═══════════ LIVE REPUTATION SCORECARD ═══════════
+  // To connect live data:
+  // 1. Create a Google Sheet with columns: Location, State, Rating, ReviewCount, Trend, LastUpdated
+  // 2. Publish the sheet: File → Share → Publish to web → CSV
+  // 3. Paste the published CSV URL below
+  const REPUTATION_SHEETS_CSV_URL = ''; // Paste your published Google Sheet CSV URL here
+
+  async function fetchReputationData() {
+    if (!REPUTATION_SHEETS_CSV_URL) return;
+    try {
+      const res = await fetch(REPUTATION_SHEETS_CSV_URL);
+      const csv = await res.text();
+      const rows = csv.trim().split('\n').slice(1);
+      if (rows.length === 0) return;
+
+      const locations = rows.map(row => {
+        const cols = row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g) || [];
+        const clean = cols.map(c => c.replace(/^"|"$/g, '').trim());
+        return {
+          name: clean[0] || '',
+          state: clean[1] || '',
+          rating: clean[2] || '',
+          count: clean[3] || '',
+          trend: clean[4] || '',
+          updated: clean[5] || ''
+        };
+      }).filter(l => l.name);
+
+      if (locations.length === 0) return;
+
+      // Find the reputation table
+      const tables = document.querySelectorAll('.brief-table');
+      let repTable = null;
+      tables.forEach(t => {
+        const headers = t.querySelector('thead')?.textContent || '';
+        if (headers.includes('Google Rating') && headers.includes('Review Count')) repTable = t;
+      });
+      if (!repTable) return;
+
+      const tbody = repTable.querySelector('tbody');
+      tbody.innerHTML = locations.map(l => {
+        const rating = parseFloat(l.rating) || 0;
+        const stars = rating >= 4.8 ? '⭐ ' + l.rating : rating >= 4.5 ? '⭐ ' + l.rating : '⚠️ ' + l.rating;
+        const trendIcon = l.trend.toLowerCase().includes('grow') ? '📈 Growing' :
+                         l.trend.toLowerCase().includes('monitor') ? '🔄 Monitor' : '📈 Stable';
+        return `<tr><td>${l.name}</td><td>${l.state}</td><td>${stars}</td><td>${l.count}</td><td>${trendIcon}</td></tr>`;
+      }).join('');
+
+      // Update the disclaimer
+      const section = repTable.closest('.brief-body');
+      const disclaimer = section?.querySelector('.brief-alert');
+      if (disclaimer) {
+        const latestDate = locations[0].updated || new Date().toLocaleDateString();
+        disclaimer.className = 'brief-alert green';
+        disclaimer.innerHTML = '<strong>✅ Live Data Connected</strong> — Pulled from Google Sheet. Last updated: ' + latestDate;
+      }
+
+      console.log('✅ Reputation data updated from Google Sheet — ' + locations.length + ' locations');
+    } catch(e) {
+      console.warn('Reputation sheet fetch failed, using static data:', e);
+    }
+  }
+
+  fetchReputationData();
   // To connect real data:
   // 1. Create a Google Sheet with columns: Month, Sessions, Organic, Paid, Social, Inquiries, AdSpend, ROAS
   // 2. Publish the sheet: File → Share → Publish to web → CSV
@@ -5471,6 +5674,21 @@ Telehealth across FL, MA &amp; TX · We take your insurance
   // Initial render
   renderPodcastInsights(podcastEpisodes[0]);
   renderEpisodeList();
+
+  // ═══════════ PODCAST RING ANIMATIONS ═══════════
+  const ringObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll(".ring-fill").forEach(ring => {
+          const target = parseFloat(ring.dataset.target) || 0;
+          ring.style.strokeDashoffset = target;
+        });
+        ringObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  const ringsEl = document.getElementById("podcastRings");
+  if (ringsEl) ringObserver.observe(ringsEl);
 
   // ═══════════ AUDIO VISUALIZER (CSS-based, no Web Audio API) ═══════════
   const visCanvas = document.getElementById('audioVisualizer');
