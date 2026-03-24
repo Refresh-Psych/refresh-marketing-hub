@@ -69,7 +69,7 @@ def generate_audio(text, output_path, voice="onyx"):
 
 if __name__ == "__main__":
     # Read the podcast source
-    with open("podcast-source-2026-03-23.txt", "r", encoding="utf-8") as f:
+    with open("podcast-source-2026-03-24.txt", "r", encoding="utf-8") as f:
         source = f.read()
     
     # Convert to a narration script (remove metadata headers)
@@ -98,5 +98,5 @@ if __name__ == "__main__":
     
     print(f"Narration text: {len(narration)} characters")
     
-    success = generate_audio(narration, "podcast-2026-03-23.mp3", voice="onyx")
+    success = generate_audio(narration, "podcast-2026-03-24.mp3", voice="onyx")
     sys.exit(0 if success else 1)
