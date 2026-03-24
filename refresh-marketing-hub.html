@@ -976,30 +976,6 @@
   .topic-pill:nth-child(7) { background: linear-gradient(135deg, #319795, #4FD1C5); animation-delay: 0.7s; }
   @keyframes topicFadeIn { from { opacity: 0; transform: translateY(10px) scale(0.9); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
-  .podcast-progress-rings {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 20px;
-    margin: 24px 0;
-  }
-  .ring-card {
-    background: var(--surface-elevated);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 20px;
-    text-align: center;
-    transition: var(--transition);
-  }
-  .ring-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--yellow); }
-  .ring-svg { width: 80px; height: 80px; margin: 0 auto 12px; }
-  .ring-bg { fill: none; stroke: var(--border); stroke-width: 6; }
-  .ring-fill { fill: none; stroke-width: 6; stroke-linecap: round; transform: rotate(-90deg); transform-origin: center; transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1); }
-  .ring-card:nth-child(1) .ring-fill { stroke: var(--blue); }
-  .ring-card:nth-child(2) .ring-fill { stroke: var(--yellow); }
-  .ring-card:nth-child(3) .ring-fill { stroke: #38A169; }
-  .ring-card:nth-child(4) .ring-fill { stroke: #805AD5; }
-  .ring-value { font-size: 22px; font-weight: 800; color: var(--charcoal); font-family: 'JetBrains Mono', monospace; }
-  .ring-label { font-size: 11px; color: var(--charcoal); opacity: 0.7; margin-top: 4px; }
 
   .podcast-timeline {
     position: relative;
@@ -2655,37 +2631,15 @@
         </div>
       </div>
 
-      <!-- Key Metrics — Animated Rings -->
+      <!-- Key Metrics -->
       <div class="reveal">
         <div class="insights-section-header">
           <div class="section-icon" style="background: rgba(43,108,176,0.08);">📊</div>
           <h3>Key Metrics from This Episode</h3>
           <span class="section-tag" style="color: var(--blue); background: rgba(43,108,176,0.08);">Data</span>
         </div>
-        <div class="podcast-progress-rings" id="podcastRings">
-          <div class="ring-card">
-            <svg class="ring-svg" viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="34"/><circle class="ring-fill" cx="40" cy="40" r="34" stroke-dasharray="213.6" stroke-dashoffset="213.6" data-target="21.4"/></svg>
-            <div class="ring-value">$1B</div>
-            <div class="ring-label">Spravato Annual Sales</div>
-          </div>
-          <div class="ring-card">
-            <svg class="ring-svg" viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="34"/><circle class="ring-fill" cx="40" cy="40" r="34" stroke-dasharray="213.6" stroke-dashoffset="213.6" data-target="42.7"/></svg>
-            <div class="ring-value">12K+</div>
-            <div class="ring-label">Nushama Patients Treated</div>
-          </div>
-          <div class="ring-card">
-            <svg class="ring-svg" viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="34"/><circle class="ring-fill" cx="40" cy="40" r="34" stroke-dasharray="213.6" stroke-dashoffset="213.6" data-target="42.7"/></svg>
-            <div class="ring-value">80%</div>
-            <div class="ring-label">TMS Remission Rate</div>
-          </div>
-          <div class="ring-card">
-            <svg class="ring-svg" viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="34"/><circle class="ring-fill" cx="40" cy="40" r="34" stroke-dasharray="213.6" stroke-dashoffset="213.6" data-target="106.8"/></svg>
-            <div class="ring-value">50%</div>
-            <div class="ring-label">Spravato YoY Growth</div>
-          </div>
-        </div>
+        <div class="stats-infographic" id="podcastMetrics"></div>
       </div>
-
       <div class="reveal">
         <div class="insights-section-header">
           <div class="section-icon" style="background: rgba(43,108,176,0.08);">&#128161;</div>
@@ -5680,19 +5634,12 @@ topicPills: ['Content Pillars', 'Instagram Reels', 'LinkedIn Strategy', 'TikTok 
     }
 
     // Progress Rings
-    const ringsContainer = document.getElementById("podcastRings");
-    if (ringsContainer && ep.rings && ep.rings.length) {
-      ringsContainer.innerHTML = ep.rings.map(r => {
-        const circ = 213.6;
-        const offset = circ - (circ * r.pct / 100);
-        return `<div class="ring-card"><svg class="ring-svg" viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="34"/><circle class="ring-fill" cx="40" cy="40" r="34" stroke-dasharray="${circ}" stroke-dashoffset="${circ}" data-target="${offset}"/></svg><div class="ring-value">${r.value}</div><div class="ring-label">${r.label}</div></div>`;
-      }).join("");
-      // Animate rings after short delay
-      setTimeout(() => {
-        ringsContainer.querySelectorAll(".ring-fill").forEach(ring => {
-          ring.style.strokeDashoffset = ring.dataset.target;
-        });
-      }, 200);
+    // Key Metrics
+    const metricsContainer = document.getElementById("podcastMetrics");
+    if (metricsContainer && ep.rings && ep.rings.length) {
+      metricsContainer.innerHTML = ep.rings.map(r =>
+        `<div class="stat-visual"><div class="stat-icon">📊</div><div class="stat-number">${r.value}</div><div class="stat-label">${r.label}</div></div>`
+      ).join("");
     }
 
     // Key Takeaways
