@@ -1512,23 +1512,22 @@
   }
 
   .content-card p {
-    display: none;
     font-size: 11px;
     color: #64748b;
     line-height: 1.4;
     margin-top: 2px;
   }
-  .content-card.expanded p { display: block; }
 
   .source-link {
-    display: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
     font-size: 10px;
     font-weight: 600;
     color: var(--blue);
     text-decoration: none;
     margin-top: 4px;
   }
-  .content-card.expanded .source-link { display: inline-flex; align-items: center; gap: 3px; }
   .source-link:hover { text-decoration: underline; }
   .source-link::before { content: '↗'; font-size: 10px; }
 
@@ -5466,12 +5465,7 @@ topicPills: ['Content Pillars', 'Instagram Reels', 'LinkedIn Strategy', 'TikTok 
     });
   }
 
-  // Content cards: click to expand/collapse details
-  document.querySelectorAll('.content-card').forEach(card => {
-    card.addEventListener('click', e => {
-      if (!e.target.closest('a')) card.classList.toggle('expanded');
-    });
-  });
+  // Content cards: all details visible by default (no expand toggle needed)
 
 </script>
 
