@@ -2237,8 +2237,7 @@
       font-family: 'JetBrains Mono', monospace;
     }
 
-    /* Viral */
-    .viral-grid { grid-template-columns: 1fr; gap: 14px; }
+    /* Viral — compact rows handle their own mobile layout */
 
     /* Footer */
     .hub-footer { flex-direction: column; gap: 16px; text-align: center; padding: 20px; }
@@ -2286,107 +2285,140 @@
     html { scroll-behavior: auto; }
   }
 
-  /* ═══════════════ VIRAL SECTION ═══════════════ */
-  .viral-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 20px;
-    margin-top: 24px;
-  }
-
-  .viral-card {
+  /* ═══════════════ VIRAL SECTION (Compact List) ═══════════════ */
+  /* ═══════ VIRAL — ULTRA-COMPACT FEED ═══════ */
+  .viral-table {
+    margin-top: 12px;
     background: var(--surface-elevated);
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
-    padding: 24px;
-    transition: var(--transition);
-    position: relative;
     overflow: hidden;
   }
 
-  .viral-card:hover {
-    border-color: var(--border-hover);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
+  .viral-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 6px 14px;
+    border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+    font-size: 12.5px;
+    line-height: 1.45;
+    cursor: default;
+    transition: background 0.1s;
   }
+  .viral-row:last-child { border-bottom: none; }
+  .viral-row:hover { background: rgba(43,108,176,0.03); }
 
-  .viral-card .viral-rank {
-    position: absolute;
-    top: 12px;
-    right: 16px;
-    font-family: 'Playfair Display', serif;
-    font-size: 42px;
-    font-weight: 800;
-    color: rgba(43, 108, 176, 0.07);
-    line-height: 1;
-  }
-
-  .viral-card .viral-platform {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
+  .viral-row .vr-rank {
+    flex-shrink: 0;
+    width: 18px;
     font-size: 11px;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 4px 10px;
-    border-radius: 6px;
-    margin-bottom: 12px;
-  }
-
-  .viral-platform.tiktok { background: rgba(0,0,0,0.06); color: #000; }
-  .viral-platform.instagram { background: rgba(131,58,180,0.08); color: #833AB4; }
-  .viral-platform.twitter { background: rgba(29,161,242,0.08); color: #1DA1F2; }
-  .viral-platform.youtube { background: rgba(255,0,0,0.06); color: #FF0000; }
-  .viral-platform.facebook { background: rgba(24,119,242,0.08); color: #1877F2; }
-  .viral-platform.linkedin { background: rgba(10,102,194,0.08); color: #0A66C2; }
-  .viral-platform.reddit { background: rgba(255,69,0,0.08); color: #FF4500; }
-
-  .viral-card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 17px;
-    line-height: 1.35;
-    margin-bottom: 8px;
-    padding-right: 30px;
-  }
-
-  .viral-card .viral-creator {
-    font-size: 12px;
     color: var(--blue);
+    opacity: 0.45;
+    text-align: right;
+  }
+
+  .viral-row .vr-plat-tag {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 1px 7px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .vr-plat-tag.tiktok   { background: #f0f0f0; color: #000; }
+  .vr-plat-tag.instagram { background: #fce4ec; color: #833AB4; }
+  .vr-plat-tag.twitter   { background: #e8f4fd; color: #1DA1F2; }
+  .vr-plat-tag.youtube   { background: #fdecea; color: #c00; }
+  .vr-plat-tag.facebook  { background: #e3f2fd; color: #1877F2; }
+  .vr-plat-tag.linkedin  { background: #e1f0fa; color: #0A66C2; }
+  .vr-plat-tag.reddit    { background: #fff3e0; color: #FF4500; }
+
+  .viral-row .vr-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .viral-row .vr-headline {
     font-weight: 600;
-    margin-bottom: 10px;
+    color: var(--deep-blue);
+  }
+  .viral-row .vr-headline a { color: inherit; text-decoration: none; }
+  .viral-row .vr-headline a:hover { text-decoration: underline; }
+
+  .viral-row .vr-inline-meta {
+    font-size: 11px;
+    color: #94a3b8;
+    margin-left: 6px;
+    font-weight: 500;
   }
 
-  .viral-card p {
-    font-size: 13px;
-    line-height: 1.6;
-    opacity: 0.75;
-    margin-bottom: 14px;
+  .viral-row .vr-takeaway {
+    display: none;
+    font-size: 11px;
+    color: #64748b;
+    font-style: italic;
+    margin-top: 2px;
+    line-height: 1.35;
+    padding-left: 2px;
   }
+  .viral-row .vr-takeaway strong { font-style: normal; color: var(--yellow-dark, #b8960c); }
+  .viral-row.expanded .vr-takeaway { display: block; }
 
-  .viral-stats {
-    display: flex;
-    gap: 16px;
-    font-size: 12px;
+  .viral-row .vr-stats-inline {
+    flex-shrink: 0;
+    font-size: 10.5px;
     font-weight: 600;
-    opacity: 0.55;
+    color: #b0b8c4;
+    white-space: nowrap;
   }
 
-  .viral-stats span { display: flex; align-items: center; gap: 4px; }
-
-  .viral-takeaway {
-    margin-top: 14px;
-    padding: 10px 14px;
-    background: var(--yellow-glow);
-    border-radius: var(--radius-xs);
-    font-size: 12px;
-    line-height: 1.5;
-    border-left: 3px solid var(--yellow);
+  @media (max-width: 700px) {
+    .viral-row { flex-wrap: wrap; padding: 6px 10px; }
+    .viral-row .vr-stats-inline { width: 100%; margin-top: 2px; font-size: 10px; }
   }
 
-  .viral-takeaway strong { color: var(--deep-blue); }
-
-  /* viral mobile handled in main @media (max-width: 700px) block */
+  /* ═══════ ACTION POSTS — COMPACT TABLE ═══════ */
+  .action-posts-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    line-height: 1.45;
+    margin-top: 12px;
+  }
+  .action-posts-table th {
+    text-align: left;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #94a3b8;
+    padding: 6px 10px;
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+  }
+  .action-posts-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
+    vertical-align: top;
+  }
+  .action-posts-table tr:last-child td { border-bottom: none; }
+  .action-posts-table .ap-platform {
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .action-posts-table .ap-hook { font-weight: 600; color: var(--deep-blue); }
+  .action-posts-table .ap-caption { color: #475569; max-width: 480px; }
+  .action-posts-table .ap-tags { font-size: 10.5px; color: #94a3b8; word-break: break-all; }
+  .action-posts-table .ap-cta { font-size: 11px; font-weight: 600; color: var(--blue); white-space: nowrap; }
 
   /* ═══════════════ CONTENT CARD BANNERS ═══════════════ */
   .content-card-banner {
@@ -2439,32 +2471,7 @@
     background-size: 40px 40px, 60px 60px, 50px 50px;
   }
 
-  /* ═══════════════ VIRAL CARD BANNERS ═══════════════ */
-  .viral-card-banner {
-    height: 80px;
-    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-    margin: -24px -24px 16px -24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .viral-card-banner .banner-icon {
-    position: relative;
-    z-index: 1;
-    font-size: 32px;
-    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
-  }
-
-  .viral-card-banner.tiktok-bg { background: linear-gradient(135deg, #010101 0%, #25F4EE 50%, #FE2C55 100%); }
-  .viral-card-banner.instagram-bg { background: linear-gradient(135deg, #833AB4 0%, #E1306C 50%, #F77737 100%); }
-  .viral-card-banner.youtube-bg { background: linear-gradient(135deg, #CC0000 0%, #FF0000 50%, #FF4444 100%); }
-  .viral-card-banner.twitter-bg { background: linear-gradient(135deg, #0a1628 0%, #1DA1F2 50%, #71C9F8 100%); }
-  .viral-card-banner.facebook-bg { background: linear-gradient(135deg, #0d47a1 0%, #1877F2 50%, #64B5F6 100%); }
-  .viral-card-banner.linkedin-bg { background: linear-gradient(135deg, #003366 0%, #0A66C2 50%, #40A0E0 100%); }
-  .viral-card-banner.reddit-bg { background: linear-gradient(135deg, #CC3700 0%, #FF4500 50%, #FF7043 100%); }
+  /* (viral card banners removed — using compact row layout now) */
 
   /* ═══════════════ CAMPAIGN CARD BANNERS ═══════════════ */
   .campaign-card-banner {
@@ -2612,24 +2619,6 @@
 
     <!-- PODCAST INSIGHTS (Key Takeaways, Infographic, Action Items) -->
     <div class="podcast-insights" id="podcastInsights">
-
-      <!-- Episode Topics -->
-      <div class="reveal">
-        <div class="insights-section-header">
-          <div class="section-icon" style="background: rgba(128,90,213,0.08);">🎙️</div>
-          <h3>Episode Topics</h3>
-          <span class="section-tag" style="color: #805AD5; background: rgba(128,90,213,0.08);">Live</span>
-        </div>
-        <div class="podcast-topic-cloud" id="podcastTopicCloud">
-          <span class="topic-pill">Spravato / Esketamine</span>
-          <span class="topic-pill">Nushama Case Study</span>
-          <span class="topic-pill">TMS Protocols</span>
-          <span class="topic-pill">Digital Therapeutics</span>
-          <span class="topic-pill">Revenue Model</span>
-          <span class="topic-pill">Patient Demand</span>
-          <span class="topic-pill">Implementation Roadmap</span>
-        </div>
-      </div>
 
       <!-- Key Metrics -->
       <div class="reveal">
@@ -3014,423 +3003,58 @@
         <p id="viralDateLabel">Top 15 most-shared psychiatric and mental health posts across social media — updated <script>document.write(new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}))</script></p>
       </div>
     </div>
-    <div class="viral-grid">
-
-      <div class="viral-card reveal">
-        <div class="viral-card-banner tiktok-bg"><span class="banner-icon">🧬</span></div>
-        <div class="viral-rank">#1</div>
-        <div class="viral-platform tiktok">📱 TikTok</div>
-        <h3>🧬 Researchers Identify 3 Distinct Biotypes of ADHD — Each May Need Different Treatment</h3>
-        <div class="viral-creator">Healthline · Published March 10, 2026 · Trending across TikTok &amp; Instagram</div>
-        <div class="viral-embed">
-          <div class="embed-placeholder">
-            <div style="font-size:28px;margin-bottom:8px;">🧬</div>
-            <div>Groundbreaking ADHD research making waves across social media</div>
-            <a href="https://www.healthline.com/health-news" target="_blank" rel="noopener">Read on Healthline →</a>
-          </div>
-        </div>
-        <p>New research has identified three different biological subtypes of ADHD, each with distinct neurochemical characteristics. This means ADHD treatment may soon be personalized based on your specific biotype — not a one-size-fits-all approach. The finding went massively viral as millions shared their "which type am I?" reactions.</p>
-        <div class="viral-stats">
-          <span>👁️ 22M+ views</span>
-          <span>❤️ 3.4M likes</span>
-          <span>🔁 890K shares</span>
-        </div>
-        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> Create a Reel: "3 types of ADHD brains — which one are you?" Explain the biotypes in plain language. Position Refresh as staying current with cutting-edge research and offering personalized ADHD evaluations across 16 FL locations.</div>
-      </div>
-
-      <div class="viral-card reveal">
-        <div class="viral-card-banner tiktok-bg"><span class="banner-icon">📱</span></div>
-        <div class="viral-rank">#2</div>
-        <div class="viral-platform tiktok">📱 TikTok</div>
-        <h3>📱 Gen Z's Viral Hack to Fix Their Attention Spans — And It May Actually Work</h3>
-        <div class="viral-creator">USA Today · Published <script>document.write(new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}))</script> · Trending across TikTok</div>
-        <div class="viral-embed">
-          <div class="embed-placeholder">
-            <div style="font-size:28px;margin-bottom:8px;">📱</div>
-            <div>Gen Z attention span hack going viral on TikTok</div>
-            <a href="https://www.usatoday.com" target="_blank" rel="noopener">Read on USA Today →</a>
-          </div>
-        </div>
-        <p>Gen Z creators are sharing a structured "attention training" method involving timed focus blocks with progressive difficulty increases. Neuroscientists weighed in, confirming the technique aligns with cognitive load theory and neuroplasticity research. Comments flooded with ADHD users asking if it works for them too.</p>
-        <div class="viral-stats">
-          <span>👁️ 14M+ views</span>
-          <span>❤️ 2.8M likes</span>
-          <span>🔁 620K shares</span>
-        </div>
-        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> Create a Reel: "A psychiatrist reacts to Gen Z's viral attention hack — does it actually work?" Validate what's helpful, clarify limitations for ADHD brains, and position Refresh as the place to get a real evaluation if attention issues are persistent.</div>
-      </div>
-
-      <div class="viral-card reveal">
-        <div class="viral-card-banner youtube-bg"><span class="banner-icon">⚠️</span></div>
-        <div class="viral-rank">#3</div>
-        <div class="viral-platform youtube">🎬 YouTube</div>
-        <h3>⚠️ More Than Half of Top 100 Mental Health TikToks Contain Misinformation</h3>
-        <div class="viral-creator">The Guardian · Study published 2025 · Massive cross-platform discussion</div>
-        <div class="viral-embed">
-          <div class="embed-placeholder">
-            <div style="font-size:28px;margin-bottom:8px;">📊</div>
-            <div>Major study on mental health misinformation on social media</div>
-            <a href="https://www.theguardian.com" target="_blank" rel="noopener">Read on The Guardian →</a>
-          </div>
-        </div>
-        <p>A landmark study found that over 50% of the most-viewed mental health TikToks contain clinically inaccurate information. The findings sparked a massive debate about who should be creating mental health content and the responsibility of licensed professionals to counter misinformation online.</p>
-        <div class="viral-stats">
-          <span>👁️ 12M+ reach</span>
-          <span>💬 890K comments across platforms</span>
-          <span>🔁 340K shares</span>
-        </div>
-        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> This is Refresh's biggest opportunity. Create a series: "A board-certified psychiatrist fact-checks viral mental health TikToks." Positions Dr. Nepa as a credentialed voice in a sea of misinformation — builds massive trust and credibility while driving organic reach.</div>
-      </div>
-
-      <div class="viral-card reveal">
-        <div class="viral-card-banner instagram-bg"><span class="banner-icon">🪞</span></div>
-        <div class="viral-rank">#4</div>
-        <div class="viral-platform instagram">📸 Instagram</div>
-        <h3>🪞 "Looksmaxxing" Trend Promoting Toxic Beauty Standards for Young Men</h3>
-        <div class="viral-creator">Healthline · Published March 5, 2026 · Trending across Instagram &amp; TikTok</div>
-        <div class="viral-embed">
-          <div class="embed-placeholder">
-            <div style="font-size:28px;margin-bottom:8px;">🪞</div>
-            <div>Experts warn about the mental health impact of appearance-focused trends</div>
-            <a href="https://www.healthline.com/health-news" target="_blank" rel="noopener">Read on Healthline →</a>
-          </div>
-        </div>
-        <p>The "looksmaxxing" trend has young men pursuing extreme appearance modifications — mewing, bonesmashing, surgeries — driven by social media algorithms. Experts warn it's fueling body dysmorphia, anxiety, and depression in a demographic that rarely seeks mental health treatment.</p>
-        <div class="viral-stats">
-          <span>👁️ 8.5M+ views</span>
-          <span>💬 1.2M comments</span>
-          <span>🔁 450K shares</span>
-        </div>
-        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> Create content targeting young men: "When caring about your appearance crosses into body dysmorphia — signs to watch for." Refresh can capture an underserved male demographic that rarely seeks psychiatric care but is clearly struggling with appearance-related anxiety.</div>
-      </div>
-
-      <div class="viral-card reveal">
-        <div class="viral-card-banner tiktok-bg"><span class="banner-icon">🧊</span></div>
-        <div class="viral-rank">#5</div>
-        <div class="viral-platform tiktok">📱 TikTok</div>
-        <h3>🧊 Cold Plunging to AI Therapists — 2025's Viral Wellness Trends That Stuck</h3>
-        <div class="viral-creator">The Financial Express · Published January 2026 · Year-in-review trend format</div>
-        <div class="viral-embed">
-          <div class="embed-placeholder">
-            <div style="font-size:28px;margin-bottom:8px;">🧊</div>
-            <div>Biggest wellness trends that went viral and persisted</div>
-            <a href="https://www.financialexpress.com" target="_blank" rel="noopener">Read on Financial Express →</a>
-          </div>
-        </div>
-        <p>A roundup of wellness trends that went viral in 2025 and carried into 2026: cold plunging for stress relief, AI chatbot therapists (ChatGPT as therapy), nervous system regulation techniques, dopamine detox challenges, and the gut-brain microbiome connection. Each trend shows how people are seeking accessible mental health solutions.</p>
-        <div class="viral-stats">
-          <span>👁️ 6.2M+ views</span>
-          <span>💾 780K saves</span>
-          <span>🔁 320K shares</span>
-        </div>
-        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> Create a "Psychiatrist Reviews 2025's Biggest Wellness Trends" video series. Validate what works (cold exposure for mood), debunk what doesn't (dopamine detox misconceptions), and position Refresh as the professional complement to self-help — "These are great starts. We're the next step."</div>
-      </div>
-
-      <div class="viral-card reveal">
-        <div class="viral-card-banner reddit-bg"><span class="banner-icon">🧠</span></div>
-        <div class="viral-rank">#6</div>
-        <div class="viral-platform reddit">🟠 Reddit</div>
-        <h3>🧠 "When ADHD is Talked About as a Fad — It Does More Than Misrepresent Science"</h3>
-        <div class="viral-creator">University of Melbourne · Published February 10, 2026 · Trending on r/ADHD &amp; r/science</div>
-        <div class="viral-embed">
-          <div class="embed-placeholder">
-            <div style="font-size:28px;margin-bottom:8px;">🟠</div>
-            <div style="font-style:italic;margin:10px 0;font-size:12px;line-height:1.7;text-align:left;">"Dismissing ADHD as a 'TikTok trend' has real consequences. It deters people from seeking evaluation, increases stigma around medication, and undermines decades of neuroscience research..."</div>
-            <a href="https://www.reddit.com/r/ADHD/" target="_blank" rel="noopener">Discuss on r/ADHD →</a>
-          </div>
-        </div>
-        <p>Academic paper examining how media framing of ADHD as a "social media fad" actively harms people seeking diagnosis. The Reddit discussion exploded with thousands sharing stories of being dismissed by family, friends, and even doctors who told them ADHD "isn't real" because it's "trending."</p>
-        <div class="viral-stats">
-          <span>⬆️ 62K+ upvotes</span>
-          <span>💬 8,400 comments</span>
-          <span>🔁 1,200+ crossposts</span>
-        </div>
-        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> Create a powerful carousel: "ADHD is not a trend. It's a neurological condition affecting 8.4% of adults." Counter the dismissive narrative and position Refresh as a practice that takes ADHD seriously with thorough, evidence-based evaluations.</div>
-      </div>
-
-      <div class="viral-card reveal">
-        <div class="viral-card-banner linkedin-bg"><span class="banner-icon">🔥</span></div>
-        <div class="viral-rank">#7</div>
-        <div class="viral-platform linkedin">💼 LinkedIn</div>
-        <h3>🔥 "Why Leaders Should Treat Burnout as a Boardroom Priority in 2026"</h3>
-        <div class="viral-creator">Forbes · Published January 15, 2026 · Trending on LinkedIn</div>
-        <div class="viral-embed">
-          <div class="embed-placeholder" style="background:linear-gradient(135deg,#003366,#0A66C2);color:#fff;border-color:#0A66C2;">
-            <div style="font-size:28px;margin-bottom:8px;">💼</div>
-            <div style="font-style:italic;margin:8px 0;font-size:12px;line-height:1.6;">"Burnout isn't an employee problem — it's an organizational failure. In 2026, the companies that win talent will be the ones that treat mental health as infrastructure, not a perk."</div>
-            <a href="https://www.forbes.com" target="_blank" rel="noopener" style="color:#64B5F6;">Read on Forbes →</a>
-          </div>
-        </div>
-        <p>Forbes leadership article arguing burnout should be treated as a boardroom-level strategic issue, not an individual wellness problem. Multiple follow-up posts from C-suite executives sharing their own burnout stories drove the conversation to 50K+ engagements on LinkedIn.</p>
-        <div class="viral-stats">
-          <span>❤️ 52K+ reactions</span>
-          <span>💬 6,200 comments</span>
-          <span>🔁 12K reposts</span>
-        </div>
-        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> Dr. Nepa posts a LinkedIn article: "As a psychiatrist treating Florida professionals, burnout is the #1 complaint I see. Here's what companies get wrong." Targets B2B employer relationships and positions Refresh as a telepsychiatry resource for corporate wellness programs.</div>
-      </div>
-
-      <div class="viral-card reveal">
-        <div class="viral-card-banner tiktok-bg"><span class="banner-icon">🤖</span></div>
-        <div class="viral-rank">#8</div>
-        <div class="viral-platform tiktok">📱 TikTok</div>
-        <h3>🤖 "Is Your Therapist AI?" — ChatGPT Goes Viral as Gen Z's New Therapist</h3>
-        <div class="viral-creator">LiveNOW from FOX · Published May 2025 · Resurging trend in 2026</div>
-        <div class="viral-embed">
-          <div class="embed-placeholder">
-            <div style="font-size:28px;margin-bottom:8px;">🤖</div>
-            <div>The AI therapy debate explodes across social media</div>
-            <a href="https://www.tiktok.com/search?q=ai%20therapist%20chatgpt" target="_blank" rel="noopener">Search on TikTok →</a>
-          </div>
-        </div>
-        <p>Gen Z creators are openly sharing that they use ChatGPT, Claude, and other AI chatbots as their primary "therapists" — citing cost, availability, and no judgment. Mental health professionals responded en masse explaining the dangerous limitations: no crisis detection, no clinical training, no accountability.</p>
-        <div class="viral-stats">
-          <span>👁️ 24M+ views</span>
-          <span>❤️ 3.1M likes</span>
-          <span>🔁 890K shares</span>
-        </div>
-        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> Create a Reel: "A psychiatrist explains why AI is NOT your therapist — and why that matters." Empathetic tone acknowledging the access problem while explaining clinical risks. Bridge to Refresh's telepsychiatry model as the accessible, affordable, REAL solution with insurance coverage.</div>
-      </div>
-
-      <div class="viral-card reveal">
-        <div class="viral-card-banner instagram-bg"><span class="banner-icon">⚡</span></div>
-        <div class="viral-rank">#9</div>
-        <div class="viral-platform instagram">📸 Instagram</div>
-        <h3>⚡ Vagus Nerve Stimulation Devices Hit Mainstream — "Best VNS Devices of 2026"</h3>
-        <div class="viral-creator">Cybernews · Published January 2026 · Trending on wellness Instagram</div>
-        <div class="viral-embed">
-          <div class="embed-placeholder">
-            <div style="font-size:28px;margin-bottom:8px;">⚡</div>
-            <div>Vagus nerve stimulation enters consumer mainstream</div>
-            <a href="https://www.instagram.com/explore/tags/vagusnerve/" target="_blank" rel="noopener">Explore #VagusNerve on Instagram →</a>
-          </div>
-        </div>
-        <p>Wearable vagus nerve stimulators have gone mainstream, with consumer devices reviewed alongside AirPods and Fitbits. Instagram wellness creators demonstrate the devices claiming they "reset your nervous system." The #vagusnerve hashtag now has 2.1B views across platforms.</p>
-        <div class="viral-stats">
-          <span>👁️ 2.1B+ hashtag views</span>
-          <span>💾 420K saves</span>
-          <span>❤️ 1.8M likes</span>
-        </div>
-        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> A Refresh provider reviews vagus nerve stimulation: "Do these devices actually work? A psychiatrist's honest take." Acknowledge what VNS can do, but explain that underlying conditions (anxiety, PTSD, depression) need proper treatment — not just a gadget.</div>
-      </div>
-
-      <div class="viral-card reveal">
-        <div class="viral-card-banner youtube-bg"><span class="banner-icon">🏈</span></div>
-        <div class="viral-rank">#10</div>
-        <div class="viral-platform youtube">🎬 YouTube</div>
-        <h3>🏈 Oregon QB Dante Moore's Emotional Mental Health Message Goes Viral</h3>
-        <div class="viral-creator">OregonLive · Published March 19, 2026 · Trending across all platforms</div>
-        <div class="viral-embed">
-          <div class="embed-placeholder">
-            <div style="font-size:28px;margin-bottom:8px;">🏈</div>
-            <div>College athlete's vulnerable mental health message resonates nationwide</div>
-            <a href="https://www.oregonlive.com" target="_blank" rel="noopener">Read on OregonLive →</a>
-          </div>
-        </div>
-        <p>Oregon quarterback Dante Moore released a raw video message about his mental health struggles after sharing an emotional letter. The vulnerability from a high-profile male athlete resonated massively — comments filled with men saying "this gave me permission to ask for help."</p>
-        <div class="viral-stats">
-          <span>👁️ 8.2M views</span>
-          <span>❤️ 1.4M likes</span>
-          <span>🔁 560K shares</span>
-        </div>
-        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> Men's mental health content is severely underproduced. Create a post: "When athletes speak up, stigma goes down. If you're a man struggling with anxiety, depression, or ADHD — it's okay to ask for help." Targets the underserved male demographic in FL who rarely seek psychiatric care.</div>
-      </div>
-
-      <div class="viral-card reveal">
-        <div class="viral-card-banner tiktok-bg"><span class="banner-icon">🧪</span></div>
-        <div class="viral-rank">#11</div>
-        <div class="viral-platform tiktok">📱 TikTok</div>
-        <h3>🧪 Neuroscientists Challenge "Dopamine Detox" Trend with Actual Science</h3>
-        <div class="viral-creator">PsyPost · Published 2025 · Ongoing TikTok debate</div>
-        <div class="viral-embed">
-          <div class="embed-placeholder">
-            <div style="font-size:28px;margin-bottom:8px;">🧪</div>
-            <div>Scientists debunk the popular dopamine detox trend</div>
-            <a href="https://www.tiktok.com/search?q=dopamine%20detox%20debunked" target="_blank" rel="noopener">Search on TikTok →</a>
-          </div>
-        </div>
-        <p>Neuroscientists are pushing back against the wildly popular "dopamine detox" trend, explaining that dopamine doesn't work the way TikTok creators claim. Research on avoidance learning shows the trend oversimplifies neuroscience — but the conversation sparked millions of views on both sides of the debate.</p>
-        <div class="viral-stats">
-          <span>👁️ 9.4M views</span>
-          <span>💬 1.1M comments</span>
-          <span>🔁 380K shares</span>
-        </div>
-        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> A Refresh psychiatrist explains: "What a 'dopamine detox' actually does to your brain — and what it doesn't." Science-forward content that corrects misinformation while building authority. End with: "If you think dopamine issues are affecting your life, that might be ADHD — not a detox deficiency."</div>
-      </div>
-
-      <div class="viral-card reveal">
-        <div class="viral-card-banner reddit-bg"><span class="banner-icon">👩</span></div>
-        <div class="viral-rank">#12</div>
-        <div class="viral-platform reddit">🟠 Reddit</div>
-        <h3>👩 "Why Teens with ADHD Are So Vulnerable to Social Media" — Nature Study</h3>
-        <div class="viral-creator">Nature · Published January 21, 2026 · Trending on r/ADHD, r/parenting, r/science</div>
-        <div class="viral-embed">
-          <div class="embed-placeholder">
-            <div style="font-size:28px;margin-bottom:8px;">🟠</div>
-            <div style="font-style:italic;margin:10px 0;font-size:12px;line-height:1.7;text-align:left;">"Adolescents with ADHD show heightened vulnerability to the reward mechanisms built into social media platforms. The same dopamine-seeking behavior that defines ADHD makes these teens disproportionately susceptible to algorithmic engagement..."</div>
-            <a href="https://www.reddit.com/r/ADHD/" target="_blank" rel="noopener">Discuss on r/ADHD →</a>
-          </div>
-        </div>
-        <p>Nature published research showing teens with ADHD are particularly vulnerable to social media's reward mechanisms — the same dopamine-seeking behavior that defines ADHD makes them disproportionately susceptible to algorithmic engagement traps. Parents flooded the comments seeking advice.</p>
-        <div class="viral-stats">
-          <span>⬆️ 41K+ upvotes</span>
-          <span>💬 5,800 comments</span>
-          <span>🔁 2,100 crossposts</span>
-        </div>
-        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> Create parent-targeted content: "Why your child with ADHD can't put down their phone — and what to do about it." Extremely high share rate among parents. Links to Refresh's child/adolescent psychiatry services and positions the practice as a resource for families.</div>
-      </div>
-
-      <div class="viral-card reveal">
-        <div class="viral-card-banner instagram-bg"><span class="banner-icon">🧘</span></div>
-        <div class="viral-rank">#13</div>
-        <div class="viral-platform instagram">📸 Instagram</div>
-        <h3>🧘 "Nervous System Regulation" Becomes 2026's Defining Wellness Trend</h3>
-        <div class="viral-creator">Outside Magazine, Marie Claire UK, Vogue · 2026 wellness predictions</div>
-        <div class="viral-embed">
-          <div class="embed-placeholder">
-            <div style="font-size:28px;margin-bottom:8px;">🧘</div>
-            <div>Multiple major publications name nervous system regulation as THE trend of 2026</div>
-            <a href="https://www.instagram.com/explore/tags/nervoussystemregulation/" target="_blank" rel="noopener">Explore on Instagram →</a>
-          </div>
-        </div>
-        <p>Vogue, Outside Magazine, and Marie Claire all independently named "nervous system regulation" as the top wellness trend of 2026. Content teaching polyvagal theory, somatic experiencing, and "window of tolerance" concepts is dominating wellness Instagram with billions of impressions.</p>
-        <div class="viral-stats">
-          <span>👁️ 3.2B+ hashtag impressions</span>
-          <span>💾 2.1M saves</span>
-          <span>❤️ 4.5M likes</span>
-        </div>
-        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> Refresh owns this trend by creating clinical content: "A psychiatrist explains nervous system regulation — what's real vs. what's hype." Bridge to trauma-informed psychiatric care and PTSD treatment. This is a massive SEO and content opportunity for 2026.</div>
-      </div>
-
-      <div class="viral-card reveal">
-        <div class="viral-card-banner facebook-bg"><span class="banner-icon">👥</span></div>
-        <div class="viral-rank">#14</div>
-        <div class="viral-platform facebook">👥 Facebook</div>
-        <h3>👥 "From Hashtags to Healing" — Mental Health Experts Sound Alarm on Therapy-Speak</h3>
-        <div class="viral-creator">Florida Today · Published November 2025 · Resurging in 2026 discussions</div>
-        <div class="viral-embed">
-          <div class="embed-placeholder" style="background:linear-gradient(135deg,#0d47a1,#1877F2);color:#fff;border-color:#1877F2;">
-            <div style="font-size:28px;margin-bottom:8px;">👥</div>
-            <div style="font-style:italic;margin:8px 0;font-size:12px;line-height:1.6;">"When everyone weaponizes therapeutic language — 'you're gaslighting me,' 'that's my boundary,' 'you're being toxic' — the words lose their clinical meaning and become tools for manipulation rather than healing."</div>
-            <a href="https://www.floridatoday.com" target="_blank" rel="noopener" style="color:#90CAF9;">Read on Florida Today →</a>
-          </div>
-        </div>
-        <p>Florida-specific coverage of how "therapy-speak" — casual misuse of terms like gaslighting, trauma bonding, narcissist, and boundary — has become commodified on social media. Experts warn it's actually making communication harder, not better, and trivializing real clinical conditions.</p>
-        <div class="viral-stats">
-          <span>👁️ 4.1M reach</span>
-          <span>🔁 890K Facebook shares</span>
-          <span>💬 320K comments</span>
-        </div>
-        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> This is LOCAL Florida press — huge opportunity. Create content: "A Florida psychiatrist explains why 'therapy-speak' on social media isn't the same as actual therapy." Directly relevant to Refresh's market. Share the Florida Today article and add clinical commentary. Builds local authority.</div>
-      </div>
-
-      <div class="viral-card reveal">
-        <div class="viral-card-banner twitter-bg"><span class="banner-icon">📵</span></div>
-        <div class="viral-rank">#15</div>
-        <div class="viral-platform twitter">🐦 X / Twitter</div>
-        <h3>📵 "A Quiet Revolution" — Young People Swapping Social Media for Lunch Dates</h3>
-        <div class="viral-creator">CNBC · Published February 7, 2026 · Trending on X &amp; LinkedIn</div>
-        <div class="viral-embed">
-          <div class="embed-placeholder" style="background:linear-gradient(135deg,#0a1628,#1DA1F2);color:#fff;border-color:#1DA1F2;">
-            <div style="font-size:28px;margin-bottom:8px;">📵</div>
-            <div style="font-style:italic;margin:8px 0;font-size:12px;line-height:1.6;">"Young people are quietly leaving social media — not with dramatic announcements, but by simply choosing lunch dates over doom scrolling. And their mental health is measurably improving."</div>
-            <a href="https://www.cnbc.com" target="_blank" rel="noopener" style="color:#71C9F8;">Read on CNBC →</a>
-          </div>
-        </div>
-        <p>CNBC reports on a growing movement of young people deliberately reducing social media use in favor of in-person connection. The article cites measurable mental health improvements — reduced anxiety, better sleep, improved focus. The thread went viral with millions sharing their own "digital detox" stories.</p>
-        <div class="viral-stats">
-          <span>👁️ 5.8M impressions</span>
-          <span>🔖 89K bookmarks</span>
-          <span>🔁 120K reposts</span>
-        </div>
-        <div class="viral-takeaway"><strong>🎯 Takeaway:</strong> Create a warm, hopeful post: "Your psychiatrist approves. The research is clear — reducing screen time improves anxiety, sleep, and focus." Encourages the positive trend while reminding readers that if anxiety persists even after a digital detox, professional help is available at Refresh.</div>
-      </div>
-
+    <div class="viral-table" id="viral-table">
+      <!-- Rendered dynamically by renderViralContent() from VIRAL_DATA -->
     </div>
 
-    <!-- ACTION POSTS: Ready-to-publish content inspired by today's viral trends -->
-    <div style="margin-top:48px;">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
-        <h3 style="font-size:1.25rem;font-weight:800;color:var(--deep-blue);">✍️ This Week's Action Posts</h3>
-        <span style="background:var(--yellow);color:var(--navy);font-size:0.7rem;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:0.04em;">READY TO PUBLISH</span>
+    <!-- ACTION POSTS: Compact table format -->
+    <div style="margin-top:32px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+        <h3 style="font-size:1.1rem;font-weight:800;color:var(--deep-blue);margin:0;">✍️ Action Posts</h3>
+        <span style="background:var(--yellow);color:var(--navy);font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:20px;letter-spacing:0.04em;">READY TO PUBLISH</span>
       </div>
-      <p style="color:#64748b;font-size:0.85rem;margin-bottom:24px;">3 ready-to-use posts for Refresh Psychiatry — adapted from today's top viral trends. Compliant, on-brand, and optimized per platform.</p>
+      <p style="color:#94a3b8;font-size:0.78rem;margin:0 0 8px 0;">Adapted from today's top viral trends — compliant, on-brand, platform-optimized.</p>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;">
-
-        <!-- Action Post 1: Instagram — inspired by #1 viral ADHD + Anxiety -->
-        <div style="background:var(--surface-elevated);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px;position:relative;overflow:hidden;">
-          <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#E1306C,#F77737);border-radius:var(--radius) var(--radius) 0 0;"></div>
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-            <span style="background:#fce4ec;color:#c2185b;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:20px;">📸 INSTAGRAM</span>
-            <span style="background:#e8f5e9;color:#2e7d32;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:20px;">Education</span>
-          </div>
-          <div style="font-size:0.78rem;color:#64748b;margin-bottom:10px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;">Topic: ADHD + Anxiety Overlap — inspired by Trend #1</div>
-          <div style="background:#f8fafc;border-left:3px solid #E1306C;padding:14px 16px;border-radius:0 8px 8px 0;font-size:0.88rem;line-height:1.7;color:var(--charcoal);margin-bottom:14px;">
-            <p style="margin-bottom:8px;font-weight:700;">If your anxiety and ADHD both flared up just reading this — you're not imagining it. 🧠</p>
-            <p style="margin-bottom:8px;">Most people think anxiety and ADHD are separate problems. But in adults — especially women — they almost always show up together.</p>
-            <p style="margin-bottom:8px;">Here's what that combination can look like:</p>
-            <p style="margin-bottom:4px;">→ Racing thoughts that feel urgent AND exhausting</p>
-            <p style="margin-bottom:4px;">→ Starting tasks but freezing before finishing them</p>
-            <p style="margin-bottom:8px;">→ Being hyperaware of other people's moods (because you've learned to mask)</p>
-            <p style="margin-bottom:8px;">The good news: when treated together, both conditions respond better. At Refresh Psychiatry, we evaluate the full picture — not just one diagnosis at a time.</p>
-            <p style="font-style:italic;color:#64748b;font-size:0.82rem;">If you're experiencing these symptoms, speaking with a mental health professional can help.</p>
-          </div>
-          <div style="font-size:0.8rem;margin-bottom:10px;"><strong>📍 CTA:</strong> "Book your evaluation at the link in bio. Telepsychiatry available across Florida."</div>
-          <div style="font-size:0.78rem;color:#64748b;"><strong>#️⃣ Hashtags:</strong> #ADHDawareness #AnxietyAndADHD #FloridaPsychiatry #TelepsychiatryFL #RefreshPsychiatry #ADHDWomen #MentalHealthMatters</div>
-          <div style="margin-top:14px;padding:10px 14px;background:var(--yellow-glow);border-radius:8px;font-size:0.8rem;color:var(--deep-blue);"><strong>🖼️ Visual:</strong> Two-panel illustration: left side shows racing/scattered thoughts (ADHD), right side shows worry spiral (anxiety). Center overlap labeled "You're not alone." Refresh Blue + Yellow palette.</div>
-        </div>
-
-        <!-- Action Post 2: Facebook — inspired by #13 Pharmacogenomic Testing -->
-        <div style="background:var(--surface-elevated);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px;position:relative;overflow:hidden;">
-          <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#1877F2,#42B0FF);border-radius:var(--radius) var(--radius) 0 0;"></div>
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-            <span style="background:#e3f2fd;color:#1565c0;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:20px;">👥 FACEBOOK</span>
-            <span style="background:#fff8e1;color:#f57f17;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:20px;">Education</span>
-          </div>
-          <div style="font-size:0.78rem;color:#64748b;margin-bottom:10px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;">Topic: Pharmacogenomic Testing — inspired by Trend #13</div>
-          <div style="background:#f8fafc;border-left:3px solid #1877F2;padding:14px 16px;border-radius:0 8px 8px 0;font-size:0.88rem;line-height:1.7;color:var(--charcoal);margin-bottom:14px;">
-            <p style="margin-bottom:8px;font-weight:700;">Has a medication ever worked great for someone you know — but not for you at all?</p>
-            <p style="margin-bottom:8px;">That's not a mystery. That's genetics.</p>
-            <p style="margin-bottom:8px;">At Refresh Psychiatry, we offer <strong>Pharmacogenomic Analysis</strong> — a simple cheek swab that reveals how your unique genetic makeup affects how you process psychiatric medications.</p>
-            <p style="margin-bottom:8px;">Instead of months of trial and error, we can use your DNA to guide medication decisions from the start. That means:</p>
-            <p style="margin-bottom:4px;">✅ Fewer side effects</p>
-            <p style="margin-bottom:4px;">✅ Better response rates</p>
-            <p style="margin-bottom:8px;">✅ Faster relief</p>
-            <p style="margin-bottom:8px;">This is precision psychiatry — and it's available right now at our Florida locations and via telehealth.</p>
-            <p>Have you ever had a medication that just didn't work the way you expected? Tell us in the comments 👇</p>
-          </div>
-          <div style="font-size:0.8rem;margin-bottom:10px;"><strong>📍 CTA:</strong> "Call (754) 714-3442 or visit refreshpsychiatry.com to learn more about pharmacogenomic testing."</div>
-          <div style="margin-top:14px;padding:10px 14px;background:var(--yellow-glow);border-radius:8px;font-size:0.8rem;color:var(--deep-blue);"><strong>🖼️ Visual:</strong> Clean graphic of a DNA double helix beside a prescription bottle with a checkmark. Headline text: "The right medication for YOUR genetics." Refresh Blue background, Yellow accent.</div>
-        </div>
-
-        <!-- Action Post 3: LinkedIn — inspired by #8 Delivery Problem viral post -->
-        <div style="background:var(--surface-elevated);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px;position:relative;overflow:hidden;">
-          <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#0077B5,#00B0D1);border-radius:var(--radius) var(--radius) 0 0;"></div>
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-            <span style="background:#e1f0fa;color:#005885;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:20px;">💼 LINKEDIN</span>
-            <span style="background:#f3e5f5;color:#6a1b9a;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:20px;">Thought Leadership</span>
-          </div>
-          <div style="font-size:0.78rem;color:#64748b;margin-bottom:10px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;">Topic: Psychiatric Access Gap in Florida — inspired by Trend #8</div>
-          <div style="background:#f8fafc;border-left:3px solid #0077B5;padding:14px 16px;border-radius:0 8px 8px 0;font-size:0.88rem;line-height:1.7;color:var(--charcoal);margin-bottom:14px;">
-            <p style="margin-bottom:8px;font-weight:700;">Florida's mental health crisis isn't a diagnosis problem. It's a delivery problem.</p>
-            <p style="margin-bottom:8px;">The data is clear: demand for psychiatric care in Florida has increased significantly year over year. Wait times at traditional outpatient practices routinely stretch 3–6 months for new patients. Many Floridians simply give up.</p>
-            <p style="margin-bottom:8px;">At Refresh Psychiatry, we built our model specifically around closing that gap:</p>
-            <p style="margin-bottom:4px;">→ 10 Florida locations from Davie to Orlando to West Palm Beach</p>
-            <p style="margin-bottom:4px;">→ Telepsychiatry available statewide — because geography shouldn't determine access</p>
-            <p style="margin-bottom:4px;">→ Weekend appointments, because life doesn't pause on Fridays</p>
-            <p style="margin-bottom:8px;">→ Pharmacogenomic testing, so we get the treatment right faster</p>
-            <p style="margin-bottom:8px;">For primary care physicians, pediatricians, and school counselors: if your patient needs psychiatric support and you've hit a wall on referrals, we'd love to be your trusted partner. We keep referring providers informed and prioritize warm handoffs.</p>
-            <p>The access gap is real. So is the solution. Let's build it together.</p>
-          </div>
-          <div style="font-size:0.8rem;margin-bottom:10px;"><strong>📍 CTA:</strong> "Connect with me to discuss referral partnership opportunities for your practice or school."</div>
-          <div style="margin-top:14px;padding:10px 14px;background:var(--yellow-glow);border-radius:8px;font-size:0.8rem;color:var(--deep-blue);"><strong>🖼️ Visual:</strong> Florida state outline with 10 location pins highlighted in Refresh Blue. Headline: "Bridging the psychiatric access gap — 10 locations &amp; statewide telehealth." Professional, clean layout.</div>
-        </div>
-
+      <div style="background:var(--surface-elevated);border:1px solid var(--border);border-radius:var(--radius-sm);overflow-x:auto;">
+        <table class="action-posts-table" id="action-posts-table">
+          <thead>
+            <tr><th>Platform</th><th>Hook + Caption</th><th>CTA</th><th>Trend</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="ap-platform" style="color:#c2185b;">📸 IG</span></td>
+              <td>
+                <div class="ap-hook">If your anxiety and ADHD both flared up reading this — you're not imagining it. 🧠</div>
+                <div class="ap-caption" style="margin-top:3px;">Adults — especially women — almost always present with both. When treated together, both respond better. We evaluate the full picture.</div>
+                <div class="ap-tags" style="margin-top:3px;">#ADHDawareness #AnxietyAndADHD #FloridaPsychiatry #TelepsychiatryFL #RefreshPsychiatry</div>
+              </td>
+              <td class="ap-cta">Book eval →<br>link in bio</td>
+              <td style="font-size:11px;color:#94a3b8;">Trend #1</td>
+            </tr>
+            <tr>
+              <td><span class="ap-platform" style="color:#1565c0;">👥 FB</span></td>
+              <td>
+                <div class="ap-hook">Has a medication worked great for someone you know — but not for you at all?</div>
+                <div class="ap-caption" style="margin-top:3px;">That's genetics. Pharmacogenomic Analysis — a simple cheek swab — reveals how your DNA affects medication processing. Fewer side effects, better response, faster relief.</div>
+              </td>
+              <td class="ap-cta">Call (754)<br>714-3442</td>
+              <td style="font-size:11px;color:#94a3b8;">Trend #13</td>
+            </tr>
+            <tr>
+              <td><span class="ap-platform" style="color:#005885;">💼 LI</span></td>
+              <td>
+                <div class="ap-hook">Florida's mental health crisis isn't a diagnosis problem. It's a delivery problem.</div>
+                <div class="ap-caption" style="margin-top:3px;">Wait times stretch 3–6 months. Refresh built around the gap: 10 FL locations, statewide telehealth, weekend appointments, pharmacogenomic testing. For PCPs and counselors — let's be your referral partner.</div>
+              </td>
+              <td class="ap-cta">Connect for<br>referral</td>
+              <td style="font-size:11px;color:#94a3b8;">Trend #8</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
-      <div style="margin-top:20px;padding:14px 20px;background:linear-gradient(135deg,rgba(43,108,176,0.06),rgba(246,199,68,0.08));border:1px solid var(--border);border-radius:var(--radius-sm);font-size:0.83rem;color:var(--charcoal);">
-        <strong>⚡ Next Step:</strong> Schedule these 3 posts for Mon / Wed / Thu this week using your social scheduler. For Instagram, pair with a custom Canva graphic using the Refresh Blue (#2B6CB0) + Yellow (#F6C744) brand palette. The Facebook pharmacogenomics post performs best with a question CTA — watch comments for prospective patient signals to respond to.
+      <div style="margin-top:10px;padding:8px 14px;background:linear-gradient(135deg,rgba(43,108,176,0.04),rgba(246,199,68,0.06));border:1px solid var(--border);border-radius:var(--radius-sm);font-size:0.78rem;color:#64748b;">
+        <strong>⚡</strong> Schedule Mon / Wed / Thu. IG → pair with Canva graphic (Blue #2B6CB0 + Yellow #F6C744). FB pharmacogenomics → question CTA, watch comments for patient signals.
       </div>
     </div>
 
@@ -4773,93 +4397,104 @@ If you've been waiting — that wait ends now.
     }
   });
 
-  // ═══════════ VIRAL CONTENT AUTO-UPDATE ═══════════
+  // ═══════════ VIRAL CONTENT — DATA-DRIVEN COMPACT LIST ═══════════
+  // This array is updated daily by the scheduled briefing task.
+  // To update: replace the VIRAL_DATA array contents below with fresh data.
+  const VIRAL_DATA = [
+    { rank: 1, platform: "tiktok", emoji: "🧬", title: "Researchers Identify 3 Distinct Biotypes of ADHD — Each May Need Different Treatment", creator: "Healthline", views: "22M+", likes: "3.4M", shares: "890K", takeaway: "Create a Reel: '3 types of ADHD brains — which one are you?' Position Refresh as offering personalized ADHD evaluations.", link: "https://www.healthline.com/health-news", date: "March 27, 2026" },
+    { rank: 2, platform: "tiktok", emoji: "📱", title: "Gen Z's Viral Hack to Fix Their Attention Spans — And It May Actually Work", creator: "USA Today", views: "14M+", likes: "2.8M", shares: "620K", takeaway: "React Reel: 'Does Gen Z's attention hack actually work?' Validate what helps, clarify ADHD limitations.", link: "https://www.usatoday.com", date: "March 27, 2026" },
+    { rank: 3, platform: "youtube", emoji: "⚠️", title: "More Than Half of Top 100 Mental Health TikToks Contain Misinformation", creator: "The Guardian", views: "12M+", likes: "890K", shares: "340K", takeaway: "Series: 'A board-certified psychiatrist fact-checks viral mental health TikToks.' Biggest trust-building opportunity.", link: "https://www.theguardian.com", date: "March 27, 2026" },
+    { rank: 4, platform: "instagram", emoji: "🪞", title: "\"Looksmaxxing\" Trend Promoting Toxic Beauty Standards for Young Men", creator: "Healthline", views: "8.5M+", likes: "1.2M", shares: "450K", takeaway: "Target young men: 'When caring about appearance crosses into body dysmorphia.' Capture underserved male demographic.", link: "https://www.healthline.com/health-news", date: "March 27, 2026" },
+    { rank: 5, platform: "tiktok", emoji: "🧊", title: "Cold Plunging to AI Therapists — 2025's Viral Wellness Trends That Stuck", creator: "Financial Express", views: "6.2M+", likes: "780K", shares: "320K", takeaway: "Video series: 'Psychiatrist Reviews 2025 Wellness Trends.' Validate cold exposure, debunk dopamine detox myths.", link: "https://www.financialexpress.com", date: "March 27, 2026" },
+    { rank: 6, platform: "reddit", emoji: "🧠", title: "\"When ADHD is Talked About as a Fad — It Does More Than Misrepresent Science\"", creator: "Univ. of Melbourne", views: "62K+", likes: "8.4K", shares: "1.2K", takeaway: "Carousel: 'ADHD is not a trend. It affects 8.4% of adults.' Counter dismissive narratives.", link: "https://www.reddit.com/r/ADHD/", date: "March 27, 2026" },
+    { rank: 7, platform: "linkedin", emoji: "🔥", title: "\"Why Leaders Should Treat Burnout as a Boardroom Priority in 2026\"", creator: "Forbes", views: "52K+", likes: "6.2K", shares: "12K", takeaway: "LinkedIn article by Dr. Nepa: 'Burnout is the #1 complaint I see.' Target B2B corporate wellness.", link: "https://www.forbes.com", date: "March 27, 2026" },
+    { rank: 8, platform: "tiktok", emoji: "🤖", title: "\"Is Your Therapist AI?\" — ChatGPT Goes Viral as Gen Z's New Therapist", creator: "LiveNOW/FOX", views: "24M+", likes: "3.1M", shares: "890K", takeaway: "Reel: 'Why AI is NOT your therapist.' Bridge to Refresh telepsychiatry as the real, insured solution.", link: "", date: "March 27, 2026" },
+    { rank: 9, platform: "instagram", emoji: "⚡", title: "Vagus Nerve Stimulation Devices Hit Mainstream — \"Best VNS Devices of 2026\"", creator: "Cybernews", views: "2.1B+", likes: "1.8M", shares: "420K", takeaway: "Honest review: 'Do VNS devices actually work?' Underlying conditions need treatment, not just gadgets.", link: "", date: "March 27, 2026" },
+    { rank: 10, platform: "youtube", emoji: "🏈", title: "Oregon QB Dante Moore's Emotional Mental Health Message Goes Viral", creator: "OregonLive", views: "8.2M", likes: "1.4M", shares: "560K", takeaway: "Men's mental health post: 'When athletes speak up, stigma goes down.' Target underserved male demographic in FL.", link: "https://www.oregonlive.com", date: "March 27, 2026" },
+    { rank: 11, platform: "tiktok", emoji: "🧪", title: "Neuroscientists Challenge \"Dopamine Detox\" Trend with Actual Science", creator: "PsyPost", views: "9.4M", likes: "1.1M", shares: "380K", takeaway: "Science-forward: 'What dopamine detox actually does to your brain.' If dopamine issues persist, it might be ADHD.", link: "", date: "March 27, 2026" },
+    { rank: 12, platform: "reddit", emoji: "👩", title: "\"Why Teens with ADHD Are So Vulnerable to Social Media\" — Nature Study", creator: "Nature", views: "41K+", likes: "5.8K", shares: "2.1K", takeaway: "Parent-targeted: 'Why your child with ADHD can't put down their phone.' Link to child/adolescent services.", link: "https://www.reddit.com/r/ADHD/", date: "March 27, 2026" },
+    { rank: 13, platform: "instagram", emoji: "🧘", title: "\"Nervous System Regulation\" Becomes 2026's Defining Wellness Trend", creator: "Vogue / Outside Mag", views: "3.2B+", likes: "4.5M", shares: "2.1M", takeaway: "Clinical content: 'Nervous system regulation — real vs. hype.' Bridge to trauma-informed PTSD treatment.", link: "", date: "March 27, 2026" },
+    { rank: 14, platform: "facebook", emoji: "👥", title: "\"From Hashtags to Healing\" — Experts Sound Alarm on Therapy-Speak", creator: "Florida Today", views: "4.1M", likes: "890K", shares: "320K", takeaway: "LOCAL FL press opportunity: 'Therapy-speak on social media isn't actual therapy.' Builds local authority.", link: "https://www.floridatoday.com", date: "March 27, 2026" },
+    { rank: 15, platform: "twitter", emoji: "📵", title: "\"A Quiet Revolution\" — Young People Swapping Social Media for Lunch Dates", creator: "CNBC", views: "5.8M", likes: "89K", shares: "120K", takeaway: "Warm post: 'Your psychiatrist approves. Reducing screen time improves anxiety, sleep, and focus.'", link: "https://www.cnbc.com", date: "March 27, 2026" }
+  ];
+
   const VIRAL_PLATFORM_META = {
-    tiktok: { emoji: '📱', label: 'TikTok', cssClass: 'tiktok', bgClass: 'tiktok-bg' },
-    instagram: { emoji: '📸', label: 'Instagram', cssClass: 'instagram', bgClass: 'instagram-bg' },
-    youtube: { emoji: '🎬', label: 'YouTube', cssClass: 'youtube', bgClass: 'youtube-bg' },
-    twitter: { emoji: '🐦', label: 'X / Twitter', cssClass: 'twitter', bgClass: 'twitter-bg' },
-    reddit: { emoji: '🟠', label: 'Reddit', cssClass: 'reddit', bgClass: 'reddit-bg' },
-    linkedin: { emoji: '💼', label: 'LinkedIn', cssClass: 'linkedin', bgClass: 'linkedin-bg' },
-    facebook: { emoji: '👤', label: 'Facebook', cssClass: 'facebook', bgClass: 'facebook-bg' }
+    tiktok: { emoji: '📱', label: 'TikTok', cssClass: 'tiktok' },
+    instagram: { emoji: '📸', label: 'Instagram', cssClass: 'instagram' },
+    youtube: { emoji: '🎬', label: 'YouTube', cssClass: 'youtube' },
+    twitter: { emoji: '🐦', label: 'X / Twitter', cssClass: 'twitter' },
+    reddit: { emoji: '🟠', label: 'Reddit', cssClass: 'reddit' },
+    linkedin: { emoji: '💼', label: 'LinkedIn', cssClass: 'linkedin' },
+    facebook: { emoji: '👤', label: 'Facebook', cssClass: 'facebook' }
   };
 
+  function renderViralContent(items) {
+    const table = document.getElementById('viral-table');
+    if (!table || !items || items.length === 0) return;
+
+    // Update header date
+    const viralHeader = document.querySelector('#viral .section-header p');
+    if (viralHeader) {
+      const latestDate = items[0].date || new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      viralHeader.textContent = `Top ${items.length} trending mental health posts — updated ${latestDate}`;
+    }
+
+    table.innerHTML = items.map(item => {
+      const pm = VIRAL_PLATFORM_META[item.platform] || VIRAL_PLATFORM_META.tiktok;
+      // Compact stat string: "22M views · 3.4M likes"
+      const stats = [
+        item.views ? `${item.views} views` : '',
+        item.likes ? `${item.likes} ❤️` : ''
+      ].filter(Boolean).join(' · ');
+
+      const linkOpen = item.link ? `<a href="${item.link}" target="_blank" rel="noopener">` : '';
+      const linkClose = item.link ? '</a>' : '';
+
+      return `
+        <div class="viral-row" onclick="this.classList.toggle('expanded')">
+          <span class="vr-rank">${item.rank}</span>
+          <span class="vr-plat-tag ${pm.cssClass}">${pm.label}</span>
+          <span class="vr-body">
+            <span class="vr-headline">${item.emoji} ${linkOpen}${item.title}${linkClose}</span>
+            <span class="vr-inline-meta">— ${item.creator}${stats ? ' · ' + stats : ''}</span>
+            <div class="vr-takeaway"><strong>🎯</strong> ${item.takeaway}</div>
+          </span>
+        </div>`;
+    }).join('');
+  }
+
+  // If Google Sheet CSV is configured, override VIRAL_DATA with live data
   async function fetchViralContent() {
-    if (!VIRAL_SHEETS_CSV_URL) return;
+    if (!VIRAL_SHEETS_CSV_URL) {
+      renderViralContent(VIRAL_DATA);
+      return;
+    }
     try {
       const res = await fetch(VIRAL_SHEETS_CSV_URL);
       const csv = await res.text();
       const rows = csv.trim().split('\n').slice(1);
-      if (rows.length === 0) return;
+      if (rows.length === 0) { renderViralContent(VIRAL_DATA); return; }
 
       const items = rows.map(row => {
-        // Parse CSV properly (handle commas in quoted fields)
         const cols = row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g) || [];
         const clean = cols.map(c => c.replace(/^"|"$/g, '').trim());
         return {
-          rank: clean[0] || '',
-          platform: (clean[1] || 'tiktok').toLowerCase(),
-          emoji: clean[2] || '🧠',
-          title: clean[3] || '',
-          creator: clean[4] || '',
-          description: clean[5] || '',
-          views: clean[6] || '',
-          likes: clean[7] || '',
-          shares: clean[8] || '',
-          takeaway: clean[9] || '',
-          link: clean[10] || '',
-          date: clean[11] || ''
+          rank: clean[0] || '', platform: (clean[1] || 'tiktok').toLowerCase(),
+          emoji: clean[2] || '🧠', title: clean[3] || '', creator: clean[4] || '',
+          description: clean[5] || '', views: clean[6] || '', likes: clean[7] || '',
+          shares: clean[8] || '', takeaway: clean[9] || '', link: clean[10] || '', date: clean[11] || ''
         };
       }).filter(item => item.title);
 
-      if (items.length === 0) return;
-
-      // Update the "updated" date in the header
-      const viralHeader = document.querySelector('#viral .section-header p');
-      if (viralHeader) {
-        const latestDate = items[0].date || new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-        viralHeader.textContent = `Top ${items.length} most-shared psychiatric and mental health posts across social media — updated ${latestDate}`;
-      }
-
-      // Rebuild viral grid
-      const grid = document.querySelector('#viral .viral-grid');
-      if (!grid) return;
-
-      grid.innerHTML = items.map(item => {
-        const pm = VIRAL_PLATFORM_META[item.platform] || VIRAL_PLATFORM_META.tiktok;
-        const statsHtml = [
-          item.views ? `<span>👁️ ${item.views}</span>` : '',
-          item.likes ? `<span>❤️ ${item.likes}</span>` : '',
-          item.shares ? `<span>🔁 ${item.shares}</span>` : ''
-        ].filter(Boolean).join('');
-
-        return `
-          <div class="viral-card reveal">
-            <div class="viral-card-banner ${pm.bgClass}"><span class="banner-icon">${item.emoji}</span></div>
-            <div class="viral-rank">#${item.rank}</div>
-            <div class="viral-platform ${pm.cssClass}">${pm.emoji} ${pm.label}</div>
-            <h3>${item.emoji} ${item.title}</h3>
-            <div class="viral-creator">${item.creator}</div>
-            ${item.link ? `<div class="viral-embed"><div class="embed-placeholder"><div style="font-size:28px;margin-bottom:8px;">${pm.emoji}</div><a href="${item.link}" target="_blank" rel="noopener">View on ${pm.label} →</a></div></div>` : ''}
-            <p>${item.description}</p>
-            ${statsHtml ? `<div class="viral-stats">${statsHtml}</div>` : ''}
-            ${item.takeaway ? `<div class="viral-takeaway"><strong>🎯 Takeaway:</strong> ${item.takeaway}</div>` : ''}
-          </div>
-        `;
-      }).join('');
-
-      // Re-observe reveals
-      grid.querySelectorAll('.reveal').forEach(el => {
-        if (typeof revealObserver !== 'undefined') revealObserver.observe(el);
-      });
-
-      console.log('✅ Viral content updated from Google Sheet — ' + items.length + ' items');
+      renderViralContent(items.length > 0 ? items : VIRAL_DATA);
+      if (items.length > 0) console.log('✅ Viral content updated from Google Sheet — ' + items.length + ' items');
     } catch(e) {
-      console.warn('Viral sheet fetch failed, using hardcoded content:', e);
+      console.warn('Sheet fetch failed, using embedded data:', e);
+      renderViralContent(VIRAL_DATA);
     }
   }
 
-  // Auto-fetch viral content on load
+  // Render on load
   fetchViralContent();
 
   // ═══════════ TAB NAVIGATION ═══════════
