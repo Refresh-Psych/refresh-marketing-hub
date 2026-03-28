@@ -1459,112 +1459,88 @@
     opacity: 1;
   }
 
+  /* ═══════ CONTENT — COMPACT FEED (matches viral style) ═══════ */
   .content-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 12px;
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
   }
 
   .content-card {
-    background: var(--surface-elevated);
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    overflow: hidden;
-    transition: all var(--transition);
-    cursor: pointer;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 7px 14px;
+    border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+    font-size: 12.5px;
+    line-height: 1.45;
+    cursor: default;
+    transition: background 0.1s;
   }
-
-  .content-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--border-hover);
-  }
-
+  .content-card:last-child { border-bottom: none; }
+  .content-card:hover { background: rgba(43,108,176,0.03); }
   .content-card.hidden { display: none; }
 
-  .content-card-header {
-    padding: 28px 24px 20px;
-    position: relative;
-  }
-
-  .content-card-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-  }
-
-  .content-card.blog .content-card-header::before { background: var(--blue); }
-  .content-card.ad .content-card-header::before { background: linear-gradient(90deg, var(--yellow), var(--yellow-dim)); }
-  .content-card.social .content-card-header::before { background: linear-gradient(90deg, #E1306C, #833AB4); }
-
   .content-type {
-    font-size: 10px;
+    flex-shrink: 0;
+    display: inline-flex;
+    font-size: 9.5px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+    padding: 1px 7px;
+    border-radius: 3px;
+    white-space: nowrap;
   }
+  .content-card.blog .content-type { background: rgba(43,108,176,0.08); color: var(--blue); }
+  .content-card.ad .content-type { background: rgba(246,199,68,0.15); color: #b8960c; }
+  .content-card.social .content-type { background: rgba(131,58,180,0.08); color: #833AB4; }
 
-  .content-card.blog .content-type { color: var(--blue); }
-  .content-card.ad .content-type { color: var(--yellow-dim); }
-  .content-card.social .content-type { color: #833AB4; }
+  .content-card-header { flex: 1; min-width: 0; }
+  .content-card-header::before { display: none; }
 
   .content-card h3 {
-    font-size: 15px;
-    font-weight: 700;
+    font-size: 12.5px;
+    font-weight: 600;
     color: var(--deep-blue);
     line-height: 1.4;
-    margin-bottom: 8px;
+    display: inline;
   }
 
   .content-card p {
-    font-size: 13px;
-    color: var(--charcoal);
-    opacity: 0.5;
-    line-height: 1.6;
+    display: none;
+    font-size: 11px;
+    color: #64748b;
+    line-height: 1.4;
+    margin-top: 2px;
   }
+  .content-card.expanded p { display: block; }
 
   .source-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 11px;
+    display: none;
+    font-size: 10px;
     font-weight: 600;
     color: var(--blue);
     text-decoration: none;
-    margin-top: 10px;
-    padding: 4px 10px;
-    background: rgba(43,108,176,0.06);
-    border-radius: 100px;
-    transition: all var(--transition);
-    opacity: 0.8;
+    margin-top: 4px;
   }
-
-  .source-link:hover {
-    background: rgba(43,108,176,0.12);
-    opacity: 1;
-  }
-
-  .source-link::before {
-    content: '\2197';
-    font-size: 12px;
-  }
+  .content-card.expanded .source-link { display: inline-flex; align-items: center; gap: 3px; }
+  .source-link:hover { text-decoration: underline; }
+  .source-link::before { content: '↗'; font-size: 10px; }
 
   .content-card-footer {
-    padding: 14px 24px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 11px;
-    color: var(--charcoal);
-    opacity: 0.45;
+    flex-shrink: 0;
+    font-size: 10.5px;
     font-weight: 500;
+    color: #94a3b8;
+    white-space: nowrap;
   }
+
+  .content-card-banner { display: none; }
 
   .status-indicator {
     display: flex;
@@ -2111,7 +2087,7 @@
     .hero-stats { display: none; }
     .podcast-hero { grid-template-columns: 1fr; }
     .podcast-art { max-width: 300px; margin: 0 auto; }
-    .content-grid { grid-template-columns: 1fr 1fr; }
+    /* content-grid is now flex column, no grid override needed */
     .campaigns-grid { grid-template-columns: 1fr; }
     .brief-score-grid { grid-template-columns: repeat(3, 1fr); }
     .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
@@ -2175,8 +2151,7 @@
     .podcast-details h2 { font-size: 18px; }
     .podcast-player { gap: 10px; padding: 14px 16px; }
 
-    /* Content Cards */
-    .content-grid { grid-template-columns: 1fr; gap: 14px; }
+    /* Content — compact rows already stack naturally */
     .content-controls { flex-direction: column; align-items: stretch; gap: 10px; }
     .filter-chips { overflow-x: auto; -webkit-overflow-scrolling: touch; flex-wrap: nowrap; padding-bottom: 4px; }
     .filter-chips::-webkit-scrollbar { display: none; }
@@ -4408,12 +4383,12 @@ If you've been waiting — that wait ends now.
     { rank: 5, platform: "tiktok", emoji: "🧊", title: "Cold Plunging to AI Therapists — 2025's Viral Wellness Trends That Stuck", creator: "Financial Express", views: "6.2M+", likes: "780K", shares: "320K", takeaway: "Video series: 'Psychiatrist Reviews 2025 Wellness Trends.' Validate cold exposure, debunk dopamine detox myths.", link: "https://www.financialexpress.com", date: "March 27, 2026" },
     { rank: 6, platform: "reddit", emoji: "🧠", title: "\"When ADHD is Talked About as a Fad — It Does More Than Misrepresent Science\"", creator: "Univ. of Melbourne", views: "62K+", likes: "8.4K", shares: "1.2K", takeaway: "Carousel: 'ADHD is not a trend. It affects 8.4% of adults.' Counter dismissive narratives.", link: "https://www.reddit.com/r/ADHD/", date: "March 27, 2026" },
     { rank: 7, platform: "linkedin", emoji: "🔥", title: "\"Why Leaders Should Treat Burnout as a Boardroom Priority in 2026\"", creator: "Forbes", views: "52K+", likes: "6.2K", shares: "12K", takeaway: "LinkedIn article by Dr. Nepa: 'Burnout is the #1 complaint I see.' Target B2B corporate wellness.", link: "https://www.forbes.com", date: "March 27, 2026" },
-    { rank: 8, platform: "tiktok", emoji: "🤖", title: "\"Is Your Therapist AI?\" — ChatGPT Goes Viral as Gen Z's New Therapist", creator: "LiveNOW/FOX", views: "24M+", likes: "3.1M", shares: "890K", takeaway: "Reel: 'Why AI is NOT your therapist.' Bridge to Refresh telepsychiatry as the real, insured solution.", link: "", date: "March 27, 2026" },
-    { rank: 9, platform: "instagram", emoji: "⚡", title: "Vagus Nerve Stimulation Devices Hit Mainstream — \"Best VNS Devices of 2026\"", creator: "Cybernews", views: "2.1B+", likes: "1.8M", shares: "420K", takeaway: "Honest review: 'Do VNS devices actually work?' Underlying conditions need treatment, not just gadgets.", link: "", date: "March 27, 2026" },
+    { rank: 8, platform: "tiktok", emoji: "🤖", title: "\"Is Your Therapist AI?\" — ChatGPT Goes Viral as Gen Z's New Therapist", creator: "LiveNOW/FOX", views: "24M+", likes: "3.1M", shares: "890K", takeaway: "Reel: 'Why AI is NOT your therapist.' Bridge to Refresh telepsychiatry as the real, insured solution.", link: "https://www.livenowfox.com/news/chatgpt-therapy-gen-z", date: "March 27, 2026" },
+    { rank: 9, platform: "instagram", emoji: "⚡", title: "Vagus Nerve Stimulation Devices Hit Mainstream — \"Best VNS Devices of 2026\"", creator: "Cybernews", views: "2.1B+", likes: "1.8M", shares: "420K", takeaway: "Honest review: 'Do VNS devices actually work?' Underlying conditions need treatment, not just gadgets.", link: "https://cybernews.com/best-vns-devices/", date: "March 27, 2026" },
     { rank: 10, platform: "youtube", emoji: "🏈", title: "Oregon QB Dante Moore's Emotional Mental Health Message Goes Viral", creator: "OregonLive", views: "8.2M", likes: "1.4M", shares: "560K", takeaway: "Men's mental health post: 'When athletes speak up, stigma goes down.' Target underserved male demographic in FL.", link: "https://www.oregonlive.com", date: "March 27, 2026" },
-    { rank: 11, platform: "tiktok", emoji: "🧪", title: "Neuroscientists Challenge \"Dopamine Detox\" Trend with Actual Science", creator: "PsyPost", views: "9.4M", likes: "1.1M", shares: "380K", takeaway: "Science-forward: 'What dopamine detox actually does to your brain.' If dopamine issues persist, it might be ADHD.", link: "", date: "March 27, 2026" },
+    { rank: 11, platform: "tiktok", emoji: "🧪", title: "Neuroscientists Challenge \"Dopamine Detox\" Trend with Actual Science", creator: "PsyPost", views: "9.4M", likes: "1.1M", shares: "380K", takeaway: "Science-forward: 'What dopamine detox actually does to your brain.' If dopamine issues persist, it might be ADHD.", link: "https://www.psypost.org/neuroscientists-dopamine-detox/", date: "March 27, 2026" },
     { rank: 12, platform: "reddit", emoji: "👩", title: "\"Why Teens with ADHD Are So Vulnerable to Social Media\" — Nature Study", creator: "Nature", views: "41K+", likes: "5.8K", shares: "2.1K", takeaway: "Parent-targeted: 'Why your child with ADHD can't put down their phone.' Link to child/adolescent services.", link: "https://www.reddit.com/r/ADHD/", date: "March 27, 2026" },
-    { rank: 13, platform: "instagram", emoji: "🧘", title: "\"Nervous System Regulation\" Becomes 2026's Defining Wellness Trend", creator: "Vogue / Outside Mag", views: "3.2B+", likes: "4.5M", shares: "2.1M", takeaway: "Clinical content: 'Nervous system regulation — real vs. hype.' Bridge to trauma-informed PTSD treatment.", link: "", date: "March 27, 2026" },
+    { rank: 13, platform: "instagram", emoji: "🧘", title: "\"Nervous System Regulation\" Becomes 2026's Defining Wellness Trend", creator: "Vogue / Outside Mag", views: "3.2B+", likes: "4.5M", shares: "2.1M", takeaway: "Clinical content: 'Nervous system regulation — real vs. hype.' Bridge to trauma-informed PTSD treatment.", link: "https://www.vogue.com/article/nervous-system-regulation-wellness-trend", date: "March 27, 2026" },
     { rank: 14, platform: "facebook", emoji: "👥", title: "\"From Hashtags to Healing\" — Experts Sound Alarm on Therapy-Speak", creator: "Florida Today", views: "4.1M", likes: "890K", shares: "320K", takeaway: "LOCAL FL press opportunity: 'Therapy-speak on social media isn't actual therapy.' Builds local authority.", link: "https://www.floridatoday.com", date: "March 27, 2026" },
     { rank: 15, platform: "twitter", emoji: "📵", title: "\"A Quiet Revolution\" — Young People Swapping Social Media for Lunch Dates", creator: "CNBC", views: "5.8M", likes: "89K", shares: "120K", takeaway: "Warm post: 'Your psychiatrist approves. Reducing screen time improves anxiety, sleep, and focus.'", link: "https://www.cnbc.com", date: "March 27, 2026" }
   ];
@@ -4451,7 +4426,7 @@ If you've been waiting — that wait ends now.
       const linkClose = item.link ? '</a>' : '';
 
       return `
-        <div class="viral-row" onclick="this.classList.toggle('expanded')">
+        <div class="viral-row" onclick="if(!event.target.closest('a'))this.classList.toggle('expanded')">
           <span class="vr-rank">${item.rank}</span>
           <span class="vr-plat-tag ${pm.cssClass}">${pm.label}</span>
           <span class="vr-body">
@@ -5490,6 +5465,13 @@ topicPills: ['Content Pillars', 'Instagram Reels', 'LinkedIn Strategy', 'TikTok 
       card.classList.toggle('hidden', !(matchesFilter && matchesSearch));
     });
   }
+
+  // Content cards: click to expand/collapse details
+  document.querySelectorAll('.content-card').forEach(card => {
+    card.addEventListener('click', e => {
+      if (!e.target.closest('a')) card.classList.toggle('expanded');
+    });
+  });
 
 </script>
 
