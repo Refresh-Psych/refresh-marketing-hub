@@ -300,6 +300,68 @@ Your schema markup is strong. Additional technical improvements:
 
 ---
 
+## PART 8: ADDITIONAL KEYWORD OPPORTUNITIES (From Web Research)
+
+### Patient-Language / Symptom-Based Keywords (Often Missed)
+
+These reflect how patients actually search -- by symptoms, not diagnoses. Very few psychiatry sites target these.
+
+| Target Keyword | Maps To |
+|---|---|
+| "why do I feel like I'm dying" | Panic attacks / anxiety |
+| "can't concentrate at work" | ADHD |
+| "heart racing for no reason" | Anxiety |
+| "feeling hopeless all the time" | Depression |
+| "feeling numb and empty" | Depression |
+| "why can't I focus" | ADHD |
+| "mood swings for no reason" | Bipolar / emotional dysregulation |
+
+**Action:** Create blog content targeting these symptom-based searches, then link to your condition treatment pages. This captures top-of-funnel patients who don't yet know they need a psychiatrist.
+
+### Cost / Affordability Keywords
+
+| Target Keyword | Est. Volume | Difficulty |
+|---|---|---|
+| how much does a psychiatrist cost without insurance | 2,000-5,000 | Low |
+| psychiatrist cost with insurance | 1,000-3,000 | Low |
+| affordable psychiatrist near me | 1,000-3,000 | Medium |
+| free mental health services florida | 1,000-3,000 | Medium |
+
+### Deprescribing Keywords (Unique Differentiator)
+
+Your site offers deprescribing (medication tapering) -- almost no competitors target this keyword category.
+
+| Target Keyword | Est. Volume | Difficulty |
+|---|---|---|
+| deprescribing psychiatrist | 100-300 | Very Low |
+| how to taper off antidepressants | 2,000-5,000 | Low |
+| getting off psych meds safely | 500-1,500 | Low |
+| antidepressant withdrawal help | 1,000-3,000 | Low |
+| psychiatrist to help reduce medications | 200-500 | Very Low |
+
+**Action:** Deprescribing is a growing patient concern and a trust-builder. A dedicated page + blog content could rank quickly with almost zero competition.
+
+### Key Local Competitors Identified (Florida)
+
+| Competitor | Location | Why They Matter |
+|---|---|---|
+| **Harmony United Psychiatric Care (HUPC)** | Multi-FL + telehealth | Strong SEO, dedicated condition pages, pharmacogenetic testing |
+| **TMZ Behavioral Care** | Davie, FL | Direct competitor in your primary market |
+| **Davie Psychiatry, LLC** | Davie, FL | Ranks locally for Davie searches |
+| **Healing Psychiatry Florida** | South FL | Strong blog content ranking for ADHD keywords |
+| **NeuroHealth Treatment Centers** | South FL | PTSD-focused, dual board-certified psychiatrist |
+| **South Florida Psychiatry Group** | Miami | Miami market competitor |
+
+### Directory Platforms Competing for Your Keywords
+
+Zocdoc, Psychology Today, Healthgrades, Tebra, WebMD, and US News dominate page 1 for "psychiatrist near me" in Florida. These are both competitors AND platforms where optimized profiles generate appointments. Ensure all 9+ Florida office locations have complete, optimized profiles on each.
+
+### Wix Platform Note
+
+Multiple SEO industry sources flag Wix as having technical SEO limitations compared to WordPress (slower page speed, limited URL structure control, restricted technical customization). Worth monitoring Core Web Vitals scores and evaluating long-term whether migration improves ranking potential.
+
+---
+
 ## Key Takeaway
 
 **Your #1 gap is Florida local SEO.** You have 11 locations in Florida and zero localized treatment pages. Competitors are ranking for "psychiatrist in [Florida city]" searches while you're invisible. Creating Florida-specific content mirrors what you've already done for Lonestar and Mass Psychiatry -- the templates exist, it's a matter of localizing them.
