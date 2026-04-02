@@ -2548,6 +2548,7 @@
   <button class="nav-tab" id="tab-content" data-tab="content" role="tab" aria-label="Content" aria-selected="false" aria-controls="content" tabindex="-1">Content<span class="tab-count">27</span></button>
 
   <button class="nav-tab" id="tab-viral" data-tab="viral" role="tab" aria-label="Viral" aria-selected="false" aria-controls="viral" tabindex="-1">🔥 Viral<span class="tab-count">15</span></button>
+  <button class="nav-tab" id="tab-seo-map" data-tab="seo-map" role="tab" aria-label="SEO Map" aria-selected="false" aria-controls="seo-map" tabindex="-1">🗺️ SEO Map<span class="tab-count">12</span></button>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
 </nav>
 
@@ -3009,6 +3010,57 @@
     </div>
 
   </section>
+
+  <!-- SEO KEYWORD MIND MAP -->
+  <section class="section" id="seo-map" role="tabpanel" aria-labelledby="tab-seo-map">
+    <div class="section-header">
+      <div class="section-header-left">
+        <h2>🗺️ SEO Keyword Mind Map</h2>
+        <p>12 pillar keyword clusters with ~150 trackable keywords — color-coded by content coverage status. <strong>Last updated: <span id="seoLastUpdated">April 2, 2026</span></strong></p>
+      </div>
+    </div>
+    <div class="seo-stats-bar reveal">
+      <div class="seo-stat"><div class="seo-stat-num" id="seoStatPosts">89</div><div class="seo-stat-label">Blog Posts</div></div>
+      <div class="seo-stat"><div class="seo-stat-num" id="seoStatKeywords">0</div><div class="seo-stat-label">Keywords Tracked</div></div>
+      <div class="seo-stat"><div class="seo-stat-num" id="seoStatCovered" style="color:#48BB78">0</div><div class="seo-stat-label">Covered</div></div>
+      <div class="seo-stat"><div class="seo-stat-num" id="seoStatPartial" style="color:#F6C744">0</div><div class="seo-stat-label">Partial</div></div>
+      <div class="seo-stat"><div class="seo-stat-num" id="seoStatGaps" style="color:#E53E3E">0</div><div class="seo-stat-label">Gaps</div></div>
+      <div class="seo-stat"><div class="seo-stat-num" id="seoStatClusters">12</div><div class="seo-stat-label">Clusters</div></div>
+    </div>
+    <div class="seo-legend">
+      <div class="seo-legend-item"><div class="seo-legend-dot pillar"></div> Pillar Cluster</div>
+      <div class="seo-legend-item"><div class="seo-legend-dot covered"></div> Covered (has blog post)</div>
+      <div class="seo-legend-item"><div class="seo-legend-dot partial"></div> Partial (service page only)</div>
+      <div class="seo-legend-item"><div class="seo-legend-dot gap"></div> Gap (no content)</div>
+    </div>
+    <div class="seo-controls">
+      <button class="seo-filter-btn active" data-filter="all" onclick="filterSeoMap('all',this)">All</button>
+      <button class="seo-filter-btn" data-filter="gap" onclick="filterSeoMap('gap',this)">Gaps Only</button>
+      <button class="seo-filter-btn" data-filter="partial" onclick="filterSeoMap('partial',this)">Partial</button>
+      <button class="seo-filter-btn" data-filter="covered" onclick="filterSeoMap('covered',this)">Covered</button>
+      <div class="seo-search-wrap">
+        <span class="seo-search-icon">🔍</span>
+        <input class="seo-search" id="seoSearch" type="text" placeholder="Search keywords..." oninput="searchSeoMap(this.value)">
+      </div>
+    </div>
+    <div class="seo-map-container reveal" id="seoMapContainer">
+      <svg id="seoMapSvg"></svg>
+      <div class="seo-map-hint">Click a cluster to zoom in · Scroll to zoom · Drag to pan</div>
+      <div class="seo-detail-panel" id="seoDetailPanel">
+        <button class="seo-detail-close" onclick="closeSeoDetail()">&times;</button>
+        <h3 id="seoDetailTitle"></h3>
+        <div class="seo-detail-status" id="seoDetailStatus"></div>
+        <div class="seo-detail-meta" id="seoDetailMeta"></div>
+        <ul class="seo-detail-keywords" id="seoDetailKeywords"></ul>
+      </div>
+    </div>
+    <div style="margin-top:20px;display:flex;align-items:center;gap:10px;">
+      <h3 style="font-size:1rem;font-weight:800;color:var(--deep-blue);margin:0;">📋 Cluster Overview</h3>
+      <span style="background:var(--yellow);color:var(--navy);font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:20px;">CLICK TO EXPLORE</span>
+    </div>
+    <div class="seo-cluster-list" id="seoClusterList"></div>
+  </section>
+
   <!-- DAILY BRIEF -->
     <section class="section active" id="daily-brief" role="tabpanel" aria-labelledby="tab-daily-brief">
     <div class="section-header">
@@ -5589,6 +5641,7 @@ topicPills: ['Content Pillars', 'Instagram Reels', 'LinkedIn Strategy', 'TikTok 
 </script>
 
 <!-- Social Media Embed Scripts (loaded async for performance) -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
 <script async src="https://www.tiktok.com/embed.js"></script>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <script async src="https://www.instagram.com/embed.js"></script>
@@ -5655,6 +5708,70 @@ topicPills: ['Content Pillars', 'Instagram Reels', 'LinkedIn Strategy', 'TikTok 
   .viral-embed blockquote.instagram-media:not([data-instgrm-processed]) a:hover {
     text-decoration: underline;
   }
+
+  /* ═══════════════ SEO MIND MAP SECTION ═══════════════ */
+  .seo-stats-bar {
+    display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 16px; padding: 12px 16px;
+    background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  }
+  .seo-stat { text-align: center; flex: 1; min-width: 100px; }
+  .seo-stat .seo-stat-num { font-size: 1.6rem; font-weight: 800; color: var(--blue); line-height: 1.2; }
+  .seo-stat .seo-stat-label { font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+  .seo-legend { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-bottom: 12px; font-size: 0.75rem; color: #64748b; }
+  .seo-legend-item { display: flex; align-items: center; gap: 5px; }
+  .seo-legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .seo-legend-dot.covered { background: #48BB78; } .seo-legend-dot.partial { background: #F6C744; }
+  .seo-legend-dot.gap { background: #E53E3E; } .seo-legend-dot.pillar { background: var(--blue); width: 14px; height: 14px; }
+  .seo-controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
+  .seo-filter-btn { padding: 4px 14px; border: 1px solid var(--border); border-radius: 20px; background: var(--surface-elevated); font-size: 0.72rem; font-weight: 600; cursor: pointer; transition: var(--transition); color: var(--charcoal); }
+  .seo-filter-btn:hover { border-color: var(--blue); color: var(--blue); }
+  .seo-filter-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+  [data-theme="dark"] .seo-filter-btn { color: #cbd5e1; } [data-theme="dark"] .seo-filter-btn.active { color: #fff; }
+  .seo-search-wrap { position: relative; flex: 1; min-width: 180px; }
+  .seo-search { width: 100%; padding: 5px 12px 5px 30px; border: 1px solid var(--border); border-radius: 20px; background: var(--surface-elevated); font-size: 0.75rem; outline: none; transition: var(--transition); color: var(--charcoal); }
+  .seo-search:focus { border-color: var(--blue); box-shadow: 0 0 0 2px rgba(43,108,176,0.15); }
+  [data-theme="dark"] .seo-search { color: #e2e8f0; background: var(--surface); }
+  .seo-search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-size: 0.8rem; opacity: 0.4; pointer-events: none; }
+  .seo-map-container { position: relative; width: 100%; height: 600px; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+  .seo-map-container svg { width: 100%; height: 100%; }
+  .seo-map-container .node { cursor: pointer; }
+  .seo-map-container .node circle { stroke-width: 2; transition: r 0.3s, stroke-width 0.2s; }
+  .seo-map-container .node circle:hover { stroke-width: 3; }
+  .seo-map-container .node text { font-family: 'DM Sans', sans-serif; pointer-events: none; fill: var(--charcoal); }
+  [data-theme="dark"] .seo-map-container .node text { fill: #e2e8f0; }
+  .seo-map-container .link { stroke: var(--border); stroke-width: 1.2; opacity: 0.5; }
+  [data-theme="dark"] .seo-map-container .link { stroke: #475569; }
+  .seo-map-hint { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.55); color: #fff; font-size: 0.65rem; padding: 3px 12px; border-radius: 12px; pointer-events: none; opacity: 0.7; white-space: nowrap; }
+  .seo-detail-panel { position: absolute; top: 12px; right: 12px; width: 300px; max-height: calc(100% - 24px); overflow-y: auto; background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-sm); box-shadow: 0 8px 32px rgba(0,0,0,0.12); padding: 16px; display: none; z-index: 10; }
+  .seo-detail-panel.visible { display: block; animation: sectionIn 0.3s; }
+  .seo-detail-close { position: absolute; top: 8px; right: 10px; background: none; border: none; font-size: 1.1rem; cursor: pointer; color: #94a3b8; line-height: 1; }
+  .seo-detail-close:hover { color: var(--blue); }
+  .seo-detail-panel h3 { font-size: 0.95rem; font-weight: 800; margin: 0 0 4px; color: var(--deep-blue); }
+  [data-theme="dark"] .seo-detail-panel h3 { color: #f1f5f9; }
+  .seo-detail-panel .seo-detail-status { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 10px; }
+  .seo-detail-status.covered { background: #C6F6D5; color: #276749; } .seo-detail-status.partial { background: #FEFCBF; color: #975A16; } .seo-detail-status.gap { background: #FED7D7; color: #9B2C2C; }
+  [data-theme="dark"] .seo-detail-status.covered { background: #276749; color: #C6F6D5; } [data-theme="dark"] .seo-detail-status.partial { background: #975A16; color: #FEFCBF; } [data-theme="dark"] .seo-detail-status.gap { background: #9B2C2C; color: #FED7D7; }
+  .seo-detail-meta { font-size: 0.72rem; color: #64748b; margin-bottom: 10px; line-height: 1.6; }
+  .seo-detail-meta strong { color: var(--charcoal); } [data-theme="dark"] .seo-detail-meta strong { color: #e2e8f0; }
+  .seo-detail-keywords { list-style: none; padding: 0; margin: 0; }
+  .seo-detail-keywords li { padding: 6px 0; border-bottom: 1px solid color-mix(in srgb, var(--border) 50%, transparent); font-size: 0.72rem; display: flex; align-items: flex-start; gap: 6px; }
+  .seo-detail-keywords li:last-child { border-bottom: none; }
+  .seo-kw-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+  .seo-kw-dot.covered { background: #48BB78; } .seo-kw-dot.partial { background: #F6C744; } .seo-kw-dot.gap { background: #E53E3E; }
+  .seo-kw-info { flex: 1; } .seo-kw-term { font-weight: 600; color: var(--charcoal); } [data-theme="dark"] .seo-kw-term { color: #e2e8f0; }
+  .seo-kw-meta { font-size: 0.65rem; color: #94a3b8; margin-top: 1px; }
+  .seo-kw-suggestion { font-size: 0.65rem; color: var(--blue); font-style: italic; margin-top: 2px; }
+  .seo-kw-url { font-size: 0.65rem; color: #48BB78; text-decoration: none; } .seo-kw-url:hover { text-decoration: underline; }
+  .seo-cluster-list { margin-top: 16px; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+  .seo-cluster-card { background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 14px; cursor: pointer; transition: var(--transition); display: flex; align-items: flex-start; gap: 10px; }
+  .seo-cluster-card:hover { border-color: var(--blue); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+  .seo-cluster-icon { font-size: 1.4rem; flex-shrink: 0; } .seo-cluster-info { flex: 1; }
+  .seo-cluster-name { font-size: 0.82rem; font-weight: 700; color: var(--deep-blue); } [data-theme="dark"] .seo-cluster-name { color: #f1f5f9; }
+  .seo-cluster-counts { font-size: 0.65rem; color: #94a3b8; margin-top: 2px; }
+  .seo-cluster-bar { height: 4px; border-radius: 2px; background: #e2e8f0; margin-top: 6px; overflow: hidden; display: flex; } [data-theme="dark"] .seo-cluster-bar { background: #334155; }
+  .seo-cluster-bar-fill { height: 100%; }
+  @media (max-width: 700px) { .seo-map-container { height: 400px; } .seo-detail-panel { width: calc(100% - 24px); left: 12px; right: 12px; max-height: 50%; bottom: 12px; top: auto; } .seo-stats-bar { gap: 8px; padding: 8px 10px; } .seo-stat .seo-stat-num { font-size: 1.2rem; } .seo-cluster-list { grid-template-columns: 1fr; } }
+
   /* Fix social embeds rendering at height 0 when loaded in hidden tab */
   .viral-embed iframe[src*="instagram.com"] {
     min-height: 480px !important;
@@ -5670,6 +5787,495 @@ topicPills: ['Content Pillars', 'Instagram Reels', 'LinkedIn Strategy', 'TikTok 
   }
 </style>
 
+<script>
+// ═══════════ SEO KEYWORD MIND MAP ═══════════
+(function() {
+  const SEO_CLUSTERS = [
+    {
+      id: "adhd", pillar: "ADHD Treatment", icon: "🧠", status: "strong", existingContent: 7,
+      keywords: [
+        { term: "adult ADHD diagnosis online", volume: "high", competition: "medium", status: "covered", url: "https://www.refreshpsychiatry.com/blog/adhd-medication-telehealth-florida" },
+        { term: "ADHD in women symptoms", volume: "high", competition: "low", status: "gap", suggestedTitle: "ADHD in Women: Why It's Underdiagnosed & How Online Psychiatry Helps" },
+        { term: "ADHD medication online Florida", volume: "high", competition: "medium", status: "covered", url: "https://www.refreshpsychiatry.com/blog/adhd-medication-telehealth-florida" },
+        { term: "ADHD vs anxiety difference", volume: "medium", competition: "low", status: "gap", suggestedTitle: "ADHD vs Anxiety: How to Tell the Difference (A Psychiatrist Explains)" },
+        { term: "ADHD paralysis what to do", volume: "medium", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/adhd-paralysis" },
+        { term: "ADHD time management strategies", volume: "medium", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/adhd-time-management" },
+        { term: "can online psychiatrist prescribe Adderall", volume: "high", competition: "low", status: "gap", suggestedTitle: "Can an Online Psychiatrist Prescribe Adderall? What You Need to Know in 2026" },
+        { term: "stimulant vs non-stimulant ADHD meds", volume: "medium", competition: "medium", status: "covered", url: "https://www.refreshpsychiatry.com/blog/stimulant-vs-nonstimulant-adhd-medications" },
+        { term: "TikTok ADHD self-diagnosis", volume: "medium", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/tiktoks-adhd-content" },
+        { term: "ADHD medication shortage 2026", volume: "high", competition: "low", status: "gap", suggestedTitle: "ADHD Medication Shortage 2026: What Patients Need to Know & Alternative Options" },
+        { term: "ADHD in adults over 40", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Late-Diagnosed ADHD: Why More Adults Over 40 Are Getting Evaluated" },
+        { term: "ADHD and executive dysfunction", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Executive Dysfunction & ADHD: Practical Strategies from a Psychiatrist" }
+      ]
+    },
+    {
+      id: "anxiety", pillar: "Anxiety & Stress", icon: "😰", status: "strong", existingContent: 6,
+      keywords: [
+        { term: "anxiety treatment online Florida", volume: "high", competition: "high", status: "covered", url: "https://www.refreshpsychiatry.com/blog/anxiety-treatment-davie-fl" },
+        { term: "social anxiety treatment telehealth", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Social Anxiety Treatment Online: How Telepsychiatry Makes It Easier" },
+        { term: "panic attacks psychiatrist online", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Panic Attacks: When to See a Psychiatrist & How Online Visits Help" },
+        { term: "health anxiety treatment", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Health Anxiety (Hypochondria): A Psychiatrist's Guide to Treatment" },
+        { term: "performance anxiety medication", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Performance Anxiety Medication: What a Psychiatrist Wants You to Know" },
+        { term: "spring anxiety seasonal mental health", volume: "medium", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/spring-anxiety" },
+        { term: "ashwagandha for anxiety evidence", volume: "high", competition: "medium", status: "covered", url: "https://www.refreshpsychiatry.com/blog/ashwagandha-for-anxiety" },
+        { term: "anxiety and gut health connection", volume: "medium", competition: "low", status: "gap", suggestedTitle: "The Gut-Brain Connection: How Your Gut Health Affects Anxiety" },
+        { term: "box breathing for anxiety", volume: "medium", competition: "medium", status: "covered", url: "https://www.refreshpsychiatry.com/blog/box-breathing-grounding-technique" },
+        { term: "generalized anxiety disorder telehealth", volume: "medium", competition: "medium", status: "partial", url: "https://www.refreshpsychiatry.com/anxiety" },
+        { term: "anxiety medication options 2026", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Anxiety Medication Options in 2026: SSRIs, SNRIs, Buspirone & Beyond" },
+        { term: "stress awareness month April 2026", volume: "low", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/april-mental-health-awareness" }
+      ]
+    },
+    {
+      id: "depression", pillar: "Depression Treatment", icon: "🌧️", status: "moderate", existingContent: 4,
+      keywords: [
+        { term: "treatment-resistant depression options", volume: "high", competition: "medium", status: "gap", suggestedTitle: "Treatment-Resistant Depression: When Antidepressants Aren't Enough" },
+        { term: "online depression medication Florida", volume: "high", competition: "medium", status: "covered", url: "https://www.refreshpsychiatry.com/blog/online-medication-depression-anxiety" },
+        { term: "depression vs sadness when to get help", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Depression vs Sadness: When It's Time to Talk to a Psychiatrist" },
+        { term: "postpartum depression treatment online", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Postpartum Depression Treatment Online: Getting Help Without Leaving Home" },
+        { term: "seasonal depression SAD treatment", volume: "medium", competition: "medium", status: "gap", suggestedTitle: "Seasonal Affective Disorder (SAD): Treatment Options Beyond Light Therapy" },
+        { term: "depression and insomnia together", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Depression and Insomnia: Why They're Connected & How to Treat Both" },
+        { term: "Spravato esketamine for depression", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Spravato (Esketamine) for Treatment-Resistant Depression: What to Expect" },
+        { term: "depression treatment Miami FL", volume: "medium", competition: "medium", status: "covered", url: "https://www.refreshpsychiatry.com/blog/depression-treatment-miami" },
+        { term: "depression in men symptoms", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Depression in Men: Why It Looks Different & How Online Psychiatry Helps" },
+        { term: "burnout vs depression difference", volume: "medium", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/burnout-recovery-guide" },
+        { term: "Auvelity new depression medication", volume: "low", competition: "low", status: "gap", suggestedTitle: "Auvelity: A New Fast-Acting Depression Medication — What You Should Know" },
+        { term: "ketamine vs Spravato comparison", volume: "low", competition: "low", status: "gap", suggestedTitle: "Ketamine vs Spravato: A Psychiatrist Compares the Two Depression Treatments" }
+      ]
+    },
+    {
+      id: "telepsychiatry", pillar: "Telepsychiatry / Online Care", icon: "💻", status: "moderate", existingContent: 3,
+      keywords: [
+        { term: "how telehealth psychiatry works", volume: "high", competition: "medium", status: "covered", url: "https://www.refreshpsychiatry.com/blog/online-psychiatrist-virtual-visits" },
+        { term: "first virtual psychiatric appointment", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Your First Virtual Psychiatric Appointment: What to Expect Step by Step" },
+        { term: "online psychiatric evaluation process", volume: "medium", competition: "medium", status: "partial", url: "https://www.refreshpsychiatry.com/psychiatric-evaluation" },
+        { term: "is online psychiatry effective", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Is Online Psychiatry as Effective as In-Person? What the Research Shows" },
+        { term: "telehealth medication management", volume: "medium", competition: "medium", status: "partial", url: "https://www.refreshpsychiatry.com/medication-management" },
+        { term: "Done Health alternative ADHD", volume: "medium", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/done-health-alternative" },
+        { term: "Cerebral alternative safe psychiatry", volume: "medium", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/cerebral-alternative" },
+        { term: "Talkiatry vs Refresh Psychiatry", volume: "low", competition: "low", status: "gap", suggestedTitle: "Talkiatry vs Refresh Psychiatry: Comparing Online Psychiatric Care in 2026" },
+        { term: "best online psychiatry platforms 2026", volume: "high", competition: "high", status: "gap", suggestedTitle: "Best Online Psychiatry Platforms in 2026: An Independent Comparison" },
+        { term: "DEA telehealth prescribing rules 2026", volume: "medium", competition: "low", status: "gap", suggestedTitle: "DEA Telehealth Prescribing Rules 2026: What Changed for Psychiatric Patients" },
+        { term: "how much does online psychiatry cost", volume: "medium", competition: "low", status: "gap", suggestedTitle: "How Much Does Online Psychiatry Cost? Insurance, Self-Pay & What to Expect" },
+        { term: "therapist vs psychiatrist difference", volume: "high", competition: "high", status: "partial", url: "https://www.refreshpsychiatry.com/blog/therapist-vs-psychiatrist" }
+      ]
+    },
+    {
+      id: "insurance", pillar: "Insurance & Access", icon: "🏥", status: "strong", existingContent: 6,
+      keywords: [
+        { term: "psychiatrist that takes Aetna Florida", volume: "medium", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/aetna-psychiatrist-florida" },
+        { term: "Cigna psychiatrist online Florida", volume: "medium", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/cigna-psychiatrist-florida" },
+        { term: "United Healthcare telepsychiatry FL", volume: "medium", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/united-healthcare-psychiatrist-florida" },
+        { term: "Oscar Health psychiatrist Florida", volume: "low", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/oscar-health-psychiatrist-florida" },
+        { term: "UMR psychiatrist Florida telehealth", volume: "low", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/umr-psychiatrist-florida" },
+        { term: "BCBS psychiatrist Florida", volume: "medium", competition: "medium", status: "covered", url: "https://www.refreshpsychiatry.com/blog/bcbs-psychiatrist-florida" },
+        { term: "Humana mental health Florida", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Humana Psychiatrist in Florida: Coverage, Copays & How to Book Online" },
+        { term: "Avmed psychiatrist Florida", volume: "low", competition: "low", status: "gap", suggestedTitle: "AvMed Psychiatrist in Florida: Telehealth Coverage & How Refresh Can Help" },
+        { term: "does insurance cover online psychiatry", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Does Insurance Cover Online Psychiatry? A 2026 Guide for Florida, MA & TX" },
+        { term: "affordable psychiatry without insurance", volume: "medium", competition: "low", status: "partial", url: "https://www.refreshpsychiatry.com/affordable-options" },
+        { term: "mental health parity act explained", volume: "low", competition: "low", status: "gap", suggestedTitle: "Mental Health Parity Act: Your Right to Equal Insurance Coverage Explained" }
+      ]
+    },
+    {
+      id: "bipolar", pillar: "Bipolar & Mood Disorders", icon: "🎭", status: "weak", existingContent: 2,
+      keywords: [
+        { term: "bipolar disorder treatment online", volume: "medium", competition: "medium", status: "partial", url: "https://www.refreshpsychiatry.com/bipolar-disorder" },
+        { term: "bipolar medication management telehealth", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Bipolar Medication Management via Telehealth: How It Works at Refresh" },
+        { term: "mood stabilizers side effects", volume: "medium", competition: "medium", status: "gap", suggestedTitle: "Mood Stabilizer Side Effects: A Psychiatrist's Honest Guide" },
+        { term: "cyclothymia vs bipolar difference", volume: "low", competition: "low", status: "gap", suggestedTitle: "Cyclothymia vs Bipolar Disorder: Understanding the Spectrum" },
+        { term: "bipolar vs depression misdiagnosis", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Bipolar Disorder Misdiagnosed as Depression: How It Happens & What to Do" },
+        { term: "bipolar and anxiety comorbidity", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Bipolar Disorder and Anxiety: Treating Both Conditions Together" },
+        { term: "mania triggers explained", volume: "low", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/mania-triggers-explained" },
+        { term: "quiet BPD borderline personality", volume: "medium", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/quiet-bpd" },
+        { term: "bipolar disorder in teens", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Bipolar Disorder in Teenagers: Signs, Diagnosis & Online Treatment Options" },
+        { term: "lamotrigine Lamictal what to know", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Lamotrigine (Lamictal): What Every Bipolar Patient Should Know" }
+      ]
+    },
+    {
+      id: "ptsd", pillar: "PTSD & Trauma", icon: "🛡️", status: "weak", existingContent: 1,
+      keywords: [
+        { term: "PTSD treatment online telehealth", volume: "medium", competition: "medium", status: "partial", url: "https://www.refreshpsychiatry.com/ptsd" },
+        { term: "trauma-informed psychiatry", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Trauma-Informed Psychiatry: What It Means & Why It Matters" },
+        { term: "PTSD medication options", volume: "medium", competition: "medium", status: "gap", suggestedTitle: "PTSD Medication: SSRIs, Prazosin, and Emerging Options in 2026" },
+        { term: "complex PTSD symptoms treatment", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Complex PTSD (C-PTSD): Symptoms, Causes & How Online Psychiatry Helps" },
+        { term: "PTSD in first responders", volume: "low", competition: "low", status: "gap", suggestedTitle: "PTSD in First Responders: Breaking the Stigma with Confidential Telehealth" },
+        { term: "PTSD and substance use dual diagnosis", volume: "medium", competition: "low", status: "gap", suggestedTitle: "PTSD and Addiction: Why Dual Diagnosis Treatment Is Essential" },
+        { term: "EMDR therapy explained", volume: "medium", competition: "medium", status: "gap", suggestedTitle: "EMDR Therapy: How It Works, Who It Helps & What to Expect" },
+        { term: "PTSD nightmares treatment", volume: "low", competition: "low", status: "gap", suggestedTitle: "PTSD Nightmares: Prazosin, Therapy & Other Treatment Options" },
+        { term: "childhood trauma adult mental health", volume: "medium", competition: "low", status: "gap", suggestedTitle: "How Childhood Trauma Affects Adult Mental Health — and What You Can Do" },
+        { term: "PTSD veterans telehealth Florida", volume: "low", competition: "low", status: "gap", suggestedTitle: "PTSD Treatment for Veterans in Florida: Confidential Telehealth Options" }
+      ]
+    },
+    {
+      id: "ocd", pillar: "OCD & Related Disorders", icon: "🔄", status: "gap", existingContent: 0,
+      keywords: [
+        { term: "OCD treatment online psychiatrist", volume: "medium", competition: "medium", status: "partial", url: "https://www.refreshpsychiatry.com/ocd" },
+        { term: "intrusive thoughts OCD vs anxiety", volume: "medium", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/intrusive-vs-impulsive-thoughts" },
+        { term: "OCD medication SSRI dosing", volume: "medium", competition: "low", status: "gap", suggestedTitle: "OCD Medication: Why Higher SSRI Doses Are Needed & What to Expect" },
+        { term: "hoarding disorder treatment", volume: "low", competition: "low", status: "gap", suggestedTitle: "Hoarding Disorder: A Psychiatric Condition That Deserves Compassion" },
+        { term: "body dysmorphic disorder BDD", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Body Dysmorphic Disorder: When Appearance Anxiety Becomes a Mental Health Crisis" },
+        { term: "OCD vs anxiety how to tell", volume: "medium", competition: "low", status: "gap", suggestedTitle: "OCD vs Generalized Anxiety: How a Psychiatrist Tells the Difference" },
+        { term: "pure O OCD purely obsessional", volume: "low", competition: "low", status: "gap", suggestedTitle: "Pure O OCD: The Invisible Obsessions No One Talks About" },
+        { term: "ERP therapy for OCD", volume: "medium", competition: "medium", status: "gap", suggestedTitle: "ERP Therapy for OCD: The Gold Standard Treatment Explained" },
+        { term: "OCD in children and teens", volume: "medium", competition: "low", status: "gap", suggestedTitle: "OCD in Children and Teens: Early Signs & When to See a Psychiatrist" },
+        { term: "trichotillomania hair pulling treatment", volume: "low", competition: "low", status: "gap", suggestedTitle: "Trichotillomania (Hair Pulling): Treatment Options from a Psychiatrist" }
+      ]
+    },
+    {
+      id: "sleep", pillar: "Sleep & Insomnia", icon: "🌙", status: "weak", existingContent: 2,
+      keywords: [
+        { term: "insomnia treatment psychiatrist online", volume: "medium", competition: "low", status: "partial", url: "https://www.refreshpsychiatry.com/insomnia" },
+        { term: "sleep anxiety can't fall asleep", volume: "medium", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/sleep-anxiety" },
+        { term: "sleep medication management psychiatry", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Sleep Medication: A Psychiatrist's Guide to What Works and What to Avoid" },
+        { term: "melatonin vs prescription sleep aids", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Melatonin vs Prescription Sleep Aids: When to Try Each (Psychiatrist's Take)" },
+        { term: "CBT-I insomnia therapy online", volume: "medium", competition: "low", status: "gap", suggestedTitle: "CBT-I for Insomnia: The #1 Non-Medication Treatment Available Online" },
+        { term: "circadian rhythm disorder treatment", volume: "low", competition: "low", status: "gap", suggestedTitle: "Circadian Rhythm Disorders: When Your Internal Clock Is Off" },
+        { term: "revenge bedtime procrastination", volume: "medium", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/revenge-bedtime-procrastination" },
+        { term: "insomnia and depression link", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Insomnia and Depression: The Vicious Cycle and How to Break It" },
+        { term: "trazodone for sleep what to know", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Trazodone for Sleep: Dosing, Side Effects & What Your Psychiatrist Thinks" },
+        { term: "sleep hygiene tips psychiatrist", volume: "low", competition: "low", status: "gap", suggestedTitle: "Sleep Hygiene: Evidence-Based Tips from a Board-Certified Psychiatrist" }
+      ]
+    },
+    {
+      id: "medications", pillar: "Medication Deep-Dives", icon: "💊", status: "moderate", existingContent: 5,
+      keywords: [
+        { term: "Lexapro for anxiety and depression", volume: "high", competition: "medium", status: "covered", url: "https://www.refreshpsychiatry.com/blog/lexapro-for-anxiety" },
+        { term: "Lexapro vs Wellbutrin comparison", volume: "high", competition: "medium", status: "covered", url: "https://www.refreshpsychiatry.com/blog/lexapro-vs-wellbutrin" },
+        { term: "SSRI vs SNRI difference", volume: "high", competition: "medium", status: "gap", suggestedTitle: "SSRIs vs SNRIs: A Psychiatrist Explains the Difference and How to Choose" },
+        { term: "psychiatric medication weight gain", volume: "high", competition: "low", status: "gap", suggestedTitle: "Psychiatric Medication and Weight Gain: Which Drugs Cause It & What to Do" },
+        { term: "psych medication and pregnancy safety", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Psychiatric Medication During Pregnancy: What's Safe? A Psychiatrist's Guide" },
+        { term: "deprescribing psychiatric medication", volume: "low", competition: "low", status: "partial", url: "https://www.refreshpsychiatry.com/deprescribing-medications" },
+        { term: "pharmacogenomic testing psychiatry", volume: "medium", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/pharmacogenomics-genetic-testing" },
+        { term: "Wellbutrin for ADHD off-label", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Wellbutrin for ADHD: How Off-Label Prescribing Works in Psychiatry" },
+        { term: "antidepressant discontinuation syndrome", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Antidepressant Withdrawal: Discontinuation Syndrome Explained" },
+        { term: "Buspirone vs Benzodiazepines anxiety", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Buspirone vs Benzodiazepines for Anxiety: Safer Long-Term Options" },
+        { term: "new psychiatric medications 2026", volume: "medium", competition: "low", status: "gap", suggestedTitle: "New Psychiatric Medications in 2026: CTx-1301, Auvelity & What's Coming" },
+        { term: "prescription digital therapeutics", volume: "low", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/prescription-digital-therapeutics" }
+      ]
+    },
+    {
+      id: "local-seo", pillar: "Local SEO (Florida Cities)", icon: "📍", status: "moderate", existingContent: 8,
+      keywords: [
+        { term: "psychiatrist Miami FL", volume: "high", competition: "high", status: "covered", url: "https://www.refreshpsychiatry.com/blog/depression-treatment-miami" },
+        { term: "psychiatrist Fort Lauderdale", volume: "high", competition: "high", status: "gap", suggestedTitle: "Best Psychiatrist in Fort Lauderdale: Telehealth Appointments Available" },
+        { term: "psychiatrist Orlando telehealth", volume: "medium", competition: "medium", status: "covered", url: "https://www.refreshpsychiatry.com/blog/finding-psychiatrist-winter-park-orlando" },
+        { term: "psychiatrist Davie FL", volume: "medium", competition: "medium", status: "covered", url: "https://www.refreshpsychiatry.com/blog/anxiety-treatment-davie-fl" },
+        { term: "psychiatrist West Palm Beach", volume: "medium", competition: "medium", status: "covered", url: "https://www.refreshpsychiatry.com/blog/finding-psychiatrist-west-palm-beach" },
+        { term: "psychiatrist Boca Raton FL", volume: "medium", competition: "medium", status: "gap", suggestedTitle: "Psychiatrist in Boca Raton: Same-Week Telehealth Appointments Available" },
+        { term: "psychiatrist Tampa FL telehealth", volume: "medium", competition: "high", status: "gap", suggestedTitle: "Online Psychiatrist in Tampa, FL: Virtual Mental Health Care at Refresh" },
+        { term: "psychiatrist Jacksonville FL", volume: "medium", competition: "medium", status: "gap", suggestedTitle: "Psychiatrist in Jacksonville, FL: Telehealth Appointments with Refresh" },
+        { term: "psychiatrist Coral Springs FL", volume: "low", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/finding-psychiatrist-coral-springs" },
+        { term: "psiquiatras cerca de mi Florida", volume: "medium", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/psiquiatras-cerca-de-mi-florida" },
+        { term: "psychiatrist Pembroke Pines FL", volume: "low", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/finding-psychiatrist-pembroke-pines" },
+        { term: "telepsychiatry Massachusetts Boston", volume: "medium", competition: "medium", status: "gap", suggestedTitle: "Online Psychiatrist in Massachusetts: Serving Boston, Worcester & Beyond" },
+        { term: "psychiatrist Dallas Fort Worth TX", volume: "medium", competition: "high", status: "gap", suggestedTitle: "Online Psychiatrist in Dallas-Fort Worth: Same-Week Telehealth at Refresh" }
+      ]
+    },
+    {
+      id: "emerging", pillar: "Emerging & Specialty Topics", icon: "🔬", status: "gap", existingContent: 1,
+      keywords: [
+        { term: "Spravato REMS treatment center", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Spravato Treatment Centers in Florida: REMS, Insurance & What to Expect" },
+        { term: "adult autism diagnosis psychiatrist", volume: "high", competition: "low", status: "gap", suggestedTitle: "Adult Autism Diagnosis: Why More Adults Are Getting Evaluated by Psychiatrists" },
+        { term: "substance use disorder treatment online", volume: "medium", competition: "medium", status: "gap", suggestedTitle: "Substance Use Disorder Treatment Online: Can Telepsychiatry Help with Addiction?" },
+        { term: "eating disorders psychiatrist online", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Eating Disorder Treatment: When to See a Psychiatrist (Not Just a Therapist)" },
+        { term: "geriatric psychiatry elderly mental health", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Geriatric Psychiatry: Mental Health Care for Older Adults via Telehealth" },
+        { term: "LGBTQ+ affirming psychiatrist online", volume: "medium", competition: "low", status: "gap", suggestedTitle: "LGBTQ+ Affirming Psychiatry: Finding Inclusive Mental Health Care Online" },
+        { term: "men's mental health stigma", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Men's Mental Health: Breaking the Stigma with Confidential Online Psychiatry" },
+        { term: "dual diagnosis mental health addiction", volume: "medium", competition: "medium", status: "gap", suggestedTitle: "Dual Diagnosis: Treating Mental Health and Substance Use Together" },
+        { term: "looksmaxxing mental health dangers", volume: "medium", competition: "low", status: "covered", url: "https://www.refreshpsychiatry.com/blog/looksmaxxing-mental-health-dangers" },
+        { term: "neurodivergent autistic burnout", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Autistic Burnout: What It Is and How a Psychiatrist Can Help" },
+        { term: "menopause mental health hormones", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Menopause and Mental Health: The Hormonal Connection Your Doctor May Miss" },
+        { term: "chronic pain and psychiatric treatment", volume: "medium", competition: "low", status: "gap", suggestedTitle: "Chronic Pain and Mental Health: Why Psychiatry Is Part of the Solution" }
+      ]
+    }
+  ];
+
+  // ── Compute Stats ──
+  let totalKW = 0, coveredKW = 0, partialKW = 0, gapKW = 0;
+  SEO_CLUSTERS.forEach(c => c.keywords.forEach(k => {
+    totalKW++;
+    if (k.status === 'covered') coveredKW++;
+    else if (k.status === 'partial') partialKW++;
+    else gapKW++;
+  }));
+  document.getElementById('seoStatKeywords').textContent = totalKW;
+  document.getElementById('seoStatCovered').textContent = coveredKW;
+  document.getElementById('seoStatPartial').textContent = partialKW;
+  document.getElementById('seoStatGaps').textContent = gapKW;
+
+  // ── Color Helpers ──
+  const STATUS_COLORS = { covered: '#48BB78', partial: '#F6C744', gap: '#E53E3E' };
+  const PILLAR_COLOR = '#2B6CB0';
+  const VOL_RADIUS = { high: 10, medium: 7, low: 5 };
+
+  function clusterStatus(c) {
+    const g = c.keywords.filter(k => k.status === 'gap').length;
+    const p = c.keywords.filter(k => k.status === 'partial').length;
+    const total = c.keywords.length;
+    if (g > total * 0.6) return 'gap';
+    if (g + p > total * 0.4) return 'partial';
+    return 'covered';
+  }
+
+  // ── Build D3 Force Graph ──
+  function buildSeoMap(filterStatus, searchTerm) {
+    const container = document.getElementById('seoMapContainer');
+    const svg = d3.select('#seoMapSvg');
+    svg.selectAll('*').remove();
+
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+
+    // Build nodes and links
+    const nodes = [];
+    const links = [];
+
+    // Center node
+    nodes.push({ id: 'center', label: 'Refresh Psychiatry SEO', type: 'center', r: 28 });
+
+    SEO_CLUSTERS.forEach(cluster => {
+      const cStatus = clusterStatus(cluster);
+      nodes.push({
+        id: cluster.id, label: cluster.icon + ' ' + cluster.pillar, type: 'pillar',
+        r: 20, cluster: cluster, clusterStatus: cStatus
+      });
+      links.push({ source: 'center', target: cluster.id });
+
+      cluster.keywords.forEach((kw, i) => {
+        const kwId = cluster.id + '-' + i;
+        const visible = (!filterStatus || filterStatus === 'all' || kw.status === filterStatus) &&
+                        (!searchTerm || kw.term.toLowerCase().includes(searchTerm.toLowerCase()));
+        if (visible) {
+          nodes.push({
+            id: kwId, label: kw.term, type: 'keyword', r: VOL_RADIUS[kw.volume] || 6,
+            kw: kw, parentCluster: cluster.id, status: kw.status
+          });
+          links.push({ source: cluster.id, target: kwId });
+        }
+      });
+    });
+
+    // D3 setup
+    const g = svg.append('g');
+
+    const zoom = d3.zoom()
+      .scaleExtent([0.3, 4])
+      .on('zoom', (event) => g.attr('transform', event.transform));
+    svg.call(zoom);
+
+    // Center the view
+    const initialTransform = d3.zoomIdentity.translate(width / 2, height / 2).scale(0.75);
+    svg.call(zoom.transform, initialTransform);
+
+    const simulation = d3.forceSimulation(nodes)
+      .force('link', d3.forceLink(links).id(d => d.id).distance(d => {
+        if (d.source.type === 'center') return 160;
+        return 60;
+      }).strength(d => d.source.type === 'center' ? 0.4 : 0.6))
+      .force('charge', d3.forceManyBody().strength(d => d.type === 'center' ? -600 : d.type === 'pillar' ? -250 : -40))
+      .force('collision', d3.forceCollide().radius(d => d.r + 4))
+      .force('x', d3.forceX(0).strength(0.02))
+      .force('y', d3.forceY(0).strength(0.02));
+
+    // Links
+    const link = g.append('g').selectAll('line')
+      .data(links).join('line')
+      .attr('class', 'link');
+
+    // Nodes
+    const node = g.append('g').selectAll('g')
+      .data(nodes).join('g')
+      .attr('class', 'node')
+      .call(d3.drag()
+        .on('start', (event, d) => { if (!event.active) simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+        .on('drag', (event, d) => { d.fx = event.x; d.fy = event.y; })
+        .on('end', (event, d) => { if (!event.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; })
+      );
+
+    node.append('circle')
+      .attr('r', d => d.r)
+      .attr('fill', d => {
+        if (d.type === 'center') return '#1a3a5c';
+        if (d.type === 'pillar') return PILLAR_COLOR;
+        return STATUS_COLORS[d.status] || '#ccc';
+      })
+      .attr('stroke', d => {
+        if (d.type === 'center') return '#F6C744';
+        if (d.type === 'pillar') return STATUS_COLORS[d.clusterStatus] || '#fff';
+        return 'rgba(255,255,255,0.8)';
+      })
+      .attr('stroke-width', d => d.type === 'center' ? 3 : d.type === 'pillar' ? 2.5 : 1.5);
+
+    // Labels for pillar nodes and center
+    node.filter(d => d.type === 'pillar' || d.type === 'center')
+      .append('text')
+      .text(d => d.type === 'center' ? '🗺️' : d.label.split(' ')[0])
+      .attr('text-anchor', 'middle')
+      .attr('dy', d => d.type === 'center' ? 4 : -2)
+      .attr('font-size', d => d.type === 'center' ? 18 : 14)
+      .style('pointer-events', 'none');
+
+    node.filter(d => d.type === 'pillar')
+      .append('text')
+      .text(d => d.label.replace(/^. /, ''))
+      .attr('text-anchor', 'middle')
+      .attr('dy', d => d.r + 14)
+      .attr('font-size', 9)
+      .attr('font-weight', 700)
+      .attr('fill', 'var(--charcoal)')
+      .style('pointer-events', 'none');
+
+    // Keyword labels (only show on hover/zoom)
+    node.filter(d => d.type === 'keyword')
+      .append('title')
+      .text(d => d.label + ' (' + d.kw.volume + ' vol, ' + d.status + ')');
+
+    // Click handlers
+    node.on('click', (event, d) => {
+      event.stopPropagation();
+      if (d.type === 'pillar') {
+        showClusterDetail(d.cluster);
+        // Zoom to cluster
+        const t = d3.zoomIdentity.translate(width/2 - d.x * 1.8, height/2 - d.y * 1.8).scale(1.8);
+        svg.transition().duration(500).call(zoom.transform, t);
+      } else if (d.type === 'keyword') {
+        showKeywordDetail(d.kw, d.parentCluster);
+      }
+    });
+
+    // Click background to reset
+    svg.on('click', () => {
+      closeSeoDetail();
+      svg.transition().duration(500).call(zoom.transform, initialTransform);
+    });
+
+    simulation.on('tick', () => {
+      link.attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+          .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+      node.attr('transform', d => 'translate(' + d.x + ',' + d.y + ')');
+    });
+  }
+
+  // ── Detail Panel ──
+  function showClusterDetail(cluster) {
+    const panel = document.getElementById('seoDetailPanel');
+    const cStatus = clusterStatus(cluster);
+    document.getElementById('seoDetailTitle').textContent = cluster.icon + ' ' + cluster.pillar;
+    const statusEl = document.getElementById('seoDetailStatus');
+    statusEl.textContent = cStatus.toUpperCase() + ' — ' + cluster.existingContent + ' posts';
+    statusEl.className = 'seo-detail-status ' + cStatus;
+
+    const gaps = cluster.keywords.filter(k => k.status === 'gap').length;
+    const covered = cluster.keywords.filter(k => k.status === 'covered').length;
+    const partial = cluster.keywords.filter(k => k.status === 'partial').length;
+    document.getElementById('seoDetailMeta').innerHTML =
+      '<strong>' + cluster.keywords.length + '</strong> keywords tracked<br>' +
+      '<span style="color:#48BB78">■</span> ' + covered + ' covered · ' +
+      '<span style="color:#F6C744">■</span> ' + partial + ' partial · ' +
+      '<span style="color:#E53E3E">■</span> ' + gaps + ' gaps';
+
+    const kwList = document.getElementById('seoDetailKeywords');
+    kwList.innerHTML = cluster.keywords.map(kw => {
+      let detail = '<span class="seo-kw-meta">' + kw.volume + ' volume · ' + (kw.competition || 'low') + ' competition</span>';
+      if (kw.status === 'covered' && kw.url) detail += '<br><a class="seo-kw-url" href="' + kw.url + '" target="_blank">View post →</a>';
+      if (kw.status === 'partial' && kw.url) detail += '<br><a class="seo-kw-url" href="' + kw.url + '" target="_blank" style="color:#d69e2e">Service page →</a>';
+      if (kw.status === 'gap' && kw.suggestedTitle) detail += '<br><span class="seo-kw-suggestion">✍️ ' + kw.suggestedTitle + '</span>';
+      return '<li><div class="seo-kw-dot ' + kw.status + '"></div><div class="seo-kw-info"><div class="seo-kw-term">' + kw.term + '</div>' + detail + '</div></li>';
+    }).join('');
+
+    panel.classList.add('visible');
+  }
+
+  function showKeywordDetail(kw, clusterId) {
+    const cluster = SEO_CLUSTERS.find(c => c.id === clusterId);
+    if (cluster) showClusterDetail(cluster);
+  }
+
+  window.closeSeoDetail = function() {
+    document.getElementById('seoDetailPanel').classList.remove('visible');
+  };
+
+  // ── Filters ──
+  let currentFilter = 'all';
+  let currentSearch = '';
+
+  window.filterSeoMap = function(status, btn) {
+    currentFilter = status;
+    document.querySelectorAll('.seo-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    buildSeoMap(currentFilter, currentSearch);
+  };
+
+  window.searchSeoMap = function(term) {
+    currentSearch = term;
+    buildSeoMap(currentFilter, currentSearch);
+  };
+
+  // ── Cluster Cards (list view) ──
+  function renderClusterCards() {
+    const list = document.getElementById('seoClusterList');
+    list.innerHTML = SEO_CLUSTERS.map(c => {
+      const gaps = c.keywords.filter(k => k.status === 'gap').length;
+      const covered = c.keywords.filter(k => k.status === 'covered').length;
+      const partial = c.keywords.filter(k => k.status === 'partial').length;
+      const total = c.keywords.length;
+      const covPct = (covered / total * 100).toFixed(0);
+      const parPct = (partial / total * 100).toFixed(0);
+      const gapPct = (gaps / total * 100).toFixed(0);
+      return '<div class="seo-cluster-card" onclick="seoCardClick(\'' + c.id + '\')">' +
+        '<div class="seo-cluster-icon">' + c.icon + '</div>' +
+        '<div class="seo-cluster-info">' +
+          '<div class="seo-cluster-name">' + c.pillar + '</div>' +
+          '<div class="seo-cluster-counts">' + total + ' keywords · ' + covered + ' covered · ' + gaps + ' gaps · ' + c.existingContent + ' posts</div>' +
+          '<div class="seo-cluster-bar">' +
+            '<div class="seo-cluster-bar-fill" style="width:' + covPct + '%;background:#48BB78"></div>' +
+            '<div class="seo-cluster-bar-fill" style="width:' + parPct + '%;background:#F6C744"></div>' +
+            '<div class="seo-cluster-bar-fill" style="width:' + gapPct + '%;background:#E53E3E"></div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  window.seoCardClick = function(clusterId) {
+    const cluster = SEO_CLUSTERS.find(c => c.id === clusterId);
+    if (cluster) showClusterDetail(cluster);
+    // Scroll to map
+    document.getElementById('seoMapContainer').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
+
+  // ── Initialize when SEO tab is shown ──
+  let seoMapInitialized = false;
+
+  function initSeoMapIfNeeded() {
+    if (!seoMapInitialized && document.getElementById('seo-map').classList.contains('active')) {
+      seoMapInitialized = true;
+      setTimeout(() => {
+        buildSeoMap('all', '');
+        renderClusterCards();
+      }, 100);
+    }
+  }
+
+  // Watch for tab activation
+  const seoObserver = new MutationObserver(initSeoMapIfNeeded);
+  const seoSection = document.getElementById('seo-map');
+  if (seoSection) seoObserver.observe(seoSection, { attributes: true, attributeFilter: ['class'] });
+
+  // Also init if tab is already active
+  initSeoMapIfNeeded();
+
+  // Handle window resize
+  let seoResizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(seoResizeTimer);
+    seoResizeTimer = setTimeout(() => {
+      if (seoMapInitialized && document.getElementById('seo-map').classList.contains('active')) {
+        buildSeoMap(currentFilter, currentSearch);
+      }
+    }, 300);
+  });
+})();
+</script>
 <script>
   // ═══════════ DARK MODE TOGGLE ═══════════
   (function() {
