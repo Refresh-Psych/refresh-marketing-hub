@@ -1,0 +1,198 @@
+PODCAST TITLE: 5 Hiring Myths That Are Costing Your Psychiatric Practice $500K a Year
+EPISODE ANGLE: Wednesday — Myth-Busting / Contrarian Takes
+DATE: April 2, 2026
+EPISODE NUMBER: 13
+
+HOST INSTRUCTIONS FOR NOTEBOOKLM:
+- Sound like a knowledgeable, direct practice owner who has made these mistakes and fixed them
+- Use specific numbers, real salary benchmarks, and hard data throughout
+- Disagree strongly with conventional wisdom — this is the myth-busting episode
+- Tell stories and examples (composite/hypothetical) that illustrate each myth concretely
+- Address the listener as a practice owner making real hiring decisions today
+- Reference today's Wednesday theme: everything you think you know is wrong
+
+---
+
+OPENING HOOK
+
+Five years ago, I made every single hiring mistake I'm about to warn you about. I hired a psychiatrist when I needed an NP. I paid a productivity split when I should have paid salary. I rushed credentialing because I was desperate. I onboarded someone in a week and lost them in six months. And I spent two years fixing what I built wrong in the first place.
+
+The psychiatric staffing crisis in 2026 is real. Behavioral health workforce shortages are projected to hit 27 states this year. Every psychiatrist departure costs your practice between $250,000 and $500,000 in recruitment, onboarding, and lost productivity — and that number is from a conservative 2026 industry analysis, not a worst-case scenario. It is the median.
+
+So today, on our Wednesday myth-busting episode, I want to challenge the five most expensive assumptions practice owners make about building a clinical team. Not the stuff you read in a "how to hire your first employee" article. The actual beliefs that cause real psychiatric practices to hemorrhage money, burn through providers, and wonder why they can't scale.
+
+Some of these are going to feel counterintuitive. Some of them are going to make you uncomfortable. That's the point.
+
+Let's go.
+
+---
+
+SEGMENT 1: THE FIVE MYTHS
+
+MYTH #1: "I should hire a psychiatrist to scale my practice."
+
+The conventional wisdom goes like this: you want to expand your practice, so you hire another psychiatrist. More psychiatrists equals more capacity. More capacity equals more revenue. Simple math.
+
+It is wrong math.
+
+Here is the actual math. A board-certified psychiatrist in 2026 — full-time, telepsychiatry — costs between $280,000 and $380,000 in base compensation. More in Massachusetts, comparable in Florida and Texas. In your first 90 days, a new psychiatrist sees significantly fewer patients while building their panel. They're slower in your EHR. They're learning your workflows. They may not be credentialed with all your payers for six to eight weeks after their start date. The revenue they generate in their first quarter typically does not cover their salary.
+
+Now compare that to a psychiatric-mental health nurse practitioner, a PMHNP. National average 2026 salary: $144,000 to $156,000, with full-scope states like Florida allowing independent practice with a collaborative agreement. The average PMHNP in a productive telepsychiatry practice generates 75 to 85 percent of the billable revenue a full psychiatrist generates. At roughly half the compensation cost.
+
+The math reversal: for the cost of one psychiatrist, you can hire two PMHNPs. Two PMHNPs see more patients per day collectively than one psychiatrist. Your revenue doubles. Your overhead is lower. And — this is the part people miss — PMHNPs are dramatically easier to recruit right now. The shortage of psychiatrists is far more severe than the shortage of PMHNPs in most markets.
+
+This is not an argument against hiring psychiatrists. Dr. Nepa built Refresh Psychiatry with physician-led psychiatric care as a core identity. That matters clinically and for brand differentiation. But the myth is that scale equals "hire more psychiatrists." The reality for most practices is: hire a physician-led structure with collaborative NPs to build volume, and reserve your psychiatrist-level compensation for the complexity and oversight that actually requires it.
+
+The expensive version of this myth: a practice owner hires two psychiatrists when they're ready to expand. The practices that scaled successfully in 2026 hired one psychiatrist and two PMHNPs with collaborative agreements. They generated 30 percent more revenue and had significantly lower payroll. The practice that hired two psychiatrists is still waiting to break even on their second hire.
+
+---
+
+MYTH #2: "The productivity split model is the fair, risk-aligned way to pay providers."
+
+Productivity splits are seductive for a reason. The argument sounds logical: if the provider generates revenue, they earn a percentage. If census is low, your expense is lower. The provider is incentivized to be productive. Everyone's interests align. Right?
+
+Wrong. And this is a mistake that costs practices differently than you'd expect.
+
+The problem with productivity splits is not the math. The problem is the behavior they create.
+
+Under a productivity model, every appointment decision becomes a financial transaction for the provider. They see 30 appointments this week and earn $X. They see 25 appointments and earn less. So they optimize — consciously or not — for volume over complexity. Difficult cases that need 60 minutes get 45 minutes. No-shows are frustrating in a new way because the provider lost income. Paperwork, prior auths, care coordination — all of that is unpaid under a pure productivity model. So it gets done resentfully, rushed, or not at all.
+
+The result: higher turnover, lower quality of care, and a provider who is always calculating whether your practice is maximizing their earning potential — and the moment they think it isn't, they leave.
+
+The data on this is sobering. Practices using salary-plus-bonus models report dramatically lower provider turnover than practices using pure productivity splits. Why? Because a guaranteed salary removes financial anxiety from clinical decision-making. A provider who knows their rent is covered doesn't rush the difficult patient.
+
+The 2026 reality: the best PMHNPs and psychiatrists have options. A lot of options. Talkiatry just raised $210 million and is actively recruiting with W-2 salaries, full benefits, malpractice coverage, and administrative burden removal. They can pay competitively. If your productivity split requires a provider to see 30 appointments a day to make the salary they can get guaranteed elsewhere, you will lose them.
+
+The model that works in 2026: base salary in the 60th to 65th percentile of market, with a performance bonus tied to patient satisfaction, adherence, and quality metrics — not purely visit volume. This pays for quality. It retains the providers you want to keep. And it costs you less in turnover than a productivity split that churns providers every 18 months.
+
+---
+
+MYTH #3: "Credentialing takes 3 to 6 months and there's nothing you can do to speed it up."
+
+This one is treated as an immutable law of hiring. You hire a new provider in April. They can't see patients until fall. In the meantime, you're paying salary, they're not billing, and you're losing approximately $18,000 to $30,000 per month in foregone revenue per provider. At a 90-day credentialing window, that's $54,000 to $90,000 per provider in opportunity cost.
+
+But here's the contrarian reality: the 3-to-6-month timeline is not a law. It is what happens when credentialing is not treated as an active operational priority.
+
+Here is what the fastest-credentialing telepsychiatry practices do. They start the credentialing application on the day the offer letter is signed — not on the provider's first day. They assign a dedicated credentialing coordinator who owns nothing else. They build a master payer credentialing tracker in a shared document that every party can see in real time. They pre-enroll in key payers with their anticipated hire class 60 days in advance when possible. And they use their existing provider relationships with payers — their current paneling — to expedite new provider credentialing under group umbrella credentials.
+
+A practice that treats credentialing as a checklist they start at orientation will credential in 4 to 6 months. A practice with an active credentialing operations system can credential a new PMHNP in 45 to 60 days with most major payers in Florida. The difference is process, not magic. Aetna, United, Cigna, and Humana all have expedited credentialing pathways that most practices don't use because they don't know to ask.
+
+The expensive myth: "We'll start the paperwork when they start." The expensive reality: 90 days of a salaried provider who can't bill your primary payers because someone didn't submit the application two weeks earlier.
+
+---
+
+MYTH #4: "If I find a great clinical provider, onboarding and culture will take care of themselves."
+
+This myth is the kindest-sounding mistake on this list. You hired someone brilliant. They trained at a good program. Their references are glowing. You're excited. So you spend two weeks orienting them to your EHR and send them to their first patient.
+
+Six months later, they give notice. The exit interview reveals: they felt like they were practicing in a vacuum. They didn't know what was expected of them beyond "see patients." They had clinical questions with no clear escalation path. They didn't feel connected to the broader practice mission. They got a better offer from Talkiatry where — ironically — the onboarding was more structured.
+
+The data: psychiatric provider turnover at 18 months is highest among practices that describe their onboarding as "we threw them in the deep end and trusted them to swim." Provider turnover is lowest — consistently — at practices that have a documented 30-60-90 day onboarding plan that includes clinical mentorship, culture integration, and explicit milestone-setting.
+
+What a 90-day onboarding plan for a telepsychiatry provider actually looks like: Week 1 is EHR, workflow, insurance, and peer introductions. Weeks 2 through 4 are graduated patient volume — starting at 60% capacity with regular check-ins. Month 2 is full patient panel with weekly 30-minute touchpoints with a clinical lead. Month 3 is performance review with specific, actionable feedback and a 6-month goal-setting conversation.
+
+The cultural piece people skip: providers want to know why they're at your practice instead of a larger platform. They need to believe in the mission. At Refresh Psychiatry, the mission is physician-led, relationship-based psychiatric care in a market where VC-backed platforms are replacing relationships with algorithms. That is a compelling mission for the right provider. But you have to tell them. You have to repeat it. You have to make them feel it.
+
+A provider who doesn't connect to your mission will leave for the next competitive salary offer. A provider who believes in what you're building will stay through multiple competitive salary offers — and will recruit their colleagues.
+
+---
+
+MYTH #5: "Provider retention is mostly about compensation."
+
+This is the most expensive myth on this list, because it leads practice owners to spend money in exactly the wrong place.
+
+Compensation matters. Obviously. You cannot pay 20% below market and expect to retain anyone. But once you are in the competitive compensation band — 60th to 70th percentile of market for your geography and specialty — additional compensation increases have diminishing returns on retention.
+
+What actually drives psychiatric provider retention in 2026?
+
+The 2026 behavioral health workforce data is unambiguous: providers who report being most satisfied with their roles rank the following factors in this order. First: schedule flexibility and autonomy over their patient panel. Second: feeling respected and trusted by leadership. Third: low administrative burden. Fourth: sense of clinical mission and culture. Fifth: compensation.
+
+Compensation is fifth.
+
+The practices losing providers to Talkiatry and Grow Therapy are not losing them because Talkiatry pays more — though sometimes they do. They are losing them because Talkiatry has invested heavily in removing administrative friction: AI-assisted documentation, automated prior auth support, dedicated billing staff, structured clinical support. The net effect for a provider who joins Talkiatry: they spend more time doing clinical work and less time fighting with paperwork.
+
+If your practice is losing providers to national platforms, the question to ask is not "Can we pay them more?" It is: "What is the administrative burden on our clinical staff?" Every hour a PMHNP spends on prior auth paperwork is an hour they are not seeing patients and not building job satisfaction. Every EHR click they navigate alone is a signal that your practice undervalues their time.
+
+The retention investment that works: AI documentation support (ambient scribes, structured templates), a dedicated prior authorization coordinator, predictable scheduling with protected non-clinical time, and a clinical lead who checks in with providers regularly — not just when there's a problem.
+
+The retention ROI: each psychiatrist departure costs you $250,000 to $500,000. Investing $40,000 to $80,000 per year in the operational infrastructure that retains providers is one of the highest-return investments in psychiatric practice management.
+
+---
+
+SEGMENT 2: WHAT TALKIATRY'S $210M RAISE MEANS FOR YOUR HIRING
+
+I want to spend a moment on the competitive environment, because it directly affects your ability to hire and retain.
+
+Talkiatry closed a $210 million Series D in February 2026. They directly employ more than 800 full-time psychiatrists. They are in-network with over 100 insurance companies covering 170 million lives. And they used that raise to do three things: expand their AI infrastructure, accelerate market entry, and recruit.
+
+This is not a story about a competitor you can ignore because they're "just a platform." When a company raises $210 million in behavioral health, a significant fraction of that capital goes to salaries, benefits packages, and LinkedIn outreach to your best clinicians. Talkiatry's recruiter may have already messaged your top PMHNP in the last 90 days.
+
+The lesson is not panic. The lesson is clarity about what you offer that Talkiatry cannot.
+
+Talkiatry's model is: large-panel, AI-mediated intake, guaranteed W-2. The value proposition is volume efficiency and compensation guarantee.
+
+Refresh Psychiatry's model is: physician-led, relationship-based care, same-week access, genuine patient continuity. The value proposition for a clinician is: practice medicine the right way, with autonomy, in a culture where you are not employee number 847.
+
+The providers who leave for Talkiatry are, in many cases, not the providers you want to keep. The providers you want are the ones who came into psychiatry to build relationships — not to see 30 patients a day on a corporate platform. Your culture is your competitive advantage. But you have to build it consciously, name it explicitly, and embody it in every hiring decision you make.
+
+---
+
+SEGMENT 3: THE HIRING FRAMEWORK THAT WORKS IN 2026
+
+So what does good hiring actually look like? Here is the framework I would build today.
+
+Step one: Define the role before you post it. Not "psychiatrist needed." Specifically: "We need a board-certified psychiatrist to serve as the clinical lead for our Davie location, managing a panel of 120 to 140 patients, with a collaborative agreement covering two PMHNPs, with oversight responsibility for clinical quality and peer consultation." That specificity attracts the right candidate and repels the wrong one.
+
+Step two: Start credentialing on offer letter signature — not hire date. This is non-negotiable. Credentialing delay is lost revenue. Start the CAQH profile, send payer applications, initiate the DEA registration check immediately on offer acceptance.
+
+Step three: Hire for mission alignment first, skills second. The clinical skills of a board-certified psychiatrist or PMHNP are relatively equivalent within a cohort. What is not equivalent is whether they believe in what you're building. In the interview, ask: "Why do you want to practice at a physician-led independent telepsychiatry practice versus a larger platform?" If they don't have a compelling answer, that is information.
+
+Step four: Build the 90-day onboarding plan before you need it. Document it. Include clinical milestones, culture touchpoints, and check-in cadence. This plan converts a good hire into a retained hire.
+
+Step five: Check compensation annually against market. Use Research.com, PayScale, and MGMA data. If you are below the 55th percentile of market compensation, you are one recruiter call from losing your best providers. Adjust before the conversation — not after you receive the resignation.
+
+---
+
+THE ONE THING
+
+If you implement nothing else from today's episode, implement this.
+
+Every provider departure costs your practice $250,000 to $500,000. That is the floor. At that math, retaining one provider for one additional year produces a higher return on investment than almost any other operational decision you can make.
+
+The single highest-leverage retention investment available to you right now is reducing your providers' administrative burden. An AI documentation tool that saves 45 minutes per day per provider — ambient scribe, structured note templates, automated prior auth support — costs $200 to $500 per month per provider. The math on that investment against $250,000 replacement cost is not even close.
+
+Before you think about the next hire, ask your current providers: what is the one thing that wastes the most of your time? Whatever they say — build a system to fix it this week.
+
+That is The One Thing.
+
+---
+
+CLOSING
+
+Today's episode challenges five assumptions that are costing psychiatric practices real money right now.
+
+Myth one: hire more psychiatrists to scale. Reality: physician-led NP teams generate more revenue at lower cost in most growth scenarios.
+
+Myth two: productivity splits are the fair compensation model. Reality: salary-plus-quality-bonus retains better providers and produces better clinical outcomes.
+
+Myth three: credentialing takes 3 to 6 months and can't be accelerated. Reality: an active credentialing operations system can cut that timeline nearly in half.
+
+Myth four: great clinicians don't need structured onboarding. Reality: the 90-day onboarding plan is your most powerful 90-day retention tool.
+
+Myth five: retention is about compensation. Reality: schedule flexibility, autonomy, low administrative burden, and cultural mission matter more — once you're in the competitive comp band.
+
+Refresh Psychiatry is physician-led, relationship-based telepsychiatry across 16 locations in Florida, Massachusetts, and Texas. Same-week care. Insurance accepted. No waitlist.
+
+I'm Dr. Justin Nepa. We'll see you tomorrow.
+
+---
+
+SOURCES REFERENCED:
+- Research.com: 2026 Psychiatric Nurse Practitioner Salary by State — https://research.com/careers/psychiatric-nurse-practitioner-salary-by-state
+- Behavioral Health Business: Talkiatry $210M Series D — https://bhbusiness.com/2026/02/12/talkiatry-raises-210m-to-expand-digital-ai-powered-psychiatry-practice/
+- BehavioralHealth.careers: Behavioral Health Workforce Outlook 2026 — https://behavioralhealth.careers/blog/behavioral-health-workforce-outlook-2026
+- HireQuest: Healthcare Workforce 2026 — https://hirequest.com/insight/healthcare-workforce-trends-2026/
+- FAS Psych: Solving the Mental Health Staffing Crisis — https://faspsych.com/blog/solving-mental-health-staffing-crisis/
+- APA JobCentral: Telepsychiatry Positions 2026 — https://jobs.psychiatry.org/jobs/industry/telepsychiatry/
+- Psychiatry.org: Medicare Telehealth Updates 2026 — https://www.psychiatry.org/Psychiatrists/Practice/Telepsychiatry/Blog/Medicare-Telehealth-Updates-What-Psychiatrists-Nee
+- HHS.gov: DEA Telemedicine Fourth Extension Through December 31, 2026 — https://www.hhs.gov/press-room/dea-telemedicine-extension-2026.html
