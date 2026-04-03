@@ -71,13 +71,13 @@ if __name__ == "__main__":
     # Read the podcast source
     with open("podcast-source-2026-04-02.txt", "r", encoding="utf-8") as f:
         source = f.read()
-    
+
     # Convert to a narration script (remove metadata headers)
     lines = source.split("\n")
     narration_lines = []
-    skip_headers = {"PODCAST TITLE:", "EPISODE ANGLE:", "DATE:", "EPISODE NUMBER:", 
+    skip_headers = {"PODCAST TITLE:", "EPISODE ANGLE:", "DATE:", "EPISODE NUMBER:",
                     "HOST INSTRUCTIONS FOR NOTEBOOKLM:", "SOURCES REFERENCED:"}
-    
+
     in_sources = False
     for line in lines:
         if any(line.startswith(h) for h in skip_headers):
@@ -90,12 +90,12 @@ if __name__ == "__main__":
             if "Sound like" in line or "Use specific" in line or "Disagree" in line or "Tell stories" in line or "Address the listener" in line or "Reference today" in line:
                 continue
         narration_lines.append(line)
-    
+
     narration = "\n".join(narration_lines).strip()
     # Clean up multiple blank lines
     while "\n\n\n" in narration:
         narration = narration.replace("\n\n\n", "\n\n")
-    
+
     print(f"Narration text: {len(narration)} characters")
     
     success = generate_audio(narration, "podcast-2026-04-02.mp3", voice="onyx")
