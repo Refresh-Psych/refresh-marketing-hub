@@ -6094,34 +6094,226 @@ topicPills: ['Content Pillars', 'Instagram Reels', 'LinkedIn Strategy', 'TikTok 
         .on('end', (event, d) => { if (!event.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; })
       );
 
-    node.append('circle')
-      .attr('r', d => d.r)
-      .attr('fill', d => {
-        if (d.type === 'center') return '#1a3a5c';
-        if (d.type === 'pillar') return PILLAR_COLOR;
-        return STATUS_COLORS[d.status] || '#ccc';
-      })
-      .attr('stroke', d => {
-        if (d.type === 'center') return '#F6C744';
-        if (d.type === 'pillar') return STATUS_COLORS[d.clusterStatus] || '#fff';
-        return 'rgba(255,255,255,0.8)';
-      })
-      .attr('stroke-width', d => d.type === 'center' ? 3 : d.type === 'pillar' ? 2.5 : 1.5);
+    // ── SVG Creature Sprites (inline defs) ──
+    const defs = g.append('defs');
 
-    // Labels for pillar nodes and center
-    node.filter(d => d.type === 'pillar' || d.type === 'center')
+    // Creature color palettes per cluster
+    const CREATURE_PALETTES = {
+      adhd:          { body: '#FFB347', accent: '#FF6B35', eye: '#2D3748', highlight: '#FFE0B2' },
+      anxiety:       { body: '#A78BFA', accent: '#7C3AED', eye: '#2D3748', highlight: '#DDD6FE' },
+      depression:    { body: '#93C5FD', accent: '#3B82F6', eye: '#2D3748', highlight: '#DBEAFE' },
+      telepsychiatry:{ body: '#6EE7B7', accent: '#10B981', eye: '#2D3748', highlight: '#D1FAE5' },
+      insurance:     { body: '#FCA5A5', accent: '#EF4444', eye: '#2D3748', highlight: '#FEE2E2' },
+      bipolar:       { body: '#FDE68A', accent: '#F59E0B', eye: '#2D3748', highlight: '#FEF3C7' },
+      ptsd:          { body: '#A5B4FC', accent: '#6366F1', eye: '#2D3748', highlight: '#E0E7FF' },
+      ocd:           { body: '#99F6E4', accent: '#14B8A6', eye: '#2D3748', highlight: '#CCFBF1' },
+      sleep:         { body: '#C4B5FD', accent: '#8B5CF6', eye: '#2D3748', highlight: '#EDE9FE' },
+      medications:   { body: '#FDA4AF', accent: '#FB7185', eye: '#2D3748', highlight: '#FFE4E6' },
+      'local-seo':   { body: '#86EFAC', accent: '#22C55E', eye: '#2D3748', highlight: '#DCFCE7' },
+      emerging:      { body: '#67E8F9', accent: '#06B6D4', eye: '#2D3748', highlight: '#CFFAFE' }
+    };
+
+    // Build creature SVG for each cluster
+    function creatureSVG(id, pal, shape) {
+      const s = defs.append('g').attr('id', 'creature-' + id);
+      // Shadow
+      s.append('ellipse').attr('cx',0).attr('cy',18).attr('rx',14).attr('ry',4).attr('fill','rgba(0,0,0,0.1)');
+
+      if (shape === 'round') {
+        // Round blob creature (ADHD, Anxiety, Depression)
+        s.append('ellipse').attr('cx',0).attr('cy',0).attr('rx',16).attr('ry',14).attr('fill',pal.body).attr('stroke',pal.accent).attr('stroke-width',1.5);
+        // Belly
+        s.append('ellipse').attr('cx',0).attr('cy',3).attr('rx',10).attr('ry',8).attr('fill',pal.highlight).attr('opacity',0.6);
+        // Eyes
+        s.append('circle').attr('cx',-5).attr('cy',-3).attr('r',3.5).attr('fill','#fff');
+        s.append('circle').attr('cx',5).attr('cy',-3).attr('r',3.5).attr('fill','#fff');
+        s.append('circle').attr('cx',-4).attr('cy',-3).attr('r',2).attr('fill',pal.eye);
+        s.append('circle').attr('cx',6).attr('cy',-3).attr('r',2).attr('fill',pal.eye);
+        // Pupils (shine)
+        s.append('circle').attr('cx',-3.5).attr('cy',-4).attr('r',0.8).attr('fill','#fff');
+        s.append('circle').attr('cx',6.5).attr('cy',-4).attr('r',0.8).attr('fill','#fff');
+        // Mouth
+        s.append('path').attr('d','M-3,4 Q0,7 3,4').attr('fill','none').attr('stroke',pal.eye).attr('stroke-width',1).attr('stroke-linecap','round');
+      }
+      else if (shape === 'spiky') {
+        // Spiky creature (Bipolar, PTSD, OCD)
+        s.append('path').attr('d','M0,-18 L5,-10 L14,-12 L10,-4 L18,0 L10,4 L14,12 L5,10 L0,18 L-5,10 L-14,12 L-10,4 L-18,0 L-10,-4 L-14,-12 L-5,-10 Z')
+          .attr('fill',pal.body).attr('stroke',pal.accent).attr('stroke-width',1.5);
+        s.append('circle').attr('cx',0).attr('cy',0).attr('r',10).attr('fill',pal.highlight).attr('opacity',0.5);
+        s.append('circle').attr('cx',-4).attr('cy',-2).attr('r',3).attr('fill','#fff');
+        s.append('circle').attr('cx',4).attr('cy',-2).attr('r',3).attr('fill','#fff');
+        s.append('circle').attr('cx',-3).attr('cy',-2).attr('r',1.8).attr('fill',pal.eye);
+        s.append('circle').attr('cx',5).attr('cy',-2).attr('r',1.8).attr('fill',pal.eye);
+        s.append('circle').attr('cx',-2.5).attr('cy',-3).attr('r',0.7).attr('fill','#fff');
+        s.append('circle').attr('cx',5.5).attr('cy',-3).attr('r',0.7).attr('fill','#fff');
+        s.append('path').attr('d','M-2,4 Q0,6 2,4').attr('fill','none').attr('stroke',pal.eye).attr('stroke-width',1).attr('stroke-linecap','round');
+      }
+      else if (shape === 'tall') {
+        // Tall pill/capsule creature (Medications, Telepsych, Insurance)
+        s.append('rect').attr('x',-10).attr('y',-16).attr('width',20).attr('height',32).attr('rx',10).attr('fill',pal.body).attr('stroke',pal.accent).attr('stroke-width',1.5);
+        s.append('rect').attr('x',-10).attr('y',0).attr('width',20).attr('height',16).attr('rx',10).attr('fill',pal.accent).attr('opacity',0.3);
+        s.append('ellipse').attr('cx',0).attr('cy',-4).attr('rx',6).attr('ry',4).attr('fill',pal.highlight).attr('opacity',0.5);
+        s.append('circle').attr('cx',-4).attr('cy',-5).attr('r',3).attr('fill','#fff');
+        s.append('circle').attr('cx',4).attr('cy',-5).attr('r',3).attr('fill','#fff');
+        s.append('circle').attr('cx',-3).attr('cy',-5).attr('r',1.8).attr('fill',pal.eye);
+        s.append('circle').attr('cx',5).attr('cy',-5).attr('r',1.8).attr('fill',pal.eye);
+        s.append('circle').attr('cx',-2.5).attr('cy',-6).attr('r',0.7).attr('fill','#fff');
+        s.append('circle').attr('cx',5.5).attr('cy',-6).attr('r',0.7).attr('fill','#fff');
+        s.append('path').attr('d','M-2,1 Q0,4 2,1').attr('fill','none').attr('stroke',pal.eye).attr('stroke-width',1).attr('stroke-linecap','round');
+        // Little arms
+        s.append('path').attr('d','M-10,-2 Q-16,-4 -14,2').attr('fill','none').attr('stroke',pal.accent).attr('stroke-width',1.5).attr('stroke-linecap','round');
+        s.append('path').attr('d','M10,-2 Q16,-4 14,2').attr('fill','none').attr('stroke',pal.accent).attr('stroke-width',1.5).attr('stroke-linecap','round');
+      }
+      else if (shape === 'ghost') {
+        // Ghost/wispy creature (Sleep, Emerging)
+        s.append('path').attr('d','M-14,6 Q-14,-14 0,-16 Q14,-14 14,6 L14,14 Q10,10 7,14 Q4,10 0,14 Q-4,10 -7,14 Q-10,10 -14,14 Z')
+          .attr('fill',pal.body).attr('stroke',pal.accent).attr('stroke-width',1.5);
+        s.append('ellipse').attr('cx',0).attr('cy',-2).attr('rx',8).attr('ry',6).attr('fill',pal.highlight).attr('opacity',0.4);
+        s.append('circle').attr('cx',-5).attr('cy',-4).attr('r',3.5).attr('fill','#fff');
+        s.append('circle').attr('cx',5).attr('cy',-4).attr('r',3.5).attr('fill','#fff');
+        s.append('circle').attr('cx',-4).attr('cy',-4).attr('r',2).attr('fill',pal.eye);
+        s.append('circle').attr('cx',6).attr('cy',-4).attr('r',2).attr('fill',pal.eye);
+        s.append('circle').attr('cx',-3.5).attr('cy',-5).attr('r',0.8).attr('fill','#fff');
+        s.append('circle').attr('cx',6.5).attr('cy',-5).attr('r',0.8).attr('fill','#fff');
+        s.append('path').attr('d','M-2,2 Q0,5 2,2').attr('fill','none').attr('stroke',pal.eye).attr('stroke-width',1).attr('stroke-linecap','round');
+      }
+      else { // 'square' — Local SEO
+        s.append('rect').attr('x',-14).attr('y',-14).attr('width',28).attr('height',28).attr('rx',6).attr('fill',pal.body).attr('stroke',pal.accent).attr('stroke-width',1.5);
+        s.append('rect').attr('x',-8).attr('y',-6).attr('width',16).attr('height',14).attr('rx',4).attr('fill',pal.highlight).attr('opacity',0.5);
+        s.append('circle').attr('cx',-5).attr('cy',-3).attr('r',3).attr('fill','#fff');
+        s.append('circle').attr('cx',5).attr('cy',-3).attr('r',3).attr('fill','#fff');
+        s.append('circle').attr('cx',-4).attr('cy',-3).attr('r',1.8).attr('fill',pal.eye);
+        s.append('circle').attr('cx',6).attr('cy',-3).attr('r',1.8).attr('fill',pal.eye);
+        s.append('circle').attr('cx',-3.5).attr('cy',-4).attr('r',0.7).attr('fill','#fff');
+        s.append('circle').attr('cx',6.5).attr('cy',-4).attr('r',0.7).attr('fill','#fff');
+        s.append('path').attr('d','M-3,4 Q0,7 3,4').attr('fill','none').attr('stroke',pal.eye).attr('stroke-width',1).attr('stroke-linecap','round');
+        // Little antennae
+        s.append('line').attr('x1',-6).attr('y1',-14).attr('x2',-8).attr('y2',-20).attr('stroke',pal.accent).attr('stroke-width',1.5).attr('stroke-linecap','round');
+        s.append('circle').attr('cx',-8).attr('cy',-21).attr('r',2).attr('fill',pal.accent);
+        s.append('line').attr('x1',6).attr('y1',-14).attr('x2',8).attr('y2',-20).attr('stroke',pal.accent).attr('stroke-width',1.5).attr('stroke-linecap','round');
+        s.append('circle').attr('cx',8).attr('cy',-21).attr('r',2).attr('fill',pal.accent);
+      }
+    }
+
+    // Creature shape assignments
+    const CREATURE_SHAPES = {
+      adhd: 'round', anxiety: 'round', depression: 'round',
+      telepsychiatry: 'tall', insurance: 'tall', medications: 'tall',
+      bipolar: 'spiky', ptsd: 'spiky', ocd: 'spiky',
+      sleep: 'ghost', emerging: 'ghost', 'local-seo': 'square'
+    };
+
+    // Build all creature defs
+    SEO_CLUSTERS.forEach(c => {
+      const pal = CREATURE_PALETTES[c.id] || CREATURE_PALETTES.adhd;
+      const shape = CREATURE_SHAPES[c.id] || 'round';
+      creatureSVG(c.id, pal, shape);
+    });
+
+    // Add unique features to each creature
+    (function addUniqueFeatures() {
+      // ADHD — lightning bolt antennae
+      const a = defs.select('#creature-adhd');
+      a.append('path').attr('d','M-4,-14 L-2,-18 L0,-15 L2,-20').attr('fill','none').attr('stroke','#FF6B35').attr('stroke-width',1.5).attr('stroke-linecap','round');
+      a.append('path').attr('d','M4,-14 L6,-18 L8,-15 L10,-20').attr('fill','none').attr('stroke','#FF6B35').attr('stroke-width',1.5).attr('stroke-linecap','round');
+      // Anxiety — sweat drops
+      const ax = defs.select('#creature-anxiety');
+      ax.append('path').attr('d','M12,-6 Q13,-10 14,-6 Q13,-4 12,-6').attr('fill','#93C5FD');
+      ax.append('path').attr('d','M-12,-8 Q-11,-12 -10,-8 Q-11,-6 -12,-8').attr('fill','#93C5FD');
+      // Depression — rain cloud on head
+      const dp = defs.select('#creature-depression');
+      dp.append('ellipse').attr('cx',0).attr('cy',-18).attr('rx',10).attr('ry',4).attr('fill','#94A3B8').attr('opacity',0.6);
+      dp.append('line').attr('x1',-4).attr('y1',-14).attr('x2',-5).attr('y2',-11).attr('stroke','#93C5FD').attr('stroke-width',0.8);
+      dp.append('line').attr('x1',0).attr('y1',-14).attr('x2',-1).attr('y2',-11).attr('stroke','#93C5FD').attr('stroke-width',0.8);
+      dp.append('line').attr('x1',4).attr('y1',-14).attr('x2',3).attr('y2',-11).attr('stroke','#93C5FD').attr('stroke-width',0.8);
+      // Telepsychiatry — screen/antenna on head
+      const tp = defs.select('#creature-telepsychiatry');
+      tp.append('rect').attr('x',-4).attr('y',-22).attr('width',8).attr('height',5).attr('rx',1).attr('fill','#10B981').attr('stroke','#065F46').attr('stroke-width',0.8);
+      tp.append('rect').attr('x',-2).attr('y',-21).attr('width',4).attr('height',3).attr('rx',0.5).attr('fill','#D1FAE5');
+      // Insurance — little cross/shield
+      const ins = defs.select('#creature-insurance');
+      ins.append('rect').attr('x',-2).attr('y',-22).attr('width',4).attr('height',8).attr('fill','#EF4444');
+      ins.append('rect').attr('x',-4).attr('y',-20).attr('width',8).attr('height',4).attr('fill','#EF4444');
+      // Bipolar — half-and-half coloring (happy/sad eyes)
+      const bp = defs.select('#creature-bipolar');
+      bp.select('circle:nth-child(5)').attr('cy',-4); // left eye slightly down (sad)
+      bp.append('path').attr('d','M8,-6 L10,-8').attr('stroke','#F59E0B').attr('stroke-width',1).attr('stroke-linecap','round'); // right eyebrow up
+      bp.append('path').attr('d','M-8,-4 L-10,-2').attr('stroke','#F59E0B').attr('stroke-width',1).attr('stroke-linecap','round'); // left eyebrow down
+      // PTSD — little shield emblem on chest
+      const pt = defs.select('#creature-ptsd');
+      pt.append('path').attr('d','M0,2 L-5,-2 L-5,-6 L0,-4 L5,-6 L5,-2 Z').attr('fill','#818CF8').attr('stroke','#4338CA').attr('stroke-width',0.8);
+      // OCD — spinning arrows around body
+      const oc = defs.select('#creature-ocd');
+      oc.append('path').attr('d','M-18,6 A12,12 0 0,1 -6,-10').attr('fill','none').attr('stroke','#14B8A6').attr('stroke-width',1).attr('stroke-dasharray','2,2');
+      oc.append('path').attr('d','M18,6 A12,12 0 0,0 6,-10').attr('fill','none').attr('stroke','#14B8A6').attr('stroke-width',1).attr('stroke-dasharray','2,2');
+      // Sleep — zzz and nightcap
+      const sl = defs.select('#creature-sleep');
+      sl.append('text').attr('x',10).attr('y',-12).attr('font-size',8).attr('font-weight',700).attr('fill','#8B5CF6').attr('opacity',0.7).text('z');
+      sl.append('text').attr('x',14).attr('y',-18).attr('font-size',6).attr('font-weight',700).attr('fill','#8B5CF6').attr('opacity',0.5).text('z');
+      sl.append('text').attr('x',17).attr('y',-22).attr('font-size',5).attr('font-weight',700).attr('fill','#8B5CF6').attr('opacity',0.3).text('z');
+      // Medications — pill split line
+      const med = defs.select('#creature-medications');
+      med.append('line').attr('x1',-10).attr('y1',0).attr('x2',10).attr('y2',0).attr('stroke',pal => '#FB7185').attr('stroke-width',1).attr('stroke-dasharray','2,2');
+      // Local SEO — map pin on head
+      const ls = defs.select('#creature-local-seo');
+      ls.append('path').attr('d','M0,-24 Q-4,-24 -4,-28 Q-4,-32 0,-32 Q4,-32 4,-28 Q4,-24 0,-24 L0,-22').attr('fill','#22C55E').attr('stroke','#166534').attr('stroke-width',0.8);
+      ls.append('circle').attr('cx',0).attr('cy',-28).attr('r',1.5).attr('fill','#fff');
+      // Emerging — beaker bubbles
+      const em = defs.select('#creature-emerging');
+      em.append('circle').attr('cx',-8).attr('cy',-20).attr('r',2).attr('fill','#67E8F9').attr('opacity',0.6);
+      em.append('circle').attr('cx',-4).attr('cy',-24).attr('r',1.5).attr('fill','#67E8F9').attr('opacity',0.4);
+      em.append('circle').attr('cx',6).attr('cy',-22).attr('r',2.5).attr('fill','#67E8F9').attr('opacity',0.5);
+    })();
+
+    // ── Render Nodes ──
+    // Keyword nodes get colored circles
+    node.filter(d => d.type === 'keyword')
+      .append('circle')
+      .attr('r', d => d.r)
+      .attr('fill', d => STATUS_COLORS[d.status] || '#ccc')
+      .attr('stroke', 'rgba(255,255,255,0.8)')
+      .attr('stroke-width', 1.5);
+
+    // Center node
+    node.filter(d => d.type === 'center')
+      .append('circle')
+      .attr('r', 28)
+      .attr('fill', '#1a3a5c')
+      .attr('stroke', '#F6C744')
+      .attr('stroke-width', 3);
+
+    node.filter(d => d.type === 'center')
       .append('text')
-      .text(d => d.type === 'center' ? '🗺️' : d.label.split(' ')[0])
+      .text('🗺️')
       .attr('text-anchor', 'middle')
-      .attr('dy', d => d.type === 'center' ? 4 : -2)
-      .attr('font-size', d => d.type === 'center' ? 18 : 14)
+      .attr('dy', 5)
+      .attr('font-size', 20)
       .style('pointer-events', 'none');
 
+    // Pillar nodes get creature sprites!
+    node.filter(d => d.type === 'pillar').each(function(d) {
+      const el = d3.select(this);
+      // Invisible hit area circle
+      el.append('circle').attr('r', 22).attr('fill', 'transparent').attr('stroke', 'none');
+      // Status ring
+      el.append('circle').attr('r', 22).attr('fill', 'none')
+        .attr('stroke', STATUS_COLORS[d.clusterStatus] || '#fff')
+        .attr('stroke-width', 2.5)
+        .attr('stroke-dasharray', d.clusterStatus === 'gap' ? '4,3' : 'none')
+        .attr('opacity', 0.7);
+      // Use creature sprite
+      el.append('use')
+        .attr('href', '#creature-' + d.id)
+        .attr('transform', 'scale(1)')
+        .style('pointer-events', 'none');
+    });
+
+    // Pillar name labels below creatures
     node.filter(d => d.type === 'pillar')
       .append('text')
-      .text(d => d.label.replace(/^. /, ''))
+      .text(d => d.cluster.pillar)
       .attr('text-anchor', 'middle')
-      .attr('dy', d => d.r + 14)
+      .attr('dy', 30)
       .attr('font-size', 9)
       .attr('font-weight', 700)
       .attr('fill', 'var(--charcoal)')
