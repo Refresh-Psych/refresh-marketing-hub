@@ -2715,45 +2715,21 @@
       </div>
     </div>
 
-    <!-- PODCAST INSIGHTS (Key Takeaways, Infographic, Action Items) -->
+    <!-- ACTION ITEMS -->
     <div class="podcast-insights" id="podcastInsights">
-
-      <!-- Key Metrics -->
-      <div class="reveal">
-        <div class="insights-section-header">
-          <div class="section-icon" style="background: rgba(43,108,176,0.08);">📊</div>
-          <h3>Key Metrics from This Episode</h3>
-          <span class="section-tag" style="color: var(--blue); background: rgba(43,108,176,0.08);">Data</span>
-        </div>
-        <div class="stats-infographic" id="podcastMetrics"></div>
-      </div>
-      <div class="reveal">
-        <div class="insights-section-header">
-          <div class="section-icon" style="background: rgba(43,108,176,0.08);">&#128161;</div>
-          <h3>Key Takeaways</h3>
-          <span class="section-tag" style="color: var(--blue); background: rgba(43,108,176,0.08);">Insights</span>
-        </div>
-        <div class="takeaways-grid" id="takeawaysGrid"></div>
-      </div>
-
-      <!-- Stats Infographic -->
-      <div class="reveal">
-        <div class="insights-section-header">
-          <div class="section-icon" style="background: rgba(246,199,68,0.12);">&#128202;</div>
-          <h3>By the Numbers</h3>
-          <span class="section-tag" style="color: #D69E2E; background: rgba(214,158,46,0.08);">Infographic</span>
-        </div>
-        <div class="stats-infographic" id="statsInfographic"></div>
-      </div>
-
-      <!-- Action Items -->
       <div class="reveal">
         <div class="insights-section-header">
           <div class="section-icon" style="background: rgba(56,161,105,0.08);">&#9989;</div>
-          <h3>Action Items for Your Practice</h3>
-          <span class="section-tag" style="color: #38A169; background: rgba(56,161,105,0.08);">Do This Week</span>
+          <h3>Action Items</h3>
+          <span class="section-tag" style="color: #38A169; background: rgba(56,161,105,0.08);">This Week</span>
         </div>
-        <div class="action-items-list" id="actionItemsList"></div>
+        <div class="action-items-list" style="display:flex;flex-direction:column;gap:6px;margin-top:10px;">
+          <div style="display:flex;align-items:baseline;gap:8px;font-size:12.5px;line-height:1.5;"><span style="color:#38A169;font-weight:700;">1.</span> Publish 90-Day Content Engine blog &#8212; positions Dr. Nepa as thought leader before Talkiatry&#8217;s content team launches</div>
+          <div style="display:flex;align-items:baseline;gap:8px;font-size:12.5px;line-height:1.5;"><span style="color:#38A169;font-weight:700;">2.</span> Record first YouTube Short (ADHD procrastination) &#8212; 45 sec talking head, mirrors Dr. Tracey Marks format</div>
+          <div style="display:flex;align-items:baseline;gap:8px;font-size:12.5px;line-height:1.5;"><span style="color:#38A169;font-weight:700;">3.</span> Post GBP update to all 16 locations &#8212; Stress Awareness Month + insurance list + &#8220;What&#8217;s New&#8221; tag</div>
+          <div style="display:flex;align-items:baseline;gap:8px;font-size:12.5px;line-height:1.5;"><span style="color:#38A169;font-weight:700;">4.</span> Draft LinkedIn vulnerability post &#8212; Dr. Jake Goodman format, 150-250 words, no CTA</div>
+          <div style="display:flex;align-items:baseline;gap:8px;font-size:12.5px;line-height:1.5;"><span style="color:#38A169;font-weight:700;">5.</span> Create 3 audiogram clips from Episode 17 for IG + LinkedIn distribution</div>
+        </div>
       </div>
     </div>
 
@@ -2761,11 +2737,9 @@
     <div class="podcast-archive reveal">
       <div class="podcast-archive-header">
         <h3>All Episodes</h3>
-        <span class="episode-count" id="episodeCount">2 episodes</span>
+        <span class="episode-count">16 episodes</span>
       </div>
-      <div class="episode-list" id="episodeList">
-        <!-- Episodes are rendered by JS from podcastEpisodes array -->
-      </div>
+      <div class="episode-list" id="episodeList"></div>
     </div>
   </section>
 
@@ -4356,6 +4330,50 @@ function filterContent() {
     const matchesSearch = !query || card.textContent.toLowerCase().includes(query);
     card.style.display = (matchesFilter && matchesSearch) ? '' : 'none';
   });
+}
+
+/* ═══════════════ EPISODE ARCHIVE ═══════════════ */
+const BASE = 'https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-daily-podcast/';
+const episodes = [
+  {d:'2026-04-06',n:17,t:'The $232K/Month Blueprint: How One Psychiatrist Out-Branded Talkiatry With Just a Camera'},
+  {d:'2026-04-05',n:16,t:'Pharmacogenomics for Multi-State Telepsychiatry: The DNA-Guided Prescribing Blueprint'},
+  {d:'2026-04-04',n:15,t:'The 6-Step AI Playbook: Save 45 Min/Day and $120K/Year With Tools Competitors Already Use'},
+  {d:'2026-04-03',n:14,t:'The Weekend Compliance Playbook: 7 Steps to Bulletproof Your Telepsychiatry Practice'},
+  {d:'2026-04-01',n:13,t:'5 Competitive Intelligence Myths Costing Your Practice Patients and Market Share'},
+  {d:'2026-03-31',n:12,t:'The Review Numbers That Run Your Practice: 84% of Patients Google You Before Booking'},
+  {d:'2026-03-30',n:11,t:'From 42% to 91% Collection Rate in 14 Months \u2014 The Revenue Cycle Turnaround'},
+  {d:'2026-03-29',n:10,t:'Telehealth Technology for a 16-Location Practice: What to Build Right Now'},
+  {d:'2026-03-28',n:9,t:'The 2028 Retention Playbook: AI, Predictive Analytics, and Patient Experience Design'},
+  {d:'2026-03-27',n:8,t:'The Friday Playbook: 7 Steps to Build a Social Media Presence That Fills Your Calendar'},
+  {d:'2026-03-25',n:7,t:'5 Private Practice Growth Myths Costing Your Psychiatry Practice $200K+ Per Year'},
+  {d:'2026-03-24',n:6,t:'The Numbers Behind Scaling: 7 Statistics That Reveal When to Grow Into a Group'},
+  {d:'2026-03-23',n:5,t:'How Nushama Went From Zero to 12,000+ Ketamine Patients \u2014 The Emerging Treatment Playbook'},
+  {d:'2026-03-22',n:4,t:'Paid Advertising for Multi-State Telepsychiatry: The 16-Location Playbook'},
+  {d:'2026-03-21',n:3,t:'The Future of Work-Life Balance: 6 Trends Reshaping How Psychiatrists Run Practices'},
+  {d:'2026-03-19',n:1,t:'SEO for Mental Health Practices: How One Psychiatrist Went from Page 4 to #1 in 90 Days'},
+];
+const epList = document.getElementById('episodeList');
+if (epList) {
+  epList.innerHTML = episodes.map(ep => {
+    const url = BASE + 'podcast-' + ep.d + '.mp3';
+    const dateStr = new Date(ep.d + 'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+    return '<div class="episode-row" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:12.5px;cursor:pointer;" onclick="loadEpisode(\'' + url + '\')">' +
+      '<span style="flex-shrink:0;font-weight:800;color:var(--blue);font-size:11px;width:28px;">E' + ep.n + '</span>' +
+      '<span style="flex:1;font-weight:600;color:var(--deep-blue);line-height:1.4;">' + ep.t + '</span>' +
+      '<span style="flex-shrink:0;font-size:10.5px;color:#94a3b8;">' + dateStr + '</span>' +
+      '<span style="flex-shrink:0;font-size:11px;cursor:pointer;" title="Play">&#9654;</span>' +
+    '</div>';
+  }).join('');
+}
+function loadEpisode(url) {
+  if (!podcastAudio) return;
+  podcastAudio.src = url;
+  podcastAudio.load();
+  podcastAudio.play().then(() => {
+    podcastPlayBtn.classList.add('playing');
+    startVisualizer();
+  }).catch(() => {});
+  document.getElementById('podcast').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 /* ═══════════════ TAB NAVIGATION ═══════════════ */
