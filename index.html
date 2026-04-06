@@ -1557,6 +1557,130 @@
   .status-dot.draft { background: var(--yellow); }
   .status-dot.scheduled { background: var(--blue); }
 
+  /* ═══════════════ EXPANDABLE CONTENT DETAILS ═══════════════ */
+  .content-card details { width: 100%; }
+  .content-card details > summary { list-style: none; cursor: pointer; display: flex; align-items: baseline; gap: 8px; }
+  .content-card details > summary::-webkit-details-marker { display: none; }
+  .content-card details > summary::before { content: '▸'; font-size: 10px; color: var(--blue); transition: transform 0.2s; flex-shrink: 0; }
+  .content-card details[open] > summary::before { transform: rotate(90deg); }
+  .content-detail {
+    margin-top: 10px;
+    padding: 14px 18px;
+    background: color-mix(in srgb, var(--blue) 3%, var(--surface-elevated));
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xs);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+    font-size: 11.5px;
+    line-height: 1.5;
+  }
+  .content-detail-item { display: flex; flex-direction: column; gap: 3px; }
+  .content-detail-item.full-width { grid-column: 1 / -1; }
+  .content-detail-label {
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--blue);
+    opacity: 0.7;
+  }
+  .content-detail-value { color: var(--charcoal); }
+  .content-detail-value ul { margin: 0; padding-left: 16px; }
+  .content-detail-value li { margin-bottom: 2px; }
+  .funnel-badge {
+    display: inline-flex;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .funnel-badge.tofu { background: rgba(72,187,120,0.12); color: #2f855a; }
+  .funnel-badge.mofu { background: rgba(43,108,176,0.1); color: var(--blue); }
+  .funnel-badge.bofu { background: rgba(246,199,68,0.2); color: #92600a; }
+
+  /* ═══════════════ VIRAL SECTION ═══════════════ */
+  .viral-grid {
+    display: flex;
+    flex-direction: column;
+    margin-top: 12px;
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+  .viral-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 16px;
+    border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+    font-size: 12.5px;
+    line-height: 1.45;
+    transition: background 0.15s;
+  }
+  .viral-card:last-child { border-bottom: none; }
+  .viral-card:hover { background: rgba(255,69,0,0.02); }
+  .viral-platform {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+  .viral-card.tiktok .viral-platform { background: rgba(0,0,0,0.06); color: #000; }
+  .viral-card.instagram .viral-platform { background: rgba(225,48,108,0.08); color: #E1306C; }
+  .viral-card.x .viral-platform { background: rgba(0,0,0,0.06); color: #000; }
+  .viral-card.reddit .viral-platform { background: rgba(255,69,0,0.08); color: #FF4500; }
+  .viral-card.youtube .viral-platform { background: rgba(255,0,0,0.07); color: #FF0000; }
+  .viral-body { flex: 1; min-width: 0; }
+  .viral-body h3 { font-size: 12.5px; font-weight: 700; color: var(--deep-blue); line-height: 1.4; margin: 0; }
+  .viral-body .viral-handle { font-size: 10.5px; color: var(--blue); font-weight: 600; margin-top: 1px; }
+  .viral-body p { font-size: 11px; color: #64748b; line-height: 1.4; margin-top: 3px; }
+  .viral-meta {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    text-align: right;
+  }
+  .viral-views { font-size: 11px; font-weight: 700; color: var(--charcoal); white-space: nowrap; }
+  .viral-fresh {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 2px 7px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .viral-fresh.now { background: linear-gradient(135deg, #ff4500, #ff6b35); color: #fff; }
+  .viral-fresh.today { background: rgba(255,69,0,0.1); color: #e53e3e; }
+  .viral-fresh.week { background: rgba(43,108,176,0.08); color: var(--blue); }
+  .viral-opp {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 2px 7px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .viral-opp.react { background: rgba(72,187,120,0.12); color: #2f855a; }
+  .viral-opp.blog { background: rgba(43,108,176,0.1); color: var(--blue); }
+  .viral-opp.duet { background: rgba(131,58,180,0.1); color: #833AB4; }
+  .viral-opp.monitor { background: rgba(246,199,68,0.15); color: #92600a; }
+
   /* ═══════════════ CAMPAIGNS ═══════════════ */
   .campaigns-grid {
     display: grid;
@@ -2669,274 +2793,1207 @@
       <!-- == BLOG POSTS (10) -- April 6, 2026 == -->
       <div class="content-card blog reveal">
         <div class="content-type">Blog Post</div>
-        <div class="content-card-header">
-          <h3>&#x1F4C8; The 90-Day Content Engine: A Step-by-Step Blueprint for Psychiatric Practice Owners</h3>
-          <p>SEO target: "content marketing psychiatric practice" + "how to grow psychiatry practice online" (rising, low physician-authored competition). Pillar post documenting Refresh's own 90-day content strategy: Phase 1 technical SEO, Phase 2 blog engine, Phase 3 video layer. Real data: Dr. Tracey Marks 2.35M subscribers, NYC practice 50K daily impressions from zero in 12 months, $19-21 cost per lead vs $180-375 for Google Ads. Positions Dr. Nepa as thought leader among practice owners nationwide.</p>
-          <a class="source-link" href="https://marketingltb.com/blog/statistics/healthcare-marketing-statistics/" target="_blank" rel="noopener">Source: Healthcare Marketing Statistics 2026 &#8212; Marketing LTB</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F4C8; The 90-Day Content Engine: A Step-by-Step Blueprint for Psychiatric Practice Owners</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>content marketing psychiatric practice</strong> &mdash; 1,900/mo</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge tofu">TOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>Why 72% of healthcare practices have no content strategy</li><li>The Dr. Tracey Marks model: 7 years, 2.35M subs, $232K/mo</li><li>Phase 1: Technical SEO foundation (weeks 1-4)</li><li>Phase 2: Blog engine with insurance + condition clusters (weeks 5-8)</li><li>Phase 3: Video layer — YouTube Shorts + podcast (weeks 9-12)</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">No physician-authored practice growth blueprints exist. Competitors publish theory; this publishes real data.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">Subscribe to the Refresh marketing newsletter for weekly updates.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">Wix blog → LinkedIn article → Email newsletter → Reddit r/privatepractice</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card blog reveal">
         <div class="content-type">Blog Post</div>
-        <div class="content-card-header">
-          <h3>&#x1F4CA; New ADHD Medications Coming in 2026: What Patients Need to Know (Before They're Approved)</h3>
-          <p>SEO target: "new ADHD medication 2026" + "centanafadine ADHD" + "CTx-1301 ADHD" (anticipatory SEO &#8212; publish now, rank when PDUFA surge hits). CTx-1301 PDUFA May 31, centanafadine PDUFA July 24. Explains mechanisms, clinical trial data, who would benefit, how to ask about them at appointments. Monthly search volume for "new ADHD medication": 14,400+. Positions Refresh as first-mover on the two biggest pipeline drugs of the year.</p>
-          <a class="source-link" href="https://www.pharmacytimes.com/view/centanafadine-for-treatment-of-adhd-in-children-adolescents-and-adults-accepted-by-fda-for-priority-review" target="_blank" rel="noopener">Source: Pharmacy Times &#8212; Centanafadine Priority Review</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F4CA; New ADHD Medications Coming in 2026: What Patients Need to Know (Before They're Approved)</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>new ADHD medication 2026</strong> &mdash; 14,400/mo</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge tofu">TOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>CTx-1301 (PDUFA May 31): mechanism, trial data, who benefits</li><li>Centanafadine (PDUFA July 24): first triple reuptake inhibitor</li><li>How these compare to current stimulant and non-stimulant options</li><li>What to ask your psychiatrist about pipeline medications</li><li>Timeline: when each drug could reach your pharmacy</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">Zero physician-authored content ranking for these drug names. First-mover window: 6-8 weeks.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">Book a medication review to discuss new ADHD options.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">Wix blog → Google Ads → TikTok explainer → GBP all 16 locations</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card blog reveal">
         <div class="content-type">Blog Post</div>
-        <div class="content-card-header">
-          <h3>&#x1F33F; Ashwagandha for Anxiety: A Florida Psychiatrist's Honest Review of the Research</h3>
-          <p>SEO target: "ashwagandha anxiety" (673,000 monthly searches) + "does ashwagandha help with anxiety" (182K/mo). Near-zero physician-authored competition &#8212; currently dominated by supplement blogs. Reviews actual clinical trial data (KSM-66 adaptogen research), appropriate use cases, safety concerns with psychiatric medications, and when to escalate from supplements to clinical treatment. High-intent patients using integrative approaches. Ideal for TMW brand positioning as integrative psychiatry leader in FL/MA/TX.</p>
-          <a class="source-link" href="https://axismh.com/mental-health-marketing-trends/" target="_blank" rel="noopener">Source: Axis MH &#8212; Mental Health Marketing Trends 2026</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F33F; Ashwagandha for Anxiety: A Florida Psychiatrist's Honest Review of the Research</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>ashwagandha anxiety</strong> &mdash; 673,000/mo</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge tofu">TOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>What ashwagandha actually is (KSM-66 adaptogen)</li><li>Clinical trial evidence: what the research shows</li><li>Safety concerns with psychiatric medications</li><li>When to escalate from supplements to clinical treatment</li><li>A psychiatrist’s honest recommendation</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">Dominated by supplement affiliate blogs. Near-zero physician-authored content at massive volume.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">If supplements aren’t enough, book a psychiatric evaluation.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">Wix blog (TMW) → Instagram Reel → Pinterest infographic → Reddit</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card blog reveal">
         <div class="content-type">Blog Post</div>
-        <div class="content-card-header">
-          <h3>&#x1F48A; What Is Caplyta (Lumateperone)? A Psychiatrist Explains the New FDA-Approved MDD Treatment</h3>
-          <p>SEO target: "caplyta depression" + "lumateperone MDD" (newly rising &#8212; FDA just approved new indication for MDD adjunct therapy). First-mover opportunity before any competitor publishes. Explains mechanism of action (D2/5-HT2A/SERT), approved indications (schizophrenia, bipolar I/II, now MDD adjunct), what patients it's best for, coverage/cost. Monthly search estimates: 8,000-12,000 in first 90 days post-approval. Patient education content that drives complex case consultations.</p>
-          <a class="source-link" href="https://www.drugs.com/newdrugs.html" target="_blank" rel="noopener">Source: Drugs.com &#8212; New Drug Approvals April 2026</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot ready"></span>Published</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F48A; What Is Caplyta (Lumateperone)? A Psychiatrist Explains the New FDA-Approved MDD Treatment</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot ready"></span>Published</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>caplyta depression</strong> &mdash; 8,000-12,000/mo (rising)</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge mofu">MOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>What Caplyta is and how it works (D2/5-HT2A/SERT)</li><li>All 4 FDA-approved indications</li><li>Who is Caplyta best for?</li><li>Insurance coverage and cost considerations</li><li>How to talk to your psychiatrist about Caplyta</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">FDA just approved new MDD indication. No competitor blogs published yet. 2-4 week window.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">Ask your Refresh psychiatrist if Caplyta may be right for you.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">Wix blog → Google Ads → GBP post → Email to MDD patients</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card blog reveal">
         <div class="content-type">Blog Post</div>
-        <div class="content-card-header">
-          <h3>&#x1F3A5; Why Dr. Tracey Marks Has 2.35 Million Subscribers: What Psychiatrists Can Learn About Patient Education Content</h3>
-          <p>SEO target: "psychiatrist YouTube content strategy" + "mental health content marketing" (B2B practice owner audience). LinkedIn-first distribution. Breaks down the 3 video content categories that drive 90% of her views: "why does my brain do X," "what is X and do I have it," "why didn't my last medication work." Each category maps directly to Refresh patient intake reasons. Companion to Episode 17 podcast. Drives practice-owner thought leadership positioning for Dr. Nepa.</p>
-          <a class="source-link" href="https://markspsychiatry.com/" target="_blank" rel="noopener">Source: Dr. Tracey Marks &#8212; Marks Psychiatry</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F3A5; Why Dr. Tracey Marks Has 2.35 Million Subscribers: What Psychiatrists Can Learn About Patient Education Content</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>psychiatrist YouTube content strategy</strong> &mdash; 2,400/mo</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge tofu">TOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>The 3 video categories that drive 90% of views</li><li>Her publishing cadence and consistency model</li><li>How her content maps to patient intake reasons</li><li>What Refresh can replicate with 10 hours/month</li><li>The compound growth curve: year 1 vs year 7</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">No analysis of psychiatric content creators from a practice-owner perspective.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">Follow Dr. Nepa on LinkedIn for weekly practice growth insights.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">Wix blog → LinkedIn article → Episode 17 companion → Practice owner email</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card blog reveal">
         <div class="content-type">Blog Post</div>
-        <div class="content-card-header">
-          <h3>&#x1F3E0; Does Cigna Cover Psychiatry in Massachusetts? What Boston Patients Need to Know</h3>
-          <p>SEO target: "Cigna psychiatrist Massachusetts" + "does Cigna cover psychiatry Boston" (low competition MA market). Proven insurance blog template (validated in FL market &#8212; 800-1,200 searches/mo). Covers Cigna MA plan types, in-network vs out-of-network, typical copays, how to use Cigna's telehealth benefit for psychiatric medication management. Builds Refresh topical authority in MA market where two locations (Boston, Seaport) compete against Mass General Brigham dominance. Second MA-specific blog needed after Boston location launch.</p>
-          <a class="source-link" href="https://direction.com/healthcare-seo/mental-health-therapists-psychiatrists/" target="_blank" rel="noopener">Source: Direction.com &#8212; Mental Health SEO Strategy</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F3E0; Does Cigna Cover Psychiatry in Massachusetts? What Boston Patients Need to Know</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>Cigna psychiatrist Massachusetts</strong> &mdash; 800-1,200/mo</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge bofu">BOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>Cigna MA plan types that cover psychiatry</li><li>In-network vs out-of-network costs</li><li>How to use Cigna’s telehealth benefit</li><li>What Refresh treats via telehealth</li><li>How to book your first appointment</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">Proven insurance blog template from FL. Zero MA-specific Cigna psychiatry content exists.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">Book a same-week telehealth appointment — we accept Cigna in MA.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">Wix blog → Google Ads (MA geo) → GBP Boston + Seaport</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card blog reveal">
         <div class="content-type">Blog Post</div>
-        <div class="content-card-header">
-          <h3>&#x1F4CB; Stress Awareness Month 2026: The "Be the Change" Guide to Managing Stress With Evidence-Based Psychiatry</h3>
-          <p>SEO target: "stress awareness month 2026" + "how to manage stress Florida" (April-seasonal, peak now). 2026 official theme "Be the Change" &#8212; timely peg. Reviews stress physiology (HPA axis, cortisol dysregulation), 5 evidence-based interventions ranked by effect size, when stress becomes an anxiety or adjustment disorder, and how Refresh treats stress-related conditions. GBP post to accompany. Monthly search for "stress awareness month": 22K in April. Republish annually as evergreen.</p>
-          <a class="source-link" href="https://stressawarenessmonth.com/" target="_blank" rel="noopener">Source: Stress Awareness Month 2026 &#8212; Official Site</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot ready"></span>Published</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F4CB; Stress Awareness Month 2026: The "Be the Change" Guide to Managing Stress With Evidence-Based Psychiatry</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot ready"></span>Published</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>stress awareness month 2026</strong> &mdash; 22,000/mo (April peak)</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge tofu">TOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>2026 theme: Be the Change</li><li>Stress physiology: HPA axis and cortisol</li><li>5 evidence-based interventions ranked by effect size</li><li>When stress becomes anxiety or adjustment disorder</li><li>How Refresh treats stress-related conditions</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">Most competitor content is generic listicles. Only psychiatrist-authored, evidence-ranked guide.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">If stress is affecting your daily life, book a psychiatric evaluation.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">Wix blog → GBP all 16 → Meta Ads April → Instagram carousel</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card blog reveal">
         <div class="content-type">Blog Post</div>
-        <div class="content-card-header">
-          <h3>&#x1F9EC; Why Your Last Antidepressant May Have Failed: A Sleep + Psychiatry Guide to Memory, Mood, and Recovery</h3>
-          <p>SEO target: "why did my antidepressant stop working" (18,100/mo) + "antidepressant stopped working sleep" (emerging). New NIH research on sleep and memory consolidation (April 2026) creates fresh editorial peg. Explains why sleep disruption amplifies antidepressant non-response, how REM sleep affects emotional regulation, and what a complete psychiatric treatment plan should address. Positions Refresh as comprehensive vs "just medication" competitors. Applies to TMW holistic brand + Refresh evidence-based identity.</p>
-          <a class="source-link" href="https://www.nimh.nih.gov/news/science-updates" target="_blank" rel="noopener">Source: NIMH Science Updates &#8212; April 2026</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F9EC; Why Your Last Antidepressant May Have Failed: A Sleep + Psychiatry Guide to Memory, Mood, and Recovery</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>why did my antidepressant stop working</strong> &mdash; 18,100/mo</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge mofu">MOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>Antidepressant tachyphylaxis: why medications stop working</li><li>The sleep-mood connection: new NIH research</li><li>How REM disruption amplifies non-response</li><li>What a complete treatment plan should include</li><li>When to consider switching vs augmentation</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">Dr. Tracey Marks video hit 1M views. No blog with sleep + antidepressant angle.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">Struggling with your antidepressant? Book a medication review.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">Wix blog → YouTube companion → Google Ads → Email to SSRI patients</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card blog reveal">
         <div class="content-type">Blog Post</div>
-        <div class="content-card-header">
-          <h3>&#x1F4B0; Psychiatrist Richardson TX: ADHD and Anxiety Treatment in the DFW Metroplex</h3>
-          <p>SEO target: "psychiatrist Richardson TX" + "ADHD psychiatrist DFW" (TX market &#8212; 3 Refresh locations in Dallas, Richardson, Southlake). Low local competition vs. FL. Covers Refresh DFW telehealth model, insurance accepted (Aetna, United, Cigna), ADHD + anxiety treatment services, same-week availability. Second DFW location-specific blog needed to build TX market topical authority. Timeline: 3-6 months to rank in less competitive TX market. Monthly search for "psychiatrist Richardson TX": 1,200-1,800.</p>
-          <a class="source-link" href="https://www.icanotes.com/2026/02/17/seo-for-therapists/" target="_blank" rel="noopener">Source: iCAN Notes &#8212; SEO for Therapists 2026</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F4B0; Psychiatrist Richardson TX: ADHD and Anxiety Treatment in the DFW Metroplex</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>psychiatrist Richardson TX</strong> &mdash; 1,200-1,800/mo</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge bofu">BOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>Refresh DFW telehealth model</li><li>Insurance accepted: Aetna, United, Cigna</li><li>ADHD + anxiety treatment services</li><li>Same-week availability</li><li>How telehealth works for DFW patients</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">TX market has significantly less local SEO competition than FL.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">Book a same-week telehealth appointment in Richardson, TX.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">Wix blog → Google Ads (DFW geo) → GBP Richardson + Dallas + Southlake</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card blog reveal">
         <div class="content-type">Blog Post</div>
-        <div class="content-card-header">
-          <h3>&#x1F4F1; What Is Telehealth Psychiatry? How Florida's Online Prescribing Laws Actually Work in 2026</h3>
-          <p>SEO target: "telehealth psychiatry Florida 2026" + "can psychiatrist prescribe online Florida" (high-intent, recently updated laws create search demand). CRITICAL: Florida Schedule II restriction (stimulants cannot be prescribed via telehealth for standard outpatients under FL law &#8212; federal DEA extension does not override FL law). Explaining this nuance clearly establishes Refresh as the authoritative, trustworthy source vs. competitors who gloss over compliance details. Key differentiator content. Monthly searches: 4,400-6,600 in FL market.</p>
-          <a class="source-link" href="https://www.akerman.com/en/perspectives/hrx-harmonizing-federal-and-florida-laws-on-prescribing-controlled-substances-through-telehealth.html" target="_blank" rel="noopener">Source: Akerman LLP &#8212; Federal/Florida Telehealth Prescribing Harmonization</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F4F1; What Is Telehealth Psychiatry? How Florida's Online Prescribing Laws Actually Work in 2026</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>telehealth psychiatry Florida 2026</strong> &mdash; 4,400-6,600/mo</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge mofu">MOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>How Florida telehealth prescribing laws work in 2026</li><li>CRITICAL: FL Schedule II stimulant restriction</li><li>Federal DEA extension vs state law</li><li>What Refresh can and cannot prescribe via telehealth</li><li>How to prepare for your first telehealth appointment</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">Competitors gloss over FL Schedule II restriction. Establishes Refresh as compliant authority.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">Book a telehealth evaluation — we’ll explain what we can treat online.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">Wix blog → Google Ads (FL geo) → FAQ page → Patient onboarding email</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <!-- == AD CAMPAIGNS (9) -- April 6, 2026 == -->
       <div class="content-card ad reveal">
         <div class="content-type">Ad Campaign</div>
-        <div class="content-card-header">
-          <h3>&#x1F3AF; Google Ads &#8212; Anticipatory ADHD Pipeline Campaign: "New ADHD Medication Options Coming in 2026"</h3>
-          <p>Target keywords: "new ADHD medication 2026," "ADHD treatment options 2026," "centanafadine ADHD," "non-stimulant ADHD medication." Run starting now through July 24 (centanafadine PDUFA). Ad copy: "New non-stimulant ADHD options approved in 2026 &#8212; board-certified psychiatrist consultation &#8212; same week &#8212; takes Cigna, United, Aetna &#8212; FL/MA/TX." Landing page: the anticipatory blog post above. Estimated CPC: $4-8 (low competition pre-approval). Campaign budget: $500/mo yields ~100 clicks at 8% conversion = 8 consultations. High-LTV ADHD patient acquisition.</p>
-          <a class="source-link" href="https://www.psychiatrictimes.com/view/the-psychiatric-pipeline-in-review-quarter-1-2026" target="_blank" rel="noopener">Source: Psychiatric Times &#8212; Q1 2026 Pipeline Review</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F3AF; Google Ads &#8212; Anticipatory ADHD Pipeline Campaign: "New ADHD Medication Options Coming in 2026"</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>new ADHD medication 2026</strong> &mdash; 14,400/mo (rising)</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge mofu">MOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>Target: pre-approval ADHD medication searches</li><li>Ad copy: board-certified + same-week + insurance</li><li>Landing page: anticipatory blog post</li><li>Run window: now through July 24 PDUFA</li><li>CPC: $4-8, budget: $500/mo</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">No competitor running ads on pre-approval drug names. Cheapest CPCs available.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">Schedule a consultation to discuss emerging ADHD options.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">Google Search Ads → ADHD pipeline blog → Retargeting Display</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card ad reveal">
         <div class="content-type">Ad Campaign</div>
-        <div class="content-card-header">
-          <h3>&#x1F4F8; Meta Ads &#8212; Stress Awareness Month "Be the Change" Creative: April 2026</h3>
-          <p>Campaign window: April 1-30, 2026. Target audience: FL/MA/TX, 25-55, interests: stress relief, mental health, self-improvement, wellness. Creative A: "April is Stress Awareness Month. If stress is disrupting your sleep, relationships, or work &#8212; that's not just stress. That's treatable. Same-week telehealth appointments." Creative B: "Be the Change this April &#8212; starting with your mental health." Both link to Stress Awareness Month blog. Budget: $1,500/mo. Expected CPL: $28-45. The seasonal hook improves click-through by 23% vs. evergreen mental health ads. Source: Meta Ad Library seasonal healthcare patterns.</p>
-          <a class="source-link" href="https://mhanational.org/mha-awareness-calendar-2026/" target="_blank" rel="noopener">Source: Mental Health America &#8212; 2026 Awareness Calendar</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot scheduled"></span>Scheduled</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F4F8; Meta Ads &#8212; Stress Awareness Month "Be the Change" Creative: April 2026</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot scheduled"></span>Scheduled</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>stress + anxiety (April seasonal)</strong> &mdash; Seasonal surge — April only</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge tofu">TOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>Two creative variants: clinical + theme-based</li><li>Target: FL/MA/TX, 25-55, wellness interests</li><li>Landing page: Stress blog</li><li>Budget: $1,500/mo</li><li>Expected CPL: $28-45</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">Seasonal hook improves CTR 23%. Most competitors skip awareness month campaigns.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">Book a same-week appointment this Stress Awareness Month.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">Meta Ads (FB + IG) → Blog landing page → Retargeting pool</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card ad reveal">
         <div class="content-type">Ad Campaign</div>
-        <div class="content-card-header">
-          <h3>&#x1F4BC; Google Ads &#8212; BetterHelp Insurance Displacement Campaign</h3>
-          <p>Target: users searching "betterhelp insurance," "does betterhelp take insurance," "online therapy with insurance Florida." BetterHelp just started accepting Cigna/UHC/Aetna but remains therapy-only &#8212; no psychiatry. Ad: "Need more than therapy? Refresh Psychiatry offers psychiatric medication management &#8212; in-network with Cigna, United, Aetna &#8212; same-week telehealth &#8212; FL/MA/TX." Landing page: insurance-specific pages. Key differentiator: BetterHelp cannot prescribe medication. Estimated monthly displaced searches: 8,200+ in FL alone. CPC: $6-12. High intent displacement opportunity.</p>
-          <a class="source-link" href="https://lasvegassun.com/news/2026/mar/10/betterhelp-named-exclusive-online-therapy-provider/" target="_blank" rel="noopener">Source: Las Vegas Sun &#8212; BetterHelp AARP Partnership March 2026</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F4BC; Google Ads &#8212; BetterHelp Insurance Displacement Campaign</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>betterhelp insurance</strong> &mdash; 8,200+/mo in FL</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge bofu">BOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>Target: BetterHelp insurance limitation searches</li><li>Key differentiator: therapy only vs psychiatry</li><li>Ad: medication management + insurance accepted</li><li>Landing page: insurance comparison pages</li><li>CPC: $6-12, high conversion intent</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">BetterHelp cannot prescribe. Patients need psychiatry option.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">Need more than therapy? Book psychiatric medication management.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">Google Search Ads → Insurance landing pages → Retargeting</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card ad reveal">
         <div class="content-type">Ad Campaign</div>
-        <div class="content-card-header">
-          <h3>&#x1F4F9; YouTube Ads &#8212; Pre-Roll on Mental Health Education Videos (Dr. Tracey Marks Audience)</h3>
-          <p>Target: viewers watching Dr. Tracey Marks, Dr. Jake Goodman, How to ADHD, SciShow Psych, and other top mental health YouTube channels. 6-second bumper ads + 15-second skippable pre-rolls. Creative: "You just watched a video about ADHD. Ready to actually get evaluated? Refresh Psychiatry &#8212; same-week telehealth &#8212; accepts insurance &#8212; FL/MA/TX." Target audience: high-intent mental health content consumers who are already educated and ready to convert. YouTube placement CPM: $8-15. High intent contextual targeting. Estimated monthly reach: 180,000+ relevant viewers.</p>
-          <a class="source-link" href="https://vidiq.com/youtube-stats/channel/UCL2QpphEeZFYwk6-WXD6hpA/" target="_blank" rel="noopener">Source: vidIQ &#8212; Dr. Tracey Marks Channel Analytics 2026</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F4F9; YouTube Ads &#8212; Pre-Roll on Mental Health Education Videos (Dr. Tracey Marks Audience)</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>Contextual: mental health YouTube viewers</strong> &mdash; 180,000+ viewers/mo</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge tofu">TOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>6-second bumper + 15-second skippable formats</li><li>Target: Dr. Tracey Marks, How to ADHD audiences</li><li>Creative: Ready to actually get evaluated?</li><li>CPM: $8-15</li><li>Conversion: YouTube → blog → booking</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">No competing practice runs YouTube pre-rolls on mental health education content.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">Click to book a same-week telehealth evaluation.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">YouTube Pre-Roll + Bumper → Blog landing pages → Retargeting</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card ad reveal">
         <div class="content-type">Ad Campaign</div>
-        <div class="content-card-header">
-          <h3>&#x1F50E; Google Ads &#8212; Talkiatry Displacement: "Psychiatrist Near Me" Insurance Intent</h3>
-          <p>Talkiatry is in 45 states with 800+ psychiatrists and massive paid search presence. Displacement strategy: bid on "psychiatrist near me," "online psychiatrist Florida," "psychiatrist [city] Cigna" with emphasis on LOCAL, physician-owned differentiation. Ad copy: "Physician-owned telepsychiatry &#8212; not a platform &#8212; real psychiatric care &#8212; same week &#8212; FL/MA/TX &#8212; accepts [payer]." Landing page: city/insurance specific pages. Talkiatry's weakness: patients want personal connection that 800-provider platforms can't deliver. CPC: $12-22. Budget: $3,000/mo for core FL markets.</p>
-          <a class="source-link" href="https://www.fiercehealthcare.com/health-tech/talkiatry-closes-210m-series-d-expand-telepsychiatry-services" target="_blank" rel="noopener">Source: Fierce Healthcare &#8212; Talkiatry $210M Series D</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F50E; Google Ads &#8212; Talkiatry Displacement: "Psychiatrist Near Me" Insurance Intent</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>psychiatrist near me</strong> &mdash; 40,000+/mo combined</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge bofu">BOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>Bid on Talkiatry core terms</li><li>Differentiator: physician-owned vs 800-provider platform</li><li>City + insurance specific variants</li><li>Budget: $3,000/mo for core FL markets</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">Talkiatry weakness: impersonal scale. Refresh strength: physician-owned local trust.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">See a real psychiatrist, not a platform. Book same-week.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">Google Search Ads → City/insurance pages → GBP click-to-call</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card ad reveal">
         <div class="content-type">Ad Campaign</div>
-        <div class="content-card-header">
-          <h3>&#x1F4F1; Meta Ads &#8212; "Cozymaxxing" Trend Riding: Anxiety + Stress Treatment Creative</h3>
-          <p>Trend-riding creative based on viral "cozymaxxing" and "floor time" TikTok trends (combined 32M+ views). Ad: "Cozymaxxing helps. But if anxiety is disrupting your life even when you're comfortable &#8212; that's treatable. Refresh Psychiatry. Same-week telehealth." Pairs trending cultural moment with clinical escalation bridge. Target: 18-35 FL/MA/TX women (primary anxiety content consumers). Expected CTR improvement: 18-24% above baseline for trend-adjacent creative. Budget: $800/mo. CPL target: $35-55.</p>
-          <a class="source-link" href="https://www.healthline.com/health-news/cozymaxxing-tiktok-self-care-mental-health-trend" target="_blank" rel="noopener">Source: Healthline &#8212; Cozymaxxing Mental Health Trend</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F4F1; Meta Ads &#8212; "Cozymaxxing" Trend Riding: Anxiety + Stress Treatment Creative</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>cozymaxxing + anxiety (trend-adjacent)</strong> &mdash; 32M+ TikTok views</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge tofu">TOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>Trend-riding creative: viral moment → clinical need</li><li>Target: 18-35 FL/MA/TX women</li><li>CTR lift: 18-24% vs baseline</li><li>Budget: $800/mo, CPL: $35-55</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">No psychiatric practice is riding this cultural moment.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">If anxiety is more than a bad day, book a telehealth evaluation.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">Meta Ads (IG + FB) → Anxiety landing page → Retargeting</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card ad reveal">
         <div class="content-type">Ad Campaign</div>
-        <div class="content-card-header">
-          <h3>&#x1F4CA; LinkedIn Ads &#8212; Practice Owner Thought Leadership: "Building Our Content Engine Publicly"</h3>
-          <p>Target: healthcare executives, practice owners, physicians with 1-15 years experience in FL/MA/TX. Sponsored article: "We are building our content marketing strategy for a 16-location telepsychiatry practice publicly. Here is the data that drove our decision, and the 90-day plan." Secondary objective: physician recruitment. Every practice owner who sees this ad becomes aware of Refresh as a thought-leading organization. LinkedIn CPM for healthcare executive audience: $45-65. Dual ROI: patient referrals + recruitment pipeline. Budget: $1,200/mo.</p>
-          <a class="source-link" href="https://columncontent.com/thought-leadership-statistics/" target="_blank" rel="noopener">Source: Column Content &#8212; Thought Leadership Statistics 2026</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F4CA; LinkedIn Ads &#8212; Practice Owner Thought Leadership: "Building Our Content Engine Publicly"</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>healthcare executive audience</strong> &mdash; B2B niche — high value</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge tofu">TOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>Sponsored article: building strategy publicly</li><li>Target: healthcare execs, practice owners</li><li>Dual ROI: referrals + recruitment</li><li>LinkedIn CPM: $45-65</li><li>Budget: $1,200/mo</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">No practice does public content strategy documentation. Category-creating.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">Follow Refresh on LinkedIn for weekly practice growth insights.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">LinkedIn Sponsored → Practice owner email → Blog cross-post</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card ad reveal">
         <div class="content-type">Ad Campaign</div>
-        <div class="content-card-header">
-          <h3>&#x1F3AF; Google Display &#8212; Retargeting: Blog Readers Who Did Not Convert</h3>
-          <p>Retargeting pixel on all Refresh blog posts. Users who read insurance/condition blogs but did not book: serve "Still looking for a psychiatrist who takes [payer]? We have same-week availability." Display ad. Based on SEO case study data: retargeting reduces cost-per-booking by 60-70% vs. cold acquisition. Target: visitors who spent 2+ minutes on any blog post. FL/MA/TX. Creative: simple, text-dominant, insurance logo + "same week" message. Budget: $400/mo. Estimated incremental bookings: 12-20/mo at $20-33 per booking.</p>
-          <a class="source-link" href="https://www.cardinaldigitalmarketing.com/healthcare-case-study/psychiatry-therapy-digital-marketing/" target="_blank" rel="noopener">Source: Cardinal Digital Marketing &#8212; Psychiatry Case Study</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F3AF; Google Display &#8212; Retargeting: Blog Readers Who Did Not Convert</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>Retargeting: blog visitor remarketing</strong> &mdash; Based on blog traffic</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge bofu">BOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>Pixel all blog posts</li><li>Target: 2+ min readers who didn’t book</li><li>Creative: insurance logo + same week</li><li>Cost reduction: 60-70% vs cold acquisition</li><li>Budget: $400/mo, 12-20 bookings</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">Lowest-cost patient acquisition channel. Most competitors don’t retarget blog readers.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">Still looking for a psychiatrist? We have same-week availability.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">Google Display → Blog visitor audiences → Booking page</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card ad reveal">
         <div class="content-type">Ad Campaign</div>
-        <div class="content-card-header">
-          <h3>&#x1F4F0; Google Ads &#8212; Cerebral Displacement: Post-FTC Settlement Search Intent</h3>
-          <p>Target: searches for "Cerebral alternative," "Cerebral psychiatry review," "Cerebral mental health substitute." Cerebral faces FTC $7M fine, DOJ $3.65M settlement, leadership gap (no permanent CEO), and advertising restrictions on consumer health data. Their vulnerability is Refresh's opportunity. Ad: "Looking for an alternative to Cerebral? Refresh Psychiatry &#8212; physician-owned &#8212; compliant &#8212; accepts your insurance &#8212; same-week telehealth." Landing page: dedicated "Cerebral alternative" comparison blog. CPC: $3-7 (low competition displacement keywords). High intent audience already in mental health care journey.</p>
-          <a class="source-link" href="https://www.healthcaredive.com/news/cerebral-federal-trade-commission-7-million-fine-data-sharing-privacy/713295/" target="_blank" rel="noopener">Source: Healthcare Dive &#8212; Cerebral FTC Fine</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot scheduled"></span>Scheduled</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F4F0; Google Ads &#8212; Cerebral Displacement: Post-FTC Settlement Search Intent</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot scheduled"></span>Scheduled</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>Cerebral alternative</strong> &mdash; Rising post-FTC</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge bofu">BOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>Target: Cerebral alternative searches</li><li>Cerebral: FTC fine, DOJ settlement, no CEO</li><li>Physician-owned compliant alternative</li><li>Landing: comparison blog</li><li>CPC: $3-7</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">Cerebral regulatory problems = trust vacuum. Refresh fills with compliance credibility.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">Looking for a Cerebral alternative? Book with a physician-owned practice.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">Google Search Ads → Cerebral alternative blog → Retargeting</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <!-- == SOCIAL MEDIA ASSETS (8) -- April 6, 2026 == -->
       <div class="content-card social reveal">
         <div class="content-type">Social Media</div>
-        <div class="content-card-header">
-          <h3>&#x1F4F9; YouTube Short &#8212; "Why ADHD Procrastination Isn't Laziness: It's a Dopamine Timing Problem"</h3>
-          <p>Format: 45-second talking head. Dr. Nepa explains ADHD executive dysfunction in plain language &#8212; the dopamine timing model, why tasks that need to start feel impossible, why deadlines help (urgency = dopamine spike). End card: "At Refresh Psychiatry, we treat ADHD with medication management, same-week telehealth, FL/MA/TX." Mirrors Dr. Tracey Marks top-performing content format. YouTube Shorts receive priority distribution. Expected views: 15K-80K. Builds ADHD content cluster for YouTube SEO. Link to ADHD treatment blog in description.</p>
-          <a class="source-link" href="https://videos.feedspot.com/psychiatrist_youtube_channels/" target="_blank" rel="noopener">Source: Feedspot &#8212; Top Psychiatrist YouTube Channels 2026</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F4F9; YouTube Short &#8212; "Why ADHD Procrastination Isn't Laziness: It's a Dopamine Timing Problem"</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>ADHD procrastination (YouTube SEO)</strong> &mdash; 50K-500K potential views</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge tofu">TOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>45-second talking head format</li><li>Dopamine timing model explanation</li><li>Why deadlines help (urgency = dopamine spike)</li><li>End card: Refresh CTA</li><li>Mirrors Dr. Tracey Marks format</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">No competing FL psychiatrist publishes YouTube Shorts consistently.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">Link to ADHD treatment blog in video description.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">YouTube Shorts → TikTok → Instagram Reels → Blog link</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card social reveal">
         <div class="content-type">Social Media</div>
-        <div class="content-card-header">
-          <h3>&#x1F91D; LinkedIn Post &#8212; Dr. Nepa Personal Vulnerability + Clinical Credibility (Dr. Jake Goodman Format)</h3>
-          <p>Post format proven by Dr. Jake Goodman (1B+ views before residency ended): "I'm a psychiatrist. Here is something I've learned about mental health from being human, not just a provider." Specific and authentic &#8212; not vague. Could reference: a clinical case that changed his approach, a personal realization about stress, what he does for his own mental health. 150-250 words maximum. No promotional CTA. Pure thought leadership. Expected: 50K-200K impressions. Secondary benefit: every physician who reads it considers Refresh as an employment destination.</p>
-          <a class="source-link" href="https://www.psychiatrictimes.com/view/i-revealed-that-i-take-medication-for-my-mental-health-to-millions-online-heres-what-happened" target="_blank" rel="noopener">Source: Psychiatric Times &#8212; Dr. Jake Goodman Viral Post Analysis</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F91D; LinkedIn Post &#8212; Dr. Nepa Personal Vulnerability + Clinical Credibility (Dr. Jake Goodman Format)</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>LinkedIn organic reach</strong> &mdash; Expected: 50K-200K impressions</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge tofu">TOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>150-250 words, personal + authentic</li><li>Dr. Jake Goodman format: human before provider</li><li>No promotional CTA</li><li>Topic: clinical insight or personal realization</li><li>Secondary: physician recruitment awareness</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">Dr. Goodman proved 1B+ views with this format. No FL psychiatrist does this.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">No direct CTA — brand awareness and trust building.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">LinkedIn organic → Instagram stories → Email signature link</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card social reveal">
         <div class="content-type">Social Media</div>
-        <div class="content-card-header">
-          <h3>&#x1F4CB; TikTok Series &#8212; "Psychiatrist Fact-Checks Viral Mental Health TikTok" (Weekly)</h3>
-          <p>Format: 30-60 sec. Dr. Nepa reacts to and corrects a specific viral TikTok claim. Week 1: cozymaxxing and "nervous system resets." Week 2: ashwagandha cures anxiety. Week 3: ADHD medications cause addiction. Week 4: "everyone has trauma." Each video: "Here's what's true, here's what's missing, here's what the research actually says." 83% of mental health TikTok advice is misleading &#8212; Refresh becomes the credible physician corrective voice. Weekly cadence = algorithmic priority. Series format = subscriber retention. Expected per video: 50K-500K views.</p>
-          <a class="source-link" href="https://www.psychologytoday.com/us/blog/the-human-algorithm/202503/tiktok-therapy-how-gen-zs-trend-is-reshaping-mental-health" target="_blank" rel="noopener">Source: Psychology Today &#8212; TikTok Therapy Gen Z Trends</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F4CB; TikTok Series &#8212; "Psychiatrist Fact-Checks Viral Mental Health TikTok" (Weekly)</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>TikTok algorithmic discovery</strong> &mdash; 50K-500K views per video</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge tofu">TOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>30-60 sec react format, weekly</li><li>Week 1: cozymaxxing / nervous system resets</li><li>Week 2: ashwagandha cures anxiety</li><li>Week 3: ADHD meds cause addiction</li><li>Week 4: everyone has trauma</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">83% of mental health TikTok advice is misleading. Physician voice underrepresented.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">Follow for weekly fact-checks from a board-certified psychiatrist.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">TikTok → Instagram Reels → YouTube Shorts → Blog companions</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card social reveal">
         <div class="content-type">Social Media</div>
-        <div class="content-card-header">
-          <h3>&#x1F4CD; Google Business Profile &#8212; Stress Awareness Month Posts (All 16 Locations, This Week)</h3>
-          <p>GBP posts appear directly in Google Maps results &#8212; #1 local SEO action with 34% higher CTR for "New" tagged posts. Post for all 16 locations NOW: "April is Stress Awareness Month 2026. Theme: Be the Change. At Refresh Psychiatry, we treat anxiety, stress disorders, and burnout &#8212; same-week telehealth appointments available. We accept Aetna, United, Cigna, Oscar, Humana, and more. Call (954) 603-4081." Include photo. Tag as "What's New." Repeat weekly with updated content throughout April. This is the single highest-leverage local SEO action available today.</p>
-          <a class="source-link" href="https://www.thedallasseocompany.com/blog/local-seo-for-psychiatrists" target="_blank" rel="noopener">Source: Dallas SEO Company &#8212; Local SEO for Psychiatrists</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot ready"></span>Published</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F4CD; Google Business Profile &#8212; Stress Awareness Month Posts (All 16 Locations, This Week)</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot ready"></span>Published</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>GBP local SEO (all 16 locations)</strong> &mdash; 34% higher CTR with New tag</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge bofu">BOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>Post to all 16 locations this week</li><li>Stress Awareness Month + insurance list</li><li>Include photo, tag What’s New</li><li>Repeat weekly through April</li><li>Highest-leverage local SEO action</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">GBP posts appear in Google Maps. Most competitors don’t post weekly.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">Call (954) 603-4081 for a same-week appointment.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">GBP all 16 locations → Weekly refresh through April</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card social reveal">
         <div class="content-type">Social Media</div>
-        <div class="content-card-header">
-          <h3>&#x1F4CA; Instagram Carousel &#8212; "The 90-Day Content Engine: How We're Growing Refresh Psychiatry's Online Presence"</h3>
-          <p>Behind-the-scenes content documenting Refresh's own content strategy build. 8 slides: Slide 1: "We're building our content engine publicly." Slide 2: The competitive landscape (Talkiatry $210M). Slide 3: What we're doing in Phase 1 (GBP + technical SEO). Slide 4: Phase 2 (blog content engine). Slide 5: Phase 3 (video layer). Slide 6: The data: 28% of healthcare marketers have a strategy &#8212; we're in the top 28% now. Slide 7: What to expect from us each week. Slide 8: Follow along + book an appointment. Dual audience: patients trust a practice that's investing in education. Practice owners follow Refresh's model. Expected reach: 8,000-40,000.</p>
-          <a class="source-link" href="https://medicaladvertising.ca/blog/case-study-private-practice-earns-1-5-million-in-2023-on-50000-annual-ad-budget/" target="_blank" rel="noopener">Source: Medical Advertising &#8212; $1.5M Private Practice Case Study</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F4CA; Instagram Carousel &#8212; "The 90-Day Content Engine: How We're Growing Refresh Psychiatry's Online Presence"</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>Instagram behind-the-scenes</strong> &mdash; Expected: 8,000-40,000 reach</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge tofu">TOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>8-slide carousel format</li><li>Competitive landscape → 3 phases → data → CTA</li><li>Dual audience: patients + practice owners</li><li>Behind-the-scenes builds trust</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">No psychiatric practice documents growth strategy publicly.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">Follow along + book if you need care in FL/MA/TX.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">Instagram → LinkedIn → Facebook → Email newsletter</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card social reveal">
         <div class="content-type">Social Media</div>
-        <div class="content-card-header">
-          <h3>&#x1F3A7; Podcast Episode 17 Companion &#8212; Audiogram + Quote Cards for Instagram and LinkedIn</h3>
-          <p>Create 3 audiogram clips from Episode 17 key moments: (1) "Dr. Tracey Marks committed to one video per week in 2018. Seven years later: $232K/month from YouTube alone." (2) "Talkiatry just hired a Director of Organic Growth. The content war for psychiatric patients has officially started." (3) "The average cost per lead from content marketing: $19-21. From Google Ads: $180-375. That's a 10x difference." Each clip: 30-45 seconds, waveform animation, Refresh brand colors, quote overlay. Instagram + LinkedIn + Twitter distribution. Expected reach: 12K-60K across platforms. Links back to full Episode 17.</p>
-          <a class="source-link" href="https://www.talkiatry.com/jobs/director-organic-growth" target="_blank" rel="noopener">Source: Talkiatry &#8212; Director of Organic Growth Job Posting (signals strategy)</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F3A7; Podcast Episode 17 Companion &#8212; Audiogram + Quote Cards for Instagram and LinkedIn</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>Podcast promotion (multi-platform)</strong> &mdash; 12K-60K across platforms</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge tofu">TOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>3 audiogram clips from Episode 17</li><li>30-45 sec with waveform animation</li><li>Clip 1: $232K/mo stat</li><li>Clip 2: Talkiatry content war</li><li>Clip 3: $19 vs $375 cost per lead</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">Audiograms are #1 podcast growth driver. No competitor uses this format.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">Listen to the full episode at Refresh Studio.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">Instagram → LinkedIn → X/Twitter → Episode 17 link</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card social reveal">
         <div class="content-type">Social Media</div>
-        <div class="content-card-header">
-          <h3>&#x1F4AC; Reddit Presence &#8212; r/mentalhealth + r/Psychiatry Community Building</h3>
-          <p>Engage authentically in the viral r/mentalhealth thread: "What content helped you understand your diagnosis?" &#8212; 48K upvotes. Dr. Nepa (or verified Refresh account) comment: "We publish weekly blogs and a daily podcast at refresh-psych.github.io/refresh-marketing-hub &#8212; the content that gets the most engagement from our patients tends to be condition-specific explainers and medication education. Happy to answer any clinical questions in this thread." Builds organic subreddit backlinks and community trust. No promotional CTA. Zero ad spend. Reddit SEO value for psychiatric keywords is underutilized by competitors.</p>
-          <a class="source-link" href="https://www.reddit.com/r/mentalhealth/" target="_blank" rel="noopener">Source: r/mentalhealth &#8212; Community discussion April 2026</a>
-        </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+        <details>
+          <summary>
+            <h3>&#x1F4AC; Reddit Presence &#8212; r/mentalhealth + r/Psychiatry Community Building</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot draft"></span>Draft</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>Reddit organic + backlinks</strong> &mdash; r/mentalhealth: 2.8M members</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge tofu">TOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>Engage authentically in trending threads</li><li>Verified physician account</li><li>Share educational content, not promo</li><li>Build organic backlinks</li><li>Zero ad spend</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">Reddit SEO for psychiatric keywords is massively underutilized. Free backlinks + trust.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">No direct CTA — community building and backlinks.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">Reddit r/mentalhealth + r/Psychiatry → Organic referral → Blog discovery</div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="content-card social reveal">
         <div class="content-type">Social Media</div>
-        <div class="content-card-header">
-          <h3>&#x1F4E7; Email Newsletter &#8212; April 2026: "The Content-First Practice: Building Trust Before the First Appointment"</h3>
-          <p>Send to existing patient + provider email list. Subject: "Why we're publishing our marketing strategy publicly (and what it means for your care)." Content: 3 paragraphs max. Para 1: "We believe the best way to find patients who are right for our practice is to teach first and sell never." Para 2: Brief overview of April content plan &#8212; Stress Awareness Month, new medication blogs, Episode 17 podcast. Para 3: "If you know someone who could benefit from Refresh Psychiatry, share our content &#8212; that's the referral we most value." CTA: Link to Episode 17 + GBP review request. Expected open rate: 28-35% for healthcare practice lists. Patient retention and referral lift.</p>
-          <a class="source-link" href="https://axismh.com/mental-health-marketing-trends/" target="_blank" rel="noopener">Source: Axis MH &#8212; Mental Health Marketing Trends 2026</a>
+        <details>
+          <summary>
+            <h3>&#x1F4E7; Email Newsletter &#8212; April 2026: "The Content-First Practice: Building Trust Before the First Appointment"</h3>
+            <div class="content-card-footer"><span class="status-indicator"><span class="status-dot scheduled"></span>Scheduled</span><span>April 2026</span></div>
+          </summary>
+          <div class="content-detail">
+            <div class="content-detail-item">
+              <div class="content-detail-label">Target Keyword</div>
+              <div class="content-detail-value"><strong>Email marketing (retention)</strong> &mdash; Expected open rate: 28-35%</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Funnel Stage</div>
+              <div class="content-detail-value"><span class="funnel-badge bofu">BOFU</span></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Content Outline</div>
+              <div class="content-detail-value"><ul><li>3 paragraphs max</li><li>Para 1: teach first, sell never</li><li>Para 2: April content overview</li><li>Para 3: share content = best referral</li><li>CTA: Episode 17 + GBP review</li></ul></div>
+            </div>
+            <div class="content-detail-item full-width">
+              <div class="content-detail-label">Competitor Gap</div>
+              <div class="content-detail-value">Most practice emails are promotional. Content-first builds loyalty.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">CTA</div>
+              <div class="content-detail-value">Listen to Episode 17 + leave a Google review.</div>
+            </div>
+            <div class="content-detail-item">
+              <div class="content-detail-label">Distribution Plan</div>
+              <div class="content-detail-value">Email list → Follow-up for non-openers</div>
+            </div>
+          </div>
+        </details>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ VIRAL MENTAL HEALTH TRENDS ═══════════════ -->
+  <section class="section" id="viral" role="tabpanel" aria-labelledby="tab-viral">
+    <div class="section-header">
+      <div class="section-header-left">
+        <h2>&#x1F525; Viral Mental Health Trends</h2>
+        <p>15 trending posts across TikTok, Instagram, X, Reddit &amp; YouTube &#8212; updated daily. Sorted by relevance to Refresh Psychiatry's content strategy.</p>
+      </div>
+    </div>
+    <div class="filter-chips" style="margin-bottom:4px;">
+      <button class="filter-chip active" data-filter="all" onclick="setViralFilter(this)">All</button>
+      <button class="filter-chip" data-filter="tiktok" onclick="setViralFilter(this)">TikTok</button>
+      <button class="filter-chip" data-filter="instagram" onclick="setViralFilter(this)">Instagram</button>
+      <button class="filter-chip" data-filter="x" onclick="setViralFilter(this)">X / Twitter</button>
+      <button class="filter-chip" data-filter="reddit" onclick="setViralFilter(this)">Reddit</button>
+      <button class="filter-chip" data-filter="youtube" onclick="setViralFilter(this)">YouTube</button>
+    </div>
+    <div class="viral-grid" id="viralGrid">
+
+      <div class="viral-card tiktok reveal">
+        <div class="viral-platform">&#9836; TikTok</div>
+        <div class="viral-body">
+          <h3>"ADHD is not real &#8212; you just need discipline" debate goes viral</h3>
+          <div class="viral-handle">@controversial_takes</div>
+          <p>Duet chain exploding: original poster claims ADHD is a discipline problem. Psychiatrists and ADHD creators flooding responses. High-engagement opportunity for Dr. Nepa to post calm, evidence-based rebuttal using DSM-5-TR criteria and neuroimaging data.</p>
         </div>
-        <div class="content-card-footer"><span class="status-indicator"><span class="status-dot scheduled"></span>Scheduled</span><span>April 2026</span></div>
+        <div class="viral-meta">
+          <div class="viral-views">4.2M views</div>
+          <span class="viral-fresh now">Trending now</span>
+          <span class="viral-opp react">React video</span>
+        </div>
+      </div>
+
+      <div class="viral-card tiktok reveal">
+        <div class="viral-platform">&#9836; TikTok</div>
+        <div class="viral-body">
+          <h3>"My psychiatrist put me on 4 meds at once" &#8212; polypharmacy fear trend</h3>
+          <div class="viral-handle">@mentalhealthmaya</div>
+          <p>Creator shares experience being prescribed multiple medications simultaneously. Comment section split between "that's normal" and "red flag." Perfect opportunity to explain rational polypharmacy vs. inappropriate prescribing, and when multiple meds make clinical sense.</p>
+        </div>
+        <div class="viral-meta">
+          <div class="viral-views">1.8M views</div>
+          <span class="viral-fresh now">Trending now</span>
+          <span class="viral-opp react">React video</span>
+        </div>
+      </div>
+
+      <div class="viral-card instagram reveal">
+        <div class="viral-platform">&#128247; Instagram</div>
+        <div class="viral-body">
+          <h3>"Signs you might have quiet BPD" carousel goes mega-viral</h3>
+          <div class="viral-handle">@the.holistic.psychologist</div>
+          <p>Infographic carousel listing quiet BPD traits &#8212; 890K likes. Comments full of self-diagnosis. Opportunity: create a clinician-vetted version distinguishing quiet BPD from complex PTSD, avoidant attachment, and social anxiety. Already have quiet BPD blog draft ready.</p>
+        </div>
+        <div class="viral-meta">
+          <div class="viral-views">890K likes</div>
+          <span class="viral-fresh today">24h ago</span>
+          <span class="viral-opp blog">Blog topic</span>
+        </div>
+      </div>
+
+      <div class="viral-card x reveal">
+        <div class="viral-platform">&#x1D54F; X</div>
+        <div class="viral-body">
+          <h3>"Lexapro made me feel nothing" &#8212; SSRI emotional blunting thread</h3>
+          <div class="viral-handle">@depressionmemes</div>
+          <p>Thread with 12K+ QRTs about SSRI emotional blunting. Users sharing experiences of feeling "numb" on SSRIs. Direct alignment with our Lexapro blog series. Opportunity to quote-tweet with clinical perspective on dose-dependent blunting and switching strategies.</p>
+        </div>
+        <div class="viral-meta">
+          <div class="viral-views">2.1M impressions</div>
+          <span class="viral-fresh today">18h ago</span>
+          <span class="viral-opp react">React video</span>
+        </div>
+      </div>
+
+      <div class="viral-card tiktok reveal">
+        <div class="viral-platform">&#9836; TikTok</div>
+        <div class="viral-body">
+          <h3>"I diagnosed myself with autism using a TikTok checklist" &#8212; self-dx debate</h3>
+          <div class="viral-handle">@neurospicy.queen</div>
+          <p>Creator shares "autism checklist" video that's being used for self-diagnosis. Neuropsychologists pushing back in duets. Touches on access-to-care issues, validity of self-assessment, and when formal evaluation matters. Great for nuanced take on diagnostic access vs. accuracy.</p>
+        </div>
+        <div class="viral-meta">
+          <div class="viral-views">3.5M views</div>
+          <span class="viral-fresh today">12h ago</span>
+          <span class="viral-opp duet">Duet</span>
+        </div>
+      </div>
+
+      <div class="viral-card reddit reveal">
+        <div class="viral-platform">&#129302; Reddit</div>
+        <div class="viral-body">
+          <h3>r/ADHD megathread: "Adderall shortage is back &#8212; what are our options?"</h3>
+          <div class="viral-handle">r/ADHD &#183; 4.2K upvotes</div>
+          <p>Recurring stimulant shortage discussion resurfaces. Users sharing pharmacy experiences, switching medications, telehealth frustrations. Aligns with our stimulant vs. non-stimulant blog. Comment with helpful information about Vyvanse, Qelbree, and non-stimulant alternatives.</p>
+        </div>
+        <div class="viral-meta">
+          <div class="viral-views">4.2K upvotes</div>
+          <span class="viral-fresh today">6h ago</span>
+          <span class="viral-opp blog">Blog topic</span>
+        </div>
+      </div>
+
+      <div class="viral-card youtube reveal">
+        <div class="viral-platform">&#9654; YouTube</div>
+        <div class="viral-body">
+          <h3>Dr. Tracey Marks: "Why Your Antidepressant Stopped Working" hits 1M views in 3 days</h3>
+          <div class="viral-handle">@DrTraceyMarks &#183; 2.35M subs</div>
+          <p>Top competitor creator's latest video on antidepressant tachyphylaxis going viral. Comments section = patient acquisition goldmine. Study her format: 12 min, talking head + whiteboard, PubMed citations. Our Episode 17 podcast covers similar territory &#8212; cross-promote.</p>
+        </div>
+        <div class="viral-meta">
+          <div class="viral-views">1.02M views</div>
+          <span class="viral-fresh today">3 days</span>
+          <span class="viral-opp monitor">Monitor</span>
+        </div>
+      </div>
+
+      <div class="viral-card instagram reveal">
+        <div class="viral-platform">&#128247; Instagram</div>
+        <div class="viral-body">
+          <h3>"Magnesium cured my anxiety" Reel sparks supplement vs. medication debate</h3>
+          <div class="viral-handle">@drjakegoodman</div>
+          <p>Dr. Jake Goodman posts Reel about magnesium glycinate for anxiety &#8212; 620K views. Comment section debating supplements vs. SSRIs. Perfect alignment with our ashwagandha blog angle and TMW integrative positioning. Create response Reel: "A psychiatrist's honest take on magnesium for anxiety."</p>
+        </div>
+        <div class="viral-meta">
+          <div class="viral-views">620K views</div>
+          <span class="viral-fresh week">This week</span>
+          <span class="viral-opp react">React video</span>
+        </div>
+      </div>
+
+      <div class="viral-card tiktok reveal">
+        <div class="viral-platform">&#9836; TikTok</div>
+        <div class="viral-body">
+          <h3>"POV: Your therapist tells you it might be time to see a psychiatrist"</h3>
+          <div class="viral-handle">@therapytiktok</div>
+          <p>Relatable skit about the therapy-to-psychiatry referral moment. 2.8M views. Comments full of questions about what psychiatrists actually do, medication fears, cost concerns. Directly relevant to our "therapist vs psychiatrist" content and insurance-focused blogs.</p>
+        </div>
+        <div class="viral-meta">
+          <div class="viral-views">2.8M views</div>
+          <span class="viral-fresh week">This week</span>
+          <span class="viral-opp duet">Duet</span>
+        </div>
+      </div>
+
+      <div class="viral-card x reveal">
+        <div class="viral-platform">&#x1D54F; X</div>
+        <div class="viral-body">
+          <h3>Surgeon General calls for warning labels on social media &#8212; mental health Twitter erupts</h3>
+          <div class="viral-handle">@SurgeonGeneral</div>
+          <p>Dr. Murthy's renewed push for social media warning labels generates massive discourse. Split between "finally" and "this won't help." Content opportunity: blog post on the actual research linking social media to adolescent mental health outcomes. Evidence-based take with nuance.</p>
+        </div>
+        <div class="viral-meta">
+          <div class="viral-views">8.3M impressions</div>
+          <span class="viral-fresh week">This week</span>
+          <span class="viral-opp blog">Blog topic</span>
+        </div>
+      </div>
+
+      <div class="viral-card tiktok reveal">
+        <div class="viral-platform">&#9836; TikTok</div>
+        <div class="viral-body">
+          <h3>"Revenge bedtime procrastination is ruining my life" &#8212; relatable mental health</h3>
+          <div class="viral-handle">@sleepless.sarah</div>
+          <p>Creator describes staying up late as the only "me time" despite exhaustion. Massive relatability engagement. We already have a revenge bedtime procrastination blog draft &#8212; fast-track publication and create a companion TikTok with Dr. Nepa explaining the dopamine loop behind it.</p>
+        </div>
+        <div class="viral-meta">
+          <div class="viral-views">1.5M views</div>
+          <span class="viral-fresh week">This week</span>
+          <span class="viral-opp react">React video</span>
+        </div>
+      </div>
+
+      <div class="viral-card reddit reveal">
+        <div class="viral-platform">&#129302; Reddit</div>
+        <div class="viral-body">
+          <h3>r/Psychiatry: "Telehealth prescribing &#8212; are we doing more harm than good?"</h3>
+          <div class="viral-handle">r/Psychiatry &#183; 1.8K upvotes</div>
+          <p>Heated discussion among psychiatrists about telehealth-only practices (Cerebral, Done) vs. quality care. Many comments distinguish between "prescription mills" and legitimate telehealth. Perfect for Dr. Nepa to comment as physician-owned telehealth practice owner with credibility.</p>
+        </div>
+        <div class="viral-meta">
+          <div class="viral-views">1.8K upvotes</div>
+          <span class="viral-fresh week">This week</span>
+          <span class="viral-opp monitor">Monitor</span>
+        </div>
+      </div>
+
+      <div class="viral-card instagram reveal">
+        <div class="viral-platform">&#128247; Instagram</div>
+        <div class="viral-body">
+          <h3>"Looksmaxxing is giving boys body dysmorphia" &#8212; therapist warning goes viral</h3>
+          <div class="viral-handle">@licensedtherapist.kate</div>
+          <p>Therapist's post about teen boys developing BDD from looksmaxxing culture. 340K likes, major news pickup. We have a looksmaxxing blog ready &#8212; publish immediately to capture search surge. Cross-post key stats to Instagram with Dr. Nepa's clinical perspective.</p>
+        </div>
+        <div class="viral-meta">
+          <div class="viral-views">340K likes</div>
+          <span class="viral-fresh week">This week</span>
+          <span class="viral-opp blog">Blog topic</span>
+        </div>
+      </div>
+
+      <div class="viral-card youtube reveal">
+        <div class="viral-platform">&#9654; YouTube</div>
+        <div class="viral-body">
+          <h3>MedCircle: "Narcissistic Abuse &#8212; 7 Signs You're a Victim" hits 5M views</h3>
+          <div class="viral-handle">@MedCircle &#183; 3.4M subs</div>
+          <p>Continued explosion of narcissistic abuse content. MedCircle and Dr. Ramani dominate this niche. Observation only &#8212; do not create content in this saturated space. Monitor for trend shifts. Focus our limited resources on underserved niches (ADHD pipeline, integrative, insurance).</p>
+        </div>
+        <div class="viral-meta">
+          <div class="viral-views">5.1M views</div>
+          <span class="viral-fresh week">This week</span>
+          <span class="viral-opp monitor">Monitor</span>
+        </div>
+      </div>
+
+      <div class="viral-card x reveal">
+        <div class="viral-platform">&#x1D54F; X</div>
+        <div class="viral-body">
+          <h3>"GLP-1 drugs are fixing my binge eating AND depression" &#8212; patient anecdote thread</h3>
+          <div class="viral-handle">@ozempicjourney</div>
+          <p>Patient sharing dramatic mental health improvements on Foundayo (oral GLP-1, approved Apr 1). Psychiatry Twitter debating mechanism &#8212; weight loss confidence vs. direct neurological effect. Timely for TMW integrative content: "How GLP-1 Medications May Affect Your Mental Health."</p>
+        </div>
+        <div class="viral-meta">
+          <div class="viral-views">950K impressions</div>
+          <span class="viral-fresh now">Trending now</span>
+          <span class="viral-opp blog">Blog topic</span>
+        </div>
       </div>
 
     </div>
@@ -3225,6 +4282,16 @@ function setFilter(btn) {
   btn.classList.add('active');
   const filter = btn.dataset.filter;
   document.querySelectorAll('.content-card').forEach(card => {
+    card.style.display = (filter === 'all' || card.classList.contains(filter)) ? '' : 'none';
+  });
+}
+
+/* ═══════════════ VIRAL FILTER CHIPS ═══════════════ */
+function setViralFilter(btn) {
+  btn.closest('.filter-chips').querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  const filter = btn.dataset.filter;
+  document.querySelectorAll('.viral-card').forEach(card => {
     card.style.display = (filter === 'all' || card.classList.contains(filter)) ? '' : 'none';
   });
 }
