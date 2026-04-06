@@ -2548,7 +2548,6 @@
   <button class="nav-tab" id="tab-content" data-tab="content" role="tab" aria-label="Content" aria-selected="false" aria-controls="content" tabindex="-1">Content<span class="tab-count">27</span></button>
 
   <button class="nav-tab" id="tab-viral" data-tab="viral" role="tab" aria-label="Viral" aria-selected="false" aria-controls="viral" tabindex="-1">🔥 Viral<span class="tab-count">15</span></button>
-  <button class="nav-tab" id="tab-seo-map" data-tab="seo-map" role="tab" aria-label="SEO Map" aria-selected="false" aria-controls="seo-map" tabindex="-1">🗺️ SEO Map<span class="tab-count">12</span></button>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
 </nav>
 
@@ -2941,56 +2940,6 @@
       </div>
 
     </div>
-  </section>
-
-  <!-- SEO KEYWORD MIND MAP -->
-  <section class="section" id="seo-map" role="tabpanel" aria-labelledby="tab-seo-map">
-    <div class="section-header">
-      <div class="section-header-left">
-        <h2>🗺️ SEO Keyword Mind Map</h2>
-        <p>12 pillar keyword clusters with ~150 trackable keywords — color-coded by content coverage status. <strong>Last updated: <span id="seoLastUpdated">April 2, 2026</span></strong></p>
-      </div>
-    </div>
-    <div class="seo-stats-bar reveal">
-      <div class="seo-stat"><div class="seo-stat-num" id="seoStatPosts">89</div><div class="seo-stat-label">Blog Posts</div></div>
-      <div class="seo-stat"><div class="seo-stat-num" id="seoStatKeywords">0</div><div class="seo-stat-label">Keywords Tracked</div></div>
-      <div class="seo-stat"><div class="seo-stat-num" id="seoStatCovered" style="color:#48BB78">0</div><div class="seo-stat-label">Covered</div></div>
-      <div class="seo-stat"><div class="seo-stat-num" id="seoStatPartial" style="color:#F6C744">0</div><div class="seo-stat-label">Partial</div></div>
-      <div class="seo-stat"><div class="seo-stat-num" id="seoStatGaps" style="color:#E53E3E">0</div><div class="seo-stat-label">Gaps</div></div>
-      <div class="seo-stat"><div class="seo-stat-num" id="seoStatClusters">12</div><div class="seo-stat-label">Clusters</div></div>
-    </div>
-    <div class="seo-legend">
-      <div class="seo-legend-item"><div class="seo-legend-dot pillar"></div> Pillar Cluster</div>
-      <div class="seo-legend-item"><div class="seo-legend-dot covered"></div> Covered (has blog post)</div>
-      <div class="seo-legend-item"><div class="seo-legend-dot partial"></div> Partial (service page only)</div>
-      <div class="seo-legend-item"><div class="seo-legend-dot gap"></div> Gap (no content)</div>
-    </div>
-    <div class="seo-controls">
-      <button class="seo-filter-btn active" data-filter="all" onclick="filterSeoMap('all',this)">All</button>
-      <button class="seo-filter-btn" data-filter="gap" onclick="filterSeoMap('gap',this)">Gaps Only</button>
-      <button class="seo-filter-btn" data-filter="partial" onclick="filterSeoMap('partial',this)">Partial</button>
-      <button class="seo-filter-btn" data-filter="covered" onclick="filterSeoMap('covered',this)">Covered</button>
-      <div class="seo-search-wrap">
-        <span class="seo-search-icon">🔍</span>
-        <input class="seo-search" id="seoSearch" type="text" placeholder="Search keywords..." oninput="searchSeoMap(this.value)">
-      </div>
-    </div>
-    <div class="seo-map-container reveal" id="seoMapContainer">
-      <svg id="seoMapSvg"></svg>
-      <div class="seo-map-hint">Click a cluster to zoom in · Scroll to zoom · Drag to pan</div>
-      <div class="seo-detail-panel" id="seoDetailPanel">
-        <button class="seo-detail-close" onclick="closeSeoDetail()">&times;</button>
-        <h3 id="seoDetailTitle"></h3>
-        <div class="seo-detail-status" id="seoDetailStatus"></div>
-        <div class="seo-detail-meta" id="seoDetailMeta"></div>
-        <ul class="seo-detail-keywords" id="seoDetailKeywords"></ul>
-      </div>
-    </div>
-    <div style="margin-top:20px;display:flex;align-items:center;gap:10px;">
-      <h3 style="font-size:1rem;font-weight:800;color:var(--deep-blue);margin:0;">📋 Cluster Overview</h3>
-      <span style="background:var(--yellow);color:var(--navy);font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:20px;">CLICK TO EXPLORE</span>
-    </div>
-    <div class="seo-cluster-list" id="seoClusterList"></div>
   </section>
 
   <!-- DAILY BRIEF -->
