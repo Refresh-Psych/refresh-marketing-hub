@@ -4243,6 +4243,121 @@
 </main>
 
 <script>
+/* ═══════════════ PODCAST PLAYER ═══════════════ */
+const podcastAudio = document.getElementById('podcastAudio');
+const podcastProgress = document.getElementById('podcastProgress');
+const podcastCurrentTime = document.getElementById('podcastCurrentTime');
+const podcastDuration = document.getElementById('podcastDuration');
+const podcastBar = document.getElementById('podcastBar');
+const podcastPlayBtn = document.getElementById('podcastPlayBtn');
+
+function formatTime(s) {
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return m + ':' + String(sec).padStart(2, '0');
+}
+
+if (podcastAudio) {
+  podcastAudio.addEventListener('loadedmetadata', () => {
+    podcastDuration.textContent = formatTime(podcastAudio.duration);
+  });
+  podcastAudio.addEventListener('timeupdate', () => {
+    if (podcastAudio.duration) {
+      podcastProgress.style.width = (podcastAudio.currentTime / podcastAudio.duration * 100) + '%';
+      podcastCurrentTime.textContent = formatTime(podcastAudio.currentTime);
+    }
+  });
+  podcastAudio.addEventListener('ended', () => {
+    podcastPlayBtn.classList.remove('playing');
+    cancelAnimationFrame(visualizerRAF);
+  });
+}
+
+function togglePodcast(btn) {
+  if (!podcastAudio) return;
+  if (podcastAudio.paused) {
+    podcastAudio.play().then(() => {
+      btn.classList.add('playing');
+      startVisualizer();
+    }).catch(() => {
+      podcastAudio.play();
+      btn.classList.add('playing');
+    });
+  } else {
+    podcastAudio.pause();
+    btn.classList.remove('playing');
+    cancelAnimationFrame(visualizerRAF);
+  }
+}
+
+if (podcastBar) {
+  podcastBar.addEventListener('click', (e) => {
+    const rect = podcastBar.getBoundingClientRect();
+    const pct = (e.clientX - rect.left) / rect.width;
+    podcastAudio.currentTime = pct * podcastAudio.duration;
+  });
+}
+
+/* ═══════════════ AUDIO VISUALIZER ═══════════════ */
+const visCanvas = document.getElementById('audioVisualizer');
+const visCtx = visCanvas ? visCanvas.getContext('2d') : null;
+let visualizerRAF;
+
+function startVisualizer() {
+  if (!visCtx) return;
+  function draw() {
+    visualizerRAF = requestAnimationFrame(draw);
+    visCtx.clearRect(0, 0, visCanvas.width, visCanvas.height);
+    const barCount = 24;
+    const barWidth = (visCanvas.width / barCount) - 2;
+    const now = Date.now() / 1000;
+    for (let i = 0; i < barCount; i++) {
+      const speed = 2.5 + (i % 3) * 0.8;
+      const phase = i * 0.7 + Math.sin(i * 0.3) * 2;
+      const barHeight = (Math.sin(now * speed + phase) * 0.35 + 0.55) * visCanvas.height * 0.8 + 4;
+      const x = i * (barWidth + 2);
+      const y = visCanvas.height - barHeight;
+      const gradient = visCtx.createLinearGradient(x, y, x, visCanvas.height);
+      gradient.addColorStop(0, '#F6C744');
+      gradient.addColorStop(1, 'rgba(246,199,68,0.15)');
+      visCtx.fillStyle = gradient;
+      visCtx.beginPath();
+      visCtx.roundRect(x, y, barWidth, barHeight, 2);
+      visCtx.fill();
+    }
+  }
+  draw();
+}
+
+// Draw idle visualizer bars
+if (visCtx) {
+  (function drawIdle() {
+    visCtx.clearRect(0, 0, visCanvas.width, visCanvas.height);
+    const barCount = 24;
+    const barWidth = (visCanvas.width / barCount) - 2;
+    for (let i = 0; i < barCount; i++) {
+      const barHeight = Math.random() * 8 + 3;
+      const x = i * (barWidth + 2);
+      visCtx.fillStyle = 'rgba(246,199,68,0.25)';
+      visCtx.beginPath();
+      visCtx.roundRect(x, visCanvas.height - barHeight, barWidth, barHeight, 2);
+      visCtx.fill();
+    }
+  })();
+}
+
+/* ═══════════════ CONTENT SEARCH ═══════════════ */
+let activeFilter = 'all';
+function filterContent() {
+  const searchEl = document.getElementById('contentSearch');
+  const query = searchEl ? searchEl.value.toLowerCase() : '';
+  document.querySelectorAll('.content-card').forEach(card => {
+    const matchesFilter = activeFilter === 'all' || card.classList.contains(activeFilter);
+    const matchesSearch = !query || card.textContent.toLowerCase().includes(query);
+    card.style.display = (matchesFilter && matchesSearch) ? '' : 'none';
+  });
+}
+
 /* ═══════════════ TAB NAVIGATION ═══════════════ */
 document.querySelectorAll('.nav-tab[data-tab]').forEach(tab => {
   tab.addEventListener('click', () => {
@@ -4280,10 +4395,8 @@ if (themeBtn) {
 function setFilter(btn) {
   btn.closest('.filter-chips').querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
   btn.classList.add('active');
-  const filter = btn.dataset.filter;
-  document.querySelectorAll('.content-card').forEach(card => {
-    card.style.display = (filter === 'all' || card.classList.contains(filter)) ? '' : 'none';
-  });
+  activeFilter = btn.dataset.filter;
+  filterContent();
 }
 
 /* ═══════════════ VIRAL FILTER CHIPS ═══════════════ */
