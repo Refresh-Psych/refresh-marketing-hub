@@ -367,6 +367,39 @@
 
   .location-pill .pin { font-size: 10px; }
 
+  .pill-name { font-weight: 500; }
+
+  .pill-count {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.38);
+    border-left: 1px solid rgba(255,255,255,0.12);
+    padding-left: 7px;
+    margin-left: 2px;
+    letter-spacing: 0.01em;
+  }
+
+  .pill-count--loading {
+    opacity: 0.3;
+    font-style: italic;
+  }
+
+  .pill-delta {
+    font-size: 9.5px;
+    font-weight: 700;
+    color: #68d391;
+    background: rgba(72,187,120,0.15);
+    border: 1px solid rgba(72,187,120,0.25);
+    border-radius: 100px;
+    padding: 1px 6px;
+    margin-left: 1px;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  .location-pill:hover .pill-count { color: rgba(255,255,255,0.65); }
+  .location-pill:hover .pill-delta { background: rgba(72,187,120,0.22); }
+
   /* Hero stats */
   .hero-stats {
     position: absolute;
@@ -2633,16 +2666,16 @@
     </div>
     <p>Your centralized dashboard for video, podcast, social media, and advertising assets. Create, preview, and launch campaigns — all in one place.</p>
     <div class="hero-locations">
-      <a class="location-pill" href="https://www.google.com/search?q=Refresh+Psychiatry+and+Therapy+Davie+FL" target="_blank" rel="noopener"><span class="pin">📍</span> Davie</a>
-      <a class="location-pill" href="https://www.google.com/search?q=Refresh+Psychiatry+and+Therapy+Pembroke+Pines+FL" target="_blank" rel="noopener"><span class="pin">📍</span> Pembroke Pines</a>
-      <a class="location-pill" href="https://www.google.com/search?q=Refresh+Psychiatry+and+Therapy+Coconut+Creek+FL" target="_blank" rel="noopener"><span class="pin">📍</span> Coconut Creek</a>
-      <a class="location-pill" href="https://www.google.com/search?q=Refresh+Psychiatry+and+Therapy+West+Palm+Beach+FL" target="_blank" rel="noopener"><span class="pin">📍</span> West Palm Beach</a>
-      <a class="location-pill" href="https://www.google.com/search?q=Refresh+Psychiatry+and+Therapy+Miami+FL" target="_blank" rel="noopener"><span class="pin">📍</span> Miami</a>
-      <a class="location-pill" href="https://www.google.com/search?q=Refresh+Psychiatry+and+Therapy+Orlando+FL" target="_blank" rel="noopener"><span class="pin">📍</span> Orlando</a>
-      <a class="location-pill" href="https://www.google.com/search?q=Refresh+Psychiatry+and+Therapy+Coral+Springs+FL" target="_blank" rel="noopener"><span class="pin">📍</span> Coral Springs</a>
-      <a class="location-pill" href="https://www.google.com/search?q=Refresh+Psychiatry+and+Therapy+Wellington+FL" target="_blank" rel="noopener"><span class="pin">📍</span> Wellington</a>
-      <a class="location-pill" href="https://www.google.com/search?q=Refresh+Psychiatry+and+Therapy+Winter+Park+FL" target="_blank" rel="noopener"><span class="pin">📍</span> Winter Park</a>
-      <a class="location-pill" href="https://www.google.com/search?q=Refresh+Psychiatry+and+Therapy+Vero+Beach+FL" target="_blank" rel="noopener"><span class="pin">📍</span> Vero Beach</a>
+      <a class="location-pill" href="https://www.google.com/search?q=Refresh+Psychiatry+and+Therapy+Davie+FL" target="_blank" rel="noopener"><span class="pin">📍</span><span class="pill-name">Davie</span><span class="pill-count pill-count--loading">--</span></a>
+      <a class="location-pill" href="https://www.google.com/search?q=Refresh+Psychiatry+and+Therapy+Pembroke+Pines+FL" target="_blank" rel="noopener"><span class="pin">📍</span><span class="pill-name">Pembroke Pines</span><span class="pill-count pill-count--loading">--</span></a>
+      <a class="location-pill" href="https://www.google.com/search?q=Refresh+Psychiatry+and+Therapy+Coconut+Creek+FL" target="_blank" rel="noopener"><span class="pin">📍</span><span class="pill-name">Coconut Creek</span><span class="pill-count pill-count--loading">--</span></a>
+      <a class="location-pill" href="https://www.google.com/search?q=Refresh+Psychiatry+and+Therapy+West+Palm+Beach+FL" target="_blank" rel="noopener"><span class="pin">📍</span><span class="pill-name">West Palm Beach</span><span class="pill-count pill-count--loading">--</span></a>
+      <a class="location-pill" href="https://www.google.com/search?q=Refresh+Psychiatry+and+Therapy+Miami+FL" target="_blank" rel="noopener"><span class="pin">📍</span><span class="pill-name">Miami</span><span class="pill-count pill-count--loading">--</span></a>
+      <a class="location-pill" href="https://www.google.com/search?q=Refresh+Psychiatry+and+Therapy+Orlando+FL" target="_blank" rel="noopener"><span class="pin">📍</span><span class="pill-name">Orlando</span><span class="pill-count pill-count--loading">--</span></a>
+      <a class="location-pill" href="https://www.google.com/search?q=Refresh+Psychiatry+and+Therapy+Coral+Springs+FL" target="_blank" rel="noopener"><span class="pin">📍</span><span class="pill-name">Coral Springs</span><span class="pill-count pill-count--loading">--</span></a>
+      <a class="location-pill" href="https://www.google.com/search?q=Refresh+Psychiatry+and+Therapy+Wellington+FL" target="_blank" rel="noopener"><span class="pin">📍</span><span class="pill-name">Wellington</span><span class="pill-count pill-count--loading">--</span></a>
+      <a class="location-pill" href="https://www.google.com/search?q=Refresh+Psychiatry+and+Therapy+Winter+Park+FL" target="_blank" rel="noopener"><span class="pin">📍</span><span class="pill-name">Winter Park</span><span class="pill-count pill-count--loading">--</span></a>
+      <a class="location-pill" href="https://www.google.com/search?q=Refresh+Psychiatry+and+Therapy+Vero+Beach+FL" target="_blank" rel="noopener"><span class="pin">📍</span><span class="pill-name">Vero Beach</span><span class="pill-count pill-count--loading">--</span></a>
     </div>
   </div>
   <div class="hero-stats">
