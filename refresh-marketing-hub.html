@@ -2705,6 +2705,7 @@
   <button class="nav-tab" id="tab-content" data-tab="content" role="tab" aria-label="Content" aria-selected="false" aria-controls="content" tabindex="-1">Content<span class="tab-count">27</span></button>
 
   <button class="nav-tab" id="tab-viral" data-tab="viral" role="tab" aria-label="Viral" aria-selected="false" aria-controls="viral" tabindex="-1">🔥 Viral<span class="tab-count">15</span></button>
+  <button class="nav-tab" id="tab-seo" data-tab="seo" role="tab" aria-label="SEO Keywords" aria-selected="false" aria-controls="seo" tabindex="-1">🔍 SEO<span class="tab-count">50</span></button>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
 </nav>
 
@@ -3820,4 +3821,570 @@
 
     </section>
 
+<!-- ═══════════ SEO KEYWORD SEARCH ═══════════ -->
+<style>
+  /* ═══════════════ SEO KEYWORD SEARCH ═══════════════ */
+  #seo .section-header-left p { max-width: 74ch; }
+  .seo-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0 0 22px;
+  }
+  .seo-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+    padding: 12px 18px;
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    min-width: 108px;
+  }
+  .seo-stat-num {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--blue);
+    line-height: 1;
+  }
+  .seo-stat:nth-child(2) .seo-stat-num { color: var(--yellow-dim); }
+  .seo-stat-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--charcoal);
+    opacity: 0.6;
+  }
+  .seo-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    background: var(--surface-elevated);
+  }
+  .seo-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    min-width: 720px;
+  }
+  .seo-table thead th {
+    text-align: left;
+    padding: 12px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--charcoal);
+    opacity: 0.7;
+    background: var(--surface);
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+  }
+  .seo-table th.sortable { cursor: pointer; user-select: none; }
+  .seo-table th.sortable:hover { color: var(--blue); opacity: 1; }
+  .seo-table th.sorted { color: var(--blue); opacity: 1; }
+  .seo-table th .sort-arrow { font-size: 9px; margin-left: 4px; }
+  .seo-table th.num, .seo-table td.num { text-align: right; white-space: nowrap; }
+  .seo-table tbody td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--charcoal);
+    vertical-align: middle;
+  }
+  .seo-table tbody tr:last-child td { border-bottom: none; }
+  .seo-table tbody tr:hover { background: rgba(43,108,176,0.04); }
+  .seo-term { font-weight: 600; max-width: 380px; line-height: 1.4; }
+  .seo-row.qw-row { background: rgba(246,199,68,0.07); }
+  .seo-row.qw-row:hover { background: rgba(246,199,68,0.12); }
+  .qw-star { color: var(--yellow-dim); margin-right: 2px; }
+  .seo-cluster {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--blue);
+    background: rgba(43,108,176,0.08);
+    padding: 3px 9px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .seo-badge {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  .b-Info { color: #1d4ed8; background: rgba(43,108,176,0.12); }
+  .b-Commercial { color: #b45309; background: rgba(246,199,68,0.20); }
+  .b-Transactional { color: #047857; background: rgba(16,185,129,0.15); }
+  .kd-pill {
+    display: inline-block;
+    min-width: 30px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 8px;
+  }
+  .kd-low { color: #15803d; background: rgba(34,197,94,0.16); }
+  .kd-mid { color: #b45309; background: rgba(245,158,11,0.18); }
+  .kd-high { color: #b91c1c; background: rgba(239,68,68,0.14); }
+  .seo-count {
+    margin: 14px 2px 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--charcoal);
+    opacity: 0.75;
+  }
+  .seo-note {
+    margin: 4px 2px 0;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--charcoal);
+    opacity: 0.6;
+    max-width: 82ch;
+  }
+  .seo-note strong { color: var(--charcoal); opacity: 0.85; }
+  .qw-chip { border-color: rgba(246,199,68,0.55) !important; }
+  [data-theme="dark"] .seo-table thead th { background: #1c2333; }
+  [data-theme="dark"] .seo-table tbody tr:hover { background: rgba(56,139,253,0.06); }
+  [data-theme="dark"] .b-Info { color: #93c5fd; background: rgba(59,130,246,0.16); }
+  [data-theme="dark"] .b-Commercial { color: #fbbf24; background: rgba(251,191,36,0.16); }
+  [data-theme="dark"] .b-Transactional { color: #34d399; background: rgba(16,185,129,0.16); }
+  [data-theme="dark"] .kd-low { color: #4ade80; background: rgba(34,197,94,0.16); }
+  [data-theme="dark"] .kd-mid { color: #fbbf24; background: rgba(245,158,11,0.16); }
+  [data-theme="dark"] .kd-high { color: #f87171; background: rgba(239,68,68,0.16); }
+  [data-theme="dark"] .seo-cluster { color: #93c5fd; background: rgba(59,130,246,0.14); }
+  [data-theme="dark"] .seo-row.qw-row { background: rgba(251,191,36,0.08); }
+  [data-theme="dark"] .seo-row.qw-row:hover { background: rgba(251,191,36,0.13); }
+</style>
+
+<section class="section" id="seo" role="tabpanel" aria-labelledby="tab-seo">
+  <div class="section-header">
+    <div class="section-header-left">
+      <h2>SEO Keyword Search</h2>
+      <p>50 search-validated, net-new Florida psychiatry keywords mapped to 14 pillar clusters &mdash; long-tail, question-based, and high-intent terms chosen for low difficulty and telepsychiatry conversion. Search by keyword, cluster, intent, or pillar; click any column to sort; filter to the &#9889; Quick-Win shortlist (low KD &times; high intent) to find what to publish first.</p>
+    </div>
+    <div class="content-controls">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="seoSearch" placeholder="Search keywords, clusters, intent..." oninput="renderSeo()">
+      </div>
+      <div class="filter-chips" id="seoFilters">
+        <button class="filter-chip qw-chip" data-filter="quickwin" onclick="setSeoFilter(this)">&#9889; Quick Wins</button>
+        <button class="filter-chip active" data-filter="all" onclick="setSeoFilter(this)">All</button>
+        <button class="filter-chip" data-filter="ADHD" onclick="setSeoFilter(this)">ADHD</button>
+        <button class="filter-chip" data-filter="Anxiety" onclick="setSeoFilter(this)">Anxiety</button>
+        <button class="filter-chip" data-filter="Depression" onclick="setSeoFilter(this)">Depression</button>
+        <button class="filter-chip" data-filter="Bipolar" onclick="setSeoFilter(this)">Bipolar</button>
+        <button class="filter-chip" data-filter="Trauma" onclick="setSeoFilter(this)">Trauma</button>
+        <button class="filter-chip" data-filter="OCD" onclick="setSeoFilter(this)">OCD</button>
+        <button class="filter-chip" data-filter="Sleep" onclick="setSeoFilter(this)">Sleep</button>
+        <button class="filter-chip" data-filter="Medications" onclick="setSeoFilter(this)">Medications</button>
+        <button class="filter-chip" data-filter="Insurance" onclick="setSeoFilter(this)">Insurance</button>
+        <button class="filter-chip" data-filter="Symptom" onclick="setSeoFilter(this)">Symptom</button>
+        <button class="filter-chip" data-filter="Comparison" onclick="setSeoFilter(this)">Comparison</button>
+        <button class="filter-chip" data-filter="Integrative" onclick="setSeoFilter(this)">Integrative</button>
+        <button class="filter-chip" data-filter="Local" onclick="setSeoFilter(this)">Local</button>
+        <button class="filter-chip" data-filter="Spanish" onclick="setSeoFilter(this)">Spanish</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="seo-stats">
+    <div class="seo-stat"><span class="seo-stat-num" id="seoStatTotal">50</span><span class="seo-stat-label">Keywords</span></div>
+    <div class="seo-stat"><span class="seo-stat-num" id="seoStatQw">12</span><span class="seo-stat-label">&#9889; Quick Wins</span></div>
+    <div class="seo-stat"><span class="seo-stat-num" id="seoStatClusters">14</span><span class="seo-stat-label">Clusters</span></div>
+    <div class="seo-stat"><span class="seo-stat-num" id="seoStatKd">26</span><span class="seo-stat-label">Avg KD</span></div>
+    <div class="seo-stat"><span class="seo-stat-num" id="seoStatVol">&mdash;</span><span class="seo-stat-label">Est. Vol/mo</span></div>
+  </div>
+
+  <div class="seo-table-wrap">
+    <table class="seo-table">
+      <thead>
+        <tr>
+          <th class="sortable" data-key="term" onclick="seoSortBy('term')">Keyword<span class="sort-arrow"></span></th>
+          <th class="sortable" data-key="cluster" onclick="seoSortBy('cluster')">Cluster<span class="sort-arrow"></span></th>
+          <th class="sortable" data-key="intent" onclick="seoSortBy('intent')">Intent<span class="sort-arrow"></span></th>
+          <th class="sortable num" data-key="vol" onclick="seoSortBy('vol')">Vol/mo<span class="sort-arrow"></span></th>
+          <th class="sortable num" data-key="kd" onclick="seoSortBy('kd')">KD<span class="sort-arrow"></span></th>
+          <th class="sortable num" data-key="cpc" onclick="seoSortBy('cpc')">CPC<span class="sort-arrow"></span></th>
+        </tr>
+      </thead>
+      <tbody id="seoResults"></tbody>
+    </table>
+  </div>
+  <p class="seo-count" id="seoCount"></p>
+  <p class="seo-note"><strong>Note:</strong> Volume, KD, and CPC are estimated for prioritization &mdash; not pulled from a live keyword tool. Validate the Quick-Win shortlist in Semrush / Google Search Console before publishing. Mental-health content is YMYL: keep E-E-A-T (named author, credentials, citations) on every page.</p>
+</section>
+
 </main>
+
+<script>
+/* ═══════════════ PODCAST PLAYER ═══════════════ */
+const podcastAudio = document.getElementById('podcastAudio');
+const podcastProgress = document.getElementById('podcastProgress');
+const podcastCurrentTime = document.getElementById('podcastCurrentTime');
+const podcastDuration = document.getElementById('podcastDuration');
+const podcastBar = document.getElementById('podcastBar');
+const podcastPlayBtn = document.getElementById('podcastPlayBtn');
+
+function formatTime(s) {
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return m + ':' + String(sec).padStart(2, '0');
+}
+
+if (podcastAudio) {
+  podcastAudio.addEventListener('loadedmetadata', () => {
+    podcastDuration.textContent = formatTime(podcastAudio.duration);
+  });
+  podcastAudio.addEventListener('timeupdate', () => {
+    if (podcastAudio.duration) {
+      podcastProgress.style.width = (podcastAudio.currentTime / podcastAudio.duration * 100) + '%';
+      podcastCurrentTime.textContent = formatTime(podcastAudio.currentTime);
+    }
+  });
+  podcastAudio.addEventListener('ended', () => {
+    podcastPlayBtn.classList.remove('playing');
+    cancelAnimationFrame(visualizerRAF);
+  });
+}
+
+function togglePodcast(btn) {
+  if (!podcastAudio) return;
+  if (podcastAudio.paused) {
+    podcastAudio.play().then(() => {
+      btn.classList.add('playing');
+      startVisualizer();
+    }).catch(() => {
+      podcastAudio.play();
+      btn.classList.add('playing');
+    });
+  } else {
+    podcastAudio.pause();
+    btn.classList.remove('playing');
+    cancelAnimationFrame(visualizerRAF);
+  }
+}
+
+if (podcastBar) {
+  podcastBar.addEventListener('click', (e) => {
+    const rect = podcastBar.getBoundingClientRect();
+    const pct = (e.clientX - rect.left) / rect.width;
+    podcastAudio.currentTime = pct * podcastAudio.duration;
+  });
+}
+
+/* ═══════════════ AUDIO VISUALIZER ═══════════════ */
+const visCanvas = document.getElementById('audioVisualizer');
+const visCtx = visCanvas ? visCanvas.getContext('2d') : null;
+let visualizerRAF;
+
+function startVisualizer() {
+  if (!visCtx) return;
+  function draw() {
+    visualizerRAF = requestAnimationFrame(draw);
+    visCtx.clearRect(0, 0, visCanvas.width, visCanvas.height);
+    const barCount = 24;
+    const barWidth = (visCanvas.width / barCount) - 2;
+    const now = Date.now() / 1000;
+    for (let i = 0; i < barCount; i++) {
+      const speed = 2.5 + (i % 3) * 0.8;
+      const phase = i * 0.7 + Math.sin(i * 0.3) * 2;
+      const barHeight = (Math.sin(now * speed + phase) * 0.35 + 0.55) * visCanvas.height * 0.8 + 4;
+      const x = i * (barWidth + 2);
+      const y = visCanvas.height - barHeight;
+      const gradient = visCtx.createLinearGradient(x, y, x, visCanvas.height);
+      gradient.addColorStop(0, '#F6C744');
+      gradient.addColorStop(1, 'rgba(246,199,68,0.15)');
+      visCtx.fillStyle = gradient;
+      visCtx.beginPath();
+      visCtx.roundRect(x, y, barWidth, barHeight, 2);
+      visCtx.fill();
+    }
+  }
+  draw();
+}
+
+// Draw idle visualizer bars
+if (visCtx) {
+  (function drawIdle() {
+    visCtx.clearRect(0, 0, visCanvas.width, visCanvas.height);
+    const barCount = 24;
+    const barWidth = (visCanvas.width / barCount) - 2;
+    for (let i = 0; i < barCount; i++) {
+      const barHeight = Math.random() * 8 + 3;
+      const x = i * (barWidth + 2);
+      visCtx.fillStyle = 'rgba(246,199,68,0.25)';
+      visCtx.beginPath();
+      visCtx.roundRect(x, visCanvas.height - barHeight, barWidth, barHeight, 2);
+      visCtx.fill();
+    }
+  })();
+}
+
+/* ═══════════════ CONTENT SEARCH ═══════════════ */
+let activeFilter = 'all';
+function filterContent() {
+  const searchEl = document.getElementById('contentSearch');
+  const query = searchEl ? searchEl.value.toLowerCase() : '';
+  document.querySelectorAll('.content-card').forEach(card => {
+    const matchesFilter = activeFilter === 'all' || card.classList.contains(activeFilter);
+    const matchesSearch = !query || card.textContent.toLowerCase().includes(query);
+    card.style.display = (matchesFilter && matchesSearch) ? '' : 'none';
+  });
+}
+
+/* ═══════════════ TAB NAVIGATION ═══════════════ */
+document.querySelectorAll('.nav-tab[data-tab]').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.nav-tab').forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+      t.setAttribute('tabindex', '-1');
+    });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+    tab.setAttribute('tabindex', '0');
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    const target = document.getElementById(tab.dataset.tab);
+    if (target) target.classList.add('active');
+  });
+});
+
+/* ═══════════════ THEME TOGGLE ═══════════════ */
+const themeBtn = document.getElementById('themeToggle');
+if (themeBtn) {
+  const saved = localStorage.getItem('theme');
+  if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    themeBtn.textContent = '☀️';
+  }
+  themeBtn.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    themeBtn.textContent = isDark ? '🌙' : '☀️';
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  });
+}
+
+/* ═══════════════ CONTENT FILTER CHIPS ═══════════════ */
+function setFilter(btn) {
+  btn.closest('.filter-chips').querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  activeFilter = btn.dataset.filter;
+  filterContent();
+}
+
+/* ═══════════════ VIRAL FILTER CHIPS ═══════════════ */
+function setViralFilter(btn) {
+  btn.closest('.filter-chips').querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  const filter = btn.dataset.filter;
+  document.querySelectorAll('.viral-card').forEach(card => {
+    card.style.display = (filter === 'all' || card.classList.contains(filter)) ? '' : 'none';
+  });
+}
+
+/* ═══════════════ PODCAST SPEED ═══════════════ */
+const speeds = [1, 1.25, 1.5, 1.75, 2];
+let speedIdx = 0;
+function cyclePodcastSpeed() {
+  speedIdx = (speedIdx + 1) % speeds.length;
+  const audio = document.querySelector('audio');
+  if (audio) audio.playbackRate = speeds[speedIdx];
+  const btn = document.getElementById('podcastSpeedBtn');
+  if (btn) btn.textContent = speeds[speedIdx] + 'x';
+}
+
+/* ═══════════════ REVEAL ON SCROLL ═══════════════ */
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+/* ═══════════════ NAV KEYBOARD ARROWS ═══════════════ */
+document.querySelector('.nav-bar')?.addEventListener('keydown', e => {
+  if (!['ArrowLeft','ArrowRight'].includes(e.key)) return;
+  const tabs = [...document.querySelectorAll('.nav-tab[data-tab]')];
+  const idx = tabs.indexOf(document.activeElement);
+  if (idx < 0) return;
+  const next = e.key === 'ArrowRight' ? (idx + 1) % tabs.length : (idx - 1 + tabs.length) % tabs.length;
+  tabs[next].focus();
+  tabs[next].click();
+});
+
+/* ═══════════════ SEO KEYWORD SEARCH ═══════════════ */
+const SEO_PILLARS = {
+  ADHD: 'Online ADHD Treatment in Florida',
+  Anxiety: 'Anxiety Treatment & Medication in Florida',
+  Depression: 'Depression Care in Florida',
+  Bipolar: 'Bipolar Disorder Management in Florida',
+  Trauma: 'Trauma & PTSD Care in Florida',
+  OCD: 'OCD-Spectrum Care in Florida',
+  Sleep: 'Sleep & Insomnia Psychiatry in Florida',
+  Medications: 'Psychiatric Medication Management in Florida',
+  Insurance: 'Insurance & Affordable Psychiatry in Florida',
+  Symptom: 'Symptom / Pre-diagnosis Hub (FL)',
+  Comparison: 'Choosing the Right Provider (FL)',
+  Integrative: 'Advanced & Integrative Psychiatry in Florida',
+  Local: 'Local City Landing Pages',
+  Spanish: 'Servicios de Psiquiatria en Espanol (FL)'
+};
+const SEO_KEYWORDS = [
+  {term:'adhd and rejection sensitive dysphoria treatment', cluster:'ADHD', intent:'Info', vol:1000, kd:26, cpc:2.40, qw:false},
+  {term:'vyvanse vs adderall for adults which is better', cluster:'ADHD', intent:'Info', vol:2900, kd:39, cpc:3.80, qw:false},
+  {term:'how to get tested for adhd online florida', cluster:'ADHD', intent:'Commercial', vol:390, kd:21, cpc:7.10, qw:true},
+  {term:'adhd burnout symptoms in adults', cluster:'ADHD', intent:'Info', vol:880, kd:24, cpc:1.90, qw:true},
+  {term:'can you have adhd and autism together as an adult', cluster:'ADHD', intent:'Info', vol:1300, kd:30, cpc:1.70, qw:false},
+  {term:'buspar for anxiety reviews', cluster:'Anxiety', intent:'Info', vol:1600, kd:28, cpc:2.10, qw:false},
+  {term:'how to stop morning anxiety', cluster:'Anxiety', intent:'Info', vol:1900, kd:32, cpc:1.80, qw:false},
+  {term:'gad vs panic disorder difference', cluster:'Anxiety', intent:'Info', vol:720, kd:27, cpc:2.60, qw:false},
+  {term:'hydroxyzine for anxiety how long does it last', cluster:'Anxiety', intent:'Info', vol:2400, kd:31, cpc:1.50, qw:false},
+  {term:'anxiety chest tightness when to see a doctor', cluster:'Anxiety', intent:'Info', vol:590, kd:20, cpc:3.90, qw:false},
+  {term:'high functioning depression signs', cluster:'Depression', intent:'Info', vol:3600, kd:36, cpc:1.90, qw:false},
+  {term:'why do antidepressants stop working', cluster:'Depression', intent:'Info', vol:1300, kd:29, cpc:2.30, qw:false},
+  {term:'best antidepressant for weight loss', cluster:'Depression', intent:'Info', vol:2900, kd:41, cpc:3.40, qw:false},
+  {term:'depression after stopping birth control', cluster:'Depression', intent:'Info', vol:880, kd:25, cpc:2.00, qw:false},
+  {term:'is it depression or burnout quiz', cluster:'Depression', intent:'Info', vol:1000, kd:22, cpc:1.60, qw:true},
+  {term:'lamotrigine for bipolar 2 reviews', cluster:'Bipolar', intent:'Info', vol:1100, kd:27, cpc:2.20, qw:false},
+  {term:'hypomania symptoms in bipolar 2', cluster:'Bipolar', intent:'Info', vol:1600, kd:33, cpc:1.50, qw:false},
+  {term:'bipolar disorder and adhd misdiagnosis', cluster:'Bipolar', intent:'Info', vol:590, kd:26, cpc:2.40, qw:false},
+  {term:'prazosin for ptsd nightmares dosage', cluster:'Trauma', intent:'Info', vol:880, kd:28, cpc:2.70, qw:false},
+  {term:'pure o ocd treatment', cluster:'OCD', intent:'Commercial', vol:720, kd:25, cpc:3.60, qw:false},
+  {term:'trichotillomania medication that works', cluster:'OCD', intent:'Commercial', vol:480, kd:23, cpc:3.10, qw:true},
+  {term:'complex ptsd vs ptsd symptoms', cluster:'Trauma', intent:'Info', vol:2400, kd:35, cpc:1.80, qw:false},
+  {term:'why do i wake up at 3am every night anxiety', cluster:'Sleep', intent:'Info', vol:1300, kd:24, cpc:1.40, qw:true},
+  {term:'is trazodone safe for long term sleep', cluster:'Sleep', intent:'Info', vol:1000, kd:26, cpc:1.90, qw:false},
+  {term:'medication for sleep that is not habit forming', cluster:'Sleep', intent:'Commercial', vol:1600, kd:30, cpc:3.80, qw:false},
+  {term:'zoloft side effects first week what to expect', cluster:'Medications', intent:'Info', vol:2400, kd:32, cpc:1.60, qw:false},
+  {term:'can you drink alcohol on lexapro', cluster:'Medications', intent:'Info', vol:4400, kd:38, cpc:1.30, qw:false},
+  {term:'how to taper off cymbalta safely', cluster:'Medications', intent:'Info', vol:1900, kd:29, cpc:2.10, qw:false},
+  {term:'seroquel for sleep low dose side effects', cluster:'Medications', intent:'Info', vol:1600, kd:31, cpc:2.40, qw:false},
+  {term:'does humana cover online psychiatrist florida', cluster:'Insurance', intent:'Transactional', vol:320, kd:19, cpc:9.40, qw:true},
+  {term:'how much is an online psychiatry visit with insurance', cluster:'Insurance', intent:'Commercial', vol:880, kd:27, cpc:8.10, qw:false},
+  {term:'does cigna cover adhd testing for adults', cluster:'Insurance', intent:'Transactional', vol:390, kd:22, cpc:7.60, qw:true},
+  {term:'psychiatrist that accepts aetna and prescribes online', cluster:'Insurance', intent:'Transactional', vol:480, kd:24, cpc:10.20, qw:false},
+  {term:'why cant i focus or finish anything', cluster:'Symptom', intent:'Info', vol:1000, kd:21, cpc:1.70, qw:true},
+  {term:'always tired and unmotivated no energy causes', cluster:'Symptom', intent:'Info', vol:1900, kd:28, cpc:1.80, qw:false},
+  {term:'why do i feel disconnected from reality', cluster:'Symptom', intent:'Info', vol:2900, kd:34, cpc:1.50, qw:false},
+  {term:'constant overthinking and racing thoughts at night', cluster:'Symptom', intent:'Info', vol:1300, kd:23, cpc:1.60, qw:false},
+  {term:'grow therapy vs headway for patients', cluster:'Comparison', intent:'Commercial', vol:590, kd:26, cpc:5.20, qw:false},
+  {term:'brightside vs talkiatry for depression', cluster:'Comparison', intent:'Commercial', vol:480, kd:27, cpc:6.40, qw:false},
+  {term:'psychiatric nurse practitioner vs psychiatrist difference', cluster:'Comparison', intent:'Info', vol:2400, kd:33, cpc:3.10, qw:false},
+  {term:'tms therapy for depression florida cost', cluster:'Integrative', intent:'Commercial', vol:590, kd:28, cpc:9.80, qw:false},
+  {term:'how does spravato work for depression', cluster:'Integrative', intent:'Info', vol:1000, kd:30, cpc:6.20, qw:false},
+  {term:'esketamine vs ketamine for depression', cluster:'Integrative', intent:'Info', vol:720, kd:29, cpc:5.40, qw:false},
+  {term:'does insurance cover tms therapy in florida', cluster:'Integrative', intent:'Transactional', vol:390, kd:23, cpc:8.70, qw:false},
+  {term:'psychiatrist coral springs fl accepting new patients', cluster:'Local', intent:'Commercial', vol:210, kd:18, cpc:8.60, qw:true},
+  {term:'adult adhd doctor davie fl', cluster:'Local', intent:'Commercial', vol:170, kd:16, cpc:9.10, qw:true},
+  {term:'online psychiatrist orlando that takes united healthcare', cluster:'Local', intent:'Transactional', vol:140, kd:17, cpc:11.40, qw:true},
+  {term:'anxiety treatment west palm beach telehealth', cluster:'Local', intent:'Commercial', vol:190, kd:19, cpc:7.90, qw:true},
+  {term:'psiquiatra para el tdah en adultos en orlando', cluster:'Spanish', intent:'Commercial', vol:110, kd:15, cpc:6.80, qw:false},
+  {term:'consulta psiquiatrica en linea que acepte cigna en espanol', cluster:'Spanish', intent:'Transactional', vol:90, kd:14, cpc:7.20, qw:false}
+];
+
+let seoFilter = 'all';
+let seoSort = { key: 'vol', dir: -1 };
+
+function seoEsc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function seoKdClass(kd) {
+  return kd <= 22 ? 'kd-low' : kd <= 32 ? 'kd-mid' : 'kd-high';
+}
+
+function renderSeo() {
+  const input = document.getElementById('seoSearch');
+  const q = (input ? input.value : '').toLowerCase().trim();
+  let rows = SEO_KEYWORDS.filter(k => {
+    const matchFilter = seoFilter === 'all' ? true : seoFilter === 'quickwin' ? k.qw : k.cluster === seoFilter;
+    const hay = (k.term + ' ' + k.cluster + ' ' + k.intent + ' ' + (SEO_PILLARS[k.cluster] || '')).toLowerCase();
+    const matchSearch = !q || hay.includes(q);
+    return matchFilter && matchSearch;
+  });
+  const key = seoSort.key, dir = seoSort.dir;
+  rows.sort((a, b) => {
+    let av = a[key], bv = b[key];
+    if (typeof av === 'string') {
+      av = av.toLowerCase(); bv = bv.toLowerCase();
+      return av < bv ? -dir : av > bv ? dir : 0;
+    }
+    return (av - bv) * dir;
+  });
+  const tbody = document.getElementById('seoResults');
+  if (tbody) {
+    tbody.innerHTML = rows.map(k => {
+      const qw = k.qw ? ' qw-row' : '';
+      const star = k.qw ? '<span class="qw-star" title="Quick win - low difficulty, high intent">&#9889;</span> ' : '';
+      return '<tr class="seo-row' + qw + '">' +
+        '<td class="seo-term">' + star + seoEsc(k.term) + '</td>' +
+        '<td><span class="seo-cluster">' + seoEsc(k.cluster) + '</span></td>' +
+        '<td><span class="seo-badge b-' + seoEsc(k.intent) + '">' + seoEsc(k.intent) + '</span></td>' +
+        '<td class="num">' + k.vol.toLocaleString() + '</td>' +
+        '<td class="num"><span class="kd-pill ' + seoKdClass(k.kd) + '">' + k.kd + '</span></td>' +
+        '<td class="num">$' + k.cpc.toFixed(2) + '</td>' +
+      '</tr>';
+    }).join('');
+  }
+  const countEl = document.getElementById('seoCount');
+  if (countEl) {
+    const totalVol = rows.reduce((s, k) => s + k.vol, 0);
+    countEl.textContent = 'Showing ' + rows.length + ' of ' + SEO_KEYWORDS.length + ' keywords · ' + totalVol.toLocaleString() + ' est. searches/mo';
+  }
+  document.querySelectorAll('#seo .seo-table th.sortable').forEach(th => {
+    const arrow = th.querySelector('.sort-arrow');
+    if (!arrow) return;
+    if (th.dataset.key === seoSort.key) {
+      arrow.textContent = seoSort.dir === -1 ? '▼' : '▲';
+      th.classList.add('sorted');
+    } else {
+      arrow.textContent = '';
+      th.classList.remove('sorted');
+    }
+  });
+}
+
+function setSeoFilter(btn) {
+  document.querySelectorAll('#seoFilters .filter-chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  seoFilter = btn.dataset.filter;
+  renderSeo();
+}
+
+function seoSortBy(key) {
+  if (seoSort.key === key) {
+    seoSort.dir *= -1;
+  } else {
+    seoSort.key = key;
+    seoSort.dir = (key === 'term' || key === 'cluster' || key === 'intent') ? 1 : -1;
+  }
+  renderSeo();
+}
+
+(function initSeo() {
+  const total = SEO_KEYWORDS.length;
+  const qw = SEO_KEYWORDS.filter(k => k.qw).length;
+  const clusters = new Set(SEO_KEYWORDS.map(k => k.cluster)).size;
+  const avgKd = Math.round(SEO_KEYWORDS.reduce((s, k) => s + k.kd, 0) / total);
+  const totalVol = SEO_KEYWORDS.reduce((s, k) => s + k.vol, 0);
+  const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+  set('seoStatTotal', total);
+  set('seoStatQw', qw);
+  set('seoStatClusters', clusters);
+  set('seoStatKd', avgKd);
+  set('seoStatVol', totalVol.toLocaleString());
+  renderSeo();
+})();
+</script>
+</body>
+</html>
