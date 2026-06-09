@@ -2732,7 +2732,7 @@
         <h2>&#x1F50D; What 5 SEO Experts Say About Psychiatric Practice SEO in 2026 (And the One Thing They All Agree On)</h2>
         <p>Thursday Expert Roundup on Topic 2 &mdash; SEO for Mental Health Practices. Five named voices, one synthesis: ICANotes (77% of mental-health patients start on Google), Reframe Practice (weak E-E-A-T is the #1 ranking blocker for therapy and psychiatry sites), SEOforPsychiatrist.com (the right partner measures evaluations booked, not keyword positions), Optimantra (long-tail queries like &ldquo;Adult ADHD psychiatrist [city]&rdquo; convert at 5&ndash;12% vs &lt;1% for generic searches), and Healthcare Success + DexCare (citation in AI Overviews now beats clicks in informational queries). They disagree on volume vs depth, on competing with nationals, and on whether the click is dying. They agree on exactly one thing: reviews are the highest-leverage controllable lever in 2026, and the practice that generates 5&ndash;10 new Google reviews per location per month with 80%+ response rate outranks competitors with 10&times; the content investment. Backed by 2026 Whitespark Local Search Ranking Factors (proximity 55%, GBP signals 32%, reviews 16&ndash;20%, on-page 19%) and Seer Interactive&rsquo;s 61% CTR collapse data when AI Overviews appear on 51% of health queries &mdash; though Google has notably REMOVED AI Overviews from local healthcare queries, meaning &ldquo;psychiatrist near me&rdquo; intent still flows to organic. Today&rsquo;s news backdrop: CTx-1301 PDUFA Sunday May 31 (3 days), Centanafadine PDUFA July 24, COMP360 psilocybin NDA Q4 2026 with Commissioner&rsquo;s National Priority Voucher, DEA Fourth Temporary Extension active through Dec 31 2026. THE THURSDAY ASK: open your primary location&rsquo;s Google Business Profile right now. Count Google reviews received in the last 30 days. Under 5 means your highest-leverage SEO move this week is not a blog post or redesign &mdash; it&rsquo;s a 60-second post-visit text asking for a review. Every single one of the five experts agrees on this. Set it up this week.</p>
 
-        <audio id="podcastAudio" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-daily-podcast/podcast-2026-05-23.mp3" preload="auto" playsinline webkit-playsinline></audio>
+        <audio id="podcastAudio" src="https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-daily-podcast/podcast-2026-04-16.mp3" preload="auto" playsinline webkit-playsinline></audio>
         <div class="podcast-player">
           <button class="player-btn" id="podcastPlayBtn" onclick="togglePodcast(this)"></button>
           <div class="player-track">
@@ -2746,6 +2746,7 @@
           </div>
           <button class="speed-btn" id="podcastSpeedBtn" onclick="cyclePodcastSpeed()" title="Playback speed">1x</button>
         </div>
+        <div id="podcastAvail" style="font-size:12px;color:#64748b;margin-top:10px;"></div>
       </div>
     </div>
 
@@ -4398,6 +4399,30 @@
 <script>
 /* ═══════════════ PODCAST PLAYER ═══════════════ */
 const podcastAudio = document.getElementById('podcastAudio');
+const PODCAST_RELEASE_API = 'https://api.github.com/repos/Refresh-Psych/refresh-marketing-hub/releases/tags/v3.0-daily-podcast';
+const PODCAST_FALLBACK_SRC = 'https://github.com/Refresh-Psych/refresh-marketing-hub/releases/download/v3.0-daily-podcast/podcast-2026-04-16.mp3';
+function podcastFmtDate(iso) {
+  const p = iso.split('-').map(Number);
+  return new Date(p[0], p[1] - 1, p[2]).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+}
+function podcastSetSource(url, iso) {
+  if (!podcastAudio || !podcastAudio.paused) return;
+  if (podcastAudio.getAttribute('src') !== url) podcastAudio.src = url;
+  const a = document.getElementById('podcastAvail');
+  if (a && iso) a.textContent = 'Latest available recording: ' + podcastFmtDate(iso);
+}
+async function initPodcastSource() {
+  try {
+    const res = await fetch(PODCAST_RELEASE_API, { headers: { 'Accept': 'application/vnd.github+json' } });
+    if (!res.ok) return;
+    const data = await res.json();
+    const mp3s = (data.assets || []).map(x => {
+      const m = x && x.name && x.name.match(/^podcast-(\d{4}-\d{2}-\d{2})\.mp3$/);
+      return m ? { iso: m[1], url: x.browser_download_url } : null;
+    }).filter(Boolean).sort((u, v) => v.iso.localeCompare(u.iso));
+    if (mp3s.length) podcastSetSource(mp3s[0].url, mp3s[0].iso);
+  } catch (e) {}
+}
 const podcastProgress = document.getElementById('podcastProgress');
 const podcastCurrentTime = document.getElementById('podcastCurrentTime');
 const podcastDuration = document.getElementById('podcastDuration');
@@ -4411,6 +4436,10 @@ function formatTime(s) {
 }
 
 if (podcastAudio) {
+  podcastAudio.addEventListener('error', () => {
+    if (podcastAudio.getAttribute('src') !== PODCAST_FALLBACK_SRC) podcastAudio.src = PODCAST_FALLBACK_SRC;
+  });
+  initPodcastSource();
   podcastAudio.addEventListener('loadedmetadata', () => {
     podcastDuration.textContent = formatTime(podcastAudio.duration);
   });
